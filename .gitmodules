@@ -1,0 +1,3 @@
+[submodule "external/anydev.nvim"]
+	path = external/anydev.nvim
+	url = https://github.com/Tolomeo/anydev.nvim.git
