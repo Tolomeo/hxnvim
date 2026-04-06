@@ -13,6 +13,9 @@ install:
 	@git submodule update --init --recursive
 	@echo "Installing json type sources"
 	@$(MAKE) types
+	@echo "Installing dependencies"
+	haxelib newrepo
+	haxelib install --always build.hxml
 
 .PHONY=clean
 clean:

@@ -1,0 +1,8 @@
+--library hscript:2.7.0
+
+-D analyzer-optimize
+
+-cp hxnvim
+-main HxNvim
+
+--interp
