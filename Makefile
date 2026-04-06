@@ -7,6 +7,10 @@ resources/types:
 .PHONY=types
 types: resources/types
 
+.PHONY=build
+build:
+	haxe build.hxml
+
 .PHONY=install
 install:
 	@echo "Initialising submodules"
