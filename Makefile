@@ -9,7 +9,7 @@ types: resources/types
 
 .PHONY=build
 build:
-	haxe build.hxml
+	@haxe build.hxml
 
 .PHONY=install
 install:
