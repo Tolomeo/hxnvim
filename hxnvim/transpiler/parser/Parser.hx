@@ -1,12 +1,13 @@
 package transpiler.parser;
 
-using Lambda;
-
 import haxe.Exception;
 import haxe.ds.Option;
 import hxjsonast.Json;
 import hxjsonast.Printer;
 import transpiler.State;
+
+using Lambda;
+using hxjsonast.Tools;
 
 typedef ParsedMetadata = {name:String, ?params:Array<String>};
 typedef ParsedType = String;
@@ -62,16 +63,11 @@ class Parser {
 
 		final key = selector.shift();
 
-		switch (json.value) {
-			case JObject(fields):
-				switch (fields.find(f -> f.name == key)) {
-					case null:
-						return None;
-					case field:
-						return this.query(field.value, selector);
-				}
-			case _:
-				throw new Exception('Cannot query a non object json ${Printer.print(json)} at position ${json.pos.file}, ${json.pos.min}-${json.pos.max}');
+		return switch (json.getField(key)) {
+			case null:
+				return None;
+			case field:
+				return this.query(field.value, selector);
 		}
 	}
 
@@ -100,11 +96,12 @@ class Parser {
 			case "table":
 				this.parseTable(type);
 			case _:
-				trace("NOT IMPLEMENTED");
+				throw new Exception("NOT IMPLEMENTED");
 		}
 	}
 
 	private function parseTable(table:Json) {
+		// trace(table.getValue());
 		trace("Parsing table");
 	}
 }
