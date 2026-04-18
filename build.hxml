@@ -5,6 +5,7 @@
 --macro nullSafety("hxnvim", Strict)
 
 -D analyzer-optimize
+-w -WDeprecated
 
 -cp hxnvim
 -main HxNvim
