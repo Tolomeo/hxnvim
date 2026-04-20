@@ -50,7 +50,7 @@ enum ParsedTableField {
 	Method(method:ParsedTableMethod);
 }
 
-function query(json:Json, selector:Array<String>):Option<Json> {
+function get(json:Json, selector:Array<String>):Option<Json> {
 	if (selector.length < 1) {
 		return Some(json);
 	}
@@ -61,7 +61,7 @@ function query(json:Json, selector:Array<String>):Option<Json> {
 		case null:
 			return None;
 		case field:
-			return query(field.value, selector);
+			return get(field.value, selector);
 	}
 }
 
@@ -103,8 +103,27 @@ function getFieldsMap(json:Json):Map<String, Json> {
 		return object; */
 }
 
+typedef Alias = {
+	name:String,
+	type:ParsedType
+}
+
+typedef Table = {
+	name:String,
+	doc:Array<String>,
+	meta:Array<ParsedMetadata>,
+	access:Array<ParsedAccess>,
+	fields:Array<ParsedTableField>
+}
+
 enum ParsedSymbol {
-	ParsedTable(name:String, doc:Array<String>, meta:Array<ParsedMetadata>, access:Array<ParsedAccess>, fields:Array<ParsedTableField>);
+	ParsedTable(table:Table);
+	ParsedAlias(alias:Alias);
+}
+
+typedef ParsedModule = {
+	types:Map<String, ParsedSymbol>,
+	main:ParsedSymbol
 }
 
 class Parser {
@@ -115,17 +134,22 @@ class Parser {
 		this.json = hxjsonast.Parser.parse(input.spec, input.file);
 	}
 
-	public function parse() {
-		return this.parseSymbol(this.json);
+	public function parse():ParsedModule {
+		final main = this.parseSymbol(this.json);
+
+		return {
+			types: [],
+			main: main
+		}
 	}
 
 	private function parseSymbol(symbol:Json) {
-		final name = switch (query(symbol, ['name'])) {
+		final name = switch (get(symbol, ['name'])) {
 			case Some(n): getString(n);
 			case None: throw new Exception('Error retrieving symbol documentation in ${symbol.getValue()}: not found');
 		}
 
-		final doc = switch (query(symbol, ['documentation'])) {
+		final doc = switch (get(symbol, ['documentation'])) {
 			case Some(d): getArray(d).map(i -> getString(i));
 			case None: throw new Exception('Error retrieving symbol documentation in ${symbol.getValue()}: not found');
 		}
@@ -133,7 +157,7 @@ class Parser {
 		final access = new Array<ParsedAccess>();
 		final metadata = new Array<ParsedMetadata>();
 
-		final meta = switch (query(symbol, ['meta'])) {
+		final meta = switch (get(symbol, ['meta'])) {
 			case Some(k): getArray(k).map(i -> getString(i));
 			case None: throw new Exception('Error retrieving symbol meta in ${symbol.getValue()}: not found');
 		}
@@ -145,13 +169,13 @@ class Parser {
 			case m: throw new Exception('Meta not implemented: ${m}');
 		}));
 
-		final type = switch (query(symbol, ['type'])) {
+		final type = switch (get(symbol, ['type'])) {
 			case Some(t): t;
 			case None:
 				throw new Exception('Error retrieving symbol type in ${Printer.print(symbol)}: not found');
 		}
 
-		return switch (query(type, ['kind'])) {
+		return switch (get(type, ['kind'])) {
 			case Some(k): switch (getString(k)) {
 					case "table": this.parseTable(name, doc, metadata, access, type);
 					case _: throw new Exception("NOT IMPLEMENTED");
@@ -161,11 +185,17 @@ class Parser {
 	}
 
 	private function parseTable(name:String, doc:Array<String>, meta:Array<ParsedMetadata>, access:Array<ParsedAccess>, table:Json) {
-		final jsonFields = switch (query(table, ['fields'])) {
+		final jsonFields = switch (get(table, ['fields'])) {
 			case Some(f): getArray(f).map(tableField -> getFieldsMap(tableField));
 			case None: throw new Exception('Error retrieving table fields in ${table.getValue()}: not found');
 		}
 
-		return ParsedSymbol.ParsedTable(name, doc, meta, access, []);
+		return ParsedSymbol.ParsedTable({
+			name: name,
+			doc: doc,
+			meta: meta,
+			access: access,
+			fields: [],
+		});
 	}
 }

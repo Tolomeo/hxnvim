@@ -1,31 +1,47 @@
 package transpiler.generator;
 
-// import haxe.macro.Printer;
+import haxe.macro.Printer;
 import haxe.macro.Expr.TypeDefinition;
+import haxe.Exception;
 import transpiler.State;
-/* import transpiler.parser.Parser;
-import transpiler.parser.Meta.ParsedMetadata;
-import transpiler.generator.Enumerator;
+import transpiler.parser.Parser;
+// import transpiler.parser.Meta.ParsedMetadata;
+// import transpiler.generator.Enumerator;
 import transpiler.generator.Alias;
-import transpiler.generator.Class; */
+import transpiler.generator.Class;
+
+using transpiler.parser.Tools;
 
 typedef Module = Array<TypeDefinition>;
 
 class Generator {
 	// final origin:Parser;
+	final moduleName:String;
+	final moduleNativeName:String;
+	final modulePack:Array<String>;
 
 	public function new() {
-		// this.origin = origin;
+		final state = State.consume(v -> v);
+
+		this.moduleName = state.output.name;
+		this.moduleNativeName = state.output.native;
+		this.modulePack = state.output.pack;
 	}
 
-	/* public function make(moduleName:String, moduleNativeName:String) {
-		final parsedModule = this.origin.parse();
+	private function symbolName(symbol:ParsedSymbol):String {
+		return switch (symbol) {
+			case ParsedSymbol.ParsedTable(table): table.name;
+			case _: throw new Exception('Unexpected parsed symbol type received: ${symbol}');
+		}
+	}
 
-		final result = new Array<TypeDefinition>();
+	public function make(parsedModule:ParsedModule) {
+		final moduleTypes = new Array<TypeDefinition>();
+
 		final metaPrivate:ParsedMetadata = {name: 'private'};
-		final metaNative:ParsedMetadata = {name: 'native', params: [moduleNativeName]};
+		final metaNative:ParsedMetadata = {name: 'native', params: [this.moduleNativeName]};
 
-		for (_ => type in parsedModule.types.keyValueIterator()) {
+		/* for (_ => type in parsedModule.types.keyValueIterator()) {
 			switch (type) {
 				case ModuleType.Enumerator(parsedEnumerator):
 					result.push(new EnumeratorGenerator(parsedEnumerator).make([metaPrivate]));
@@ -34,36 +50,33 @@ class Generator {
 				case ModuleType.Class(parsedClass):
 					result.push(new ClassGenerator(parsedClass).make([metaPrivate]));
 			}
-		}
+		}*/
 
-		switch (moduleName == parsedModule.main.name) {
+		final main = parsedModule.main.getTable();
+		final mainName = main.name;
+
+		switch (this.moduleName == mainName) {
 			case true:
-				result.push(new ClassGenerator(parsedModule.main).make([metaNative]));
+				moduleTypes.push(new ClassGenerator().generate(main, [metaNative]));
 			case false:
-				final metaMainAlias:ParsedMetadata = {name: 'native', params: [parsedModule.main.name]};
-				result.push(new ClassGenerator(parsedModule.main).make([metaPrivate, metaNative]));
-				result.push(new AliasGenerator({name: moduleName, type: parsedModule.main.name}).make([metaMainAlias]));
+				final metaMainAlias:ParsedMetadata = {name: 'native', params: [mainName]};
+				moduleTypes.push(new ClassGenerator().generate(main, [metaPrivate, metaNative]));
+				moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: mainName}, [metaMainAlias]));
 		}
 
-		return result;
-	} */
+		return moduleTypes;
+	}
 
 	function generatePackage(pack:Array<String>) {
 		return 'package ${pack.join(".")};';
 	}
 
-	public function generate() {
+	public function generate(parsedModule:ParsedModule) {
 		final state = State.consume(v -> v);
-
-		trace(state.output);
-		/* final state = State.consume(stateValue -> stateValue);
-		final nativeName = state.input.moduleName;
-		final moduleName = state.output.moduleName;
-		final modulePack = state.output.pack;
 
 		final printer = new Printer();
 		final result = new Array<String>();
-		final moduleTypes = this.make(moduleName, nativeName);
+		final moduleTypes = this.make(parsedModule);
 
 		result.push(this.generatePackage(modulePack));
 
@@ -71,8 +84,6 @@ class Generator {
 			result.push(printer.printTypeDefinition(moduleType));
 		}
 
-		return result.join("\n\n"); */
-		return "";
+		return result.join("\n\n");
 	}
 }
-

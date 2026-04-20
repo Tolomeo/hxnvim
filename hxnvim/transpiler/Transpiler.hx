@@ -17,11 +17,7 @@ class Transpiler {
 		};
 
 		return State.provide(state, () -> {
-			final parser = new Parser();
-
-			parser.parse();
-
-			return new Generator().generate();
+			return new Generator().generate(new Parser().parse());
 		});
 	}
 }

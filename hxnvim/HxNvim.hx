@@ -130,7 +130,10 @@ class HxNvim {
 				input: input,
 				output: output
 			});
+
+			trace(transpiled);
 		}
+
 
 		/* for (moduleName in Config.modules) {
 				final root = Config.outputDir;

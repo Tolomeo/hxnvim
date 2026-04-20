@@ -1,0 +1,29 @@
+package transpiler.generator;
+
+import haxe.macro.Expr;
+import haxe.macro.Context;
+import transpiler.parser.Parser;
+
+using utils.StringTools;
+
+class TypeGenerator {
+	public function new() {}
+
+	public function generate(type:ParsedType) {
+		try {
+			return switch (Context.parse('(null:${type.capitalize()})', (macro null).pos).expr) {
+				case EParenthesis({expr: ECheckType(_, ct)}):
+					ct;
+				case what:
+					trace(what);
+					throw 'Unable to parse: ${type}';
+			}
+		} catch (e) {
+			trace(e);
+			trace(type);
+			// TODO;; enable this
+			// Context.warning('bad type string: `$type`', (macro null).pos);
+			throw 'Unable to parse: ${type}';
+		}
+	}
+}
