@@ -45,11 +45,11 @@
 }*/
 
 // import haxe.ds.Option;
-import transpiler.Transpiler;
 import sys.io.File;
 import sys.FileSystem;
 import haxe.io.Path;
 import haxe.Exception;
+import haxe.ds.Option;
 
 using utils.StringTools;
 using utils.ArrayTools;
@@ -57,6 +57,8 @@ using utils.ArrayTools;
 // using reader.ReaderTools;
 import Config;
 import Logger;
+import transpiler.Transpiler;
+import writer.Writer;
 
 // import reader.Neodev;
 // import reader.Runtime;
@@ -105,9 +107,17 @@ class HxNvim {
 			final pack = [filepath.file];
 			final name = filepath.file.capitalize();
 
-			/* final path = moduleName.split(".");
-				final pack = [root].concat(path);
-				final name = path.last().capitalize(); */
+			final targetDir = pack.join('/');
+			final targetFile = '${name}.hx';
+			final targetWriter = new Writer(targetDir).get(targetFile);
+
+			switch (targetWriter.read()) {
+				case None:
+				case Some(_):
+					Logger.info('Using "${Path.join([targetDir, targetFile])}" generated output found');
+					continue;
+			}
+
 			trace(filepath.file);
 			trace(spec.length);
 
@@ -131,9 +141,9 @@ class HxNvim {
 				output: output
 			});
 
-			trace(transpiled);
+			Logger.info('Writing "${Path.join([targetDir, targetFile])}" output');
+			targetWriter.write(transpiled);
 		}
-
 
 		/* for (moduleName in Config.modules) {
 				final root = Config.outputDir;
