@@ -118,9 +118,6 @@ class HxNvim {
 					continue;
 			}
 
-			trace(filepath.file);
-			trace(spec.length);
-
 			final input = {
 				file: file,
 				spec: spec

@@ -10,7 +10,7 @@ import transpiler.parser.Parser;
 import transpiler.generator.Alias;
 import transpiler.generator.Class;
 
-using transpiler.parser.Tools;
+using transpiler.parser.ParserTools;
 
 typedef Module = Array<TypeDefinition>;
 
