@@ -8,6 +8,7 @@ import transpiler.State;
 
 using Lambda;
 using hxjsonast.Tools;
+using transpiler.parser.ParserTools;
 
 typedef ParsedMetadata = {name:String, ?params:Array<String>};
 typedef ParsedType = String;
@@ -145,12 +146,12 @@ class Parser {
 
 	private function parseSymbol(symbol:Json) {
 		final name = switch (get(symbol, ['name'])) {
-			case Some(n): getString(n);
+			case Some(n): getString(n).toTypeName();
 			case None: throw new Exception('Error retrieving symbol documentation in ${symbol.getValue()}: not found');
 		}
 
 		final doc = switch (get(symbol, ['documentation'])) {
-			case Some(d): getArray(d).map(i -> getString(i));
+			case Some(d): getArray(d).map(i -> getString(i)).toDoc();
 			case None: throw new Exception('Error retrieving symbol documentation in ${symbol.getValue()}: not found');
 		}
 

@@ -60,8 +60,8 @@ function isGlobalType(name:String):Bool {
 	return globalType.has(name);
 }
 
-function toDoc(lines:Array<String>):String {
-	return lines.toParagraph().replace("*/", "*\\/");
+function toDoc(lines:Array<String>):Array<String> {
+	return lines.map(line -> line.replace("*/", "*\\/"));
 }
 
 class ParserTools {
