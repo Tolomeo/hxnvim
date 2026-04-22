@@ -28,61 +28,60 @@ class ClassGenerator {
 	}
 
 	/* function makeProperty(property:ParsedClassProperty) {
-			final meta = property.meta.map(m -> new MetaGenerator({name: m.name, params: m.params}).make());
+		final meta = property.meta.map(m -> new MetaGenerator({name: m.name, params: m.params}).make());
 
-			final name = property.name;
+		final name = property.name;
 
-			// TODO: macro this
-			final access = property.access.map(a -> switch (a) {
-				case "APublic": APublic;
-				case "AStatic": AStatic;
-				case "APrivate": APrivate;
-				case _: throw 'Unexpected property access ${a}';
-			});
+		// TODO: macro this
+		final access = property.access.map(a -> switch (a) {
+			case "APublic": APublic;
+			case "AStatic": AStatic;
+			case "APrivate": APrivate;
+			case _: throw 'Unexpected property access ${a}';
+		});
 
-			return {
-				meta: meta,
-				access: access,
-				name: name,
-				doc: property.doc,
-				kind: FVar(new TypeGenerator(property.type).make()),
-				pos: Context.currentPos()
-			}
-		} */
+		return {
+			meta: meta,
+			access: access,
+			name: name,
+			doc: property.doc,
+			kind: FVar(new TypeGenerator(property.type).make()),
+			pos: Context.currentPos()
+		}
+	}*/
+	function makeMethod(func:Function) {
+		final meta = func.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
 
-		function makeMethod(func:Function) {
-			final meta = func.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+		final name = func.name;
 
-			final name = func.name;
+		// TODO: macro this
+		final access = func.access.map(a -> switch (a) {
+			case ParsedAccess.Public: APublic;
+			case ParsedAccess.Static: AStatic;
+			case ParsedAccess.Private: APrivate;
+			case ParsedAccess.Overload: AOverload;
+			case _: throw "Unexpected method access";
+		});
 
-			// TODO: macro this
-			final access = func.access.map(a -> switch (a) {
-				case ParsedAccess.Public: APublic;
-				case ParsedAccess.Static: AStatic;
-				case ParsedAccess.Private: APrivate;
-				case ParsedAccess.Overload: AOverload;
-				case _: throw "Unexpected method access";
-			});
-
-			return {
-				meta: meta,
-				access: access,
-				name: name,
-				doc: func.doc.join("\\n"),
-				kind: FFun({
-					params: func.params.map(p -> ({
-						name: p.name,
-						constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
-					} : TypeParamDecl)),
-					args: func.args.map(p -> ({
-						name: p.name,
-						type: new TypeGenerator().generate(p.type),
-						opt: p.optional,
-					} : FunctionArg)),
-					ret: new TypeGenerator().generate(func.ret)
-				}),
-				pos: Context.currentPos()
-			}
+		return {
+			meta: meta,
+			access: access,
+			name: name,
+			doc: func.doc,
+			kind: FFun({
+				params: func.params.map(p -> ({
+					name: p.name,
+					constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
+				} : TypeParamDecl)),
+				args: func.args.map(p -> ({
+					name: p.name,
+					type: new TypeGenerator().generate(p.type),
+					opt: p.optional,
+				} : FunctionArg)),
+				ret: new TypeGenerator().generate(func.ret)
+			}),
+			pos: Context.currentPos()
+		}
 	}
 
 	public function generate(table:Table, ?meta:Array<Metadata>):TypeDefinition {
@@ -111,6 +110,7 @@ class ClassGenerator {
 
 		return {
 			name: name,
+			doc: table.doc,
 			pack: [],
 			kind: TDClass(),
 			meta: meta.map(m -> new MetaGenerator().generate(m)),

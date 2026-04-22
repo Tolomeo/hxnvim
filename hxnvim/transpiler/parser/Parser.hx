@@ -94,7 +94,7 @@ enum ParsedAccess {
 
 typedef Function = {
 	name:String,
-	doc:Array<String>,
+	doc:String,
 	meta:Array<Metadata>,
 	access:Array<ParsedAccess>,
 	params:Array<ParsedParam>,
@@ -114,7 +114,7 @@ typedef Alias = {
 
 typedef Table = {
 	name:String,
-	doc:Array<String>,
+	doc:String,
 	meta:Array<Metadata>,
 	access:Array<ParsedAccess>,
 	fields:Array<TableField>
@@ -188,7 +188,7 @@ class Parser {
 		}
 	}
 
-	private function parseTableType(name:String, doc:Array<String>, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
+	private function parseTableType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
 		final parsedTable = {
 			name: name,
 			doc: doc,
@@ -250,7 +250,7 @@ class Parser {
 		return parsedTable;
 	}
 
-	private function parseFunctionType(name:String, doc:Array<String>, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
+	private function parseFunctionType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
 		return {
 			name: name,
 			doc: doc,
