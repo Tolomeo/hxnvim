@@ -16,7 +16,7 @@ import transpiler.generator.Meta;
 class AliasGenerator {
 	public function new() {}
 
-	public function generate(alias:Alias, ?meta:Array<ParsedMetadata>):TypeDefinition {
+	public function generate(alias:Alias, ?meta:Array<Metadata>):TypeDefinition {
 		meta = meta.or([]);
 
 		final name = alias.name;

@@ -2,6 +2,7 @@ package transpiler.parser;
 
 import haxe.Exception;
 import haxe.ds.Option;
+import haxe.Rest;
 import hxjsonast.Json;
 import hxjsonast.Printer;
 import transpiler.State;
@@ -10,59 +11,20 @@ using Lambda;
 using hxjsonast.Tools;
 using transpiler.parser.ParserTools;
 
-typedef ParsedMetadata = {name:String, ?params:Array<String>};
-typedef ParsedType = String;
+function get(json:Json, selector:Rest<String>):Option<Json> {
+	final keys = selector.toArray();
 
-typedef ParsedTableProperty = {
-	name:String,
-	doc:String,
-	meta:Array<ParsedMetadata>,
-	access:Array<String>,
-	type:ParsedType,
-}
-
-typedef ParsedParam = {
-	name:String,
-	constraints:Array<ParsedType>
-}
-
-typedef ParsedArg = {name:String, type:ParsedType, optional:Bool};
-typedef ParsedReturn = ParsedType;
-
-enum ParsedAccess {
-	Public;
-	Private;
-	Static;
-	Overload;
-}
-
-typedef ParsedTableMethod = {
-	name:String,
-	doc:String,
-	meta:Array<ParsedMetadata>,
-	access:Array<ParsedAccess>,
-	params:Array<ParsedParam>,
-	args:Array<ParsedArg>,
-	ret:ParsedReturn,
-}
-
-enum ParsedTableField {
-	Property(property:ParsedTableProperty);
-	Method(method:ParsedTableMethod);
-}
-
-function get(json:Json, selector:Array<String>):Option<Json> {
-	if (selector.length < 1) {
+	if (keys.length < 1) {
 		return Some(json);
 	}
 
-	final key = selector.shift();
+	final key = keys.shift();
 
 	return switch (json.getField(key)) {
 		case null:
 			return None;
 		case field:
-			return get(field.value, selector);
+			return get(field.value, ...keys);
 	}
 }
 
@@ -104,6 +66,47 @@ function getFieldsMap(json:Json):Map<String, Json> {
 		return object; */
 }
 
+typedef Metadata = {name:String, ?params:Array<String>};
+typedef ParsedType = String;
+
+typedef ParsedTableProperty = {
+	name:String,
+	doc:String,
+	meta:Array<Metadata>,
+	access:Array<String>,
+	type:ParsedType,
+}
+
+typedef ParsedParam = {
+	name:String,
+	constraints:Array<ParsedType>
+}
+
+typedef ParsedArg = {name:String, type:ParsedType, optional:Bool};
+typedef ParsedReturn = ParsedType;
+
+enum ParsedAccess {
+	Public;
+	Private;
+	Static;
+	Overload;
+}
+
+typedef Function = {
+	name:String,
+	doc:Array<String>,
+	meta:Array<Metadata>,
+	access:Array<ParsedAccess>,
+	params:Array<ParsedParam>,
+	args:Array<ParsedArg>,
+	ret:ParsedReturn,
+}
+
+enum TableField {
+	Property(property:ParsedTableProperty);
+	Method(function_:Function);
+}
+
 typedef Alias = {
 	name:String,
 	type:ParsedType
@@ -112,9 +115,9 @@ typedef Alias = {
 typedef Table = {
 	name:String,
 	doc:Array<String>,
-	meta:Array<ParsedMetadata>,
+	meta:Array<Metadata>,
 	access:Array<ParsedAccess>,
-	fields:Array<ParsedTableField>
+	fields:Array<TableField>
 }
 
 enum ParsedSymbol {
@@ -145,20 +148,20 @@ class Parser {
 	}
 
 	private function parseSymbol(symbol:Json) {
-		final name = switch (get(symbol, ['name'])) {
+		final name = switch (get(symbol, 'name')) {
 			case Some(n): getString(n).toTypeName();
 			case None: throw new Exception('Error retrieving symbol documentation in ${symbol.getValue()}: not found');
 		}
 
-		final doc = switch (get(symbol, ['documentation'])) {
+		final doc = switch (get(symbol, 'documentation')) {
 			case Some(d): getArray(d).map(i -> getString(i)).toDoc();
 			case None: throw new Exception('Error retrieving symbol documentation in ${symbol.getValue()}: not found');
 		}
 
 		final access = new Array<ParsedAccess>();
-		final metadata = new Array<ParsedMetadata>();
+		final metadata = new Array<Metadata>();
 
-		final meta = switch (get(symbol, ['meta'])) {
+		final meta = switch (get(symbol, 'meta')) {
 			case Some(k): getArray(k).map(i -> getString(i));
 			case None: throw new Exception('Error retrieving symbol meta in ${symbol.getValue()}: not found');
 		}
@@ -170,33 +173,92 @@ class Parser {
 			case m: throw new Exception('Meta not implemented: ${m}');
 		}));
 
-		final type = switch (get(symbol, ['type'])) {
+		final type = switch (get(symbol, 'type')) {
 			case Some(t): t;
 			case None:
 				throw new Exception('Error retrieving symbol type in ${Printer.print(symbol)}: not found');
 		}
 
-		return switch (get(type, ['kind'])) {
+		return switch (get(type, 'kind')) {
 			case Some(k): switch (getString(k)) {
-					case "table": this.parseTable(name, doc, metadata, access, type);
-					case _: throw new Exception("NOT IMPLEMENTED");
+					case "table": ParsedSymbol.ParsedTable(this.parseTableType(name, doc, metadata, access, type));
+					case u: throw new Exception('${u} not implemented');
 				}
 			case None: throw new Exception('Error retrieving symbol kind in ${Printer.print(type)}: not found');
 		}
 	}
 
-	private function parseTable(name:String, doc:Array<String>, meta:Array<ParsedMetadata>, access:Array<ParsedAccess>, table:Json) {
-		final jsonFields = switch (get(table, ['fields'])) {
-			case Some(f): getArray(f).map(tableField -> getFieldsMap(tableField));
-			case None: throw new Exception('Error retrieving table fields in ${table.getValue()}: not found');
-		}
-
-		return ParsedSymbol.ParsedTable({
+	private function parseTableType(name:String, doc:Array<String>, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
+		final parsedTable = {
 			name: name,
 			doc: doc,
 			meta: meta,
 			access: access,
 			fields: [],
-		});
+		}
+
+		final fields = switch (get(table, 'fields')) {
+			case Some(f): getArray(f);
+			case None: throw new Exception('Error retrieving table fields in ${table.getValue()}: not found');
+		}
+
+		for (_ => field in fields.keyValueIterator()) {
+			final fieldName = switch (get(field, 'name')) {
+				case Some(n): getString(n);
+				case None: throw new Exception('Error retrieving field name in ${field.getValue()}: not found');
+			}
+
+			final fieldDoc = switch (get(field, 'documentation')) {
+				case Some(d): getArray(d).map(i -> getString(i)).toDoc();
+				case None: throw new Exception('Error retrieving field documentation in ${field.getValue()}: not found');
+			}
+
+			final fieldAccess = new Array<ParsedAccess>();
+			final fieldMetadata = new Array<Metadata>();
+
+			switch (get(field, 'meta')) {
+				case Some(metas):
+					getArray(metas).map(meta -> getString(meta)).iter(meta -> switch (meta) {
+						case "static": fieldAccess.push(ParsedAccess.Static);
+						case "private": fieldAccess.push(ParsedAccess.Private);
+						case "deprecated": fieldMetadata.push({name: "deprecated"});
+						case m: throw new Exception('Meta not implemented: ${m}');
+					});
+				case None:
+					throw new Exception('Error retrieving field meta in ${field.getValue()}: not found');
+			}
+
+			final fieldType = switch (get(field, 'type')) {
+				case Some(t): t;
+				case None:
+					throw new Exception('Error retrieving field type in ${field.getValue()}: not found');
+			}
+
+			switch (get(fieldType, 'kind')) {
+				case Some(k):
+					switch (getString(k)) {
+						case 'function':
+							parsedTable.fields.push(TableField.Method(this.parseFunctionType(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
+						case _:
+							trace('${fieldName} is not a function');
+					}
+				case None:
+					throw new Exception('Error retrieving field type in ${field.getValue()}: not found');
+			}
+		}
+
+		return parsedTable;
+	}
+
+	private function parseFunctionType(name:String, doc:Array<String>, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
+		return {
+			name: name,
+			doc: doc,
+			meta: meta,
+			access: access,
+			params: [],
+			args: [],
+			ret: "Void"
+		};
 	}
 }

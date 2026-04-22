@@ -1,14 +1,17 @@
 package transpiler.generator;
 
+import haxe.Exception;
 import haxe.macro.Expr;
 import haxe.macro.Context;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.macro.Expr.Field;
 
 using utils.NullTools;
+using utils.StringTools;
 
 import transpiler.parser.Parser;
 import transpiler.generator.Meta;
+import transpiler.generator.Type;
 
 /* import transpiler.parser.Class.ParsedClass;
 	import transpiler.parser.Class.ParsedClassField;
@@ -45,19 +48,19 @@ class ClassGenerator {
 				kind: FVar(new TypeGenerator(property.type).make()),
 				pos: Context.currentPos()
 			}
-		}
+		} */
 
-		function makeMethod(method:ParsedClassMethod) {
-			final meta = method.meta.map(m -> new MetaGenerator({name: m.name, params: m.params}).make());
+		function makeMethod(func:Function) {
+			final meta = func.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
 
-			final name = method.name;
+			final name = func.name;
 
 			// TODO: macro this
-			final access = method.access.map(a -> switch (a) {
-				case "APublic": APublic;
-				case "AStatic": AStatic;
-				case "APrivate": APrivate;
-				case "AOverload": AOverload;
+			final access = func.access.map(a -> switch (a) {
+				case ParsedAccess.Public: APublic;
+				case ParsedAccess.Static: AStatic;
+				case ParsedAccess.Private: APrivate;
+				case ParsedAccess.Overload: AOverload;
 				case _: throw "Unexpected method access";
 			});
 
@@ -65,34 +68,35 @@ class ClassGenerator {
 				meta: meta,
 				access: access,
 				name: name,
-				doc: method.doc,
+				doc: func.doc.join("\\n"),
 				kind: FFun({
-					params: method.params.map(p -> ({
+					params: func.params.map(p -> ({
 						name: p.name,
-						constraints: p.constraints.map(c -> new TypeGenerator(c).make()),
+						constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
 					} : TypeParamDecl)),
-					args: method.args.map(p -> ({
+					args: func.args.map(p -> ({
 						name: p.name,
-						type: new TypeGenerator(p.type).make(),
+						type: new TypeGenerator().generate(p.type),
 						opt: p.optional,
 					} : FunctionArg)),
-					ret: new TypeGenerator(method.ret).make()
+					ret: new TypeGenerator().generate(func.ret)
 				}),
 				pos: Context.currentPos()
 			}
-	}*/
-	public function generate(table:Table, ?meta:Array<ParsedMetadata>):TypeDefinition {
+	}
+
+	public function generate(table:Table, ?meta:Array<Metadata>):TypeDefinition {
 		meta = meta.or([]);
 
 		final name = table.name;
 
-		final fields:Array<Field> = [];
-		/* final fields:Array<Field> = this.origin.fields.map(parsedField -> {
+		final fields:Array<Field> = table.fields.map(parsedField -> {
 			return switch (parsedField) {
-				case ParsedClassField.Property(parsedProperty): this.makeProperty(parsedProperty);
-				case ParsedClassField.Method(parsedMethod): this.makeMethod(parsedMethod);
+				// case TableField.Property(parsedProperty): this.makeProperty(parsedProperty);
+				case TableField.Method(func): this.makeMethod(func);
+				case u: throw new Exception('Unimplementyed ${u} table field generator');
 			}
-		});*/
+		});
 
 		// Not needed? We don't have inheritance anymore
 		/* final kind = switch (this.origin.parent) {

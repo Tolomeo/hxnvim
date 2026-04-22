@@ -38,8 +38,8 @@ class Generator {
 	public function make(parsedModule:ParsedModule) {
 		final moduleTypes = new Array<TypeDefinition>();
 
-		final metaPrivate:ParsedMetadata = {name: 'private'};
-		final metaNative:ParsedMetadata = {name: 'native', params: [this.moduleNativeName]};
+		final metaPrivate:Metadata = {name: 'private'};
+		final metaNative:Metadata = {name: 'native', params: [this.moduleNativeName]};
 
 		/* for (_ => type in parsedModule.types.keyValueIterator()) {
 			switch (type) {
@@ -52,7 +52,20 @@ class Generator {
 			}
 		}*/
 
-		final main = parsedModule.main.getTable();
+		switch (parsedModule.main) {
+			case ParsedSymbol.ParsedTable(table):
+				if (this.moduleName == table.name) {
+					moduleTypes.push(new ClassGenerator().generate(table, [metaNative]));
+				} else {
+					final metaMainAlias:Metadata = {name: 'native', params: [table.name]};
+					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate, metaNative]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: table.name}, [metaMainAlias]));
+				}
+			case s:
+				throw new Exception('Unimplemented ${s} symbol generator');
+		}
+
+		/* final main = parsedModule.main.getTable();
 		final mainName = main.name;
 
 		switch (this.moduleName == mainName) {
@@ -62,7 +75,7 @@ class Generator {
 				final metaMainAlias:ParsedMetadata = {name: 'native', params: [mainName]};
 				moduleTypes.push(new ClassGenerator().generate(main, [metaPrivate, metaNative]));
 				moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: mainName}, [metaMainAlias]));
-		}
+		} */
 
 		return moduleTypes;
 	}
@@ -76,9 +89,9 @@ class Generator {
 
 		final printer = new Printer();
 		final result = new Array<String>();
-		final moduleTypes = this.make(parsedModule);
-
 		result.push(this.generatePackage(modulePack));
+
+		final moduleTypes = this.make(parsedModule);
 
 		for (moduleType in moduleTypes) {
 			result.push(printer.printTypeDefinition(moduleType));
