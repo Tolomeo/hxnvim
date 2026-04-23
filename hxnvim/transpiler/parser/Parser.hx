@@ -84,7 +84,7 @@ typedef ParsedTableProperty = {
 
 typedef ParsedParam = {
 	name:String,
-	constraints:Array<ParsedSymbol>
+	constraints:Array<ParsedType>
 }
 
 typedef ParsedArg = {name:String, type:ParsedType, opt:Bool};
@@ -214,11 +214,19 @@ class Parser {
 	}
 
 	private function parseFunctionType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
-		final params = getArray(getField(func, 'generics')).map(param -> ({
-			name: getString(getField(param, 'name')),
-			// TODO
-			constraints: []
-		}));
+		final params = getArray(getField(func, 'generics')).map(param -> {
+			final name = getString(getField(param, 'name'));
+			final type = getField(param, 'type');
+			final constraints = switch (type.value) {
+				case JNull: [];
+				case _: [this.parseLiteralType(type)];
+			}
+
+			return {
+				name: name,
+				constraints: constraints
+			}
+		});
 
 		final args = getArray(getField(func, 'arguments')).map(argument -> switch (getString(getField(argument, 'name'))) {
 			case '...': ({

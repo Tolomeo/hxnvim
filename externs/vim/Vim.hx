@@ -65,7 +65,7 @@ package vim;
 		
 		@*return* `Table` — of copied keys and (nested) values.
 	**/
-	static function deepcopy<T>(orig:Any, ?noref:Any):Void;
+	static function deepcopy<T:(Any)>(orig:Any, ?noref:Any):Void;
 	/**
 		```lua
 		function vim.defaulttable(createfn?: fun(key: any):any)
@@ -467,7 +467,7 @@ package vim;
 		
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
-	static function list_extend<T>(dst:Any, src:Any, start:Any, finish:Any):Void;
+	static function list_extend<T:(Any)>(dst:Any, src:Any, start:Any, finish:Any):Void;
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -859,7 +859,7 @@ package vim;
 		
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function spairs<T, K, V>(t:Any):Void;
+	static function spairs<T:(Any), K, V>(t:Any):Void;
 	/**
 		```lua
 		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -1227,7 +1227,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend<T1, T2>(behavior:Any, ___:haxe.Rest<Any>):Void;
+	static function tbl_deep_extend<T1:(Any), T2:(Any)>(behavior:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)

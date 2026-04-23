@@ -71,9 +71,7 @@ class ClassGenerator {
 			kind: FFun({
 				params: func.params.map(p -> ({
 					name: p.name,
-					constraints: []
-					// TODO
-					// constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
+					constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
 				} : TypeParamDecl)),
 				args: func.args.map(a -> ({
 					name: a.name,
