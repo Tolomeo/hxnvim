@@ -33,6 +33,13 @@ function getString(json:Json):String {
 	}
 }
 
+function getBoolean(json:Json):Bool {
+	return switch (json.value) {
+		case JBool(b): b;
+		case _: throw new Exception('Error extracting string value from ${json.getValue()}');
+	}
+}
+
 function getArray(json:Json):Array<Json> {
 	return switch (json.value) {
 		case JArray(array): array;
@@ -80,7 +87,7 @@ typedef ParsedParam = {
 	constraints:Array<ParsedSymbol>
 }
 
-typedef ParsedArg = {name:String, type:ParsedType, optional:Bool};
+typedef ParsedArg = {name:String, type:ParsedType, opt:Bool};
 typedef ParsedReturn = ParsedType;
 
 enum ParsedAccess {
@@ -213,14 +220,30 @@ class Parser {
 			constraints: []
 		}));
 
+		final args = getArray(getField(func, 'arguments')).map(argument -> ({
+			name: getString(getField(argument, 'name')),
+			type: this.parseType(getField(argument, 'type')),
+			opt: getBoolean(getField(argument, 'optional'))
+		}));
+
+		/* final args = getArray(getField(func, 'arguments')).map(argument -> ({
+			name: getString(getField(argument, 'name')),
+			type: this.parseType(getField(argument, 'type')),
+			opt: getBoolean(getField(argument, 'optional'))
+		})); */
+
 		return {
 			name: name,
 			doc: doc,
 			meta: meta,
 			access: access,
 			params: params,
-			args: [],
+			args: args,
 			ret: "Void"
 		};
+	}
+
+	private function parseType(type:Json) {
+		return "Any";
 	}
 }

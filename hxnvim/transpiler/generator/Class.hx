@@ -75,10 +75,10 @@ class ClassGenerator {
 					// TODO
 					// constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
 				} : TypeParamDecl)),
-				args: func.args.map(p -> ({
-					name: p.name,
-					type: new TypeGenerator().generate(p.type),
-					opt: p.optional,
+				args: func.args.map(a -> ({
+					name: a.name,
+					type: new TypeGenerator().generate(a.type),
+					opt: a.opt,
 				} : FunctionArg)),
 				ret: new TypeGenerator().generate(func.ret)
 			}),
