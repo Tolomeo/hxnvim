@@ -65,7 +65,7 @@ package vim;
 		
 		@*return* `Table` — of copied keys and (nested) values.
 	**/
-	static function deepcopy():Void;
+	static function deepcopy<T>():Void;
 	/**
 		```lua
 		function vim.defaulttable(createfn?: fun(key: any):any)
@@ -467,7 +467,7 @@ package vim;
 		
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
-	static function list_extend():Void;
+	static function list_extend<T>():Void;
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -486,7 +486,7 @@ package vim;
 		
 		@*return* `Copy` — of table sliced from start to finish (inclusive)
 	**/
-	static function list_slice():Void;
+	static function list_slice<T>():Void;
 	/**
 		```lua
 		function vim.lua_omnifunc(find_start: 0|1, _: any)
@@ -859,7 +859,7 @@ package vim;
 		
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function spairs():Void;
+	static function spairs<T, K, V>():Void;
 	/**
 		```lua
 		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -1227,7 +1227,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend():Void;
+	static function tbl_deep_extend<T1, T2>():Void;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -1273,7 +1273,7 @@ package vim;
 		
 		@*return* — : Table of filtered values
 	**/
-	static function tbl_filter():Void;
+	static function tbl_filter<T>():Void;
 	/**
 		```lua
 		function vim.tbl_flatten(t: table)
@@ -1363,7 +1363,7 @@ package vim;
 		
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function tbl_keys():Void;
+	static function tbl_keys<T>():Void;
 	/**
 		```lua
 		function vim.tbl_map(func: fun(value: <T>):any, t: table<any, <T>>)
@@ -1380,7 +1380,7 @@ package vim;
 		
 		@*return* — : Table of transformed values
 	**/
-	static function tbl_map():Void;
+	static function tbl_map<T>():Void;
 	/**
 		```lua
 		function vim.tbl_values(t: table<any, <T>>)
@@ -1396,7 +1396,7 @@ package vim;
 		
 		@*return* — : List of values
 	**/
-	static function tbl_values():Void;
+	static function tbl_values<T>():Void;
 	/**
 		```lua
 		function vim.trim(s: string)
