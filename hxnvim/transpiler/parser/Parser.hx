@@ -220,17 +220,18 @@ class Parser {
 			constraints: []
 		}));
 
-		final args = getArray(getField(func, 'arguments')).map(argument -> ({
-			name: getString(getField(argument, 'name')),
-			type: this.parseType(getField(argument, 'type')),
-			opt: getBoolean(getField(argument, 'optional'))
-		}));
-
-		/* final args = getArray(getField(func, 'arguments')).map(argument -> ({
-			name: getString(getField(argument, 'name')),
-			type: this.parseType(getField(argument, 'type')),
-			opt: getBoolean(getField(argument, 'optional'))
-		})); */
+		final args = getArray(getField(func, 'arguments')).map(argument -> switch (getString(getField(argument, 'name'))) {
+			case '...': ({
+					name: '___',
+					type: 'haxe.Rest<${this.parseLiteralType(getField(argument, 'type'))}>',
+					opt: false
+				});
+			case name: ({
+					name: name,
+					type: this.parseLiteralType(getField(argument, 'type')),
+					opt: getBoolean(getField(argument, 'optional'))
+				});
+		});
 
 		return {
 			name: name,
@@ -243,7 +244,7 @@ class Parser {
 		};
 	}
 
-	private function parseType(type:Json) {
+	private function parseLiteralType(type:Json) {
 		return "Any";
 	}
 }

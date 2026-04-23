@@ -17,7 +17,7 @@ package vim;
 		 vim.fn[func](file:///usr/local/share/nvim/runtime/lua/vim/_meta/%7B...%7D)
 		 ```
 	**/
-	static function call(func:Any, ...:Any):Void;
+	static function call(func:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.deep_equal(a: any, b: any)
@@ -676,7 +676,7 @@ package vim;
 		
 		@*return* — given arguments.
 	**/
-	static function print(...:Any):Void;
+	static function print(___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.regex(re: string)
@@ -766,7 +766,7 @@ package vim;
 		
 		 This function also works in a fast callback |lua-loop-callbacks|.
 	**/
-	static function rpcnotify(channel:Any, method:Any, ?...:Any):Void;
+	static function rpcnotify(channel:Any, method:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.rpcrequest(channel: integer, method: string, ...any)
@@ -780,7 +780,7 @@ package vim;
 		 Note: NIL values as part of the return value is represented as |vim.NIL|
 		 special value
 	**/
-	static function rpcrequest(channel:Any, method:Any, ?...:Any):Void;
+	static function rpcrequest(channel:Any, method:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.schedule(fn: fun())
@@ -1227,7 +1227,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend<T1, T2>(behavior:Any, ...:Any):Void;
+	static function tbl_deep_extend<T1, T2>(behavior:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -1256,7 +1256,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_extend(behavior:Any, ...:Any):Void;
+	static function tbl_extend(behavior:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
@@ -1318,7 +1318,7 @@ package vim;
 		
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
-	static function tbl_get(o:Any, ...:Any):Void;
+	static function tbl_get(o:Any, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_isempty(t: table)

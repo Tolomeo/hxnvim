@@ -11,7 +11,7 @@ class TypeGenerator {
 
 	public function generate(type:ParsedType) {
 		try {
-			return switch (Context.parse('(null:${type.capitalize()})', (macro null).pos).expr) {
+			return switch (Context.parse('(null:${type})', (macro null).pos).expr) {
 				case EParenthesis({expr: ECheckType(_, ct)}):
 					ct;
 				case what:
