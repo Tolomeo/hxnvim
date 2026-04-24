@@ -17,7 +17,7 @@ package vim;
 		 vim.fn[func](file:///usr/local/share/nvim/runtime/lua/vim/_meta/%7B...%7D)
 		 ```
 	**/
-	static function call(func:Any, ___:haxe.Rest<Any>):Void;
+	static function call(func:String, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.deep_equal(a: any, b: any)
@@ -65,7 +65,7 @@ package vim;
 		
 		@*return* `Table` — of copied keys and (nested) values.
 	**/
-	static function deepcopy<T:(Any)>(orig:Any, ?noref:Any):Void;
+	static function deepcopy<T:(lua.Table<Any, Any>)>(orig:Any, ?noref:Bool):Void;
 	/**
 		```lua
 		function vim.defaulttable(createfn?: fun(key: any):any)
@@ -109,7 +109,7 @@ package vim;
 		
 		@*return* `timer` — luv timer object
 	**/
-	static function defer_fn(fn:Any, timeout:Any):Void;
+	static function defer_fn(fn:haxe.Constraints.Function, timeout:Int):Void;
 	/**
 		```lua
 		function vim.deprecate(name: string, alternative: string|nil, version: string, plugin: string|nil, backtrace: boolean|nil)
@@ -135,7 +135,7 @@ package vim;
 		
 		@*return* — Deprecated message, or nil if no message was shown.
 	**/
-	static function deprecate(name:Any, alternative:Any, version:Any, plugin:Any, backtrace:Any):Void;
+	static function deprecate(name:String, alternative:haxe.extern.EitherType<String, Void>, version:String, plugin:haxe.extern.EitherType<String, Void>, backtrace:haxe.extern.EitherType<Bool, Void>):Void;
 	/**
 		```lua
 		function vim.diff(a: string, b: string, opts?: vim.diff.Opts)
@@ -170,7 +170,7 @@ package vim;
 		
 		     See {opts.result_type}. `nil` if {opts.on_hunk} is given.
 	**/
-	static function diff(a:Any, b:Any, ?opts:Any):Void;
+	static function diff(a:String, b:String, ?opts:Any):Void;
 	/**
 		```lua
 		function vim.empty_dict()
@@ -209,14 +209,14 @@ package vim;
 		
 		@*return* — `true` if `suffix` is a suffix of `s`
 	**/
-	static function endswith(s:Any, suffix:Any):Void;
+	static function endswith(s:String, suffix:String):Void;
 	/**
 		```lua
 		function vim.funcref(viml_func_name: any)
 		  -> unknown
 		```
 	**/
-	private static function funcref(viml_func_name:Any):Void;
+	private static function funcref(viml_func_name:Dynamic):Void;
 	/**
 		```lua
 		function vim.gsplit(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -261,7 +261,7 @@ package vim;
 		  * ~https~ ://www.lua.org/pil/20.2.html
 		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
 	**/
-	static function gsplit(s:Any, sep:Any, ?opts:Any):Void;
+	static function gsplit(s:String, sep:String, ?opts:Any):Void;
 	/**
 		```lua
 		function vim.iconv(str: string, from: string, to: string, opts: any)
@@ -285,7 +285,7 @@ package vim;
 		
 		@*return* — : Converted string if conversion succeeds, `nil` otherwise.
 	**/
-	static function iconv(str:Any, from:Any, to:Any, opts:Any):Void;
+	static function iconv(str:String, from:String, to:String, opts:Dynamic):Void;
 	/**
 		```lua
 		function vim.in_fast_event()
@@ -351,7 +351,7 @@ package vim;
 		               - row: the row used to get the items
 		               - col: the col used to get the items
 	**/
-	static function inspect_pos(?bufnr:Any, ?row:Any, ?col:Any, ?filter:Any):Void;
+	static function inspect_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:Any):Void;
 	/**
 		```lua
 		function vim.is_callable(f: any)
@@ -387,7 +387,7 @@ package vim;
 		
 		See: ~https~ ://github.com/openresty/luajit2#tableisarray
 	**/
-	static function isarray(?t:Any):Void;
+	static function isarray(?t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.islist(t?: table)
@@ -405,7 +405,7 @@ package vim;
 		
 		@*return* — `true` if list-like table, else `false`.
 	**/
-	static function islist(?t:Any):Void;
+	static function islist(?t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.keycode(str: string)
@@ -427,7 +427,7 @@ package vim;
 		
 		 @see |nvim_replace_termcodes()|
 	**/
-	static function keycode(str:Any):Void;
+	static function keycode(str:String):Void;
 	/**
 		```lua
 		function vim.list_contains(t: table, value: any)
@@ -445,7 +445,7 @@ package vim;
 		
 		@*return* — `true` if `t` contains `value`
 	**/
-	static function list_contains(t:Any, value:Any):Void;
+	static function list_contains(t:lua.Table<Any, Any>, value:Any):Void;
 	/**
 		```lua
 		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
@@ -467,7 +467,7 @@ package vim;
 		
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
-	static function list_extend<T:(Any)>(dst:Any, src:Any, start:Any, finish:Any):Void;
+	static function list_extend<T:(lua.Table<Any, Any>)>(dst:Any, src:lua.Table<Any, Any>, start:Null<Int>, finish:Null<Int>):Void;
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -486,7 +486,7 @@ package vim;
 		
 		@*return* `Copy` — of table sliced from start to finish (inclusive)
 	**/
-	static function list_slice<T>(list:Any, start:Any, finish:Any):Void;
+	static function list_slice<T>(list:Any, start:haxe.extern.EitherType<Int, Void>, finish:haxe.extern.EitherType<Int, Void>):Void;
 	/**
 		```lua
 		function vim.lua_omnifunc(find_start: 0|1, _: any)
@@ -506,7 +506,7 @@ package vim;
 		    | 0
 		```
 	**/
-	static function lua_omnifunc(find_start:Any, _:Any):Void;
+	static function lua_omnifunc(find_start:haxe.extern.EitherType<Any, Any>, _:Dynamic):Void;
 	/**
 		```lua
 		function vim.notify(msg: string, level: integer|nil, opts: table|nil)
@@ -528,7 +528,7 @@ package vim;
 		
 		 luacheck: no unused args
 	**/
-	static function notify(msg:Any, level:Any, opts:Any):Void;
+	static function notify(msg:String, level:haxe.extern.EitherType<Int, Void>, opts:haxe.extern.EitherType<lua.Table<Any, Any>, Void>):Void;
 	/**
 		```lua
 		function vim.notify_once(msg: string, level: integer|nil, opts: table|nil)
@@ -550,7 +550,7 @@ package vim;
 		
 		@*return* `true` — if message was displayed, else false
 	**/
-	static function notify_once(msg:Any, level:Any, opts:Any):Void;
+	static function notify_once(msg:String, level:haxe.extern.EitherType<Int, Void>, opts:haxe.extern.EitherType<lua.Table<Any, Any>, Void>):Void;
 	/**
 		```lua
 		function vim.on_key(fn: fun(key: string, typed: string):string?|nil, ns_id?: integer, opts?: table)
@@ -589,7 +589,7 @@ package vim;
 		
 		if on_key() is called without arguments.
 	**/
-	static function on_key(fn:Any, ns_id:Any, opts:Any):Void;
+	static function on_key(fn:haxe.extern.EitherType<Void, Any>, ns_id:Null<Int>, opts:Null<lua.Table<Any, Any>>):Void;
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -637,7 +637,7 @@ package vim;
 		    | 3
 		```
 	**/
-	static function paste(lines:Any, phase:Any):Void;
+	static function paste(lines:Any, phase:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>>):Void;
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -654,7 +654,7 @@ package vim;
 		
 		See: ~https~ ://github.com/rxi/lume
 	**/
-	static function pesc(s:Any):Void;
+	static function pesc(s:String):Void;
 	/**
 		```lua
 		function vim.print(...any)
@@ -689,7 +689,7 @@ package vim;
 		 default, regardless of 'magic' and 'ignorecase'. They can be controlled with flags, see |/magic|
 		 and |/ignorecase|.
 	**/
-	static function regex(re:Any):Void;
+	static function regex(re:String):Void;
 	/**
 		```lua
 		function vim.region(bufnr: integer, pos1: string|integer[], pos2: string|integer[], regtype: string, inclusive: boolean)
@@ -718,7 +718,7 @@ package vim;
 		whole lines are returned as `{startcol,endcol} = {0,-1}`.
 	**/
 	@:deprecated
-	static function region(bufnr:Any, pos1:Any, pos2:Any, regtype:Any, inclusive:Any):Void;
+	static function region(bufnr:Int, pos1:haxe.extern.EitherType<Any, String>, pos2:haxe.extern.EitherType<Any, String>, regtype:Dynamic, inclusive:Bool):Void;
 	/**
 		```lua
 		function vim.ringbuf(size: integer)
@@ -753,7 +753,7 @@ package vim;
 		 - |Ringbuf:peek()|
 		 - |Ringbuf:clear()|
 	**/
-	static function ringbuf(size:Any):Void;
+	static function ringbuf(size:Int):Void;
 	/**
 		```lua
 		function vim.rpcnotify(channel: integer, method: string, ...any)
@@ -766,7 +766,7 @@ package vim;
 		
 		 This function also works in a fast callback |lua-loop-callbacks|.
 	**/
-	static function rpcnotify(channel:Any, method:Any, ___:haxe.Rest<Any>):Void;
+	static function rpcnotify(channel:Int, method:String, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.rpcrequest(channel: integer, method: string, ...any)
@@ -780,7 +780,7 @@ package vim;
 		 Note: NIL values as part of the return value is represented as |vim.NIL|
 		 special value
 	**/
-	static function rpcrequest(channel:Any, method:Any, ___:haxe.Rest<Any>):Void;
+	static function rpcrequest(channel:Int, method:String, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.schedule(fn: fun())
@@ -813,7 +813,7 @@ package vim;
 		 vim.uv.fs_access(vim.fn.stdpath("config"), "R", vim.schedule_wrap(notify_readable))
 		 ```
 	**/
-	static function schedule_wrap(fn:Any):Void;
+	static function schedule_wrap(fn:haxe.Constraints.Function):Void;
 	/**
 		```lua
 		function vim.show_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
@@ -838,7 +838,7 @@ package vim;
 		
 		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
 	**/
-	static function show_pos(?bufnr:Any, ?row:Any, ?col:Any, ?filter:Any):Void;
+	static function show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:Any):Void;
 	/**
 		```lua
 		function vim.spairs(t: <T:table>)
@@ -859,7 +859,7 @@ package vim;
 		
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function spairs<T:(Any), K, V>(t:Any):Void;
+	static function spairs<T:(lua.Table<Any, Any>), K, V>(t:Any):Void;
 	/**
 		```lua
 		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -889,7 +889,7 @@ package vim;
 		
 		@*return* — : List of split components
 	**/
-	static function split(s:Any, sep:Any, ?opts:Any):Void;
+	static function split(s:String, sep:String, ?opts:Any):Void;
 	/**
 		```lua
 		function vim.startswith(s: string, prefix: string)
@@ -906,7 +906,7 @@ package vim;
 		
 		@*return* — `true` if `prefix` is a prefix of `s`
 	**/
-	static function startswith(s:Any, prefix:Any):Void;
+	static function startswith(s:String, prefix:String):Void;
 	/**
 		```lua
 		function vim.str_byteindex(s: string, encoding: "utf-16"|"utf-32"|"utf-8", index: integer, strict_indexing?: boolean)
@@ -933,7 +933,7 @@ package vim;
 		    | "utf-32"
 		```
 	**/
-	static function str_byteindex(s:Any, encoding:Any, index:Any, ?strict_indexing:Any):Void;
+	static function str_byteindex(s:String, encoding:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, index:Int, ?strict_indexing:Bool):Void;
 	/**
 		```lua
 		function vim.str_utf_end(str: string, index: integer)
@@ -957,7 +957,7 @@ package vim;
 		 vim.str_utf_end('æ', 1)
 		 ```
 	**/
-	static function str_utf_end(str:Any, index:Any):Void;
+	static function str_utf_end(str:String, index:Int):Void;
 	/**
 		```lua
 		function vim.str_utf_pos(str: string)
@@ -970,7 +970,7 @@ package vim;
 		
 		 Embedded NUL bytes are treated as terminating the string.
 	**/
-	static function str_utf_pos(str:Any):Void;
+	static function str_utf_pos(str:String):Void;
 	/**
 		```lua
 		function vim.str_utf_start(str: string, index: integer)
@@ -996,7 +996,7 @@ package vim;
 		 vim.str_utf_start('æ', 2)
 		 ```
 	**/
-	static function str_utf_start(str:Any, index:Any):Void;
+	static function str_utf_start(str:String, index:Int):Void;
 	/**
 		```lua
 		function vim.str_utfindex(s: string, encoding: "utf-16"|"utf-32"|"utf-8", index?: integer, strict_indexing?: boolean)
@@ -1023,7 +1023,7 @@ package vim;
 		    | "utf-32"
 		```
 	**/
-	static function str_utfindex(s:Any, encoding:Any, ?index:Any, ?strict_indexing:Any):Void;
+	static function str_utfindex(s:String, encoding:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, ?index:Int, ?strict_indexing:Bool):Void;
 	/**
 		```lua
 		function vim.stricmp(a: string, b: string)
@@ -1043,7 +1043,7 @@ package vim;
 		    | -1
 		```
 	**/
-	static function stricmp(a:Any, b:Any):Void;
+	static function stricmp(a:String, b:String):Void;
 	/**
 		```lua
 		function vim.system(cmd: string[], opts?: vim.SystemOpts, on_exit?: fun(out: vim.SystemCompleted))
@@ -1123,7 +1123,7 @@ package vim;
 		   - write (fun(data: string|nil)) Requires `stdin=true`. Pass `nil` to close the stream.
 		   - is_closing (fun(): boolean)
 	**/
-	static function system(cmd:Any, opts:Any, ?on_exit:Any):Void;
+	static function system(cmd:Any, opts:Null<Any>, ?on_exit:Any):Void;
 	/**
 		```lua
 		function vim.tbl_add_reverse_lookup(o: table)
@@ -1141,7 +1141,7 @@ package vim;
 		@*param* `o` — Table to add the reverse to
 	**/
 	@:deprecated
-	static function tbl_add_reverse_lookup(o:Any):Void;
+	static function tbl_add_reverse_lookup(o:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_contains(t: table, value: any, opts?: vim.tbl_contains.Opts)
@@ -1171,7 +1171,7 @@ package vim;
 		
 		@*return* — `true` if `t` contains `value`
 	**/
-	static function tbl_contains(t:Any, value:Any, ?opts:Any):Void;
+	static function tbl_contains(t:lua.Table<Any, Any>, value:Any, ?opts:Any):Void;
 	/**
 		```lua
 		function vim.tbl_count(t: table)
@@ -1193,7 +1193,7 @@ package vim;
 		
 		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
 	**/
-	static function tbl_count(t:Any):Void;
+	static function tbl_count(t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_deep_extend(behavior: 'error'|'force'|'keep', ...<T2:table>)
@@ -1227,7 +1227,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend<T1:(Any), T2:(Any)>(behavior:Any, ___:haxe.Rest<Any>):Void;
+	static function tbl_deep_extend<T1:(lua.Table<Any, Any>), T2:(lua.Table<Any, Any>)>(behavior:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -1256,7 +1256,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_extend(behavior:Any, ___:haxe.Rest<Any>):Void;
+	static function tbl_extend(behavior:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, ___:haxe.Rest<lua.Table<Any, Any>>):Void;
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
@@ -1293,7 +1293,7 @@ package vim;
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	@:deprecated
-	static function tbl_flatten(t:Any):Void;
+	static function tbl_flatten(t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_get(o: table, ...any)
@@ -1318,7 +1318,7 @@ package vim;
 		
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
-	static function tbl_get(o:Any, ___:haxe.Rest<Any>):Void;
+	static function tbl_get(o:lua.Table<Any, Any>, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_isempty(t: table)
@@ -1336,7 +1336,7 @@ package vim;
 		
 		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function tbl_isempty(t:Any):Void;
+	static function tbl_isempty(t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_islist(t: any)
@@ -1344,7 +1344,7 @@ package vim;
 		```
 	**/
 	@:deprecated
-	static function tbl_islist(t:Any):Void;
+	static function tbl_islist(t:Dynamic):Void;
 	/**
 		```lua
 		function vim.tbl_keys(t: table<<T>, any>)
@@ -1413,7 +1413,7 @@ package vim;
 		
 		See: ~https~ ://www.lua.org/pil/20.2.html
 	**/
-	static function trim(s:Any):Void;
+	static function trim(s:String):Void;
 	/**
 		```lua
 		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
@@ -1461,7 +1461,7 @@ package vim;
 		
 		 @since 0
 	**/
-	static function ui_attach(ns:Any, options:Any, callback:Any):Void;
+	static function ui_attach(ns:Int, options:Any, callback:Any):Void;
 	/**
 		```lua
 		function vim.ui_detach(ns: integer)
@@ -1472,7 +1472,7 @@ package vim;
 		 Detach a callback previously attached with |vim.ui_attach()| for the
 		 given namespace {ns}.
 	**/
-	static function ui_detach(ns:Any):Void;
+	static function ui_detach(ns:Int):Void;
 	/**
 		```lua
 		function M.uri_from_bufnr(bufnr: integer)
@@ -1483,7 +1483,7 @@ package vim;
 		
 		Gets a URI from a bufnr.
 	**/
-	function uri_from_bufnr(bufnr:Any):Void;
+	function uri_from_bufnr(bufnr:Int):Void;
 	/**
 		```lua
 		function M.uri_from_fname(path: string)
@@ -1496,7 +1496,7 @@ package vim;
 		
 		@*param* `path` — Path to file
 	**/
-	function uri_from_fname(path:Any):Void;
+	function uri_from_fname(path:String):Void;
 	/**
 		```lua
 		function M.uri_to_bufnr(uri: string)
@@ -1508,7 +1508,7 @@ package vim;
 		Gets the buffer for a uri.
 		Creates a new unloaded buffer if no buffer for the uri already exists.
 	**/
-	function uri_to_bufnr(uri:Any):Void;
+	function uri_to_bufnr(uri:String):Void;
 	/**
 		```lua
 		function M.uri_to_fname(uri: string)
@@ -1521,7 +1521,7 @@ package vim;
 		
 		@*return* `filename` — or unchanged URI for non-file URIs
 	**/
-	function uri_to_fname(uri:Any):Void;
+	function uri_to_fname(uri:String):Void;
 	/**
 		```lua
 		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
@@ -1640,7 +1640,7 @@ package vim;
 		function vim.validate(spec: table<string, [any, "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'c...(too long)...|string] })
 		```
 	**/
-	static function validate(name:Any, value:Any, validator:Any, ?optional:Any, ?message:Any):Void;
+	static function validate(name:String, value:Any, validator:Any, ?optional:Bool, ?message:String):Void;
 	/**
 		```lua
 		function vim.wait(time: integer, callback?: fun():boolean, interval?: integer, fast_only?: boolean)
@@ -1702,5 +1702,5 @@ package vim;
 		    | -2
 		```
 	**/
-	static function wait(time:Any, ?callback:Any, ?interval:Any, ?fast_only:Any):Void;
+	static function wait(time:Int, ?callback:Any, ?interval:Int, ?fast_only:Bool):Void;
 }

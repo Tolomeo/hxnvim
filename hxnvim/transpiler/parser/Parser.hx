@@ -1,5 +1,6 @@
 package transpiler.parser;
 
+import haxe.extern.EitherType;
 import haxe.Exception;
 import haxe.Rest;
 import hxjsonast.Json;
@@ -72,23 +73,23 @@ function getFieldsMap(json:Json):Map<String, Json> {
 }
 
 typedef Metadata = {name:String, ?params:Array<String>};
-typedef ParsedType = String;
+typedef LiteralType = String;
 
 typedef ParsedTableProperty = {
 	name:String,
 	doc:String,
 	meta:Array<Metadata>,
 	access:Array<String>,
-	type:ParsedType,
+	type:LiteralType,
 }
 
 typedef ParsedParam = {
 	name:String,
-	constraints:Array<ParsedType>
+	constraints:Array<LiteralType>
 }
 
-typedef ParsedArg = {name:String, type:ParsedType, opt:Bool};
-typedef ParsedReturn = ParsedType;
+typedef ParsedArg = {name:String, type:LiteralType, opt:Bool};
+typedef ParsedReturn = LiteralType;
 
 enum ParsedAccess {
 	Public;
@@ -114,7 +115,7 @@ enum TableField {
 
 typedef Alias = {
 	name:String,
-	type:ParsedType
+	type:LiteralType
 }
 
 typedef Table = {
@@ -253,6 +254,39 @@ class Parser {
 	}
 
 	private function parseLiteralType(type:Json) {
-		return "Any";
+		return switch (getString(getField(type, 'kind'))) {
+			case "builtin": switch (getString(getField(type, 'value'))) {
+					case "any": "Any";
+					case "boolean": "Bool";
+					case "function": "haxe.Constraints.Function";
+					case "integer": "Int";
+					case "lightuserdata": throw new Exception('Unsupported builtin type value "lightuserdata" received');
+					case "nil": "Void";
+					case "void": "Void";
+					case "number": "Float";
+					case "string": "String";
+					case "table": "lua.Table<Any, Any>";
+					case "thread": throw new Exception('Unsupported builtin type value "lightuserdata" received');
+					case "userdata": "lua.UserData";
+					case v: throw new Exception('Unexpected builtin type value "${v}" received');
+				}
+			case "unknown": "Dynamic";
+			case "optional": 'Null<${this.parseLiteralType(getField(type, 'type'))}>';
+			case "union":
+				function makeUnion(members:Array<Json>):String {
+					return switch (members) {
+						case [], [_]:
+							throw new Exception('Error creating union type');
+						case [left, right]:
+							'haxe.extern.EitherType<${this.parseLiteralType(left)}, ${this.parseLiteralType(right)}>';
+						case _:
+							'haxe.extern.EitherType<${this.parseLiteralType(members.shift())}, ${makeUnion(members)}>';
+					}
+				}
+				makeUnion(getArray(getField(type, 'types')).copy());
+			case k:
+				trace('type "${k}" is not a builtin');
+				"Any";
+		}
 	}
 }

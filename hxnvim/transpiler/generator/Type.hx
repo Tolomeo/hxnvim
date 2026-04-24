@@ -9,7 +9,7 @@ using utils.StringTools;
 class TypeGenerator {
 	public function new() {}
 
-	public function generate(type:ParsedType) {
+	public function generate(type:LiteralType) {
 		try {
 			return switch (Context.parse('(null:${type})', (macro null).pos).expr) {
 				case EParenthesis({expr: ECheckType(_, ct)}):
