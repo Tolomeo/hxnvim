@@ -506,7 +506,7 @@ package vim;
 		    | 0
 		```
 	**/
-	static function lua_omnifunc(find_start:haxe.extern.EitherType<Any, Any>, _:Dynamic):Void;
+	static function lua_omnifunc(find_start:haxe.extern.EitherType<Float, Float>, _:Dynamic):Void;
 	/**
 		```lua
 		function vim.notify(msg: string, level: integer|nil, opts: table|nil)
@@ -637,7 +637,7 @@ package vim;
 		    | 3
 		```
 	**/
-	static function paste(lines:Any, phase:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>>):Void;
+	static function paste(lines:Any, phase:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>>):Void;
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -933,7 +933,7 @@ package vim;
 		    | "utf-32"
 		```
 	**/
-	static function str_byteindex(s:String, encoding:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, index:Int, ?strict_indexing:Bool):Void;
+	static function str_byteindex(s:String, encoding:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, index:Int, ?strict_indexing:Bool):Void;
 	/**
 		```lua
 		function vim.str_utf_end(str: string, index: integer)
@@ -1023,7 +1023,7 @@ package vim;
 		    | "utf-32"
 		```
 	**/
-	static function str_utfindex(s:String, encoding:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, ?index:Int, ?strict_indexing:Bool):Void;
+	static function str_utfindex(s:String, encoding:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ?index:Int, ?strict_indexing:Bool):Void;
 	/**
 		```lua
 		function vim.stricmp(a: string, b: string)
@@ -1227,7 +1227,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend<T1:(lua.Table<Any, Any>), T2:(lua.Table<Any, Any>)>(behavior:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, ___:haxe.Rest<Any>):Void;
+	static function tbl_deep_extend<T1:(lua.Table<Any, Any>), T2:(lua.Table<Any, Any>)>(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -1256,7 +1256,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_extend(behavior:haxe.extern.EitherType<Any, haxe.extern.EitherType<Any, Any>>, ___:haxe.Rest<lua.Table<Any, Any>>):Void;
+	static function tbl_extend(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<lua.Table<Any, Any>>):Void;
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)

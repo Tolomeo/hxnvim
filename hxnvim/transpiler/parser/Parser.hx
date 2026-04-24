@@ -284,6 +284,8 @@ class Parser {
 					}
 				}
 				makeUnion(getArray(getField(type, 'types')).copy());
+			case "numericliteral": "Float";
+			case "stringliteral": "String";
 			case k:
 				trace('type "${k}" is not a builtin');
 				"Any";
