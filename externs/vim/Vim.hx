@@ -88,7 +88,7 @@ package vim;
 		
 		@*return* — Empty table with `__index` metamethod.
 	**/
-	static function defaulttable(?createfn:Any):Void;
+	static function defaulttable(?createfn:(key:Any) -> Any):Void;
 	/**
 		```lua
 		function vim.defer_fn(fn: function, timeout: integer)
@@ -216,7 +216,7 @@ package vim;
 		  -> unknown
 		```
 	**/
-	private static function funcref(viml_func_name:Dynamic):Void;
+	private static function funcref(viml_func_name:Any):Void;
 	/**
 		```lua
 		function vim.gsplit(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -285,7 +285,7 @@ package vim;
 		
 		@*return* — : Converted string if conversion succeeds, `nil` otherwise.
 	**/
-	static function iconv(str:String, from:String, to:String, opts:Dynamic):Void;
+	static function iconv(str:String, from:String, to:String, opts:Any):Void;
 	/**
 		```lua
 		function vim.in_fast_event()
@@ -486,7 +486,7 @@ package vim;
 		
 		@*return* `Copy` — of table sliced from start to finish (inclusive)
 	**/
-	static function list_slice<T>(list:Any, start:haxe.extern.EitherType<Int, Void>, finish:haxe.extern.EitherType<Int, Void>):Void;
+	static function list_slice<T>(list:Array<Any>, start:haxe.extern.EitherType<Int, Void>, finish:haxe.extern.EitherType<Int, Void>):Void;
 	/**
 		```lua
 		function vim.lua_omnifunc(find_start: 0|1, _: any)
@@ -506,7 +506,7 @@ package vim;
 		    | 0
 		```
 	**/
-	static function lua_omnifunc(find_start:haxe.extern.EitherType<Float, Float>, _:Dynamic):Void;
+	static function lua_omnifunc(find_start:haxe.extern.EitherType<Float, Float>, _:Any):Void;
 	/**
 		```lua
 		function vim.notify(msg: string, level: integer|nil, opts: table|nil)
@@ -589,7 +589,7 @@ package vim;
 		
 		if on_key() is called without arguments.
 	**/
-	static function on_key(fn:haxe.extern.EitherType<Void, Any>, ns_id:Null<Int>, opts:Null<lua.Table<Any, Any>>):Void;
+	static function on_key(fn:haxe.extern.EitherType<Void, (key:String, typed:String) -> Null<String>>, ns_id:Null<Int>, opts:Null<lua.Table<Any, Any>>):Void;
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -637,7 +637,7 @@ package vim;
 		    | 3
 		```
 	**/
-	static function paste(lines:Any, phase:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>>):Void;
+	static function paste(lines:Array<String>, phase:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>>):Void;
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -718,7 +718,7 @@ package vim;
 		whole lines are returned as `{startcol,endcol} = {0,-1}`.
 	**/
 	@:deprecated
-	static function region(bufnr:Int, pos1:haxe.extern.EitherType<Any, String>, pos2:haxe.extern.EitherType<Any, String>, regtype:Dynamic, inclusive:Bool):Void;
+	static function region(bufnr:Int, pos1:haxe.extern.EitherType<Array<Int>, String>, pos2:haxe.extern.EitherType<Array<Int>, String>, regtype:Any, inclusive:Bool):Void;
 	/**
 		```lua
 		function vim.ringbuf(size: integer)
@@ -791,7 +791,7 @@ package vim;
 		 Schedules {fn} to be invoked soon by the main event-loop. Useful
 		 to avoid |textlock| or other temporary restrictions.
 	**/
-	static function schedule(fn:Any):Void;
+	static function schedule(fn:() -> Any):Void;
 	/**
 		```lua
 		function vim.schedule_wrap(fn: function)
@@ -1123,7 +1123,7 @@ package vim;
 		   - write (fun(data: string|nil)) Requires `stdin=true`. Pass `nil` to close the stream.
 		   - is_closing (fun(): boolean)
 	**/
-	static function system(cmd:Any, opts:Null<Any>, ?on_exit:Any):Void;
+	static function system(cmd:Array<String>, opts:Null<Any>, ?on_exit:(out:Any) -> Any):Void;
 	/**
 		```lua
 		function vim.tbl_add_reverse_lookup(o: table)
@@ -1273,7 +1273,7 @@ package vim;
 		
 		@*return* — : Table of filtered values
 	**/
-	static function tbl_filter<T>(func:Any, t:Any):Void;
+	static function tbl_filter<T>(func:(value:Any) -> Bool, t:Any):Void;
 	/**
 		```lua
 		function vim.tbl_flatten(t: table)
@@ -1344,7 +1344,7 @@ package vim;
 		```
 	**/
 	@:deprecated
-	static function tbl_islist(t:Dynamic):Void;
+	static function tbl_islist(t:Any):Void;
 	/**
 		```lua
 		function vim.tbl_keys(t: table<<T>, any>)
@@ -1380,7 +1380,7 @@ package vim;
 		
 		@*return* — : Table of transformed values
 	**/
-	static function tbl_map<T>(func:Any, t:Any):Void;
+	static function tbl_map<T>(func:(value:Any) -> Any, t:Any):Void;
 	/**
 		```lua
 		function vim.tbl_values(t: table<any, <T>>)
@@ -1461,7 +1461,7 @@ package vim;
 		
 		 @since 0
 	**/
-	static function ui_attach(ns:Int, options:Any, callback:Any):Void;
+	static function ui_attach(ns:Int, options:Any, callback:() -> Any):Void;
 	/**
 		```lua
 		function vim.ui_detach(ns: integer)
@@ -1702,5 +1702,5 @@ package vim;
 		    | -2
 		```
 	**/
-	static function wait(time:Int, ?callback:Any, ?interval:Int, ?fast_only:Bool):Void;
+	static function wait(time:Int, ?callback:() -> Bool, ?interval:Int, ?fast_only:Bool):Void;
 }

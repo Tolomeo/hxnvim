@@ -270,8 +270,11 @@ class Parser {
 					case "userdata": "lua.UserData";
 					case v: throw new Exception('Unexpected builtin type value "${v}" received');
 				}
-			case "unknown": "Dynamic";
+
+			case "unknown": "Any";
+
 			case "optional": 'Null<${this.parseLiteralType(getField(type, 'type'))}>';
+
 			case "union":
 				function makeUnion(members:Array<Json>):String {
 					return switch (members) {
@@ -283,9 +286,31 @@ class Parser {
 							'haxe.extern.EitherType<${this.parseLiteralType(members.shift())}, ${makeUnion(members)}>';
 					}
 				}
+
 				makeUnion(getArray(getField(type, 'types')).copy());
+
+			case "array": 'Array<${this.parseLiteralType(getField(type, 'items'))}>';
+
+			case "function":
+				final arguments = getArray(getField(type, 'arguments')).map(argument -> switch (getString(getField(argument, 'name'))) {
+					case '...': '___:haxe.Rest<${this.parseLiteralType(getField(argument, 'type'))}>';
+					case argumentName: switch (getBoolean(getField(argument, 'optional'))) {
+							case true: '?${argumentName}:${this.parseLiteralType(getField(argument, 'type'))}';
+							case false: '${argumentName}:${this.parseLiteralType(getField(argument, 'type'))}';
+						}
+				});
+				final return_ = switch (getArray(getField(type, 'returns'))) {
+					case []: "Any";
+					case [r]: this.parseLiteralType(getField(r, 'type'));
+					case _: throw new Exception('Unimplemented multiple function returns');
+				}
+
+				'(${arguments.join(", ")}) -> ${return_}';
+
 			case "numericliteral": "Float";
+
 			case "stringliteral": "String";
+
 			case k:
 				trace('type "${k}" is not a builtin');
 				"Any";
