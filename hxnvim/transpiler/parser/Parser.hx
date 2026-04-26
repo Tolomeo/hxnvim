@@ -265,7 +265,7 @@ class Parser {
 					case "void": "Void";
 					case "number": "Float";
 					case "string": "String";
-					case "table": "lua.Table<Any, Any>";
+					case "table": "lua.Table.AnyTable";
 					case "thread": throw new Exception('Unsupported builtin type value "lightuserdata" received');
 					case "userdata": "lua.UserData";
 					case v: throw new Exception('Unexpected builtin type value "${v}" received');
@@ -306,6 +306,25 @@ class Parser {
 				}
 
 				'(${arguments.join(", ")}) -> ${return_}';
+
+			case "table":
+				final indexes = getArray(getField(type, 'indexes')).map(index -> ({
+					key: this.parseLiteralType(getField(index, 'key')),
+					value: this.parseLiteralType(getField(index, 'value'))
+				}));
+				final fields = getArray(getField(type, 'fields')).map(field -> ({
+					name: getString(getField(field, 'name')),
+					type: this.parseLiteralType(getField(field, 'type'))
+				}));
+
+				return switch ({
+					fields:fields, indexes:indexes
+				}) {
+					case {fields: [], indexes: []}: 'lua.Table.AnyTable';
+					case {fields: [], indexes: [index]}: 'lua.Table<${index.key}, ${index.value}>';
+					case {fields: [], indexes: idxs}: throw new Exception('Unimplemented table with multiple indexes');
+					case _: throw new Exception('Unimplemented table structure');
+				}
 
 			case "numericliteral": "Float";
 

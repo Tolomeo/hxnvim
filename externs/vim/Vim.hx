@@ -65,7 +65,7 @@ package vim;
 		
 		@*return* `Table` — of copied keys and (nested) values.
 	**/
-	static function deepcopy<T:(lua.Table<Any, Any>)>(orig:Any, ?noref:Bool):Void;
+	static function deepcopy<T:(lua.Table.AnyTable)>(orig:Any, ?noref:Bool):Void;
 	/**
 		```lua
 		function vim.defaulttable(createfn?: fun(key: any):any)
@@ -387,7 +387,7 @@ package vim;
 		
 		See: ~https~ ://github.com/openresty/luajit2#tableisarray
 	**/
-	static function isarray(?t:lua.Table<Any, Any>):Void;
+	static function isarray(?t:lua.Table.AnyTable):Void;
 	/**
 		```lua
 		function vim.islist(t?: table)
@@ -405,7 +405,7 @@ package vim;
 		
 		@*return* — `true` if list-like table, else `false`.
 	**/
-	static function islist(?t:lua.Table<Any, Any>):Void;
+	static function islist(?t:lua.Table.AnyTable):Void;
 	/**
 		```lua
 		function vim.keycode(str: string)
@@ -445,7 +445,7 @@ package vim;
 		
 		@*return* — `true` if `t` contains `value`
 	**/
-	static function list_contains(t:lua.Table<Any, Any>, value:Any):Void;
+	static function list_contains(t:lua.Table.AnyTable, value:Any):Void;
 	/**
 		```lua
 		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
@@ -467,7 +467,7 @@ package vim;
 		
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
-	static function list_extend<T:(lua.Table<Any, Any>)>(dst:Any, src:lua.Table<Any, Any>, start:Null<Int>, finish:Null<Int>):Void;
+	static function list_extend<T:(lua.Table.AnyTable)>(dst:Any, src:lua.Table.AnyTable, start:Null<Int>, finish:Null<Int>):Void;
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -528,7 +528,7 @@ package vim;
 		
 		 luacheck: no unused args
 	**/
-	static function notify(msg:String, level:haxe.extern.EitherType<Int, Void>, opts:haxe.extern.EitherType<lua.Table<Any, Any>, Void>):Void;
+	static function notify(msg:String, level:haxe.extern.EitherType<Int, Void>, opts:haxe.extern.EitherType<lua.Table.AnyTable, Void>):Void;
 	/**
 		```lua
 		function vim.notify_once(msg: string, level: integer|nil, opts: table|nil)
@@ -550,7 +550,7 @@ package vim;
 		
 		@*return* `true` — if message was displayed, else false
 	**/
-	static function notify_once(msg:String, level:haxe.extern.EitherType<Int, Void>, opts:haxe.extern.EitherType<lua.Table<Any, Any>, Void>):Void;
+	static function notify_once(msg:String, level:haxe.extern.EitherType<Int, Void>, opts:haxe.extern.EitherType<lua.Table.AnyTable, Void>):Void;
 	/**
 		```lua
 		function vim.on_key(fn: fun(key: string, typed: string):string?|nil, ns_id?: integer, opts?: table)
@@ -589,7 +589,7 @@ package vim;
 		
 		if on_key() is called without arguments.
 	**/
-	static function on_key(fn:haxe.extern.EitherType<Void, (key:String, typed:String) -> Null<String>>, ns_id:Null<Int>, opts:Null<lua.Table<Any, Any>>):Void;
+	static function on_key(fn:haxe.extern.EitherType<Void, (key:String, typed:String) -> Null<String>>, ns_id:Null<Int>, opts:Null<lua.Table.AnyTable>):Void;
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -859,7 +859,7 @@ package vim;
 		
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function spairs<T:(lua.Table<Any, Any>), K, V>(t:Any):Void;
+	static function spairs<T:(lua.Table.AnyTable), K, V>(t:Any):Void;
 	/**
 		```lua
 		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -1141,7 +1141,7 @@ package vim;
 		@*param* `o` — Table to add the reverse to
 	**/
 	@:deprecated
-	static function tbl_add_reverse_lookup(o:lua.Table<Any, Any>):Void;
+	static function tbl_add_reverse_lookup(o:lua.Table.AnyTable):Void;
 	/**
 		```lua
 		function vim.tbl_contains(t: table, value: any, opts?: vim.tbl_contains.Opts)
@@ -1171,7 +1171,7 @@ package vim;
 		
 		@*return* — `true` if `t` contains `value`
 	**/
-	static function tbl_contains(t:lua.Table<Any, Any>, value:Any, ?opts:Any):Void;
+	static function tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:Any):Void;
 	/**
 		```lua
 		function vim.tbl_count(t: table)
@@ -1193,7 +1193,7 @@ package vim;
 		
 		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
 	**/
-	static function tbl_count(t:lua.Table<Any, Any>):Void;
+	static function tbl_count(t:lua.Table.AnyTable):Void;
 	/**
 		```lua
 		function vim.tbl_deep_extend(behavior: 'error'|'force'|'keep', ...<T2:table>)
@@ -1227,7 +1227,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend<T1:(lua.Table<Any, Any>), T2:(lua.Table<Any, Any>)>(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<Any>):Void;
+	static function tbl_deep_extend<T1:(lua.Table.AnyTable), T2:(lua.Table.AnyTable)>(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -1256,7 +1256,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_extend(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<lua.Table<Any, Any>>):Void;
+	static function tbl_extend(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<lua.Table.AnyTable>):Void;
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
@@ -1273,7 +1273,7 @@ package vim;
 		
 		@*return* — : Table of filtered values
 	**/
-	static function tbl_filter<T>(func:(value:Any) -> Bool, t:Any):Void;
+	static function tbl_filter<T>(func:(value:Any) -> Bool, t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_flatten(t: table)
@@ -1293,7 +1293,7 @@ package vim;
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	@:deprecated
-	static function tbl_flatten(t:lua.Table<Any, Any>):Void;
+	static function tbl_flatten(t:lua.Table.AnyTable):Void;
 	/**
 		```lua
 		function vim.tbl_get(o: table, ...any)
@@ -1318,7 +1318,7 @@ package vim;
 		
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
-	static function tbl_get(o:lua.Table<Any, Any>, ___:haxe.Rest<Any>):Void;
+	static function tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
 		function vim.tbl_isempty(t: table)
@@ -1336,7 +1336,7 @@ package vim;
 		
 		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function tbl_isempty(t:lua.Table<Any, Any>):Void;
+	static function tbl_isempty(t:lua.Table.AnyTable):Void;
 	/**
 		```lua
 		function vim.tbl_islist(t: any)
@@ -1363,7 +1363,7 @@ package vim;
 		
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function tbl_keys<T>(t:Any):Void;
+	static function tbl_keys<T>(t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_map(func: fun(value: <T>):any, t: table<any, <T>>)
@@ -1380,7 +1380,7 @@ package vim;
 		
 		@*return* — : Table of transformed values
 	**/
-	static function tbl_map<T>(func:(value:Any) -> Any, t:Any):Void;
+	static function tbl_map<T>(func:(value:Any) -> Any, t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.tbl_values(t: table<any, <T>>)
@@ -1396,7 +1396,7 @@ package vim;
 		
 		@*return* — : List of values
 	**/
-	static function tbl_values<T>(t:Any):Void;
+	static function tbl_values<T>(t:lua.Table<Any, Any>):Void;
 	/**
 		```lua
 		function vim.trim(s: string)
@@ -1461,7 +1461,7 @@ package vim;
 		
 		 @since 0
 	**/
-	static function ui_attach(ns:Int, options:Any, callback:() -> Any):Void;
+	static function ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Any):Void;
 	/**
 		```lua
 		function vim.ui_detach(ns: integer)
