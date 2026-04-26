@@ -323,7 +323,10 @@ class Parser {
 					case {fields: [], indexes: []}: 'lua.Table.AnyTable';
 					case {fields: [], indexes: [index]}: 'lua.Table<${index.key}, ${index.value}>';
 					case {fields: [], indexes: idxs}: throw new Exception('Unimplemented table with multiple indexes');
-					case _: throw new Exception('Unimplemented table structure');
+					case {fields: flds, indexes: []}:
+						final entries = flds.map(fld -> '${fld.name}: ${fld.type}').join(", ");
+						'{ ${entries} }';
+					case _: throw new Exception('Unimplemented table structure with indexes');
 				}
 
 			case "numericliteral": "Float";
