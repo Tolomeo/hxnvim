@@ -147,7 +147,7 @@ class Parser {
 			switch (fieldType.select('kind').string()) {
 				case 'function':
 					parsedTable.fields.push(TableField.Method(this.parseFunctionType(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
-				case 'modulereference', 'typereference', 'builtin':
+				case 'modulereference', 'typereference', 'builtin', 'union':
 					parsedTable.fields.push(TableField.Property({
 						name: fieldName,
 						doc: fieldDoc,
@@ -155,8 +155,8 @@ class Parser {
 						access: fieldAccess,
 						type: this.parseLiteralType(fieldType)
 					}));
-				case _:
-					trace('Unprocessed ${fieldName}');
+				case k:
+					trace('Unprocessed ${fieldName} of kind ${k}');
 			}
 		}
 

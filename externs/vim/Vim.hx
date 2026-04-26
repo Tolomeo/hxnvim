@@ -59,6 +59,58 @@ package vim;
 	static function call(func:String, ___:haxe.Rest<Any>):Void;
 	/**
 		```lua
+		(global) vim.cmd: table|fun(command: string|table)|table<string, fun(...any)>
+		```
+		
+		---
+		
+		 Executes Vimscript (|Ex-commands|).
+		
+		 Can be indexed with a command name to get a function, thus you can write `vim.cmd.echo(…)`
+		 instead of `vim.cmd{cmd='echo',…}`.
+		
+		 Examples:
+		
+		 ```lua
+		 -- Single command:
+		 vim.cmd('echo 42')
+		 -- Multiline script:
+		 vim.cmd([[
+		   augroup my.group
+		     autocmd!
+		     autocmd FileType c setlocal cindent
+		   augroup END
+		 ]])
+		
+		 -- Ex command :echo "foo". Note: string literals must be double-quoted.
+		 vim.cmd('echo "foo"')
+		 vim.cmd { cmd = 'echo', args = { '"foo"' } }
+		 vim.cmd.echo({ args = { '"foo"' } })
+		 vim.cmd.echo('"foo"')
+		
+		 -- Ex command :write! myfile.txt
+		 vim.cmd('write! myfile.txt')
+		 vim.cmd { cmd = 'write', args = { 'myfile.txt' }, bang = true }
+		 vim.cmd.write { args = { 'myfile.txt' }, bang = true }
+		 vim.cmd.write { 'myfile.txt', bang = true }
+		
+		 -- Ex command :vertical resize +2
+		 vim.cmd.resize({ '+2', mods = { vertical = true } })
+		 ```
+		
+		       - The string form supports multiline Vimscript (alias to |nvim_exec2()|, behaves
+		         like |:source|).
+		       - The table form executes a single command (alias to |nvim_cmd()|).
+		
+		---
+		
+		```lua
+		function vim.cmd(command: string|table)
+		```
+	**/
+	var cmd : haxe.extern.EitherType<(command:haxe.extern.EitherType<String, lua.Table.AnyTable>) -> Any, lua.Table<String, (___:haxe.Rest<Any>) -> Any>>;
+	/**
+		```lua
 		function vim.deep_equal(a: any, b: any)
 		  -> boolean
 		```

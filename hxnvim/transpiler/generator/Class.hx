@@ -13,13 +13,6 @@ import transpiler.parser.Parser;
 import transpiler.generator.Meta;
 import transpiler.generator.Type;
 
-/* import transpiler.parser.Class.ParsedClass;
-	import transpiler.parser.Class.ParsedClassField;
-	import transpiler.parser.Class.ParsedClassProperty;
-	import transpiler.parser.Class.ParsedClassMethod;
-	import transpiler.parser.Meta.ParsedMetadata;
-	import transpiler.generator.Meta;
-	import transpiler.generator.Type; */
 class ClassGenerator {
 	public function new() {}
 
