@@ -214,6 +214,7 @@ class Parser {
 		return parsedTable;
 	}
 
+	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
 	private function parseFunctionType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
 		final params = getArray(getField(func, 'generics')).map(param -> {
 			final name = getString(getField(param, 'name'));
@@ -229,17 +230,28 @@ class Parser {
 			}
 		});
 
-		final args = getArray(getField(func, 'arguments')).map(argument -> switch (getString(getField(argument, 'name'))) {
-			case '...': ({
-					name: '___',
-					type: 'haxe.Rest<${this.parseLiteralType(getField(argument, 'type'))}>',
-					opt: false
-				});
-			case name: ({
-					name: name,
-					type: this.parseLiteralType(getField(argument, 'type')),
-					opt: getBoolean(getField(argument, 'optional'))
-				});
+		final args = getArray(getField(func, 'arguments')).map(argument -> {
+			final name = getString(getField(argument, 'name'));
+			final type = switch (getString(getField(argument, 'type', 'kind'))) {
+				case 'typereference': switch (getString(getField(argument, 'type', 'value'))) {
+						case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
+						case _: this.parseLiteralType(getField(argument, 'type'));
+					}
+				case _: this.parseLiteralType(getField(argument, 'type'));
+			}
+
+			return switch (name) {
+				case '...': ({
+						name: '___',
+						type: 'haxe.Rest<${type}>',
+						opt: false
+					});
+				case n: ({
+						name: n,
+						type: type,
+						opt: getBoolean(getField(argument, 'optional'))
+					});
+			}
 		});
 
 		return {
@@ -332,6 +344,8 @@ class Parser {
 			case "numericliteral": "Float";
 
 			case "stringliteral": "String";
+
+			case "typereference": 'vim.type.${getString(getField(type, 'value')).toTypeName()}';
 
 			case k:
 				trace('type "${k}" is not a builtin');
