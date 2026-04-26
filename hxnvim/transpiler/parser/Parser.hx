@@ -12,7 +12,6 @@ using transpiler.parser.ParserTools;
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
 
-
 typedef ParsedParam = {
 	name:String,
 	constraints:Array<LiteralType>
@@ -155,6 +154,22 @@ class Parser {
 						access: fieldAccess,
 						type: this.parseLiteralType(fieldType)
 					}));
+				case 'table':
+					final className = fieldName.toTypeName();
+					final classDoc = "";
+					final classMetadata = [];
+					final classAccess = [ParsedAccess.Private];
+
+					this.result.types.set(className, ParsedSymbol.ParsedTable(this.parseTableType(className, classDoc, classMetadata, classAccess, fieldType)));
+
+					parsedTable.fields.push(TableField.Property({
+						name: fieldName,
+						doc: fieldDoc,
+						meta: fieldMetadata,
+						access: fieldAccess,
+						type: className
+					}));
+
 				case k:
 					trace('Unprocessed ${fieldName} of kind ${k}');
 			}
@@ -223,7 +238,8 @@ class Parser {
 					case "boolean": "Bool";
 					case "function": "haxe.Constraints.Function";
 					case "integer": "Int";
-					case "lightuserdata": throw new Exception('Unsupported builtin type value "lightuserdata" received');
+					// NB: didn't find exactly lightuserdata in haxe.lua
+					case "lightuserdata": "lua.UserData";
 					case "nil": "Void";
 					case "void": "Void";
 					case "number": "Float";
@@ -295,6 +311,8 @@ class Parser {
 			case "numericliteral": "Float";
 
 			case "stringliteral": "String";
+
+			case "booleanliteral": "Bool";
 
 			case "typereference": 'vim.type.${type.select('value').string().toTypeName()}';
 

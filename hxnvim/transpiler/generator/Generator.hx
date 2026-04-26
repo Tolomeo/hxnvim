@@ -41,16 +41,18 @@ class Generator {
 		final metaPrivate:Metadata = {name: 'private'};
 		final metaNative:Metadata = {name: 'native', params: [this.moduleNativeName]};
 
-		/* for (_ => type in parsedModule.types.keyValueIterator()) {
+		for (_ => type in parsedModule.types.keyValueIterator()) {
 			switch (type) {
-				case ModuleType.Enumerator(parsedEnumerator):
-					result.push(new EnumeratorGenerator(parsedEnumerator).make([metaPrivate]));
-				case ModuleType.Alias(parsedAlias):
-					result.push(new AliasGenerator(parsedAlias).make([metaPrivate]));
-				case ModuleType.Class(parsedClass):
-					result.push(new ClassGenerator(parsedClass).make([metaPrivate]));
+				/* case ModuleType.Enumerator(parsedEnumerator):
+						result.push(new EnumeratorGenerator(parsedEnumerator).make([metaPrivate]));
+					case ModuleType.Alias(parsedAlias):
+						result.push(new AliasGenerator(parsedAlias).make([metaPrivate])); */
+				case ParsedSymbol.ParsedTable(table):
+					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate]));
+				case _:
+					throw new Exception('Unsupported type received: ${type}');
 			}
-		}*/
+		}
 
 		switch (parsedModule.main) {
 			case ParsedSymbol.ParsedTable(table):
@@ -66,16 +68,16 @@ class Generator {
 		}
 
 		/* final main = parsedModule.main.getTable();
-		final mainName = main.name;
+			final mainName = main.name;
 
-		switch (this.moduleName == mainName) {
-			case true:
-				moduleTypes.push(new ClassGenerator().generate(main, [metaNative]));
-			case false:
-				final metaMainAlias:ParsedMetadata = {name: 'native', params: [mainName]};
-				moduleTypes.push(new ClassGenerator().generate(main, [metaPrivate, metaNative]));
-				moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: mainName}, [metaMainAlias]));
-		} */
+			switch (this.moduleName == mainName) {
+				case true:
+					moduleTypes.push(new ClassGenerator().generate(main, [metaNative]));
+				case false:
+					final metaMainAlias:ParsedMetadata = {name: 'native', params: [mainName]};
+					moduleTypes.push(new ClassGenerator().generate(main, [metaPrivate, metaNative]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: mainName}, [metaMainAlias]));
+		}*/
 
 		return moduleTypes;
 	}
