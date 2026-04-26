@@ -1,76 +1,13 @@
 package transpiler.parser;
 
-import haxe.extern.EitherType;
 import haxe.Exception;
 import haxe.Rest;
-import hxjsonast.Json;
+import haxe.extern.EitherType;
 import transpiler.State;
+import utils.Json;
 
 using Lambda;
-using hxjsonast.Tools;
 using transpiler.parser.ParserTools;
-
-function getField(json:Json, selector:Rest<String>):Json {
-	final keys = selector.toArray();
-
-	if (keys.length < 1) {
-		return json;
-	}
-
-	final key = keys.shift();
-
-	return switch (json.getField(key)) {
-		case null:
-			throw new Exception('Error extracting key "${key}" from ${json.getValue()}: not found');
-		case field:
-			return getField(field.value, ...keys);
-	}
-}
-
-function getString(json:Json):String {
-	return switch (json.value) {
-		case JString(s): s;
-		case _: throw new Exception('Error extracting string value from ${json.getValue()}');
-	}
-}
-
-function getBoolean(json:Json):Bool {
-	return switch (json.value) {
-		case JBool(b): b;
-		case _: throw new Exception('Error extracting string value from ${json.getValue()}');
-	}
-}
-
-function getArray(json:Json):Array<Json> {
-	return switch (json.value) {
-		case JArray(array): array;
-		case _: throw new Exception('Error extracting array value from ${json.getValue()}');
-	}
-}
-
-function getFields(json:Json):Array<JObjectField> {
-	return switch (json.value) {
-		case JObject(fields): fields;
-		case _: throw new Exception('Error extracting object value from ${json.getValue()}');
-	}
-}
-
-function getFieldsMap(json:Json):Map<String, Json> {
-	return getFields(json).fold((field:JObjectField, fieldsMap:Map<String, Json>) -> {
-		fieldsMap.set(field.name, field.value);
-		return fieldsMap;
-	}, []);
-
-	/* final object:Map<String, Json> = switch (json.value) {
-			case JObject(fields): fields.fold((field:JObjectField, fieldsMap:Map<String, Json>) -> {
-					fieldsMap.set(field.name, field.value);
-					return fieldsMap;
-				}, []);
-			case _: throw new Exception('Error extracting object value from ${json.getValue()}');
-		}
-
-		return object; */
-}
 
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
@@ -137,11 +74,11 @@ typedef ParsedModule = {
 }
 
 class Parser {
-	private final json:hxjsonast.Json;
+	private final json:Json;
 
 	public function new() {
 		final input = State.consume(v -> v.input);
-		this.json = hxjsonast.Parser.parse(input.spec, input.file);
+		this.json = Json.parse(input.spec, input.file);
 	}
 
 	public function parse():ParsedModule {
@@ -154,13 +91,13 @@ class Parser {
 	}
 
 	private function parseSymbol(symbol:Json) {
-		final name = getString(getField(symbol, 'name')).toTypeName();
-		final doc = getArray(getField(symbol, 'documentation')).map(line -> getString(line)).toDoc();
+		final name = symbol.select('name').string().toTypeName();
+		final doc = symbol.select('documentation').array().map(line -> line.string()).toDoc();
 
 		final access = new Array<ParsedAccess>();
 		final metadata = new Array<Metadata>();
 
-		final meta = getArray(getField(symbol, 'meta')).map(i -> getString(i));
+		final meta = symbol.select('meta').array().map(i -> i.string());
 
 		meta.iter((m -> switch (m) {
 			case "static": access.push(ParsedAccess.Static);
@@ -169,9 +106,9 @@ class Parser {
 			case m: throw new Exception('Meta not implemented: ${m}');
 		}));
 
-		final type = getField(symbol, 'type');
+		final type = symbol.select('type');
 
-		return switch (getString(getField(type, 'kind'))) {
+		return switch (type.select('kind').string()) {
 			case "table": ParsedSymbol.ParsedTable(this.parseTableType(name, doc, metadata, access, type));
 			case u: throw new Exception('${u} not implemented');
 		}
@@ -186,24 +123,24 @@ class Parser {
 			fields: [],
 		}
 
-		final fields = getArray(getField(table, 'fields'));
+		final fields = table.select('fields').array();
 
 		for (_ => field in fields.keyValueIterator()) {
-			final fieldName = getString(getField(field, 'name'));
-			final fieldDoc = getArray(getField(field, 'documentation')).map(i -> getString(i)).toDoc();
+			final fieldName = field.select('name').string();
+			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
 			final fieldAccess = new Array<ParsedAccess>();
 			final fieldMetadata = new Array<Metadata>();
 
-			getArray(getField(field, 'meta')).map(meta -> getString(meta)).iter(meta -> switch (meta) {
+			field.select('meta').array().map(meta -> meta.string()).iter(meta -> switch (meta) {
 				case "static": fieldAccess.push(ParsedAccess.Static);
 				case "private": fieldAccess.push(ParsedAccess.Private);
 				case "deprecated": fieldMetadata.push({name: "deprecated"});
 				case m: throw new Exception('Meta not implemented: ${m}');
 			});
 
-			final fieldType = getField(field, 'type');
+			final fieldType = field.select('type');
 
-			switch (getString(getField(fieldType, 'kind'))) {
+			switch (fieldType.select('kind').string()) {
 				case 'function':
 					parsedTable.fields.push(TableField.Method(this.parseFunctionType(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
 				case _:
@@ -216,11 +153,11 @@ class Parser {
 
 	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
 	private function parseFunctionType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
-		final params = getArray(getField(func, 'generics')).map(param -> {
-			final name = getString(getField(param, 'name'));
-			final type = getField(param, 'type');
+		final params = func.select('generics').array().map(param -> {
+			final name = param.select('name').string();
+			final type = param.select('type');
 			final constraints = switch (type.value) {
-				case JNull: [];
+				case JsonValue.JNull: [];
 				case _: [this.parseLiteralType(type)];
 			}
 
@@ -230,14 +167,14 @@ class Parser {
 			}
 		});
 
-		final args = getArray(getField(func, 'arguments')).map(argument -> {
-			final name = getString(getField(argument, 'name'));
-			final type = switch (getString(getField(argument, 'type', 'kind'))) {
-				case 'typereference': switch (getString(getField(argument, 'type', 'value'))) {
+		final args = func.select('arguments').array().map(argument -> {
+			final name = argument.select('name').string();
+			final type = switch (argument.select('type', 'kind').string()) {
+				case 'typereference': switch (argument.select('type', 'value').string()) {
 						case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-						case _: this.parseLiteralType(getField(argument, 'type'));
+						case _: this.parseLiteralType(argument.select('type'));
 					}
-				case _: this.parseLiteralType(getField(argument, 'type'));
+				case _: this.parseLiteralType(argument.select('type'));
 			}
 
 			return switch (name) {
@@ -249,7 +186,7 @@ class Parser {
 				case n: ({
 						name: n,
 						type: type,
-						opt: getBoolean(getField(argument, 'optional'))
+						opt: argument.select('optional').boolean()
 					});
 			}
 		});
@@ -266,8 +203,8 @@ class Parser {
 	}
 
 	private function parseLiteralType(type:Json) {
-		return switch (getString(getField(type, 'kind'))) {
-			case "builtin": switch (getString(getField(type, 'value'))) {
+		return switch (type.select('kind').string()) {
+			case "builtin": switch (type.select('value').string()) {
 					case "any": "Any";
 					case "boolean": "Bool";
 					case "function": "haxe.Constraints.Function";
@@ -285,7 +222,7 @@ class Parser {
 
 			case "unknown": "Any";
 
-			case "optional": 'Null<${this.parseLiteralType(getField(type, 'type'))}>';
+			case "optional": 'Null<${this.parseLiteralType(type.select('type'))}>';
 
 			case "union":
 				function makeUnion(members:Array<Json>):String {
@@ -299,34 +236,34 @@ class Parser {
 					}
 				}
 
-				makeUnion(getArray(getField(type, 'types')).copy());
+				makeUnion(type.select('types').array().copy());
 
-			case "array": 'Array<${this.parseLiteralType(getField(type, 'items'))}>';
+			case "array": 'Array<${this.parseLiteralType(type.select('items'))}>';
 
 			case "function":
-				final arguments = getArray(getField(type, 'arguments')).map(argument -> switch (getString(getField(argument, 'name'))) {
-					case '...': '___:haxe.Rest<${this.parseLiteralType(getField(argument, 'type'))}>';
-					case argumentName: switch (getBoolean(getField(argument, 'optional'))) {
-							case true: '?${argumentName}:${this.parseLiteralType(getField(argument, 'type'))}';
-							case false: '${argumentName}:${this.parseLiteralType(getField(argument, 'type'))}';
+				final arguments = type.select('arguments').array().map(argument -> switch (argument.select('name').string()) {
+					case '...': '___:haxe.Rest<${this.parseLiteralType(argument.select('type'))}>';
+					case argumentName: switch (argument.select('optional').boolean()) {
+							case true: '?${argumentName}:${this.parseLiteralType(argument.select('type'))}';
+							case false: '${argumentName}:${this.parseLiteralType(argument.select('type'))}';
 						}
 				});
-				final return_ = switch (getArray(getField(type, 'returns'))) {
+				final return_ = switch (type.select('returns').array()) {
 					case []: "Any";
-					case [r]: this.parseLiteralType(getField(r, 'type'));
+					case [r]: this.parseLiteralType(r.select('type'));
 					case _: throw new Exception('Unimplemented multiple function returns');
 				}
 
 				'(${arguments.join(", ")}) -> ${return_}';
 
 			case "table":
-				final indexes = getArray(getField(type, 'indexes')).map(index -> ({
-					key: this.parseLiteralType(getField(index, 'key')),
-					value: this.parseLiteralType(getField(index, 'value'))
+				final indexes = type.select('indexes').array().map(index -> ({
+					key: this.parseLiteralType(index.select('key')),
+					value: this.parseLiteralType(index.select('value'))
 				}));
-				final fields = getArray(getField(type, 'fields')).map(field -> ({
-					name: getString(getField(field, 'name')),
-					type: this.parseLiteralType(getField(field, 'type'))
+				final fields = type.select('fields').array().map(field -> ({
+					name: field.select('name').string(),
+					type: this.parseLiteralType(field.select('type'))
 				}));
 
 				return switch ({
@@ -345,9 +282,9 @@ class Parser {
 
 			case "stringliteral": "String";
 
-			case "typereference": 'vim.type.${getString(getField(type, 'value')).toTypeName()}';
+			case "typereference": 'vim.type.${type.select('value').string().toTypeName()}';
 
-			case "modulereference": 'vim.module.${getString(getField(type, 'value')).toTypeName()}';
+			case "modulereference": 'vim.module.${type.select('value').string().toTypeName()}';
 
 			case k:
 				trace('type "${k}" is not a builtin');
