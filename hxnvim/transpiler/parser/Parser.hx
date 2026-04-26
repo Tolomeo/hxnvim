@@ -347,6 +347,8 @@ class Parser {
 
 			case "typereference": 'vim.type.${getString(getField(type, 'value')).toTypeName()}';
 
+			case "modulereference": 'vim.module.${getString(getField(type, 'value')).toTypeName()}';
+
 			case k:
 				trace('type "${k}" is not a builtin');
 				"Any";
