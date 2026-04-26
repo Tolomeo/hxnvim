@@ -286,9 +286,8 @@ class Parser {
 
 			case "modulereference": 'vim.module.${type.select('value').string().toTypeName()}';
 
-			case k:
-				trace('type "${k}" is not a builtin');
-				"Any";
+			case _:
+				throw new Exception('Unrecognised type "${type.getValue()}" received');
 		}
 	}
 }
