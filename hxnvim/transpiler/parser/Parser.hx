@@ -279,11 +279,11 @@ class Parser {
 				function makeUnion(members:Array<Json>):String {
 					return switch (members) {
 						case [], [_]:
-							throw new Exception('Error creating union type');
+							throw new Exception('Error creating union type out of ${type.getValue()}');
 						case [left, right]:
 							'haxe.extern.EitherType<${this.parseLiteralType(left)}, ${this.parseLiteralType(right)}>';
-						case _:
-							'haxe.extern.EitherType<${this.parseLiteralType(members.shift())}, ${makeUnion(members)}>';
+						case m:
+							'haxe.extern.EitherType<${this.parseLiteralType(m.shift())}, ${makeUnion(m)}>';
 					}
 				}
 
