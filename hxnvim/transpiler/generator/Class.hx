@@ -27,17 +27,17 @@ class ClassGenerator {
 		return {name: ':$name', params: params, pos: (macro null).pos};
 	}
 
-	/* function makeProperty(property:ParsedClassProperty) {
-		final meta = property.meta.map(m -> new MetaGenerator({name: m.name, params: m.params}).make());
+	function makeProperty(property:Variable) {
+		final meta = property.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
 
 		final name = property.name;
 
 		// TODO: macro this
 		final access = property.access.map(a -> switch (a) {
-			case "APublic": APublic;
-			case "AStatic": AStatic;
-			case "APrivate": APrivate;
-			case _: throw 'Unexpected property access ${a}';
+			case ParsedAccess.Public: APublic;
+			case ParsedAccess.Static: AStatic;
+			case ParsedAccess.Private: APrivate;
+			case _: throw 'Unexpected method access for property ${property}';
 		});
 
 		return {
@@ -45,10 +45,11 @@ class ClassGenerator {
 			access: access,
 			name: name,
 			doc: property.doc,
-			kind: FVar(new TypeGenerator(property.type).make()),
+			kind: FVar(new TypeGenerator().generate(property.type)),
 			pos: Context.currentPos()
 		}
-	}*/
+	}
+
 	function makeMethod(func:Function) {
 		final meta = func.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
 
@@ -93,6 +94,7 @@ class ClassGenerator {
 			return switch (parsedField) {
 				// case TableField.Property(parsedProperty): this.makeProperty(parsedProperty);
 				case TableField.Method(func): this.makeMethod(func);
+				case TableField.Property(prop): this.makeProperty(prop);
 				case u: throw new Exception('Unimplementyed ${u} table field generator');
 			}
 		});

@@ -12,13 +12,6 @@ using transpiler.parser.ParserTools;
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
 
-typedef ParsedTableProperty = {
-	name:String,
-	doc:String,
-	meta:Array<Metadata>,
-	access:Array<String>,
-	type:LiteralType,
-}
 
 typedef ParsedParam = {
 	name:String,
@@ -35,6 +28,14 @@ enum ParsedAccess {
 	Overload;
 }
 
+typedef Variable = {
+	name:String,
+	doc:String,
+	meta:Array<Metadata>,
+	access:Array<ParsedAccess>,
+	type:LiteralType,
+}
+
 typedef Function = {
 	name:String,
 	doc:String,
@@ -46,7 +47,7 @@ typedef Function = {
 }
 
 enum TableField {
-	Property(property:ParsedTableProperty);
+	Property(variable:Variable);
 	Method(function_:Function);
 }
 
@@ -75,6 +76,7 @@ typedef ParsedModule = {
 
 class Parser {
 	private final json:Json;
+	private var result:ParsedModule = null;
 
 	public function new() {
 		final input = State.consume(v -> v.input);
@@ -82,12 +84,14 @@ class Parser {
 	}
 
 	public function parse():ParsedModule {
-		final main = this.parseSymbol(this.json);
-
-		return {
+		this.result = {
 			types: [],
-			main: main
+			main: null
 		}
+
+		this.result.main = this.parseSymbol(this.json);
+
+		return this.result;
 	}
 
 	private function parseSymbol(symbol:Json) {
@@ -143,13 +147,23 @@ class Parser {
 			switch (fieldType.select('kind').string()) {
 				case 'function':
 					parsedTable.fields.push(TableField.Method(this.parseFunctionType(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
+				case 'modulereference', 'typereference', 'builtin':
+					parsedTable.fields.push(TableField.Property({
+						name: fieldName,
+						doc: fieldDoc,
+						meta: fieldMetadata,
+						access: fieldAccess,
+						type: this.parseLiteralType(fieldType)
+					}));
 				case _:
-					trace('${fieldName} is not a function');
+					trace('Unprocessed ${fieldName}');
 			}
 		}
 
 		return parsedTable;
 	}
+
+	private function parseAliasType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, alias:Json) {}
 
 	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
 	private function parseFunctionType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
@@ -215,7 +229,7 @@ class Parser {
 					case "number": "Float";
 					case "string": "String";
 					case "table": "lua.Table.AnyTable";
-					case "thread": throw new Exception('Unsupported builtin type value "lightuserdata" received');
+					case "thread": throw new Exception('Unsupported builtin type value "thread" received');
 					case "userdata": "lua.UserData";
 					case v: throw new Exception('Unexpected builtin type value "${v}" received');
 				}

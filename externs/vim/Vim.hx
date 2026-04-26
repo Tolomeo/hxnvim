@@ -3,6 +3,45 @@ package vim;
 @:native("vim") extern class Vim {
 	/**
 		```lua
+		(global) vim.F: table
+		```
+	**/
+	var F : vim.module.Vim_F;
+	/**
+		```lua
+		(global) vim.NIL: vim.NIL
+		```
+	**/
+	var NIL : vim.type.Vim_NIL;
+	/**
+		```lua
+		(global) vim.b: vim.var_accessor
+		```
+	**/
+	var b : vim.type.Vim_VarAccessor;
+	/**
+		```lua
+		(global) vim.bo: table|vim.bo
+		```
+		
+		---
+		
+		 Get or set buffer-scoped |options| for the buffer with number {bufnr}.
+		 Like `:setlocal`. If {bufnr} is omitted then the current buffer is used.
+		 Invalid {bufnr} or key is an error.
+		
+		 Example:
+		
+		 ```lua
+		 local bufnr = vim.api.nvim_get_current_buf()
+		 vim.bo[bufnr].buflisted = true    -- same as vim.bo.buflisted = true
+		 print(vim.bo.comments)
+		 print(vim.bo.baz)                 -- error: invalid key
+		 ```
+	**/
+	var bo : vim.type.Vim_Bo;
+	/**
+		```lua
 		function vim.call(func: string, ...any)
 		  -> any
 		```
@@ -138,6 +177,12 @@ package vim;
 	static function deprecate(name:String, alternative:haxe.extern.EitherType<String, Void>, version:String, plugin:haxe.extern.EitherType<String, Void>, backtrace:haxe.extern.EitherType<Bool, Void>):Void;
 	/**
 		```lua
+		(global) vim.diagnostic: table
+		```
+	**/
+	var diagnostic : vim.module.Vim_Diagnostic;
+	/**
+		```lua
 		function vim.diff(a: string, b: string, opts?: vim.diff.Opts)
 		  -> (string|integer[][])?
 		```
@@ -212,11 +257,41 @@ package vim;
 	static function endswith(s:String, suffix:String):Void;
 	/**
 		```lua
+		(global) vim.filetype: table
+		```
+	**/
+	var filetype : vim.module.Vim_Filetype;
+	/**
+		```lua
+		(global) vim.fs: table
+		```
+	**/
+	var fs : vim.module.Vim_Fs;
+	/**
+		```lua
+		(global) vim.func: table
+		```
+	**/
+	var func : vim.module.Vim_Func;
+	/**
+		```lua
 		function vim.funcref(viml_func_name: any)
 		  -> unknown
 		```
 	**/
 	private static function funcref(viml_func_name:Any):Void;
+	/**
+		```lua
+		(global) vim.g: vim.var_accessor
+		```
+	**/
+	var g : vim.type.Vim_VarAccessor;
+	/**
+		```lua
+		(global) vim.glob: table
+		```
+	**/
+	var glob : vim.module.Vim_Glob;
 	/**
 		```lua
 		function vim.gsplit(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -262,6 +337,29 @@ package vim;
 		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
 	**/
 	static function gsplit(s:String, sep:String, ?opts:vim.type.Vim_Gsplit_Opts):Void;
+	/**
+		```lua
+		(global) vim.health: table
+		```
+	**/
+	var health : vim.module.Vim_Health;
+	/**
+		```lua
+		(global) vim.highlight: table
+		```
+		
+		---
+		
+		 Deprecated. Remove at Nvim 2.0
+	**/
+	@:deprecated
+	var highlight : vim.module.Vim_Hl;
+	/**
+		```lua
+		(global) vim.hl: table
+		```
+	**/
+	var hl : vim.module.Vim_Hl;
 	/**
 		```lua
 		function vim.iconv(str: string, from: string, to: string, opts: any)
@@ -408,6 +506,12 @@ package vim;
 	static function islist(?t:lua.Table.AnyTable):Void;
 	/**
 		```lua
+		(global) vim.iter: IterMod
+		```
+	**/
+	var iter : vim.type.IterMod;
+	/**
+		```lua
 		function vim.keycode(str: string)
 		  -> string
 		```
@@ -428,6 +532,12 @@ package vim;
 		 @see |nvim_replace_termcodes()|
 	**/
 	static function keycode(str:String):Void;
+	/**
+		```lua
+		(global) vim.keymap: table
+		```
+	**/
+	var keymap : vim.module.Vim_Keymap;
 	/**
 		```lua
 		function vim.list_contains(t: table, value: any)
@@ -487,6 +597,225 @@ package vim;
 		@*return* `Copy` — of table sliced from start to finish (inclusive)
 	**/
 	static function list_slice<T>(list:Array<vim.type.T>, start:haxe.extern.EitherType<Int, Void>, finish:haxe.extern.EitherType<Int, Void>):Void;
+	/**
+		```lua
+		(global) vim.loader: table
+		```
+	**/
+	var loader : vim.module.Vim_Loader;
+	/**
+		```lua
+		(global) vim.loop: uv
+		```
+		
+		---
+		
+		 The luv project provides access to the multi-platform support library
+		 libuv in Lua code. It was primarily developed for the luvit project as
+		 the built-in `uv` module, but can be used in other Lua environments.
+		
+		 More information about the core libuv library can be found at the original
+		 libuv documentation page.
+		
+		
+		 Here is a small example showing a TCP echo server:
+		
+		 ```lua
+		 local uv = require("luv") -- "luv" when stand-alone, "uv" in luvi apps
+		
+		 local server = uv.new_tcp()
+		 server:bind("127.0.0.1", 1337)
+		 server:listen(128, function (err)
+		   assert(not err, err)
+		   local client = uv.new_tcp()
+		   server:accept(client)
+		   client:read_start(function (err, chunk)
+		     assert(not err, err)
+		     if chunk then
+		       client:write(chunk)
+		     else
+		       client:shutdown()
+		       client:close()
+		     end
+		   end)
+		 end)
+		 print("TCP server listening at 127.0.0.1 port 1337")
+		 uv.run() -- an explicit run call is necessary outside of luvit
+		 ```
+		
+		
+		 The luv library contains a single Lua module referred to hereafter as `uv` for
+		 simplicity. This module consists mostly of functions with names corresponding to
+		 their original libuv versions. For example, the libuv function `uv_tcp_bind` has
+		 a luv version at `uv.tcp_bind`. Currently, only one non-function field exists:
+		 `uv.constants`, which is a table.
+		
+		
+		 In addition to having simple functions, luv provides an optional method-style
+		 API. For example, `uv.tcp_bind(server, host, port)` can alternatively be called
+		 as `server:bind(host, port)`. Note that the first argument `server` becomes the
+		 object and `tcp_` is removed from the function name. Method forms are
+		 documented below where they exist.
+		
+		
+		 Functions that accept a callback are asynchronous. These functions may
+		 immediately return results to the caller to indicate their initial status, but
+		 their final execution is deferred until at least the next libuv loop iteration.
+		 After completion, their callbacks are executed with any results passed to it.
+		
+		 Functions that do not accept a callback are synchronous. These functions
+		 immediately return their results to the caller.
+		
+		 Some (generally FS and DNS) functions can behave either synchronously or
+		 asynchronously. If a callback is provided to these functions, they behave
+		 asynchronously; if no callback is provided, they behave synchronously.
+		
+		
+		 Some unique types are defined. These are not actual types in Lua, but they are
+		 used here to facilitate documenting consistent behavior:
+		 - `fail`: an assertable `nil, string, string` tuple (see Error handling)
+		 - `callable`: a `function`; or a `table` or `userdata` with a `__call`
+		   metamethod
+		 - `buffer`: a `string` or a sequential `table` of `string`s
+		 - `threadargs`: variable arguments (`...`) of type `nil`, `boolean`, `number`,
+		   `string`, or `userdata`
+		
+		
+		 This documentation is mostly a retelling of the libuv API documentation
+		 within the context of luv's Lua API. Low-level implementation details and
+		 unexposed C functions and types are not documented here except for when they
+		 are relevant to behavior seen in the Lua module.
+		
+		 [Error handling]: #error-handling
+		
+		 In libuv, errors are negative numbered constants; however, these errors and the
+		 functions used to handle them are not exposed to luv users. Instead, if an
+		 internal error is encountered, the luv function will return to the caller an
+		 assertable `nil, err, name` tuple.
+		
+		 - `nil` idiomatically indicates failure
+		 - `err` is a string with the format `{name}: {message}`
+		   - `{name}` is the error name provided internally by `uv_err_name`
+		   - `{message}` is a human-readable message provided internally by `uv_strerror`
+		 - `name` is the same string used to construct `err`
+		
+		 This tuple is referred to below as the `fail` pseudo-type.
+		
+		 When a function is called successfully, it will return either a value that is
+		 relevant to the operation of the function, or the integer `0` to indicate
+		 success, or sometimes nothing at all. These cases are documented below.
+		
+		
+		 [reference counting]: #reference-counting
+		
+		 The libuv event loop (if run in the default mode) will run until there are no
+		 active and referenced handles left. The user can force the loop to exit early by
+		 unreferencing handles which are active, for example by calling `uv.unref()`
+		 after calling `uv.timer_start()`.
+		
+		 A handle can be referenced or unreferenced, the refcounting scheme doesn't use a
+		 counter, so both operations are idempotent.
+		
+		 All handles are referenced when active by default, see `uv.is_active()` for a
+		 more detailed explanation on what being active involves.
+		
+		
+		 [File system operations]: #file-system-operations
+		
+		 Most file system functions can operate synchronously or asynchronously. When a synchronous version is called (by omitting a callback), the function will
+		 immediately return the results of the FS call. When an asynchronous version is
+		 called (by providing a callback), the function will immediately return a
+		 `uv_fs_t userdata` and asynchronously execute its callback; if an error is encountered, the first and only argument passed to the callback will be the `err` error string; if the operation completes successfully, the first argument will be `nil` and the remaining arguments will be the results of the FS call.
+		
+		 Synchronous and asynchronous versions of `readFile` (with naive error handling)
+		 are implemented below as an example:
+		
+		 ```lua
+		 local function readFileSync(path)
+		   local fd = assert(uv.fs_open(path, "r", 438))
+		   local stat = assert(uv.fs_fstat(fd))
+		   local data = assert(uv.fs_read(fd, stat.size, 0))
+		   assert(uv.fs_close(fd))
+		   return data
+		 end
+		
+		 local data = readFileSync("main.lua")
+		 print("synchronous read", data)
+		 ```
+		
+		 ```lua
+		 local function readFile(path, callback)
+		   uv.fs_open(path, "r", 438, function(err, fd)
+		     assert(not err, err)
+		     uv.fs_fstat(fd, function(err, stat)
+		       assert(not err, err)
+		       uv.fs_read(fd, stat.size, 0, function(err, data)
+		         assert(not err, err)
+		         uv.fs_close(fd, function(err)
+		           assert(not err, err)
+		           return callback(data)
+		         end)
+		       end)
+		     end)
+		   end)
+		 end
+		
+		 readFile("main.lua", function(data)
+		   print("asynchronous read", data)
+		 end)
+		 ```
+		
+		
+		 [Thread pool work scheduling]: #thread-pool-work-scheduling
+		
+		 Libuv provides a threadpool which can be used to run user code and get notified
+		 in the loop thread. This threadpool is internally used to run all file system
+		 operations, as well as `getaddrinfo` and `getnameinfo` requests.
+		
+		 ```lua
+		 local function work_callback(a, b)
+		   return a + b
+		 end
+		
+		 local function after_work_callback(c)
+		   print("The result is: " .. c)
+		 end
+		
+		 local work = uv.new_work(work_callback, after_work_callback)
+		
+		 work:queue(1, 2)
+		
+		 -- output: "The result is: 3"
+		 ```
+		
+		
+		 [DNS utility functions]: #dns-utility-functions
+		
+		
+		 [Threading and synchronization utilities]: #threading-and-synchronization-utilities
+		
+		 Libuv provides cross-platform implementations for multiple threading an
+		  synchronization primitives. The API largely follows the pthreads API.
+		
+		
+		 [Miscellaneous utilities]: #miscellaneous-utilities
+		
+		
+		 [Metrics operations]: #metrics-operations
+		
+		
+		---
+		
+		 Remove at Nvim 1.0
+	**/
+	@:deprecated
+	var loop : vim.type.Uv;
+	/**
+		```lua
+		(global) vim.lsp: table
+		```
+	**/
+	var lsp : vim.module.Vim_Lsp;
 	/**
 		```lua
 		function vim.lua_omnifunc(find_start: 0|1, _: any)
@@ -679,6 +1008,18 @@ package vim;
 	static function print(___:haxe.Rest<Any>):Void;
 	/**
 		```lua
+		(global) vim.provider: table
+		```
+	**/
+	var provider : vim.module.Vim_Provider;
+	/**
+		```lua
+		(global) vim.re: table
+		```
+	**/
+	var re : vim.module.Vim_Re;
+	/**
+		```lua
 		function vim.regex(re: string)
 		  -> vim.regex
 		```
@@ -816,6 +1157,12 @@ package vim;
 	static function schedule_wrap(fn:haxe.Constraints.Function):Void;
 	/**
 		```lua
+		(global) vim.secure: table
+		```
+	**/
+	var secure : vim.module.Vim_Secure;
+	/**
+		```lua
 		function vim.show_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
 		```
 		
@@ -839,6 +1186,12 @@ package vim;
 		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
 	**/
 	static function show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:vim.type.Vim_Inspector_Filter):Void;
+	/**
+		```lua
+		(global) vim.snippet: table
+		```
+	**/
+	var snippet : vim.module.Vim_Snippet;
 	/**
 		```lua
 		function vim.spairs(t: <T:table>)
@@ -1126,6 +1479,12 @@ package vim;
 	static function system(cmd:Array<String>, opts:Null<vim.type.Vim_SystemOpts>, ?on_exit:(out:vim.type.Vim_SystemCompleted) -> Any):Void;
 	/**
 		```lua
+		(global) vim.t: vim.var_accessor
+		```
+	**/
+	var t : vim.type.Vim_VarAccessor;
+	/**
+		```lua
 		function vim.tbl_add_reverse_lookup(o: table)
 		  -> o: table
 		```
@@ -1399,6 +1758,18 @@ package vim;
 	static function tbl_values<T>(t:lua.Table<Any, vim.type.T>):Void;
 	/**
 		```lua
+		(global) vim.text: table
+		```
+	**/
+	var text : vim.module.Vim_Text;
+	/**
+		```lua
+		(global) vim.treesitter: table
+		```
+	**/
+	var treesitter : vim.module.Vim_Treesitter;
+	/**
+		```lua
 		function vim.trim(s: string)
 		  -> String: string
 		```
@@ -1414,6 +1785,12 @@ package vim;
 		See: ~https~ ://www.lua.org/pil/20.2.html
 	**/
 	static function trim(s:String):Void;
+	/**
+		```lua
+		(global) vim.ui: table
+		```
+	**/
+	var ui : vim.module.Vim_Ui;
 	/**
 		```lua
 		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
@@ -1522,6 +1899,214 @@ package vim;
 		@*return* `filename` — or unchanged URI for non-file URIs
 	**/
 	function uri_to_fname(uri:String):Void;
+	/**
+		```lua
+		(global) vim.uv: uv
+		```
+		
+		---
+		
+		 The luv project provides access to the multi-platform support library
+		 libuv in Lua code. It was primarily developed for the luvit project as
+		 the built-in `uv` module, but can be used in other Lua environments.
+		
+		 More information about the core libuv library can be found at the original
+		 libuv documentation page.
+		
+		
+		 Here is a small example showing a TCP echo server:
+		
+		 ```lua
+		 local uv = require("luv") -- "luv" when stand-alone, "uv" in luvi apps
+		
+		 local server = uv.new_tcp()
+		 server:bind("127.0.0.1", 1337)
+		 server:listen(128, function (err)
+		   assert(not err, err)
+		   local client = uv.new_tcp()
+		   server:accept(client)
+		   client:read_start(function (err, chunk)
+		     assert(not err, err)
+		     if chunk then
+		       client:write(chunk)
+		     else
+		       client:shutdown()
+		       client:close()
+		     end
+		   end)
+		 end)
+		 print("TCP server listening at 127.0.0.1 port 1337")
+		 uv.run() -- an explicit run call is necessary outside of luvit
+		 ```
+		
+		
+		 The luv library contains a single Lua module referred to hereafter as `uv` for
+		 simplicity. This module consists mostly of functions with names corresponding to
+		 their original libuv versions. For example, the libuv function `uv_tcp_bind` has
+		 a luv version at `uv.tcp_bind`. Currently, only one non-function field exists:
+		 `uv.constants`, which is a table.
+		
+		
+		 In addition to having simple functions, luv provides an optional method-style
+		 API. For example, `uv.tcp_bind(server, host, port)` can alternatively be called
+		 as `server:bind(host, port)`. Note that the first argument `server` becomes the
+		 object and `tcp_` is removed from the function name. Method forms are
+		 documented below where they exist.
+		
+		
+		 Functions that accept a callback are asynchronous. These functions may
+		 immediately return results to the caller to indicate their initial status, but
+		 their final execution is deferred until at least the next libuv loop iteration.
+		 After completion, their callbacks are executed with any results passed to it.
+		
+		 Functions that do not accept a callback are synchronous. These functions
+		 immediately return their results to the caller.
+		
+		 Some (generally FS and DNS) functions can behave either synchronously or
+		 asynchronously. If a callback is provided to these functions, they behave
+		 asynchronously; if no callback is provided, they behave synchronously.
+		
+		
+		 Some unique types are defined. These are not actual types in Lua, but they are
+		 used here to facilitate documenting consistent behavior:
+		 - `fail`: an assertable `nil, string, string` tuple (see Error handling)
+		 - `callable`: a `function`; or a `table` or `userdata` with a `__call`
+		   metamethod
+		 - `buffer`: a `string` or a sequential `table` of `string`s
+		 - `threadargs`: variable arguments (`...`) of type `nil`, `boolean`, `number`,
+		   `string`, or `userdata`
+		
+		
+		 This documentation is mostly a retelling of the libuv API documentation
+		 within the context of luv's Lua API. Low-level implementation details and
+		 unexposed C functions and types are not documented here except for when they
+		 are relevant to behavior seen in the Lua module.
+		
+		 [Error handling]: #error-handling
+		
+		 In libuv, errors are negative numbered constants; however, these errors and the
+		 functions used to handle them are not exposed to luv users. Instead, if an
+		 internal error is encountered, the luv function will return to the caller an
+		 assertable `nil, err, name` tuple.
+		
+		 - `nil` idiomatically indicates failure
+		 - `err` is a string with the format `{name}: {message}`
+		   - `{name}` is the error name provided internally by `uv_err_name`
+		   - `{message}` is a human-readable message provided internally by `uv_strerror`
+		 - `name` is the same string used to construct `err`
+		
+		 This tuple is referred to below as the `fail` pseudo-type.
+		
+		 When a function is called successfully, it will return either a value that is
+		 relevant to the operation of the function, or the integer `0` to indicate
+		 success, or sometimes nothing at all. These cases are documented below.
+		
+		
+		 [reference counting]: #reference-counting
+		
+		 The libuv event loop (if run in the default mode) will run until there are no
+		 active and referenced handles left. The user can force the loop to exit early by
+		 unreferencing handles which are active, for example by calling `uv.unref()`
+		 after calling `uv.timer_start()`.
+		
+		 A handle can be referenced or unreferenced, the refcounting scheme doesn't use a
+		 counter, so both operations are idempotent.
+		
+		 All handles are referenced when active by default, see `uv.is_active()` for a
+		 more detailed explanation on what being active involves.
+		
+		
+		 [File system operations]: #file-system-operations
+		
+		 Most file system functions can operate synchronously or asynchronously. When a synchronous version is called (by omitting a callback), the function will
+		 immediately return the results of the FS call. When an asynchronous version is
+		 called (by providing a callback), the function will immediately return a
+		 `uv_fs_t userdata` and asynchronously execute its callback; if an error is encountered, the first and only argument passed to the callback will be the `err` error string; if the operation completes successfully, the first argument will be `nil` and the remaining arguments will be the results of the FS call.
+		
+		 Synchronous and asynchronous versions of `readFile` (with naive error handling)
+		 are implemented below as an example:
+		
+		 ```lua
+		 local function readFileSync(path)
+		   local fd = assert(uv.fs_open(path, "r", 438))
+		   local stat = assert(uv.fs_fstat(fd))
+		   local data = assert(uv.fs_read(fd, stat.size, 0))
+		   assert(uv.fs_close(fd))
+		   return data
+		 end
+		
+		 local data = readFileSync("main.lua")
+		 print("synchronous read", data)
+		 ```
+		
+		 ```lua
+		 local function readFile(path, callback)
+		   uv.fs_open(path, "r", 438, function(err, fd)
+		     assert(not err, err)
+		     uv.fs_fstat(fd, function(err, stat)
+		       assert(not err, err)
+		       uv.fs_read(fd, stat.size, 0, function(err, data)
+		         assert(not err, err)
+		         uv.fs_close(fd, function(err)
+		           assert(not err, err)
+		           return callback(data)
+		         end)
+		       end)
+		     end)
+		   end)
+		 end
+		
+		 readFile("main.lua", function(data)
+		   print("asynchronous read", data)
+		 end)
+		 ```
+		
+		
+		 [Thread pool work scheduling]: #thread-pool-work-scheduling
+		
+		 Libuv provides a threadpool which can be used to run user code and get notified
+		 in the loop thread. This threadpool is internally used to run all file system
+		 operations, as well as `getaddrinfo` and `getnameinfo` requests.
+		
+		 ```lua
+		 local function work_callback(a, b)
+		   return a + b
+		 end
+		
+		 local function after_work_callback(c)
+		   print("The result is: " .. c)
+		 end
+		
+		 local work = uv.new_work(work_callback, after_work_callback)
+		
+		 work:queue(1, 2)
+		
+		 -- output: "The result is: 3"
+		 ```
+		
+		
+		 [DNS utility functions]: #dns-utility-functions
+		
+		
+		 [Threading and synchronization utilities]: #threading-and-synchronization-utilities
+		
+		 Libuv provides cross-platform implementations for multiple threading an
+		  synchronization primitives. The API largely follows the pthreads API.
+		
+		
+		 [Miscellaneous utilities]: #miscellaneous-utilities
+		
+		
+		 [Metrics operations]: #metrics-operations
+		
+	**/
+	var uv : vim.type.Uv;
+	/**
+		```lua
+		(global) vim.v: vim.v
+		```
+	**/
+	var v : vim.type.Vim_VarAccessor;
 	/**
 		```lua
 		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
@@ -1643,6 +2228,18 @@ package vim;
 	static function validate(name:String, value:Any, validator:vim.type.Vim_Validate_Validator, ?optional:Bool, ?message:String):Void;
 	/**
 		```lua
+		(global) vim.version: table
+		```
+	**/
+	var version : vim.module.Vim_Version;
+	/**
+		```lua
+		(global) vim.w: vim.var_accessor
+		```
+	**/
+	var w : vim.type.Vim_VarAccessor;
+	/**
+		```lua
 		function vim.wait(time: integer, callback?: fun():boolean, interval?: integer, fast_only?: boolean)
 		  -> boolean
 		  2. -1|-2|nil
@@ -1703,4 +2300,30 @@ package vim;
 		```
 	**/
 	static function wait(time:Int, ?callback:() -> Bool, ?interval:Int, ?fast_only:Bool):Void;
+	/**
+		```lua
+		(global) vim.wo: table|vim.wo
+		```
+		
+		---
+		
+		 Get or set window-scoped |options| for the window with handle {winid} and
+		 buffer with number {bufnr}. Like `:setlocal` if setting a |global-local| option
+		 or if {bufnr} is provided, like `:set` otherwise. If {winid} is omitted then
+		 the current window is used. Invalid {winid}, {bufnr} or key is an error.
+		
+		 Note: only {bufnr} with value `0` (the current buffer in the window) is
+		 supported.
+		
+		 Example:
+		
+		 ```lua
+		 local winid = vim.api.nvim_get_current_win()
+		 vim.wo[winid].number = true    -- same as vim.wo.number = true
+		 print(vim.wo.foldmarker)
+		 print(vim.wo.quux)             -- error: invalid key
+		 vim.wo[winid][0].spell = false -- like ':setlocal nospell'
+		 ```
+	**/
+	var wo : vim.type.Vim_Wo;
 }
