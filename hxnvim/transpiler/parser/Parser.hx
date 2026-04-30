@@ -7,6 +7,7 @@ import transpiler.State;
 import utils.Json;
 
 using Lambda;
+using utils.ArrayTools;
 using transpiler.parser.ParserTools;
 
 typedef Metadata = {name:String, ?params:Array<String>};
@@ -278,18 +279,21 @@ class Parser {
 			case "optional": 'Null<${this.parseLiteralType(type.select('type'))}>';
 
 			case "union":
-				function makeUnion(members:Array<Json>):String {
+				function makeUnion(members:Array<String>):String {
 					return switch (members) {
 						case [], [_]:
 							throw new Exception('Error creating union type out of ${type.getValue()}');
 						case [left, right]:
-							'haxe.extern.EitherType<${this.parseLiteralType(left)}, ${this.parseLiteralType(right)}>';
+							'haxe.extern.EitherType<${left}, ${right}>';
 						case m:
-							'haxe.extern.EitherType<${this.parseLiteralType(m.shift())}, ${makeUnion(m)}>';
+							'haxe.extern.EitherType<${m.shift()}, ${makeUnion(m)}>';
 					}
 				}
 
-				makeUnion(type.select('types').array().copy());
+				switch (type.select('types').array().copy().map(t -> this.parseLiteralType(t)).unique()) {
+					case [t]: t;
+					case t: makeUnion(t);
+				}
 
 			case "array": 'Array<${this.parseLiteralType(type.select('items'))}>';
 

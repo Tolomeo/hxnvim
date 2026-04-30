@@ -88,7 +88,7 @@ package vim;
 		 (https://www.unicode.org/reports/tr11).
 		
 	**/
-	var ambiwidth : haxe.extern.EitherType<String, String>;
+	var ambiwidth : String;
 	/**
 		```lua
 		(global) table.arabic: boolean
@@ -266,7 +266,7 @@ package vim;
 		 the setting of the 'background' option.
 		
 	**/
-	var background : haxe.extern.EitherType<String, String>;
+	var background : String;
 	/**
 		```lua
 		(global) table.backspace: string
@@ -692,7 +692,7 @@ package vim;
 		 special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	var bufhidden : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>;
+	var bufhidden : String;
 	/**
 		```lua
 		(global) table.buflisted: boolean
@@ -761,7 +761,7 @@ package vim;
 		 `FileWriteCmd` or `FileAppendCmd` autocommands.
 		
 	**/
-	var buftype : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>;
+	var buftype : String;
 	/**
 		```lua
 		(global) table.casemap: string
@@ -1302,7 +1302,7 @@ package vim;
 		 command line completion the global value is used.
 		
 	**/
-	var completeslash : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var completeslash : String;
 	/**
 		```lua
 		(global) table.concealcursor: string
@@ -2077,7 +2077,7 @@ package vim;
 		 	both	width and height of windows is affected
 		
 	**/
-	var eadirection : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var eadirection : String;
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -2445,7 +2445,7 @@ package vim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	var fileformat : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var fileformat : String;
 	/**
 		```lua
 		(global) table.fileformats: string
@@ -2721,7 +2721,7 @@ package vim;
 		 See `folding`.
 		
 	**/
-	var foldcolumn : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>>>>>>>>>>>>>;
+	var foldcolumn : String;
 	/**
 		```lua
 		(global) table.foldenable: boolean
@@ -2839,7 +2839,7 @@ package vim;
 		 `fold-diff`	diff	    Fold text that is not changed.
 		
 	**/
-	var foldmethod : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>;
+	var foldmethod : String;
 	/**
 		```lua
 		(global) table.foldminlines: integer
@@ -3593,7 +3593,7 @@ package vim;
 		 `Command-line-mode` is done.
 		
 	**/
-	var inccommand : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var inccommand : String;
 	/**
 		```lua
 		(global) table.include: string
@@ -4960,7 +4960,7 @@ package vim;
 		     "g<RightMouse>" is "<C-RightMouse>	("CTRL-T")
 		
 	**/
-	var mousemodel : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var mousemodel : String;
 	/**
 		```lua
 		(global) table.mousemoveevent: boolean
@@ -5972,7 +5972,7 @@ package vim;
 		   you cannot visually select an empty region).
 		
 	**/
-	var selection : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var selection : String;
 	/**
 		```lua
 		(global) table.selectmode: string
@@ -6593,7 +6593,7 @@ package vim;
 		 displayed in a convenient location.
 		
 	**/
-	var showcmdloc : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var showcmdloc : String;
 	/**
 		```lua
 		(global) table.showfulltag: boolean
@@ -6744,7 +6744,7 @@ package vim;
 		 		column is not present, then behaves like "auto".
 		
 	**/
-	var signcolumn : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>>>>>>>>>>>>>>>;
+	var signcolumn : String;
 	/**
 		```lua
 		(global) table.smartcase: boolean = true
@@ -7093,7 +7093,7 @@ package vim;
 		 be kept on the same screen line when 'wrap' is enabled.
 		
 	**/
-	var splitkeep : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var splitkeep : String;
 	/**
 		```lua
 		(global) table.splitright: boolean
@@ -7786,7 +7786,7 @@ package vim;
 		    smart	Ignore case unless an upper case letter is used
 		
 	**/
-	var tagcase : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>;
+	var tagcase : String;
 	/**
 		```lua
 		(global) table.tagfunc: string
@@ -8818,7 +8818,7 @@ package vim;
 		 This option is not used for <F10>; on Win32.
 		
 	**/
-	var winaltkeys : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var winaltkeys : String;
 	/**
 		```lua
 		(global) table.winbar: string
@@ -8875,7 +8875,7 @@ package vim;
 		 - "solid": Adds padding by a single whitespace cell.
 		
 	**/
-	var winborder : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>;
+	var winborder : String;
 	/**
 		```lua
 		(global) table.window: integer
@@ -9450,7 +9450,7 @@ package vim;
 		 assert(b:match('(') == nil)
 		 ```
 	**/
-	static function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<lua.UserData, lua.UserData>>>>>>>):vim.type.Vim_Lpeg_Pattern;
+	static function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, lua.UserData>>>>>):vim.type.Vim_Lpeg_Pattern;
 	/**
 		```lua
 		function vim.lpeg.locale(tab?: table)
@@ -9677,7 +9677,7 @@ package vim;
 		 (https://www.unicode.org/reports/tr11).
 		
 	**/
-	var ambiwidth : haxe.extern.EitherType<String, String>;
+	var ambiwidth : String;
 	/**
 		```lua
 		(global) table.arabicshape: boolean
@@ -9810,7 +9810,7 @@ package vim;
 		 the setting of the 'background' option.
 		
 	**/
-	var background : haxe.extern.EitherType<String, String>;
+	var background : String;
 	/**
 		```lua
 		(global) table.backspace: string
@@ -11019,7 +11019,7 @@ package vim;
 		 	both	width and height of windows is affected
 		
 	**/
-	var eadirection : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var eadirection : String;
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -12039,7 +12039,7 @@ package vim;
 		 `Command-line-mode` is done.
 		
 	**/
-	var inccommand : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var inccommand : String;
 	/**
 		```lua
 		(global) table.include: string
@@ -13060,7 +13060,7 @@ package vim;
 		     "g<RightMouse>" is "<C-RightMouse>	("CTRL-T")
 		
 	**/
-	var mousemodel : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var mousemodel : String;
 	/**
 		```lua
 		(global) table.mousemoveevent: boolean
@@ -13761,7 +13761,7 @@ package vim;
 		   you cannot visually select an empty region).
 		
 	**/
-	var selection : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var selection : String;
 	/**
 		```lua
 		(global) table.selectmode: string
@@ -14368,7 +14368,7 @@ package vim;
 		 displayed in a convenient location.
 		
 	**/
-	var showcmdloc : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var showcmdloc : String;
 	/**
 		```lua
 		(global) table.showfulltag: boolean
@@ -14641,7 +14641,7 @@ package vim;
 		 be kept on the same screen line when 'wrap' is enabled.
 		
 	**/
-	var splitkeep : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var splitkeep : String;
 	/**
 		```lua
 		(global) table.splitright: boolean
@@ -15119,7 +15119,7 @@ package vim;
 		    smart	Ignore case unless an upper case letter is used
 		
 	**/
-	var tagcase : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>;
+	var tagcase : String;
 	/**
 		```lua
 		(global) table.taglength: integer
@@ -16049,7 +16049,7 @@ package vim;
 		 This option is not used for <F10>; on Win32.
 		
 	**/
-	var winaltkeys : haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>;
+	var winaltkeys : String;
 	/**
 		```lua
 		(global) table.winbar: string
@@ -16091,7 +16091,7 @@ package vim;
 		 - "solid": Adds padding by a single whitespace cell.
 		
 	**/
-	var winborder : haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>;
+	var winborder : String;
 	/**
 		```lua
 		(global) table.window: integer
@@ -16397,7 +16397,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function append(lnum:haxe.extern.EitherType<Int, String>, text:haxe.extern.EitherType<String, Array<String>>):haxe.extern.EitherType<Float, Float>;
+	static function append(lnum:haxe.extern.EitherType<Int, String>, text:haxe.extern.EitherType<String, Array<String>>):Float;
 	/**
 		```lua
 		function table.appendbufline(buf: string|integer, lnum: integer, text: string)
@@ -16433,7 +16433,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function appendbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:String):haxe.extern.EitherType<Float, Float>;
+	static function appendbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:String):Float;
 	/**
 		```lua
 		function table.argc(winid?: integer)
@@ -16552,7 +16552,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_beeps(cmd:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_beeps(cmd:String):Float;
 	/**
 		```lua
 		function table.assert_equal(expected: any, actual: any, msg?: any)
@@ -16584,7 +16584,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_equal(expected:Any, actual:Any, ?msg:Any):haxe.extern.EitherType<Float, Float>;
+	static function assert_equal(expected:Any, actual:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_equalfile(fname_one: string, fname_two: string)
@@ -16606,7 +16606,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_equalfile(fname_one:String, fname_two:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_equalfile(fname_one:String, fname_two:String):Float;
 	/**
 		```lua
 		function table.assert_exception(error: any, msg?: any)
@@ -16635,7 +16635,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_exception(error:Any, ?msg:Any):haxe.extern.EitherType<Float, Float>;
+	static function assert_exception(error:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_fails(cmd: string, error?: any, msg?: any, lnum?: integer, context?: any)
@@ -16684,7 +16684,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Int, ?context:Any):haxe.extern.EitherType<Float, Float>;
+	static function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Int, ?context:Any):Float;
 	/**
 		```lua
 		function table.assert_false(actual: any, msg?: any)
@@ -16710,7 +16710,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_false(actual:Any, ?msg:Any):haxe.extern.EitherType<Float, Float>;
+	static function assert_false(actual:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_inrange(lower: number, upper: number, actual: number, msg?: string)
@@ -16733,7 +16733,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):Float;
 	/**
 		```lua
 		function table.assert_match(pattern: string, actual: string, msg?: string)
@@ -16768,7 +16768,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_match(pattern:String, actual:String, ?msg:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_match(pattern:String, actual:String, ?msg:String):Float;
 	/**
 		```lua
 		function table.assert_nobeep(cmd: string)
@@ -16788,7 +16788,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_nobeep(cmd:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_nobeep(cmd:String):Float;
 	/**
 		```lua
 		function table.assert_notequal(expected: any, actual: any, msg?: any)
@@ -16808,7 +16808,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_notequal(expected:Any, actual:Any, ?msg:Any):haxe.extern.EitherType<Float, Float>;
+	static function assert_notequal(expected:Any, actual:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_notmatch(pattern: string, actual: string, msg?: string)
@@ -16828,7 +16828,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_notmatch(pattern:String, actual:String, ?msg:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_notmatch(pattern:String, actual:String, ?msg:String):Float;
 	/**
 		```lua
 		function table.assert_report(msg: string)
@@ -16847,7 +16847,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_report(msg:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_report(msg:String):Float;
 	/**
 		```lua
 		function table.assert_true(actual: any, msg?: string)
@@ -16871,7 +16871,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function assert_true(actual:Any, ?msg:String):haxe.extern.EitherType<Float, Float>;
+	static function assert_true(actual:Any, ?msg:String):Float;
 	/**
 		```lua
 		function table.atan(expr: number)
@@ -16952,7 +16952,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function browse(save:Any, title:String, initdir:String, default:String):haxe.extern.EitherType<Float, Float>;
+	static function browse(save:Any, title:String, initdir:String, default:String):Float;
 	/**
 		```lua
 		function table.browsedir(title: string, initdir: string)
@@ -16979,7 +16979,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function browsedir(title:String, initdir:String):haxe.extern.EitherType<Float, Float>;
+	static function browsedir(title:String, initdir:String):Float;
 	/**
 		```lua
 		function table.bufadd(name: string)
@@ -17038,7 +17038,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function bufexists(buf:Any):haxe.extern.EitherType<Float, Float>;
+	static function bufexists(buf:Any):Float;
 	/**
 		```lua
 		function table.buffer_exists(...any)
@@ -17057,7 +17057,7 @@ package vim;
 		```
 	**/
 	@:deprecated
-	static function buffer_exists(___:haxe.Rest<Any>):haxe.extern.EitherType<Float, Float>;
+	static function buffer_exists(___:haxe.Rest<Any>):Float;
 	/**
 		```lua
 		function table.buffer_name(...any)
@@ -17101,7 +17101,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function buflisted(buf:Any):haxe.extern.EitherType<Float, Float>;
+	static function buflisted(buf:Any):Float;
 	/**
 		```lua
 		function table.bufload(buf: any)
@@ -17138,7 +17138,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function bufloaded(buf:Any):haxe.extern.EitherType<Float, Float>;
+	static function bufloaded(buf:Any):Float;
 	/**
 		```lua
 		function table.bufname(buf?: string|integer)
@@ -17382,7 +17382,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function chanclose(id:Int, ?stream:String):haxe.extern.EitherType<Float, Float>;
+	static function chanclose(id:Int, ?stream:String):Float;
 	/**
 		```lua
 		function table.changenr()
@@ -17432,7 +17432,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function chansend(id:Float, data:haxe.extern.EitherType<String, Array<String>>):haxe.extern.EitherType<Float, Float>;
+	static function chansend(id:Float, data:haxe.extern.EitherType<String, Array<String>>):Float;
 	/**
 		```lua
 		function table.char2nr(string: string, utf8?: any)
@@ -17462,7 +17462,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function char2nr(string:String, ?utf8:Any):haxe.extern.EitherType<Float, Float>;
+	static function char2nr(string:String, ?utf8:Any):Float;
 	/**
 		```lua
 		function table.charclass(string: string)
@@ -17491,7 +17491,7 @@ package vim;
 		    | 'other'
 		```
 	**/
-	static function charclass(string:String):haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, String>>>>;
+	static function charclass(string:String):haxe.extern.EitherType<Float, String>;
 	/**
 		```lua
 		function table.charcol(expr: string|any[], winid?: integer)
@@ -17721,7 +17721,7 @@ package vim;
 		    | 2
 		```
 	**/
-	static function complete_add(expr:Any):haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>;
+	static function complete_add(expr:Any):Float;
 	/**
 		```lua
 		function table.complete_check()
@@ -17744,7 +17744,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function complete_check():haxe.extern.EitherType<Float, Float>;
+	static function complete_check():Float;
 	/**
 		```lua
 		function table.complete_info(what?: any[])
@@ -18498,7 +18498,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function executable(expr:String):haxe.extern.EitherType<Float, Float>;
+	static function executable(expr:String):Float;
 	/**
 		```lua
 		function table.execute(command: string|string[], silent?: ''|'silent!'|'silent')
@@ -18542,7 +18542,7 @@ package vim;
 		    | 'silent!'
 		```
 	**/
-	static function execute(command:haxe.extern.EitherType<String, Array<String>>, ?silent:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>):String;
+	static function execute(command:haxe.extern.EitherType<String, Array<String>>, ?silent:String):String;
 	/**
 		```lua
 		function table.exepath(expr: string)
@@ -18660,7 +18660,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function exists(expr:String):haxe.extern.EitherType<Float, Float>;
+	static function exists(expr:String):Float;
 	/**
 		```lua
 		function table.exp(expr: number)
@@ -18979,7 +18979,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function filecopy(from:String, to:String):haxe.extern.EitherType<Float, Float>;
+	static function filecopy(from:String, to:String):Float;
 	/**
 		```lua
 		function table.filereadable(file: string)
@@ -19011,7 +19011,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function filereadable(file:String):haxe.extern.EitherType<Float, Float>;
+	static function filereadable(file:String):Float;
 	/**
 		```lua
 		function table.filewritable(file: string)
@@ -19032,7 +19032,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function filewritable(file:String):haxe.extern.EitherType<Float, Float>;
+	static function filewritable(file:String):Float;
 	/**
 		```lua
 		function table.filter(expr1: string|table, expr2: string|function)
@@ -19982,7 +19982,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function getchar(?expr:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
+	static function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
 	/**
 		```lua
 		function table.getcharmod()
@@ -20076,7 +20076,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function getcharstr(?expr:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>, ?opts:lua.Table.AnyTable):String;
+	static function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
 	/**
 		```lua
 		function table.getcmdcomplpat()
@@ -20214,7 +20214,7 @@ package vim;
 		    | '='
 		```
 	**/
-	static function getcmdtype():haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>;
+	static function getcmdtype():String;
 	/**
 		```lua
 		function table.getcmdwintype()
@@ -20239,7 +20239,7 @@ package vim;
 		    | '='
 		```
 	**/
-	static function getcmdwintype():haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>;
+	static function getcmdwintype():String;
 	/**
 		```lua
 		function table.getcompletion(pat: string, type: string, filtered?: boolean)
@@ -20527,7 +20527,7 @@ package vim;
 		    | 'other'
 		```
 	**/
-	static function getftype(fname:String):haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>;
+	static function getftype(fname:String):String;
 	/**
 		```lua
 		function table.getjumplist(winnr?: integer, tabnr?: integer)
@@ -21654,7 +21654,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function has(feature:String):haxe.extern.EitherType<Float, Float>;
+	static function has(feature:String):Float;
 	/**
 		```lua
 		function table.has_key(dict: table, key: string)
@@ -21674,7 +21674,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function has_key(dict:lua.Table.AnyTable, key:String):haxe.extern.EitherType<Float, Float>;
+	static function has_key(dict:lua.Table.AnyTable, key:String):Float;
 	/**
 		```lua
 		function table.haslocaldir(winnr?: integer, tabnr?: integer)
@@ -21706,7 +21706,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function haslocaldir(?winnr:Int, ?tabnr:Int):haxe.extern.EitherType<Float, Float>;
+	static function haslocaldir(?winnr:Int, ?tabnr:Int):Float;
 	/**
 		```lua
 		function table.hasmapto(what: any, mode?: string, abbr?: boolean)
@@ -21752,7 +21752,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function hasmapto(what:Any, ?mode:String, ?abbr:Bool):haxe.extern.EitherType<Float, Float>;
+	static function hasmapto(what:Any, ?mode:String, ?abbr:Bool):Float;
 	/**
 		```lua
 		function table.highlightID(name: string)
@@ -21812,7 +21812,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function histadd(history:String, item:Any):haxe.extern.EitherType<Float, Float>;
+	static function histadd(history:String, item:Any):Float;
 	/**
 		```lua
 		function table.histdel(history: string, item?: any)
@@ -21860,7 +21860,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function histdel(history:String, ?item:Any):haxe.extern.EitherType<Float, Float>;
+	static function histdel(history:String, ?item:Any):Float;
 	/**
 		```lua
 		function table.histget(history: string, index?: string|integer)
@@ -21941,7 +21941,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function hlexists(name:String):haxe.extern.EitherType<Float, Float>;
+	static function hlexists(name:String):Float;
 	/**
 		```lua
 		function table.hostname()
@@ -22402,7 +22402,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function isabsolutepath(path:String):haxe.extern.EitherType<Float, Float>;
+	static function isabsolutepath(path:String):Float;
 	/**
 		```lua
 		function table.isdirectory(directory: string)
@@ -22423,7 +22423,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function isdirectory(directory:String):haxe.extern.EitherType<Float, Float>;
+	static function isdirectory(directory:String):Float;
 	/**
 		```lua
 		function table.isinf(expr: number)
@@ -22447,7 +22447,7 @@ package vim;
 		    | -1
 		```
 	**/
-	static function isinf(expr:Float):haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>;
+	static function isinf(expr:Float):Float;
 	/**
 		```lua
 		function table.islocked(expr: any)
@@ -22476,7 +22476,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function islocked(expr:Any):haxe.extern.EitherType<Float, Float>;
+	static function islocked(expr:Any):Float;
 	/**
 		```lua
 		function table.isnan(expr: number)
@@ -22496,7 +22496,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function isnan(expr:Float):haxe.extern.EitherType<Float, Float>;
+	static function isnan(expr:Float):Float;
 	/**
 		```lua
 		function table.items(dict: table)
@@ -23307,7 +23307,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function maplist(?abbr:haxe.extern.EitherType<Float, Float>):Array<lua.Table.AnyTable>;
+	static function maplist(?abbr:Float):Array<lua.Table.AnyTable>;
 	/**
 		```lua
 		function table.mapnew(expr1: any, expr2: any)
@@ -26891,7 +26891,7 @@ package vim;
 		     \ ])
 		 <
 	**/
-	static function sign_define(name:String, ?dict:vim.type.Vim_Fn_SignDefine_Dict):haxe.extern.EitherType<Float, Float>;
+	static function sign_define(name:String, ?dict:vim.type.Vim_Fn_SignDefine_Dict):Float;
 	/**
 		```lua
 		function table.sign_getdefined(name?: string)
@@ -27200,7 +27200,7 @@ package vim;
 		   call sign_undefine()
 		 <
 	**/
-	static function sign_undefine(?name:String):haxe.extern.EitherType<Float, Float>;
+	static function sign_undefine(?name:String):Float;
 	/**
 		```lua
 		function table.sign_unplace(group: string, dict?: vim.fn.sign_unplace.dict)
@@ -27257,7 +27257,7 @@ package vim;
 		    | -1
 		```
 	**/
-	static function sign_unplace(group:String, ?dict:vim.type.Vim_Fn_SignUnplace_Dict):haxe.extern.EitherType<Float, Float>;
+	static function sign_unplace(group:String, ?dict:vim.type.Vim_Fn_SignUnplace_Dict):Float;
 	/**
 		```lua
 		function table.sign_unplacelist(list: vim.fn.sign_unplacelist.list.item)
@@ -27294,7 +27294,7 @@ package vim;
 		     \ ])
 		 <
 	**/
-	static function sign_unplacelist(list:vim.type.Vim_Fn_SignUnplacelist_List_Item):Array<haxe.extern.EitherType<Float, Float>>;
+	static function sign_unplacelist(list:vim.type.Vim_Fn_SignUnplacelist_List_Item):Array<Float>;
 	/**
 		```lua
 		function table.simplify(filename: string)
@@ -27788,7 +27788,7 @@ package vim;
 		    | 'data_dirs'
 		```
 	**/
-	static function stdpath(what:haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>):haxe.extern.EitherType<String, Array<String>>;
+	static function stdpath(what:String):haxe.extern.EitherType<String, Array<String>>;
 	/**
 		```lua
 		function table.str2float(string: string, quoted?: boolean)
@@ -28121,7 +28121,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function strpart(src:String, start:Int, ?len:Int, ?chars:haxe.extern.EitherType<Float, Float>):String;
+	static function strpart(src:String, start:Int, ?len:Int, ?chars:Float):String;
 	/**
 		```lua
 		function table.strptime(format: string, timestring: string)
@@ -28232,7 +28232,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function strutf16len(string:String, ?countcc:haxe.extern.EitherType<Float, Float>):Int;
+	static function strutf16len(string:String, ?countcc:Float):Int;
 	/**
 		```lua
 		function table.strwidth(string: string)
@@ -28444,7 +28444,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function synID(lnum:haxe.extern.EitherType<Int, String>, col:Int, trans:haxe.extern.EitherType<Float, Float>):Int;
+	static function synID(lnum:haxe.extern.EitherType<Int, String>, col:Int, trans:Float):Int;
 	/**
 		```lua
 		function table.synIDattr(synID: integer, what: string, mode?: string)
@@ -28707,7 +28707,7 @@ package vim;
 		    | '#'
 		```
 	**/
-	static function tabpagenr(?arg:haxe.extern.EitherType<String, String>):Int;
+	static function tabpagenr(?arg:String):Int;
 	/**
 		```lua
 		function table.tabpagewinnr(tabarg: integer, arg?: '#'|'$')
@@ -28735,7 +28735,7 @@ package vim;
 		    | '#'
 		```
 	**/
-	static function tabpagewinnr(tabarg:Int, ?arg:haxe.extern.EitherType<String, String>):Int;
+	static function tabpagewinnr(tabarg:Int, ?arg:String):Int;
 	/**
 		```lua
 		function table.tagfiles()
@@ -29066,7 +29066,7 @@ package vim;
 		    | 2
 		```
 	**/
-	static function trim(text:String, ?mask:String, ?dir:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>):String;
+	static function trim(text:String, ?mask:String, ?dir:Float):String;
 	/**
 		```lua
 		function table.trunc(expr: number)
@@ -29512,7 +29512,7 @@ package vim;
 		    | 'unknown'
 		```
 	**/
-	static function win_gettype(?nr:Int):haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>>>>>>;
+	static function win_gettype(?nr:Int):String;
 	/**
 		```lua
 		function table.win_gotoid(expr: integer)
@@ -29532,7 +29532,7 @@ package vim;
 		    | 1
 		```
 	**/
-	static function win_gotoid(expr:Int):haxe.extern.EitherType<Float, Float>;
+	static function win_gotoid(expr:Int):Float;
 	/**
 		```lua
 		function table.win_id2tabwin(expr: integer)
@@ -35067,7 +35067,7 @@ package vim;
 		    | 0
 		```
 	**/
-	static function lua_omnifunc(find_start:haxe.extern.EitherType<Float, Float>, _:Any):Dynamic;
+	static function lua_omnifunc(find_start:Float, _:Any):Dynamic;
 	/**
 		```lua
 		function vim.notify(msg: string, level: integer|nil, opts: table|nil)
@@ -35247,7 +35247,7 @@ package vim;
 		    | 3
 		```
 	**/
-	static function paste(lines:Array<String>, phase:haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>>):Bool;
+	static function paste(lines:Array<String>, phase:Float):Bool;
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -35567,7 +35567,7 @@ package vim;
 		    | "utf-32"
 		```
 	**/
-	static function str_byteindex(s:String, encoding:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, index:Int, ?strict_indexing:Bool):Int;
+	static function str_byteindex(s:String, encoding:String, index:Int, ?strict_indexing:Bool):Int;
 	/**
 		```lua
 		function vim.str_utf_end(str: string, index: integer)
@@ -35657,7 +35657,7 @@ package vim;
 		    | "utf-32"
 		```
 	**/
-	static function str_utfindex(s:String, encoding:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ?index:Int, ?strict_indexing:Bool):Int;
+	static function str_utfindex(s:String, encoding:String, ?index:Int, ?strict_indexing:Bool):Int;
 	/**
 		```lua
 		function vim.stricmp(a: string, b: string)
@@ -35677,7 +35677,7 @@ package vim;
 		    | -1
 		```
 	**/
-	static function stricmp(a:String, b:String):haxe.extern.EitherType<Float, haxe.extern.EitherType<Float, Float>>;
+	static function stricmp(a:String, b:String):Float;
 	/**
 		```lua
 		function vim.system(cmd: string[], opts?: vim.SystemOpts, on_exit?: fun(out: vim.SystemCompleted))
@@ -35867,7 +35867,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_deep_extend<T1:(lua.Table.AnyTable), T2:(lua.Table.AnyTable)>(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<T2>):haxe.extern.EitherType<vim.type.T1, vim.type.T2>;
+	static function tbl_deep_extend<T1:(lua.Table.AnyTable), T2:(lua.Table.AnyTable)>(behavior:String, ___:haxe.Rest<T2>):haxe.extern.EitherType<vim.type.T1, vim.type.T2>;
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -35896,7 +35896,7 @@ package vim;
 		    | 'force'
 		```
 	**/
-	static function tbl_extend(behavior:haxe.extern.EitherType<String, haxe.extern.EitherType<String, String>>, ___:haxe.Rest<lua.Table.AnyTable>):lua.Table.AnyTable;
+	static function tbl_extend(behavior:String, ___:haxe.Rest<lua.Table.AnyTable>):lua.Table.AnyTable;
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
