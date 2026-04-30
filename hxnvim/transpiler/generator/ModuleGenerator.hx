@@ -14,7 +14,7 @@ using transpiler.parser.ParserTools;
 
 typedef Module = Array<TypeDefinition>;
 
-class Generator {
+class ModuleGenerator {
 	// final origin:Parser;
 	final moduleName:String;
 	final moduleNativeName:String;

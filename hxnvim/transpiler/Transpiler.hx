@@ -4,7 +4,7 @@ import transpiler.State;
 import transpiler.IO;
 // import transpiler.lexer.Lexer;
 import transpiler.parser.Parser;
-import transpiler.generator.Generator;
+import transpiler.generator.ModuleGenerator;
 
 class Transpiler {
 	static public function transpile(io:IO) {
@@ -16,8 +16,6 @@ class Transpiler {
 				parsedGenerics: new Map<String, String>() */
 		};
 
-		return State.provide(state, () -> {
-			return new Generator().generate(new Parser().parse());
-		});
+		return State.provide(state, () -> new ModuleGenerator().generate(new Parser().parse()));
 	}
 }
