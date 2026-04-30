@@ -1,6 +1,7 @@
 all: install
 
-SRC_DIR=resources/types
+RESOURCES_DIR=resources
+SRC_DIR=$(RESOURCES_DIR)/types
 OUT_DIR=externs
 
 $(SRC_DIR):
@@ -13,6 +14,7 @@ src: $(SRC_DIR)
 .PHONY=build
 build: src
 	@haxe build.hxml
+	@cp -r $(RESOURCES_DIR)/_internal $(OUT_DIR)/
 
 .PHONY=rebuild
 rebuild: clean
@@ -31,5 +33,4 @@ install:
 .PHONY=clean
 clean:
 	@rm -rf $(OUT_DIR)
-	@rm -rf $(SRC_DIR)
 

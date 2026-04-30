@@ -64,7 +64,7 @@ class ModuleGenerator {
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: table.name}, [metaMainAlias]));
 				}
 			case s:
-				throw new Exception('Unimplemented ${s} symbol generator');
+				throw new Exception('Unimplemented main generator for symbol ${s}');
 		}
 
 		/* final main = parsedModule.main.getTable();

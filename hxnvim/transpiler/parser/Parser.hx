@@ -220,6 +220,29 @@ class Parser {
 			}
 		});
 
+		final ret = switch (func.select('returns').array()) {
+			case []: "Dynamic";
+			case [r]: switch (r.select('type', 'kind').string()) {
+					case 'typereference': switch (r.select('type', 'value').string()) {
+							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
+							case _: this.parseLiteralType(r.select('type'));
+						}
+					case _: this.parseLiteralType(r.select('type'));
+				}
+			case returns if (returns.length <= 6):
+				final multireturn = returns.map(r -> switch (r.select('type', 'kind').string()) {
+					case 'typereference': switch (r.select('type', 'value').string()) {
+							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
+							case _: this.parseLiteralType(r.select('type'));
+						}
+					case _: this.parseLiteralType(r.select('type'));
+				});
+
+				'vim._internal.Multireturn<${multireturn.join(", ")}>';
+
+			case _: throw new Exception('Unsupported number of return types for function ${func.getValue()}');
+		}
+
 		return {
 			name: name,
 			doc: doc,
@@ -227,7 +250,7 @@ class Parser {
 			access: access,
 			params: params,
 			args: args,
-			ret: "Void"
+			ret: ret
 		};
 	}
 
@@ -278,10 +301,12 @@ class Parser {
 							case false: '${argumentName}:${this.parseLiteralType(argument.select('type'))}';
 						}
 				});
+
 				final return_ = switch (type.select('returns').array()) {
-					case []: "Any";
+					case []: "Dynamic";
 					case [r]: this.parseLiteralType(r.select('type'));
-					case _: throw new Exception('Unimplemented multiple function returns');
+					case returns if (returns.length <= 6): 'vim._internal.Multireturn<${returns.map(r -> this.parseLiteralType(r.select("type"))).join(", ")}>';
+					case _: throw new Exception('Unsupported number of return types for function ${type.getValue()}');
 				}
 
 				'(${arguments.join(", ")}) -> ${return_}';
