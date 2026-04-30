@@ -171,8 +171,10 @@ class Parser {
 						type: className
 					}));
 
+				case 'unknown': 'Any';
+
 				case k:
-					trace('Unprocessed ${fieldName} of kind ${k}');
+					throw new Exception('Unexpected kind "${k}" received for table field ${fieldType.getValue()}');
 			}
 		}
 

@@ -34165,7 +34165,7 @@ package vim;
 	static function call(func:String, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
-		(global) vim.cmd: table|fun(command: string|table)|table<string, fun(...any)>
+		(global) vim.cmd: table
 		```
 		
 		---
@@ -34207,12 +34207,6 @@ package vim;
 		       - The string form supports multiline Vimscript (alias to |nvim_exec2()|, behaves
 		         like |:source|).
 		       - The table form executes a single command (alias to |nvim_cmd()|).
-		
-		---
-		
-		```lua
-		function vim.cmd(command: string|table)
-		```
 	**/
 	var cmd : haxe.extern.EitherType<(command:haxe.extern.EitherType<String, lua.Table.AnyTable>) -> Dynamic, lua.Table<String, (___:haxe.Rest<Any>) -> Dynamic>>;
 	/**
