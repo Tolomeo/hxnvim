@@ -158,8 +158,8 @@ class Parser {
 				case 'table':
 					final className = fieldName.toTypeName();
 					final classDoc = "";
-					final classMetadata = [];
-					final classAccess = [ParsedAccess.Private];
+					final classMetadata = [{name: 'private'}];
+					final classAccess = [];
 
 					this.result.types.set(className, ParsedSymbol.ParsedTable(this.parseTableType(className, classDoc, classMetadata, classAccess, fieldType)));
 
@@ -171,7 +171,8 @@ class Parser {
 						type: className
 					}));
 
-				case 'unknown': 'Any';
+				case 'unknown':
+					'Any';
 
 				case k:
 					throw new Exception('Unexpected kind "${k}" received for table field ${fieldType.getValue()}');

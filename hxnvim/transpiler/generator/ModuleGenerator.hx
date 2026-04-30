@@ -48,7 +48,7 @@ class ModuleGenerator {
 					case ModuleType.Alias(parsedAlias):
 						result.push(new AliasGenerator(parsedAlias).make([metaPrivate])); */
 				case ParsedSymbol.ParsedTable(table):
-					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate]));
+					moduleTypes.push(new ClassGenerator().generate(table));
 				case _:
 					throw new Exception('Unsupported type received: ${type}');
 			}

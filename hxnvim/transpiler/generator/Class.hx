@@ -79,7 +79,7 @@ class ClassGenerator {
 	}
 
 	public function generate(table:Table, ?meta:Array<Metadata>):TypeDefinition {
-		meta = meta.or([]);
+		meta = meta.or([]).concat(table.meta);
 
 		final name = table.name;
 
