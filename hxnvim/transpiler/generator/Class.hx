@@ -26,12 +26,12 @@ class ClassGenerator {
 		final name = property.name;
 
 		// TODO: macro this
-		final access = property.access.map(a -> switch (a) {
+		final access = [AExtern].concat(property.access.map(a -> switch (a) {
 			case ParsedAccess.Public: APublic;
 			case ParsedAccess.Static: AStatic;
 			case ParsedAccess.Private: APrivate;
 			case _: throw 'Unexpected method access for property ${property}';
-		});
+		}));
 
 		return {
 			meta: meta,
@@ -49,13 +49,13 @@ class ClassGenerator {
 		final name = func.name;
 
 		// TODO: macro this
-		final access = func.access.map(a -> switch (a) {
+		final access = [AExtern].concat(func.access.map(a -> switch (a) {
 			case ParsedAccess.Public: APublic;
 			case ParsedAccess.Static: AStatic;
 			case ParsedAccess.Private: APrivate;
 			case ParsedAccess.Overload: AOverload;
 			case _: throw "Unexpected method access";
-		});
+		}));
 
 		return {
 			meta: meta,
