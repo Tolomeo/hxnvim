@@ -2,6 +2,7 @@ package transpiler.parser;
 
 import haxe.Exception;
 import haxe.Rest;
+import haxe.Serializer;
 import haxe.extern.EitherType;
 import transpiler.State;
 import utils.Json;
@@ -150,11 +151,23 @@ class Parser {
 						case []: parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess,
 								fieldType)));
 						case overloads:
-							parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
+							final functions = new Array<Function>();
+
+							function isEqualSignature(fn1:Function, fn2:Function) {
+								return Serializer.run({args: fn1.args, ret: fn1.ret}) == Serializer.run({args: fn2.args, ret: fn2.ret});
+							}
+
+							functions.push(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType));
+
 							overloads.iter(overload_ -> {
-								parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata,
-									fieldAccess.concat([ParsedAccess.Overload]), overload_)));
+								final fn = this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]), overload_);
+
+								if (functions.foreach(existingFn -> !isEqualSignature(existingFn, fn))) {
+									functions.push(fn);
+								}
 							});
+
+							functions.iter(fn -> parsedTable.fields.push(TableField.Method(fn)));
 					}
 				case 'modulereference', 'typereference', 'builtin', 'union':
 					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
