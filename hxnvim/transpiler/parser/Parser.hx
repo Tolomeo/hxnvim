@@ -113,12 +113,12 @@ class Parser {
 		final type = symbol.select('type');
 
 		return switch (type.select('kind').string()) {
-			case "table": ParsedSymbol.ParsedTable(this.parseTableType(name, doc, metadata, access, type));
+			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
 			case u: throw new Exception('${u} not implemented');
 		}
 	}
 
-	private function parseTableType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
+	private function parseTableSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
 		final parsedTable = {
 			name: name,
 			doc: doc,
@@ -146,22 +146,26 @@ class Parser {
 
 			switch (fieldType.select('kind').string()) {
 				case 'function':
-					parsedTable.fields.push(TableField.Method(this.parseFunctionType(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
+					switch (fieldType.select('overloads').array()) {
+						case []: parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess,
+								fieldType)));
+						case overloads:
+							parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
+							overloads.iter(overload_ -> {
+								parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata,
+									fieldAccess.concat([ParsedAccess.Overload]), overload_)));
+							});
+					}
 				case 'modulereference', 'typereference', 'builtin', 'union':
-					parsedTable.fields.push(TableField.Property({
-						name: fieldName,
-						doc: fieldDoc,
-						meta: fieldMetadata,
-						access: fieldAccess,
-						type: this.parseLiteralType(fieldType)
-					}));
+					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
 				case 'table':
 					final className = fieldName.toTypeName();
 					final classDoc = "";
 					final classMetadata = [{name: 'private'}];
 					final classAccess = [];
 
-					this.result.types.set(className, ParsedSymbol.ParsedTable(this.parseTableType(className, classDoc, classMetadata, classAccess, fieldType)));
+					this.result.types.set(className,
+						ParsedSymbol.ParsedTable(this.parseTableSymbol(className, classDoc, classMetadata, classAccess, fieldType)));
 
 					parsedTable.fields.push(TableField.Property({
 						name: fieldName,
@@ -182,10 +186,18 @@ class Parser {
 		return parsedTable;
 	}
 
-	private function parseAliasType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, alias:Json) {}
+	private function parseAliasSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, alias:Json) {
+		return {
+			name: name,
+			doc: doc,
+			meta: meta,
+			access: access,
+			type: this.parseLiteralType(alias)
+		}
+	}
 
 	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
-	private function parseFunctionType(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
+	private function parseFunctionSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
 		final params = func.select('generics').array().map(param -> {
 			final name = param.select('name').string();
 			final type = param.select('type');

@@ -36503,6 +36503,125 @@ package vim;
 	extern static function validate(name:String, value:Any, validator:vim.type.Vim_Validate_Validator, ?optional:Bool, ?message:String):Dynamic;
 	/**
 		```lua
+		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
+		```
+		
+		---
+		
+		 Validate function arguments.
+		
+		 This function has two valid forms:
+		
+		 1. `vim.validate(name, value, validator[, optional][, message])`
+		
+		     Validates that argument {name} with value {value} satisfies
+		     {validator}. If {optional} is given and is `true`, then {value} may be
+		     `nil`. If {message} is given, then it is used as the expected type in the
+		     error message.
+		
+		     Example:
+		
+		     ```lua
+		       function vim.startswith(s, prefix)
+		         vim.validate('s', s, 'string')
+		         vim.validate('prefix', prefix, 'string')
+		         -- ...
+		       end
+		     ```
+		
+		 2. `vim.validate(spec)` (deprecated)
+		     where `spec` is of type
+		    `table<string,[value:any, validator: vim.validate.Validator, optional_or_msg? : boolean|string]>)`
+		
+		     Validates a argument specification.
+		     Specs are evaluated in alphanumeric order, until the first failure.
+		
+		     Example:
+		
+		     ```lua
+		       function user.new(name, age, hobbies)
+		         vim.validate{
+		           name={name, 'string'},
+		           age={age, 'number'},
+		           hobbies={hobbies, 'table'},
+		         }
+		         -- ...
+		       end
+		     ```
+		
+		 Examples with explicit argument values (can be run directly):
+		
+		 ```lua
+		 vim.validate('arg1', {'foo'}, 'table')
+		    --> NOP (success)
+		 vim.validate('arg2', 'foo', 'string')
+		    --> NOP (success)
+		
+		 vim.validate('arg1', 1, 'table')
+		    --> error('arg1: expected table, got number')
+		
+		 vim.validate('arg1', 3, function(a) return (a % 2) == 0 end, 'even number')
+		    --> error('arg1: expected even number, got 3')
+		 ```
+		
+		 If multiple types are valid they can be given as a list.
+		
+		 ```lua
+		 vim.validate('arg1', {'foo'}, {'table', 'string'})
+		 vim.validate('arg2', 'foo', {'table', 'string'})
+		 -- NOP (success)
+		
+		 vim.validate('arg1', 1, {'string', 'table'})
+		 -- error('arg1: expected string|table, got number')
+		 ```
+		
+		 @note `validator` set to a value returned by |lua-type()| provides the
+		 best performance.
+		
+		@*param* `name` — Argument name
+		
+		@*param* `value` — Argument value
+		
+		   - (`string|string[]`): Any value that can be returned from |lua-type()| in addition to
+		     `'callable'`: `'boolean'`, `'callable'`, `'function'`, `'nil'`, `'number'`, `'string'`, `'table'`,
+		     `'thread'`, `'userdata'`.
+		   - (`fun(val:any): boolean, string?`) A function that returns a boolean and an optional
+		     string message.
+		
+		@*param* `optional` — Argument is optional (may be omitted)
+		
+		@*param* `message` — message when validation fails
+		
+		---
+		
+		```lua
+		validator:
+		    | "nil"
+		    | "number"
+		    | "string"
+		    | "boolean"
+		    | "table"
+		    | "function"
+		    | "thread"
+		    | "userdata"
+		    | 'callable'
+		```
+		
+		---
+		
+		```lua
+		function vim.validate(name: string, val: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, message: string)
+		```
+		
+		---
+		
+		```lua
+		function vim.validate(spec: table<string, [any, "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'c...(too long)...|string] })
+		```
+	**/
+	extern static overload function validate(name:String, val:Any, validator:vim.type.Vim_Validate_Validator, message:String):Dynamic;
+	/**
+		```lua
 		(global) vim.version: table
 		```
 	**/

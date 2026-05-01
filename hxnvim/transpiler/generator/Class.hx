@@ -85,10 +85,9 @@ class ClassGenerator {
 
 		final fields:Array<Field> = table.fields.map(parsedField -> {
 			return switch (parsedField) {
-				// case TableField.Property(parsedProperty): this.makeProperty(parsedProperty);
 				case TableField.Method(func): this.makeMethod(func);
 				case TableField.Property(prop): this.makeProperty(prop);
-				case u: throw new Exception('Unimplementyed ${u} table field generator');
+				case u: throw new Exception('Unexpected ${u} table field received');
 			}
 		});
 
