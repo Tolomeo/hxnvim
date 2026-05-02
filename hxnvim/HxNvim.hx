@@ -107,10 +107,12 @@ class HxNvim {
 
 	static function generate(specs:Map<String, String>) {
 		for (file => spec in specs.keyValueIterator()) {
-			trace(file);
 			final filepath = new Path(file);
 			final native = filepath.file;
-			final pack = [Config.outputPack];
+			final pack = switch (filepath.dir) {
+				case null: [Config.outputPack];
+				case dir: [Config.outputPack].concat(dir.split("/"));
+			}
 			final name = filepath.file.capitalize();
 
 			final targetDir = filepath.dir;
