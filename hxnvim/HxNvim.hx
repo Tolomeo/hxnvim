@@ -31,7 +31,7 @@ class HxNvim {
 			final path = Path.join([directory, file]);
 
 			if (sys.FileSystem.isDirectory(path)) {
-				// subDirectories.push(path);
+				subDirectories.push(path);
 				continue;
 			}
 
@@ -113,7 +113,7 @@ class HxNvim {
 				case null: [Config.outputPack];
 				case dir: [Config.outputPack].concat(dir.split("/"));
 			}
-			final name = filepath.file.capitalize();
+			final name = filepath.file.toTypeName();
 
 			final targetDir = filepath.dir;
 			final targetFile = '${name}.hx';

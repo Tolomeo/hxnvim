@@ -5,12 +5,8 @@ import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 import transpiler.State;
 import transpiler.parser.Parser;
-// import transpiler.parser.Meta.ParsedMetadata;
-// import transpiler.generator.Enumerator;
 import transpiler.generator.Alias;
 import transpiler.generator.Class;
-
-using transpiler.parser.ParserTools;
 
 typedef Module = Array<TypeDefinition>;
 
@@ -26,13 +22,6 @@ class ModuleGenerator {
 		this.moduleName = state.output.name;
 		this.moduleNativeName = state.output.native;
 		this.modulePack = state.output.pack;
-	}
-
-	private function symbolName(symbol:ParsedSymbol):String {
-		return switch (symbol) {
-			case ParsedSymbol.ParsedTable(table): table.name;
-			case _: throw new Exception('Unexpected parsed symbol type received: ${symbol}');
-		}
 	}
 
 	public function make(parsedModule:ParsedModule) {

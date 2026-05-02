@@ -7,9 +7,8 @@ import haxe.extern.EitherType;
 import transpiler.State;
 import utils.Json;
 
-using Lambda;
 using utils.ArrayTools;
-using transpiler.parser.ParserTools;
+using utils.StringTools;
 
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;

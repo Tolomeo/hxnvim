@@ -1,6 +1,7 @@
 package utils;
 
-import Lambda;
+using Lambda;
+using StringTools;
 
 class ArrayTools {
 	static public final flatMap = Lambda.flatMap;
@@ -42,5 +43,9 @@ class ArrayTools {
 
 	static public function toParagraph<T>(array:Array<T>):String {
 		return array.join("\n");
+	}
+
+	static public function toDoc(lines:Array<String>):String {
+		return ArrayTools.toParagraph(lines).replace("*/", "*\\/");
 	}
 }
