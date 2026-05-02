@@ -4,11 +4,13 @@ import haxe.Exception;
 import haxe.Rest;
 import haxe.Serializer;
 import haxe.extern.EitherType;
-import transpiler.State;
-import utils.Json;
 
 using utils.ArrayTools;
 using utils.StringTools;
+
+import Config;
+import utils.Json;
+import transpiler.State;
 
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
@@ -114,7 +116,7 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
-			case u: throw new Exception('${u} not implemented');
+			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}
 	}
 
@@ -301,7 +303,7 @@ class Parser {
 					case v: throw new Exception('Unexpected builtin type value "${v}" received');
 				}
 
-			case "unknown": "Any";
+			case "unknown": "Dynamic";
 
 			case "optional": 'Null<${this.parseLiteralType(type.select('type'))}>';
 
@@ -370,9 +372,9 @@ class Parser {
 
 			case "booleanliteral": "Bool";
 
-			case "typereference": 'vim.type.${type.select('value').string().toTypeName()}';
+			case "typereference": '${Config.outputPack}.type.${type.select('value').string().toTypeName()}';
 
-			case "modulereference": 'vim.module.${type.select('value').string().toTypeName()}';
+			case "modulereference": '${Config.outputPack}.module.${type.select('value').string().toTypeName()}';
 
 			case _:
 				throw new Exception('Unrecognised type "${type.getValue()}" received');
