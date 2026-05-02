@@ -1,86 +1,37 @@
-/* import haxe.Exception;
-	import sys.io.File;
-	import hxjsonast.*;
-
-	class HxNvim {
-	static function readFile(path: String) {
-		try {
-			return File.getContent(path);
-		} catch (e: Exception) {
-			trace('Error reading file ${path}');
-			throw e;
-		}
-	}
-
-	static public function main() {
-		final args = Sys.args();
-		trace(args);
-		final file = 'resources/types/vim.json';
-		final fileContents = HxNvim.readFile(file);
-
-		// parsing is easy!
-		var json = hxjsonast.Parser.parse(fileContents, file);
-
-		// `pos` store the filename, start and end characters
-		trace(json.pos.file); // {file: 'person.json', min: 0, max: 43}
-
-		// `value` is an enum, easy to work with pattern matching
-		switch (json.value) {
-			case JNull:
-				trace('null!');
-			case JString(string):
-				trace('string!');
-			case JBool(bool):
-				trace('boolean!');
-			case JNumber(number):
-				trace('number!');
-			case JArray(values):
-				trace('array!');
-			case JObject(fields):
-				for (field in fields) {
-					trace(field.name);
-				}
-		}
-	}
-}*/
-
-// import haxe.ds.Option;
 import sys.io.File;
 import sys.FileSystem;
 import haxe.io.Path;
 import haxe.Exception;
 import haxe.ds.Option;
 
+using utils.NullTools;
 using utils.StringTools;
 using utils.ArrayTools;
 
-// using reader.ReaderTools;
 import Config;
 import Logger;
 import transpiler.Transpiler;
 import writer.Writer;
 
-// import reader.Neodev;
-// import reader.Runtime;
-// import writer.Writer;
-// import transpiler.Transpiler;
 class HxNvim {
 	static public function main() {
 		HxNvim.run();
 	}
 
-	static function source(directory:String) {
-		final entryFiles = new Map<String, String>();
+	static function source(?directory:String):Array<Map<String, String>> {
+		final directory = directory.or(Config.inputDir);
+		final files = new Map<String, String>();
+		final subDirectories = new Array<String>();
 
 		if (!FileSystem.exists(directory)) {
-			Logger.error('"$directory" does not exists');
-			return entryFiles;
+			throw new Exception('Source directory "${directory}" does not exists');
 		}
 
 		for (file in FileSystem.readDirectory(directory)) {
-			final path = haxe.io.Path.join([directory, file]);
+			final path = Path.join([directory, file]);
 
 			if (sys.FileSystem.isDirectory(path)) {
+				// subDirectories.push(path);
 				continue;
 			}
 
@@ -91,57 +42,21 @@ class HxNvim {
 				throw e;
 			}
 
-			entryFiles.set(path, spec);
+			final relativePath = path.substr(Path.addTrailingSlash(Config.inputDir).length);
+			files.set(relativePath, spec);
 		}
 
-		return entryFiles;
+		return [files].concat(subDirectories.flatMap(dir -> HxNvim.source(dir)));
 	}
 
 	static macro function run() {
 		final outputDir = Config.outputDir;
-		final specs = HxNvim.source(Config.inputDir);
+		// final packages = [HxNvim.source(Config.inputDir), HxNvim.source('${Config.inputDir}/module')];
+		final packages = HxNvim.source();
 
-		for (file => spec in specs.keyValueIterator()) {
-			final filepath = new Path(file);
-			final native = filepath.file;
-			final pack = [filepath.file];
-			final name = filepath.file.capitalize();
-
-			final targetDir = pack.join('/');
-			final targetFile = '${name}.hx';
-			final targetWriter = new Writer(targetDir).get(targetFile);
-
-			switch (targetWriter.read()) {
-				case None:
-				case Some(_):
-					Logger.info('Using "${Path.join([targetDir, targetFile])}" generated output found');
-					continue;
-			}
-
-			final input = {
-				file: file,
-				spec: spec
-			}
-
-			final output = {
-				name: name,
-				pack: pack,
-				native: native,
-				overrides: switch (Config.overrides.get(native)) {
-					case null: {};
-					case moduleOverrides: moduleOverrides;
-				}
-			};
-
-			final transpiled = Transpiler.transpile({
-				input: input,
-				output: output
-			});
-
-			Logger.info('Writing "${Path.join([targetDir, targetFile])}" output');
-			targetWriter.write(transpiled);
+		for (specs in packages) {
+			HxNvim.generate(specs);
 		}
-
 		/* for (moduleName in Config.modules) {
 				final root = Config.outputDir;
 				final path = moduleName.split(".");
@@ -188,5 +103,49 @@ class HxNvim {
 
 			return macro null; */
 		return macro null;
+	}
+
+	static function generate(specs:Map<String, String>) {
+		for (file => spec in specs.keyValueIterator()) {
+			trace(file);
+			final filepath = new Path(file);
+			final native = filepath.file;
+			final pack = [Config.outputPack];
+			final name = filepath.file.capitalize();
+
+			final targetDir = filepath.dir;
+			final targetFile = '${name}.hx';
+			final targetWriter = new Writer(targetDir).get(targetFile);
+
+			switch (targetWriter.read()) {
+				case None:
+				case Some(_):
+					Logger.info('Using "${Path.join([targetDir, targetFile])}" generated output found');
+					continue;
+			}
+
+			final input = {
+				file: file,
+				spec: spec
+			}
+
+			final output = {
+				name: name,
+				pack: pack,
+				native: native,
+				overrides: switch (Config.overrides.get(native)) {
+					case null: {};
+					case moduleOverrides: moduleOverrides;
+				}
+			};
+
+			final transpiled = Transpiler.transpile({
+				input: input,
+				output: output
+			});
+
+			Logger.info('Writing "${Path.join([targetDir, targetFile])}" output');
+			targetWriter.write(transpiled);
+		}
 	}
 }

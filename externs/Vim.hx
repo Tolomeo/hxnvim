@@ -1,4 +1,4 @@
-package vim;
+package externs;
 
 @:private extern class OptLocal {
 
