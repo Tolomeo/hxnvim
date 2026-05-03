@@ -11,6 +11,7 @@ using utils.StringTools;
 import Config;
 import utils.Json;
 import transpiler.State;
+import transpiler.parser.SymbolParser;
 
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
@@ -188,8 +189,11 @@ class Parser {
 			switch (fieldType.select('kind').string()) {
 				case 'function':
 					switch (fieldType.select('overloads').array()) {
-						case []: parsedTable.fields.push(TableField.Method(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess,
-								fieldType)));
+						case []:
+							final symbol = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse();
+							final method = TableField.Method(symbol);
+							parsedTable.fields.push(method);
+
 						case overloads:
 							final functions = new Array<Function>();
 
@@ -197,10 +201,11 @@ class Parser {
 								return Serializer.run({args: fn1.args, ret: fn1.ret}) == Serializer.run({args: fn2.args, ret: fn2.ret});
 							}
 
-							functions.push(this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType));
+							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse());
 
 							overloads.iter(overload_ -> {
-								final fn = this.parseFunctionSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]), overload_);
+								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]),
+									overload_).parse();
 
 								if (functions.foreach(existingFn -> !isEqualSignature(existingFn, fn))) {
 									functions.push(fn);
@@ -248,7 +253,7 @@ class Parser {
 	}
 
 	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
-	private function parseFunctionSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
+	/* private function parseFunctionSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
 		final params = func.select('generics').array().map(param -> {
 			final name = param.select('name').string();
 			final type = param.select('type');
@@ -319,5 +324,5 @@ class Parser {
 			args: args,
 			ret: ret
 		};
-	}
+	}*/
 }
