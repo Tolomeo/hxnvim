@@ -14,6 +14,7 @@ import transpiler.State;
 import transpiler.symbol.Symbol;
 import transpiler.symbol.Module;
 import transpiler.parser.SymbolParser;
+import transpiler.parser.MetadataParser;
 
 class Parser {
 	private final json:Json;
@@ -38,19 +39,8 @@ class Parser {
 	private function parseSymbol(symbol:Json) {
 		final name = symbol.select('name').string().toTypeName();
 		final doc = symbol.select('documentation').array().map(line -> line.string()).toDoc();
-
-		final access = new Array<ParsedAccess>();
-		final metadata = new Array<Metadata>();
-
-		final meta = symbol.select('meta').array().map(i -> i.string());
-
-		meta.iter((m -> switch (m) {
-			case "static": access.push(ParsedAccess.Static);
-			case "private": access.push(ParsedAccess.Private);
-			case "deprecated": metadata.push({name: "deprecated"});
-			case m: throw new Exception('Meta not implemented: ${m}');
-		}));
-
+		final access = new AccessParser(symbol.select('meta')).parse();
+		final metadata = new MetaParser(symbol.select('meta')).parse();
 		final type = symbol.select('type');
 
 		return switch (type.select('kind').string()) {
