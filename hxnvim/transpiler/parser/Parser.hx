@@ -54,7 +54,9 @@ class Parser {
 		final type = symbol.select('type');
 
 		return switch (type.select('kind').string()) {
-			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
+			case "table": 
+				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(this.result);
+				return ParsedSymbol.ParsedTable(symbol);
 
 			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":
 				final symbol = new AliasSymbolParser(name, doc, metadata, access, type).parse();
@@ -68,33 +70,7 @@ class Parser {
 		}
 	}
 
-	/* private function parseEnumeratorSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, enumerator:Json):Enumerator {
-		final fieldsJson = enumerator.select('fields').array();
-		final type = switch (fieldsJson) {
-			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
-			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parse();
-		}
-		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
-			final fieldName = field.select('name').string().toTypeName();
-			final fieldValue = switch (field.select('value')) {
-				case v if (new LiteralTypeParser(v).parse() == type): v.select('value').string();
-				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
-			}
-
-			_fields.set(fieldName, fieldValue);
-
-			return _fields;
-		}, []);
-
-		return {
-			name: name,
-			doc: doc,
-			meta: meta,
-			type: type,
-			fields: fields
-		}
-	}*/
-	private function parseTableSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
+	/* private function parseTableSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
 		final parsedTable = {
 			name: name,
 			doc: doc,
@@ -176,5 +152,5 @@ class Parser {
 		}
 
 		return parsedTable;
-	}
+	} */
 }
