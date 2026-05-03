@@ -9,6 +9,7 @@ using utils.StringTools;
 
 import transpiler.symbol.Symbol;
 import transpiler.parser.LiteralTypeParser;
+import transpiler.parser.MetadataParser;
 import utils.Json;
 
 class FunctionSymbolParser {
@@ -199,15 +200,15 @@ class TableSymbolParser {
 		for (_ => field in fields.keyValueIterator()) {
 			final fieldName = field.select('name').string();
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
-			final fieldAccess = new Array<ParsedAccess>();
-			final fieldMetadata = new Array<Metadata>();
+			final fieldAccess = new AccessParser(field.select('meta')).parse();
+			final fieldMetadata = new MetaParser(field.select('meta')).parse();
 
-			field.select('meta').array().map(meta -> meta.string()).iter(meta -> switch (meta) {
+			/* field.select('meta').array().map(meta -> meta.string()).iter(meta -> switch (meta) {
 				case "static": fieldAccess.push(ParsedAccess.Static);
 				case "private": fieldAccess.push(ParsedAccess.Private);
 				case "deprecated": fieldMetadata.push({name: "deprecated"});
 				case m: throw new Exception('Meta not implemented: ${m}');
-			});
+			}); */
 
 			final fieldType = field.select('type');
 
@@ -257,8 +258,7 @@ class TableSymbolParser {
 				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral',
 					'stringliteral':
 					final symbol = new AliasSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse();
-					final property = TableField.Property(symbol);
-					parsedTable.fields.push(property);
+					parsedTable.fields.push(TableField.Property(symbol));
 
 				case k:
 					throw new Exception('Unexpected kind "${k}" received for table "${name}" in field "${fieldName}" of type ${fieldType.getValue()}');
