@@ -125,7 +125,8 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
-			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array": ParsedSymbol.ParsedAlias(this.parseAliasSymbol(name, doc, metadata, access, type));
+			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral",
+				"array": ParsedSymbol.ParsedAlias(this.parseAliasSymbol(name, doc, metadata, access, type));
 			case "enumerator": ParsedSymbol.ParsedEnumerator(this.parseEnumeratorSymbol(name, doc, metadata, access, type));
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}
@@ -135,12 +136,12 @@ class Parser {
 		final fieldsJson = enumerator.select('fields').array();
 		final type = switch (fieldsJson) {
 			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
-			case _: this.parseLiteralType(fieldsJson[0].select('value'));
+			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parse();
 		}
 		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
 			final fieldName = field.select('name').string().toTypeName();
 			final fieldValue = switch (field.select('value')) {
-				case v if (this.parseLiteralType(v) == type): v.select('value').string();
+				case v if (new LiteralTypeParser(v).parse() == type): v.select('value').string();
 				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
 			}
 
@@ -224,7 +225,8 @@ class Parser {
 						access: fieldAccess,
 						type: className
 					}));
-				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
+				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral',
+					'stringliteral':
 					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
 
 				case k:
@@ -241,7 +243,7 @@ class Parser {
 			doc: doc,
 			meta: meta,
 			access: access,
-			type: this.parseLiteralType(type)
+			type: new LiteralTypeParser((type)).parse()
 		}
 	}
 
@@ -252,7 +254,7 @@ class Parser {
 			final type = param.select('type');
 			final constraints = switch (type.value) {
 				case JsonValue.JNull: [];
-				case _: [this.parseLiteralType(type)];
+				case _: [new LiteralTypeParser((type)).parse()];
 			}
 
 			return {
@@ -266,9 +268,9 @@ class Parser {
 			final type = switch (argument.select('type', 'kind').string()) {
 				case 'typereference': switch (argument.select('type', 'value').string()) {
 						case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-						case _: this.parseLiteralType(argument.select('type'));
+						case _: new LiteralTypeParser((argument.select('type'))).parse();
 					}
-				case _: this.parseLiteralType(argument.select('type'));
+				case _: new LiteralTypeParser((argument.select('type'))).parse();
 			}
 
 			return switch (name) {
@@ -290,17 +292,17 @@ class Parser {
 			case [r]: switch (r.select('type', 'kind').string()) {
 					case 'typereference': switch (r.select('type', 'value').string()) {
 							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-							case _: this.parseLiteralType(r.select('type'));
+							case _: new LiteralTypeParser((r.select('type'))).parse();
 						}
-					case _: this.parseLiteralType(r.select('type'));
+					case _: new LiteralTypeParser((r.select('type'))).parse();
 				}
 			case returns if (returns.length <= 6):
 				final multireturn = returns.map(r -> switch (r.select('type', 'kind').string()) {
 					case 'typereference': switch (r.select('type', 'value').string()) {
 							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-							case _: this.parseLiteralType(r.select('type'));
+							case _: new LiteralTypeParser((r.select('type'))).parse();
 						}
-					case _: this.parseLiteralType(r.select('type'));
+					case _: new LiteralTypeParser((r.select('type'))).parse();
 				});
 
 				'vim._internal.Multireturn<${multireturn.join(", ")}>';
@@ -317,102 +319,5 @@ class Parser {
 			args: args,
 			ret: ret
 		};
-	}
-
-	private function parseLiteralType(type:Json) {
-		return switch (type.select('kind').string()) {
-			case "builtin": switch (type.select('value').string()) {
-					case "any": "Any";
-					case "boolean": "Bool";
-					case "function": "haxe.Constraints.Function";
-					case "integer": "Int";
-					// NB: didn't find exactly lightuserdata in haxe.lua
-					case "lightuserdata": "lua.UserData";
-					case "nil": "Void";
-					case "void": "Void";
-					case "number": "Float";
-					case "string": "String";
-					case "table": "lua.Table.AnyTable";
-					case "thread": throw new Exception('Unsupported builtin type value "thread" received');
-					case "userdata": "lua.UserData";
-					case v: throw new Exception('Unexpected builtin type value "${v}" received');
-				}
-
-			case "unknown": "Dynamic";
-
-			case "optional": 'Null<${this.parseLiteralType(type.select('type'))}>';
-
-			case "union":
-				function makeUnion(members:Array<String>):String {
-					return switch (members) {
-						case [], [_]:
-							throw new Exception('Error creating union type out of ${type.getValue()}');
-						case [left, right]:
-							'haxe.extern.EitherType<${left}, ${right}>';
-						case m:
-							'haxe.extern.EitherType<${m.shift()}, ${makeUnion(m)}>';
-					}
-				}
-
-				switch (type.select('types').array().copy().map(t -> this.parseLiteralType(t)).unique()) {
-					case [t]: t;
-					case t: makeUnion(t);
-				}
-
-			case "array": 'Array<${this.parseLiteralType(type.select('items'))}>';
-
-			case "function":
-				final arguments = type.select('arguments').array().map(argument -> switch (argument.select('name').string()) {
-					case '...': '___:haxe.Rest<${this.parseLiteralType(argument.select('type'))}>';
-					case argumentName: switch (argument.select('optional').boolean()) {
-							case true: '?${argumentName}:${this.parseLiteralType(argument.select('type'))}';
-							case false: '${argumentName}:${this.parseLiteralType(argument.select('type'))}';
-						}
-				});
-
-				final return_ = switch (type.select('returns').array()) {
-					case []: "Dynamic";
-					case [r]: this.parseLiteralType(r.select('type'));
-					case returns if (returns.length <= 6): 'vim._internal.Multireturn<${returns.map(r -> this.parseLiteralType(r.select("type"))).join(", ")}>';
-					case _: throw new Exception('Unsupported number of return types for function ${type.getValue()}');
-				}
-
-				'(${arguments.join(", ")}) -> ${return_}';
-
-			case "table":
-				final indexes = type.select('indexes').array().map(index -> ({
-					key: this.parseLiteralType(index.select('key')),
-					value: this.parseLiteralType(index.select('value'))
-				}));
-				final fields = type.select('fields').array().map(field -> ({
-					name: field.select('name').string(),
-					type: this.parseLiteralType(field.select('type'))
-				}));
-
-				return switch ({
-					fields:fields, indexes:indexes
-				}) {
-					case {fields: [], indexes: []}: 'lua.Table.AnyTable';
-					case {fields: [], indexes: [index]}: 'lua.Table<${index.key}, ${index.value}>';
-					case {fields: [], indexes: idxs}: throw new Exception('Unimplemented table with multiple indexes');
-					case {fields: flds, indexes: []}:
-						final entries = flds.map(fld -> '${fld.name}: ${fld.type}').join(", ");
-						'{ ${entries} }';
-					case _: throw new Exception('Unimplemented table structure with indexes');
-				}
-
-			case "numericliteral": "Float";
-
-			case "stringliteral": "String";
-
-			case "booleanliteral": "Bool";
-
-			case "typereference": '${Config.outputPack}.type.${type.select('value').string().toTypeName()}';
-
-			case "modulereference": '${Config.outputPack}.module.${type.select('value').string().toTypeName()}';
-
-			case _:
-				throw new Exception('Unrecognised type "${type.getValue()}" received');
-		}
 	}
 }
