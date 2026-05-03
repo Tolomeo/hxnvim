@@ -88,10 +88,10 @@ class FunctionSymbolParser {
 		}
 
 		return {
-			name: name,
-			doc: doc,
-			meta: meta,
-			access: access,
+			name: this.name,
+			doc: this.doc,
+			meta: this.meta,
+			access: this.access,
 			params: params,
 			args: args,
 			ret: ret
