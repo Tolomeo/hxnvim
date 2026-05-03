@@ -3,6 +3,7 @@ package transpiler.parser;
 import haxe.Exception;
 
 using utils.ArrayTools;
+using utils.StringTools;
 
 import transpiler.symbol.Symbol;
 import transpiler.parser.LiteralTypeParser;
@@ -120,6 +121,49 @@ class AliasSymbolParser {
 			meta: meta,
 			access: access,
 			type: new LiteralTypeParser(this.origin).parse()
+		}
+	}
+}
+
+class EnumeratorSymbolParser {
+	private final name:String;
+	private final doc:String;
+	private final meta:Array<Metadata>;
+	private final access:Array<ParsedAccess>;
+	private final origin:Json;
+
+	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, origin:Json) {
+		this.name = name;
+		this.doc = doc;
+		this.meta = meta;
+		this.access = access;
+		this.origin = origin;
+	}
+
+	public function parse() {
+		final fieldsJson = this.origin.select('fields').array();
+		final type = switch (fieldsJson) {
+			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
+			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parse();
+		}
+		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
+			final fieldName = field.select('name').string().toTypeName();
+			final fieldValue = switch (field.select('value')) {
+				case v if (new LiteralTypeParser(v).parse() == type): v.select('value').string();
+				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
+			}
+
+			_fields.set(fieldName, fieldValue);
+
+			return _fields;
+		}, []);
+
+		return {
+			name: name,
+			doc: doc,
+			meta: meta,
+			type: type,
+			fields: fields
 		}
 	}
 }

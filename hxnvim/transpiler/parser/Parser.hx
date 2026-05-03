@@ -64,13 +64,15 @@ class Parser {
 				final symbol = new AliasSymbolParser(name, doc, metadata, access, type).parse();
 				return ParsedSymbol.ParsedAlias(symbol);
 
-			case "enumerator": ParsedSymbol.ParsedEnumerator(this.parseEnumeratorSymbol(name, doc, metadata, access, type));
+			case "enumerator":
+				final symbol = new EnumeratorSymbolParser(name, doc, metadata, access, type).parse();
+				return ParsedSymbol.ParsedEnumerator(symbol);
 
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}
 	}
 
-	private function parseEnumeratorSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, enumerator:Json):Enumerator {
+	/* private function parseEnumeratorSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, enumerator:Json):Enumerator {
 		final fieldsJson = enumerator.select('fields').array();
 		final type = switch (fieldsJson) {
 			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
@@ -95,7 +97,7 @@ class Parser {
 			type: type,
 			fields: fields
 		}
-	}
+	} */
 
 	private function parseTableSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
 		final parsedTable = {
@@ -180,13 +182,4 @@ class Parser {
 
 		return parsedTable;
 	}
-	/* private function parseAliasSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, type:Json) {
-		return {
-			name: name,
-			doc: doc,
-			meta: meta,
-			access: access,
-			type: new LiteralTypeParser((type)).parse()
-		}
-	}*/
 }
