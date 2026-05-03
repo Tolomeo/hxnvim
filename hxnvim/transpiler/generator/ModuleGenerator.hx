@@ -7,6 +7,7 @@ import transpiler.State;
 import transpiler.parser.Parser;
 import transpiler.generator.Alias;
 import transpiler.generator.Class;
+import transpiler.generator.Enumerator;
 
 typedef Module = Array<TypeDefinition>;
 
@@ -51,6 +52,22 @@ class ModuleGenerator {
 					final metaMainAlias:Metadata = {name: 'native', params: [table.name]};
 					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate, metaNative]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: table.name}, [metaMainAlias]));
+				}
+			case ParsedSymbol.ParsedAlias(alias):
+				if (this.moduleName == alias.name) {
+					moduleTypes.push(new AliasGenerator().generate(alias, [metaNative]));
+				} else {
+					final metaMainAlias:Metadata = {name: 'native', params: [alias.name]};
+					moduleTypes.push(new AliasGenerator().generate(alias, [metaPrivate, metaNative]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: alias.name}, [metaMainAlias]));
+				}
+			case ParsedSymbol.ParsedEnumerator(enumerator):
+				if (this.moduleName == enumerator.name) {
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaNative]));
+				} else {
+					final metaMainEnumerator:Metadata = {name: 'native', params: [enumerator.name]};
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaPrivate, metaNative]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: enumerator.name}, [metaMainEnumerator]));
 				}
 			case s:
 				throw new Exception('Unimplemented main generator for symbol ${s}');

@@ -42,14 +42,14 @@ abstract Json(hxjsonast.Json) from hxjsonast.Json {
 	public function string():String {
 		return switch (this.value) {
 			case hxjsonast.Json.JsonValue.JString(s): s;
-			case _: throw new Exception('Error extracting string value from ${this.getValue()}');
+			case v: throw new Exception('Error extracting string value from ${this.getValue()}: received ${v}');
 		}
 	}
 
 	public function boolean():Bool {
 		return switch (this.value) {
 			case hxjsonast.Json.JsonValue.JBool(b): b;
-			case _: throw new Exception('Error extracting string value from ${this.getValue()}');
+			case v: throw new Exception('Error extracting string value from ${this.getValue()}: received ${v}');
 		}
 	}
 

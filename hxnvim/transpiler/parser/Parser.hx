@@ -66,9 +66,18 @@ typedef Table = {
 	fields:Array<TableField>
 }
 
+typedef Enumerator = {
+	name:String,
+	doc:String,
+	meta:Array<Metadata>,
+	type:LiteralType,
+	fields:Map<String, String>
+}
+
 enum ParsedSymbol {
 	ParsedTable(table:Table);
 	ParsedAlias(alias:Alias);
+	ParsedEnumerator(enumerator:Enumerator);
 }
 
 typedef ParsedModule = {
@@ -116,7 +125,36 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
+			case "typereference", "union": ParsedSymbol.ParsedAlias(this.parseAliasSymbol(name, doc, metadata, access, type));
+			case "enumerator": ParsedSymbol.ParsedEnumerator(this.parseEnumeratorSymbol(name, doc, metadata, access, type));
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
+		}
+	}
+
+	private function parseEnumeratorSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, enumerator:Json):Enumerator {
+		final fieldsJson = enumerator.select('fields').array();
+		final type = switch (fieldsJson) {
+			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
+			case _: this.parseLiteralType(fieldsJson[0].select('value'));
+		}
+		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
+			final fieldName = field.select('name').string().toTypeName();
+			final fieldValue = switch (field.select('value')) {
+				case v if (this.parseLiteralType(v) == type): v.select('value').string();
+				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
+			}
+
+			_fields.set(fieldName, fieldValue);
+
+			return _fields;
+		}, []);
+
+		return {
+			name: name,
+			doc: doc,
+			meta: meta,
+			type: type,
+			fields: fields
 		}
 	}
 
@@ -170,8 +208,6 @@ class Parser {
 
 							functions.iter(fn -> parsedTable.fields.push(TableField.Method(fn)));
 					}
-				case 'modulereference', 'typereference', 'builtin', 'union':
-					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
 				case 'table':
 					final className = fieldName.toTypeName();
 					final classDoc = "";
@@ -188,25 +224,24 @@ class Parser {
 						access: fieldAccess,
 						type: className
 					}));
-
-				case 'unknown':
-					'Any';
+				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral':
+					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
 
 				case k:
-					throw new Exception('Unexpected kind "${k}" received for table field ${fieldType.getValue()}');
+					throw new Exception('Unexpected kind "${k}" received for table "${name}" in field "${fieldName}" of type ${fieldType.getValue()}');
 			}
 		}
 
 		return parsedTable;
 	}
 
-	private function parseAliasSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, alias:Json) {
+	private function parseAliasSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, type:Json) {
 		return {
 			name: name,
 			doc: doc,
 			meta: meta,
 			access: access,
-			type: this.parseLiteralType(alias)
+			type: this.parseLiteralType(type)
 		}
 	}
 
