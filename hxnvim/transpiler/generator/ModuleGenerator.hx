@@ -4,6 +4,7 @@ import haxe.macro.Printer;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 import transpiler.State;
+import transpiler.symbol.Module;
 import transpiler.symbol.Symbol;
 import transpiler.parser.Parser;
 import transpiler.generator.Alias;

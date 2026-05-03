@@ -12,12 +12,8 @@ import Config;
 import utils.Json;
 import transpiler.State;
 import transpiler.symbol.Symbol;
+import transpiler.symbol.Module;
 import transpiler.parser.SymbolParser;
-
-typedef ParsedModule = {
-	types:Map<String, ParsedSymbol>,
-	main:ParsedSymbol
-}
 
 class Parser {
 	private final json:Json;
@@ -97,8 +93,7 @@ class Parser {
 			type: type,
 			fields: fields
 		}
-	} */
-
+	}*/
 	private function parseTableSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, table:Json):Table {
 		final parsedTable = {
 			name: name,
