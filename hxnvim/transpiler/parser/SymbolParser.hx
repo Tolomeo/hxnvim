@@ -97,3 +97,29 @@ class FunctionSymbolParser {
 		};
 	}
 }
+
+class AliasSymbolParser {
+	private final name:String;
+	private final doc:String;
+	private final meta:Array<Metadata>;
+	private final access:Array<ParsedAccess>;
+	private final origin:Json;
+
+	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, origin:Json) {
+		this.name = name;
+		this.doc = doc;
+		this.meta = meta;
+		this.access = access;
+		this.origin = origin;
+	}
+
+	public function parse() {
+		return {
+			name: name,
+			doc: doc,
+			meta: meta,
+			access: access,
+			type: new LiteralTypeParser(this.origin).parse()
+		}
+	}
+}

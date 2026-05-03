@@ -59,9 +59,13 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
-			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral",
-				"array": ParsedSymbol.ParsedAlias(this.parseAliasSymbol(name, doc, metadata, access, type));
+
+			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":
+				final symbol = new AliasSymbolParser(name, doc, metadata, access, type).parse();
+				return ParsedSymbol.ParsedAlias(symbol);
+
 			case "enumerator": ParsedSymbol.ParsedEnumerator(this.parseEnumeratorSymbol(name, doc, metadata, access, type));
+
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}
 	}
@@ -165,7 +169,9 @@ class Parser {
 					}));
 				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral',
 					'stringliteral':
-					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
+					final symbol = new AliasSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse();
+					final property = TableField.Property(symbol);
+					parsedTable.fields.push(property);
 
 				case k:
 					throw new Exception('Unexpected kind "${k}" received for table "${name}" in field "${fieldName}" of type ${fieldType.getValue()}');
@@ -174,8 +180,7 @@ class Parser {
 
 		return parsedTable;
 	}
-
-	private function parseAliasSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, type:Json) {
+	/* private function parseAliasSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, type:Json) {
 		return {
 			name: name,
 			doc: doc,
@@ -183,79 +188,5 @@ class Parser {
 			access: access,
 			type: new LiteralTypeParser((type)).parse()
 		}
-	}
-
-	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
-	/* private function parseFunctionSymbol(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, func:Json):Function {
-		final params = func.select('generics').array().map(param -> {
-			final name = param.select('name').string();
-			final type = param.select('type');
-			final constraints = switch (type.value) {
-				case JsonValue.JNull: [];
-				case _: [new LiteralTypeParser((type)).parse()];
-			}
-
-			return {
-				name: name,
-				constraints: constraints
-			}
-		});
-
-		final args = func.select('arguments').array().map(argument -> {
-			final name = argument.select('name').string();
-			final type = switch (argument.select('type', 'kind').string()) {
-				case 'typereference': switch (argument.select('type', 'value').string()) {
-						case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-						case _: new LiteralTypeParser((argument.select('type'))).parse();
-					}
-				case _: new LiteralTypeParser((argument.select('type'))).parse();
-			}
-
-			return switch (name) {
-				case '...': ({
-						name: '___',
-						type: 'haxe.Rest<${type}>',
-						opt: false
-					});
-				case n: ({
-						name: n,
-						type: type,
-						opt: argument.select('optional').boolean()
-					});
-			}
-		});
-
-		final ret = switch (func.select('returns').array()) {
-			case []: "Dynamic";
-			case [r]: switch (r.select('type', 'kind').string()) {
-					case 'typereference': switch (r.select('type', 'value').string()) {
-							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-							case _: new LiteralTypeParser((r.select('type'))).parse();
-						}
-					case _: new LiteralTypeParser((r.select('type'))).parse();
-				}
-			case returns if (returns.length <= 6):
-				final multireturn = returns.map(r -> switch (r.select('type', 'kind').string()) {
-					case 'typereference': switch (r.select('type', 'value').string()) {
-							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-							case _: new LiteralTypeParser((r.select('type'))).parse();
-						}
-					case _: new LiteralTypeParser((r.select('type'))).parse();
-				});
-
-				'vim._internal.Multireturn<${multireturn.join(", ")}>';
-
-			case _: throw new Exception('Unsupported number of return types for function ${func.getValue()}');
-		}
-
-		return {
-			name: name,
-			doc: doc,
-			meta: meta,
-			access: access,
-			params: params,
-			args: args,
-			ret: ret
-		};
 	}*/
 }
