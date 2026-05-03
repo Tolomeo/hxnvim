@@ -1,0 +1,39 @@
+package externs.type;
+
+/**
+	```lua
+	(class) lsp.OptionalVersionedTextDocumentIdentifier
+	```
+	
+	---
+	
+	A text document identifier to optionally denote a specific version of a text document.
+**/
+@:native("lsp.OptionalVersionedTextDocumentIdentifier") extern class Lsp_OptionalVersionedTextDocumentIdentifier {
+	/**
+		```lua
+		(field) lsp.OptionalVersionedTextDocumentIdentifier.uri: string
+		```
+		
+		---
+		
+		
+		The text document's uri.
+	**/
+	extern var uri : externs.type.Lsp_DocumentUri;
+	/**
+		```lua
+		(field) lsp.OptionalVersionedTextDocumentIdentifier.version: integer|nil
+		```
+		
+		---
+		
+		
+		The version number of this document. If a versioned text document identifier
+		is sent from the server to the client and the file is not open in the editor
+		(the server has not received an open notification before) the server can send
+		`null` to indicate that the version is unknown and the content on disk is the
+		truth (as specified with document content ownership).
+	**/
+	extern var version : haxe.extern.EitherType<Int, externs.type.Lsp_Null>;
+}

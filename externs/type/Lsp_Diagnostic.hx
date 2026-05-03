@@ -1,0 +1,173 @@
+package externs.type;
+
+/**
+	```lua
+	(class) lsp.Diagnostic
+	```
+	
+	---
+	
+	Represents a diagnostic, such as a compiler error or warning. Diagnostic objects
+	are only valid in the scope of a resource.
+**/
+@:native("lsp.Diagnostic") extern class Lsp_Diagnostic {
+	/**
+		```lua
+		(field) lsp.Diagnostic.code: (string|integer)?
+		```
+		
+		---
+		
+		
+		The diagnostic's code, which usually appear in the user interface.
+	**/
+	extern var code : Null<haxe.extern.EitherType<Int, String>>;
+	/**
+		```lua
+		(field) lsp.Diagnostic.codeDescription: (lsp.CodeDescription)?
+		```
+		
+		---
+		
+		Structure to capture a description for an error code.
+		
+		
+		---
+		
+		
+		An optional property to describe the error code.
+		Requires the code field (above) to be present/not null.
+		
+	**/
+	extern var codeDescription : Null<externs.type.Lsp_CodeDescription>;
+	/**
+		```lua
+		(field) lsp.Diagnostic.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
+		```
+		
+		---
+		
+		The LSP any type.
+		Please note that strictly speaking a property with the value `undefined`
+		can't be converted into JSON preserving the property name. However for
+		convenience it is allowed and assumed that all these properties are
+		optional as well.
+		
+		---
+		
+		
+		A data entry field that is preserved between a `textDocument/publishDiagnostics`
+		notification and `textDocument/codeAction` request.
+		
+		
+		---
+		
+		LSP object definition.
+		
+		---
+		
+		LSP arrays.
+	**/
+	extern var data : Null<externs.type.Lsp_LSPAny>;
+	/**
+		```lua
+		(field) lsp.Diagnostic.message: string
+		```
+		
+		---
+		
+		
+		The diagnostic's message. It usually appears in the user interface
+	**/
+	extern var message : String;
+	/**
+		```lua
+		(field) lsp.Diagnostic.range: lsp.Range
+		```
+		
+		---
+		
+		A range in a text document expressed as (zero-based) start and end positions.
+		
+		If you want to specify a range that contains a line including the line ending
+		character(s) then use an end position denoting the start of the next line.
+		For example:
+		```ts
+		{
+		    start: { line: 5, character: 23 }
+		    end : { line 6, character : 0 }
+		}
+		```
+		
+		---
+		
+		
+		The range at which the message applies
+	**/
+	extern var range : externs.type.Lsp_Range;
+	/**
+		```lua
+		(field) lsp.Diagnostic.relatedInformation: lsp.DiagnosticRelatedInformation[]?
+		```
+		
+		---
+		
+		
+		An array of related diagnostic information, e.g. when symbol-names within
+		a scope collide all definitions can be marked via this property.
+	**/
+	extern var relatedInformation : Null<Array<externs.type.Lsp_DiagnosticRelatedInformation>>;
+	/**
+		```lua
+		(field) lsp.Diagnostic.severity: (1|2|3|4)?
+		```
+		
+		---
+		
+		The diagnostic's severity.
+		
+		---
+		
+		
+		The diagnostic's severity. To avoid interpretation mismatches when a
+		server is used with different clients it is highly recommended that servers
+		always provide a severity value.
+		
+		---
+		
+		```lua
+		-- The diagnostic's severity.
+		lsp.DiagnosticSeverity:
+		    | 1 -- Error
+		    | 2 -- Warning
+		    | 3 -- Information
+		    | 4 -- Hint
+		```
+	**/
+	extern var severity : Null<externs.type.Lsp_DiagnosticSeverity>;
+	/**
+		```lua
+		(field) lsp.Diagnostic.source: string?
+		```
+		
+		---
+		
+		
+		A human-readable string describing the source of this
+		diagnostic, e.g. 'typescript' or 'super lint'. It usually
+		appears in the user interface.
+	**/
+	extern var source : Null<String>;
+	/**
+		```lua
+		(field) lsp.Diagnostic.tags: 1|2[]?
+		```
+		
+		---
+		
+		
+		Additional metadata about the diagnostic.
+		
+	**/
+	extern var tags : Null<Array<externs.type.Lsp_DiagnosticTag>>;
+}

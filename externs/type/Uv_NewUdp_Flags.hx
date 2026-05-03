@@ -1,0 +1,61 @@
+package externs.type;
+
+/**
+	```lua
+	(class) uv.new_udp.flags
+	```
+**/
+@:native("uv.new_udp.flags") extern class Uv_NewUdp_Flags {
+	/**
+		```lua
+		(field) uv.new_udp.flags.family: "appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"|nil
+		```
+		
+		---
+		
+		
+		
+		---
+		
+		```lua
+		uv.new_udp.flags.family:
+		    | "unix"
+		    | "inet"
+		    | "inet6"
+		    | "ipx"
+		    | "netlink"
+		    | "x25"
+		    | "ax25"
+		    | "atmpvc"
+		    | "appletalk"
+		    | "packet"
+		```
+		
+		---
+		
+		```lua
+		uv.socket.family:
+		    | "unix"
+		    | "inet"
+		    | "inet6"
+		    | "ipx"
+		    | "netlink"
+		    | "x25"
+		    | "ax25"
+		    | "atmpvc"
+		    | "appletalk"
+		    | "packet"
+		```
+	**/
+	extern var family : haxe.extern.EitherType<externs.type.Uv_NewUdp_Flags_Family, Void>;
+	/**
+		```lua
+		(field) uv.new_udp.flags.mmsgs: integer|nil
+		```
+		
+		---
+		
+		default `1`
+	**/
+	extern var mmsgs : haxe.extern.EitherType<Int, Void>;
+}

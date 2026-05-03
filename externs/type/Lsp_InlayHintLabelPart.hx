@@ -1,0 +1,111 @@
+package externs.type;
+
+/**
+	```lua
+	(class) lsp.InlayHintLabelPart
+	```
+	
+	---
+	
+	An inlay hint label part allows for interactive and composite labels
+	of inlay hints.
+	
+**/
+@:native("lsp.InlayHintLabelPart") extern class Lsp_InlayHintLabelPart {
+	/**
+		```lua
+		(field) lsp.InlayHintLabelPart.command: (lsp.Command)?
+		```
+		
+		---
+		
+		Represents a reference to a command. Provides a title which
+		will be used to represent a command in the UI and, optionally,
+		an array of arguments which will be passed to the command handler
+		function when invoked.
+		
+		---
+		
+		
+		An optional command for this label part.
+		
+		Depending on the client capability `inlayHint.resolveSupport` clients
+		might resolve this property late using the resolve request.
+	**/
+	extern var command : Null<externs.type.Lsp_Command>;
+	/**
+		```lua
+		(field) lsp.InlayHintLabelPart.location: (lsp.Location)?
+		```
+		
+		---
+		
+		Represents a location inside a resource, such as a line
+		inside a text file.
+		
+		---
+		
+		
+		An optional source code location that represents this
+		label part.
+		
+		The editor will use this location for the hover and for code navigation
+		features: This part will become a clickable link that resolves to the
+		definition of the symbol at the given location (not necessarily the
+		location itself), it shows the hover that shows at the given location,
+		and it shows a context menu with further code navigation commands.
+		
+		Depending on the client capability `inlayHint.resolveSupport` clients
+		might resolve this property late using the resolve request.
+	**/
+	extern var location : Null<externs.type.Lsp_Location>;
+	/**
+		```lua
+		(field) lsp.InlayHintLabelPart.tooltip: (string|lsp.MarkupContent)?
+		```
+		
+		---
+		
+		A `MarkupContent` literal represents a string value which content is interpreted base on its
+		kind flag. Currently the protocol supports `plaintext` and `markdown` as markup kinds.
+		
+		If the kind is `markdown` then the value can contain fenced code blocks like in GitHub issues.
+		See https://help.github.com/articles/creating-and-highlighting-code-blocks/#syntax-highlighting
+		
+		Here is an example how such a string can be constructed using JavaScript / TypeScript:
+		```ts
+		let markdown: MarkdownContent = {
+		 kind: MarkupKind.Markdown,
+		 value: [
+		   '# Header',
+		   'Some text',
+		   '```typescript',
+		   'someCode();',
+		   '```'
+		 ].join('\n')
+		};
+		```
+		
+		*Please Note* that clients might sanitize the return markdown. A client could decide to
+		remove HTML from the markdown to avoid script execution.
+		
+		---
+		
+		
+		The tooltip text when you hover over this label part. Depending on
+		the client capability `inlayHint.resolveSupport` clients might resolve
+		this property late using the resolve request.
+	**/
+	extern var tooltip : Null<haxe.extern.EitherType<String, externs.type.Lsp_MarkupContent>>;
+	/**
+		```lua
+		(field) lsp.InlayHintLabelPart.value: string
+		```
+		
+		---
+		
+		
+		The value of this label part.
+	**/
+	extern var value : String;
+}

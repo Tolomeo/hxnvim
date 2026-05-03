@@ -1,0 +1,84 @@
+package externs.type;
+
+/**
+	```lua
+	(class) vim.fs.find.Opts
+	```
+**/
+@:native("vim.fs.find.Opts") extern class Vim_Fs_Find_Opts {
+	/**
+		```lua
+		(field) vim.fs.find.Opts.follow: boolean?
+		```
+		
+		---
+		
+		
+		 Follow symbolic links.
+		 (default: `false`)
+	**/
+	extern var follow : Null<Bool>;
+	/**
+		```lua
+		(field) vim.fs.find.Opts.limit: number?
+		```
+		
+		---
+		
+		
+		 Stop the search after finding this many matches.
+		 Use `math.huge` to place no limit on the number of matches.
+		 (default: `1`)
+	**/
+	extern var limit : Null<Float>;
+	/**
+		```lua
+		(field) vim.fs.find.Opts.path: string?
+		```
+		
+		---
+		
+		 @inlinedoc
+		
+		 Path to begin searching from. If
+		 omitted, the |current-directory| is used.
+	**/
+	extern var path : Null<String>;
+	/**
+		```lua
+		(field) vim.fs.find.Opts.stop: string?
+		```
+		
+		---
+		
+		
+		 Stop searching when this directory is reached.
+		 The directory itself is not searched.
+	**/
+	extern var stop : Null<String>;
+	/**
+		```lua
+		(field) vim.fs.find.Opts.type: string?
+		```
+		
+		---
+		
+		
+		 Find only items of the given type.
+		 If omitted, all items that match {names} are included.
+	**/
+	extern var type : Null<String>;
+	/**
+		```lua
+		(field) vim.fs.find.Opts.upward: boolean?
+		```
+		
+		---
+		
+		
+		 Search upward through parent directories.
+		 Otherwise, search through child directories (recursively).
+		 (default: `false`)
+	**/
+	extern var upward : Null<Bool>;
+}

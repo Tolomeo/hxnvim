@@ -1,0 +1,89 @@
+package externs.type;
+
+/**
+	```lua
+	(class) lsp.DiagnosticRegistrationOptions
+	```
+	
+	---
+	
+	Diagnostic registration options.
+	
+**/
+@:native("lsp.DiagnosticRegistrationOptions") extern class Lsp_DiagnosticRegistrationOptions {
+	/**
+		```lua
+		(field) lsp.DiagnosticRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil
+		```
+		
+		---
+		
+		A document selector is the combination of one or many document filters.
+		
+		\@sample `let sel:DocumentSelector = [{ language: 'typescript' }, { language: 'json', pattern: '**∕tsconfig.json' }]`;
+		
+		The use of a string as a document filter is deprecated @since 3.16.0.
+		
+		---
+		
+		
+		A document selector to identify the scope of the registration. If set to null
+		the document selector provided on the client side will be used.
+	**/
+	extern var documentSelector : haxe.extern.EitherType<externs.type.Lsp_DocumentSelector, externs.type.Lsp_Null>;
+	/**
+		```lua
+		(field) lsp.DiagnosticRegistrationOptions.id: string?
+		```
+		
+		---
+		
+		
+		The id used to register the request. The id can be used to deregister
+		the request again. See also Registration#id.
+	**/
+	extern var id : Null<String>;
+	/**
+		```lua
+		(field) lsp.DiagnosticRegistrationOptions.identifier: string?
+		```
+		
+		---
+		
+		
+		An optional identifier under which the diagnostics are
+		managed by the client.
+	**/
+	extern var identifier : Null<String>;
+	/**
+		```lua
+		(field) lsp.DiagnosticRegistrationOptions.interFileDependencies: boolean
+		```
+		
+		---
+		
+		
+		Whether the language has inter file dependencies meaning that
+		editing code in one file can result in a different diagnostic
+		set in another file. Inter file dependencies are common for
+		most programming languages and typically uncommon for linters.
+	**/
+	extern var interFileDependencies : Bool;
+	/**
+		```lua
+		(field) lsp.DiagnosticRegistrationOptions.workDoneProgress: boolean?
+		```
+	**/
+	extern var workDoneProgress : Null<Bool>;
+	/**
+		```lua
+		(field) lsp.DiagnosticRegistrationOptions.workspaceDiagnostics: boolean
+		```
+		
+		---
+		
+		
+		The server provides support for workspace diagnostics as well.
+	**/
+	extern var workspaceDiagnostics : Bool;
+}

@@ -1,14 +1,4440 @@
 package externs;
 
 @:private extern class OptLocal {
-
+	/**
+		```lua
+		(global) table.aleph: unknown
+		```
+	**/
+	extern var aleph : Dynamic;
+	/**
+		```lua
+		(global) table.allowrevins: unknown
+		```
+	**/
+	extern var allowrevins : Dynamic;
+	/**
+		```lua
+		(global) table.ambiwidth: unknown
+		```
+	**/
+	extern var ambiwidth : Dynamic;
+	/**
+		```lua
+		(global) table.arabic: unknown
+		```
+	**/
+	extern var arabic : Dynamic;
+	/**
+		```lua
+		(global) table.arabicshape: unknown
+		```
+	**/
+	extern var arabicshape : Dynamic;
+	/**
+		```lua
+		(global) table.autochdir: unknown
+		```
+	**/
+	extern var autochdir : Dynamic;
+	/**
+		```lua
+		(global) table.autoindent: unknown
+		```
+	**/
+	extern var autoindent : Dynamic;
+	/**
+		```lua
+		(global) table.autoread: unknown
+		```
+	**/
+	extern var autoread : Dynamic;
+	/**
+		```lua
+		(global) table.autowrite: unknown
+		```
+	**/
+	extern var autowrite : Dynamic;
+	/**
+		```lua
+		(global) table.autowriteall: unknown
+		```
+	**/
+	extern var autowriteall : Dynamic;
+	/**
+		```lua
+		(global) table.background: unknown
+		```
+	**/
+	extern var background : Dynamic;
+	/**
+		```lua
+		(global) table.backspace: unknown
+		```
+	**/
+	extern var backspace : Dynamic;
+	/**
+		```lua
+		(global) table.backup: unknown
+		```
+	**/
+	extern var backup : Dynamic;
+	/**
+		```lua
+		(global) table.backupcopy: unknown
+		```
+	**/
+	extern var backupcopy : Dynamic;
+	/**
+		```lua
+		(global) table.backupdir: unknown
+		```
+	**/
+	extern var backupdir : Dynamic;
+	/**
+		```lua
+		(global) table.backupext: unknown
+		```
+	**/
+	extern var backupext : Dynamic;
+	/**
+		```lua
+		(global) table.backupskip: unknown
+		```
+	**/
+	extern var backupskip : Dynamic;
+	/**
+		```lua
+		(global) table.belloff: unknown
+		```
+	**/
+	extern var belloff : Dynamic;
+	/**
+		```lua
+		(global) table.binary: unknown
+		```
+	**/
+	extern var binary : Dynamic;
+	/**
+		```lua
+		(global) table.bomb: unknown
+		```
+	**/
+	extern var bomb : Dynamic;
+	/**
+		```lua
+		(global) table.breakat: unknown
+		```
+	**/
+	extern var breakat : Dynamic;
+	/**
+		```lua
+		(global) table.breakindent: unknown
+		```
+	**/
+	extern var breakindent : Dynamic;
+	/**
+		```lua
+		(global) table.breakindentopt: unknown
+		```
+	**/
+	extern var breakindentopt : Dynamic;
+	/**
+		```lua
+		(global) table.browsedir: unknown
+		```
+	**/
+	extern var browsedir : Dynamic;
+	/**
+		```lua
+		(global) table.bufhidden: unknown
+		```
+	**/
+	extern var bufhidden : Dynamic;
+	/**
+		```lua
+		(global) table.buflisted: unknown
+		```
+	**/
+	extern var buflisted : Dynamic;
+	/**
+		```lua
+		(global) table.buftype: unknown
+		```
+	**/
+	extern var buftype : Dynamic;
+	/**
+		```lua
+		(global) table.casemap: unknown
+		```
+	**/
+	extern var casemap : Dynamic;
+	/**
+		```lua
+		(global) table.cdhome: unknown
+		```
+	**/
+	extern var cdhome : Dynamic;
+	/**
+		```lua
+		(global) table.cdpath: unknown
+		```
+	**/
+	extern var cdpath : Dynamic;
+	/**
+		```lua
+		(global) table.cedit: unknown
+		```
+	**/
+	extern var cedit : Dynamic;
+	/**
+		```lua
+		(global) table.channel: unknown
+		```
+	**/
+	extern var channel : Dynamic;
+	/**
+		```lua
+		(global) table.charconvert: unknown
+		```
+	**/
+	extern var charconvert : Dynamic;
+	/**
+		```lua
+		(global) table.cindent: unknown
+		```
+	**/
+	extern var cindent : Dynamic;
+	/**
+		```lua
+		(global) table.cinkeys: unknown
+		```
+	**/
+	extern var cinkeys : Dynamic;
+	/**
+		```lua
+		(global) table.cinoptions: unknown
+		```
+	**/
+	extern var cinoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cinscopedecls: unknown
+		```
+	**/
+	extern var cinscopedecls : Dynamic;
+	/**
+		```lua
+		(global) table.cinwords: unknown
+		```
+	**/
+	extern var cinwords : Dynamic;
+	/**
+		```lua
+		(global) table.clipboard: unknown
+		```
+	**/
+	extern var clipboard : Dynamic;
+	/**
+		```lua
+		(global) table.cmdheight: unknown
+		```
+	**/
+	extern var cmdheight : Dynamic;
+	/**
+		```lua
+		(global) table.cmdwinheight: unknown
+		```
+	**/
+	extern var cmdwinheight : Dynamic;
+	/**
+		```lua
+		(global) table.colorcolumn: unknown
+		```
+	**/
+	extern var colorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.columns: unknown
+		```
+	**/
+	extern var columns : Dynamic;
+	/**
+		```lua
+		(global) table.comments: unknown
+		```
+	**/
+	extern var comments : Dynamic;
+	/**
+		```lua
+		(global) table.commentstring: unknown
+		```
+	**/
+	extern var commentstring : Dynamic;
+	/**
+		```lua
+		(global) table.compatible: unknown
+		```
+	**/
+	extern var compatible : Dynamic;
+	/**
+		```lua
+		(global) table.complete: unknown
+		```
+	**/
+	extern var complete : Dynamic;
+	/**
+		```lua
+		(global) table.completefunc: unknown
+		```
+	**/
+	extern var completefunc : Dynamic;
+	/**
+		```lua
+		(global) table.completeitemalign: unknown
+		```
+	**/
+	extern var completeitemalign : Dynamic;
+	/**
+		```lua
+		(global) table.completeopt: unknown
+		```
+	**/
+	extern var completeopt : Dynamic;
+	/**
+		```lua
+		(global) table.completeslash: unknown
+		```
+	**/
+	extern var completeslash : Dynamic;
+	/**
+		```lua
+		(global) table.concealcursor: unknown
+		```
+	**/
+	extern var concealcursor : Dynamic;
+	/**
+		```lua
+		(global) table.conceallevel: unknown
+		```
+	**/
+	extern var conceallevel : Dynamic;
+	/**
+		```lua
+		(global) table.confirm: unknown
+		```
+	**/
+	extern var confirm : Dynamic;
+	/**
+		```lua
+		(global) table.copyindent: unknown
+		```
+	**/
+	extern var copyindent : Dynamic;
+	/**
+		```lua
+		(global) table.cpoptions: unknown
+		```
+	**/
+	extern var cpoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cursorbind: unknown
+		```
+	**/
+	extern var cursorbind : Dynamic;
+	/**
+		```lua
+		(global) table.cursorcolumn: unknown
+		```
+	**/
+	extern var cursorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.cursorline: unknown
+		```
+	**/
+	extern var cursorline : Dynamic;
+	/**
+		```lua
+		(global) table.cursorlineopt: unknown
+		```
+	**/
+	extern var cursorlineopt : Dynamic;
+	/**
+		```lua
+		(global) table.debug: unknown
+		```
+	**/
+	extern var debug : Dynamic;
+	/**
+		```lua
+		(global) table.define: unknown
+		```
+	**/
+	extern var define : Dynamic;
+	/**
+		```lua
+		(global) table.delcombine: unknown
+		```
+	**/
+	extern var delcombine : Dynamic;
+	/**
+		```lua
+		(global) table.dictionary: unknown
+		```
+	**/
+	extern var dictionary : Dynamic;
+	/**
+		```lua
+		(global) table.diff: unknown
+		```
+	**/
+	extern var diff : Dynamic;
+	/**
+		```lua
+		(global) table.diffexpr: unknown
+		```
+	**/
+	extern var diffexpr : Dynamic;
+	/**
+		```lua
+		(global) table.diffopt: unknown
+		```
+	**/
+	extern var diffopt : Dynamic;
+	/**
+		```lua
+		(global) table.digraph: unknown
+		```
+	**/
+	extern var digraph : Dynamic;
+	/**
+		```lua
+		(global) table.directory: unknown
+		```
+	**/
+	extern var directory : Dynamic;
+	/**
+		```lua
+		(global) table.display: unknown
+		```
+	**/
+	extern var display : Dynamic;
+	/**
+		```lua
+		(global) table.eadirection: unknown
+		```
+	**/
+	extern var eadirection : Dynamic;
+	/**
+		```lua
+		(global) table.edcompatible: unknown
+		```
+	**/
+	extern var edcompatible : Dynamic;
+	/**
+		```lua
+		(global) table.emoji: unknown
+		```
+	**/
+	extern var emoji : Dynamic;
+	/**
+		```lua
+		(global) table.encoding: unknown
+		```
+	**/
+	extern var encoding : Dynamic;
+	/**
+		```lua
+		(global) table.endoffile: unknown
+		```
+	**/
+	extern var endoffile : Dynamic;
+	/**
+		```lua
+		(global) table.endofline: unknown
+		```
+	**/
+	extern var endofline : Dynamic;
+	/**
+		```lua
+		(global) table.equalalways: unknown
+		```
+	**/
+	extern var equalalways : Dynamic;
+	/**
+		```lua
+		(global) table.equalprg: unknown
+		```
+	**/
+	extern var equalprg : Dynamic;
+	/**
+		```lua
+		(global) table.errorbells: unknown
+		```
+	**/
+	extern var errorbells : Dynamic;
+	/**
+		```lua
+		(global) table.errorfile: unknown
+		```
+	**/
+	extern var errorfile : Dynamic;
+	/**
+		```lua
+		(global) table.errorformat: unknown
+		```
+	**/
+	extern var errorformat : Dynamic;
+	/**
+		```lua
+		(global) table.eventignore: unknown
+		```
+	**/
+	extern var eventignore : Dynamic;
+	/**
+		```lua
+		(global) table.eventignorewin: unknown
+		```
+	**/
+	extern var eventignorewin : Dynamic;
+	/**
+		```lua
+		(global) table.expandtab: unknown
+		```
+	**/
+	extern var expandtab : Dynamic;
+	/**
+		```lua
+		(global) table.exrc: unknown
+		```
+	**/
+	extern var exrc : Dynamic;
+	/**
+		```lua
+		(global) table.fileencoding: unknown
+		```
+	**/
+	extern var fileencoding : Dynamic;
+	/**
+		```lua
+		(global) table.fileencodings: unknown
+		```
+	**/
+	extern var fileencodings : Dynamic;
+	/**
+		```lua
+		(global) table.fileformat: unknown
+		```
+	**/
+	extern var fileformat : Dynamic;
+	/**
+		```lua
+		(global) table.fileformats: unknown
+		```
+	**/
+	extern var fileformats : Dynamic;
+	/**
+		```lua
+		(global) table.fileignorecase: unknown
+		```
+	**/
+	extern var fileignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.filetype: unknown
+		```
+	**/
+	extern var filetype : Dynamic;
+	/**
+		```lua
+		(global) table.fillchars: unknown
+		```
+	**/
+	extern var fillchars : Dynamic;
+	/**
+		```lua
+		(global) table.findfunc: unknown
+		```
+	**/
+	extern var findfunc : Dynamic;
+	/**
+		```lua
+		(global) table.fixendofline: unknown
+		```
+	**/
+	extern var fixendofline : Dynamic;
+	/**
+		```lua
+		(global) table.foldclose: unknown
+		```
+	**/
+	extern var foldclose : Dynamic;
+	/**
+		```lua
+		(global) table.foldcolumn: unknown
+		```
+	**/
+	extern var foldcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.foldenable: unknown
+		```
+	**/
+	extern var foldenable : Dynamic;
+	/**
+		```lua
+		(global) table.foldexpr: unknown
+		```
+	**/
+	extern var foldexpr : Dynamic;
+	/**
+		```lua
+		(global) table.foldignore: unknown
+		```
+	**/
+	extern var foldignore : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevel: unknown
+		```
+	**/
+	extern var foldlevel : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevelstart: unknown
+		```
+	**/
+	extern var foldlevelstart : Dynamic;
+	/**
+		```lua
+		(global) table.foldmarker: unknown
+		```
+	**/
+	extern var foldmarker : Dynamic;
+	/**
+		```lua
+		(global) table.foldmethod: unknown
+		```
+	**/
+	extern var foldmethod : Dynamic;
+	/**
+		```lua
+		(global) table.foldminlines: unknown
+		```
+	**/
+	extern var foldminlines : Dynamic;
+	/**
+		```lua
+		(global) table.foldnestmax: unknown
+		```
+	**/
+	extern var foldnestmax : Dynamic;
+	/**
+		```lua
+		(global) table.foldopen: unknown
+		```
+	**/
+	extern var foldopen : Dynamic;
+	/**
+		```lua
+		(global) table.foldtext: unknown
+		```
+	**/
+	extern var foldtext : Dynamic;
+	/**
+		```lua
+		(global) table.formatexpr: unknown
+		```
+	**/
+	extern var formatexpr : Dynamic;
+	/**
+		```lua
+		(global) table.formatlistpat: unknown
+		```
+	**/
+	extern var formatlistpat : Dynamic;
+	/**
+		```lua
+		(global) table.formatoptions: unknown
+		```
+	**/
+	extern var formatoptions : Dynamic;
+	/**
+		```lua
+		(global) table.formatprg: unknown
+		```
+	**/
+	extern var formatprg : Dynamic;
+	/**
+		```lua
+		(global) table.fsync: unknown
+		```
+	**/
+	extern var fsync : Dynamic;
+	/**
+		```lua
+		(global) table.gdefault: unknown
+		```
+	**/
+	extern var gdefault : Dynamic;
+	/**
+		```lua
+		(global) table.grepformat: unknown
+		```
+	**/
+	extern var grepformat : Dynamic;
+	/**
+		```lua
+		(global) table.grepprg: unknown
+		```
+	**/
+	extern var grepprg : Dynamic;
+	/**
+		```lua
+		(global) table.guicursor: unknown
+		```
+	**/
+	extern var guicursor : Dynamic;
+	/**
+		```lua
+		(global) table.guifont: unknown
+		```
+	**/
+	extern var guifont : Dynamic;
+	/**
+		```lua
+		(global) table.guifontwide: unknown
+		```
+	**/
+	extern var guifontwide : Dynamic;
+	/**
+		```lua
+		(global) table.guioptions: unknown
+		```
+	**/
+	extern var guioptions : Dynamic;
+	/**
+		```lua
+		(global) table.guitablabel: unknown
+		```
+	**/
+	extern var guitablabel : Dynamic;
+	/**
+		```lua
+		(global) table.guitabtooltip: unknown
+		```
+	**/
+	extern var guitabtooltip : Dynamic;
+	/**
+		```lua
+		(global) table.helpfile: unknown
+		```
+	**/
+	extern var helpfile : Dynamic;
+	/**
+		```lua
+		(global) table.helpheight: unknown
+		```
+	**/
+	extern var helpheight : Dynamic;
+	/**
+		```lua
+		(global) table.helplang: unknown
+		```
+	**/
+	extern var helplang : Dynamic;
+	/**
+		```lua
+		(global) table.hidden: unknown
+		```
+	**/
+	extern var hidden : Dynamic;
+	/**
+		```lua
+		(global) table.highlight: unknown
+		```
+	**/
+	extern var highlight : Dynamic;
+	/**
+		```lua
+		(global) table.history: unknown
+		```
+	**/
+	extern var history : Dynamic;
+	/**
+		```lua
+		(global) table.hkmap: unknown
+		```
+	**/
+	extern var hkmap : Dynamic;
+	/**
+		```lua
+		(global) table.hkmapp: unknown
+		```
+	**/
+	extern var hkmapp : Dynamic;
+	/**
+		```lua
+		(global) table.hlsearch: unknown
+		```
+	**/
+	extern var hlsearch : Dynamic;
+	/**
+		```lua
+		(global) table.icon: unknown
+		```
+	**/
+	extern var icon : Dynamic;
+	/**
+		```lua
+		(global) table.iconstring: unknown
+		```
+	**/
+	extern var iconstring : Dynamic;
+	/**
+		```lua
+		(global) table.ignorecase: unknown
+		```
+	**/
+	extern var ignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.imcmdline: unknown
+		```
+	**/
+	extern var imcmdline : Dynamic;
+	/**
+		```lua
+		(global) table.imdisable: unknown
+		```
+	**/
+	extern var imdisable : Dynamic;
+	/**
+		```lua
+		(global) table.iminsert: unknown
+		```
+	**/
+	extern var iminsert : Dynamic;
+	/**
+		```lua
+		(global) table.imsearch: unknown
+		```
+	**/
+	extern var imsearch : Dynamic;
+	/**
+		```lua
+		(global) table.inccommand: unknown
+		```
+	**/
+	extern var inccommand : Dynamic;
+	/**
+		```lua
+		(global) table.include: unknown
+		```
+	**/
+	extern var include : Dynamic;
+	/**
+		```lua
+		(global) table.includeexpr: unknown
+		```
+	**/
+	extern var includeexpr : Dynamic;
+	/**
+		```lua
+		(global) table.incsearch: unknown
+		```
+	**/
+	extern var incsearch : Dynamic;
+	/**
+		```lua
+		(global) table.indentexpr: unknown
+		```
+	**/
+	extern var indentexpr : Dynamic;
+	/**
+		```lua
+		(global) table.indentkeys: unknown
+		```
+	**/
+	extern var indentkeys : Dynamic;
+	/**
+		```lua
+		(global) table.infercase: unknown
+		```
+	**/
+	extern var infercase : Dynamic;
+	/**
+		```lua
+		(global) table.insertmode: unknown
+		```
+	**/
+	extern var insertmode : Dynamic;
+	/**
+		```lua
+		(global) table.isfname: unknown
+		```
+	**/
+	extern var isfname : Dynamic;
+	/**
+		```lua
+		(global) table.isident: unknown
+		```
+	**/
+	extern var isident : Dynamic;
+	/**
+		```lua
+		(global) table.iskeyword: unknown
+		```
+	**/
+	extern var iskeyword : Dynamic;
+	/**
+		```lua
+		(global) table.isprint: unknown
+		```
+	**/
+	extern var isprint : Dynamic;
+	/**
+		```lua
+		(global) table.joinspaces: unknown
+		```
+	**/
+	extern var joinspaces : Dynamic;
+	/**
+		```lua
+		(global) table.jumpoptions: unknown
+		```
+	**/
+	extern var jumpoptions : Dynamic;
+	/**
+		```lua
+		(global) table.keymap: unknown
+		```
+	**/
+	extern var keymap : Dynamic;
+	/**
+		```lua
+		(global) table.keymodel: unknown
+		```
+	**/
+	extern var keymodel : Dynamic;
+	/**
+		```lua
+		(global) table.keywordprg: unknown
+		```
+	**/
+	extern var keywordprg : Dynamic;
+	/**
+		```lua
+		(global) table.langmap: unknown
+		```
+	**/
+	extern var langmap : Dynamic;
+	/**
+		```lua
+		(global) table.langmenu: unknown
+		```
+	**/
+	extern var langmenu : Dynamic;
+	/**
+		```lua
+		(global) table.langnoremap: unknown
+		```
+	**/
+	extern var langnoremap : Dynamic;
+	/**
+		```lua
+		(global) table.langremap: unknown
+		```
+	**/
+	extern var langremap : Dynamic;
+	/**
+		```lua
+		(global) table.laststatus: unknown
+		```
+	**/
+	extern var laststatus : Dynamic;
+	/**
+		```lua
+		(global) table.lazyredraw: unknown
+		```
+	**/
+	extern var lazyredraw : Dynamic;
+	/**
+		```lua
+		(global) table.linebreak: unknown
+		```
+	**/
+	extern var linebreak : Dynamic;
+	/**
+		```lua
+		(global) table.lines: unknown
+		```
+	**/
+	extern var lines : Dynamic;
+	/**
+		```lua
+		(global) table.linespace: unknown
+		```
+	**/
+	extern var linespace : Dynamic;
+	/**
+		```lua
+		(global) table.lisp: unknown
+		```
+	**/
+	extern var lisp : Dynamic;
+	/**
+		```lua
+		(global) table.lispoptions: unknown
+		```
+	**/
+	extern var lispoptions : Dynamic;
+	/**
+		```lua
+		(global) table.lispwords: unknown
+		```
+	**/
+	extern var lispwords : Dynamic;
+	/**
+		```lua
+		(global) table.list: unknown
+		```
+	**/
+	extern var list : Dynamic;
+	/**
+		```lua
+		(global) table.listchars: unknown
+		```
+	**/
+	extern var listchars : Dynamic;
+	/**
+		```lua
+		(global) table.loadplugins: unknown
+		```
+	**/
+	extern var loadplugins : Dynamic;
+	/**
+		```lua
+		(global) table.magic: unknown
+		```
+	**/
+	extern var magic : Dynamic;
+	/**
+		```lua
+		(global) table.makeef: unknown
+		```
+	**/
+	extern var makeef : Dynamic;
+	/**
+		```lua
+		(global) table.makeencoding: unknown
+		```
+	**/
+	extern var makeencoding : Dynamic;
+	/**
+		```lua
+		(global) table.makeprg: unknown
+		```
+	**/
+	extern var makeprg : Dynamic;
+	/**
+		```lua
+		(global) table.matchpairs: unknown
+		```
+	**/
+	extern var matchpairs : Dynamic;
+	/**
+		```lua
+		(global) table.matchtime: unknown
+		```
+	**/
+	extern var matchtime : Dynamic;
+	/**
+		```lua
+		(global) table.maxcombine: unknown
+		```
+	**/
+	extern var maxcombine : Dynamic;
+	/**
+		```lua
+		(global) table.maxfuncdepth: unknown
+		```
+	**/
+	extern var maxfuncdepth : Dynamic;
+	/**
+		```lua
+		(global) table.maxmapdepth: unknown
+		```
+	**/
+	extern var maxmapdepth : Dynamic;
+	/**
+		```lua
+		(global) table.maxmempattern: unknown
+		```
+	**/
+	extern var maxmempattern : Dynamic;
+	/**
+		```lua
+		(global) table.menuitems: unknown
+		```
+	**/
+	extern var menuitems : Dynamic;
+	/**
+		```lua
+		(global) table.messagesopt: unknown
+		```
+	**/
+	extern var messagesopt : Dynamic;
+	/**
+		```lua
+		(global) table.mkspellmem: unknown
+		```
+	**/
+	extern var mkspellmem : Dynamic;
+	/**
+		```lua
+		(global) table.modeline: unknown
+		```
+	**/
+	extern var modeline : Dynamic;
+	/**
+		```lua
+		(global) table.modelineexpr: unknown
+		```
+	**/
+	extern var modelineexpr : Dynamic;
+	/**
+		```lua
+		(global) table.modelines: unknown
+		```
+	**/
+	extern var modelines : Dynamic;
+	/**
+		```lua
+		(global) table.modifiable: unknown
+		```
+	**/
+	extern var modifiable : Dynamic;
+	/**
+		```lua
+		(global) table.modified: unknown
+		```
+	**/
+	extern var modified : Dynamic;
+	/**
+		```lua
+		(global) table.more: unknown
+		```
+	**/
+	extern var more : Dynamic;
+	/**
+		```lua
+		(global) table.mouse: unknown
+		```
+	**/
+	extern var mouse : Dynamic;
+	/**
+		```lua
+		(global) table.mousefocus: unknown
+		```
+	**/
+	extern var mousefocus : Dynamic;
+	/**
+		```lua
+		(global) table.mousehide: unknown
+		```
+	**/
+	extern var mousehide : Dynamic;
+	/**
+		```lua
+		(global) table.mousemodel: unknown
+		```
+	**/
+	extern var mousemodel : Dynamic;
+	/**
+		```lua
+		(global) table.mousemoveevent: unknown
+		```
+	**/
+	extern var mousemoveevent : Dynamic;
+	/**
+		```lua
+		(global) table.mousescroll: unknown
+		```
+	**/
+	extern var mousescroll : Dynamic;
+	/**
+		```lua
+		(global) table.mouseshape: unknown
+		```
+	**/
+	extern var mouseshape : Dynamic;
+	/**
+		```lua
+		(global) table.mousetime: unknown
+		```
+	**/
+	extern var mousetime : Dynamic;
+	/**
+		```lua
+		(global) table.nrformats: unknown
+		```
+	**/
+	extern var nrformats : Dynamic;
+	/**
+		```lua
+		(global) table.number: unknown
+		```
+	**/
+	extern var number : Dynamic;
+	/**
+		```lua
+		(global) table.numberwidth: unknown
+		```
+	**/
+	extern var numberwidth : Dynamic;
+	/**
+		```lua
+		(global) table.omnifunc: unknown
+		```
+	**/
+	extern var omnifunc : Dynamic;
+	/**
+		```lua
+		(global) table.opendevice: unknown
+		```
+	**/
+	extern var opendevice : Dynamic;
+	/**
+		```lua
+		(global) table.operatorfunc: unknown
+		```
+	**/
+	extern var operatorfunc : Dynamic;
+	/**
+		```lua
+		(global) table.packpath: unknown
+		```
+	**/
+	extern var packpath : Dynamic;
+	/**
+		```lua
+		(global) table.paragraphs: unknown
+		```
+	**/
+	extern var paragraphs : Dynamic;
+	/**
+		```lua
+		(global) table.paste: unknown
+		```
+	**/
+	extern var paste : Dynamic;
+	/**
+		```lua
+		(global) table.pastetoggle: unknown
+		```
+	**/
+	extern var pastetoggle : Dynamic;
+	/**
+		```lua
+		(global) table.patchexpr: unknown
+		```
+	**/
+	extern var patchexpr : Dynamic;
+	/**
+		```lua
+		(global) table.patchmode: unknown
+		```
+	**/
+	extern var patchmode : Dynamic;
+	/**
+		```lua
+		(global) table.path: unknown
+		```
+	**/
+	extern var path : Dynamic;
+	/**
+		```lua
+		(global) table.preserveindent: unknown
+		```
+	**/
+	extern var preserveindent : Dynamic;
+	/**
+		```lua
+		(global) table.previewheight: unknown
+		```
+	**/
+	extern var previewheight : Dynamic;
+	/**
+		```lua
+		(global) table.previewwindow: unknown
+		```
+	**/
+	extern var previewwindow : Dynamic;
+	/**
+		```lua
+		(global) table.prompt: unknown
+		```
+	**/
+	extern var prompt : Dynamic;
+	/**
+		```lua
+		(global) table.pumblend: unknown
+		```
+	**/
+	extern var pumblend : Dynamic;
+	/**
+		```lua
+		(global) table.pumheight: unknown
+		```
+	**/
+	extern var pumheight : Dynamic;
+	/**
+		```lua
+		(global) table.pumwidth: unknown
+		```
+	**/
+	extern var pumwidth : Dynamic;
+	/**
+		```lua
+		(global) table.pyxversion: unknown
+		```
+	**/
+	extern var pyxversion : Dynamic;
+	/**
+		```lua
+		(global) table.quickfixtextfunc: unknown
+		```
+	**/
+	extern var quickfixtextfunc : Dynamic;
+	/**
+		```lua
+		(global) table.quoteescape: unknown
+		```
+	**/
+	extern var quoteescape : Dynamic;
+	/**
+		```lua
+		(global) table.readonly: unknown
+		```
+	**/
+	extern var readonly : Dynamic;
+	/**
+		```lua
+		(global) table.redrawdebug: unknown
+		```
+	**/
+	extern var redrawdebug : Dynamic;
+	/**
+		```lua
+		(global) table.redrawtime: unknown
+		```
+	**/
+	extern var redrawtime : Dynamic;
+	/**
+		```lua
+		(global) table.regexpengine: unknown
+		```
+	**/
+	extern var regexpengine : Dynamic;
+	/**
+		```lua
+		(global) table.relativenumber: unknown
+		```
+	**/
+	extern var relativenumber : Dynamic;
+	/**
+		```lua
+		(global) table.remap: unknown
+		```
+	**/
+	extern var remap : Dynamic;
+	/**
+		```lua
+		(global) table.report: unknown
+		```
+	**/
+	extern var report : Dynamic;
+	/**
+		```lua
+		(global) table.revins: unknown
+		```
+	**/
+	extern var revins : Dynamic;
+	/**
+		```lua
+		(global) table.rightleft: unknown
+		```
+	**/
+	extern var rightleft : Dynamic;
+	/**
+		```lua
+		(global) table.rightleftcmd: unknown
+		```
+	**/
+	extern var rightleftcmd : Dynamic;
+	/**
+		```lua
+		(global) table.ruler: unknown
+		```
+	**/
+	extern var ruler : Dynamic;
+	/**
+		```lua
+		(global) table.rulerformat: unknown
+		```
+	**/
+	extern var rulerformat : Dynamic;
+	/**
+		```lua
+		(global) table.runtimepath: unknown
+		```
+	**/
+	extern var runtimepath : Dynamic;
+	/**
+		```lua
+		(global) table.scroll: unknown
+		```
+	**/
+	extern var scroll : Dynamic;
+	/**
+		```lua
+		(global) table.scrollback: unknown
+		```
+	**/
+	extern var scrollback : Dynamic;
+	/**
+		```lua
+		(global) table.scrollbind: unknown
+		```
+	**/
+	extern var scrollbind : Dynamic;
+	/**
+		```lua
+		(global) table.scrolljump: unknown
+		```
+	**/
+	extern var scrolljump : Dynamic;
+	/**
+		```lua
+		(global) table.scrolloff: unknown
+		```
+	**/
+	extern var scrolloff : Dynamic;
+	/**
+		```lua
+		(global) table.scrollopt: unknown
+		```
+	**/
+	extern var scrollopt : Dynamic;
+	/**
+		```lua
+		(global) table.sections: unknown
+		```
+	**/
+	extern var sections : Dynamic;
+	/**
+		```lua
+		(global) table.secure: unknown
+		```
+	**/
+	extern var secure : Dynamic;
+	/**
+		```lua
+		(global) table.selection: unknown
+		```
+	**/
+	extern var selection : Dynamic;
+	/**
+		```lua
+		(global) table.selectmode: unknown
+		```
+	**/
+	extern var selectmode : Dynamic;
+	/**
+		```lua
+		(global) table.sessionoptions: unknown
+		```
+	**/
+	extern var sessionoptions : Dynamic;
+	/**
+		```lua
+		(global) table.shada: unknown
+		```
+	**/
+	extern var shada : Dynamic;
+	/**
+		```lua
+		(global) table.shadafile: unknown
+		```
+	**/
+	extern var shadafile : Dynamic;
+	/**
+		```lua
+		(global) table.shell: unknown
+		```
+	**/
+	extern var shell : Dynamic;
+	/**
+		```lua
+		(global) table.shellcmdflag: unknown
+		```
+	**/
+	extern var shellcmdflag : Dynamic;
+	/**
+		```lua
+		(global) table.shellpipe: unknown
+		```
+	**/
+	extern var shellpipe : Dynamic;
+	/**
+		```lua
+		(global) table.shellquote: unknown
+		```
+	**/
+	extern var shellquote : Dynamic;
+	/**
+		```lua
+		(global) table.shellredir: unknown
+		```
+	**/
+	extern var shellredir : Dynamic;
+	/**
+		```lua
+		(global) table.shellslash: unknown
+		```
+	**/
+	extern var shellslash : Dynamic;
+	/**
+		```lua
+		(global) table.shelltemp: unknown
+		```
+	**/
+	extern var shelltemp : Dynamic;
+	/**
+		```lua
+		(global) table.shellxescape: unknown
+		```
+	**/
+	extern var shellxescape : Dynamic;
+	/**
+		```lua
+		(global) table.shellxquote: unknown
+		```
+	**/
+	extern var shellxquote : Dynamic;
+	/**
+		```lua
+		(global) table.shiftround: unknown
+		```
+	**/
+	extern var shiftround : Dynamic;
+	/**
+		```lua
+		(global) table.shiftwidth: unknown
+		```
+	**/
+	extern var shiftwidth : Dynamic;
+	/**
+		```lua
+		(global) table.shortmess: unknown
+		```
+	**/
+	extern var shortmess : Dynamic;
+	/**
+		```lua
+		(global) table.showbreak: unknown
+		```
+	**/
+	extern var showbreak : Dynamic;
+	/**
+		```lua
+		(global) table.showcmd: unknown
+		```
+	**/
+	extern var showcmd : Dynamic;
+	/**
+		```lua
+		(global) table.showcmdloc: unknown
+		```
+	**/
+	extern var showcmdloc : Dynamic;
+	/**
+		```lua
+		(global) table.showfulltag: unknown
+		```
+	**/
+	extern var showfulltag : Dynamic;
+	/**
+		```lua
+		(global) table.showmatch: unknown
+		```
+	**/
+	extern var showmatch : Dynamic;
+	/**
+		```lua
+		(global) table.showmode: unknown
+		```
+	**/
+	extern var showmode : Dynamic;
+	/**
+		```lua
+		(global) table.showtabline: unknown
+		```
+	**/
+	extern var showtabline : Dynamic;
+	/**
+		```lua
+		(global) table.sidescroll: unknown
+		```
+	**/
+	extern var sidescroll : Dynamic;
+	/**
+		```lua
+		(global) table.sidescrolloff: unknown
+		```
+	**/
+	extern var sidescrolloff : Dynamic;
+	/**
+		```lua
+		(global) table.signcolumn: unknown
+		```
+	**/
+	extern var signcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.smartcase: unknown
+		```
+	**/
+	extern var smartcase : Dynamic;
+	/**
+		```lua
+		(global) table.smartindent: unknown
+		```
+	**/
+	extern var smartindent : Dynamic;
+	/**
+		```lua
+		(global) table.smarttab: unknown
+		```
+	**/
+	extern var smarttab : Dynamic;
+	/**
+		```lua
+		(global) table.smoothscroll: unknown
+		```
+	**/
+	extern var smoothscroll : Dynamic;
+	/**
+		```lua
+		(global) table.softtabstop: unknown
+		```
+	**/
+	extern var softtabstop : Dynamic;
+	/**
+		```lua
+		(global) table.spell: unknown
+		```
+	**/
+	extern var spell : Dynamic;
+	/**
+		```lua
+		(global) table.spellcapcheck: unknown
+		```
+	**/
+	extern var spellcapcheck : Dynamic;
+	/**
+		```lua
+		(global) table.spellfile: unknown
+		```
+	**/
+	extern var spellfile : Dynamic;
+	/**
+		```lua
+		(global) table.spelllang: unknown
+		```
+	**/
+	extern var spelllang : Dynamic;
+	/**
+		```lua
+		(global) table.spelloptions: unknown
+		```
+	**/
+	extern var spelloptions : Dynamic;
+	/**
+		```lua
+		(global) table.spellsuggest: unknown
+		```
+	**/
+	extern var spellsuggest : Dynamic;
+	/**
+		```lua
+		(global) table.splitbelow: unknown
+		```
+	**/
+	extern var splitbelow : Dynamic;
+	/**
+		```lua
+		(global) table.splitkeep: unknown
+		```
+	**/
+	extern var splitkeep : Dynamic;
+	/**
+		```lua
+		(global) table.splitright: unknown
+		```
+	**/
+	extern var splitright : Dynamic;
+	/**
+		```lua
+		(global) table.startofline: unknown
+		```
+	**/
+	extern var startofline : Dynamic;
+	/**
+		```lua
+		(global) table.statuscolumn: unknown
+		```
+	**/
+	extern var statuscolumn : Dynamic;
+	/**
+		```lua
+		(global) table.statusline: unknown
+		```
+	**/
+	extern var statusline : Dynamic;
+	/**
+		```lua
+		(global) table.suffixes: unknown
+		```
+	**/
+	extern var suffixes : Dynamic;
+	/**
+		```lua
+		(global) table.suffixesadd: unknown
+		```
+	**/
+	extern var suffixesadd : Dynamic;
+	/**
+		```lua
+		(global) table.swapfile: unknown
+		```
+	**/
+	extern var swapfile : Dynamic;
+	/**
+		```lua
+		(global) table.switchbuf: unknown
+		```
+	**/
+	extern var switchbuf : Dynamic;
+	/**
+		```lua
+		(global) table.synmaxcol: unknown
+		```
+	**/
+	extern var synmaxcol : Dynamic;
+	/**
+		```lua
+		(global) table.syntax: unknown
+		```
+	**/
+	extern var syntax : Dynamic;
+	/**
+		```lua
+		(global) table.tabclose: unknown
+		```
+	**/
+	extern var tabclose : Dynamic;
+	/**
+		```lua
+		(global) table.tabline: unknown
+		```
+	**/
+	extern var tabline : Dynamic;
+	/**
+		```lua
+		(global) table.tabpagemax: unknown
+		```
+	**/
+	extern var tabpagemax : Dynamic;
+	/**
+		```lua
+		(global) table.tabstop: unknown
+		```
+	**/
+	extern var tabstop : Dynamic;
+	/**
+		```lua
+		(global) table.tagbsearch: unknown
+		```
+	**/
+	extern var tagbsearch : Dynamic;
+	/**
+		```lua
+		(global) table.tagcase: unknown
+		```
+	**/
+	extern var tagcase : Dynamic;
+	/**
+		```lua
+		(global) table.tagfunc: unknown
+		```
+	**/
+	extern var tagfunc : Dynamic;
+	/**
+		```lua
+		(global) table.taglength: unknown
+		```
+	**/
+	extern var taglength : Dynamic;
+	/**
+		```lua
+		(global) table.tagrelative: unknown
+		```
+	**/
+	extern var tagrelative : Dynamic;
+	/**
+		```lua
+		(global) table.tags: unknown
+		```
+	**/
+	extern var tags : Dynamic;
+	/**
+		```lua
+		(global) table.tagstack: unknown
+		```
+	**/
+	extern var tagstack : Dynamic;
+	/**
+		```lua
+		(global) table.termbidi: unknown
+		```
+	**/
+	extern var termbidi : Dynamic;
+	/**
+		```lua
+		(global) table.termencoding: unknown
+		```
+	**/
+	extern var termencoding : Dynamic;
+	/**
+		```lua
+		(global) table.termguicolors: unknown
+		```
+	**/
+	extern var termguicolors : Dynamic;
+	/**
+		```lua
+		(global) table.termpastefilter: unknown
+		```
+	**/
+	extern var termpastefilter : Dynamic;
+	/**
+		```lua
+		(global) table.termsync: unknown
+		```
+	**/
+	extern var termsync : Dynamic;
+	/**
+		```lua
+		(global) table.terse: unknown
+		```
+	**/
+	extern var terse : Dynamic;
+	/**
+		```lua
+		(global) table.textwidth: unknown
+		```
+	**/
+	extern var textwidth : Dynamic;
+	/**
+		```lua
+		(global) table.thesaurus: unknown
+		```
+	**/
+	extern var thesaurus : Dynamic;
+	/**
+		```lua
+		(global) table.thesaurusfunc: unknown
+		```
+	**/
+	extern var thesaurusfunc : Dynamic;
+	/**
+		```lua
+		(global) table.tildeop: unknown
+		```
+	**/
+	extern var tildeop : Dynamic;
+	/**
+		```lua
+		(global) table.timeout: unknown
+		```
+	**/
+	extern var timeout : Dynamic;
+	/**
+		```lua
+		(global) table.timeoutlen: unknown
+		```
+	**/
+	extern var timeoutlen : Dynamic;
+	/**
+		```lua
+		(global) table.title: unknown
+		```
+	**/
+	extern var title : Dynamic;
+	/**
+		```lua
+		(global) table.titlelen: unknown
+		```
+	**/
+	extern var titlelen : Dynamic;
+	/**
+		```lua
+		(global) table.titleold: unknown
+		```
+	**/
+	extern var titleold : Dynamic;
+	/**
+		```lua
+		(global) table.titlestring: unknown
+		```
+	**/
+	extern var titlestring : Dynamic;
+	/**
+		```lua
+		(global) table.ttimeout: unknown
+		```
+	**/
+	extern var ttimeout : Dynamic;
+	/**
+		```lua
+		(global) table.ttimeoutlen: unknown
+		```
+	**/
+	extern var ttimeoutlen : Dynamic;
+	/**
+		```lua
+		(global) table.ttyfast: unknown
+		```
+	**/
+	extern var ttyfast : Dynamic;
+	/**
+		```lua
+		(global) table.undodir: unknown
+		```
+	**/
+	extern var undodir : Dynamic;
+	/**
+		```lua
+		(global) table.undofile: unknown
+		```
+	**/
+	extern var undofile : Dynamic;
+	/**
+		```lua
+		(global) table.undolevels: unknown
+		```
+	**/
+	extern var undolevels : Dynamic;
+	/**
+		```lua
+		(global) table.undoreload: unknown
+		```
+	**/
+	extern var undoreload : Dynamic;
+	/**
+		```lua
+		(global) table.updatecount: unknown
+		```
+	**/
+	extern var updatecount : Dynamic;
+	/**
+		```lua
+		(global) table.updatetime: unknown
+		```
+	**/
+	extern var updatetime : Dynamic;
+	/**
+		```lua
+		(global) table.varsofttabstop: unknown
+		```
+	**/
+	extern var varsofttabstop : Dynamic;
+	/**
+		```lua
+		(global) table.vartabstop: unknown
+		```
+	**/
+	extern var vartabstop : Dynamic;
+	/**
+		```lua
+		(global) table.verbose: unknown
+		```
+	**/
+	extern var verbose : Dynamic;
+	/**
+		```lua
+		(global) table.verbosefile: unknown
+		```
+	**/
+	extern var verbosefile : Dynamic;
+	/**
+		```lua
+		(global) table.viewdir: unknown
+		```
+	**/
+	extern var viewdir : Dynamic;
+	/**
+		```lua
+		(global) table.viewoptions: unknown
+		```
+	**/
+	extern var viewoptions : Dynamic;
+	/**
+		```lua
+		(global) table.virtualedit: unknown
+		```
+	**/
+	extern var virtualedit : Dynamic;
+	/**
+		```lua
+		(global) table.visualbell: unknown
+		```
+	**/
+	extern var visualbell : Dynamic;
+	/**
+		```lua
+		(global) table.warn: unknown
+		```
+	**/
+	extern var warn : Dynamic;
+	/**
+		```lua
+		(global) table.whichwrap: unknown
+		```
+	**/
+	extern var whichwrap : Dynamic;
+	/**
+		```lua
+		(global) table.wildchar: unknown
+		```
+	**/
+	extern var wildchar : Dynamic;
+	/**
+		```lua
+		(global) table.wildcharm: unknown
+		```
+	**/
+	extern var wildcharm : Dynamic;
+	/**
+		```lua
+		(global) table.wildignore: unknown
+		```
+	**/
+	extern var wildignore : Dynamic;
+	/**
+		```lua
+		(global) table.wildignorecase: unknown
+		```
+	**/
+	extern var wildignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.wildmenu: unknown
+		```
+	**/
+	extern var wildmenu : Dynamic;
+	/**
+		```lua
+		(global) table.wildmode: unknown
+		```
+	**/
+	extern var wildmode : Dynamic;
+	/**
+		```lua
+		(global) table.wildoptions: unknown
+		```
+	**/
+	extern var wildoptions : Dynamic;
+	/**
+		```lua
+		(global) table.winaltkeys: unknown
+		```
+	**/
+	extern var winaltkeys : Dynamic;
+	/**
+		```lua
+		(global) table.winbar: unknown
+		```
+	**/
+	extern var winbar : Dynamic;
+	/**
+		```lua
+		(global) table.winblend: unknown
+		```
+	**/
+	extern var winblend : Dynamic;
+	/**
+		```lua
+		(global) table.winborder: unknown
+		```
+	**/
+	extern var winborder : Dynamic;
+	/**
+		```lua
+		(global) table.window: unknown
+		```
+	**/
+	extern var window : Dynamic;
+	/**
+		```lua
+		(global) table.winfixbuf: unknown
+		```
+	**/
+	extern var winfixbuf : Dynamic;
+	/**
+		```lua
+		(global) table.winfixheight: unknown
+		```
+	**/
+	extern var winfixheight : Dynamic;
+	/**
+		```lua
+		(global) table.winfixwidth: unknown
+		```
+	**/
+	extern var winfixwidth : Dynamic;
+	/**
+		```lua
+		(global) table.winheight: unknown
+		```
+	**/
+	extern var winheight : Dynamic;
+	/**
+		```lua
+		(global) table.winhighlight: unknown
+		```
+	**/
+	extern var winhighlight : Dynamic;
+	/**
+		```lua
+		(global) table.winminheight: unknown
+		```
+	**/
+	extern var winminheight : Dynamic;
+	/**
+		```lua
+		(global) table.winminwidth: unknown
+		```
+	**/
+	extern var winminwidth : Dynamic;
+	/**
+		```lua
+		(global) table.winwidth: unknown
+		```
+	**/
+	extern var winwidth : Dynamic;
+	/**
+		```lua
+		(global) table.wrap: unknown
+		```
+	**/
+	extern var wrap : Dynamic;
+	/**
+		```lua
+		(global) table.wrapmargin: unknown
+		```
+	**/
+	extern var wrapmargin : Dynamic;
+	/**
+		```lua
+		(global) table.wrapscan: unknown
+		```
+	**/
+	extern var wrapscan : Dynamic;
+	/**
+		```lua
+		(global) table.write: unknown
+		```
+	**/
+	extern var write : Dynamic;
+	/**
+		```lua
+		(global) table.writeany: unknown
+		```
+	**/
+	extern var writeany : Dynamic;
+	/**
+		```lua
+		(global) table.writebackup: unknown
+		```
+	**/
+	extern var writebackup : Dynamic;
+	/**
+		```lua
+		(global) table.writedelay: unknown
+		```
+	**/
+	extern var writedelay : Dynamic;
 }
 
 @:private extern class OptGlobal {
-
+	/**
+		```lua
+		(global) table.aleph: unknown
+		```
+	**/
+	extern var aleph : Dynamic;
+	/**
+		```lua
+		(global) table.allowrevins: unknown
+		```
+	**/
+	extern var allowrevins : Dynamic;
+	/**
+		```lua
+		(global) table.ambiwidth: unknown
+		```
+	**/
+	extern var ambiwidth : Dynamic;
+	/**
+		```lua
+		(global) table.arabic: unknown
+		```
+	**/
+	extern var arabic : Dynamic;
+	/**
+		```lua
+		(global) table.arabicshape: unknown
+		```
+	**/
+	extern var arabicshape : Dynamic;
+	/**
+		```lua
+		(global) table.autochdir: unknown
+		```
+	**/
+	extern var autochdir : Dynamic;
+	/**
+		```lua
+		(global) table.autoindent: unknown
+		```
+	**/
+	extern var autoindent : Dynamic;
+	/**
+		```lua
+		(global) table.autoread: unknown
+		```
+	**/
+	extern var autoread : Dynamic;
+	/**
+		```lua
+		(global) table.autowrite: unknown
+		```
+	**/
+	extern var autowrite : Dynamic;
+	/**
+		```lua
+		(global) table.autowriteall: unknown
+		```
+	**/
+	extern var autowriteall : Dynamic;
+	/**
+		```lua
+		(global) table.background: unknown
+		```
+	**/
+	extern var background : Dynamic;
+	/**
+		```lua
+		(global) table.backspace: unknown
+		```
+	**/
+	extern var backspace : Dynamic;
+	/**
+		```lua
+		(global) table.backup: unknown
+		```
+	**/
+	extern var backup : Dynamic;
+	/**
+		```lua
+		(global) table.backupcopy: unknown
+		```
+	**/
+	extern var backupcopy : Dynamic;
+	/**
+		```lua
+		(global) table.backupdir: unknown
+		```
+	**/
+	extern var backupdir : Dynamic;
+	/**
+		```lua
+		(global) table.backupext: unknown
+		```
+	**/
+	extern var backupext : Dynamic;
+	/**
+		```lua
+		(global) table.backupskip: unknown
+		```
+	**/
+	extern var backupskip : Dynamic;
+	/**
+		```lua
+		(global) table.belloff: unknown
+		```
+	**/
+	extern var belloff : Dynamic;
+	/**
+		```lua
+		(global) table.binary: unknown
+		```
+	**/
+	extern var binary : Dynamic;
+	/**
+		```lua
+		(global) table.bomb: unknown
+		```
+	**/
+	extern var bomb : Dynamic;
+	/**
+		```lua
+		(global) table.breakat: unknown
+		```
+	**/
+	extern var breakat : Dynamic;
+	/**
+		```lua
+		(global) table.breakindent: unknown
+		```
+	**/
+	extern var breakindent : Dynamic;
+	/**
+		```lua
+		(global) table.breakindentopt: unknown
+		```
+	**/
+	extern var breakindentopt : Dynamic;
+	/**
+		```lua
+		(global) table.browsedir: unknown
+		```
+	**/
+	extern var browsedir : Dynamic;
+	/**
+		```lua
+		(global) table.bufhidden: unknown
+		```
+	**/
+	extern var bufhidden : Dynamic;
+	/**
+		```lua
+		(global) table.buflisted: unknown
+		```
+	**/
+	extern var buflisted : Dynamic;
+	/**
+		```lua
+		(global) table.buftype: unknown
+		```
+	**/
+	extern var buftype : Dynamic;
+	/**
+		```lua
+		(global) table.casemap: unknown
+		```
+	**/
+	extern var casemap : Dynamic;
+	/**
+		```lua
+		(global) table.cdhome: unknown
+		```
+	**/
+	extern var cdhome : Dynamic;
+	/**
+		```lua
+		(global) table.cdpath: unknown
+		```
+	**/
+	extern var cdpath : Dynamic;
+	/**
+		```lua
+		(global) table.cedit: unknown
+		```
+	**/
+	extern var cedit : Dynamic;
+	/**
+		```lua
+		(global) table.channel: unknown
+		```
+	**/
+	extern var channel : Dynamic;
+	/**
+		```lua
+		(global) table.charconvert: unknown
+		```
+	**/
+	extern var charconvert : Dynamic;
+	/**
+		```lua
+		(global) table.cindent: unknown
+		```
+	**/
+	extern var cindent : Dynamic;
+	/**
+		```lua
+		(global) table.cinkeys: unknown
+		```
+	**/
+	extern var cinkeys : Dynamic;
+	/**
+		```lua
+		(global) table.cinoptions: unknown
+		```
+	**/
+	extern var cinoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cinscopedecls: unknown
+		```
+	**/
+	extern var cinscopedecls : Dynamic;
+	/**
+		```lua
+		(global) table.cinwords: unknown
+		```
+	**/
+	extern var cinwords : Dynamic;
+	/**
+		```lua
+		(global) table.clipboard: unknown
+		```
+	**/
+	extern var clipboard : Dynamic;
+	/**
+		```lua
+		(global) table.cmdheight: unknown
+		```
+	**/
+	extern var cmdheight : Dynamic;
+	/**
+		```lua
+		(global) table.cmdwinheight: unknown
+		```
+	**/
+	extern var cmdwinheight : Dynamic;
+	/**
+		```lua
+		(global) table.colorcolumn: unknown
+		```
+	**/
+	extern var colorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.columns: unknown
+		```
+	**/
+	extern var columns : Dynamic;
+	/**
+		```lua
+		(global) table.comments: unknown
+		```
+	**/
+	extern var comments : Dynamic;
+	/**
+		```lua
+		(global) table.commentstring: unknown
+		```
+	**/
+	extern var commentstring : Dynamic;
+	/**
+		```lua
+		(global) table.compatible: unknown
+		```
+	**/
+	extern var compatible : Dynamic;
+	/**
+		```lua
+		(global) table.complete: unknown
+		```
+	**/
+	extern var complete : Dynamic;
+	/**
+		```lua
+		(global) table.completefunc: unknown
+		```
+	**/
+	extern var completefunc : Dynamic;
+	/**
+		```lua
+		(global) table.completeitemalign: unknown
+		```
+	**/
+	extern var completeitemalign : Dynamic;
+	/**
+		```lua
+		(global) table.completeopt: unknown
+		```
+	**/
+	extern var completeopt : Dynamic;
+	/**
+		```lua
+		(global) table.completeslash: unknown
+		```
+	**/
+	extern var completeslash : Dynamic;
+	/**
+		```lua
+		(global) table.concealcursor: unknown
+		```
+	**/
+	extern var concealcursor : Dynamic;
+	/**
+		```lua
+		(global) table.conceallevel: unknown
+		```
+	**/
+	extern var conceallevel : Dynamic;
+	/**
+		```lua
+		(global) table.confirm: unknown
+		```
+	**/
+	extern var confirm : Dynamic;
+	/**
+		```lua
+		(global) table.copyindent: unknown
+		```
+	**/
+	extern var copyindent : Dynamic;
+	/**
+		```lua
+		(global) table.cpoptions: unknown
+		```
+	**/
+	extern var cpoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cursorbind: unknown
+		```
+	**/
+	extern var cursorbind : Dynamic;
+	/**
+		```lua
+		(global) table.cursorcolumn: unknown
+		```
+	**/
+	extern var cursorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.cursorline: unknown
+		```
+	**/
+	extern var cursorline : Dynamic;
+	/**
+		```lua
+		(global) table.cursorlineopt: unknown
+		```
+	**/
+	extern var cursorlineopt : Dynamic;
+	/**
+		```lua
+		(global) table.debug: unknown
+		```
+	**/
+	extern var debug : Dynamic;
+	/**
+		```lua
+		(global) table.define: unknown
+		```
+	**/
+	extern var define : Dynamic;
+	/**
+		```lua
+		(global) table.delcombine: unknown
+		```
+	**/
+	extern var delcombine : Dynamic;
+	/**
+		```lua
+		(global) table.dictionary: unknown
+		```
+	**/
+	extern var dictionary : Dynamic;
+	/**
+		```lua
+		(global) table.diff: unknown
+		```
+	**/
+	extern var diff : Dynamic;
+	/**
+		```lua
+		(global) table.diffexpr: unknown
+		```
+	**/
+	extern var diffexpr : Dynamic;
+	/**
+		```lua
+		(global) table.diffopt: unknown
+		```
+	**/
+	extern var diffopt : Dynamic;
+	/**
+		```lua
+		(global) table.digraph: unknown
+		```
+	**/
+	extern var digraph : Dynamic;
+	/**
+		```lua
+		(global) table.directory: unknown
+		```
+	**/
+	extern var directory : Dynamic;
+	/**
+		```lua
+		(global) table.display: unknown
+		```
+	**/
+	extern var display : Dynamic;
+	/**
+		```lua
+		(global) table.eadirection: unknown
+		```
+	**/
+	extern var eadirection : Dynamic;
+	/**
+		```lua
+		(global) table.edcompatible: unknown
+		```
+	**/
+	extern var edcompatible : Dynamic;
+	/**
+		```lua
+		(global) table.emoji: unknown
+		```
+	**/
+	extern var emoji : Dynamic;
+	/**
+		```lua
+		(global) table.encoding: unknown
+		```
+	**/
+	extern var encoding : Dynamic;
+	/**
+		```lua
+		(global) table.endoffile: unknown
+		```
+	**/
+	extern var endoffile : Dynamic;
+	/**
+		```lua
+		(global) table.endofline: unknown
+		```
+	**/
+	extern var endofline : Dynamic;
+	/**
+		```lua
+		(global) table.equalalways: unknown
+		```
+	**/
+	extern var equalalways : Dynamic;
+	/**
+		```lua
+		(global) table.equalprg: unknown
+		```
+	**/
+	extern var equalprg : Dynamic;
+	/**
+		```lua
+		(global) table.errorbells: unknown
+		```
+	**/
+	extern var errorbells : Dynamic;
+	/**
+		```lua
+		(global) table.errorfile: unknown
+		```
+	**/
+	extern var errorfile : Dynamic;
+	/**
+		```lua
+		(global) table.errorformat: unknown
+		```
+	**/
+	extern var errorformat : Dynamic;
+	/**
+		```lua
+		(global) table.eventignore: unknown
+		```
+	**/
+	extern var eventignore : Dynamic;
+	/**
+		```lua
+		(global) table.eventignorewin: unknown
+		```
+	**/
+	extern var eventignorewin : Dynamic;
+	/**
+		```lua
+		(global) table.expandtab: unknown
+		```
+	**/
+	extern var expandtab : Dynamic;
+	/**
+		```lua
+		(global) table.exrc: unknown
+		```
+	**/
+	extern var exrc : Dynamic;
+	/**
+		```lua
+		(global) table.fileencoding: unknown
+		```
+	**/
+	extern var fileencoding : Dynamic;
+	/**
+		```lua
+		(global) table.fileencodings: unknown
+		```
+	**/
+	extern var fileencodings : Dynamic;
+	/**
+		```lua
+		(global) table.fileformat: unknown
+		```
+	**/
+	extern var fileformat : Dynamic;
+	/**
+		```lua
+		(global) table.fileformats: unknown
+		```
+	**/
+	extern var fileformats : Dynamic;
+	/**
+		```lua
+		(global) table.fileignorecase: unknown
+		```
+	**/
+	extern var fileignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.filetype: unknown
+		```
+	**/
+	extern var filetype : Dynamic;
+	/**
+		```lua
+		(global) table.fillchars: unknown
+		```
+	**/
+	extern var fillchars : Dynamic;
+	/**
+		```lua
+		(global) table.findfunc: unknown
+		```
+	**/
+	extern var findfunc : Dynamic;
+	/**
+		```lua
+		(global) table.fixendofline: unknown
+		```
+	**/
+	extern var fixendofline : Dynamic;
+	/**
+		```lua
+		(global) table.foldclose: unknown
+		```
+	**/
+	extern var foldclose : Dynamic;
+	/**
+		```lua
+		(global) table.foldcolumn: unknown
+		```
+	**/
+	extern var foldcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.foldenable: unknown
+		```
+	**/
+	extern var foldenable : Dynamic;
+	/**
+		```lua
+		(global) table.foldexpr: unknown
+		```
+	**/
+	extern var foldexpr : Dynamic;
+	/**
+		```lua
+		(global) table.foldignore: unknown
+		```
+	**/
+	extern var foldignore : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevel: unknown
+		```
+	**/
+	extern var foldlevel : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevelstart: unknown
+		```
+	**/
+	extern var foldlevelstart : Dynamic;
+	/**
+		```lua
+		(global) table.foldmarker: unknown
+		```
+	**/
+	extern var foldmarker : Dynamic;
+	/**
+		```lua
+		(global) table.foldmethod: unknown
+		```
+	**/
+	extern var foldmethod : Dynamic;
+	/**
+		```lua
+		(global) table.foldminlines: unknown
+		```
+	**/
+	extern var foldminlines : Dynamic;
+	/**
+		```lua
+		(global) table.foldnestmax: unknown
+		```
+	**/
+	extern var foldnestmax : Dynamic;
+	/**
+		```lua
+		(global) table.foldopen: unknown
+		```
+	**/
+	extern var foldopen : Dynamic;
+	/**
+		```lua
+		(global) table.foldtext: unknown
+		```
+	**/
+	extern var foldtext : Dynamic;
+	/**
+		```lua
+		(global) table.formatexpr: unknown
+		```
+	**/
+	extern var formatexpr : Dynamic;
+	/**
+		```lua
+		(global) table.formatlistpat: unknown
+		```
+	**/
+	extern var formatlistpat : Dynamic;
+	/**
+		```lua
+		(global) table.formatoptions: unknown
+		```
+	**/
+	extern var formatoptions : Dynamic;
+	/**
+		```lua
+		(global) table.formatprg: unknown
+		```
+	**/
+	extern var formatprg : Dynamic;
+	/**
+		```lua
+		(global) table.fsync: unknown
+		```
+	**/
+	extern var fsync : Dynamic;
+	/**
+		```lua
+		(global) table.gdefault: unknown
+		```
+	**/
+	extern var gdefault : Dynamic;
+	/**
+		```lua
+		(global) table.grepformat: unknown
+		```
+	**/
+	extern var grepformat : Dynamic;
+	/**
+		```lua
+		(global) table.grepprg: unknown
+		```
+	**/
+	extern var grepprg : Dynamic;
+	/**
+		```lua
+		(global) table.guicursor: unknown
+		```
+	**/
+	extern var guicursor : Dynamic;
+	/**
+		```lua
+		(global) table.guifont: unknown
+		```
+	**/
+	extern var guifont : Dynamic;
+	/**
+		```lua
+		(global) table.guifontwide: unknown
+		```
+	**/
+	extern var guifontwide : Dynamic;
+	/**
+		```lua
+		(global) table.guioptions: unknown
+		```
+	**/
+	extern var guioptions : Dynamic;
+	/**
+		```lua
+		(global) table.guitablabel: unknown
+		```
+	**/
+	extern var guitablabel : Dynamic;
+	/**
+		```lua
+		(global) table.guitabtooltip: unknown
+		```
+	**/
+	extern var guitabtooltip : Dynamic;
+	/**
+		```lua
+		(global) table.helpfile: unknown
+		```
+	**/
+	extern var helpfile : Dynamic;
+	/**
+		```lua
+		(global) table.helpheight: unknown
+		```
+	**/
+	extern var helpheight : Dynamic;
+	/**
+		```lua
+		(global) table.helplang: unknown
+		```
+	**/
+	extern var helplang : Dynamic;
+	/**
+		```lua
+		(global) table.hidden: unknown
+		```
+	**/
+	extern var hidden : Dynamic;
+	/**
+		```lua
+		(global) table.highlight: unknown
+		```
+	**/
+	extern var highlight : Dynamic;
+	/**
+		```lua
+		(global) table.history: unknown
+		```
+	**/
+	extern var history : Dynamic;
+	/**
+		```lua
+		(global) table.hkmap: unknown
+		```
+	**/
+	extern var hkmap : Dynamic;
+	/**
+		```lua
+		(global) table.hkmapp: unknown
+		```
+	**/
+	extern var hkmapp : Dynamic;
+	/**
+		```lua
+		(global) table.hlsearch: unknown
+		```
+	**/
+	extern var hlsearch : Dynamic;
+	/**
+		```lua
+		(global) table.icon: unknown
+		```
+	**/
+	extern var icon : Dynamic;
+	/**
+		```lua
+		(global) table.iconstring: unknown
+		```
+	**/
+	extern var iconstring : Dynamic;
+	/**
+		```lua
+		(global) table.ignorecase: unknown
+		```
+	**/
+	extern var ignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.imcmdline: unknown
+		```
+	**/
+	extern var imcmdline : Dynamic;
+	/**
+		```lua
+		(global) table.imdisable: unknown
+		```
+	**/
+	extern var imdisable : Dynamic;
+	/**
+		```lua
+		(global) table.iminsert: unknown
+		```
+	**/
+	extern var iminsert : Dynamic;
+	/**
+		```lua
+		(global) table.imsearch: unknown
+		```
+	**/
+	extern var imsearch : Dynamic;
+	/**
+		```lua
+		(global) table.inccommand: unknown
+		```
+	**/
+	extern var inccommand : Dynamic;
+	/**
+		```lua
+		(global) table.include: unknown
+		```
+	**/
+	extern var include : Dynamic;
+	/**
+		```lua
+		(global) table.includeexpr: unknown
+		```
+	**/
+	extern var includeexpr : Dynamic;
+	/**
+		```lua
+		(global) table.incsearch: unknown
+		```
+	**/
+	extern var incsearch : Dynamic;
+	/**
+		```lua
+		(global) table.indentexpr: unknown
+		```
+	**/
+	extern var indentexpr : Dynamic;
+	/**
+		```lua
+		(global) table.indentkeys: unknown
+		```
+	**/
+	extern var indentkeys : Dynamic;
+	/**
+		```lua
+		(global) table.infercase: unknown
+		```
+	**/
+	extern var infercase : Dynamic;
+	/**
+		```lua
+		(global) table.insertmode: unknown
+		```
+	**/
+	extern var insertmode : Dynamic;
+	/**
+		```lua
+		(global) table.isfname: unknown
+		```
+	**/
+	extern var isfname : Dynamic;
+	/**
+		```lua
+		(global) table.isident: unknown
+		```
+	**/
+	extern var isident : Dynamic;
+	/**
+		```lua
+		(global) table.iskeyword: unknown
+		```
+	**/
+	extern var iskeyword : Dynamic;
+	/**
+		```lua
+		(global) table.isprint: unknown
+		```
+	**/
+	extern var isprint : Dynamic;
+	/**
+		```lua
+		(global) table.joinspaces: unknown
+		```
+	**/
+	extern var joinspaces : Dynamic;
+	/**
+		```lua
+		(global) table.jumpoptions: unknown
+		```
+	**/
+	extern var jumpoptions : Dynamic;
+	/**
+		```lua
+		(global) table.keymap: unknown
+		```
+	**/
+	extern var keymap : Dynamic;
+	/**
+		```lua
+		(global) table.keymodel: unknown
+		```
+	**/
+	extern var keymodel : Dynamic;
+	/**
+		```lua
+		(global) table.keywordprg: unknown
+		```
+	**/
+	extern var keywordprg : Dynamic;
+	/**
+		```lua
+		(global) table.langmap: unknown
+		```
+	**/
+	extern var langmap : Dynamic;
+	/**
+		```lua
+		(global) table.langmenu: unknown
+		```
+	**/
+	extern var langmenu : Dynamic;
+	/**
+		```lua
+		(global) table.langnoremap: unknown
+		```
+	**/
+	extern var langnoremap : Dynamic;
+	/**
+		```lua
+		(global) table.langremap: unknown
+		```
+	**/
+	extern var langremap : Dynamic;
+	/**
+		```lua
+		(global) table.laststatus: unknown
+		```
+	**/
+	extern var laststatus : Dynamic;
+	/**
+		```lua
+		(global) table.lazyredraw: unknown
+		```
+	**/
+	extern var lazyredraw : Dynamic;
+	/**
+		```lua
+		(global) table.linebreak: unknown
+		```
+	**/
+	extern var linebreak : Dynamic;
+	/**
+		```lua
+		(global) table.lines: unknown
+		```
+	**/
+	extern var lines : Dynamic;
+	/**
+		```lua
+		(global) table.linespace: unknown
+		```
+	**/
+	extern var linespace : Dynamic;
+	/**
+		```lua
+		(global) table.lisp: unknown
+		```
+	**/
+	extern var lisp : Dynamic;
+	/**
+		```lua
+		(global) table.lispoptions: unknown
+		```
+	**/
+	extern var lispoptions : Dynamic;
+	/**
+		```lua
+		(global) table.lispwords: unknown
+		```
+	**/
+	extern var lispwords : Dynamic;
+	/**
+		```lua
+		(global) table.list: unknown
+		```
+	**/
+	extern var list : Dynamic;
+	/**
+		```lua
+		(global) table.listchars: unknown
+		```
+	**/
+	extern var listchars : Dynamic;
+	/**
+		```lua
+		(global) table.loadplugins: unknown
+		```
+	**/
+	extern var loadplugins : Dynamic;
+	/**
+		```lua
+		(global) table.magic: unknown
+		```
+	**/
+	extern var magic : Dynamic;
+	/**
+		```lua
+		(global) table.makeef: unknown
+		```
+	**/
+	extern var makeef : Dynamic;
+	/**
+		```lua
+		(global) table.makeencoding: unknown
+		```
+	**/
+	extern var makeencoding : Dynamic;
+	/**
+		```lua
+		(global) table.makeprg: unknown
+		```
+	**/
+	extern var makeprg : Dynamic;
+	/**
+		```lua
+		(global) table.matchpairs: unknown
+		```
+	**/
+	extern var matchpairs : Dynamic;
+	/**
+		```lua
+		(global) table.matchtime: unknown
+		```
+	**/
+	extern var matchtime : Dynamic;
+	/**
+		```lua
+		(global) table.maxcombine: unknown
+		```
+	**/
+	extern var maxcombine : Dynamic;
+	/**
+		```lua
+		(global) table.maxfuncdepth: unknown
+		```
+	**/
+	extern var maxfuncdepth : Dynamic;
+	/**
+		```lua
+		(global) table.maxmapdepth: unknown
+		```
+	**/
+	extern var maxmapdepth : Dynamic;
+	/**
+		```lua
+		(global) table.maxmempattern: unknown
+		```
+	**/
+	extern var maxmempattern : Dynamic;
+	/**
+		```lua
+		(global) table.menuitems: unknown
+		```
+	**/
+	extern var menuitems : Dynamic;
+	/**
+		```lua
+		(global) table.messagesopt: unknown
+		```
+	**/
+	extern var messagesopt : Dynamic;
+	/**
+		```lua
+		(global) table.mkspellmem: unknown
+		```
+	**/
+	extern var mkspellmem : Dynamic;
+	/**
+		```lua
+		(global) table.modeline: unknown
+		```
+	**/
+	extern var modeline : Dynamic;
+	/**
+		```lua
+		(global) table.modelineexpr: unknown
+		```
+	**/
+	extern var modelineexpr : Dynamic;
+	/**
+		```lua
+		(global) table.modelines: unknown
+		```
+	**/
+	extern var modelines : Dynamic;
+	/**
+		```lua
+		(global) table.modifiable: unknown
+		```
+	**/
+	extern var modifiable : Dynamic;
+	/**
+		```lua
+		(global) table.modified: unknown
+		```
+	**/
+	extern var modified : Dynamic;
+	/**
+		```lua
+		(global) table.more: unknown
+		```
+	**/
+	extern var more : Dynamic;
+	/**
+		```lua
+		(global) table.mouse: unknown
+		```
+	**/
+	extern var mouse : Dynamic;
+	/**
+		```lua
+		(global) table.mousefocus: unknown
+		```
+	**/
+	extern var mousefocus : Dynamic;
+	/**
+		```lua
+		(global) table.mousehide: unknown
+		```
+	**/
+	extern var mousehide : Dynamic;
+	/**
+		```lua
+		(global) table.mousemodel: unknown
+		```
+	**/
+	extern var mousemodel : Dynamic;
+	/**
+		```lua
+		(global) table.mousemoveevent: unknown
+		```
+	**/
+	extern var mousemoveevent : Dynamic;
+	/**
+		```lua
+		(global) table.mousescroll: unknown
+		```
+	**/
+	extern var mousescroll : Dynamic;
+	/**
+		```lua
+		(global) table.mouseshape: unknown
+		```
+	**/
+	extern var mouseshape : Dynamic;
+	/**
+		```lua
+		(global) table.mousetime: unknown
+		```
+	**/
+	extern var mousetime : Dynamic;
+	/**
+		```lua
+		(global) table.nrformats: unknown
+		```
+	**/
+	extern var nrformats : Dynamic;
+	/**
+		```lua
+		(global) table.number: unknown
+		```
+	**/
+	extern var number : Dynamic;
+	/**
+		```lua
+		(global) table.numberwidth: unknown
+		```
+	**/
+	extern var numberwidth : Dynamic;
+	/**
+		```lua
+		(global) table.omnifunc: unknown
+		```
+	**/
+	extern var omnifunc : Dynamic;
+	/**
+		```lua
+		(global) table.opendevice: unknown
+		```
+	**/
+	extern var opendevice : Dynamic;
+	/**
+		```lua
+		(global) table.operatorfunc: unknown
+		```
+	**/
+	extern var operatorfunc : Dynamic;
+	/**
+		```lua
+		(global) table.packpath: unknown
+		```
+	**/
+	extern var packpath : Dynamic;
+	/**
+		```lua
+		(global) table.paragraphs: unknown
+		```
+	**/
+	extern var paragraphs : Dynamic;
+	/**
+		```lua
+		(global) table.paste: unknown
+		```
+	**/
+	extern var paste : Dynamic;
+	/**
+		```lua
+		(global) table.pastetoggle: unknown
+		```
+	**/
+	extern var pastetoggle : Dynamic;
+	/**
+		```lua
+		(global) table.patchexpr: unknown
+		```
+	**/
+	extern var patchexpr : Dynamic;
+	/**
+		```lua
+		(global) table.patchmode: unknown
+		```
+	**/
+	extern var patchmode : Dynamic;
+	/**
+		```lua
+		(global) table.path: unknown
+		```
+	**/
+	extern var path : Dynamic;
+	/**
+		```lua
+		(global) table.preserveindent: unknown
+		```
+	**/
+	extern var preserveindent : Dynamic;
+	/**
+		```lua
+		(global) table.previewheight: unknown
+		```
+	**/
+	extern var previewheight : Dynamic;
+	/**
+		```lua
+		(global) table.previewwindow: unknown
+		```
+	**/
+	extern var previewwindow : Dynamic;
+	/**
+		```lua
+		(global) table.prompt: unknown
+		```
+	**/
+	extern var prompt : Dynamic;
+	/**
+		```lua
+		(global) table.pumblend: unknown
+		```
+	**/
+	extern var pumblend : Dynamic;
+	/**
+		```lua
+		(global) table.pumheight: unknown
+		```
+	**/
+	extern var pumheight : Dynamic;
+	/**
+		```lua
+		(global) table.pumwidth: unknown
+		```
+	**/
+	extern var pumwidth : Dynamic;
+	/**
+		```lua
+		(global) table.pyxversion: unknown
+		```
+	**/
+	extern var pyxversion : Dynamic;
+	/**
+		```lua
+		(global) table.quickfixtextfunc: unknown
+		```
+	**/
+	extern var quickfixtextfunc : Dynamic;
+	/**
+		```lua
+		(global) table.quoteescape: unknown
+		```
+	**/
+	extern var quoteescape : Dynamic;
+	/**
+		```lua
+		(global) table.readonly: unknown
+		```
+	**/
+	extern var readonly : Dynamic;
+	/**
+		```lua
+		(global) table.redrawdebug: unknown
+		```
+	**/
+	extern var redrawdebug : Dynamic;
+	/**
+		```lua
+		(global) table.redrawtime: unknown
+		```
+	**/
+	extern var redrawtime : Dynamic;
+	/**
+		```lua
+		(global) table.regexpengine: unknown
+		```
+	**/
+	extern var regexpengine : Dynamic;
+	/**
+		```lua
+		(global) table.relativenumber: unknown
+		```
+	**/
+	extern var relativenumber : Dynamic;
+	/**
+		```lua
+		(global) table.remap: unknown
+		```
+	**/
+	extern var remap : Dynamic;
+	/**
+		```lua
+		(global) table.report: unknown
+		```
+	**/
+	extern var report : Dynamic;
+	/**
+		```lua
+		(global) table.revins: unknown
+		```
+	**/
+	extern var revins : Dynamic;
+	/**
+		```lua
+		(global) table.rightleft: unknown
+		```
+	**/
+	extern var rightleft : Dynamic;
+	/**
+		```lua
+		(global) table.rightleftcmd: unknown
+		```
+	**/
+	extern var rightleftcmd : Dynamic;
+	/**
+		```lua
+		(global) table.ruler: unknown
+		```
+	**/
+	extern var ruler : Dynamic;
+	/**
+		```lua
+		(global) table.rulerformat: unknown
+		```
+	**/
+	extern var rulerformat : Dynamic;
+	/**
+		```lua
+		(global) table.runtimepath: unknown
+		```
+	**/
+	extern var runtimepath : Dynamic;
+	/**
+		```lua
+		(global) table.scroll: unknown
+		```
+	**/
+	extern var scroll : Dynamic;
+	/**
+		```lua
+		(global) table.scrollback: unknown
+		```
+	**/
+	extern var scrollback : Dynamic;
+	/**
+		```lua
+		(global) table.scrollbind: unknown
+		```
+	**/
+	extern var scrollbind : Dynamic;
+	/**
+		```lua
+		(global) table.scrolljump: unknown
+		```
+	**/
+	extern var scrolljump : Dynamic;
+	/**
+		```lua
+		(global) table.scrolloff: unknown
+		```
+	**/
+	extern var scrolloff : Dynamic;
+	/**
+		```lua
+		(global) table.scrollopt: unknown
+		```
+	**/
+	extern var scrollopt : Dynamic;
+	/**
+		```lua
+		(global) table.sections: unknown
+		```
+	**/
+	extern var sections : Dynamic;
+	/**
+		```lua
+		(global) table.secure: unknown
+		```
+	**/
+	extern var secure : Dynamic;
+	/**
+		```lua
+		(global) table.selection: unknown
+		```
+	**/
+	extern var selection : Dynamic;
+	/**
+		```lua
+		(global) table.selectmode: unknown
+		```
+	**/
+	extern var selectmode : Dynamic;
+	/**
+		```lua
+		(global) table.sessionoptions: unknown
+		```
+	**/
+	extern var sessionoptions : Dynamic;
+	/**
+		```lua
+		(global) table.shada: unknown
+		```
+	**/
+	extern var shada : Dynamic;
+	/**
+		```lua
+		(global) table.shadafile: unknown
+		```
+	**/
+	extern var shadafile : Dynamic;
+	/**
+		```lua
+		(global) table.shell: unknown
+		```
+	**/
+	extern var shell : Dynamic;
+	/**
+		```lua
+		(global) table.shellcmdflag: unknown
+		```
+	**/
+	extern var shellcmdflag : Dynamic;
+	/**
+		```lua
+		(global) table.shellpipe: unknown
+		```
+	**/
+	extern var shellpipe : Dynamic;
+	/**
+		```lua
+		(global) table.shellquote: unknown
+		```
+	**/
+	extern var shellquote : Dynamic;
+	/**
+		```lua
+		(global) table.shellredir: unknown
+		```
+	**/
+	extern var shellredir : Dynamic;
+	/**
+		```lua
+		(global) table.shellslash: unknown
+		```
+	**/
+	extern var shellslash : Dynamic;
+	/**
+		```lua
+		(global) table.shelltemp: unknown
+		```
+	**/
+	extern var shelltemp : Dynamic;
+	/**
+		```lua
+		(global) table.shellxescape: unknown
+		```
+	**/
+	extern var shellxescape : Dynamic;
+	/**
+		```lua
+		(global) table.shellxquote: unknown
+		```
+	**/
+	extern var shellxquote : Dynamic;
+	/**
+		```lua
+		(global) table.shiftround: unknown
+		```
+	**/
+	extern var shiftround : Dynamic;
+	/**
+		```lua
+		(global) table.shiftwidth: unknown
+		```
+	**/
+	extern var shiftwidth : Dynamic;
+	/**
+		```lua
+		(global) table.shortmess: unknown
+		```
+	**/
+	extern var shortmess : Dynamic;
+	/**
+		```lua
+		(global) table.showbreak: unknown
+		```
+	**/
+	extern var showbreak : Dynamic;
+	/**
+		```lua
+		(global) table.showcmd: unknown
+		```
+	**/
+	extern var showcmd : Dynamic;
+	/**
+		```lua
+		(global) table.showcmdloc: unknown
+		```
+	**/
+	extern var showcmdloc : Dynamic;
+	/**
+		```lua
+		(global) table.showfulltag: unknown
+		```
+	**/
+	extern var showfulltag : Dynamic;
+	/**
+		```lua
+		(global) table.showmatch: unknown
+		```
+	**/
+	extern var showmatch : Dynamic;
+	/**
+		```lua
+		(global) table.showmode: unknown
+		```
+	**/
+	extern var showmode : Dynamic;
+	/**
+		```lua
+		(global) table.showtabline: unknown
+		```
+	**/
+	extern var showtabline : Dynamic;
+	/**
+		```lua
+		(global) table.sidescroll: unknown
+		```
+	**/
+	extern var sidescroll : Dynamic;
+	/**
+		```lua
+		(global) table.sidescrolloff: unknown
+		```
+	**/
+	extern var sidescrolloff : Dynamic;
+	/**
+		```lua
+		(global) table.signcolumn: unknown
+		```
+	**/
+	extern var signcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.smartcase: unknown
+		```
+	**/
+	extern var smartcase : Dynamic;
+	/**
+		```lua
+		(global) table.smartindent: unknown
+		```
+	**/
+	extern var smartindent : Dynamic;
+	/**
+		```lua
+		(global) table.smarttab: unknown
+		```
+	**/
+	extern var smarttab : Dynamic;
+	/**
+		```lua
+		(global) table.smoothscroll: unknown
+		```
+	**/
+	extern var smoothscroll : Dynamic;
+	/**
+		```lua
+		(global) table.softtabstop: unknown
+		```
+	**/
+	extern var softtabstop : Dynamic;
+	/**
+		```lua
+		(global) table.spell: unknown
+		```
+	**/
+	extern var spell : Dynamic;
+	/**
+		```lua
+		(global) table.spellcapcheck: unknown
+		```
+	**/
+	extern var spellcapcheck : Dynamic;
+	/**
+		```lua
+		(global) table.spellfile: unknown
+		```
+	**/
+	extern var spellfile : Dynamic;
+	/**
+		```lua
+		(global) table.spelllang: unknown
+		```
+	**/
+	extern var spelllang : Dynamic;
+	/**
+		```lua
+		(global) table.spelloptions: unknown
+		```
+	**/
+	extern var spelloptions : Dynamic;
+	/**
+		```lua
+		(global) table.spellsuggest: unknown
+		```
+	**/
+	extern var spellsuggest : Dynamic;
+	/**
+		```lua
+		(global) table.splitbelow: unknown
+		```
+	**/
+	extern var splitbelow : Dynamic;
+	/**
+		```lua
+		(global) table.splitkeep: unknown
+		```
+	**/
+	extern var splitkeep : Dynamic;
+	/**
+		```lua
+		(global) table.splitright: unknown
+		```
+	**/
+	extern var splitright : Dynamic;
+	/**
+		```lua
+		(global) table.startofline: unknown
+		```
+	**/
+	extern var startofline : Dynamic;
+	/**
+		```lua
+		(global) table.statuscolumn: unknown
+		```
+	**/
+	extern var statuscolumn : Dynamic;
+	/**
+		```lua
+		(global) table.statusline: unknown
+		```
+	**/
+	extern var statusline : Dynamic;
+	/**
+		```lua
+		(global) table.suffixes: unknown
+		```
+	**/
+	extern var suffixes : Dynamic;
+	/**
+		```lua
+		(global) table.suffixesadd: unknown
+		```
+	**/
+	extern var suffixesadd : Dynamic;
+	/**
+		```lua
+		(global) table.swapfile: unknown
+		```
+	**/
+	extern var swapfile : Dynamic;
+	/**
+		```lua
+		(global) table.switchbuf: unknown
+		```
+	**/
+	extern var switchbuf : Dynamic;
+	/**
+		```lua
+		(global) table.synmaxcol: unknown
+		```
+	**/
+	extern var synmaxcol : Dynamic;
+	/**
+		```lua
+		(global) table.syntax: unknown
+		```
+	**/
+	extern var syntax : Dynamic;
+	/**
+		```lua
+		(global) table.tabclose: unknown
+		```
+	**/
+	extern var tabclose : Dynamic;
+	/**
+		```lua
+		(global) table.tabline: unknown
+		```
+	**/
+	extern var tabline : Dynamic;
+	/**
+		```lua
+		(global) table.tabpagemax: unknown
+		```
+	**/
+	extern var tabpagemax : Dynamic;
+	/**
+		```lua
+		(global) table.tabstop: unknown
+		```
+	**/
+	extern var tabstop : Dynamic;
+	/**
+		```lua
+		(global) table.tagbsearch: unknown
+		```
+	**/
+	extern var tagbsearch : Dynamic;
+	/**
+		```lua
+		(global) table.tagcase: unknown
+		```
+	**/
+	extern var tagcase : Dynamic;
+	/**
+		```lua
+		(global) table.tagfunc: unknown
+		```
+	**/
+	extern var tagfunc : Dynamic;
+	/**
+		```lua
+		(global) table.taglength: unknown
+		```
+	**/
+	extern var taglength : Dynamic;
+	/**
+		```lua
+		(global) table.tagrelative: unknown
+		```
+	**/
+	extern var tagrelative : Dynamic;
+	/**
+		```lua
+		(global) table.tags: unknown
+		```
+	**/
+	extern var tags : Dynamic;
+	/**
+		```lua
+		(global) table.tagstack: unknown
+		```
+	**/
+	extern var tagstack : Dynamic;
+	/**
+		```lua
+		(global) table.termbidi: unknown
+		```
+	**/
+	extern var termbidi : Dynamic;
+	/**
+		```lua
+		(global) table.termencoding: unknown
+		```
+	**/
+	extern var termencoding : Dynamic;
+	/**
+		```lua
+		(global) table.termguicolors: unknown
+		```
+	**/
+	extern var termguicolors : Dynamic;
+	/**
+		```lua
+		(global) table.termpastefilter: unknown
+		```
+	**/
+	extern var termpastefilter : Dynamic;
+	/**
+		```lua
+		(global) table.termsync: unknown
+		```
+	**/
+	extern var termsync : Dynamic;
+	/**
+		```lua
+		(global) table.terse: unknown
+		```
+	**/
+	extern var terse : Dynamic;
+	/**
+		```lua
+		(global) table.textwidth: unknown
+		```
+	**/
+	extern var textwidth : Dynamic;
+	/**
+		```lua
+		(global) table.thesaurus: unknown
+		```
+	**/
+	extern var thesaurus : Dynamic;
+	/**
+		```lua
+		(global) table.thesaurusfunc: unknown
+		```
+	**/
+	extern var thesaurusfunc : Dynamic;
+	/**
+		```lua
+		(global) table.tildeop: unknown
+		```
+	**/
+	extern var tildeop : Dynamic;
+	/**
+		```lua
+		(global) table.timeout: unknown
+		```
+	**/
+	extern var timeout : Dynamic;
+	/**
+		```lua
+		(global) table.timeoutlen: unknown
+		```
+	**/
+	extern var timeoutlen : Dynamic;
+	/**
+		```lua
+		(global) table.title: unknown
+		```
+	**/
+	extern var title : Dynamic;
+	/**
+		```lua
+		(global) table.titlelen: unknown
+		```
+	**/
+	extern var titlelen : Dynamic;
+	/**
+		```lua
+		(global) table.titleold: unknown
+		```
+	**/
+	extern var titleold : Dynamic;
+	/**
+		```lua
+		(global) table.titlestring: unknown
+		```
+	**/
+	extern var titlestring : Dynamic;
+	/**
+		```lua
+		(global) table.ttimeout: unknown
+		```
+	**/
+	extern var ttimeout : Dynamic;
+	/**
+		```lua
+		(global) table.ttimeoutlen: unknown
+		```
+	**/
+	extern var ttimeoutlen : Dynamic;
+	/**
+		```lua
+		(global) table.ttyfast: unknown
+		```
+	**/
+	extern var ttyfast : Dynamic;
+	/**
+		```lua
+		(global) table.undodir: unknown
+		```
+	**/
+	extern var undodir : Dynamic;
+	/**
+		```lua
+		(global) table.undofile: unknown
+		```
+	**/
+	extern var undofile : Dynamic;
+	/**
+		```lua
+		(global) table.undolevels: unknown
+		```
+	**/
+	extern var undolevels : Dynamic;
+	/**
+		```lua
+		(global) table.undoreload: unknown
+		```
+	**/
+	extern var undoreload : Dynamic;
+	/**
+		```lua
+		(global) table.updatecount: unknown
+		```
+	**/
+	extern var updatecount : Dynamic;
+	/**
+		```lua
+		(global) table.updatetime: unknown
+		```
+	**/
+	extern var updatetime : Dynamic;
+	/**
+		```lua
+		(global) table.varsofttabstop: unknown
+		```
+	**/
+	extern var varsofttabstop : Dynamic;
+	/**
+		```lua
+		(global) table.vartabstop: unknown
+		```
+	**/
+	extern var vartabstop : Dynamic;
+	/**
+		```lua
+		(global) table.verbose: unknown
+		```
+	**/
+	extern var verbose : Dynamic;
+	/**
+		```lua
+		(global) table.verbosefile: unknown
+		```
+	**/
+	extern var verbosefile : Dynamic;
+	/**
+		```lua
+		(global) table.viewdir: unknown
+		```
+	**/
+	extern var viewdir : Dynamic;
+	/**
+		```lua
+		(global) table.viewoptions: unknown
+		```
+	**/
+	extern var viewoptions : Dynamic;
+	/**
+		```lua
+		(global) table.virtualedit: unknown
+		```
+	**/
+	extern var virtualedit : Dynamic;
+	/**
+		```lua
+		(global) table.visualbell: unknown
+		```
+	**/
+	extern var visualbell : Dynamic;
+	/**
+		```lua
+		(global) table.warn: unknown
+		```
+	**/
+	extern var warn : Dynamic;
+	/**
+		```lua
+		(global) table.whichwrap: unknown
+		```
+	**/
+	extern var whichwrap : Dynamic;
+	/**
+		```lua
+		(global) table.wildchar: unknown
+		```
+	**/
+	extern var wildchar : Dynamic;
+	/**
+		```lua
+		(global) table.wildcharm: unknown
+		```
+	**/
+	extern var wildcharm : Dynamic;
+	/**
+		```lua
+		(global) table.wildignore: unknown
+		```
+	**/
+	extern var wildignore : Dynamic;
+	/**
+		```lua
+		(global) table.wildignorecase: unknown
+		```
+	**/
+	extern var wildignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.wildmenu: unknown
+		```
+	**/
+	extern var wildmenu : Dynamic;
+	/**
+		```lua
+		(global) table.wildmode: unknown
+		```
+	**/
+	extern var wildmode : Dynamic;
+	/**
+		```lua
+		(global) table.wildoptions: unknown
+		```
+	**/
+	extern var wildoptions : Dynamic;
+	/**
+		```lua
+		(global) table.winaltkeys: unknown
+		```
+	**/
+	extern var winaltkeys : Dynamic;
+	/**
+		```lua
+		(global) table.winbar: unknown
+		```
+	**/
+	extern var winbar : Dynamic;
+	/**
+		```lua
+		(global) table.winblend: unknown
+		```
+	**/
+	extern var winblend : Dynamic;
+	/**
+		```lua
+		(global) table.winborder: unknown
+		```
+	**/
+	extern var winborder : Dynamic;
+	/**
+		```lua
+		(global) table.window: unknown
+		```
+	**/
+	extern var window : Dynamic;
+	/**
+		```lua
+		(global) table.winfixbuf: unknown
+		```
+	**/
+	extern var winfixbuf : Dynamic;
+	/**
+		```lua
+		(global) table.winfixheight: unknown
+		```
+	**/
+	extern var winfixheight : Dynamic;
+	/**
+		```lua
+		(global) table.winfixwidth: unknown
+		```
+	**/
+	extern var winfixwidth : Dynamic;
+	/**
+		```lua
+		(global) table.winheight: unknown
+		```
+	**/
+	extern var winheight : Dynamic;
+	/**
+		```lua
+		(global) table.winhighlight: unknown
+		```
+	**/
+	extern var winhighlight : Dynamic;
+	/**
+		```lua
+		(global) table.winminheight: unknown
+		```
+	**/
+	extern var winminheight : Dynamic;
+	/**
+		```lua
+		(global) table.winminwidth: unknown
+		```
+	**/
+	extern var winminwidth : Dynamic;
+	/**
+		```lua
+		(global) table.winwidth: unknown
+		```
+	**/
+	extern var winwidth : Dynamic;
+	/**
+		```lua
+		(global) table.wrap: unknown
+		```
+	**/
+	extern var wrap : Dynamic;
+	/**
+		```lua
+		(global) table.wrapmargin: unknown
+		```
+	**/
+	extern var wrapmargin : Dynamic;
+	/**
+		```lua
+		(global) table.wrapscan: unknown
+		```
+	**/
+	extern var wrapscan : Dynamic;
+	/**
+		```lua
+		(global) table.write: unknown
+		```
+	**/
+	extern var write : Dynamic;
+	/**
+		```lua
+		(global) table.writeany: unknown
+		```
+	**/
+	extern var writeany : Dynamic;
+	/**
+		```lua
+		(global) table.writebackup: unknown
+		```
+	**/
+	extern var writebackup : Dynamic;
+	/**
+		```lua
+		(global) table.writedelay: unknown
+		```
+	**/
+	extern var writedelay : Dynamic;
 }
 
 @:private extern class Opt {
+	/**
+		```lua
+		(global) table.aleph: unknown
+		```
+	**/
+	extern var aleph : Dynamic;
+	/**
+		```lua
+		(global) table.allowrevins: unknown
+		```
+	**/
+	extern var allowrevins : Dynamic;
+	/**
+		```lua
+		(global) table.ambiwidth: unknown
+		```
+	**/
+	extern var ambiwidth : Dynamic;
+	/**
+		```lua
+		(global) table.arabic: unknown
+		```
+	**/
+	extern var arabic : Dynamic;
+	/**
+		```lua
+		(global) table.arabicshape: unknown
+		```
+	**/
+	extern var arabicshape : Dynamic;
+	/**
+		```lua
+		(global) table.autochdir: unknown
+		```
+	**/
+	extern var autochdir : Dynamic;
+	/**
+		```lua
+		(global) table.autoindent: unknown
+		```
+	**/
+	extern var autoindent : Dynamic;
+	/**
+		```lua
+		(global) table.autoread: unknown
+		```
+	**/
+	extern var autoread : Dynamic;
+	/**
+		```lua
+		(global) table.autowrite: unknown
+		```
+	**/
+	extern var autowrite : Dynamic;
+	/**
+		```lua
+		(global) table.autowriteall: unknown
+		```
+	**/
+	extern var autowriteall : Dynamic;
+	/**
+		```lua
+		(global) table.background: unknown
+		```
+	**/
+	extern var background : Dynamic;
+	/**
+		```lua
+		(global) table.backspace: unknown
+		```
+	**/
+	extern var backspace : Dynamic;
 	/**
 		```lua
 		(global) table.backup: boolean = false
@@ -17,10 +4443,1852 @@ package externs;
 	extern var backup : Bool;
 	/**
 		```lua
+		(global) table.backupcopy: unknown
+		```
+	**/
+	extern var backupcopy : Dynamic;
+	/**
+		```lua
+		(global) table.backupdir: unknown
+		```
+	**/
+	extern var backupdir : Dynamic;
+	/**
+		```lua
+		(global) table.backupext: unknown
+		```
+	**/
+	extern var backupext : Dynamic;
+	/**
+		```lua
+		(global) table.backupskip: unknown
+		```
+	**/
+	extern var backupskip : Dynamic;
+	/**
+		```lua
+		(global) table.belloff: unknown
+		```
+	**/
+	extern var belloff : Dynamic;
+	/**
+		```lua
+		(global) table.binary: unknown
+		```
+	**/
+	extern var binary : Dynamic;
+	/**
+		```lua
+		(global) table.bomb: unknown
+		```
+	**/
+	extern var bomb : Dynamic;
+	/**
+		```lua
+		(global) table.breakat: unknown
+		```
+	**/
+	extern var breakat : Dynamic;
+	/**
+		```lua
+		(global) table.breakindent: unknown
+		```
+	**/
+	extern var breakindent : Dynamic;
+	/**
+		```lua
+		(global) table.breakindentopt: unknown
+		```
+	**/
+	extern var breakindentopt : Dynamic;
+	/**
+		```lua
+		(global) table.browsedir: unknown
+		```
+	**/
+	extern var browsedir : Dynamic;
+	/**
+		```lua
+		(global) table.bufhidden: unknown
+		```
+	**/
+	extern var bufhidden : Dynamic;
+	/**
+		```lua
+		(global) table.buflisted: unknown
+		```
+	**/
+	extern var buflisted : Dynamic;
+	/**
+		```lua
+		(global) table.buftype: unknown
+		```
+	**/
+	extern var buftype : Dynamic;
+	/**
+		```lua
+		(global) table.casemap: unknown
+		```
+	**/
+	extern var casemap : Dynamic;
+	/**
+		```lua
+		(global) table.cdhome: unknown
+		```
+	**/
+	extern var cdhome : Dynamic;
+	/**
+		```lua
+		(global) table.cdpath: unknown
+		```
+	**/
+	extern var cdpath : Dynamic;
+	/**
+		```lua
+		(global) table.cedit: unknown
+		```
+	**/
+	extern var cedit : Dynamic;
+	/**
+		```lua
+		(global) table.channel: unknown
+		```
+	**/
+	extern var channel : Dynamic;
+	/**
+		```lua
+		(global) table.charconvert: unknown
+		```
+	**/
+	extern var charconvert : Dynamic;
+	/**
+		```lua
+		(global) table.cindent: unknown
+		```
+	**/
+	extern var cindent : Dynamic;
+	/**
+		```lua
+		(global) table.cinkeys: unknown
+		```
+	**/
+	extern var cinkeys : Dynamic;
+	/**
+		```lua
+		(global) table.cinoptions: unknown
+		```
+	**/
+	extern var cinoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cinscopedecls: unknown
+		```
+	**/
+	extern var cinscopedecls : Dynamic;
+	/**
+		```lua
+		(global) table.cinwords: unknown
+		```
+	**/
+	extern var cinwords : Dynamic;
+	/**
+		```lua
+		(global) table.clipboard: unknown
+		```
+	**/
+	extern var clipboard : Dynamic;
+	/**
+		```lua
+		(global) table.cmdheight: unknown
+		```
+	**/
+	extern var cmdheight : Dynamic;
+	/**
+		```lua
+		(global) table.cmdwinheight: unknown
+		```
+	**/
+	extern var cmdwinheight : Dynamic;
+	/**
+		```lua
+		(global) table.colorcolumn: unknown
+		```
+	**/
+	extern var colorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.columns: unknown
+		```
+	**/
+	extern var columns : Dynamic;
+	/**
+		```lua
+		(global) table.comments: unknown
+		```
+	**/
+	extern var comments : Dynamic;
+	/**
+		```lua
+		(global) table.commentstring: unknown
+		```
+	**/
+	extern var commentstring : Dynamic;
+	/**
+		```lua
+		(global) table.compatible: unknown
+		```
+	**/
+	extern var compatible : Dynamic;
+	/**
+		```lua
+		(global) table.complete: unknown
+		```
+	**/
+	extern var complete : Dynamic;
+	/**
+		```lua
+		(global) table.completefunc: unknown
+		```
+	**/
+	extern var completefunc : Dynamic;
+	/**
+		```lua
+		(global) table.completeitemalign: unknown
+		```
+	**/
+	extern var completeitemalign : Dynamic;
+	/**
+		```lua
+		(global) table.completeopt: unknown
+		```
+	**/
+	extern var completeopt : Dynamic;
+	/**
+		```lua
+		(global) table.completeslash: unknown
+		```
+	**/
+	extern var completeslash : Dynamic;
+	/**
+		```lua
+		(global) table.concealcursor: unknown
+		```
+	**/
+	extern var concealcursor : Dynamic;
+	/**
+		```lua
+		(global) table.conceallevel: unknown
+		```
+	**/
+	extern var conceallevel : Dynamic;
+	/**
+		```lua
+		(global) table.confirm: unknown
+		```
+	**/
+	extern var confirm : Dynamic;
+	/**
+		```lua
+		(global) table.copyindent: unknown
+		```
+	**/
+	extern var copyindent : Dynamic;
+	/**
+		```lua
+		(global) table.cpoptions: unknown
+		```
+	**/
+	extern var cpoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cursorbind: unknown
+		```
+	**/
+	extern var cursorbind : Dynamic;
+	/**
+		```lua
+		(global) table.cursorcolumn: unknown
+		```
+	**/
+	extern var cursorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.cursorline: unknown
+		```
+	**/
+	extern var cursorline : Dynamic;
+	/**
+		```lua
+		(global) table.cursorlineopt: unknown
+		```
+	**/
+	extern var cursorlineopt : Dynamic;
+	/**
+		```lua
+		(global) table.debug: unknown
+		```
+	**/
+	extern var debug : Dynamic;
+	/**
+		```lua
+		(global) table.define: unknown
+		```
+	**/
+	extern var define : Dynamic;
+	/**
+		```lua
+		(global) table.delcombine: unknown
+		```
+	**/
+	extern var delcombine : Dynamic;
+	/**
+		```lua
+		(global) table.dictionary: unknown
+		```
+	**/
+	extern var dictionary : Dynamic;
+	/**
+		```lua
+		(global) table.diff: unknown
+		```
+	**/
+	extern var diff : Dynamic;
+	/**
+		```lua
+		(global) table.diffexpr: unknown
+		```
+	**/
+	extern var diffexpr : Dynamic;
+	/**
+		```lua
+		(global) table.diffopt: unknown
+		```
+	**/
+	extern var diffopt : Dynamic;
+	/**
+		```lua
+		(global) table.digraph: unknown
+		```
+	**/
+	extern var digraph : Dynamic;
+	/**
+		```lua
+		(global) table.directory: unknown
+		```
+	**/
+	extern var directory : Dynamic;
+	/**
+		```lua
+		(global) table.display: unknown
+		```
+	**/
+	extern var display : Dynamic;
+	/**
+		```lua
+		(global) table.eadirection: unknown
+		```
+	**/
+	extern var eadirection : Dynamic;
+	/**
+		```lua
+		(global) table.edcompatible: unknown
+		```
+	**/
+	extern var edcompatible : Dynamic;
+	/**
+		```lua
+		(global) table.emoji: unknown
+		```
+	**/
+	extern var emoji : Dynamic;
+	/**
+		```lua
+		(global) table.encoding: unknown
+		```
+	**/
+	extern var encoding : Dynamic;
+	/**
+		```lua
+		(global) table.endoffile: unknown
+		```
+	**/
+	extern var endoffile : Dynamic;
+	/**
+		```lua
+		(global) table.endofline: unknown
+		```
+	**/
+	extern var endofline : Dynamic;
+	/**
+		```lua
+		(global) table.equalalways: unknown
+		```
+	**/
+	extern var equalalways : Dynamic;
+	/**
+		```lua
+		(global) table.equalprg: unknown
+		```
+	**/
+	extern var equalprg : Dynamic;
+	/**
+		```lua
+		(global) table.errorbells: unknown
+		```
+	**/
+	extern var errorbells : Dynamic;
+	/**
+		```lua
+		(global) table.errorfile: unknown
+		```
+	**/
+	extern var errorfile : Dynamic;
+	/**
+		```lua
+		(global) table.errorformat: unknown
+		```
+	**/
+	extern var errorformat : Dynamic;
+	/**
+		```lua
+		(global) table.eventignore: unknown
+		```
+	**/
+	extern var eventignore : Dynamic;
+	/**
+		```lua
+		(global) table.eventignorewin: unknown
+		```
+	**/
+	extern var eventignorewin : Dynamic;
+	/**
+		```lua
+		(global) table.expandtab: unknown
+		```
+	**/
+	extern var expandtab : Dynamic;
+	/**
+		```lua
+		(global) table.exrc: unknown
+		```
+	**/
+	extern var exrc : Dynamic;
+	/**
+		```lua
+		(global) table.fileencoding: unknown
+		```
+	**/
+	extern var fileencoding : Dynamic;
+	/**
+		```lua
+		(global) table.fileencodings: unknown
+		```
+	**/
+	extern var fileencodings : Dynamic;
+	/**
+		```lua
+		(global) table.fileformat: unknown
+		```
+	**/
+	extern var fileformat : Dynamic;
+	/**
+		```lua
+		(global) table.fileformats: unknown
+		```
+	**/
+	extern var fileformats : Dynamic;
+	/**
+		```lua
+		(global) table.fileignorecase: unknown
+		```
+	**/
+	extern var fileignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.filetype: unknown
+		```
+	**/
+	extern var filetype : Dynamic;
+	/**
+		```lua
+		(global) table.fillchars: unknown
+		```
+	**/
+	extern var fillchars : Dynamic;
+	/**
+		```lua
+		(global) table.findfunc: unknown
+		```
+	**/
+	extern var findfunc : Dynamic;
+	/**
+		```lua
+		(global) table.fixendofline: unknown
+		```
+	**/
+	extern var fixendofline : Dynamic;
+	/**
+		```lua
+		(global) table.foldclose: unknown
+		```
+	**/
+	extern var foldclose : Dynamic;
+	/**
+		```lua
+		(global) table.foldcolumn: unknown
+		```
+	**/
+	extern var foldcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.foldenable: unknown
+		```
+	**/
+	extern var foldenable : Dynamic;
+	/**
+		```lua
+		(global) table.foldexpr: unknown
+		```
+	**/
+	extern var foldexpr : Dynamic;
+	/**
+		```lua
+		(global) table.foldignore: unknown
+		```
+	**/
+	extern var foldignore : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevel: unknown
+		```
+	**/
+	extern var foldlevel : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevelstart: unknown
+		```
+	**/
+	extern var foldlevelstart : Dynamic;
+	/**
+		```lua
+		(global) table.foldmarker: unknown
+		```
+	**/
+	extern var foldmarker : Dynamic;
+	/**
+		```lua
+		(global) table.foldmethod: unknown
+		```
+	**/
+	extern var foldmethod : Dynamic;
+	/**
+		```lua
+		(global) table.foldminlines: unknown
+		```
+	**/
+	extern var foldminlines : Dynamic;
+	/**
+		```lua
+		(global) table.foldnestmax: unknown
+		```
+	**/
+	extern var foldnestmax : Dynamic;
+	/**
+		```lua
+		(global) table.foldopen: unknown
+		```
+	**/
+	extern var foldopen : Dynamic;
+	/**
+		```lua
+		(global) table.foldtext: unknown
+		```
+	**/
+	extern var foldtext : Dynamic;
+	/**
+		```lua
+		(global) table.formatexpr: unknown
+		```
+	**/
+	extern var formatexpr : Dynamic;
+	/**
+		```lua
+		(global) table.formatlistpat: unknown
+		```
+	**/
+	extern var formatlistpat : Dynamic;
+	/**
+		```lua
+		(global) table.formatoptions: unknown
+		```
+	**/
+	extern var formatoptions : Dynamic;
+	/**
+		```lua
+		(global) table.formatprg: unknown
+		```
+	**/
+	extern var formatprg : Dynamic;
+	/**
+		```lua
+		(global) table.fsync: unknown
+		```
+	**/
+	extern var fsync : Dynamic;
+	/**
+		```lua
+		(global) table.gdefault: unknown
+		```
+	**/
+	extern var gdefault : Dynamic;
+	/**
+		```lua
+		(global) table.grepformat: unknown
+		```
+	**/
+	extern var grepformat : Dynamic;
+	/**
+		```lua
+		(global) table.grepprg: unknown
+		```
+	**/
+	extern var grepprg : Dynamic;
+	/**
+		```lua
+		(global) table.guicursor: unknown
+		```
+	**/
+	extern var guicursor : Dynamic;
+	/**
+		```lua
+		(global) table.guifont: unknown
+		```
+	**/
+	extern var guifont : Dynamic;
+	/**
+		```lua
+		(global) table.guifontwide: unknown
+		```
+	**/
+	extern var guifontwide : Dynamic;
+	/**
+		```lua
+		(global) table.guioptions: unknown
+		```
+	**/
+	extern var guioptions : Dynamic;
+	/**
+		```lua
+		(global) table.guitablabel: unknown
+		```
+	**/
+	extern var guitablabel : Dynamic;
+	/**
+		```lua
+		(global) table.guitabtooltip: unknown
+		```
+	**/
+	extern var guitabtooltip : Dynamic;
+	/**
+		```lua
+		(global) table.helpfile: unknown
+		```
+	**/
+	extern var helpfile : Dynamic;
+	/**
+		```lua
+		(global) table.helpheight: unknown
+		```
+	**/
+	extern var helpheight : Dynamic;
+	/**
+		```lua
+		(global) table.helplang: unknown
+		```
+	**/
+	extern var helplang : Dynamic;
+	/**
+		```lua
+		(global) table.hidden: unknown
+		```
+	**/
+	extern var hidden : Dynamic;
+	/**
+		```lua
+		(global) table.highlight: unknown
+		```
+	**/
+	extern var highlight : Dynamic;
+	/**
+		```lua
+		(global) table.history: unknown
+		```
+	**/
+	extern var history : Dynamic;
+	/**
+		```lua
+		(global) table.hkmap: unknown
+		```
+	**/
+	extern var hkmap : Dynamic;
+	/**
+		```lua
+		(global) table.hkmapp: unknown
+		```
+	**/
+	extern var hkmapp : Dynamic;
+	/**
+		```lua
+		(global) table.hlsearch: unknown
+		```
+	**/
+	extern var hlsearch : Dynamic;
+	/**
+		```lua
+		(global) table.icon: unknown
+		```
+	**/
+	extern var icon : Dynamic;
+	/**
+		```lua
+		(global) table.iconstring: unknown
+		```
+	**/
+	extern var iconstring : Dynamic;
+	/**
+		```lua
+		(global) table.ignorecase: unknown
+		```
+	**/
+	extern var ignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.imcmdline: unknown
+		```
+	**/
+	extern var imcmdline : Dynamic;
+	/**
+		```lua
+		(global) table.imdisable: unknown
+		```
+	**/
+	extern var imdisable : Dynamic;
+	/**
+		```lua
+		(global) table.iminsert: unknown
+		```
+	**/
+	extern var iminsert : Dynamic;
+	/**
+		```lua
+		(global) table.imsearch: unknown
+		```
+	**/
+	extern var imsearch : Dynamic;
+	/**
+		```lua
+		(global) table.inccommand: unknown
+		```
+	**/
+	extern var inccommand : Dynamic;
+	/**
+		```lua
+		(global) table.include: unknown
+		```
+	**/
+	extern var include : Dynamic;
+	/**
+		```lua
+		(global) table.includeexpr: unknown
+		```
+	**/
+	extern var includeexpr : Dynamic;
+	/**
+		```lua
+		(global) table.incsearch: unknown
+		```
+	**/
+	extern var incsearch : Dynamic;
+	/**
+		```lua
+		(global) table.indentexpr: unknown
+		```
+	**/
+	extern var indentexpr : Dynamic;
+	/**
+		```lua
+		(global) table.indentkeys: unknown
+		```
+	**/
+	extern var indentkeys : Dynamic;
+	/**
+		```lua
+		(global) table.infercase: unknown
+		```
+	**/
+	extern var infercase : Dynamic;
+	/**
+		```lua
+		(global) table.insertmode: unknown
+		```
+	**/
+	extern var insertmode : Dynamic;
+	/**
+		```lua
+		(global) table.isfname: unknown
+		```
+	**/
+	extern var isfname : Dynamic;
+	/**
+		```lua
+		(global) table.isident: unknown
+		```
+	**/
+	extern var isident : Dynamic;
+	/**
+		```lua
+		(global) table.iskeyword: unknown
+		```
+	**/
+	extern var iskeyword : Dynamic;
+	/**
+		```lua
+		(global) table.isprint: unknown
+		```
+	**/
+	extern var isprint : Dynamic;
+	/**
+		```lua
+		(global) table.joinspaces: unknown
+		```
+	**/
+	extern var joinspaces : Dynamic;
+	/**
+		```lua
+		(global) table.jumpoptions: unknown
+		```
+	**/
+	extern var jumpoptions : Dynamic;
+	/**
+		```lua
+		(global) table.keymap: unknown
+		```
+	**/
+	extern var keymap : Dynamic;
+	/**
+		```lua
+		(global) table.keymodel: unknown
+		```
+	**/
+	extern var keymodel : Dynamic;
+	/**
+		```lua
+		(global) table.keywordprg: unknown
+		```
+	**/
+	extern var keywordprg : Dynamic;
+	/**
+		```lua
+		(global) table.langmap: unknown
+		```
+	**/
+	extern var langmap : Dynamic;
+	/**
+		```lua
+		(global) table.langmenu: unknown
+		```
+	**/
+	extern var langmenu : Dynamic;
+	/**
+		```lua
+		(global) table.langnoremap: unknown
+		```
+	**/
+	extern var langnoremap : Dynamic;
+	/**
+		```lua
+		(global) table.langremap: unknown
+		```
+	**/
+	extern var langremap : Dynamic;
+	/**
+		```lua
+		(global) table.laststatus: unknown
+		```
+	**/
+	extern var laststatus : Dynamic;
+	/**
+		```lua
+		(global) table.lazyredraw: unknown
+		```
+	**/
+	extern var lazyredraw : Dynamic;
+	/**
+		```lua
+		(global) table.linebreak: unknown
+		```
+	**/
+	extern var linebreak : Dynamic;
+	/**
+		```lua
+		(global) table.lines: unknown
+		```
+	**/
+	extern var lines : Dynamic;
+	/**
+		```lua
+		(global) table.linespace: unknown
+		```
+	**/
+	extern var linespace : Dynamic;
+	/**
+		```lua
+		(global) table.lisp: unknown
+		```
+	**/
+	extern var lisp : Dynamic;
+	/**
+		```lua
+		(global) table.lispoptions: unknown
+		```
+	**/
+	extern var lispoptions : Dynamic;
+	/**
+		```lua
+		(global) table.lispwords: unknown
+		```
+	**/
+	extern var lispwords : Dynamic;
+	/**
+		```lua
+		(global) table.list: unknown
+		```
+	**/
+	extern var list : Dynamic;
+	/**
+		```lua
+		(global) table.listchars: unknown
+		```
+	**/
+	extern var listchars : Dynamic;
+	/**
+		```lua
+		(global) table.loadplugins: unknown
+		```
+	**/
+	extern var loadplugins : Dynamic;
+	/**
+		```lua
+		(global) table.magic: unknown
+		```
+	**/
+	extern var magic : Dynamic;
+	/**
+		```lua
+		(global) table.makeef: unknown
+		```
+	**/
+	extern var makeef : Dynamic;
+	/**
+		```lua
+		(global) table.makeencoding: unknown
+		```
+	**/
+	extern var makeencoding : Dynamic;
+	/**
+		```lua
+		(global) table.makeprg: unknown
+		```
+	**/
+	extern var makeprg : Dynamic;
+	/**
+		```lua
+		(global) table.matchpairs: unknown
+		```
+	**/
+	extern var matchpairs : Dynamic;
+	/**
+		```lua
+		(global) table.matchtime: unknown
+		```
+	**/
+	extern var matchtime : Dynamic;
+	/**
+		```lua
+		(global) table.maxcombine: unknown
+		```
+	**/
+	extern var maxcombine : Dynamic;
+	/**
+		```lua
+		(global) table.maxfuncdepth: unknown
+		```
+	**/
+	extern var maxfuncdepth : Dynamic;
+	/**
+		```lua
+		(global) table.maxmapdepth: unknown
+		```
+	**/
+	extern var maxmapdepth : Dynamic;
+	/**
+		```lua
+		(global) table.maxmempattern: unknown
+		```
+	**/
+	extern var maxmempattern : Dynamic;
+	/**
+		```lua
+		(global) table.menuitems: unknown
+		```
+	**/
+	extern var menuitems : Dynamic;
+	/**
+		```lua
+		(global) table.messagesopt: unknown
+		```
+	**/
+	extern var messagesopt : Dynamic;
+	/**
+		```lua
+		(global) table.mkspellmem: unknown
+		```
+	**/
+	extern var mkspellmem : Dynamic;
+	/**
+		```lua
+		(global) table.modeline: unknown
+		```
+	**/
+	extern var modeline : Dynamic;
+	/**
+		```lua
+		(global) table.modelineexpr: unknown
+		```
+	**/
+	extern var modelineexpr : Dynamic;
+	/**
+		```lua
+		(global) table.modelines: unknown
+		```
+	**/
+	extern var modelines : Dynamic;
+	/**
+		```lua
+		(global) table.modifiable: unknown
+		```
+	**/
+	extern var modifiable : Dynamic;
+	/**
+		```lua
+		(global) table.modified: unknown
+		```
+	**/
+	extern var modified : Dynamic;
+	/**
+		```lua
+		(global) table.more: unknown
+		```
+	**/
+	extern var more : Dynamic;
+	/**
+		```lua
+		(global) table.mouse: unknown
+		```
+	**/
+	extern var mouse : Dynamic;
+	/**
+		```lua
+		(global) table.mousefocus: unknown
+		```
+	**/
+	extern var mousefocus : Dynamic;
+	/**
+		```lua
+		(global) table.mousehide: unknown
+		```
+	**/
+	extern var mousehide : Dynamic;
+	/**
+		```lua
+		(global) table.mousemodel: unknown
+		```
+	**/
+	extern var mousemodel : Dynamic;
+	/**
+		```lua
+		(global) table.mousemoveevent: unknown
+		```
+	**/
+	extern var mousemoveevent : Dynamic;
+	/**
+		```lua
+		(global) table.mousescroll: unknown
+		```
+	**/
+	extern var mousescroll : Dynamic;
+	/**
+		```lua
+		(global) table.mouseshape: unknown
+		```
+	**/
+	extern var mouseshape : Dynamic;
+	/**
+		```lua
+		(global) table.mousetime: unknown
+		```
+	**/
+	extern var mousetime : Dynamic;
+	/**
+		```lua
+		(global) table.nrformats: unknown
+		```
+	**/
+	extern var nrformats : Dynamic;
+	/**
+		```lua
+		(global) table.number: unknown
+		```
+	**/
+	extern var number : Dynamic;
+	/**
+		```lua
+		(global) table.numberwidth: unknown
+		```
+	**/
+	extern var numberwidth : Dynamic;
+	/**
+		```lua
+		(global) table.omnifunc: unknown
+		```
+	**/
+	extern var omnifunc : Dynamic;
+	/**
+		```lua
+		(global) table.opendevice: unknown
+		```
+	**/
+	extern var opendevice : Dynamic;
+	/**
+		```lua
+		(global) table.operatorfunc: unknown
+		```
+	**/
+	extern var operatorfunc : Dynamic;
+	/**
+		```lua
+		(global) table.packpath: unknown
+		```
+	**/
+	extern var packpath : Dynamic;
+	/**
+		```lua
+		(global) table.paragraphs: unknown
+		```
+	**/
+	extern var paragraphs : Dynamic;
+	/**
+		```lua
+		(global) table.paste: unknown
+		```
+	**/
+	extern var paste : Dynamic;
+	/**
+		```lua
+		(global) table.pastetoggle: unknown
+		```
+	**/
+	extern var pastetoggle : Dynamic;
+	/**
+		```lua
+		(global) table.patchexpr: unknown
+		```
+	**/
+	extern var patchexpr : Dynamic;
+	/**
+		```lua
+		(global) table.patchmode: unknown
+		```
+	**/
+	extern var patchmode : Dynamic;
+	/**
+		```lua
+		(global) table.path: unknown
+		```
+	**/
+	extern var path : Dynamic;
+	/**
+		```lua
+		(global) table.preserveindent: unknown
+		```
+	**/
+	extern var preserveindent : Dynamic;
+	/**
+		```lua
+		(global) table.previewheight: unknown
+		```
+	**/
+	extern var previewheight : Dynamic;
+	/**
+		```lua
+		(global) table.previewwindow: unknown
+		```
+	**/
+	extern var previewwindow : Dynamic;
+	/**
+		```lua
+		(global) table.prompt: unknown
+		```
+	**/
+	extern var prompt : Dynamic;
+	/**
+		```lua
+		(global) table.pumblend: unknown
+		```
+	**/
+	extern var pumblend : Dynamic;
+	/**
+		```lua
+		(global) table.pumheight: unknown
+		```
+	**/
+	extern var pumheight : Dynamic;
+	/**
+		```lua
+		(global) table.pumwidth: unknown
+		```
+	**/
+	extern var pumwidth : Dynamic;
+	/**
+		```lua
+		(global) table.pyxversion: unknown
+		```
+	**/
+	extern var pyxversion : Dynamic;
+	/**
+		```lua
+		(global) table.quickfixtextfunc: unknown
+		```
+	**/
+	extern var quickfixtextfunc : Dynamic;
+	/**
+		```lua
+		(global) table.quoteescape: unknown
+		```
+	**/
+	extern var quoteescape : Dynamic;
+	/**
+		```lua
+		(global) table.readonly: unknown
+		```
+	**/
+	extern var readonly : Dynamic;
+	/**
+		```lua
+		(global) table.redrawdebug: unknown
+		```
+	**/
+	extern var redrawdebug : Dynamic;
+	/**
+		```lua
+		(global) table.redrawtime: unknown
+		```
+	**/
+	extern var redrawtime : Dynamic;
+	/**
+		```lua
+		(global) table.regexpengine: unknown
+		```
+	**/
+	extern var regexpengine : Dynamic;
+	/**
+		```lua
+		(global) table.relativenumber: unknown
+		```
+	**/
+	extern var relativenumber : Dynamic;
+	/**
+		```lua
+		(global) table.remap: unknown
+		```
+	**/
+	extern var remap : Dynamic;
+	/**
+		```lua
+		(global) table.report: unknown
+		```
+	**/
+	extern var report : Dynamic;
+	/**
+		```lua
+		(global) table.revins: unknown
+		```
+	**/
+	extern var revins : Dynamic;
+	/**
+		```lua
+		(global) table.rightleft: unknown
+		```
+	**/
+	extern var rightleft : Dynamic;
+	/**
+		```lua
+		(global) table.rightleftcmd: unknown
+		```
+	**/
+	extern var rightleftcmd : Dynamic;
+	/**
+		```lua
+		(global) table.ruler: unknown
+		```
+	**/
+	extern var ruler : Dynamic;
+	/**
+		```lua
+		(global) table.rulerformat: unknown
+		```
+	**/
+	extern var rulerformat : Dynamic;
+	/**
+		```lua
+		(global) table.runtimepath: unknown
+		```
+	**/
+	extern var runtimepath : Dynamic;
+	/**
+		```lua
+		(global) table.scroll: unknown
+		```
+	**/
+	extern var scroll : Dynamic;
+	/**
+		```lua
+		(global) table.scrollback: unknown
+		```
+	**/
+	extern var scrollback : Dynamic;
+	/**
+		```lua
+		(global) table.scrollbind: unknown
+		```
+	**/
+	extern var scrollbind : Dynamic;
+	/**
+		```lua
+		(global) table.scrolljump: unknown
+		```
+	**/
+	extern var scrolljump : Dynamic;
+	/**
+		```lua
+		(global) table.scrolloff: unknown
+		```
+	**/
+	extern var scrolloff : Dynamic;
+	/**
+		```lua
+		(global) table.scrollopt: unknown
+		```
+	**/
+	extern var scrollopt : Dynamic;
+	/**
+		```lua
+		(global) table.sections: unknown
+		```
+	**/
+	extern var sections : Dynamic;
+	/**
+		```lua
+		(global) table.secure: unknown
+		```
+	**/
+	extern var secure : Dynamic;
+	/**
+		```lua
+		(global) table.selection: unknown
+		```
+	**/
+	extern var selection : Dynamic;
+	/**
+		```lua
+		(global) table.selectmode: unknown
+		```
+	**/
+	extern var selectmode : Dynamic;
+	/**
+		```lua
+		(global) table.sessionoptions: unknown
+		```
+	**/
+	extern var sessionoptions : Dynamic;
+	/**
+		```lua
+		(global) table.shada: unknown
+		```
+	**/
+	extern var shada : Dynamic;
+	/**
+		```lua
+		(global) table.shadafile: unknown
+		```
+	**/
+	extern var shadafile : Dynamic;
+	/**
+		```lua
+		(global) table.shell: unknown
+		```
+	**/
+	extern var shell : Dynamic;
+	/**
+		```lua
+		(global) table.shellcmdflag: unknown
+		```
+	**/
+	extern var shellcmdflag : Dynamic;
+	/**
+		```lua
+		(global) table.shellpipe: unknown
+		```
+	**/
+	extern var shellpipe : Dynamic;
+	/**
+		```lua
+		(global) table.shellquote: unknown
+		```
+	**/
+	extern var shellquote : Dynamic;
+	/**
+		```lua
+		(global) table.shellredir: unknown
+		```
+	**/
+	extern var shellredir : Dynamic;
+	/**
+		```lua
+		(global) table.shellslash: unknown
+		```
+	**/
+	extern var shellslash : Dynamic;
+	/**
+		```lua
+		(global) table.shelltemp: unknown
+		```
+	**/
+	extern var shelltemp : Dynamic;
+	/**
+		```lua
+		(global) table.shellxescape: unknown
+		```
+	**/
+	extern var shellxescape : Dynamic;
+	/**
+		```lua
+		(global) table.shellxquote: unknown
+		```
+	**/
+	extern var shellxquote : Dynamic;
+	/**
+		```lua
+		(global) table.shiftround: unknown
+		```
+	**/
+	extern var shiftround : Dynamic;
+	/**
+		```lua
+		(global) table.shiftwidth: unknown
+		```
+	**/
+	extern var shiftwidth : Dynamic;
+	/**
+		```lua
+		(global) table.shortmess: unknown
+		```
+	**/
+	extern var shortmess : Dynamic;
+	/**
+		```lua
+		(global) table.showbreak: unknown
+		```
+	**/
+	extern var showbreak : Dynamic;
+	/**
+		```lua
+		(global) table.showcmd: unknown
+		```
+	**/
+	extern var showcmd : Dynamic;
+	/**
+		```lua
+		(global) table.showcmdloc: unknown
+		```
+	**/
+	extern var showcmdloc : Dynamic;
+	/**
+		```lua
+		(global) table.showfulltag: unknown
+		```
+	**/
+	extern var showfulltag : Dynamic;
+	/**
+		```lua
+		(global) table.showmatch: unknown
+		```
+	**/
+	extern var showmatch : Dynamic;
+	/**
+		```lua
+		(global) table.showmode: unknown
+		```
+	**/
+	extern var showmode : Dynamic;
+	/**
+		```lua
+		(global) table.showtabline: unknown
+		```
+	**/
+	extern var showtabline : Dynamic;
+	/**
+		```lua
+		(global) table.sidescroll: unknown
+		```
+	**/
+	extern var sidescroll : Dynamic;
+	/**
+		```lua
+		(global) table.sidescrolloff: unknown
+		```
+	**/
+	extern var sidescrolloff : Dynamic;
+	/**
+		```lua
+		(global) table.signcolumn: unknown
+		```
+	**/
+	extern var signcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.smartcase: unknown
+		```
+	**/
+	extern var smartcase : Dynamic;
+	/**
+		```lua
+		(global) table.smartindent: unknown
+		```
+	**/
+	extern var smartindent : Dynamic;
+	/**
+		```lua
+		(global) table.smarttab: unknown
+		```
+	**/
+	extern var smarttab : Dynamic;
+	/**
+		```lua
+		(global) table.smoothscroll: unknown
+		```
+	**/
+	extern var smoothscroll : Dynamic;
+	/**
+		```lua
+		(global) table.softtabstop: unknown
+		```
+	**/
+	extern var softtabstop : Dynamic;
+	/**
+		```lua
+		(global) table.spell: unknown
+		```
+	**/
+	extern var spell : Dynamic;
+	/**
+		```lua
+		(global) table.spellcapcheck: unknown
+		```
+	**/
+	extern var spellcapcheck : Dynamic;
+	/**
+		```lua
+		(global) table.spellfile: unknown
+		```
+	**/
+	extern var spellfile : Dynamic;
+	/**
+		```lua
+		(global) table.spelllang: unknown
+		```
+	**/
+	extern var spelllang : Dynamic;
+	/**
+		```lua
+		(global) table.spelloptions: unknown
+		```
+	**/
+	extern var spelloptions : Dynamic;
+	/**
+		```lua
+		(global) table.spellsuggest: unknown
+		```
+	**/
+	extern var spellsuggest : Dynamic;
+	/**
+		```lua
+		(global) table.splitbelow: unknown
+		```
+	**/
+	extern var splitbelow : Dynamic;
+	/**
+		```lua
+		(global) table.splitkeep: unknown
+		```
+	**/
+	extern var splitkeep : Dynamic;
+	/**
+		```lua
+		(global) table.splitright: unknown
+		```
+	**/
+	extern var splitright : Dynamic;
+	/**
+		```lua
+		(global) table.startofline: unknown
+		```
+	**/
+	extern var startofline : Dynamic;
+	/**
+		```lua
+		(global) table.statuscolumn: unknown
+		```
+	**/
+	extern var statuscolumn : Dynamic;
+	/**
+		```lua
+		(global) table.statusline: unknown
+		```
+	**/
+	extern var statusline : Dynamic;
+	/**
+		```lua
+		(global) table.suffixes: unknown
+		```
+	**/
+	extern var suffixes : Dynamic;
+	/**
+		```lua
+		(global) table.suffixesadd: unknown
+		```
+	**/
+	extern var suffixesadd : Dynamic;
+	/**
+		```lua
 		(global) table.swapfile: boolean = false
 		```
 	**/
 	extern var swapfile : Bool;
+	/**
+		```lua
+		(global) table.switchbuf: unknown
+		```
+	**/
+	extern var switchbuf : Dynamic;
+	/**
+		```lua
+		(global) table.synmaxcol: unknown
+		```
+	**/
+	extern var synmaxcol : Dynamic;
+	/**
+		```lua
+		(global) table.syntax: unknown
+		```
+	**/
+	extern var syntax : Dynamic;
+	/**
+		```lua
+		(global) table.tabclose: unknown
+		```
+	**/
+	extern var tabclose : Dynamic;
+	/**
+		```lua
+		(global) table.tabline: unknown
+		```
+	**/
+	extern var tabline : Dynamic;
+	/**
+		```lua
+		(global) table.tabpagemax: unknown
+		```
+	**/
+	extern var tabpagemax : Dynamic;
+	/**
+		```lua
+		(global) table.tabstop: unknown
+		```
+	**/
+	extern var tabstop : Dynamic;
+	/**
+		```lua
+		(global) table.tagbsearch: unknown
+		```
+	**/
+	extern var tagbsearch : Dynamic;
+	/**
+		```lua
+		(global) table.tagcase: unknown
+		```
+	**/
+	extern var tagcase : Dynamic;
+	/**
+		```lua
+		(global) table.tagfunc: unknown
+		```
+	**/
+	extern var tagfunc : Dynamic;
+	/**
+		```lua
+		(global) table.taglength: unknown
+		```
+	**/
+	extern var taglength : Dynamic;
+	/**
+		```lua
+		(global) table.tagrelative: unknown
+		```
+	**/
+	extern var tagrelative : Dynamic;
+	/**
+		```lua
+		(global) table.tags: unknown
+		```
+	**/
+	extern var tags : Dynamic;
+	/**
+		```lua
+		(global) table.tagstack: unknown
+		```
+	**/
+	extern var tagstack : Dynamic;
+	/**
+		```lua
+		(global) table.termbidi: unknown
+		```
+	**/
+	extern var termbidi : Dynamic;
+	/**
+		```lua
+		(global) table.termencoding: unknown
+		```
+	**/
+	extern var termencoding : Dynamic;
+	/**
+		```lua
+		(global) table.termguicolors: unknown
+		```
+	**/
+	extern var termguicolors : Dynamic;
+	/**
+		```lua
+		(global) table.termpastefilter: unknown
+		```
+	**/
+	extern var termpastefilter : Dynamic;
+	/**
+		```lua
+		(global) table.termsync: unknown
+		```
+	**/
+	extern var termsync : Dynamic;
+	/**
+		```lua
+		(global) table.terse: unknown
+		```
+	**/
+	extern var terse : Dynamic;
+	/**
+		```lua
+		(global) table.textwidth: unknown
+		```
+	**/
+	extern var textwidth : Dynamic;
+	/**
+		```lua
+		(global) table.thesaurus: unknown
+		```
+	**/
+	extern var thesaurus : Dynamic;
+	/**
+		```lua
+		(global) table.thesaurusfunc: unknown
+		```
+	**/
+	extern var thesaurusfunc : Dynamic;
+	/**
+		```lua
+		(global) table.tildeop: unknown
+		```
+	**/
+	extern var tildeop : Dynamic;
+	/**
+		```lua
+		(global) table.timeout: unknown
+		```
+	**/
+	extern var timeout : Dynamic;
+	/**
+		```lua
+		(global) table.timeoutlen: unknown
+		```
+	**/
+	extern var timeoutlen : Dynamic;
+	/**
+		```lua
+		(global) table.title: unknown
+		```
+	**/
+	extern var title : Dynamic;
+	/**
+		```lua
+		(global) table.titlelen: unknown
+		```
+	**/
+	extern var titlelen : Dynamic;
+	/**
+		```lua
+		(global) table.titleold: unknown
+		```
+	**/
+	extern var titleold : Dynamic;
+	/**
+		```lua
+		(global) table.titlestring: unknown
+		```
+	**/
+	extern var titlestring : Dynamic;
+	/**
+		```lua
+		(global) table.ttimeout: unknown
+		```
+	**/
+	extern var ttimeout : Dynamic;
+	/**
+		```lua
+		(global) table.ttimeoutlen: unknown
+		```
+	**/
+	extern var ttimeoutlen : Dynamic;
+	/**
+		```lua
+		(global) table.ttyfast: unknown
+		```
+	**/
+	extern var ttyfast : Dynamic;
+	/**
+		```lua
+		(global) table.undodir: unknown
+		```
+	**/
+	extern var undodir : Dynamic;
 	/**
 		```lua
 		(global) table.undofile: boolean = false
@@ -29,13 +6297,259 @@ package externs;
 	extern var undofile : Bool;
 	/**
 		```lua
+		(global) table.undolevels: unknown
+		```
+	**/
+	extern var undolevels : Dynamic;
+	/**
+		```lua
+		(global) table.undoreload: unknown
+		```
+	**/
+	extern var undoreload : Dynamic;
+	/**
+		```lua
+		(global) table.updatecount: unknown
+		```
+	**/
+	extern var updatecount : Dynamic;
+	/**
+		```lua
+		(global) table.updatetime: unknown
+		```
+	**/
+	extern var updatetime : Dynamic;
+	/**
+		```lua
+		(global) table.varsofttabstop: unknown
+		```
+	**/
+	extern var varsofttabstop : Dynamic;
+	/**
+		```lua
+		(global) table.vartabstop: unknown
+		```
+	**/
+	extern var vartabstop : Dynamic;
+	/**
+		```lua
+		(global) table.verbose: unknown
+		```
+	**/
+	extern var verbose : Dynamic;
+	/**
+		```lua
+		(global) table.verbosefile: unknown
+		```
+	**/
+	extern var verbosefile : Dynamic;
+	/**
+		```lua
+		(global) table.viewdir: unknown
+		```
+	**/
+	extern var viewdir : Dynamic;
+	/**
+		```lua
+		(global) table.viewoptions: unknown
+		```
+	**/
+	extern var viewoptions : Dynamic;
+	/**
+		```lua
+		(global) table.virtualedit: unknown
+		```
+	**/
+	extern var virtualedit : Dynamic;
+	/**
+		```lua
+		(global) table.visualbell: unknown
+		```
+	**/
+	extern var visualbell : Dynamic;
+	/**
+		```lua
+		(global) table.warn: unknown
+		```
+	**/
+	extern var warn : Dynamic;
+	/**
+		```lua
+		(global) table.whichwrap: unknown
+		```
+	**/
+	extern var whichwrap : Dynamic;
+	/**
+		```lua
+		(global) table.wildchar: unknown
+		```
+	**/
+	extern var wildchar : Dynamic;
+	/**
+		```lua
+		(global) table.wildcharm: unknown
+		```
+	**/
+	extern var wildcharm : Dynamic;
+	/**
+		```lua
+		(global) table.wildignore: unknown
+		```
+	**/
+	extern var wildignore : Dynamic;
+	/**
+		```lua
+		(global) table.wildignorecase: unknown
+		```
+	**/
+	extern var wildignorecase : Dynamic;
+	/**
+		```lua
+		(global) table.wildmenu: unknown
+		```
+	**/
+	extern var wildmenu : Dynamic;
+	/**
+		```lua
+		(global) table.wildmode: unknown
+		```
+	**/
+	extern var wildmode : Dynamic;
+	/**
+		```lua
+		(global) table.wildoptions: unknown
+		```
+	**/
+	extern var wildoptions : Dynamic;
+	/**
+		```lua
+		(global) table.winaltkeys: unknown
+		```
+	**/
+	extern var winaltkeys : Dynamic;
+	/**
+		```lua
+		(global) table.winbar: unknown
+		```
+	**/
+	extern var winbar : Dynamic;
+	/**
+		```lua
+		(global) table.winblend: unknown
+		```
+	**/
+	extern var winblend : Dynamic;
+	/**
+		```lua
+		(global) table.winborder: unknown
+		```
+	**/
+	extern var winborder : Dynamic;
+	/**
+		```lua
+		(global) table.window: unknown
+		```
+	**/
+	extern var window : Dynamic;
+	/**
+		```lua
+		(global) table.winfixbuf: unknown
+		```
+	**/
+	extern var winfixbuf : Dynamic;
+	/**
+		```lua
+		(global) table.winfixheight: unknown
+		```
+	**/
+	extern var winfixheight : Dynamic;
+	/**
+		```lua
+		(global) table.winfixwidth: unknown
+		```
+	**/
+	extern var winfixwidth : Dynamic;
+	/**
+		```lua
+		(global) table.winheight: unknown
+		```
+	**/
+	extern var winheight : Dynamic;
+	/**
+		```lua
+		(global) table.winhighlight: unknown
+		```
+	**/
+	extern var winhighlight : Dynamic;
+	/**
+		```lua
+		(global) table.winminheight: unknown
+		```
+	**/
+	extern var winminheight : Dynamic;
+	/**
+		```lua
+		(global) table.winminwidth: unknown
+		```
+	**/
+	extern var winminwidth : Dynamic;
+	/**
+		```lua
+		(global) table.winwidth: unknown
+		```
+	**/
+	extern var winwidth : Dynamic;
+	/**
+		```lua
+		(global) table.wrap: unknown
+		```
+	**/
+	extern var wrap : Dynamic;
+	/**
+		```lua
+		(global) table.wrapmargin: unknown
+		```
+	**/
+	extern var wrapmargin : Dynamic;
+	/**
+		```lua
+		(global) table.wrapscan: unknown
+		```
+	**/
+	extern var wrapscan : Dynamic;
+	/**
+		```lua
+		(global) table.write: unknown
+		```
+	**/
+	extern var write : Dynamic;
+	/**
+		```lua
+		(global) table.writeany: unknown
+		```
+	**/
+	extern var writeany : Dynamic;
+	/**
+		```lua
 		(global) table.writebackup: boolean = false
 		```
 	**/
 	extern var writebackup : Bool;
+	/**
+		```lua
+		(global) table.writedelay: unknown
+		```
+	**/
+	extern var writedelay : Dynamic;
 }
 
 @:private extern class O {
+	/**
+		```lua
+		(global) table.aleph: unknown
+		```
+	**/
+	extern var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: boolean
@@ -666,6 +7180,12 @@ package externs;
 	extern var breakindentopt : String;
 	/**
 		```lua
+		(global) table.browsedir: unknown
+		```
+	**/
+	extern var browsedir : Dynamic;
+	/**
+		```lua
 		(global) table.bufhidden: ''|'delete'|'hide'|'unload'|'wipe'
 		```
 		
@@ -1143,6 +7663,12 @@ package externs;
 		
 	**/
 	extern var commentstring : String;
+	/**
+		```lua
+		(global) table.compatible: unknown
+		```
+	**/
+	extern var compatible : Dynamic;
 	/**
 		```lua
 		(global) table.complete: string
@@ -2078,6 +8604,12 @@ package externs;
 		
 	**/
 	extern var eadirection : String;
+	/**
+		```lua
+		(global) table.edcompatible: unknown
+		```
+	**/
+	extern var edcompatible : Dynamic;
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -3347,6 +9879,24 @@ package externs;
 	extern var guifontwide : String;
 	/**
 		```lua
+		(global) table.guioptions: unknown
+		```
+	**/
+	extern var guioptions : Dynamic;
+	/**
+		```lua
+		(global) table.guitablabel: unknown
+		```
+	**/
+	extern var guitablabel : Dynamic;
+	/**
+		```lua
+		(global) table.guitabtooltip: unknown
+		```
+	**/
+	extern var guitabtooltip : Dynamic;
+	/**
+		```lua
 		(global) table.helpfile: string
 		```
 		
@@ -3430,6 +9980,12 @@ package externs;
 	extern var hidden : Bool;
 	/**
 		```lua
+		(global) table.highlight: unknown
+		```
+	**/
+	extern var highlight : Dynamic;
+	/**
+		```lua
 		(global) table.history: integer
 		```
 		
@@ -3443,6 +9999,18 @@ package externs;
 		
 	**/
 	extern var history : Int;
+	/**
+		```lua
+		(global) table.hkmap: unknown
+		```
+	**/
+	extern var hkmap : Dynamic;
+	/**
+		```lua
+		(global) table.hkmapp: unknown
+		```
+	**/
+	extern var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: boolean
@@ -3523,6 +10091,18 @@ package externs;
 		 Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 	**/
 	extern var ignorecase : Bool;
+	/**
+		```lua
+		(global) table.imcmdline: unknown
+		```
+	**/
+	extern var imcmdline : Dynamic;
+	/**
+		```lua
+		(global) table.imdisable: unknown
+		```
+	**/
+	extern var imdisable : Dynamic;
 	/**
 		```lua
 		(global) table.iminsert: integer
@@ -3794,6 +10374,12 @@ package externs;
 		
 	**/
 	extern var infercase : Bool;
+	/**
+		```lua
+		(global) table.insertmode: unknown
+		```
+	**/
+	extern var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: string
@@ -4116,6 +10702,12 @@ package externs;
 		
 	**/
 	extern var langmenu : String;
+	/**
+		```lua
+		(global) table.langnoremap: unknown
+		```
+	**/
+	extern var langnoremap : Dynamic;
 	/**
 		```lua
 		(global) table.langremap: boolean
@@ -4581,6 +11173,12 @@ package externs;
 	extern var matchtime : Int;
 	/**
 		```lua
+		(global) table.maxcombine: unknown
+		```
+	**/
+	extern var maxcombine : Dynamic;
+	/**
+		```lua
 		(global) table.maxfuncdepth: integer
 		```
 		
@@ -5008,6 +11606,12 @@ package externs;
 	extern var mousescroll : String;
 	/**
 		```lua
+		(global) table.mouseshape: unknown
+		```
+	**/
+	extern var mouseshape : Dynamic;
+	/**
+		```lua
 		(global) table.mousetime: integer
 		```
 		
@@ -5146,6 +11750,12 @@ package externs;
 	extern var omnifunc : String;
 	/**
 		```lua
+		(global) table.opendevice: unknown
+		```
+	**/
+	extern var opendevice : Dynamic;
+	/**
+		```lua
 		(global) table.operatorfunc: string = "v:lua.require'vim._comment'.operator"
 		```
 		
@@ -5187,6 +11797,18 @@ package externs;
 		
 	**/
 	extern var paragraphs : String;
+	/**
+		```lua
+		(global) table.paste: unknown
+		```
+	**/
+	extern var paste : Dynamic;
+	/**
+		```lua
+		(global) table.pastetoggle: unknown
+		```
+	**/
+	extern var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: string
@@ -5361,6 +11983,12 @@ package externs;
 		
 	**/
 	extern var previewwindow : Bool;
+	/**
+		```lua
+		(global) table.prompt: unknown
+		```
+	**/
+	extern var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: integer
@@ -5594,6 +12222,12 @@ package externs;
 		
 	**/
 	extern var relativenumber : Bool;
+	/**
+		```lua
+		(global) table.remap: unknown
+		```
+	**/
+	extern var remap : Dynamic;
 	/**
 		```lua
 		(global) table.report: integer
@@ -5939,6 +12573,12 @@ package externs;
 		
 	**/
 	extern var sections : String;
+	/**
+		```lua
+		(global) table.secure: unknown
+		```
+	**/
+	extern var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: 'exclusive'|'inclusive'|'old'
@@ -7892,6 +14532,12 @@ package externs;
 	extern var termbidi : Bool;
 	/**
 		```lua
+		(global) table.termencoding: unknown
+		```
+	**/
+	extern var termencoding : Dynamic;
+	/**
+		```lua
 		(global) table.termguicolors: boolean
 		```
 		
@@ -7949,6 +14595,12 @@ package externs;
 		
 	**/
 	extern var termsync : Bool;
+	/**
+		```lua
+		(global) table.terse: unknown
+		```
+	**/
+	extern var terse : Dynamic;
 	/**
 		```lua
 		(global) table.textwidth: integer
@@ -8174,6 +14826,12 @@ package externs;
 		
 	**/
 	extern var ttimeoutlen : Int;
+	/**
+		```lua
+		(global) table.ttyfast: unknown
+		```
+	**/
+	extern var ttyfast : Dynamic;
 	/**
 		```lua
 		(global) table.undodir: string
@@ -9513,6 +16171,18 @@ package externs;
 	extern static function match(pattern:haxe.extern.EitherType<externs.type.Vim_Lpeg_Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
+		(global) vim.lpeg.pcode: unknown
+		```
+	**/
+	extern var pcode : Dynamic;
+	/**
+		```lua
+		(global) vim.lpeg.ptree: unknown
+		```
+	**/
+	extern var ptree : Dynamic;
+	/**
+		```lua
 		function vim.lpeg.setmaxstack(max: integer)
 		```
 		
@@ -9542,6 +16212,12 @@ package externs;
 		```
 	**/
 	extern static function type(value:haxe.extern.EitherType<externs.type.Vim_Lpeg_Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):haxe.extern.EitherType<String, Void>;
+	/**
+		```lua
+		(global) vim.lpeg.utfR: unknown
+		```
+	**/
+	extern var utfR : Dynamic;
 	/**
 		```lua
 		function vim.lpeg.version()
@@ -9622,9 +16298,21 @@ package externs;
 		                                   characters "/" in string values.
 	**/
 	extern static function encode(obj:Any, ?opts:lua.Table<String, Any>):String;
+	/**
+		```lua
+		(global) vim.json.new: unknown
+		```
+	**/
+	extern var new : Dynamic;
 }
 
 @:private extern class Go {
+	/**
+		```lua
+		(global) table.aleph: unknown
+		```
+	**/
+	extern var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: boolean
@@ -9680,6 +16368,12 @@ package externs;
 	extern var ambiwidth : String;
 	/**
 		```lua
+		(global) table.arabic: unknown
+		```
+	**/
+	extern var arabic : Dynamic;
+	/**
+		```lua
 		(global) table.arabicshape: boolean
 		```
 		
@@ -9716,6 +16410,12 @@ package externs;
 		
 	**/
 	extern var autochdir : Bool;
+	/**
+		```lua
+		(global) table.autoindent: unknown
+		```
+	**/
+	extern var autoindent : Dynamic;
 	/**
 		```lua
 		(global) table.autoread: boolean
@@ -10087,6 +16787,18 @@ package externs;
 	extern var belloff : String;
 	/**
 		```lua
+		(global) table.binary: unknown
+		```
+	**/
+	extern var binary : Dynamic;
+	/**
+		```lua
+		(global) table.bomb: unknown
+		```
+	**/
+	extern var bomb : Dynamic;
+	/**
+		```lua
 		(global) table.breakat: string
 		```
 		
@@ -10097,6 +16809,42 @@ package externs;
 		
 	**/
 	extern var breakat : String;
+	/**
+		```lua
+		(global) table.breakindent: unknown
+		```
+	**/
+	extern var breakindent : Dynamic;
+	/**
+		```lua
+		(global) table.breakindentopt: unknown
+		```
+	**/
+	extern var breakindentopt : Dynamic;
+	/**
+		```lua
+		(global) table.browsedir: unknown
+		```
+	**/
+	extern var browsedir : Dynamic;
+	/**
+		```lua
+		(global) table.bufhidden: unknown
+		```
+	**/
+	extern var bufhidden : Dynamic;
+	/**
+		```lua
+		(global) table.buflisted: unknown
+		```
+	**/
+	extern var buflisted : Dynamic;
+	/**
+		```lua
+		(global) table.buftype: unknown
+		```
+	**/
+	extern var buftype : Dynamic;
 	/**
 		```lua
 		(global) table.casemap: string
@@ -10184,6 +16932,12 @@ package externs;
 	extern var cedit : String;
 	/**
 		```lua
+		(global) table.channel: unknown
+		```
+	**/
+	extern var channel : Dynamic;
+	/**
+		```lua
 		(global) table.charconvert: string
 		```
 		
@@ -10241,6 +16995,36 @@ package externs;
 		
 	**/
 	extern var charconvert : String;
+	/**
+		```lua
+		(global) table.cindent: unknown
+		```
+	**/
+	extern var cindent : Dynamic;
+	/**
+		```lua
+		(global) table.cinkeys: unknown
+		```
+	**/
+	extern var cinkeys : Dynamic;
+	/**
+		```lua
+		(global) table.cinoptions: unknown
+		```
+	**/
+	extern var cinoptions : Dynamic;
+	/**
+		```lua
+		(global) table.cinscopedecls: unknown
+		```
+	**/
+	extern var cinscopedecls : Dynamic;
+	/**
+		```lua
+		(global) table.cinwords: unknown
+		```
+	**/
+	extern var cinwords : Dynamic;
 	/**
 		```lua
 		(global) table.clipboard: string = 'unnamedplus'
@@ -10309,6 +17093,12 @@ package externs;
 	extern var cmdwinheight : Int;
 	/**
 		```lua
+		(global) table.colorcolumn: unknown
+		```
+	**/
+	extern var colorcolumn : Dynamic;
+	/**
+		```lua
 		(global) table.columns: integer
 		```
 		
@@ -10332,6 +17122,36 @@ package externs;
 		
 	**/
 	extern var columns : Int;
+	/**
+		```lua
+		(global) table.comments: unknown
+		```
+	**/
+	extern var comments : Dynamic;
+	/**
+		```lua
+		(global) table.commentstring: unknown
+		```
+	**/
+	extern var commentstring : Dynamic;
+	/**
+		```lua
+		(global) table.compatible: unknown
+		```
+	**/
+	extern var compatible : Dynamic;
+	/**
+		```lua
+		(global) table.complete: unknown
+		```
+	**/
+	extern var complete : Dynamic;
+	/**
+		```lua
+		(global) table.completefunc: unknown
+		```
+	**/
+	extern var completefunc : Dynamic;
 	/**
 		```lua
 		(global) table.completeitemalign: string
@@ -10410,6 +17230,24 @@ package externs;
 	extern var completeopt : String;
 	/**
 		```lua
+		(global) table.completeslash: unknown
+		```
+	**/
+	extern var completeslash : Dynamic;
+	/**
+		```lua
+		(global) table.concealcursor: unknown
+		```
+	**/
+	extern var concealcursor : Dynamic;
+	/**
+		```lua
+		(global) table.conceallevel: unknown
+		```
+	**/
+	extern var conceallevel : Dynamic;
+	/**
+		```lua
 		(global) table.confirm: boolean = true
 		```
 		
@@ -10431,6 +17269,12 @@ package externs;
 		 instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
 	**/
 	extern var confirm : Bool;
+	/**
+		```lua
+		(global) table.copyindent: unknown
+		```
+	**/
+	extern var copyindent : Dynamic;
 	/**
 		```lua
 		(global) table.cpoptions: string
@@ -10670,6 +17514,30 @@ package externs;
 	extern var cpoptions : String;
 	/**
 		```lua
+		(global) table.cursorbind: unknown
+		```
+	**/
+	extern var cursorbind : Dynamic;
+	/**
+		```lua
+		(global) table.cursorcolumn: unknown
+		```
+	**/
+	extern var cursorcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.cursorline: unknown
+		```
+	**/
+	extern var cursorline : Dynamic;
+	/**
+		```lua
+		(global) table.cursorlineopt: unknown
+		```
+	**/
+	extern var cursorlineopt : Dynamic;
+	/**
+		```lua
 		(global) table.debug: string
 		```
 		
@@ -10779,6 +17647,12 @@ package externs;
 		
 	**/
 	extern var dictionary : String;
+	/**
+		```lua
+		(global) table.diff: unknown
+		```
+	**/
+	extern var diff : Dynamic;
 	/**
 		```lua
 		(global) table.diffexpr: string
@@ -11022,6 +17896,12 @@ package externs;
 	extern var eadirection : String;
 	/**
 		```lua
+		(global) table.edcompatible: unknown
+		```
+	**/
+	extern var edcompatible : Dynamic;
+	/**
+		```lua
 		(global) table.emoji: boolean
 		```
 		
@@ -11052,6 +17932,18 @@ package externs;
 		
 	**/
 	extern var encoding : String;
+	/**
+		```lua
+		(global) table.endoffile: unknown
+		```
+	**/
+	extern var endoffile : Dynamic;
+	/**
+		```lua
+		(global) table.endofline: unknown
+		```
+	**/
+	extern var endofline : Dynamic;
 	/**
 		```lua
 		(global) table.equalalways: boolean
@@ -11159,6 +18051,18 @@ package externs;
 	extern var eventignore : String;
 	/**
 		```lua
+		(global) table.eventignorewin: unknown
+		```
+	**/
+	extern var eventignorewin : Dynamic;
+	/**
+		```lua
+		(global) table.expandtab: unknown
+		```
+	**/
+	extern var expandtab : Dynamic;
+	/**
+		```lua
 		(global) table.exrc: boolean
 		```
 		
@@ -11189,6 +18093,12 @@ package externs;
 		
 	**/
 	extern var exrc : Bool;
+	/**
+		```lua
+		(global) table.fileencoding: unknown
+		```
+	**/
+	extern var fileencoding : Dynamic;
 	/**
 		```lua
 		(global) table.fileencodings: string
@@ -11251,6 +18161,12 @@ package externs;
 		
 	**/
 	extern var fileencodings : String;
+	/**
+		```lua
+		(global) table.fileformat: unknown
+		```
+	**/
+	extern var fileformat : Dynamic;
 	/**
 		```lua
 		(global) table.fileformats: string
@@ -11318,6 +18234,12 @@ package externs;
 		
 	**/
 	extern var fileignorecase : Bool;
+	/**
+		```lua
+		(global) table.filetype: unknown
+		```
+	**/
+	extern var filetype : Dynamic;
 	/**
 		```lua
 		(global) table.fillchars: string
@@ -11449,6 +18371,12 @@ package externs;
 	extern var findfunc : String;
 	/**
 		```lua
+		(global) table.fixendofline: unknown
+		```
+	**/
+	extern var fixendofline : Dynamic;
+	/**
+		```lua
 		(global) table.foldclose: string
 		```
 		
@@ -11460,6 +18388,36 @@ package externs;
 		
 	**/
 	extern var foldclose : String;
+	/**
+		```lua
+		(global) table.foldcolumn: unknown
+		```
+	**/
+	extern var foldcolumn : Dynamic;
+	/**
+		```lua
+		(global) table.foldenable: unknown
+		```
+	**/
+	extern var foldenable : Dynamic;
+	/**
+		```lua
+		(global) table.foldexpr: unknown
+		```
+	**/
+	extern var foldexpr : Dynamic;
+	/**
+		```lua
+		(global) table.foldignore: unknown
+		```
+	**/
+	extern var foldignore : Dynamic;
+	/**
+		```lua
+		(global) table.foldlevel: unknown
+		```
+	**/
+	extern var foldlevel : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevelstart: integer
@@ -11479,6 +18437,30 @@ package externs;
 		
 	**/
 	extern var foldlevelstart : Int;
+	/**
+		```lua
+		(global) table.foldmarker: unknown
+		```
+	**/
+	extern var foldmarker : Dynamic;
+	/**
+		```lua
+		(global) table.foldmethod: unknown
+		```
+	**/
+	extern var foldmethod : Dynamic;
+	/**
+		```lua
+		(global) table.foldminlines: unknown
+		```
+	**/
+	extern var foldminlines : Dynamic;
+	/**
+		```lua
+		(global) table.foldnestmax: unknown
+		```
+	**/
+	extern var foldnestmax : Dynamic;
 	/**
 		```lua
 		(global) table.foldopen: string
@@ -11519,6 +18501,30 @@ package externs;
 		
 	**/
 	extern var foldopen : String;
+	/**
+		```lua
+		(global) table.foldtext: unknown
+		```
+	**/
+	extern var foldtext : Dynamic;
+	/**
+		```lua
+		(global) table.formatexpr: unknown
+		```
+	**/
+	extern var formatexpr : Dynamic;
+	/**
+		```lua
+		(global) table.formatlistpat: unknown
+		```
+	**/
+	extern var formatlistpat : Dynamic;
+	/**
+		```lua
+		(global) table.formatoptions: unknown
+		```
+	**/
+	extern var formatoptions : Dynamic;
 	/**
 		```lua
 		(global) table.formatprg: string
@@ -11841,6 +18847,24 @@ package externs;
 	extern var guifontwide : String;
 	/**
 		```lua
+		(global) table.guioptions: unknown
+		```
+	**/
+	extern var guioptions : Dynamic;
+	/**
+		```lua
+		(global) table.guitablabel: unknown
+		```
+	**/
+	extern var guitablabel : Dynamic;
+	/**
+		```lua
+		(global) table.guitabtooltip: unknown
+		```
+	**/
+	extern var guitabtooltip : Dynamic;
+	/**
+		```lua
 		(global) table.helpfile: string
 		```
 		
@@ -11924,6 +18948,12 @@ package externs;
 	extern var hidden : Bool;
 	/**
 		```lua
+		(global) table.highlight: unknown
+		```
+	**/
+	extern var highlight : Dynamic;
+	/**
+		```lua
 		(global) table.history: integer
 		```
 		
@@ -11937,6 +18967,18 @@ package externs;
 		
 	**/
 	extern var history : Int;
+	/**
+		```lua
+		(global) table.hkmap: unknown
+		```
+	**/
+	extern var hkmap : Dynamic;
+	/**
+		```lua
+		(global) table.hkmapp: unknown
+		```
+	**/
+	extern var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: boolean
@@ -12019,6 +19061,30 @@ package externs;
 	extern var ignorecase : Bool;
 	/**
 		```lua
+		(global) table.imcmdline: unknown
+		```
+	**/
+	extern var imcmdline : Dynamic;
+	/**
+		```lua
+		(global) table.imdisable: unknown
+		```
+	**/
+	extern var imdisable : Dynamic;
+	/**
+		```lua
+		(global) table.iminsert: unknown
+		```
+	**/
+	extern var iminsert : Dynamic;
+	/**
+		```lua
+		(global) table.imsearch: unknown
+		```
+	**/
+	extern var imsearch : Dynamic;
+	/**
+		```lua
 		(global) table.inccommand: ''|'nosplit'|'split'
 		```
 		
@@ -12060,6 +19126,12 @@ package externs;
 		
 	**/
 	extern var include : String;
+	/**
+		```lua
+		(global) table.includeexpr: unknown
+		```
+	**/
+	extern var includeexpr : Dynamic;
 	/**
 		```lua
 		(global) table.incsearch: boolean
@@ -12104,6 +19176,30 @@ package externs;
 		
 	**/
 	extern var incsearch : Bool;
+	/**
+		```lua
+		(global) table.indentexpr: unknown
+		```
+	**/
+	extern var indentexpr : Dynamic;
+	/**
+		```lua
+		(global) table.indentkeys: unknown
+		```
+	**/
+	extern var indentkeys : Dynamic;
+	/**
+		```lua
+		(global) table.infercase: unknown
+		```
+	**/
+	extern var infercase : Dynamic;
+	/**
+		```lua
+		(global) table.insertmode: unknown
+		```
+	**/
+	extern var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: string
@@ -12180,6 +19276,12 @@ package externs;
 	extern var isident : String;
 	/**
 		```lua
+		(global) table.iskeyword: unknown
+		```
+	**/
+	extern var iskeyword : Dynamic;
+	/**
+		```lua
 		(global) table.isprint: string
 		```
 		
@@ -12249,6 +19351,12 @@ package externs;
 		
 	**/
 	extern var jumpoptions : String;
+	/**
+		```lua
+		(global) table.keymap: unknown
+		```
+	**/
+	extern var keymap : Dynamic;
 	/**
 		```lua
 		(global) table.keymodel: string
@@ -12391,6 +19499,12 @@ package externs;
 	extern var langmenu : String;
 	/**
 		```lua
+		(global) table.langnoremap: unknown
+		```
+	**/
+	extern var langnoremap : Dynamic;
+	/**
+		```lua
 		(global) table.langremap: boolean
 		```
 		
@@ -12439,6 +19553,12 @@ package externs;
 	extern var lazyredraw : Bool;
 	/**
 		```lua
+		(global) table.linebreak: unknown
+		```
+	**/
+	extern var linebreak : Dynamic;
+	/**
+		```lua
 		(global) table.lines: integer
 		```
 		
@@ -12480,6 +19600,18 @@ package externs;
 	extern var linespace : Int;
 	/**
 		```lua
+		(global) table.lisp: unknown
+		```
+	**/
+	extern var lisp : Dynamic;
+	/**
+		```lua
+		(global) table.lispoptions: unknown
+		```
+	**/
+	extern var lispoptions : Dynamic;
+	/**
+		```lua
 		(global) table.lispwords: string
 		```
 		
@@ -12490,6 +19622,12 @@ package externs;
 		
 	**/
 	extern var lispwords : String;
+	/**
+		```lua
+		(global) table.list: unknown
+		```
+	**/
+	extern var list : Dynamic;
 	/**
 		```lua
 		(global) table.listchars: string
@@ -12725,6 +19863,12 @@ package externs;
 	extern var makeprg : String;
 	/**
 		```lua
+		(global) table.matchpairs: unknown
+		```
+	**/
+	extern var matchpairs : Dynamic;
+	/**
+		```lua
 		(global) table.matchtime: integer
 		```
 		
@@ -12736,6 +19880,12 @@ package externs;
 		
 	**/
 	extern var matchtime : Int;
+	/**
+		```lua
+		(global) table.maxcombine: unknown
+		```
+	**/
+	extern var maxcombine : Dynamic;
 	/**
 		```lua
 		(global) table.maxfuncdepth: integer
@@ -12884,6 +20034,12 @@ package externs;
 	extern var mkspellmem : String;
 	/**
 		```lua
+		(global) table.modeline: unknown
+		```
+	**/
+	extern var modeline : Dynamic;
+	/**
+		```lua
 		(global) table.modelineexpr: boolean
 		```
 		
@@ -12911,6 +20067,18 @@ package externs;
 		
 	**/
 	extern var modelines : Int;
+	/**
+		```lua
+		(global) table.modifiable: unknown
+		```
+	**/
+	extern var modifiable : Dynamic;
+	/**
+		```lua
+		(global) table.modified: unknown
+		```
+	**/
+	extern var modified : Dynamic;
 	/**
 		```lua
 		(global) table.more: boolean
@@ -13108,6 +20276,12 @@ package externs;
 	extern var mousescroll : String;
 	/**
 		```lua
+		(global) table.mouseshape: unknown
+		```
+	**/
+	extern var mouseshape : Dynamic;
+	/**
+		```lua
 		(global) table.mousetime: integer
 		```
 		
@@ -13118,6 +20292,36 @@ package externs;
 		
 	**/
 	extern var mousetime : Int;
+	/**
+		```lua
+		(global) table.nrformats: unknown
+		```
+	**/
+	extern var nrformats : Dynamic;
+	/**
+		```lua
+		(global) table.number: unknown
+		```
+	**/
+	extern var number : Dynamic;
+	/**
+		```lua
+		(global) table.numberwidth: unknown
+		```
+	**/
+	extern var numberwidth : Dynamic;
+	/**
+		```lua
+		(global) table.omnifunc: unknown
+		```
+	**/
+	extern var omnifunc : Dynamic;
+	/**
+		```lua
+		(global) table.opendevice: unknown
+		```
+	**/
+	extern var opendevice : Dynamic;
 	/**
 		```lua
 		(global) table.operatorfunc: string = "v:lua.require'vim._buf'.space_above"|"v:lua.require'vim._buf'.space_below"|"v:lua.require'vim._comment'.operator"
@@ -13165,6 +20369,18 @@ package externs;
 		
 	**/
 	extern var paragraphs : String;
+	/**
+		```lua
+		(global) table.paste: unknown
+		```
+	**/
+	extern var paste : Dynamic;
+	/**
+		```lua
+		(global) table.pastetoggle: unknown
+		```
+	**/
+	extern var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: string
@@ -13294,6 +20510,12 @@ package externs;
 	extern var path : String;
 	/**
 		```lua
+		(global) table.preserveindent: unknown
+		```
+	**/
+	extern var preserveindent : Dynamic;
+	/**
+		```lua
 		(global) table.previewheight: integer
 		```
 		
@@ -13304,6 +20526,18 @@ package externs;
 		
 	**/
 	extern var previewheight : Int;
+	/**
+		```lua
+		(global) table.previewwindow: unknown
+		```
+	**/
+	extern var previewwindow : Dynamic;
+	/**
+		```lua
+		(global) table.prompt: unknown
+		```
+	**/
+	extern var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: integer
@@ -13393,6 +20627,18 @@ package externs;
 	extern var quickfixtextfunc : String;
 	/**
 		```lua
+		(global) table.quoteescape: unknown
+		```
+	**/
+	extern var quoteescape : Dynamic;
+	/**
+		```lua
+		(global) table.readonly: unknown
+		```
+	**/
+	extern var readonly : Dynamic;
+	/**
+		```lua
 		(global) table.redrawdebug: string
 		```
 		
@@ -13474,6 +20720,18 @@ package externs;
 	extern var regexpengine : Int;
 	/**
 		```lua
+		(global) table.relativenumber: unknown
+		```
+	**/
+	extern var relativenumber : Dynamic;
+	/**
+		```lua
+		(global) table.remap: unknown
+		```
+	**/
+	extern var remap : Dynamic;
+	/**
+		```lua
 		(global) table.report: integer
 		```
 		
@@ -13500,6 +20758,18 @@ package externs;
 		
 	**/
 	extern var revins : Bool;
+	/**
+		```lua
+		(global) table.rightleft: unknown
+		```
+	**/
+	extern var rightleft : Dynamic;
+	/**
+		```lua
+		(global) table.rightleftcmd: unknown
+		```
+	**/
+	extern var rightleftcmd : Dynamic;
 	/**
 		```lua
 		(global) table.ruler: boolean
@@ -13637,6 +20907,24 @@ package externs;
 	extern var runtimepath : String;
 	/**
 		```lua
+		(global) table.scroll: unknown
+		```
+	**/
+	extern var scroll : Dynamic;
+	/**
+		```lua
+		(global) table.scrollback: unknown
+		```
+	**/
+	extern var scrollback : Dynamic;
+	/**
+		```lua
+		(global) table.scrollbind: unknown
+		```
+	**/
+	extern var scrollbind : Dynamic;
+	/**
+		```lua
 		(global) table.scrolljump: integer
 		```
 		
@@ -13728,6 +21016,12 @@ package externs;
 		
 	**/
 	extern var sections : String;
+	/**
+		```lua
+		(global) table.secure: unknown
+		```
+	**/
+	extern var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: 'exclusive'|'inclusive'|'old'
@@ -14233,6 +21527,12 @@ package externs;
 	extern var shiftround : Bool;
 	/**
 		```lua
+		(global) table.shiftwidth: unknown
+		```
+	**/
+	extern var shiftwidth : Dynamic;
+	/**
+		```lua
 		(global) table.shortmess: string
 		```
 		
@@ -14496,6 +21796,12 @@ package externs;
 	extern var sidescrolloff : Int;
 	/**
 		```lua
+		(global) table.signcolumn: unknown
+		```
+	**/
+	extern var signcolumn : Dynamic;
+	/**
+		```lua
 		(global) table.smartcase: boolean = true
 		```
 		
@@ -14510,6 +21816,12 @@ package externs;
 		
 	**/
 	extern var smartcase : Bool;
+	/**
+		```lua
+		(global) table.smartindent: unknown
+		```
+	**/
+	extern var smartindent : Dynamic;
 	/**
 		```lua
 		(global) table.smarttab: boolean
@@ -14530,6 +21842,48 @@ package externs;
 		
 	**/
 	extern var smarttab : Bool;
+	/**
+		```lua
+		(global) table.smoothscroll: unknown
+		```
+	**/
+	extern var smoothscroll : Dynamic;
+	/**
+		```lua
+		(global) table.softtabstop: unknown
+		```
+	**/
+	extern var softtabstop : Dynamic;
+	/**
+		```lua
+		(global) table.spell: unknown
+		```
+	**/
+	extern var spell : Dynamic;
+	/**
+		```lua
+		(global) table.spellcapcheck: unknown
+		```
+	**/
+	extern var spellcapcheck : Dynamic;
+	/**
+		```lua
+		(global) table.spellfile: unknown
+		```
+	**/
+	extern var spellfile : Dynamic;
+	/**
+		```lua
+		(global) table.spelllang: unknown
+		```
+	**/
+	extern var spelllang : Dynamic;
+	/**
+		```lua
+		(global) table.spelloptions: unknown
+		```
+	**/
+	extern var spelloptions : Dynamic;
 	/**
 		```lua
 		(global) table.spellsuggest: string
@@ -14675,6 +22029,12 @@ package externs;
 		
 	**/
 	extern var startofline : Bool;
+	/**
+		```lua
+		(global) table.statuscolumn: unknown
+		```
+	**/
+	extern var statuscolumn : Dynamic;
 	/**
 		```lua
 		(global) table.statusline: string
@@ -14947,6 +22307,18 @@ package externs;
 	extern var suffixes : String;
 	/**
 		```lua
+		(global) table.suffixesadd: unknown
+		```
+	**/
+	extern var suffixesadd : Dynamic;
+	/**
+		```lua
+		(global) table.swapfile: unknown
+		```
+	**/
+	extern var swapfile : Dynamic;
+	/**
+		```lua
 		(global) table.switchbuf: string
 		```
 		
@@ -14982,6 +22354,18 @@ package externs;
 		
 	**/
 	extern var switchbuf : String;
+	/**
+		```lua
+		(global) table.synmaxcol: unknown
+		```
+	**/
+	extern var synmaxcol : Dynamic;
+	/**
+		```lua
+		(global) table.syntax: unknown
+		```
+	**/
+	extern var syntax : Dynamic;
 	/**
 		```lua
 		(global) table.tabclose: string
@@ -15043,6 +22427,12 @@ package externs;
 		
 	**/
 	extern var tabpagemax : Int;
+	/**
+		```lua
+		(global) table.tabstop: unknown
+		```
+	**/
+	extern var tabstop : Dynamic;
 	/**
 		```lua
 		(global) table.tagbsearch: boolean
@@ -15120,6 +22510,12 @@ package externs;
 		
 	**/
 	extern var tagcase : String;
+	/**
+		```lua
+		(global) table.tagfunc: unknown
+		```
+	**/
+	extern var tagfunc : Dynamic;
 	/**
 		```lua
 		(global) table.taglength: integer
@@ -15207,6 +22603,12 @@ package externs;
 	extern var termbidi : Bool;
 	/**
 		```lua
+		(global) table.termencoding: unknown
+		```
+	**/
+	extern var termencoding : Dynamic;
+	/**
+		```lua
 		(global) table.termguicolors: boolean
 		```
 		
@@ -15264,6 +22666,18 @@ package externs;
 		
 	**/
 	extern var termsync : Bool;
+	/**
+		```lua
+		(global) table.terse: unknown
+		```
+	**/
+	extern var terse : Dynamic;
+	/**
+		```lua
+		(global) table.textwidth: unknown
+		```
+	**/
+	extern var textwidth : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurus: string
@@ -15475,6 +22889,12 @@ package externs;
 	extern var ttimeoutlen : Int;
 	/**
 		```lua
+		(global) table.ttyfast: unknown
+		```
+	**/
+	extern var ttyfast : Dynamic;
+	/**
+		```lua
 		(global) table.undodir: string
 		```
 		
@@ -15503,6 +22923,12 @@ package externs;
 		
 	**/
 	extern var undodir : String;
+	/**
+		```lua
+		(global) table.undofile: unknown
+		```
+	**/
+	extern var undofile : Dynamic;
 	/**
 		```lua
 		(global) table.undolevels: integer
@@ -15591,6 +23017,18 @@ package externs;
 		
 	**/
 	extern var updatetime : Int;
+	/**
+		```lua
+		(global) table.varsofttabstop: unknown
+		```
+	**/
+	extern var varsofttabstop : Dynamic;
+	/**
+		```lua
+		(global) table.vartabstop: unknown
+		```
+	**/
+	extern var vartabstop : Dynamic;
 	/**
 		```lua
 		(global) table.verbose: integer
@@ -16075,6 +23513,12 @@ package externs;
 	extern var winbar : String;
 	/**
 		```lua
+		(global) table.winblend: unknown
+		```
+	**/
+	extern var winblend : Dynamic;
+	/**
+		```lua
 		(global) table.winborder: ''|'bold'|'double'|'none'|'rounded'|'shadow'|'single'|'solid'
 		```
 		
@@ -16113,6 +23557,24 @@ package externs;
 	extern var window : Int;
 	/**
 		```lua
+		(global) table.winfixbuf: unknown
+		```
+	**/
+	extern var winfixbuf : Dynamic;
+	/**
+		```lua
+		(global) table.winfixheight: unknown
+		```
+	**/
+	extern var winfixheight : Dynamic;
+	/**
+		```lua
+		(global) table.winfixwidth: unknown
+		```
+	**/
+	extern var winfixwidth : Dynamic;
+	/**
+		```lua
 		(global) table.winheight: integer
 		```
 		
@@ -16140,6 +23602,12 @@ package externs;
 		
 	**/
 	extern var winheight : Int;
+	/**
+		```lua
+		(global) table.winhighlight: unknown
+		```
+	**/
+	extern var winhighlight : Dynamic;
 	/**
 		```lua
 		(global) table.winminheight: integer
@@ -16198,6 +23666,18 @@ package externs;
 		
 	**/
 	extern var winwidth : Int;
+	/**
+		```lua
+		(global) table.wrap: unknown
+		```
+	**/
+	extern var wrap : Dynamic;
+	/**
+		```lua
+		(global) table.wrapmargin: unknown
+		```
+	**/
+	extern var wrapmargin : Dynamic;
 	/**
 		```lua
 		(global) table.wrapscan: boolean
@@ -16273,6 +23753,42 @@ package externs;
 }
 
 @:private extern class Fn {
+	/**
+		```lua
+		(global) table.GetLuaIndent: unknown
+		```
+	**/
+	extern var GetLuaIndent : Dynamic;
+	/**
+		```lua
+		(global) table.GetLuaIndentIntern: unknown
+		```
+	**/
+	extern var GetLuaIndentIntern : Dynamic;
+	/**
+		```lua
+		(global) table.MatchDisable: unknown
+		```
+	**/
+	extern var MatchDisable : Dynamic;
+	/**
+		```lua
+		(global) table.MatchEnable: unknown
+		```
+	**/
+	extern var MatchEnable : Dynamic;
+	/**
+		```lua
+		(global) table.NetUserPass: unknown
+		```
+	**/
+	extern var NetUserPass : Dynamic;
+	/**
+		```lua
+		(global) table.NetrwStatusLine: unknown
+		```
+	**/
+	extern var NetrwStatusLine : Dynamic;
 	/**
 		```lua
 		function table.abs(expr: number)
@@ -19446,6 +26962,12 @@ package externs;
 		 unless it was defined with the "abort" flag.
 	**/
 	extern static function foreach(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):haxe.extern.EitherType<String, lua.Table.AnyTable>;
+	/**
+		```lua
+		(global) table.foreground: unknown
+		```
+	**/
+	extern var foreground : Dynamic;
 	/**
 		```lua
 		function table.fullcommand(name: string)
@@ -23059,6 +30581,12 @@ package externs;
 	extern static function log10(expr:Float):Float;
 	/**
 		```lua
+		(global) table.luaeval: unknown
+		```
+	**/
+	extern var luaeval : Dynamic;
+	/**
+		```lua
 		function table.map(expr1: string|table|any[], expr2: string|function)
 		  -> any
 		```
@@ -24301,6 +31829,1056 @@ package externs;
 		 string, thus results in an empty string.
 	**/
 	extern static function nr2char(expr:Int, ?utf8:Bool):String;
+	/**
+		```lua
+		(global) table.nvim__buf_debug_extmarks: unknown
+		```
+	**/
+	extern var nvim__buf_debug_extmarks : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__buf_stats: unknown
+		```
+	**/
+	extern var nvim__buf_stats : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__complete_set: unknown
+		```
+	**/
+	extern var nvim__complete_set : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__get_lib_dir: unknown
+		```
+	**/
+	extern var nvim__get_lib_dir : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__get_runtime: unknown
+		```
+	**/
+	extern var nvim__get_runtime : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__id: unknown
+		```
+	**/
+	extern var nvim__id : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__id_array: unknown
+		```
+	**/
+	extern var nvim__id_array : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__id_dict: unknown
+		```
+	**/
+	extern var nvim__id_dict : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__id_float: unknown
+		```
+	**/
+	extern var nvim__id_float : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__inspect_cell: unknown
+		```
+	**/
+	extern var nvim__inspect_cell : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__invalidate_glyph_cache: unknown
+		```
+	**/
+	extern var nvim__invalidate_glyph_cache : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__ns_get: unknown
+		```
+	**/
+	extern var nvim__ns_get : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__ns_set: unknown
+		```
+	**/
+	extern var nvim__ns_set : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__redraw: unknown
+		```
+	**/
+	extern var nvim__redraw : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__runtime_inspect: unknown
+		```
+	**/
+	extern var nvim__runtime_inspect : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__screenshot: unknown
+		```
+	**/
+	extern var nvim__screenshot : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__stats: unknown
+		```
+	**/
+	extern var nvim__stats : Dynamic;
+	/**
+		```lua
+		(global) table.nvim__unpack: unknown
+		```
+	**/
+	extern var nvim__unpack : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_add_highlight: unknown
+		```
+	**/
+	extern var nvim_buf_add_highlight : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_attach: unknown
+		```
+	**/
+	extern var nvim_buf_attach : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_clear_highlight: unknown
+		```
+	**/
+	extern var nvim_buf_clear_highlight : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_clear_namespace: unknown
+		```
+	**/
+	extern var nvim_buf_clear_namespace : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_create_user_command: unknown
+		```
+	**/
+	extern var nvim_buf_create_user_command : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_del_extmark: unknown
+		```
+	**/
+	extern var nvim_buf_del_extmark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_del_keymap: unknown
+		```
+	**/
+	extern var nvim_buf_del_keymap : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_del_mark: unknown
+		```
+	**/
+	extern var nvim_buf_del_mark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_del_user_command: unknown
+		```
+	**/
+	extern var nvim_buf_del_user_command : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_del_var: unknown
+		```
+	**/
+	extern var nvim_buf_del_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_delete: unknown
+		```
+	**/
+	extern var nvim_buf_delete : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_changedtick: unknown
+		```
+	**/
+	extern var nvim_buf_get_changedtick : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_commands: unknown
+		```
+	**/
+	extern var nvim_buf_get_commands : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_extmark_by_id: unknown
+		```
+	**/
+	extern var nvim_buf_get_extmark_by_id : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_extmarks: unknown
+		```
+	**/
+	extern var nvim_buf_get_extmarks : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_keymap: unknown
+		```
+	**/
+	extern var nvim_buf_get_keymap : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_lines: unknown
+		```
+	**/
+	extern var nvim_buf_get_lines : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_mark: unknown
+		```
+	**/
+	extern var nvim_buf_get_mark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_name: unknown
+		```
+	**/
+	extern var nvim_buf_get_name : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_number: unknown
+		```
+	**/
+	extern var nvim_buf_get_number : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_offset: unknown
+		```
+	**/
+	extern var nvim_buf_get_offset : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_option: unknown
+		```
+	**/
+	extern var nvim_buf_get_option : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_text: unknown
+		```
+	**/
+	extern var nvim_buf_get_text : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_get_var: unknown
+		```
+	**/
+	extern var nvim_buf_get_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_is_loaded: unknown
+		```
+	**/
+	extern var nvim_buf_is_loaded : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_is_valid: unknown
+		```
+	**/
+	extern var nvim_buf_is_valid : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_line_count: unknown
+		```
+	**/
+	extern var nvim_buf_line_count : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_extmark: unknown
+		```
+	**/
+	extern var nvim_buf_set_extmark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_keymap: unknown
+		```
+	**/
+	extern var nvim_buf_set_keymap : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_lines: unknown
+		```
+	**/
+	extern var nvim_buf_set_lines : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_mark: unknown
+		```
+	**/
+	extern var nvim_buf_set_mark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_name: unknown
+		```
+	**/
+	extern var nvim_buf_set_name : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_option: unknown
+		```
+	**/
+	extern var nvim_buf_set_option : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_text: unknown
+		```
+	**/
+	extern var nvim_buf_set_text : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_var: unknown
+		```
+	**/
+	extern var nvim_buf_set_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_buf_set_virtual_text: unknown
+		```
+	**/
+	extern var nvim_buf_set_virtual_text : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_call_dict_function: unknown
+		```
+	**/
+	extern var nvim_call_dict_function : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_call_function: unknown
+		```
+	**/
+	extern var nvim_call_function : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_clear_autocmds: unknown
+		```
+	**/
+	extern var nvim_clear_autocmds : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_cmd: unknown
+		```
+	**/
+	extern var nvim_cmd : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_command: unknown
+		```
+	**/
+	extern var nvim_command : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_command_output: unknown
+		```
+	**/
+	extern var nvim_command_output : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_create_augroup: unknown
+		```
+	**/
+	extern var nvim_create_augroup : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_create_autocmd: unknown
+		```
+	**/
+	extern var nvim_create_autocmd : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_create_buf: unknown
+		```
+	**/
+	extern var nvim_create_buf : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_create_namespace: unknown
+		```
+	**/
+	extern var nvim_create_namespace : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_create_user_command: unknown
+		```
+	**/
+	extern var nvim_create_user_command : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_augroup_by_id: unknown
+		```
+	**/
+	extern var nvim_del_augroup_by_id : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_augroup_by_name: unknown
+		```
+	**/
+	extern var nvim_del_augroup_by_name : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_autocmd: unknown
+		```
+	**/
+	extern var nvim_del_autocmd : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_current_line: unknown
+		```
+	**/
+	extern var nvim_del_current_line : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_keymap: unknown
+		```
+	**/
+	extern var nvim_del_keymap : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_mark: unknown
+		```
+	**/
+	extern var nvim_del_mark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_user_command: unknown
+		```
+	**/
+	extern var nvim_del_user_command : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_del_var: unknown
+		```
+	**/
+	extern var nvim_del_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_echo: unknown
+		```
+	**/
+	extern var nvim_echo : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_err_write: unknown
+		```
+	**/
+	extern var nvim_err_write : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_err_writeln: unknown
+		```
+	**/
+	extern var nvim_err_writeln : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_eval: unknown
+		```
+	**/
+	extern var nvim_eval : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_eval_statusline: unknown
+		```
+	**/
+	extern var nvim_eval_statusline : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_exec: unknown
+		```
+	**/
+	extern var nvim_exec : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_exec2: unknown
+		```
+	**/
+	extern var nvim_exec2 : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_exec_autocmds: unknown
+		```
+	**/
+	extern var nvim_exec_autocmds : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_feedkeys: unknown
+		```
+	**/
+	extern var nvim_feedkeys : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_all_options_info: unknown
+		```
+	**/
+	extern var nvim_get_all_options_info : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_autocmds: unknown
+		```
+	**/
+	extern var nvim_get_autocmds : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_chan_info: unknown
+		```
+	**/
+	extern var nvim_get_chan_info : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_color_by_name: unknown
+		```
+	**/
+	extern var nvim_get_color_by_name : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_color_map: unknown
+		```
+	**/
+	extern var nvim_get_color_map : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_commands: unknown
+		```
+	**/
+	extern var nvim_get_commands : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_context: unknown
+		```
+	**/
+	extern var nvim_get_context : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_current_buf: unknown
+		```
+	**/
+	extern var nvim_get_current_buf : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_current_line: unknown
+		```
+	**/
+	extern var nvim_get_current_line : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_current_tabpage: unknown
+		```
+	**/
+	extern var nvim_get_current_tabpage : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_current_win: unknown
+		```
+	**/
+	extern var nvim_get_current_win : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_hl: unknown
+		```
+	**/
+	extern var nvim_get_hl : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_hl_by_id: unknown
+		```
+	**/
+	extern var nvim_get_hl_by_id : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_hl_by_name: unknown
+		```
+	**/
+	extern var nvim_get_hl_by_name : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_hl_id_by_name: unknown
+		```
+	**/
+	extern var nvim_get_hl_id_by_name : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_hl_ns: unknown
+		```
+	**/
+	extern var nvim_get_hl_ns : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_keymap: unknown
+		```
+	**/
+	extern var nvim_get_keymap : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_mark: unknown
+		```
+	**/
+	extern var nvim_get_mark : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_mode: unknown
+		```
+	**/
+	extern var nvim_get_mode : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_namespaces: unknown
+		```
+	**/
+	extern var nvim_get_namespaces : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_option: unknown
+		```
+	**/
+	extern var nvim_get_option : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_option_info: unknown
+		```
+	**/
+	extern var nvim_get_option_info : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_option_info2: unknown
+		```
+	**/
+	extern var nvim_get_option_info2 : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_option_value: unknown
+		```
+	**/
+	extern var nvim_get_option_value : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_proc: unknown
+		```
+	**/
+	extern var nvim_get_proc : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_proc_children: unknown
+		```
+	**/
+	extern var nvim_get_proc_children : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_runtime_file: unknown
+		```
+	**/
+	extern var nvim_get_runtime_file : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_var: unknown
+		```
+	**/
+	extern var nvim_get_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_get_vvar: unknown
+		```
+	**/
+	extern var nvim_get_vvar : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_input: unknown
+		```
+	**/
+	extern var nvim_input : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_input_mouse: unknown
+		```
+	**/
+	extern var nvim_input_mouse : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_list_bufs: unknown
+		```
+	**/
+	extern var nvim_list_bufs : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_list_chans: unknown
+		```
+	**/
+	extern var nvim_list_chans : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_list_runtime_paths: unknown
+		```
+	**/
+	extern var nvim_list_runtime_paths : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_list_tabpages: unknown
+		```
+	**/
+	extern var nvim_list_tabpages : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_list_uis: unknown
+		```
+	**/
+	extern var nvim_list_uis : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_list_wins: unknown
+		```
+	**/
+	extern var nvim_list_wins : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_load_context: unknown
+		```
+	**/
+	extern var nvim_load_context : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_notify: unknown
+		```
+	**/
+	extern var nvim_notify : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_open_term: unknown
+		```
+	**/
+	extern var nvim_open_term : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_open_win: unknown
+		```
+	**/
+	extern var nvim_open_win : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_out_write: unknown
+		```
+	**/
+	extern var nvim_out_write : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_parse_cmd: unknown
+		```
+	**/
+	extern var nvim_parse_cmd : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_parse_expression: unknown
+		```
+	**/
+	extern var nvim_parse_expression : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_paste: unknown
+		```
+	**/
+	extern var nvim_paste : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_put: unknown
+		```
+	**/
+	extern var nvim_put : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_replace_termcodes: unknown
+		```
+	**/
+	extern var nvim_replace_termcodes : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_select_popupmenu_item: unknown
+		```
+	**/
+	extern var nvim_select_popupmenu_item : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_current_buf: unknown
+		```
+	**/
+	extern var nvim_set_current_buf : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_current_dir: unknown
+		```
+	**/
+	extern var nvim_set_current_dir : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_current_line: unknown
+		```
+	**/
+	extern var nvim_set_current_line : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_current_tabpage: unknown
+		```
+	**/
+	extern var nvim_set_current_tabpage : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_current_win: unknown
+		```
+	**/
+	extern var nvim_set_current_win : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_hl: unknown
+		```
+	**/
+	extern var nvim_set_hl : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_hl_ns: unknown
+		```
+	**/
+	extern var nvim_set_hl_ns : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_hl_ns_fast: unknown
+		```
+	**/
+	extern var nvim_set_hl_ns_fast : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_keymap: unknown
+		```
+	**/
+	extern var nvim_set_keymap : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_option: unknown
+		```
+	**/
+	extern var nvim_set_option : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_option_value: unknown
+		```
+	**/
+	extern var nvim_set_option_value : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_var: unknown
+		```
+	**/
+	extern var nvim_set_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_set_vvar: unknown
+		```
+	**/
+	extern var nvim_set_vvar : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_strwidth: unknown
+		```
+	**/
+	extern var nvim_strwidth : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_del_var: unknown
+		```
+	**/
+	extern var nvim_tabpage_del_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_get_number: unknown
+		```
+	**/
+	extern var nvim_tabpage_get_number : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_get_var: unknown
+		```
+	**/
+	extern var nvim_tabpage_get_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_get_win: unknown
+		```
+	**/
+	extern var nvim_tabpage_get_win : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_is_valid: unknown
+		```
+	**/
+	extern var nvim_tabpage_is_valid : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_list_wins: unknown
+		```
+	**/
+	extern var nvim_tabpage_list_wins : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_set_var: unknown
+		```
+	**/
+	extern var nvim_tabpage_set_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_tabpage_set_win: unknown
+		```
+	**/
+	extern var nvim_tabpage_set_win : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_close: unknown
+		```
+	**/
+	extern var nvim_win_close : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_del_var: unknown
+		```
+	**/
+	extern var nvim_win_del_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_buf: unknown
+		```
+	**/
+	extern var nvim_win_get_buf : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_config: unknown
+		```
+	**/
+	extern var nvim_win_get_config : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_cursor: unknown
+		```
+	**/
+	extern var nvim_win_get_cursor : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_height: unknown
+		```
+	**/
+	extern var nvim_win_get_height : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_number: unknown
+		```
+	**/
+	extern var nvim_win_get_number : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_option: unknown
+		```
+	**/
+	extern var nvim_win_get_option : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_position: unknown
+		```
+	**/
+	extern var nvim_win_get_position : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_tabpage: unknown
+		```
+	**/
+	extern var nvim_win_get_tabpage : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_var: unknown
+		```
+	**/
+	extern var nvim_win_get_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_get_width: unknown
+		```
+	**/
+	extern var nvim_win_get_width : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_hide: unknown
+		```
+	**/
+	extern var nvim_win_hide : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_is_valid: unknown
+		```
+	**/
+	extern var nvim_win_is_valid : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_buf: unknown
+		```
+	**/
+	extern var nvim_win_set_buf : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_config: unknown
+		```
+	**/
+	extern var nvim_win_set_config : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_cursor: unknown
+		```
+	**/
+	extern var nvim_win_set_cursor : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_height: unknown
+		```
+	**/
+	extern var nvim_win_set_height : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_hl_ns: unknown
+		```
+	**/
+	extern var nvim_win_set_hl_ns : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_option: unknown
+		```
+	**/
+	extern var nvim_win_set_option : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_var: unknown
+		```
+	**/
+	extern var nvim_win_set_var : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_set_width: unknown
+		```
+	**/
+	extern var nvim_win_set_width : Dynamic;
+	/**
+		```lua
+		(global) table.nvim_win_text_height: unknown
+		```
+	**/
+	extern var nvim_win_text_height : Dynamic;
 	/**
 		```lua
 		function (expr: number, expr1: number)
@@ -28865,6 +37443,18 @@ package externs;
 	**/
 	@:deprecated
 	extern static function termopen(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int;
+	/**
+		```lua
+		(global) table.test_garbagecollect_now: unknown
+		```
+	**/
+	extern var test_garbagecollect_now : Dynamic;
+	/**
+		```lua
+		(global) table.test_write_list_log: unknown
+		```
+	**/
+	extern var test_write_list_log : Dynamic;
 	/**
 		```lua
 		function table.timer_info(id?: integer)
@@ -34671,6 +43261,12 @@ package externs;
 	extern static function is_callable(f:Any):Bool;
 	/**
 		```lua
+		(global) vim.is_thread: unknown
+		```
+	**/
+	extern var is_thread : Dynamic;
+	/**
+		```lua
 		function vim.isarray(t?: table)
 		  -> boolean
 		```
@@ -35062,6 +43658,12 @@ package externs;
 		```
 	**/
 	extern static function lua_omnifunc(find_start:Float, _:Dynamic):Dynamic;
+	/**
+		```lua
+		(global) vim.mpack: unknown
+		```
+	**/
+	extern var mpack : Dynamic;
 	/**
 		```lua
 		function vim.notify(msg: string, level: integer|nil, opts: table|nil)
@@ -35488,6 +44090,12 @@ package externs;
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	extern static function spairs<T:(lua.Table.AnyTable), K, V>(t:T):vim._internal.Multireturn<() -> vim._internal.Multireturn<externs.type.K, externs.type.V>, T>;
+	/**
+		```lua
+		(global) vim.spell: unknown
+		```
+	**/
+	extern var spell : Dynamic;
 	/**
 		```lua
 		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -36062,6 +44670,18 @@ package externs;
 	extern static function trim(s:String):String;
 	/**
 		```lua
+		(global) vim.type_idx: unknown
+		```
+	**/
+	extern var type_idx : Dynamic;
+	/**
+		```lua
+		(global) vim.types: unknown
+		```
+	**/
+	extern var types : Dynamic;
+	/**
+		```lua
 		(global) vim.ui: table
 		```
 	**/
@@ -36382,6 +45002,12 @@ package externs;
 		```
 	**/
 	extern var v : externs.type.Vim_VarAccessor;
+	/**
+		```lua
+		(global) vim.val_idx: unknown
+		```
+	**/
+	extern var val_idx : Dynamic;
 	/**
 		```lua
 		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)

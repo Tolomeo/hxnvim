@@ -1,0 +1,79 @@
+package externs.type;
+
+/**
+	```lua
+	(class) vim.SystemOpts
+	```
+**/
+@:native("vim.SystemOpts") extern class Vim_SystemOpts {
+	/**
+		```lua
+		(field) vim.SystemOpts.clear_env: boolean?
+		```
+	**/
+	extern var clear_env : Null<Bool>;
+	/**
+		```lua
+		(field) vim.SystemOpts.cwd: string?
+		```
+	**/
+	extern var cwd : Null<String>;
+	/**
+		```lua
+		(field) vim.SystemOpts.detach: boolean?
+		```
+	**/
+	extern var detach : Null<Bool>;
+	/**
+		```lua
+		(field) vim.SystemOpts.env: table<string, string|number>?
+		```
+	**/
+	extern var env : Null<lua.Table<String, haxe.extern.EitherType<String, Float>>>;
+	/**
+		```lua
+		(field) vim.SystemOpts.stderr: (fun(err?: string, data?: string)|false)?
+		```
+		
+		---
+		
+		```lua
+		function (err: string?, data: string?)
+		```
+	**/
+	extern var stderr : Null<haxe.extern.EitherType<(err:Null<String>, data:Null<String>) -> Dynamic, Bool>>;
+	/**
+		```lua
+		(field) vim.SystemOpts.stdin: (string|string[]|true)?
+		```
+	**/
+	extern var stdin : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, Bool>>>;
+	/**
+		```lua
+		(field) vim.SystemOpts.stdout: (fun(err?: string, data?: string)|false)?
+		```
+		
+		---
+		
+		```lua
+		function (err: string?, data: string?)
+		```
+	**/
+	extern var stdout : Null<haxe.extern.EitherType<(err:Null<String>, data:Null<String>) -> Dynamic, Bool>>;
+	/**
+		```lua
+		(field) vim.SystemOpts.text: boolean?
+		```
+	**/
+	extern var text : Null<Bool>;
+	/**
+		```lua
+		(field) vim.SystemOpts.timeout: integer?
+		```
+		
+		---
+		
+		Timeout in ms
+	**/
+	extern var timeout : Null<Int>;
+}

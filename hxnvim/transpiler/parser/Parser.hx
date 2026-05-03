@@ -125,7 +125,7 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table": ParsedSymbol.ParsedTable(this.parseTableSymbol(name, doc, metadata, access, type));
-			case "typereference", "union": ParsedSymbol.ParsedAlias(this.parseAliasSymbol(name, doc, metadata, access, type));
+			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array": ParsedSymbol.ParsedAlias(this.parseAliasSymbol(name, doc, metadata, access, type));
 			case "enumerator": ParsedSymbol.ParsedEnumerator(this.parseEnumeratorSymbol(name, doc, metadata, access, type));
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}
@@ -224,7 +224,7 @@ class Parser {
 						access: fieldAccess,
 						type: className
 					}));
-				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral':
+				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 					parsedTable.fields.push(TableField.Property(this.parseAliasSymbol(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType)));
 
 				case k:
