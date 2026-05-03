@@ -1,6 +1,7 @@
 package transpiler.generator;
 
 import haxe.macro.Expr.MetadataEntry;
+import transpiler.symbol.Symbol;
 import transpiler.parser.Parser;
 
 class MetaGenerator {

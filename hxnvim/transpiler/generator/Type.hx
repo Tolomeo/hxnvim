@@ -2,9 +2,11 @@ package transpiler.generator;
 
 import haxe.macro.Expr;
 import haxe.macro.Context;
-import transpiler.parser.Parser;
 
 using utils.StringTools;
+
+import transpiler.symbol.Symbol;
+import transpiler.parser.Parser;
 
 class TypeGenerator {
 	public function new() {}

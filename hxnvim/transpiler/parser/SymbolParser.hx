@@ -4,8 +4,7 @@ import haxe.Exception;
 
 using utils.ArrayTools;
 
-import transpiler.parser.Parser.ParsedAccess;
-import transpiler.parser.Parser.Metadata;
+import transpiler.symbol.Symbol;
 import transpiler.parser.LiteralTypeParser;
 import utils.Json;
 

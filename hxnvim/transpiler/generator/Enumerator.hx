@@ -5,6 +5,7 @@ import haxe.macro.Expr;
 
 using utils.NullTools;
 
+import transpiler.symbol.Symbol;
 import transpiler.parser.Parser;
 import transpiler.generator.Type;
 import transpiler.generator.Meta;

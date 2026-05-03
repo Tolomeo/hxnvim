@@ -9,6 +9,7 @@ import haxe.macro.Expr.Field;
 using utils.NullTools;
 using utils.StringTools;
 
+import transpiler.symbol.Symbol;
 import transpiler.parser.Parser;
 import transpiler.generator.Meta;
 import transpiler.generator.Type;
