@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.version") extern class Vim_Version {
+@:luaRequire("vim.version") extern class Vim_Version {
 	/**
 		```lua
 		function M.cmp(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)

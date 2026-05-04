@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.treesitter.language") extern class Vim_Treesitter_Language {
+@:luaRequire("vim.treesitter.language") extern class Vim_Treesitter_Language {
 	/**
 		```lua
 		function M.add(lang: string, opts?: vim.treesitter.language.add.Opts)

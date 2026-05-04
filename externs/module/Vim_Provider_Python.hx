@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.provider.python") extern class Vim_Provider_Python {
+@:luaRequire("vim.provider.python") extern class Vim_Provider_Python {
 	/**
 		```lua
 		function M.call(method: any, args: any)

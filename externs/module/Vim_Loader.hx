@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.loader") extern class Vim_Loader {
+@:luaRequire("vim.loader") extern class Vim_Loader {
 	/**
 		```lua
 		function M.disable()

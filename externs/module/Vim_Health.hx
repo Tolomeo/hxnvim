@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.health") extern class Vim_Health {
+@:luaRequire("vim.health") extern class Vim_Health {
 	/**
 		```lua
 		function M.error(msg: string, ...string|string[])

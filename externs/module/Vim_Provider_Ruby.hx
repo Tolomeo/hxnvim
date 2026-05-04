@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.provider.ruby") extern class Vim_Provider_Ruby {
+@:luaRequire("vim.provider.ruby") extern class Vim_Provider_Ruby {
 	/**
 		```lua
 		function M.call(method: any, args: any)

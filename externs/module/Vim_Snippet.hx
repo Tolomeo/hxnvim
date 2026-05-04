@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.snippet") extern class Vim_Snippet {
+@:luaRequire("vim.snippet") extern class Vim_Snippet {
 	/**
 		```lua
 		function M.active(filter?: vim.snippet.ActiveFilter)

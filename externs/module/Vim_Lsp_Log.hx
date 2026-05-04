@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.log") extern class Vim_Lsp_Log {
+@:luaRequire("vim.lsp.log") extern class Vim_Lsp_Log {
 	/**
 		```lua
 		(global) vim.lsp.log.DEBUG: unknown

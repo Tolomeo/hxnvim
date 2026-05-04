@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.inlay_hint") extern class Vim_Lsp_InlayHint {
+@:luaRequire("vim.lsp.inlay_hint") extern class Vim_Lsp_InlayHint {
 	/**
 		```lua
 		function M.enable(enable: boolean|nil, filter?: vim.lsp.inlay_hint.enable.Filter)

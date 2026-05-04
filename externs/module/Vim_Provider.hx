@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.provider") extern class Vim_Provider {
+@:luaRequire("vim.provider") extern class Vim_Provider {
 	/**
 		```lua
 		(global) vim.provider.perl: table

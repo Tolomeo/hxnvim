@@ -33,7 +33,7 @@ package externs.module;
 	extern var user : Float;
 }
 
-@:native("vim.hl") extern class Vim_Hl {
+@:luaRequire("vim.hl") extern class Vim_Hl {
 	/**
 		```lua
 		function M.on_yank(opts: table|nil)

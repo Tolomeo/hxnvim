@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.codelens") extern class Vim_Lsp_Codelens {
+@:luaRequire("vim.lsp.codelens") extern class Vim_Lsp_Codelens {
 	/**
 		```lua
 		function M.clear(client_id: integer|nil, bufnr: integer|nil)

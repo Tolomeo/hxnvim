@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.text") extern class Vim_Text {
+@:luaRequire("vim.text") extern class Vim_Text {
 	/**
 		```lua
 		function M.hexdecode(enc: string)

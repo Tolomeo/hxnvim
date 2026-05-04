@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.treesitter.dev") extern class Vim_Treesitter_Dev {
+@:luaRequire("vim.treesitter.dev") extern class Vim_Treesitter_Dev {
 	/**
 		```lua
 		function M.edit_query(lang?: string)

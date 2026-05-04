@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.ui") extern class Vim_Ui {
+@:luaRequire("vim.ui") extern class Vim_Ui {
 	/**
 		```lua
 		function M.input(opts?: table, on_confirm: function)

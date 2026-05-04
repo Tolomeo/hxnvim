@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.semantic_tokens") extern class Vim_Lsp_SemanticTokens {
+@:luaRequire("vim.lsp.semantic_tokens") extern class Vim_Lsp_SemanticTokens {
 	/**
 		```lua
 		function M.force_refresh(bufnr: integer|nil)

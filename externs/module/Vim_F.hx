@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.F") extern class Vim_F {
+@:luaRequire("vim.F") extern class Vim_F {
 	/**
 		```lua
 		function F.if_nil(...<T>)

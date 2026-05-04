@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.provider.perl") extern class Vim_Provider_Perl {
+@:luaRequire("vim.provider.perl") extern class Vim_Provider_Perl {
 	/**
 		```lua
 		function M.call(method: any, args: any)

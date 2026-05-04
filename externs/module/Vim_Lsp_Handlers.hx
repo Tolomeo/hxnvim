@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.handlers") extern class Vim_Lsp_Handlers {
+@:luaRequire("vim.lsp.handlers") extern class Vim_Lsp_Handlers {
 	/**
 		```lua
 		(global) vim.lsp.handlers.hover: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown

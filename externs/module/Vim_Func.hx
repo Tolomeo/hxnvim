@@ -1,5 +1,5 @@
 package externs.module;
 
-@:native("vim.func") extern class Vim_Func {
+@:luaRequire("vim.func") extern class Vim_Func {
 
 }

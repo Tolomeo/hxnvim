@@ -4,7 +4,7 @@ package externs.module;
 
 }
 
-@:native("vim.lsp.util") extern class Vim_Lsp_Util {
+@:luaRequire("vim.lsp.util") extern class Vim_Lsp_Util {
 	/**
 		```lua
 		function M.apply_text_document_edit(text_document_edit: lsp.TextDocumentEdit, index?: integer, position_encoding?: 'utf-16'|'utf-32'|'utf-8')

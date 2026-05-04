@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.rpc") extern class Vim_Lsp_Rpc {
+@:luaRequire("vim.lsp.rpc") extern class Vim_Lsp_Rpc {
 	/**
 		```lua
 		(global) vim.lsp.rpc.client_errors: table<integer, string>|table<string, integer>

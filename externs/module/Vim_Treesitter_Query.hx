@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.treesitter.query") extern class Vim_Treesitter_Query {
+@:luaRequire("vim.treesitter.query") extern class Vim_Treesitter_Query {
 	/**
 		```lua
 		function M.add_directive(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata), opts: vim.treesitter.query.add_predicate.Opts)

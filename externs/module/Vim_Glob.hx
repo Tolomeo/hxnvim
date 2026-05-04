@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.glob") extern class Vim_Glob {
+@:luaRequire("vim.glob") extern class Vim_Glob {
 	/**
 		```lua
 		function M.to_lpeg(pattern: string)

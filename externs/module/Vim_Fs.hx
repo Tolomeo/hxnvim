@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.fs") extern class Vim_Fs {
+@:luaRequire("vim.fs") extern class Vim_Fs {
 	/**
 		```lua
 		function M.abspath(path: string)

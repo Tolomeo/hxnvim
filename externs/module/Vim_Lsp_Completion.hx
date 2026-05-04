@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.completion") extern class Vim_Lsp_Completion {
+@:luaRequire("vim.lsp.completion") extern class Vim_Lsp_Completion {
 	/**
 		```lua
 		function M.enable(enable: boolean, client_id: integer, bufnr: integer, opts?: vim.lsp.completion.BufferOpts)

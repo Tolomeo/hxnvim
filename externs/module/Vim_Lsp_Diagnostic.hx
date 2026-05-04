@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.diagnostic") extern class Vim_Lsp_Diagnostic {
+@:luaRequire("vim.lsp.diagnostic") extern class Vim_Lsp_Diagnostic {
 	/**
 		```lua
 		function M.from(diagnostics: vim.Diagnostic[])

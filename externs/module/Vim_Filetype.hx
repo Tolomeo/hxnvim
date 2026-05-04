@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.filetype") extern class Vim_Filetype {
+@:luaRequire("vim.filetype") extern class Vim_Filetype {
 	/**
 		```lua
 		function M.add(filetypes: vim.filetype.add.filetypes)

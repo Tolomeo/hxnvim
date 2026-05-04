@@ -4,7 +4,7 @@ package externs.module;
 
 }
 
-@:native("vim.lsp") extern class Vim_Lsp {
+@:luaRequire("vim.lsp") extern class Vim_Lsp {
 	/**
 		```lua
 		(global) vim.lsp.buf: table

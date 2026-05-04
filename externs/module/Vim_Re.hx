@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.re") extern class Vim_Re {
+@:luaRequire("vim.re") extern class Vim_Re {
 	/**
 		```lua
 		function vim.re.compile(string: string, defs?: table)

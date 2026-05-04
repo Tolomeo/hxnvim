@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.keymap") extern class Vim_Keymap {
+@:luaRequire("vim.keymap") extern class Vim_Keymap {
 	/**
 		```lua
 		function keymap.del(modes: string|string[], lhs: string, opts?: vim.keymap.del.Opts)

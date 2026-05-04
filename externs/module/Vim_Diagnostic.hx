@@ -15,7 +15,7 @@ package externs.module;
 
 }
 
-@:native("vim.diagnostic") extern class Vim_Diagnostic {
+@:luaRequire("vim.diagnostic") extern class Vim_Diagnostic {
 	/**
 		```lua
 		function M.config(opts?: vim.diagnostic.Opts, namespace?: integer)

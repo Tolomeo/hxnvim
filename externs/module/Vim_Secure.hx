@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.secure") extern class Vim_Secure {
+@:luaRequire("vim.secure") extern class Vim_Secure {
 	/**
 		```lua
 		function M.read(path: string)

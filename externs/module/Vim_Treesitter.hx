@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.treesitter") extern class Vim_Treesitter {
+@:luaRequire("vim.treesitter") extern class Vim_Treesitter {
 	/**
 		```lua
 		(global) vim.treesitter.dev: table

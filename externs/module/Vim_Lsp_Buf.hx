@@ -1,6 +1,6 @@
 package externs.module;
 
-@:native("vim.lsp.buf") extern class Vim_Lsp_Buf {
+@:luaRequire("vim.lsp.buf") extern class Vim_Lsp_Buf {
 	/**
 		```lua
 		function M.add_workspace_folder(workspace_folder?: string)
