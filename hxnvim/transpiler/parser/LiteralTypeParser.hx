@@ -15,6 +15,32 @@ class LiteralTypeParser {
 		this.origin = origin;
 	}
 
+	private function parseTableLiteralType(key:Json, value:Json) {
+		final keyType = new LiteralTypeParser(key).parse();
+		final valueType = new LiteralTypeParser(value).parse();
+
+		return 'lua.Table<${keyType}, ${valueType}>';
+	}
+
+	private function parseLiteralTableStructure(fields:Array<Json>) {
+		final entries = fields.map(field -> ({
+			name: field.select('name').string(),
+			type: new LiteralTypeParser((field.select('type'))).parse()
+		})) /* .map(e -> {
+				final name = switch (e.name.toFieldName()) {
+					case fieldName if (e.name != fieldName): '@:native("${e.name}") ${fieldName}';
+					case fieldName: fieldName;
+				};
+
+				return {
+					name: name,
+					type: e.type
+				};
+			})*/ .map(e -> '${e.name}:${e.type}');
+
+		return '{ ${entries.join(", ")} }';
+	}
+
 	public function parse() {
 		return switch (this.origin.select('kind').string()) {
 			case "builtin": switch (this.origin.select('value').string()) {
@@ -80,24 +106,16 @@ class LiteralTypeParser {
 				'(${arguments.join(", ")}) -> ${return_}';
 
 			case "table":
-				final indexes = this.origin.select('indexes').array().map(index -> ({
-					key: new LiteralTypeParser((index.select('key'))).parse(),
-					value: new LiteralTypeParser((index.select('value'))).parse()
-				}));
-				final fields = this.origin.select('fields').array().map(field -> ({
-					name: field.select('name').string(),
-					type: new LiteralTypeParser((field.select('type'))).parse()
-				}));
+				final indexes = this.origin.select('indexes').array();
+				final fields = this.origin.select('fields').array();
 
 				return switch ({
 					fields:fields, indexes:indexes
 				}) {
 					case {fields: [], indexes: []}: 'lua.Table.AnyTable';
-					case {fields: [], indexes: [index]}: 'lua.Table<${index.key}, ${index.value}>';
+					case {fields: [], indexes: [index]}: this.parseTableLiteralType(index.select('key'), index.select('value'));
 					case {fields: [], indexes: idxs}: throw new Exception('Unimplemented table with multiple indexes');
-					case {fields: flds, indexes: []}:
-						final entries = flds.map(fld -> '${fld.name}: ${fld.type}').join(", ");
-						'{ ${entries} }';
+					case {fields: flds, indexes: []}: this.parseLiteralTableStructure(flds);
 					case _: throw new Exception('Unimplemented table structure with indexes');
 				}
 

@@ -14,7 +14,6 @@ import transpiler.generator.Enumerator;
 typedef Module = Array<TypeDefinition>;
 
 class ModuleGenerator {
-	// final origin:Parser;
 	final moduleName:String;
 	final moduleNativeName:String;
 	final modulePack:Array<String>;
@@ -36,11 +35,11 @@ class ModuleGenerator {
 		for (_ => type in parsedModule.types.keyValueIterator()) {
 			switch (type) {
 				/* case ModuleType.Enumerator(parsedEnumerator):
-						result.push(new EnumeratorGenerator(parsedEnumerator).make([metaPrivate]));
-					case ModuleType.Alias(parsedAlias):
-						result.push(new AliasGenerator(parsedAlias).make([metaPrivate])); */
+					result.push(new EnumeratorGenerator(parsedEnumerator).make([metaPrivate])); */
 				case ParsedSymbol.ParsedTable(table):
 					moduleTypes.push(new ClassGenerator().generate(table));
+				case ParsedSymbol.ParsedAlias(alias):
+					moduleTypes.push(new AliasGenerator().generate(alias));
 				case _:
 					throw new Exception('Unsupported type received: ${type}');
 			}
@@ -74,18 +73,6 @@ class ModuleGenerator {
 			case s:
 				throw new Exception('Unimplemented main generator for symbol ${s}');
 		}
-
-		/* final main = parsedModule.main.getTable();
-			final mainName = main.name;
-
-			switch (this.moduleName == mainName) {
-				case true:
-					moduleTypes.push(new ClassGenerator().generate(main, [metaNative]));
-				case false:
-					final metaMainAlias:ParsedMetadata = {name: 'native', params: [mainName]};
-					moduleTypes.push(new ClassGenerator().generate(main, [metaPrivate, metaNative]));
-					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: mainName}, [metaMainAlias]));
-		}*/
 
 		return moduleTypes;
 	}
