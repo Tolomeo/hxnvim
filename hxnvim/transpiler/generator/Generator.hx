@@ -25,6 +25,10 @@ private class Generator {
 		this.moduleNativeName = state.output.native;
 		this.modulePack = state.output.pack;
 	}
+
+	function generatePackage(pack:Array<String>) {
+		return 'package ${pack.join(".")};';
+	}
 }
 
 class NamespaceModuleGenerator extends Generator {
@@ -35,8 +39,8 @@ class NamespaceModuleGenerator extends Generator {
 	public function make(parsedModule:ParsedModule) {
 		final moduleTypes = new Array<TypeDefinition>();
 
-		final metaPrivate:Metadata = {name: 'private'};
-		final metaNative:Metadata = {name: 'native', params: [this.moduleNativeName]};
+		final private_:Metadata = {name: 'private'};
+		final native:Metadata = {name: 'native', params: [this.moduleNativeName]};
 
 		for (_ => type in parsedModule.types.keyValueIterator()) {
 			switch (type) {
@@ -54,26 +58,26 @@ class NamespaceModuleGenerator extends Generator {
 		switch (parsedModule.main) {
 			case ParsedSymbol.ParsedTable(table):
 				if (this.moduleName == table.name) {
-					moduleTypes.push(new ClassGenerator().generate(table, [metaNative]));
+					moduleTypes.push(new ClassGenerator().generate(table, [native]));
 				} else {
 					final metaMainAlias:Metadata = {name: 'native', params: [table.name]};
-					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate, metaNative]));
+					moduleTypes.push(new ClassGenerator().generate(table, [private_, native]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: table.name}, [metaMainAlias]));
 				}
 			case ParsedSymbol.ParsedAlias(alias):
 				if (this.moduleName == alias.name) {
-					moduleTypes.push(new AliasGenerator().generate(alias, [metaNative]));
+					moduleTypes.push(new AliasGenerator().generate(alias, [native]));
 				} else {
 					final metaMainAlias:Metadata = {name: 'native', params: [alias.name]};
-					moduleTypes.push(new AliasGenerator().generate(alias, [metaPrivate, metaNative]));
+					moduleTypes.push(new AliasGenerator().generate(alias, [private_, native]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: alias.name}, [metaMainAlias]));
 				}
 			case ParsedSymbol.ParsedEnumerator(enumerator):
 				if (this.moduleName == enumerator.name) {
-					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaNative]));
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [native]));
 				} else {
 					final metaMainEnumerator:Metadata = {name: 'native', params: [enumerator.name]};
-					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaPrivate, metaNative]));
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [private_, native]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: enumerator.name}, [metaMainEnumerator]));
 				}
 			case s:
@@ -83,13 +87,7 @@ class NamespaceModuleGenerator extends Generator {
 		return moduleTypes;
 	}
 
-	function generatePackage(pack:Array<String>) {
-		return 'package ${pack.join(".")};';
-	}
-
 	public function generate(parsedModule:ParsedModule) {
-		final state = State.consume(v -> v);
-
 		final printer = new Printer();
 		final result = new Array<String>();
 		result.push(this.generatePackage(modulePack));
@@ -112,9 +110,6 @@ class TypeModuleGenerator extends Generator {
 	public function make(parsedModule:ParsedModule) {
 		final moduleTypes = new Array<TypeDefinition>();
 
-		final metaPrivate:Metadata = {name: 'private'};
-		final metaNative:Metadata = {name: 'native', params: [this.moduleNativeName]};
-
 		for (_ => type in parsedModule.types.keyValueIterator()) {
 			switch (type) {
 				/* case ModuleType.Enumerator(parsedEnumerator):
@@ -128,13 +123,16 @@ class TypeModuleGenerator extends Generator {
 			}
 		}
 
+		final private_:Metadata = {name: 'private'};
+		final structInit:Metadata = {name: 'structInit'};
+
 		switch (parsedModule.main) {
 			case ParsedSymbol.ParsedTable(table):
 				if (this.moduleName == table.name) {
-					moduleTypes.push(new ClassGenerator().generate(table));
+					moduleTypes.push(new ClassGenerator().generate(table, [structInit]));
 				} else {
 					final metaMainAlias:Metadata = {name: 'native', params: [table.name]};
-					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate]));
+					moduleTypes.push(new ClassGenerator().generate(table, [private_, structInit]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: table.name}, [metaMainAlias]));
 				}
 			case ParsedSymbol.ParsedAlias(alias):
@@ -142,15 +140,15 @@ class TypeModuleGenerator extends Generator {
 					moduleTypes.push(new AliasGenerator().generate(alias));
 				} else {
 					final metaMainAlias:Metadata = {name: 'native', params: [alias.name]};
-					moduleTypes.push(new AliasGenerator().generate(alias, [metaPrivate]));
+					moduleTypes.push(new AliasGenerator().generate(alias, [private_, structInit]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: alias.name}, [metaMainAlias]));
 				}
 			case ParsedSymbol.ParsedEnumerator(enumerator):
 				if (this.moduleName == enumerator.name) {
-					moduleTypes.push(new EnumeratorGenerator().generate(enumerator));
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [structInit]));
 				} else {
 					final metaMainEnumerator:Metadata = {name: 'native', params: [enumerator.name]};
-					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaPrivate]));
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [private_, structInit]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: enumerator.name}, [metaMainEnumerator]));
 				}
 			case s:
@@ -160,13 +158,7 @@ class TypeModuleGenerator extends Generator {
 		return moduleTypes;
 	}
 
-	function generatePackage(pack:Array<String>) {
-		return 'package ${pack.join(".")};';
-	}
-
 	public function generate(parsedModule:ParsedModule) {
-		final state = State.consume(v -> v);
-
 		final printer = new Printer();
 		final result = new Array<String>();
 		result.push(this.generatePackage(modulePack));

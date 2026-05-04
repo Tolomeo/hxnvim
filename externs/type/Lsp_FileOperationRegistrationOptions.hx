@@ -10,7 +10,7 @@ package externs.type;
 	The options to register for file operations.
 	
 **/
-extern class Lsp_FileOperationRegistrationOptions {
+@:structInit extern class Lsp_FileOperationRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.FileOperationRegistrationOptions.filters: lsp.FileOperationFilter[]

@@ -10,7 +10,7 @@ package externs.type;
 	 uv.tcp_bind.flags
 	
 **/
-extern class Uv_TcpBind_Flags {
+@:structInit extern class Uv_TcpBind_Flags {
 	/**
 		```lua
 		(field) uv.tcp_bind.flags.ipv6only: boolean

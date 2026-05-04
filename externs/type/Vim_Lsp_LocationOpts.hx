@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.LocationOpts
 	```
 **/
-extern class Vim_Lsp_LocationOpts {
+@:structInit extern class Vim_Lsp_LocationOpts {
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.loclist: boolean?

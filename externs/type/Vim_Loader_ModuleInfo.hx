@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.loader.ModuleInfo
 	```
 **/
-extern class Vim_Loader_ModuleInfo {
+@:structInit extern class Vim_Loader_ModuleInfo {
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.modname: string

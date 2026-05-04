@@ -12,7 +12,7 @@ package externs.type;
 	 handle uses the best backend for the job on each platform.
 	
 **/
-extern class Uv_UvFsEventT {
+@:structInit extern class Uv_UvFsEventT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

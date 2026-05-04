@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentOnTypeFormattingRequest}.
 **/
-extern class Lsp_DocumentOnTypeFormattingOptions {
+@:structInit extern class Lsp_DocumentOnTypeFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentOnTypeFormattingOptions.firstTriggerCharacter: string

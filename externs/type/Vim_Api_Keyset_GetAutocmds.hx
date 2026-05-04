@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_autocmds
 	```
 **/
-extern class Vim_Api_Keyset_GetAutocmds {
+@:structInit extern class Vim_Api_Keyset_GetAutocmds {
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.buffer: (integer|integer[])?

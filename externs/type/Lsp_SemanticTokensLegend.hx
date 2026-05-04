@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SemanticTokensLegend
 	```
 **/
-extern class Lsp_SemanticTokensLegend {
+@:structInit extern class Lsp_SemanticTokensLegend {
 	/**
 		```lua
 		(field) lsp.SemanticTokensLegend.tokenModifiers: string[]

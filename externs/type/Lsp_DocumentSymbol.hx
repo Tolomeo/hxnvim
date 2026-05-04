@@ -12,7 +12,7 @@ package externs.type;
 	have two ranges: one that encloses its definition and one that points to
 	its most interesting range, e.g. the range of an identifier.
 **/
-extern class Lsp_DocumentSymbol {
+@:structInit extern class Lsp_DocumentSymbol {
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.children: lsp.DocumentSymbol[]?

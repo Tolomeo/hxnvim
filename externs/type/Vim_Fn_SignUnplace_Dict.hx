@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign_unplace.dict
 	```
 **/
-extern class Vim_Fn_SignUnplace_Dict {
+@:structInit extern class Vim_Fn_SignUnplace_Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_unplace.dict.buffer: (string|integer)?

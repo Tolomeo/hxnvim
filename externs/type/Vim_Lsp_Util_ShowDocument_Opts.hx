@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.util.show_document.Opts
 	```
 **/
-extern class Vim_Lsp_Util_ShowDocument_Opts {
+@:structInit extern class Vim_Lsp_Util_ShowDocument_Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.show_document.Opts.focus: boolean?

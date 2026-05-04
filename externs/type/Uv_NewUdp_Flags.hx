@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.new_udp.flags
 	```
 **/
-extern class Uv_NewUdp_Flags {
+@:structInit extern class Uv_NewUdp_Flags {
 	/**
 		```lua
 		(field) uv.new_udp.flags.family: "appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"|nil

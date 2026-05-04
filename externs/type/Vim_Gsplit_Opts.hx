@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.gsplit.Opts
 	```
 **/
-extern class Vim_Gsplit_Opts {
+@:structInit extern class Vim_Gsplit_Opts {
 	/**
 		```lua
 		(field) vim.gsplit.Opts.plain: boolean?

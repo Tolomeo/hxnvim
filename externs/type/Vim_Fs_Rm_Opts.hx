@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fs.rm.Opts
 	```
 **/
-extern class Vim_Fs_Rm_Opts {
+@:structInit extern class Vim_Fs_Rm_Opts {
 	/**
 		```lua
 		(field) vim.fs.rm.Opts.force: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.option
 	```
 **/
-extern class Vim_Api_Keyset_Option {
+@:structInit extern class Vim_Api_Keyset_Option {
 	/**
 		```lua
 		(field) vim.api.keyset.option.buf: integer?

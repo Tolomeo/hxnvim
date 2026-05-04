@@ -10,7 +10,7 @@ package externs.type;
 	Represents a location inside a resource, such as a line
 	inside a text file.
 **/
-extern class Lsp_Location {
+@:structInit extern class Lsp_Location {
 	/**
 		```lua
 		(field) lsp.Location.range: lsp.Range

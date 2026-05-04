@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.Version
 	```
 **/
-extern class Vim_Version {
+@:structInit extern class Vim_Version {
 	/**
 		```lua
 		(field) vim.Version.build: string?

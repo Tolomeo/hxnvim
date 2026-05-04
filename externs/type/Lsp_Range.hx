@@ -19,7 +19,7 @@ package externs.type;
 	}
 	```
 **/
-extern class Lsp_Range {
+@:structInit extern class Lsp_Range {
 	extern var end : Dynamic;
 	/**
 		```lua

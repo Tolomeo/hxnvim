@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.tbl_contains.Opts
 	```
 **/
-extern class Vim_TblContains_Opts {
+@:structInit extern class Vim_TblContains_Opts {
 	/**
 		```lua
 		(field) vim.tbl_contains.Opts.predicate: boolean?

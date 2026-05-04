@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_extmark
 	```
 **/
-extern class Vim_Api_Keyset_GetExtmark {
+@:structInit extern class Vim_Api_Keyset_GetExtmark {
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmark.details: boolean?

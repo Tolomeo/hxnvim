@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.NIL
 	```
 **/
-extern class Vim_NIL {
+@:structInit extern class Vim_NIL {
 
 }

@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_readdir.entry
 	```
 **/
-extern class Uv_FsReaddir_Entry {
+@:structInit extern class Uv_FsReaddir_Entry {
 	/**
 		```lua
 		(field) uv.fs_readdir.entry.name: string

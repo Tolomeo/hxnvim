@@ -201,7 +201,7 @@ package externs.type;
 	 [Metrics operations]: #metrics-operations
 	
 **/
-extern class Uv {
+@:structInit extern class Uv {
 	/**
 		```lua
 		function uv.accept(stream: uv.uv_stream_t, client_stream: uv.uv_stream_t)

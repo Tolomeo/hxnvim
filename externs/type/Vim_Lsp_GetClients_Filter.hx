@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Key-value pairs used to filter the returned clients.
 **/
-extern class Vim_Lsp_GetClients_Filter {
+@:structInit extern class Vim_Lsp_GetClients_Filter {
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.bufnr: integer?

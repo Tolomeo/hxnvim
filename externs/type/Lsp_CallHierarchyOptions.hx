@@ -10,7 +10,7 @@ package externs.type;
 	Call hierarchy options used during static registration.
 	
 **/
-extern class Lsp_CallHierarchyOptions {
+@:structInit extern class Lsp_CallHierarchyOptions {
 	/**
 		```lua
 		(field) lsp.CallHierarchyOptions.workDoneProgress: boolean?

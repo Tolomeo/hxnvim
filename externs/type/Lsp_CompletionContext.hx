@@ -9,7 +9,7 @@ package externs.type;
 	
 	Contains additional information about the context in which a completion request is triggered.
 **/
-extern class Lsp_CompletionContext {
+@:structInit extern class Lsp_CompletionContext {
 	/**
 		```lua
 		(field) lsp.CompletionContext.triggerCharacter: string?

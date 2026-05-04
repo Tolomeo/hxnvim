@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.TypeDefinitionRegistrationOptions
 	```
 **/
-extern class Lsp_TypeDefinitionRegistrationOptions {
+@:structInit extern class Lsp_TypeDefinitionRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.TypeDefinitionRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

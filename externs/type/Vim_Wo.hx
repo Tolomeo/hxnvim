@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.wo
 	```
 **/
-extern class Vim_Wo {
+@:structInit extern class Vim_Wo {
 	/**
 		```lua
 		(field) vim.wo.arab: boolean

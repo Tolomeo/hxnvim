@@ -10,7 +10,7 @@ package externs.type;
 	 UDP handles encapsulate UDP communication for both clients and servers.
 	
 **/
-extern class Uv_UvUdpT {
+@:structInit extern class Uv_UvUdpT {
 	/**
 		```lua
 		(method) uv.uv_udp_t:bind(host: string, port: integer, flags?: uv.udp_bind.flags)

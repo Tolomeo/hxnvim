@@ -9,7 +9,7 @@ package externs.type;
 	
 	Delete file operation
 **/
-extern class Lsp_DeleteFile {
+@:structInit extern class Lsp_DeleteFile {
 	/**
 		```lua
 		(field) lsp.DeleteFile.annotationId: string?

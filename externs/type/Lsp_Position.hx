@@ -34,7 +34,7 @@ package externs.type;
 	that denotes `\r|\n` or `\n|` where `|` represents the character offset.
 	
 **/
-extern class Lsp_Position {
+@:structInit extern class Lsp_Position {
 	/**
 		```lua
 		(field) lsp.Position.character: integer

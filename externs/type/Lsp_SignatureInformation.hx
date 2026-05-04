@@ -11,7 +11,7 @@ package externs.type;
 	can have a label, like a function-name, a doc-comment, and
 	a set of parameters.
 **/
-extern class Lsp_SignatureInformation {
+@:structInit extern class Lsp_SignatureInformation {
 	/**
 		```lua
 		(field) lsp.SignatureInformation.activeParameter: (integer|nil)?

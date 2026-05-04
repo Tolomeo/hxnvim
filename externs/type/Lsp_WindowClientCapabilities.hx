@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.WindowClientCapabilities
 	```
 **/
-extern class Lsp_WindowClientCapabilities {
+@:structInit extern class Lsp_WindowClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.showDocument: (lsp.ShowDocumentClientCapabilities)?

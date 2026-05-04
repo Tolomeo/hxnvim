@@ -10,7 +10,7 @@ package externs.type;
 	Options for notifications/requests for user operations on files.
 	
 **/
-extern class Lsp_FileOperationOptions {
+@:structInit extern class Lsp_FileOperationOptions {
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.didCreate: (lsp.FileOperationRegistrationOptions)?

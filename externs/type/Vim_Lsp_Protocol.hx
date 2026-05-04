@@ -927,7 +927,7 @@ package externs.type;
 	
 	 Protocol for the Microsoft Language Server Protocol (mslsp)
 **/
-extern class Vim_Lsp_Protocol {
+@:structInit extern class Vim_Lsp_Protocol {
 	/**
 		```lua
 		(field) vim.lsp.protocol.CodeActionKind: table

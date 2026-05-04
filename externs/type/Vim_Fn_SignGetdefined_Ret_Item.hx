@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign_getdefined.ret.item
 	```
 **/
-extern class Vim_Fn_SignGetdefined_Ret_Item {
+@:structInit extern class Vim_Fn_SignGetdefined_Ret_Item {
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.culhl: string?

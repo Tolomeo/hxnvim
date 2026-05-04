@@ -9,7 +9,7 @@ package externs.type;
 	
 	 A table with the following keys:
 **/
-extern class Vim_Diagnostic_GetOpts {
+@:structInit extern class Vim_Diagnostic_GetOpts {
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.lnum: integer?

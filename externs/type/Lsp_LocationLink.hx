@@ -10,7 +10,7 @@ package externs.type;
 	Represents the connection of two locations. Provides additional metadata over normal {@link Location locations},
 	including an origin range.
 **/
-extern class Lsp_LocationLink {
+@:structInit extern class Lsp_LocationLink {
 	/**
 		```lua
 		(field) lsp.LocationLink.originSelectionRange: (lsp.Range)?

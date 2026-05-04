@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign_getplaced.dict
 	```
 **/
-extern class Vim_Fn_SignGetplaced_Dict {
+@:structInit extern class Vim_Fn_SignGetplaced_Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.group: string?

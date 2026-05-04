@@ -10,7 +10,7 @@ package externs.type;
 	 uv.socketpair.flags
 	
 **/
-extern class Uv_Socketpair_Flags {
+@:structInit extern class Uv_Socketpair_Flags {
 	/**
 		```lua
 		(field) uv.socketpair.flags.nonblock: true|false

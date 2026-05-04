@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim._inspector.Filter
 	```
 **/
-extern class Vim_Inspector_Filter {
+@:structInit extern class Vim_Inspector_Filter {
 	/**
 		```lua
 		(field) vim._inspector.Filter.extmarks: boolean|"all"

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientCodeActionLiteralOptions
 	```
 **/
-extern class Lsp_ClientCodeActionLiteralOptions {
+@:structInit extern class Lsp_ClientCodeActionLiteralOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeActionLiteralOptions.codeActionKind: lsp.ClientCodeActionKindOptions

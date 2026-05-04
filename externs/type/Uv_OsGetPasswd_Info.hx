@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.os_get_passwd.info
 	```
 **/
-extern class Uv_OsGetPasswd_Info {
+@:structInit extern class Uv_OsGetPasswd_Info {
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.gid: integer

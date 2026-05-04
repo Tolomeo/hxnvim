@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.getrusage.result.time_t
 	```
 **/
-extern class Uv_Getrusage_Result_TimeT {
+@:structInit extern class Uv_Getrusage_Result_TimeT {
 	/**
 		```lua
 		(field) uv.getrusage.result.time_t.sec: integer

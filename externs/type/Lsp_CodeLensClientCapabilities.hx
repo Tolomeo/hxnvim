@@ -9,7 +9,7 @@ package externs.type;
 	
 	The client capabilities  of a {@link CodeLensRequest}.
 **/
-extern class Lsp_CodeLensClientCapabilities {
+@:structInit extern class Lsp_CodeLensClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeLensClientCapabilities.dynamicRegistration: boolean?

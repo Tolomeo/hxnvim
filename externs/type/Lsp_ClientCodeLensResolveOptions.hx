@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientCodeLensResolveOptions
 	```
 **/
-extern class Lsp_ClientCodeLensResolveOptions {
+@:structInit extern class Lsp_ClientCodeLensResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeLensResolveOptions.properties: string[]

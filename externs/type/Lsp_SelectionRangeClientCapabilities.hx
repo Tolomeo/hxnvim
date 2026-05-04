@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SelectionRangeClientCapabilities
 	```
 **/
-extern class Lsp_SelectionRangeClientCapabilities {
+@:structInit extern class Lsp_SelectionRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SelectionRangeClientCapabilities.dynamicRegistration: boolean?

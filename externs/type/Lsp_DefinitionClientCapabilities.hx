@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link DefinitionRequest}.
 **/
-extern class Lsp_DefinitionClientCapabilities {
+@:structInit extern class Lsp_DefinitionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DefinitionClientCapabilities.dynamicRegistration: boolean?

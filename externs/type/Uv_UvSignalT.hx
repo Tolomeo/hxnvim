@@ -46,7 +46,7 @@ package externs.type;
 	 ```
 	
 **/
-extern class Uv_UvSignalT {
+@:structInit extern class Uv_UvSignalT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

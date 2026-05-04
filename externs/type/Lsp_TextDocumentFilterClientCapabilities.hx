@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.TextDocumentFilterClientCapabilities
 	```
 **/
-extern class Lsp_TextDocumentFilterClientCapabilities {
+@:structInit extern class Lsp_TextDocumentFilterClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterClientCapabilities.relativePatternSupport: boolean?

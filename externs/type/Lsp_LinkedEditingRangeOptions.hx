@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.LinkedEditingRangeOptions
 	```
 **/
-extern class Lsp_LinkedEditingRangeOptions {
+@:structInit extern class Lsp_LinkedEditingRangeOptions {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeOptions.workDoneProgress: boolean?

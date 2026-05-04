@@ -9,7 +9,7 @@ package externs.type;
 	
 	The client capabilities of a {@link DocumentLinkRequest}.
 **/
-extern class Lsp_DocumentLinkClientCapabilities {
+@:structInit extern class Lsp_DocumentLinkClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentLinkClientCapabilities.dynamicRegistration: boolean?

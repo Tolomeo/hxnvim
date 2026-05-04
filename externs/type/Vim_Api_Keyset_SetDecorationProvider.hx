@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.set_decoration_provider
 	```
 **/
-extern class Vim_Api_Keyset_SetDecorationProvider {
+@:structInit extern class Vim_Api_Keyset_SetDecorationProvider {
 	/**
 		```lua
 		(field) vim.api.keyset.set_decoration_provider._on_conceal_line: fun(_: "conceal_line")?

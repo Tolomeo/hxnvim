@@ -9,7 +9,7 @@ package externs.type;
 	
 	The client capabilities of a {@link ExecuteCommandRequest}.
 **/
-extern class Lsp_ExecuteCommandClientCapabilities {
+@:structInit extern class Lsp_ExecuteCommandClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandClientCapabilities.dynamicRegistration: boolean?

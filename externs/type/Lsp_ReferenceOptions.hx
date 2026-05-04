@@ -9,7 +9,7 @@ package externs.type;
 	
 	Reference options.
 **/
-extern class Lsp_ReferenceOptions {
+@:structInit extern class Lsp_ReferenceOptions {
 	/**
 		```lua
 		(field) lsp.ReferenceOptions.workDoneProgress: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.MonikerOptions
 	```
 **/
-extern class Lsp_MonikerOptions {
+@:structInit extern class Lsp_MonikerOptions {
 	/**
 		```lua
 		(field) lsp.MonikerOptions.workDoneProgress: boolean?

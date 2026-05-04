@@ -10,7 +10,7 @@ package externs.type;
 	Documentation for a class of code actions.
 	
 **/
-extern class Lsp_CodeActionKindDocumentation {
+@:structInit extern class Lsp_CodeActionKindDocumentation {
 	/**
 		```lua
 		(field) lsp.CodeActionKindDocumentation.command: lsp.Command

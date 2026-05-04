@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DocumentColorClientCapabilities
 	```
 **/
-extern class Lsp_DocumentColorClientCapabilities {
+@:structInit extern class Lsp_DocumentColorClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentColorClientCapabilities.dynamicRegistration: boolean?

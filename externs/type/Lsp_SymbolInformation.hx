@@ -10,7 +10,7 @@ package externs.type;
 	Represents information about programming constructs like variables, classes,
 	interfaces etc.
 **/
-extern class Lsp_SymbolInformation {
+@:structInit extern class Lsp_SymbolInformation {
 	/**
 		```lua
 		(field) lsp.SymbolInformation.containerName: string?

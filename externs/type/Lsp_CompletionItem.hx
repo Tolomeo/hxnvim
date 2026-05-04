@@ -10,7 +10,7 @@ package externs.type;
 	A completion item represents a text snippet that is
 	proposed to complete text that is being typed.
 **/
-extern class Lsp_CompletionItem {
+@:structInit extern class Lsp_CompletionItem {
 	/**
 		```lua
 		(field) lsp.CompletionItem.additionalTextEdits: lsp.TextEdit[]?

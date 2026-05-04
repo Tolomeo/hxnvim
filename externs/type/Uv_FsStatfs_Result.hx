@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_statfs.result
 	```
 **/
-extern class Uv_FsStatfs_Result {
+@:structInit extern class Uv_FsStatfs_Result {
 	/**
 		```lua
 		(field) uv.fs_statfs.result.bavail: integer

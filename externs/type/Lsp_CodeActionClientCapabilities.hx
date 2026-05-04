@@ -9,7 +9,7 @@ package externs.type;
 	
 	The Client Capabilities of a {@link CodeActionRequest}.
 **/
-extern class Lsp_CodeActionClientCapabilities {
+@:structInit extern class Lsp_CodeActionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.codeActionLiteralSupport: (lsp.ClientCodeActionLiteralOptions)?

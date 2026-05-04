@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.buf.signature_help.Opts
 	```
 **/
-extern class Vim_Lsp_Buf_SignatureHelp_Opts {
+@:structInit extern class Vim_Lsp_Buf_SignatureHelp_Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts._update_win: integer?

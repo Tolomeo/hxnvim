@@ -10,7 +10,7 @@ package externs.type;
 	Text document content provider options.
 	
 **/
-extern class Lsp_TextDocumentContentOptions {
+@:structInit extern class Lsp_TextDocumentContentOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentOptions.schemes: string[]

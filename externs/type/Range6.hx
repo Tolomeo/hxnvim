@@ -5,6 +5,6 @@ package externs.type;
 	(class) Range6
 	```
 **/
-extern class Range6 {
+@:structInit extern class Range6 {
 
 }

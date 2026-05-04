@@ -10,7 +10,7 @@ package externs.type;
 	Client workspace capabilities specific to folding ranges
 	
 **/
-extern class Lsp_FoldingRangeWorkspaceClientCapabilities {
+@:structInit extern class Lsp_FoldingRangeWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FoldingRangeWorkspaceClientCapabilities.refreshSupport: boolean?

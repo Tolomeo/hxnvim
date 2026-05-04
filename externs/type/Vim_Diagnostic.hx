@@ -12,7 +12,7 @@ package externs.type;
 	 Diagnostics use the same indexing as the rest of the Nvim API (i.e. 0-based
 	 rows and columns). |api-indexing|
 **/
-extern class Vim_Diagnostic {
+@:structInit extern class Vim_Diagnostic {
 	/**
 		```lua
 		(field) vim.Diagnostic._tags: { deprecated: boolean, unnecessary: boolean }?

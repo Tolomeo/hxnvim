@@ -9,7 +9,7 @@ package externs.type;
 	
 	Workspace specific client capabilities.
 **/
-extern class Lsp_WorkspaceClientCapabilities {
+@:structInit extern class Lsp_WorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.applyEdit: boolean?

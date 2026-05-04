@@ -9,7 +9,7 @@ package externs.type;
 	
 	Rename file operation
 **/
-extern class Lsp_RenameFile {
+@:structInit extern class Lsp_RenameFile {
 	/**
 		```lua
 		(field) lsp.RenameFile.annotationId: string?

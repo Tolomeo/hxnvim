@@ -9,7 +9,7 @@ package externs.type;
 	
 	 @nodoc
 **/
-extern class Vim_Lpeg_Pattern {
+@:structInit extern class Vim_Lpeg_Pattern {
 	/**
 		```lua
 		(method) vim.lpeg.Pattern:match(subject: string, init?: integer, ...any)

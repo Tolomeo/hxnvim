@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.exec_opts
 	```
 **/
-extern class Vim_Api_Keyset_ExecOpts {
+@:structInit extern class Vim_Api_Keyset_ExecOpts {
 	/**
 		```lua
 		(field) vim.api.keyset.exec_opts.output: boolean?

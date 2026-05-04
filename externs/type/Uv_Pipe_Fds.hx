@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.pipe.fds
 	```
 **/
-extern class Uv_Pipe_Fds {
+@:structInit extern class Uv_Pipe_Fds {
 	/**
 		```lua
 		(field) uv.pipe.fds.read: integer

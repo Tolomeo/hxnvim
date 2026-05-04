@@ -10,7 +10,7 @@ package externs.type;
 	 Configuration table with the keys listed below. Some parameters can have their default values
 	 changed with |vim.diagnostic.config()|.
 **/
-extern class Vim_Diagnostic_JumpOpts {
+@:structInit extern class Vim_Diagnostic_JumpOpts {
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.count: integer?

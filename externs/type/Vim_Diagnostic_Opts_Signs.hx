@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.Opts.Signs
 	```
 **/
-extern class Vim_Diagnostic_Opts_Signs {
+@:structInit extern class Vim_Diagnostic_Opts_Signs {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.linehl: table<vim.diagnostic.Severity, string>?

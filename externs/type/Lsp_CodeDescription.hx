@@ -10,7 +10,7 @@ package externs.type;
 	Structure to capture a description for an error code.
 	
 **/
-extern class Lsp_CodeDescription {
+@:structInit extern class Lsp_CodeDescription {
 	/**
 		```lua
 		(field) lsp.CodeDescription.href: string

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.semantic_tokens.highlight_token.Opts
 	```
 **/
-extern class Vim_Lsp_SemanticTokens_HighlightToken_Opts {
+@:structInit extern class Vim_Lsp_SemanticTokens_HighlightToken_Opts {
 	/**
 		```lua
 		(field) vim.lsp.semantic_tokens.highlight_token.Opts.priority: integer?

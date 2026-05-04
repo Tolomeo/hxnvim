@@ -9,6 +9,6 @@ package externs.type;
 	
 	 @nodoc
 **/
-extern class Vim_Lsp_Config {
+@:structInit extern class Vim_Lsp_Config {
 
 }

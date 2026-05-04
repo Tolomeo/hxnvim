@@ -9,7 +9,7 @@ package externs.type;
 	
 	Completion options.
 **/
-extern class Lsp_CompletionOptions {
+@:structInit extern class Lsp_CompletionOptions {
 	/**
 		```lua
 		(field) lsp.CompletionOptions.allCommitCharacters: string[]?

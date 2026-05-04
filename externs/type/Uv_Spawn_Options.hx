@@ -13,7 +13,7 @@ package externs.type;
 	(class) uv.spawn.options
 	```
 **/
-extern class Uv_Spawn_Options {
+@:structInit extern class Uv_Spawn_Options {
 	/**
 		```lua
 		(field) uv.spawn.options.args: string[]

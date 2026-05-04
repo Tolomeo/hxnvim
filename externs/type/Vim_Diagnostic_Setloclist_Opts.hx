@@ -9,7 +9,7 @@ package externs.type;
 	
 	Configuration table with the following keys:
 **/
-extern class Vim_Diagnostic_Setloclist_Opts {
+@:structInit extern class Vim_Diagnostic_Setloclist_Opts {
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.namespace: integer?

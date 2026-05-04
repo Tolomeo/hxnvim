@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.api.keyset.empty
 	```
 **/
-extern class Vim_Api_Keyset_Empty {
+@:structInit extern class Vim_Api_Keyset_Empty {
 
 }

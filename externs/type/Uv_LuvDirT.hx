@@ -10,7 +10,7 @@ package externs.type;
 	 luv_dir_t
 	
 **/
-extern class Uv_LuvDirT {
+@:structInit extern class Uv_LuvDirT {
 	/**
 		```lua
 		(method) uv.luv_dir_t:closedir()

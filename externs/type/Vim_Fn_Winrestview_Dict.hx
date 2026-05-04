@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.winrestview.dict
 	```
 **/
-extern class Vim_Fn_Winrestview_Dict {
+@:structInit extern class Vim_Fn_Winrestview_Dict {
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.col: integer?

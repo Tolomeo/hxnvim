@@ -9,7 +9,7 @@ package externs.type;
 	(class) TSQueryInfo
 	```
 **/
-extern class TSQueryInfo {
+@:structInit extern class TSQueryInfo {
 	/**
 		```lua
 		(field) TSQueryInfo.captures: string[]

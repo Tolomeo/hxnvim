@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientSemanticTokensRequestFullDelta
 	```
 **/
-extern class Lsp_ClientSemanticTokensRequestFullDelta {
+@:structInit extern class Lsp_ClientSemanticTokensRequestFullDelta {
 	/**
 		```lua
 		(field) lsp.ClientSemanticTokensRequestFullDelta.delta: boolean?

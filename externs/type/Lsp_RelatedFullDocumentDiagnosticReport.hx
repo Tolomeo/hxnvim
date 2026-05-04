@@ -10,7 +10,7 @@ package externs.type;
 	A full diagnostic report with a set of related documents.
 	
 **/
-extern class Lsp_RelatedFullDocumentDiagnosticReport {
+@:structInit extern class Lsp_RelatedFullDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.RelatedFullDocumentDiagnosticReport.items: lsp.Diagnostic[]

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.Ringbuf
 	```
 **/
-extern class Vim_Ringbuf {
+@:structInit extern class Vim_Ringbuf {
 	/**
 		```lua
 		function vim.Ringbuf.clear(self: vim.Ringbuf)

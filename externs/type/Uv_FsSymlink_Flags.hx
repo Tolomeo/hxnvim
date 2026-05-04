@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_symlink.flags
 	```
 **/
-extern class Uv_FsSymlink_Flags {
+@:structInit extern class Uv_FsSymlink_Flags {
 	/**
 		```lua
 		(field) uv.fs_symlink.flags.dir: boolean

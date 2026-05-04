@@ -10,7 +10,7 @@ package externs.type;
 	 TCP handles are used to represent both TCP streams and servers.
 	
 **/
-extern class Uv_UvTcpT {
+@:structInit extern class Uv_UvTcpT {
 	/**
 		```lua
 		(method) uv.uv_stream_t:accept(client_stream: uv.uv_stream_t)

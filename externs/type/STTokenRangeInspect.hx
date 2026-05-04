@@ -13,7 +13,7 @@ package externs.type;
 	
 	 @nodoc
 **/
-extern class STTokenRangeInspect {
+@:structInit extern class STTokenRangeInspect {
 	/**
 		```lua
 		(field) STTokenRangeInspect.client_id: integer

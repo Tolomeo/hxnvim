@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Client RPC object
 **/
-extern class Vim_Lsp_Rpc_PublicClient {
+@:structInit extern class Vim_Lsp_Rpc_PublicClient {
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.is_closing: fun():boolean

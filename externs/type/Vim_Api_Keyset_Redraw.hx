@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.redraw
 	```
 **/
-extern class Vim_Api_Keyset_Redraw {
+@:structInit extern class Vim_Api_Keyset_Redraw {
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.buf: integer?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.TypeDefinitionOptions
 	```
 **/
-extern class Lsp_TypeDefinitionOptions {
+@:structInit extern class Lsp_TypeDefinitionOptions {
 	/**
 		```lua
 		(field) lsp.TypeDefinitionOptions.workDoneProgress: boolean?

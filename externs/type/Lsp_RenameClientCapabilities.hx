@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.RenameClientCapabilities
 	```
 **/
-extern class Lsp_RenameClientCapabilities {
+@:structInit extern class Lsp_RenameClientCapabilities {
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.dynamicRegistration: boolean?

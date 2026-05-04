@@ -10,7 +10,7 @@ package externs.type;
 	Client workspace capabilities specific to inline values.
 	
 **/
-extern class Lsp_InlineValueWorkspaceClientCapabilities {
+@:structInit extern class Lsp_InlineValueWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineValueWorkspaceClientCapabilities.refreshSupport: boolean?

@@ -9,7 +9,7 @@ package externs.type;
 	
 	The publish diagnostic client capabilities.
 **/
-extern class Lsp_PublishDiagnosticsClientCapabilities {
+@:structInit extern class Lsp_PublishDiagnosticsClientCapabilities {
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.codeDescriptionSupport: boolean?

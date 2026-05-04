@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to diagnostic pull requests.
 	
 **/
-extern class Lsp_DiagnosticClientCapabilities {
+@:structInit extern class Lsp_DiagnosticClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.codeDescriptionSupport: boolean?

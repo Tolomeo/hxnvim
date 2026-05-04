@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.winsaveview.ret
 	```
 **/
-extern class Vim_Fn_Winsaveview_Ret {
+@:structInit extern class Vim_Fn_Winsaveview_Ret {
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.col: integer

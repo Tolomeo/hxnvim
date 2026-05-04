@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentHighlightRequest}.
 **/
-extern class Lsp_DocumentHighlightOptions {
+@:structInit extern class Lsp_DocumentHighlightOptions {
 	/**
 		```lua
 		(field) lsp.DocumentHighlightOptions.workDoneProgress: boolean?

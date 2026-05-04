@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentRangeFormattingRequest}.
 **/
-extern class Lsp_DocumentRangeFormattingOptions {
+@:structInit extern class Lsp_DocumentRangeFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingOptions.rangesSupport: boolean?

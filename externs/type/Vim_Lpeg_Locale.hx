@@ -9,7 +9,7 @@ package externs.type;
 	
 	 @nodoc
 **/
-extern class Vim_Lpeg_Locale {
+@:structInit extern class Vim_Lpeg_Locale {
 	/**
 		```lua
 		(field) vim.lpeg.Locale.alnum: userdata

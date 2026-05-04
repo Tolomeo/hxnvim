@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.TextDocumentSyncOptions
 	```
 **/
-extern class Lsp_TextDocumentSyncOptions {
+@:structInit extern class Lsp_TextDocumentSyncOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.change: (0|1|2)?

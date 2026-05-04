@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link DocumentHighlightRequest}.
 **/
-extern class Lsp_DocumentHighlightClientCapabilities {
+@:structInit extern class Lsp_DocumentHighlightClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentHighlightClientCapabilities.dynamicRegistration: boolean?

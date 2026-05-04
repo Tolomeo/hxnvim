@@ -10,7 +10,7 @@ package externs.type;
 	Capabilities specific to the notebook document support.
 	
 **/
-extern class Lsp_NotebookDocumentClientCapabilities {
+@:structInit extern class Lsp_NotebookDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentClientCapabilities.synchronization: lsp.NotebookDocumentSyncClientCapabilities

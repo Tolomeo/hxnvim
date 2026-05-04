@@ -5,6 +5,6 @@ package externs.type;
 	(alias) ParserThreadState Expand to { timeout: integer? }
 	```
 **/
-extern class ParserThreadState {
+@:structInit extern class ParserThreadState {
 	extern var timeout : Null<Int>;
 }

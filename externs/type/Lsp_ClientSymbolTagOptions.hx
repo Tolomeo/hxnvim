@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientSymbolTagOptions
 	```
 **/
-extern class Lsp_ClientSymbolTagOptions {
+@:structInit extern class Lsp_ClientSymbolTagOptions {
 	/**
 		```lua
 		(field) lsp.ClientSymbolTagOptions.valueSet: 1[]

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.LinkedEditingRangeRegistrationOptions
 	```
 **/
-extern class Lsp_LinkedEditingRangeRegistrationOptions {
+@:structInit extern class Lsp_LinkedEditingRangeRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

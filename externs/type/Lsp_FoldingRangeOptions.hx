@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.FoldingRangeOptions
 	```
 **/
-extern class Lsp_FoldingRangeOptions {
+@:structInit extern class Lsp_FoldingRangeOptions {
 	/**
 		```lua
 		(field) lsp.FoldingRangeOptions.workDoneProgress: boolean?

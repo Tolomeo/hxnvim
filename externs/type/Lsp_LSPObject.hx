@@ -9,6 +9,6 @@ package externs.type;
 	
 	LSP object definition.
 **/
-extern class Lsp_LSPObject {
+@:structInit extern class Lsp_LSPObject {
 
 }

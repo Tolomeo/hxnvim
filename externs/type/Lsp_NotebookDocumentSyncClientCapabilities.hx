@@ -10,7 +10,7 @@ package externs.type;
 	Notebook specific client capabilities.
 	
 **/
-extern class Lsp_NotebookDocumentSyncClientCapabilities {
+@:structInit extern class Lsp_NotebookDocumentSyncClientCapabilities {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncClientCapabilities.dynamicRegistration: boolean?

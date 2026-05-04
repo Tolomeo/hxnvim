@@ -10,7 +10,7 @@ package externs.type;
 	Call hierarchy options used during static or dynamic registration.
 	
 **/
-extern class Lsp_CallHierarchyRegistrationOptions {
+@:structInit extern class Lsp_CallHierarchyRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.CallHierarchyRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

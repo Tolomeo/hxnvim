@@ -10,7 +10,7 @@ package externs.type;
 	Defines the capabilities provided by a language
 	server.
 **/
-extern class Lsp_ServerCapabilities {
+@:structInit extern class Lsp_ServerCapabilities {
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.callHierarchyProvider: (boolean|lsp.CallHierarchyOptions|lsp.CallHierarchyRegistrationOptions)?

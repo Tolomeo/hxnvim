@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link CodeActionRequest}.
 **/
-extern class Lsp_CodeActionOptions {
+@:structInit extern class Lsp_CodeActionOptions {
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.codeActionKinds: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]?

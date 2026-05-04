@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.interface_addresses.addr
 	```
 **/
-extern class Uv_InterfaceAddresses_Addr {
+@:structInit extern class Uv_InterfaceAddresses_Addr {
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.family: string

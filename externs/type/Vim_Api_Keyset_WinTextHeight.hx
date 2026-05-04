@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.win_text_height
 	```
 **/
-extern class Vim_Api_Keyset_WinTextHeight {
+@:structInit extern class Vim_Api_Keyset_WinTextHeight {
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.end_row: integer?

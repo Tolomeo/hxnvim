@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.NotebookCellLanguage
 	```
 **/
-extern class Lsp_NotebookCellLanguage {
+@:structInit extern class Lsp_NotebookCellLanguage {
 	/**
 		```lua
 		(field) lsp.NotebookCellLanguage.language: string

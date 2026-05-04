@@ -17,7 +17,7 @@ package externs.type;
 	(class) vim.treesitter.highlighter
 	```
 **/
-extern class Vim_Treesitter_Highlighter {
+@:structInit extern class Vim_Treesitter_Highlighter {
 	/**
 		```lua
 		(field) vim.treesitter.highlighter._conceal_checked: table<integer, boolean>

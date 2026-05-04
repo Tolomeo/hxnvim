@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SemanticTokensRegistrationOptions
 	```
 **/
-extern class Lsp_SemanticTokensRegistrationOptions {
+@:structInit extern class Lsp_SemanticTokensRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

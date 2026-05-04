@@ -13,7 +13,7 @@ package externs.type;
 	
 	Information for Query, see |vim.treesitter.query.parse()|
 **/
-extern class Vim_Treesitter_QueryInfo {
+@:structInit extern class Vim_Treesitter_QueryInfo {
 	/**
 		```lua
 		(field) vim.treesitter.QueryInfo.captures: string[]

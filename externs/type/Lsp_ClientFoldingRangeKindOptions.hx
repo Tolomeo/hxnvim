@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientFoldingRangeKindOptions
 	```
 **/
-extern class Lsp_ClientFoldingRangeKindOptions {
+@:structInit extern class Lsp_ClientFoldingRangeKindOptions {
 	/**
 		```lua
 		(field) lsp.ClientFoldingRangeKindOptions.valueSet: "comment"|"imports"|"region"[]?

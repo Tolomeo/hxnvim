@@ -1,6 +1,6 @@
 package externs.type;
 
-extern enum abstract Vim_Lsp_Protocol_Methods(String) from String to String {
+@:structInit extern enum abstract Vim_Lsp_Protocol_Methods(String) from String to String {
 	var WorkspaceWorkspaceFolders = "workspace/workspaceFolders";
 	var WorkspaceWillRenameFiles = "workspace/willRenameFiles";
 	var WorkspaceWillDeleteFiles = "workspace/willDeleteFiles";

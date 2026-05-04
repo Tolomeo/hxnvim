@@ -9,7 +9,7 @@ package externs.type;
 	(class) vim.diagnostic.OptsResolved
 	```
 **/
-extern class Vim_Diagnostic_OptsResolved {
+@:structInit extern class Vim_Diagnostic_OptsResolved {
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.float: vim.diagnostic.Opts.Float

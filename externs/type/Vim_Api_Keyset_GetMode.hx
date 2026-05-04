@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_mode
 	```
 **/
-extern class Vim_Api_Keyset_GetMode {
+@:structInit extern class Vim_Api_Keyset_GetMode {
 	/**
 		```lua
 		(field) vim.api.keyset.get_mode.blocking: boolean

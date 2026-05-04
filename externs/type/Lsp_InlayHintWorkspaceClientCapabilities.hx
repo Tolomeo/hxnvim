@@ -10,7 +10,7 @@ package externs.type;
 	Client workspace capabilities specific to inlay hints.
 	
 **/
-extern class Lsp_InlayHintWorkspaceClientCapabilities {
+@:structInit extern class Lsp_InlayHintWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlayHintWorkspaceClientCapabilities.refreshSupport: boolean?

@@ -10,7 +10,7 @@ package externs.type;
 	Inline value options used during static or dynamic registration.
 	
 **/
-extern class Lsp_InlineValueRegistrationOptions {
+@:structInit extern class Lsp_InlineValueRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.InlineValueRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

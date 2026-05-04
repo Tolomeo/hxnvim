@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientFoldingRangeOptions
 	```
 **/
-extern class Lsp_ClientFoldingRangeOptions {
+@:structInit extern class Lsp_ClientFoldingRangeOptions {
 	/**
 		```lua
 		(field) lsp.ClientFoldingRangeOptions.collapsedText: boolean?

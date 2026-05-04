@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.win_config
 	```
 **/
-extern class Vim_Api_Keyset_WinConfig {
+@:structInit extern class Vim_Api_Keyset_WinConfig {
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.anchor: ('NE'|'NW'|'SE'|'SW')?

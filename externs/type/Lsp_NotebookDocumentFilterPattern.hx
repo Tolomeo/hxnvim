@@ -10,7 +10,7 @@ package externs.type;
 	A notebook document filter where `pattern` is required field.
 	
 **/
-extern class Lsp_NotebookDocumentFilterPattern {
+@:structInit extern class Lsp_NotebookDocumentFilterPattern {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterPattern.notebookType: string?

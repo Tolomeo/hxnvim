@@ -9,7 +9,7 @@ package externs.type;
 	
 	The publish diagnostic notification's parameters.
 **/
-extern class Lsp_PublishDiagnosticsParams {
+@:structInit extern class Lsp_PublishDiagnosticsParams {
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.diagnostics: lsp.Diagnostic[]

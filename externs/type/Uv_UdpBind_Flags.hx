@@ -11,7 +11,7 @@ package externs.type;
 	
 	
 **/
-extern class Uv_UdpBind_Flags {
+@:structInit extern class Uv_UdpBind_Flags {
 	/**
 		```lua
 		(field) uv.udp_bind.flags.ipv6only: boolean

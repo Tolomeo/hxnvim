@@ -9,7 +9,7 @@ package externs.type;
 	
 	Save options.
 **/
-extern class Lsp_SaveOptions {
+@:structInit extern class Lsp_SaveOptions {
 	/**
 		```lua
 		(field) lsp.SaveOptions.includeText: boolean?

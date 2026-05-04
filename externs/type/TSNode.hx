@@ -5,7 +5,7 @@ package externs.type;
 	(class) TSNode
 	```
 **/
-extern class TSNode {
+@:structInit extern class TSNode {
 	/**
 		```lua
 		(method) TSNode:__has_ancestor(node_types: string[])

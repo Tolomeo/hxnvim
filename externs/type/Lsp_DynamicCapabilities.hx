@@ -9,7 +9,7 @@ package externs.type;
 	(class) lsp.DynamicCapabilities
 	```
 **/
-extern class Lsp_DynamicCapabilities {
+@:structInit extern class Lsp_DynamicCapabilities {
 	/**
 		```lua
 		(field) lsp.DynamicCapabilities.capabilities: table<string, lsp.Registration[]>

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.quickfix.entry
 	```
 **/
-extern class Vim_Quickfix_Entry {
+@:structInit extern class Vim_Quickfix_Entry {
 	/**
 		```lua
 		(field) vim.quickfix.entry.bufnr: integer?

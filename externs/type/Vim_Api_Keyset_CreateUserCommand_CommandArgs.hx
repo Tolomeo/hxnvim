@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.create_user_command.command_args
 	```
 **/
-extern class Vim_Api_Keyset_CreateUserCommand_CommandArgs {
+@:structInit extern class Vim_Api_Keyset_CreateUserCommand_CommandArgs {
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.args: string

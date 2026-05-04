@@ -5,6 +5,6 @@ package externs.type;
 	(class) IterMod
 	```
 **/
-extern class IterMod {
+@:structInit extern class IterMod {
 
 }

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.HandlerContext
 	```
 **/
-extern class Lsp_HandlerContext {
+@:structInit extern class Lsp_HandlerContext {
 	/**
 		```lua
 		(field) lsp.HandlerContext.bufnr: integer?

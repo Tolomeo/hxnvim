@@ -30,7 +30,7 @@ package externs.type;
 	*Please Note* that clients might sanitize the return markdown. A client could decide to
 	remove HTML from the markdown to avoid script execution.
 **/
-extern class Lsp_MarkupContent {
+@:structInit extern class Lsp_MarkupContent {
 	/**
 		```lua
 		(field) lsp.MarkupContent.kind: "markdown"|"plaintext"

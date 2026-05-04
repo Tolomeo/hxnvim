@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.CodeActionTagOptions
 	```
 **/
-extern class Lsp_CodeActionTagOptions {
+@:structInit extern class Lsp_CodeActionTagOptions {
 	/**
 		```lua
 		(field) lsp.CodeActionTagOptions.valueSet: 1[]

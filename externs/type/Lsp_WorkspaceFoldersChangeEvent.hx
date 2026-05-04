@@ -9,7 +9,7 @@ package externs.type;
 	
 	The workspace folder change event.
 **/
-extern class Lsp_WorkspaceFoldersChangeEvent {
+@:structInit extern class Lsp_WorkspaceFoldersChangeEvent {
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersChangeEvent.added: lsp.WorkspaceFolder[]

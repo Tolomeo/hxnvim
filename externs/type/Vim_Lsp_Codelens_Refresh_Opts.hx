@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.codelens.refresh.Opts
 	```
 **/
-extern class Vim_Lsp_Codelens_Refresh_Opts {
+@:structInit extern class Vim_Lsp_Codelens_Refresh_Opts {
 	/**
 		```lua
 		(field) vim.lsp.codelens.refresh.Opts.bufnr: integer?

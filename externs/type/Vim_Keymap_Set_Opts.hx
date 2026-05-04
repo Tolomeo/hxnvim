@@ -13,7 +13,7 @@ package externs.type;
 	
 	 Also accepts:
 **/
-extern class Vim_Keymap_Set_Opts {
+@:structInit extern class Vim_Keymap_Set_Opts {
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.buffer: (boolean|integer)?

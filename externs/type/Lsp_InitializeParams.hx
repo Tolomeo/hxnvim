@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.InitializeParams
 	```
 **/
-extern class Lsp_InitializeParams {
+@:structInit extern class Lsp_InitializeParams {
 	/**
 		```lua
 		(field) lsp.InitializeParams.capabilities: lsp.ClientCapabilities

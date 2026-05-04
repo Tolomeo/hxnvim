@@ -9,7 +9,7 @@ package externs.type;
 	
 	A literal to identify a text document in the client.
 **/
-extern class Lsp_TextDocumentIdentifier {
+@:structInit extern class Lsp_TextDocumentIdentifier {
 	/**
 		```lua
 		(field) lsp.TextDocumentIdentifier.uri: string

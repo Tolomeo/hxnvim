@@ -11,7 +11,7 @@ package externs.type;
 	report is still accurate.
 	
 **/
-extern class Lsp_UnchangedDocumentDiagnosticReport {
+@:structInit extern class Lsp_UnchangedDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.UnchangedDocumentDiagnosticReport.kind: "unchanged"

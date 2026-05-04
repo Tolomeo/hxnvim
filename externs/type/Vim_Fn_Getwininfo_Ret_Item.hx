@@ -9,7 +9,7 @@ package externs.type;
 	(class) vim.fn.getwininfo.ret.item
 	```
 **/
-extern class Vim_Fn_Getwininfo_Ret_Item {
+@:structInit extern class Vim_Fn_Getwininfo_Ret_Item {
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.botline: integer

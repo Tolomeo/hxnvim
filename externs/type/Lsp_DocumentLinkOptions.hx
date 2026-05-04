@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentLinkRequest}.
 **/
-extern class Lsp_DocumentLinkOptions {
+@:structInit extern class Lsp_DocumentLinkOptions {
 	/**
 		```lua
 		(field) lsp.DocumentLinkOptions.resolveProvider: boolean?

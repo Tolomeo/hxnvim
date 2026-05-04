@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.fn.winlayout.branch
 	```
 **/
-extern class Vim_Fn_Winlayout_Branch {
+@:structInit extern class Vim_Fn_Winlayout_Branch {
 
 }

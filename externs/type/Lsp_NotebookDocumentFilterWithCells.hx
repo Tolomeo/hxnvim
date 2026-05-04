@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.NotebookDocumentFilterWithCells
 	```
 **/
-extern class Lsp_NotebookDocumentFilterWithCells {
+@:structInit extern class Lsp_NotebookDocumentFilterWithCells {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterWithCells.cells: lsp.NotebookCellLanguage[]

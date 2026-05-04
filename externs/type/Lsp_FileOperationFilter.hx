@@ -11,7 +11,7 @@ package externs.type;
 	the server is interested in receiving.
 	
 **/
-extern class Lsp_FileOperationFilter {
+@:structInit extern class Lsp_FileOperationFilter {
 	/**
 		```lua
 		(field) lsp.FileOperationFilter.pattern: lsp.FileOperationPattern

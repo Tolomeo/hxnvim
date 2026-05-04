@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Optional filters |kwargs|, or `nil` for all.
 **/
-extern class Vim_Lsp_InlayHint_Enable_Filter {
+@:structInit extern class Vim_Lsp_InlayHint_Enable_Filter {
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.enable.Filter.bufnr: integer?

@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.fn.winlayout.empty
 	```
 **/
-extern class Vim_Fn_Winlayout_Empty {
+@:structInit extern class Vim_Fn_Winlayout_Empty {
 
 }

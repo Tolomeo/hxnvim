@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientSymbolResolveOptions
 	```
 **/
-extern class Lsp_ClientSymbolResolveOptions {
+@:structInit extern class Lsp_ClientSymbolResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientSymbolResolveOptions.properties: string[]

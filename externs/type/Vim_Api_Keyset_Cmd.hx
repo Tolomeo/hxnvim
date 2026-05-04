@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.cmd
 	```
 **/
-extern class Vim_Api_Keyset_Cmd {
+@:structInit extern class Vim_Api_Keyset_Cmd {
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.addr: string?

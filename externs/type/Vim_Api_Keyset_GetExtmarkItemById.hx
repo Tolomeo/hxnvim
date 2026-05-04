@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.api.keyset.get_extmark_item_by_id
 	```
 **/
-extern class Vim_Api_Keyset_GetExtmarkItemById {
+@:structInit extern class Vim_Api_Keyset_GetExtmarkItemById {
 
 }

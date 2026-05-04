@@ -12,7 +12,7 @@ package externs.type;
 	folder root, but it can be another absolute URI as well.
 	
 **/
-extern class Lsp_RelativePattern {
+@:structInit extern class Lsp_RelativePattern {
 	/**
 		```lua
 		(field) lsp.RelativePattern.baseUri: string|lsp.WorkspaceFolder

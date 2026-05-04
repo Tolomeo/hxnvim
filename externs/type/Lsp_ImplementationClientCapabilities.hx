@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ImplementationClientCapabilities
 	```
 **/
-extern class Lsp_ImplementationClientCapabilities {
+@:structInit extern class Lsp_ImplementationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ImplementationClientCapabilities.dynamicRegistration: boolean?

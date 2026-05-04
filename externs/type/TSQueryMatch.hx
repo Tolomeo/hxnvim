@@ -5,7 +5,7 @@ package externs.type;
 	(class) TSQueryMatch
 	```
 **/
-extern class TSQueryMatch {
+@:structInit extern class TSQueryMatch {
 	/**
 		```lua
 		(field) TSQueryMatch.captures: fun(self: TSQueryMatch):table<integer, TSNode[]>

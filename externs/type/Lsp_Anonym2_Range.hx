@@ -5,6 +5,6 @@ package externs.type;
 	(class) lsp._anonym2.range
 	```
 **/
-extern class Lsp_Anonym2_Range {
+@:structInit extern class Lsp_Anonym2_Range {
 
 }

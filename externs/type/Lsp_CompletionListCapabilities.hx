@@ -11,7 +11,7 @@ package externs.type;
 	capabilities.
 	
 **/
-extern class Lsp_CompletionListCapabilities {
+@:structInit extern class Lsp_CompletionListCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionListCapabilities.applyKindSupport: boolean?

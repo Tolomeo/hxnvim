@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.keymap.del.Opts
 	```
 **/
-extern class Vim_Keymap_Del_Opts {
+@:structInit extern class Vim_Keymap_Del_Opts {
 	/**
 		```lua
 		(field) vim.keymap.del.Opts.buffer: (boolean|integer)?

@@ -10,7 +10,7 @@ package externs.type;
 	Type hierarchy options used during static registration.
 	
 **/
-extern class Lsp_TypeHierarchyOptions {
+@:structInit extern class Lsp_TypeHierarchyOptions {
 	/**
 		```lua
 		(field) lsp.TypeHierarchyOptions.workDoneProgress: boolean?

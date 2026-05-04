@@ -9,7 +9,7 @@ package externs.type;
 	(class) vim.lsp.Client.Progress
 	```
 **/
-extern class Vim_Lsp_Client_Progress {
+@:structInit extern class Vim_Lsp_Client_Progress {
 	/**
 		```lua
 		function vim.Ringbuf.clear(self: vim.Ringbuf)

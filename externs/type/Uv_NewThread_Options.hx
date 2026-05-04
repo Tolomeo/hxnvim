@@ -10,7 +10,7 @@ package externs.type;
 	 uv.new_thread.options
 	
 **/
-extern class Uv_NewThread_Options {
+@:structInit extern class Uv_NewThread_Options {
 	/**
 		```lua
 		(field) uv.new_thread.options.stack_size: integer

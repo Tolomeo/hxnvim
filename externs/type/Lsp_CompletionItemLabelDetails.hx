@@ -10,7 +10,7 @@ package externs.type;
 	Additional details for a completion item label.
 	
 **/
-extern class Lsp_CompletionItemLabelDetails {
+@:structInit extern class Lsp_CompletionItemLabelDetails {
 	/**
 		```lua
 		(field) lsp.CompletionItemLabelDetails.description: string?

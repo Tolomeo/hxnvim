@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.CodeLensWorkspaceClientCapabilities
 	```
 **/
-extern class Lsp_CodeLensWorkspaceClientCapabilities {
+@:structInit extern class Lsp_CodeLensWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeLensWorkspaceClientCapabilities.refreshSupport: boolean?

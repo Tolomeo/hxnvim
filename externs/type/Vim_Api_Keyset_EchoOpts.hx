@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.echo_opts
 	```
 **/
-extern class Vim_Api_Keyset_EchoOpts {
+@:structInit extern class Vim_Api_Keyset_EchoOpts {
 	/**
 		```lua
 		(field) vim.api.keyset.echo_opts.err: boolean?

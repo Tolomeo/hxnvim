@@ -9,7 +9,7 @@ package externs.type;
 	
 	Text document specific client capabilities.
 **/
-extern class Lsp_TextDocumentClientCapabilities {
+@:structInit extern class Lsp_TextDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.callHierarchy: (lsp.CallHierarchyClientCapabilities)?

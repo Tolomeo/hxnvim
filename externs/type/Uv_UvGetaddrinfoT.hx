@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.uv_getaddrinfo_t
 	```
 **/
-extern class Uv_UvGetaddrinfoT {
+@:structInit extern class Uv_UvGetaddrinfoT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign
 	```
 **/
-extern class Vim_Fn_Sign {
+@:structInit extern class Vim_Fn_Sign {
 	/**
 		```lua
 		(field) vim.fn.sign.group: string

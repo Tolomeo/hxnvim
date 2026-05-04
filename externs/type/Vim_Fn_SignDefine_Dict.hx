@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign_define.dict
 	```
 **/
-extern class Vim_Fn_SignDefine_Dict {
+@:structInit extern class Vim_Fn_SignDefine_Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.culhl: string?

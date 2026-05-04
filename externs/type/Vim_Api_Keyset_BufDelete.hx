@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.buf_delete
 	```
 **/
-extern class Vim_Api_Keyset_BufDelete {
+@:structInit extern class Vim_Api_Keyset_BufDelete {
 	/**
 		```lua
 		(field) vim.api.keyset.buf_delete.force: boolean?

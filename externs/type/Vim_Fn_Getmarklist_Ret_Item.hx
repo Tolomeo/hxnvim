@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.getmarklist.ret.item
 	```
 **/
-extern class Vim_Fn_Getmarklist_Ret_Item {
+@:structInit extern class Vim_Fn_Getmarklist_Ret_Item {
 	/**
 		```lua
 		(field) vim.fn.getmarklist.ret.item.file: string

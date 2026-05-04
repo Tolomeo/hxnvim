@@ -9,7 +9,7 @@ package externs.type;
 	
 	Value-object describing what options formatting should use.
 **/
-extern class Lsp_FormattingOptions {
+@:structInit extern class Lsp_FormattingOptions {
 	/**
 		```lua
 		(field) lsp.FormattingOptions.insertFinalNewline: boolean?

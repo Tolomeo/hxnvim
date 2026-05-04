@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link SignatureHelpRequest}.
 **/
-extern class Lsp_SignatureHelpClientCapabilities {
+@:structInit extern class Lsp_SignatureHelpClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.contextSupport: boolean?

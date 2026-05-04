@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.udp_recv_start.callback.addr
 	```
 **/
-extern class Uv_UdpRecvStart_Callback_Addr {
+@:structInit extern class Uv_UdpRecvStart_Callback_Addr {
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"

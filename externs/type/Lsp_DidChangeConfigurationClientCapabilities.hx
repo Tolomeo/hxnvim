@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DidChangeConfigurationClientCapabilities
 	```
 **/
-extern class Lsp_DidChangeConfigurationClientCapabilities {
+@:structInit extern class Lsp_DidChangeConfigurationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DidChangeConfigurationClientCapabilities.dynamicRegistration: boolean?

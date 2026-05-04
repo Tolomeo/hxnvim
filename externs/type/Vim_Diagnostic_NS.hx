@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.NS
 	```
 **/
-extern class Vim_Diagnostic_NS {
+@:structInit extern class Vim_Diagnostic_NS {
 	/**
 		```lua
 		(field) vim.diagnostic.NS.disabled: boolean?

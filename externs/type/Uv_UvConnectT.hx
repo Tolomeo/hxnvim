@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.uv_connect_t
 	```
 **/
-extern class Uv_UvConnectT {
+@:structInit extern class Uv_UvConnectT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

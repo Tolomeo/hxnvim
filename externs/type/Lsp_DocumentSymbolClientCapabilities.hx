@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link DocumentSymbolRequest}.
 **/
-extern class Lsp_DocumentSymbolClientCapabilities {
+@:structInit extern class Lsp_DocumentSymbolClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.dynamicRegistration: boolean?

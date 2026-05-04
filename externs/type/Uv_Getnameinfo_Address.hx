@@ -10,7 +10,7 @@ package externs.type;
 	 uv.getnameinfo.address
 	
 **/
-extern class Uv_Getnameinfo_Address {
+@:structInit extern class Uv_Getnameinfo_Address {
 	/**
 		```lua
 		(field) uv.getnameinfo.address.family: string|integer

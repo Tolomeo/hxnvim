@@ -5,7 +5,7 @@ package externs.type;
 	(class) TSLangMetadata
 	```
 **/
-extern class TSLangMetadata {
+@:structInit extern class TSLangMetadata {
 	/**
 		```lua
 		(field) TSLangMetadata.major_version: integer

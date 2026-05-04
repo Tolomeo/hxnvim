@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DocumentColorRegistrationOptions
 	```
 **/
-extern class Lsp_DocumentColorRegistrationOptions {
+@:structInit extern class Lsp_DocumentColorRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DocumentColorRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientSignatureInformationOptions
 	```
 **/
-extern class Lsp_ClientSignatureInformationOptions {
+@:structInit extern class Lsp_ClientSignatureInformationOptions {
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.activeParameterSupport: boolean?

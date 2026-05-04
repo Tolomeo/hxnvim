@@ -10,7 +10,7 @@ package externs.type;
 	Value-object that contains additional information when
 	requesting references.
 **/
-extern class Lsp_ReferenceContext {
+@:structInit extern class Lsp_ReferenceContext {
 	/**
 		```lua
 		(field) lsp.ReferenceContext.includeDeclaration: boolean

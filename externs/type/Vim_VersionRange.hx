@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.VersionRange
 	```
 **/
-extern class Vim_VersionRange {
+@:structInit extern class Vim_VersionRange {
 	/**
 		```lua
 		(field) vim.VersionRange.from: vim.Version

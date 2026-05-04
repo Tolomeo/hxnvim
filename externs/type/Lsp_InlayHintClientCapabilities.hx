@@ -10,7 +10,7 @@ package externs.type;
 	Inlay hint client capabilities.
 	
 **/
-extern class Lsp_InlayHintClientCapabilities {
+@:structInit extern class Lsp_InlayHintClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlayHintClientCapabilities.dynamicRegistration: boolean?

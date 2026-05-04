@@ -10,7 +10,7 @@ package externs.type;
 	Represents a diagnostic, such as a compiler error or warning. Diagnostic objects
 	are only valid in the scope of a resource.
 **/
-extern class Lsp_Diagnostic {
+@:structInit extern class Lsp_Diagnostic {
 	/**
 		```lua
 		(field) lsp.Diagnostic.code: (string|integer)?

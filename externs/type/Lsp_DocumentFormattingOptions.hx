@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentFormattingRequest}.
 **/
-extern class Lsp_DocumentFormattingOptions {
+@:structInit extern class Lsp_DocumentFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingOptions.workDoneProgress: boolean?

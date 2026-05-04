@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign_unplacelist.list.item
 	```
 **/
-extern class Vim_Fn_SignUnplacelist_List_Item {
+@:structInit extern class Vim_Fn_SignUnplacelist_List_Item {
 	/**
 		```lua
 		(field) vim.fn.sign_unplacelist.list.item.buffer: (string|integer)?

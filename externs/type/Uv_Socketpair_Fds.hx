@@ -5,6 +5,6 @@ package externs.type;
 	(alias) uv.socketpair.fds Expand to { [1]: integer, [2]: integer }
 	```
 **/
-extern class Uv_Socketpair_Fds {
+@:structInit extern class Uv_Socketpair_Fds {
 
 }

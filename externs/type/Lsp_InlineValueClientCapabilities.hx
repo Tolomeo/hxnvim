@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to inline values.
 	
 **/
-extern class Lsp_InlineValueClientCapabilities {
+@:structInit extern class Lsp_InlineValueClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineValueClientCapabilities.dynamicRegistration: boolean?

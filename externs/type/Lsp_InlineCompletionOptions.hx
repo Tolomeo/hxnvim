@@ -10,7 +10,7 @@ package externs.type;
 	Inline completion options used during static registration.
 	
 **/
-extern class Lsp_InlineCompletionOptions {
+@:structInit extern class Lsp_InlineCompletionOptions {
 	/**
 		```lua
 		(field) lsp.InlineCompletionOptions.workDoneProgress: boolean?

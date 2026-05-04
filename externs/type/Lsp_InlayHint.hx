@@ -10,7 +10,7 @@ package externs.type;
 	Inlay hint information.
 	
 **/
-extern class Lsp_InlayHint {
+@:structInit extern class Lsp_InlayHint {
 	/**
 		```lua
 		(field) lsp.InlayHint.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?

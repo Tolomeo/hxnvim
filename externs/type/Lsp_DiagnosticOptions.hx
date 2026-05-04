@@ -10,7 +10,7 @@ package externs.type;
 	Diagnostic options.
 	
 **/
-extern class Lsp_DiagnosticOptions {
+@:structInit extern class Lsp_DiagnosticOptions {
 	/**
 		```lua
 		(field) lsp.DiagnosticOptions.identifier: string?

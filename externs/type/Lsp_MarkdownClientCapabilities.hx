@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to the used markdown parser.
 	
 **/
-extern class Lsp_MarkdownClientCapabilities {
+@:structInit extern class Lsp_MarkdownClientCapabilities {
 	/**
 		```lua
 		(field) lsp.MarkdownClientCapabilities.allowedTags: string[]?

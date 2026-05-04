@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DidChangeWatchedFilesClientCapabilities
 	```
 **/
-extern class Lsp_DidChangeWatchedFilesClientCapabilities {
+@:structInit extern class Lsp_DidChangeWatchedFilesClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DidChangeWatchedFilesClientCapabilities.dynamicRegistration: boolean?

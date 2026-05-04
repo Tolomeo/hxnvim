@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.dev.inspect_tree.Opts
 	```
 **/
-extern class Vim_Treesitter_Dev_InspectTree_Opts {
+@:structInit extern class Vim_Treesitter_Dev_InspectTree_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.bufnr: integer?

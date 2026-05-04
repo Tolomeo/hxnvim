@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.cpu_info.cpu
 	```
 **/
-extern class Uv_CpuInfo_Cpu {
+@:structInit extern class Uv_CpuInfo_Cpu {
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.model: string

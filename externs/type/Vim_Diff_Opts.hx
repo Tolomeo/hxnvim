@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Optional parameters:
 **/
-extern class Vim_Diff_Opts {
+@:structInit extern class Vim_Diff_Opts {
 	/**
 		```lua
 		(field) vim.diff.Opts.algorithm: ('histogram'|'minimal'|'myers'|'patience')?

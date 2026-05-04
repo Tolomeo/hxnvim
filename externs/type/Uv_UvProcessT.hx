@@ -11,7 +11,7 @@ package externs.type;
 	 establish communication channels with it using streams.
 	
 **/
-extern class Uv_UvProcessT {
+@:structInit extern class Uv_UvProcessT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

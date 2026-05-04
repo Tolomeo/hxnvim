@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.CallHierarchyClientCapabilities
 	```
 **/
-extern class Lsp_CallHierarchyClientCapabilities {
+@:structInit extern class Lsp_CallHierarchyClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CallHierarchyClientCapabilities.dynamicRegistration: boolean?

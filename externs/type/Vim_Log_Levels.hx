@@ -1,6 +1,6 @@
 package externs.type;
 
-extern enum abstract Vim_Log_Levels(Float) from Float to Float {
+@:structInit extern enum abstract Vim_Log_Levels(Float) from Float to Float {
 	var WARN = "3";
 	var TRACE = "0";
 	var OFF = "5";

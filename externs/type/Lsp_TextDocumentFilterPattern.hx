@@ -10,7 +10,7 @@ package externs.type;
 	A document filter where `pattern` is required field.
 	
 **/
-extern class Lsp_TextDocumentFilterPattern {
+@:structInit extern class Lsp_TextDocumentFilterPattern {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterPattern.language: string?

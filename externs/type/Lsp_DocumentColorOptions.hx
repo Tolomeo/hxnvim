@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DocumentColorOptions
 	```
 **/
-extern class Lsp_DocumentColorOptions {
+@:structInit extern class Lsp_DocumentColorOptions {
 	/**
 		```lua
 		(field) lsp.DocumentColorOptions.workDoneProgress: boolean?

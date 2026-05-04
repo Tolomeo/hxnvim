@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SelectionRangeRegistrationOptions
 	```
 **/
-extern class Lsp_SelectionRangeRegistrationOptions {
+@:structInit extern class Lsp_SelectionRangeRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.SelectionRangeRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

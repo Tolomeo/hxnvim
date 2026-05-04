@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.Client.Flags
 	```
 **/
-extern class Vim_Lsp_Client_Flags {
+@:structInit extern class Vim_Lsp_Client_Flags {
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.allow_incremental_sync: boolean?

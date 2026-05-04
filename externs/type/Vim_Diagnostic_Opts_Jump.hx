@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.Opts.Jump
 	```
 **/
-extern class Vim_Diagnostic_Opts_Jump {
+@:structInit extern class Vim_Diagnostic_Opts_Jump {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.float: (boolean|vim.diagnostic.Opts.Float)?

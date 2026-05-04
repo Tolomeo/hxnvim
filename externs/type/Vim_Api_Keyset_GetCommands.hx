@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_commands
 	```
 **/
-extern class Vim_Api_Keyset_GetCommands {
+@:structInit extern class Vim_Api_Keyset_GetCommands {
 	/**
 		```lua
 		(field) vim.api.keyset.get_commands.builtin: boolean?

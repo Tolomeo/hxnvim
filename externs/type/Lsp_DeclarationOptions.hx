@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DeclarationOptions
 	```
 **/
-extern class Lsp_DeclarationOptions {
+@:structInit extern class Lsp_DeclarationOptions {
 	/**
 		```lua
 		(field) lsp.DeclarationOptions.workDoneProgress: boolean?

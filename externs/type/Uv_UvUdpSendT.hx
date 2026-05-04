@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.uv_udp_send_t
 	```
 **/
-extern class Uv_UvUdpSendT {
+@:structInit extern class Uv_UvUdpSendT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

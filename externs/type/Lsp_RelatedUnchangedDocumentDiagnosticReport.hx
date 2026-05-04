@@ -10,7 +10,7 @@ package externs.type;
 	An unchanged diagnostic report with a set of related documents.
 	
 **/
-extern class Lsp_RelatedUnchangedDocumentDiagnosticReport {
+@:structInit extern class Lsp_RelatedUnchangedDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.kind: "unchanged"

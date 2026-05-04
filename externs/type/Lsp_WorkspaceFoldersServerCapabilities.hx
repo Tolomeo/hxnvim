@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.WorkspaceFoldersServerCapabilities
 	```
 **/
-extern class Lsp_WorkspaceFoldersServerCapabilities {
+@:structInit extern class Lsp_WorkspaceFoldersServerCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersServerCapabilities.changeNotifications: (boolean|string)?

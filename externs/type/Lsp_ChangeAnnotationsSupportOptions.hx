@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ChangeAnnotationsSupportOptions
 	```
 **/
-extern class Lsp_ChangeAnnotationsSupportOptions {
+@:structInit extern class Lsp_ChangeAnnotationsSupportOptions {
 	/**
 		```lua
 		(field) lsp.ChangeAnnotationsSupportOptions.groupsOnLabel: boolean?
