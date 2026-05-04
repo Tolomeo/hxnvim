@@ -36,7 +36,7 @@ class NamespaceModuleGenerator extends Generator {
 		super();
 	}
 
-	public function make(parsedModule:ParsedModule) {
+	public function generateTypes(parsedModule:ParsedModule) {
 		final moduleTypes = new Array<TypeDefinition>();
 
 		final private_:Metadata = {name: 'private'};
@@ -92,7 +92,7 @@ class NamespaceModuleGenerator extends Generator {
 		final result = new Array<String>();
 		result.push(this.generatePackage(modulePack));
 
-		final moduleTypes = this.make(parsedModule);
+		final moduleTypes = this.generateTypes(parsedModule);
 
 		for (moduleType in moduleTypes) {
 			result.push(printer.printTypeDefinition(moduleType));
@@ -107,7 +107,7 @@ class TypeModuleGenerator extends Generator {
 		super();
 	}
 
-	public function make(parsedModule:ParsedModule) {
+	public function generateTypes(parsedModule:ParsedModule) {
 		final moduleTypes = new Array<TypeDefinition>();
 
 		for (_ => type in parsedModule.types.keyValueIterator()) {
@@ -140,15 +140,15 @@ class TypeModuleGenerator extends Generator {
 					moduleTypes.push(new AliasGenerator().generate(alias));
 				} else {
 					final metaMainAlias:Metadata = {name: 'native', params: [alias.name]};
-					moduleTypes.push(new AliasGenerator().generate(alias, [private_, structInit]));
+					moduleTypes.push(new AliasGenerator().generate(alias, [private_]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: alias.name}, [metaMainAlias]));
 				}
 			case ParsedSymbol.ParsedEnumerator(enumerator):
 				if (this.moduleName == enumerator.name) {
-					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [structInit]));
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator));
 				} else {
 					final metaMainEnumerator:Metadata = {name: 'native', params: [enumerator.name]};
-					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [private_, structInit]));
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [private_]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: enumerator.name}, [metaMainEnumerator]));
 				}
 			case s:
@@ -163,7 +163,7 @@ class TypeModuleGenerator extends Generator {
 		final result = new Array<String>();
 		result.push(this.generatePackage(modulePack));
 
-		final moduleTypes = this.make(parsedModule);
+		final moduleTypes = this.generateTypes(parsedModule);
 
 		for (moduleType in moduleTypes) {
 			result.push(printer.printTypeDefinition(moduleType));
