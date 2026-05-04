@@ -10,7 +10,7 @@ package externs.type;
 	A diagnostic report with a full set of problems.
 	
 **/
-@:native("lsp.FullDocumentDiagnosticReport") extern class Lsp_FullDocumentDiagnosticReport {
+extern class Lsp_FullDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.FullDocumentDiagnosticReport.items: lsp.Diagnostic[]

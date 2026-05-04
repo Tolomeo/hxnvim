@@ -12,7 +12,7 @@ package externs.type;
 	 they can work on file systems where fs event handles can't.
 	
 **/
-@:native("uv.uv_fs_poll_t") extern class Uv_UvFsPollT {
+extern class Uv_UvFsPollT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

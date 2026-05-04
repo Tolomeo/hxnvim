@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.cpu_info.cpu
 	```
 **/
-@:native("uv.cpu_info.cpu") extern class Uv_CpuInfo_Cpu {
+extern class Uv_CpuInfo_Cpu {
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.model: string

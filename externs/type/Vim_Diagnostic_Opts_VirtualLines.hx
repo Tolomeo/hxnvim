@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.Opts.VirtualLines
 	```
 **/
-@:native("vim.diagnostic.Opts.VirtualLines") extern class Vim_Diagnostic_Opts_VirtualLines {
+extern class Vim_Diagnostic_Opts_VirtualLines {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualLines.current_line: boolean?

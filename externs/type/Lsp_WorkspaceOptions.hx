@@ -10,7 +10,7 @@ package externs.type;
 	Defines workspace specific capabilities of the server.
 	
 **/
-@:native("lsp.WorkspaceOptions") extern class Lsp_WorkspaceOptions {
+extern class Lsp_WorkspaceOptions {
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.fileOperations: (lsp.FileOperationOptions)?

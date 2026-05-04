@@ -13,7 +13,7 @@ package externs.type;
 	 for an example of how to obtain a query object.
 	
 **/
-@:native("TSQuery") extern class TSQuery {
+extern class TSQuery {
 	/**
 		```lua
 		(method) TSQuery:disable_capture(capture_name: string)

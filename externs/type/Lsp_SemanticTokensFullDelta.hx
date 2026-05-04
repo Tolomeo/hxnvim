@@ -10,7 +10,7 @@ package externs.type;
 	Semantic tokens options to support deltas for full documents
 	
 **/
-@:native("lsp.SemanticTokensFullDelta") extern class Lsp_SemanticTokensFullDelta {
+extern class Lsp_SemanticTokensFullDelta {
 	/**
 		```lua
 		(field) lsp.SemanticTokensFullDelta.delta: boolean?

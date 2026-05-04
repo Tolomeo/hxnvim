@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_mode
 	```
 **/
-@:native("vim.api.keyset.get_mode") extern class Vim_Api_Keyset_GetMode {
+extern class Vim_Api_Keyset_GetMode {
 	/**
 		```lua
 		(field) vim.api.keyset.get_mode.blocking: boolean

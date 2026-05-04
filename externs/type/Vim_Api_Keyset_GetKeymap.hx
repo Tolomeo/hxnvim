@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_keymap
 	```
 **/
-@:native("vim.api.keyset.get_keymap") extern class Vim_Api_Keyset_GetKeymap {
+extern class Vim_Api_Keyset_GetKeymap {
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.abbr: (0|1)?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.LocationOpts.OnList
 	```
 **/
-@:native("vim.lsp.LocationOpts.OnList") extern class Vim_Lsp_LocationOpts_OnList {
+extern class Vim_Lsp_LocationOpts_OnList {
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.context: { bufnr: integer, method: string }?

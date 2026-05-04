@@ -10,7 +10,7 @@ package externs.type;
 	A parameter literal used in requests to pass a text document and a position inside that
 	document.
 **/
-@:native("lsp.TextDocumentPositionParams") extern class Lsp_TextDocumentPositionParams {
+extern class Lsp_TextDocumentPositionParams {
 	/**
 		```lua
 		(field) lsp.TextDocumentPositionParams.position: lsp.Position

@@ -10,7 +10,7 @@ package externs.type;
 	Inlay hint options used during static registration.
 	
 **/
-@:native("lsp.InlayHintOptions") extern class Lsp_InlayHintOptions {
+extern class Lsp_InlayHintOptions {
 	/**
 		```lua
 		(field) lsp.InlayHintOptions.resolveProvider: boolean?

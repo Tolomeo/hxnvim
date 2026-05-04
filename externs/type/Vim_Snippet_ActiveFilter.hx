@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.snippet.ActiveFilter
 	```
 **/
-@:native("vim.snippet.ActiveFilter") extern class Vim_Snippet_ActiveFilter {
+extern class Vim_Snippet_ActiveFilter {
 	/**
 		```lua
 		(field) vim.snippet.ActiveFilter.direction: -1|1

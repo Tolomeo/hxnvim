@@ -9,7 +9,7 @@ package externs.type;
 	
 	Defines the capabilities provided by the client.
 **/
-@:native("lsp.ClientCapabilities") extern class Lsp_ClientCapabilities {
+extern class Lsp_ClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.experimental: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?

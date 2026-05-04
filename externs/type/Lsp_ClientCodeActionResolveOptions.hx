@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientCodeActionResolveOptions
 	```
 **/
-@:native("lsp.ClientCodeActionResolveOptions") extern class Lsp_ClientCodeActionResolveOptions {
+extern class Lsp_ClientCodeActionResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeActionResolveOptions.properties: string[]

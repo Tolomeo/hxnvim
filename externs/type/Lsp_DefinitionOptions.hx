@@ -9,7 +9,7 @@ package externs.type;
 	
 	Server Capabilities for a {@link DefinitionRequest}.
 **/
-@:native("lsp.DefinitionOptions") extern class Lsp_DefinitionOptions {
+extern class Lsp_DefinitionOptions {
 	/**
 		```lua
 		(field) lsp.DefinitionOptions.workDoneProgress: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientCompletionItemResolveOptions
 	```
 **/
-@:native("lsp.ClientCompletionItemResolveOptions") extern class Lsp_ClientCompletionItemResolveOptions {
+extern class Lsp_ClientCompletionItemResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemResolveOptions.properties: string[]

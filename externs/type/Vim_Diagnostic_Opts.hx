@@ -13,7 +13,7 @@ package externs.type;
 	 - `table`: Enable this feature with overrides. Use an empty table to use default values.
 	 - `function`: Function with signature (namespace, bufnr) that returns any of the above.
 **/
-@:native("vim.diagnostic.Opts") extern class Vim_Diagnostic_Opts {
+extern class Vim_Diagnostic_Opts {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.float: (boolean|fun(namespace: integer, bufnr: integer):vim.diagnostic.Opts.Float|vim.diagnostic.Opts.Float)?

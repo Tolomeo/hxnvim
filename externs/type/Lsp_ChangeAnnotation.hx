@@ -10,7 +10,7 @@ package externs.type;
 	Additional information that describes document changes.
 	
 **/
-@:native("lsp.ChangeAnnotation") extern class Lsp_ChangeAnnotation {
+extern class Lsp_ChangeAnnotation {
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.description: string?

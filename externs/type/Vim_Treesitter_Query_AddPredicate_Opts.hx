@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.query.add_predicate.Opts
 	```
 **/
-@:native("vim.treesitter.query.add_predicate.Opts") extern class Vim_Treesitter_Query_AddPredicate_Opts {
+extern class Vim_Treesitter_Query_AddPredicate_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.query.add_predicate.Opts.all: boolean?

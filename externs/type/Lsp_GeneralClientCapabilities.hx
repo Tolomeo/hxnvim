@@ -10,7 +10,7 @@ package externs.type;
 	General client capabilities.
 	
 **/
-@:native("lsp.GeneralClientCapabilities") extern class Lsp_GeneralClientCapabilities {
+extern class Lsp_GeneralClientCapabilities {
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.markdown: (lsp.MarkdownClientCapabilities)?

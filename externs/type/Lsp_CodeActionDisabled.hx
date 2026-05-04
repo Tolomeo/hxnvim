@@ -10,7 +10,7 @@ package externs.type;
 	Captures why the code action is currently disabled.
 	
 **/
-@:native("lsp.CodeActionDisabled") extern class Lsp_CodeActionDisabled {
+extern class Lsp_CodeActionDisabled {
 	/**
 		```lua
 		(field) lsp.CodeActionDisabled.reason: string

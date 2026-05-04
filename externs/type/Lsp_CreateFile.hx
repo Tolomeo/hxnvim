@@ -9,7 +9,7 @@ package externs.type;
 	
 	Create file operation.
 **/
-@:native("lsp.CreateFile") extern class Lsp_CreateFile {
+extern class Lsp_CreateFile {
 	/**
 		```lua
 		(field) lsp.CreateFile.annotationId: string?

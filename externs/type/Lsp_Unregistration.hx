@@ -9,7 +9,7 @@ package externs.type;
 	
 	General parameters to unregister a request or notification.
 **/
-@:native("lsp.Unregistration") extern class Lsp_Unregistration {
+extern class Lsp_Unregistration {
 	/**
 		```lua
 		(field) lsp.Unregistration.id: string

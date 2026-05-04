@@ -10,7 +10,7 @@ package externs.type;
 	Additional details for a completion item label.
 	
 **/
-@:native("lsp.CompletionItemLabelDetails") extern class Lsp_CompletionItemLabelDetails {
+extern class Lsp_CompletionItemLabelDetails {
 	/**
 		```lua
 		(field) lsp.CompletionItemLabelDetails.description: string?

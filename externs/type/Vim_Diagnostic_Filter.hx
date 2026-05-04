@@ -10,7 +10,7 @@ package externs.type;
 	 TODO: inherit from `vim.diagnostic.Opts`, implement its fields.
 	 Optional filters |kwargs|, or `nil` for all.
 **/
-@:native("vim.diagnostic.Filter") extern class Vim_Diagnostic_Filter {
+extern class Vim_Diagnostic_Filter {
 	/**
 		```lua
 		(field) vim.diagnostic.Filter.bufnr: integer?

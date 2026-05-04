@@ -10,7 +10,7 @@ package externs.type;
 	A special text edit with an additional change annotation.
 	
 **/
-@:native("lsp.AnnotatedTextEdit") extern class Lsp_AnnotatedTextEdit {
+extern class Lsp_AnnotatedTextEdit {
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.annotationId: string

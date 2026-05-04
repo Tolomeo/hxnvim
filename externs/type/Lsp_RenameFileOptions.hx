@@ -9,7 +9,7 @@ package externs.type;
 	
 	Rename file options
 **/
-@:native("lsp.RenameFileOptions") extern class Lsp_RenameFileOptions {
+extern class Lsp_RenameFileOptions {
 	/**
 		```lua
 		(field) lsp.RenameFileOptions.ignoreIfExists: boolean?

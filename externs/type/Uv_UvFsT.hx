@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.uv_fs_t
 	```
 **/
-@:native("uv.uv_fs_t") extern class Uv_UvFsT {
+extern class Uv_UvFsT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

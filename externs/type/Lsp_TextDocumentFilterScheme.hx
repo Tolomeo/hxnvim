@@ -10,7 +10,7 @@ package externs.type;
 	A document filter where `scheme` is required field.
 	
 **/
-@:native("lsp.TextDocumentFilterScheme") extern class Lsp_TextDocumentFilterScheme {
+extern class Lsp_TextDocumentFilterScheme {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterScheme.language: string?

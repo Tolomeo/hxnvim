@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.util.open_floating_preview.Opts
 	```
 **/
-@:native("vim.lsp.util.open_floating_preview.Opts") extern class Vim_Lsp_Util_OpenFloatingPreview_Opts {
+extern class Vim_Lsp_Util_OpenFloatingPreview_Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.open_floating_preview.Opts._update_win: integer?

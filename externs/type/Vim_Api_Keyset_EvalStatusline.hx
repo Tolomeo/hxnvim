@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.eval_statusline
 	```
 **/
-@:native("vim.api.keyset.eval_statusline") extern class Vim_Api_Keyset_EvalStatusline {
+extern class Vim_Api_Keyset_EvalStatusline {
 	/**
 		```lua
 		(field) vim.api.keyset.eval_statusline.fillchar: string?

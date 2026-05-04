@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_copyfile.flags_t
 	```
 **/
-@:native("uv.fs_copyfile.flags_t") extern class Uv_FsCopyfile_FlagsT {
+extern class Uv_FsCopyfile_FlagsT {
 	/**
 		```lua
 		(field) uv.fs_copyfile.flags_t.excl: boolean

@@ -1,3 +1,3 @@
 package externs.type;
 
-@:native("lsp.CodeActionTriggerKind") extern typedef Lsp_CodeActionTriggerKind = Float;
+extern typedef Lsp_CodeActionTriggerKind = Float;

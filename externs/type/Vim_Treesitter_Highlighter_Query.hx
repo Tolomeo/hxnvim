@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.highlighter.Query
 	```
 **/
-@:native("vim.treesitter.highlighter.Query") extern class Vim_Treesitter_Highlighter_Query {
+extern class Vim_Treesitter_Highlighter_Query {
 	/**
 		```lua
 		(method) vim.treesitter.highlighter.Query:query()

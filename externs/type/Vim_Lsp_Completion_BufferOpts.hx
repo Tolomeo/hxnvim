@@ -9,7 +9,7 @@ package externs.type;
 	
 	 @inlinedoc
 **/
-@:native("vim.lsp.completion.BufferOpts") extern class Vim_Lsp_Completion_BufferOpts {
+extern class Vim_Lsp_Completion_BufferOpts {
 	/**
 		```lua
 		(field) vim.lsp.completion.BufferOpts.autotrigger: boolean?

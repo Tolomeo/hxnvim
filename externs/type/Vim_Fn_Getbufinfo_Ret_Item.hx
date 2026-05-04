@@ -9,7 +9,7 @@ package externs.type;
 	(class) vim.fn.getbufinfo.ret.item
 	```
 **/
-@:native("vim.fn.getbufinfo.ret.item") extern class Vim_Fn_Getbufinfo_Ret_Item {
+extern class Vim_Fn_Getbufinfo_Ret_Item {
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.bufnr: integer

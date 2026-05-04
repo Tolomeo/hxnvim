@@ -20,7 +20,7 @@ package externs.type;
 	cause failure of the operation. How the client recovers from the failure is described by
 	the client capability: `workspace.workspaceEdit.failureHandling`
 **/
-@:native("lsp.WorkspaceEdit") extern class Lsp_WorkspaceEdit {
+extern class Lsp_WorkspaceEdit {
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.changeAnnotations: table<string, lsp.ChangeAnnotation>?

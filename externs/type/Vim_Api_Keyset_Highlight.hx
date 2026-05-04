@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.highlight
 	```
 **/
-@:native("vim.api.keyset.highlight") extern class Vim_Api_Keyset_Highlight {
+extern class Vim_Api_Keyset_Highlight {
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.altfont: boolean?

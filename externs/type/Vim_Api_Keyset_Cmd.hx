@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.cmd
 	```
 **/
-@:native("vim.api.keyset.cmd") extern class Vim_Api_Keyset_Cmd {
+extern class Vim_Api_Keyset_Cmd {
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.addr: string?

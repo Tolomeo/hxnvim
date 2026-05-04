@@ -11,7 +11,7 @@ package externs.type;
 	document by different properties.
 	
 **/
-@:native("lsp.NotebookCellTextDocumentFilter") extern class Lsp_NotebookCellTextDocumentFilter {
+extern class Lsp_NotebookCellTextDocumentFilter {
 	/**
 		```lua
 		(field) lsp.NotebookCellTextDocumentFilter.language: string?

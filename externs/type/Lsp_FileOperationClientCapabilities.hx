@@ -13,7 +13,7 @@ package externs.type;
 	like renaming a file in the UI.
 	
 **/
-@:native("lsp.FileOperationClientCapabilities") extern class Lsp_FileOperationClientCapabilities {
+extern class Lsp_FileOperationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didCreate: boolean?

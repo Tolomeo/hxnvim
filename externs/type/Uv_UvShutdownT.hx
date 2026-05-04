@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.uv_shutdown_t
 	```
 **/
-@:native("uv.uv_shutdown_t") extern class Uv_UvShutdownT {
+extern class Uv_UvShutdownT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

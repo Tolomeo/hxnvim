@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientInlayHintResolveOptions
 	```
 **/
-@:native("lsp.ClientInlayHintResolveOptions") extern class Lsp_ClientInlayHintResolveOptions {
+extern class Lsp_ClientInlayHintResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientInlayHintResolveOptions.properties: string[]

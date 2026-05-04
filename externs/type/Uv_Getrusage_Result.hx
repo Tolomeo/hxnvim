@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.getrusage.result
 	```
 **/
-@:native("uv.getrusage.result") extern class Uv_Getrusage_Result {
+extern class Uv_Getrusage_Result {
 	/**
 		```lua
 		(field) uv.getrusage.result.idrss: integer

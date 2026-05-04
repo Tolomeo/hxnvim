@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientSemanticTokensRequestFullDelta
 	```
 **/
-@:native("lsp.ClientSemanticTokensRequestFullDelta") extern class Lsp_ClientSemanticTokensRequestFullDelta {
+extern class Lsp_ClientSemanticTokensRequestFullDelta {
 	/**
 		```lua
 		(field) lsp.ClientSemanticTokensRequestFullDelta.delta: boolean?

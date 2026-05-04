@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_event_start.callback.events
 	```
 **/
-@:native("uv.fs_event_start.callback.events") extern class Uv_FsEventStart_Callback_Events {
+extern class Uv_FsEventStart_Callback_Events {
 	/**
 		```lua
 		(field) uv.fs_event_start.callback.events.change: boolean|nil

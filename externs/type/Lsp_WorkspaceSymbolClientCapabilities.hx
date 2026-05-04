@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client capabilities for a {@link WorkspaceSymbolRequest}.
 **/
-@:native("lsp.WorkspaceSymbolClientCapabilities") extern class Lsp_WorkspaceSymbolClientCapabilities {
+extern class Lsp_WorkspaceSymbolClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.dynamicRegistration: boolean?

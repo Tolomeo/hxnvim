@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.SystemOpts
 	```
 **/
-@:native("vim.SystemOpts") extern class Vim_SystemOpts {
+extern class Vim_SystemOpts {
 	/**
 		```lua
 		(field) vim.SystemOpts.clear_env: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_event_start.flags
 	```
 **/
-@:native("uv.fs_event_start.flags") extern class Uv_FsEventStart_Flags {
+extern class Uv_FsEventStart_Flags {
 	/**
 		```lua
 		(field) uv.fs_event_start.flags.recursive: boolean|nil

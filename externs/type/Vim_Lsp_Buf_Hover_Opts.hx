@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.buf.hover.Opts
 	```
 **/
-@:native("vim.lsp.buf.hover.Opts") extern class Vim_Lsp_Buf_Hover_Opts {
+extern class Vim_Lsp_Buf_Hover_Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts._update_win: integer?

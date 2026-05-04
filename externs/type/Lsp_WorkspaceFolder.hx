@@ -9,7 +9,7 @@ package externs.type;
 	
 	A workspace folder inside a client.
 **/
-@:native("lsp.WorkspaceFolder") extern class Lsp_WorkspaceFolder {
+extern class Lsp_WorkspaceFolder {
 	/**
 		```lua
 		(field) lsp.WorkspaceFolder.name: string

@@ -10,7 +10,7 @@ package externs.type;
 	 Timer handles are used to schedule callbacks to be called in the future.
 	
 **/
-@:native("uv.uv_timer_t") extern class Uv_UvTimerT {
+extern class Uv_UvTimerT {
 	/**
 		```lua
 		(method) uv.uv_timer_t:again()

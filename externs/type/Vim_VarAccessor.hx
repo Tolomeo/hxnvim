@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.var_accessor
 	```
 **/
-@:native("vim.var_accessor") extern class Vim_VarAccessor {
+extern class Vim_VarAccessor {
 
 }

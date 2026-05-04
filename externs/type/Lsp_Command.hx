@@ -12,7 +12,7 @@ package externs.type;
 	an array of arguments which will be passed to the command handler
 	function when invoked.
 **/
-@:native("lsp.Command") extern class Lsp_Command {
+extern class Lsp_Command {
 	/**
 		```lua
 		(field) lsp.Command.arguments: boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]?

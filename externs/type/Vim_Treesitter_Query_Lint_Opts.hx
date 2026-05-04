@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Optional keyword arguments:
 **/
-@:native("vim.treesitter.query.lint.Opts") extern class Vim_Treesitter_Query_Lint_Opts {
+extern class Vim_Treesitter_Query_Lint_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.query.lint.Opts.clear: boolean

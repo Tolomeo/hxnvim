@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fs.find.Opts
 	```
 **/
-@:native("vim.fs.find.Opts") extern class Vim_Fs_Find_Opts {
+extern class Vim_Fs_Find_Opts {
 	/**
 		```lua
 		(field) vim.fs.find.Opts.follow: boolean?

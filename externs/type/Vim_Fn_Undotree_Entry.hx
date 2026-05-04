@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.undotree.entry
 	```
 **/
-@:native("vim.fn.undotree.entry") extern class Vim_Fn_Undotree_Entry {
+extern class Vim_Fn_Undotree_Entry {
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.alt: vim.fn.undotree.entry[]?

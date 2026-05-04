@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.TextDocumentSyncClientCapabilities
 	```
 **/
-@:native("lsp.TextDocumentSyncClientCapabilities") extern class Lsp_TextDocumentSyncClientCapabilities {
+extern class Lsp_TextDocumentSyncClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.didSave: boolean?

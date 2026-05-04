@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.SystemObj
 	```
 **/
-@:native("vim.SystemObj") extern class Vim_SystemObj {
+extern class Vim_SystemObj {
 	/**
 		```lua
 		(field) vim.SystemObj.cmd: string[]

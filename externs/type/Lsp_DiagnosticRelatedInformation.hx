@@ -11,7 +11,7 @@ package externs.type;
 	used to point to code locations that cause or related to a diagnostics, e.g when duplicating
 	a symbol in a scope.
 **/
-@:native("lsp.DiagnosticRelatedInformation") extern class Lsp_DiagnosticRelatedInformation {
+extern class Lsp_DiagnosticRelatedInformation {
 	/**
 		```lua
 		(field) lsp.DiagnosticRelatedInformation.location: lsp.Location

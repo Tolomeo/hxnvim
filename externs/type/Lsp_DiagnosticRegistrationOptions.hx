@@ -10,7 +10,7 @@ package externs.type;
 	Diagnostic registration options.
 	
 **/
-@:native("lsp.DiagnosticRegistrationOptions") extern class Lsp_DiagnosticRegistrationOptions {
+extern class Lsp_DiagnosticRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

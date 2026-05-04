@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.setqflist.what
 	```
 **/
-@:native("vim.fn.setqflist.what") extern class Vim_Fn_Setqflist_What {
+extern class Vim_Fn_Setqflist_What {
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.context: table?

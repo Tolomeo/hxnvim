@@ -10,7 +10,7 @@ package externs.type;
 	Text document content provider registration options.
 	
 **/
-@:native("lsp.TextDocumentContentRegistrationOptions") extern class Lsp_TextDocumentContentRegistrationOptions {
+extern class Lsp_TextDocumentContentRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentRegistrationOptions.id: string?

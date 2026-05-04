@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.inlay_hint.get.ret
 	```
 **/
-@:native("vim.lsp.inlay_hint.get.ret") extern class Vim_Lsp_InlayHint_Get_Ret {
+extern class Vim_Lsp_InlayHint_Get_Ret {
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.ret.bufnr: integer

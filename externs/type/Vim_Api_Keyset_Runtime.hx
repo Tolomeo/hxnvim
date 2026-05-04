@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.runtime
 	```
 **/
-@:native("vim.api.keyset.runtime") extern class Vim_Api_Keyset_Runtime {
+extern class Vim_Api_Keyset_Runtime {
 	/**
 		```lua
 		(field) vim.api.keyset.runtime.do_source: boolean?

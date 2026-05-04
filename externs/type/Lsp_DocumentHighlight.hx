@@ -11,7 +11,7 @@ package externs.type;
 	special attention. Usually a document highlight is visualized by changing
 	the background color of its range.
 **/
-@:native("lsp.DocumentHighlight") extern class Lsp_DocumentHighlight {
+extern class Lsp_DocumentHighlight {
 	/**
 		```lua
 		(field) lsp.DocumentHighlight.kind: (1|2|3)?

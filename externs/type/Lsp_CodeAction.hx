@@ -12,7 +12,7 @@ package externs.type;
 	
 	A CodeAction must set either `edit` and/or a `command`. If both are supplied, the `edit` is applied first, then the `command` is executed.
 **/
-@:native("lsp.CodeAction") extern class Lsp_CodeAction {
+extern class Lsp_CodeAction {
 	/**
 		```lua
 		(field) lsp.CodeAction.command: (lsp.Command)?

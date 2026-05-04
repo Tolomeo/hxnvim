@@ -9,7 +9,7 @@ package externs.type;
 	
 	Delete file options
 **/
-@:native("lsp.DeleteFileOptions") extern class Lsp_DeleteFileOptions {
+extern class Lsp_DeleteFileOptions {
 	/**
 		```lua
 		(field) lsp.DeleteFileOptions.ignoreIfNotExists: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.NotebookCellLanguage
 	```
 **/
-@:native("lsp.NotebookCellLanguage") extern class Lsp_NotebookCellLanguage {
+extern class Lsp_NotebookCellLanguage {
 	/**
 		```lua
 		(field) lsp.NotebookCellLanguage.language: string

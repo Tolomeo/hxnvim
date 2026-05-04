@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientShowMessageActionItemOptions
 	```
 **/
-@:native("lsp.ClientShowMessageActionItemOptions") extern class Lsp_ClientShowMessageActionItemOptions {
+extern class Lsp_ClientShowMessageActionItemOptions {
 	/**
 		```lua
 		(field) lsp.ClientShowMessageActionItemOptions.additionalPropertiesSupport: boolean?

@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to inline completions.
 	
 **/
-@:native("lsp.InlineCompletionClientCapabilities") extern class Lsp_InlineCompletionClientCapabilities {
+extern class Lsp_InlineCompletionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineCompletionClientCapabilities.dynamicRegistration: boolean?

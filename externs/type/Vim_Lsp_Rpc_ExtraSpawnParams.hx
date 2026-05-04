@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Additional context for the LSP server process.
 **/
-@:native("vim.lsp.rpc.ExtraSpawnParams") extern class Vim_Lsp_Rpc_ExtraSpawnParams {
+extern class Vim_Lsp_Rpc_ExtraSpawnParams {
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.cwd: string?

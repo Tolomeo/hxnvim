@@ -9,7 +9,7 @@ package externs.type;
 	
 	Since 3.6.0
 **/
-@:native("lsp.TypeDefinitionClientCapabilities") extern class Lsp_TypeDefinitionClientCapabilities {
+extern class Lsp_TypeDefinitionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TypeDefinitionClientCapabilities.dynamicRegistration: boolean?

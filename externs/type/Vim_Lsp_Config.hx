@@ -9,6 +9,6 @@ package externs.type;
 	
 	 @nodoc
 **/
-@:native("vim.lsp.config") extern class Vim_Lsp_Config {
+extern class Vim_Lsp_Config {
 
 }

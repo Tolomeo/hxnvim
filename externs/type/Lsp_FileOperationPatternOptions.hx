@@ -10,7 +10,7 @@ package externs.type;
 	Matching options for the file operation pattern.
 	
 **/
-@:native("lsp.FileOperationPatternOptions") extern class Lsp_FileOperationPatternOptions {
+extern class Lsp_FileOperationPatternOptions {
 	/**
 		```lua
 		(field) lsp.FileOperationPatternOptions.ignoreCase: boolean?

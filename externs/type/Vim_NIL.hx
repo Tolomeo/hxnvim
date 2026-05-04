@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.NIL
 	```
 **/
-@:native("vim.NIL") extern class Vim_NIL {
+extern class Vim_NIL {
 
 }

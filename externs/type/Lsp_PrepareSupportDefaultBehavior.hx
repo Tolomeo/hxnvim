@@ -1,3 +1,3 @@
 package externs.type;
 
-@:native("lsp.PrepareSupportDefaultBehavior") extern typedef Lsp_PrepareSupportDefaultBehavior = Float;
+extern typedef Lsp_PrepareSupportDefaultBehavior = Float;

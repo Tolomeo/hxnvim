@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.getmousepos.ret
 	```
 **/
-@:native("vim.fn.getmousepos.ret") extern class Vim_Fn_Getmousepos_Ret {
+extern class Vim_Fn_Getmousepos_Ret {
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.column: integer

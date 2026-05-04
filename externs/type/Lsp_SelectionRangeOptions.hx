@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SelectionRangeOptions
 	```
 **/
-@:native("lsp.SelectionRangeOptions") extern class Lsp_SelectionRangeOptions {
+extern class Lsp_SelectionRangeOptions {
 	/**
 		```lua
 		(field) lsp.SelectionRangeOptions.workDoneProgress: boolean?

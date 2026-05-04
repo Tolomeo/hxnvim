@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentFormattingRequest}.
 **/
-@:native("lsp.DocumentFormattingOptions") extern class Lsp_DocumentFormattingOptions {
+extern class Lsp_DocumentFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingOptions.workDoneProgress: boolean?

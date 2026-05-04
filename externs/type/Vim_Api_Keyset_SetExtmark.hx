@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.set_extmark
 	```
 **/
-@:native("vim.api.keyset.set_extmark") extern class Vim_Api_Keyset_SetExtmark {
+extern class Vim_Api_Keyset_SetExtmark {
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.conceal: string?

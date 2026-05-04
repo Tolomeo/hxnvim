@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.CompletionItemTagOptions
 	```
 **/
-@:native("lsp.CompletionItemTagOptions") extern class Lsp_CompletionItemTagOptions {
+extern class Lsp_CompletionItemTagOptions {
 	/**
 		```lua
 		(field) lsp.CompletionItemTagOptions.valueSet: 1[]

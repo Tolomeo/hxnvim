@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.Handler
 	```
 **/
-@:native("vim.diagnostic.Handler") extern class Vim_Diagnostic_Handler {
+extern class Vim_Diagnostic_Handler {
 	/**
 		```lua
 		(field) vim.diagnostic.Handler.hide: fun(namespace: integer, bufnr: integer)?

@@ -10,7 +10,7 @@ package externs.type;
 	 uv.pipe.read_flags
 	
 **/
-@:native("uv.pipe.read_flags") extern class Uv_Pipe_ReadFlags {
+extern class Uv_Pipe_ReadFlags {
 	/**
 		```lua
 		(field) uv.pipe.read_flags.nonblock: boolean

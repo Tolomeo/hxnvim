@@ -9,7 +9,7 @@ package externs.type;
 	
 	Text document specific client capabilities.
 **/
-@:native("lsp.TextDocumentClientCapabilities") extern class Lsp_TextDocumentClientCapabilities {
+extern class Lsp_TextDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.callHierarchy: (lsp.CallHierarchyClientCapabilities)?

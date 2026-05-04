@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link SignatureHelpRequest}.
 **/
-@:native("lsp.SignatureHelpClientCapabilities") extern class Lsp_SignatureHelpClientCapabilities {
+extern class Lsp_SignatureHelpClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.contextSupport: boolean?

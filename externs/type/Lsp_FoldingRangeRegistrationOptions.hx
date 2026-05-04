@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.FoldingRangeRegistrationOptions
 	```
 **/
-@:native("lsp.FoldingRangeRegistrationOptions") extern class Lsp_FoldingRangeRegistrationOptions {
+extern class Lsp_FoldingRangeRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.FoldingRangeRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

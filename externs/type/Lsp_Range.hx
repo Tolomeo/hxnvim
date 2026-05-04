@@ -19,7 +19,7 @@ package externs.type;
 	}
 	```
 **/
-@:native("lsp.Range") extern class Lsp_Range {
+extern class Lsp_Range {
 	extern var end : Dynamic;
 	/**
 		```lua

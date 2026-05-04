@@ -9,7 +9,7 @@ package externs.type;
 	
 	Server capabilities for a {@link WorkspaceSymbolRequest}.
 **/
-@:native("lsp.WorkspaceSymbolOptions") extern class Lsp_WorkspaceSymbolOptions {
+extern class Lsp_WorkspaceSymbolOptions {
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolOptions.resolveProvider: boolean?

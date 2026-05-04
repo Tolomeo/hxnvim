@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client capabilities of a {@link DocumentFormattingRequest}.
 **/
-@:native("lsp.DocumentFormattingClientCapabilities") extern class Lsp_DocumentFormattingClientCapabilities {
+extern class Lsp_DocumentFormattingClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingClientCapabilities.dynamicRegistration: boolean?

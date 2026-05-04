@@ -9,7 +9,7 @@ package externs.type;
 	
 	General parameters to register for a notification or to register a provider.
 **/
-@:native("lsp.Registration") extern class Lsp_Registration {
+extern class Lsp_Registration {
 	/**
 		```lua
 		(field) lsp.Registration.id: string

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.language.add.Opts
 	```
 **/
-@:native("vim.treesitter.language.add.Opts") extern class Vim_Treesitter_Language_Add_Opts {
+extern class Vim_Treesitter_Language_Add_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.language.add.Opts.path: string?

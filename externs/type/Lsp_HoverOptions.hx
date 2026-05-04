@@ -9,7 +9,7 @@ package externs.type;
 	
 	Hover options.
 **/
-@:native("lsp.HoverOptions") extern class Lsp_HoverOptions {
+extern class Lsp_HoverOptions {
 	/**
 		```lua
 		(field) lsp.HoverOptions.workDoneProgress: boolean?

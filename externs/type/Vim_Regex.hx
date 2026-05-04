@@ -9,7 +9,7 @@ package externs.type;
 	
 	 @nodoc
 **/
-@:native("vim.regex") extern class Vim_Regex {
+extern class Vim_Regex {
 	/**
 		```lua
 		(method) vim.regex:match_line(bufnr: integer, line_idx: integer, start?: integer, end_?: integer)

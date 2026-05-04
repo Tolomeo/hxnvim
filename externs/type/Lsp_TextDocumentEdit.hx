@@ -12,7 +12,7 @@ package externs.type;
 	So the creator of a TextDocumentEdit doesn't need to sort the array of edits or do any
 	kind of ordering. However the edits must be non overlapping.
 **/
-@:native("lsp.TextDocumentEdit") extern class Lsp_TextDocumentEdit {
+extern class Lsp_TextDocumentEdit {
 	/**
 		```lua
 		(field) lsp.TextDocumentEdit.edits: (lsp.AnnotatedTextEdit|lsp.SnippetTextEdit|lsp.TextEdit)[]

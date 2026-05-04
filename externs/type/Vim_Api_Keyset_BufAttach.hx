@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.buf_attach
 	```
 **/
-@:native("vim.api.keyset.buf_attach") extern class Vim_Api_Keyset_BufAttach {
+extern class Vim_Api_Keyset_BufAttach {
 	/**
 		```lua
 		(field) vim.api.keyset.buf_attach.on_bytes: fun(_: "bytes", bufnr: integer, changedtick: integer, start_row: integer, start_col: integer, start_byte: integer, old_end_row: integer, old_end_col: integer, old_end_byte: integer...(too long)...:boolean??

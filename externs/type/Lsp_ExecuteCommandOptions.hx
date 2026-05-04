@@ -9,7 +9,7 @@ package externs.type;
 	
 	The server capabilities of a {@link ExecuteCommandRequest}.
 **/
-@:native("lsp.ExecuteCommandOptions") extern class Lsp_ExecuteCommandOptions {
+extern class Lsp_ExecuteCommandOptions {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandOptions.commands: string[]

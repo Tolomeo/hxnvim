@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link RenameRequest}.
 **/
-@:native("lsp.RenameOptions") extern class Lsp_RenameOptions {
+extern class Lsp_RenameOptions {
 	/**
 		```lua
 		(field) lsp.RenameOptions.prepareProvider: boolean?

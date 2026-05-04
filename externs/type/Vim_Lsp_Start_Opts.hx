@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.start.Opts
 	```
 **/
-@:native("vim.lsp.start.Opts") extern class Vim_Lsp_Start_Opts {
+extern class Vim_Lsp_Start_Opts {
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.attach: boolean?

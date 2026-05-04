@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.buf.format.Opts
 	```
 **/
-@:native("vim.lsp.buf.format.Opts") extern class Vim_Lsp_Buf_Format_Opts {
+extern class Vim_Lsp_Buf_Format_Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.async: boolean?

@@ -9,7 +9,7 @@ package externs.type;
 	
 	Show message request client capabilities
 **/
-@:native("lsp.ShowMessageRequestClientCapabilities") extern class Lsp_ShowMessageRequestClientCapabilities {
+extern class Lsp_ShowMessageRequestClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ShowMessageRequestClientCapabilities.messageActionItem: (lsp.ClientShowMessageActionItemOptions)?

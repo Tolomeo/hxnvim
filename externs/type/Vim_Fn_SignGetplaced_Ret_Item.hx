@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.sign_getplaced.ret.item
 	```
 **/
-@:native("vim.fn.sign_getplaced.ret.item") extern class Vim_Fn_SignGetplaced_Ret_Item {
+extern class Vim_Fn_SignGetplaced_Ret_Item {
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.ret.item.bufnr: integer

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.hl_info.cterm
 	```
 **/
-@:native("vim.api.keyset.hl_info.cterm") extern class Vim_Api_Keyset_HlInfo_Cterm {
+extern class Vim_Api_Keyset_HlInfo_Cterm {
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.altfont: true?

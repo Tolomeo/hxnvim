@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.loader.ModuleInfo
 	```
 **/
-@:native("vim.loader.ModuleInfo") extern class Vim_Loader_ModuleInfo {
+extern class Vim_Loader_ModuleInfo {
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.modname: string

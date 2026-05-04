@@ -1,3 +1,3 @@
 package externs.type;
 
-@:native("lsp.CodeActionTag") extern typedef Lsp_CodeActionTag = Float;
+extern typedef Lsp_CodeActionTag = Float;

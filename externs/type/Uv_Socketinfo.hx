@@ -10,7 +10,7 @@ package externs.type;
 	 socket info
 	
 **/
-@:native("uv.socketinfo") extern class Uv_Socketinfo {
+extern class Uv_Socketinfo {
 	/**
 		```lua
 		(field) uv.socketinfo.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"

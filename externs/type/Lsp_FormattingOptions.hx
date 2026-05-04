@@ -9,7 +9,7 @@ package externs.type;
 	
 	Value-object describing what options formatting should use.
 **/
-@:native("lsp.FormattingOptions") extern class Lsp_FormattingOptions {
+extern class Lsp_FormattingOptions {
 	/**
 		```lua
 		(field) lsp.FormattingOptions.insertFinalNewline: boolean?

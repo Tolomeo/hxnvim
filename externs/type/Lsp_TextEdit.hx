@@ -9,7 +9,7 @@ package externs.type;
 	
 	A text edit applicable to a text document.
 **/
-@:native("lsp.TextEdit") extern class Lsp_TextEdit {
+extern class Lsp_TextEdit {
 	/**
 		```lua
 		(field) lsp.TextEdit.newText: string

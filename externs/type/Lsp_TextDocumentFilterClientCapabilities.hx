@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.TextDocumentFilterClientCapabilities
 	```
 **/
-@:native("lsp.TextDocumentFilterClientCapabilities") extern class Lsp_TextDocumentFilterClientCapabilities {
+extern class Lsp_TextDocumentFilterClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterClientCapabilities.relativePatternSupport: boolean?

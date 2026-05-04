@@ -9,7 +9,7 @@ package externs.type;
 	
 	Completion client capabilities
 **/
-@:native("lsp.CompletionClientCapabilities") extern class Lsp_CompletionClientCapabilities {
+extern class Lsp_CompletionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItem: (lsp.ClientCompletionItemOptions)?

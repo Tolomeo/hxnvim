@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.Opts.Float
 	```
 **/
-@:native("vim.diagnostic.Opts.Float") extern class Vim_Diagnostic_Opts_Float {
+extern class Vim_Diagnostic_Opts_Float {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.border: string?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.create_autocmd
 	```
 **/
-@:native("vim.api.keyset.create_autocmd") extern class Vim_Api_Keyset_CreateAutocmd {
+extern class Vim_Api_Keyset_CreateAutocmd {
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.buffer: integer?

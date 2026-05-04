@@ -12,7 +12,7 @@ package externs.type;
 	 handle uses the best backend for the job on each platform.
 	
 **/
-@:native("uv.uv_fs_event_t") extern class Uv_UvFsEventT {
+extern class Uv_UvFsEventT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

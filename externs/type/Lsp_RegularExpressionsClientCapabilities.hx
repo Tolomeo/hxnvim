@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to regular expressions.
 	
 **/
-@:native("lsp.RegularExpressionsClientCapabilities") extern class Lsp_RegularExpressionsClientCapabilities {
+extern class Lsp_RegularExpressionsClientCapabilities {
 	/**
 		```lua
 		(field) lsp.RegularExpressionsClientCapabilities.engine: string

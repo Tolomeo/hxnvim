@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link DocumentHighlightRequest}.
 **/
-@:native("lsp.DocumentHighlightClientCapabilities") extern class Lsp_DocumentHighlightClientCapabilities {
+extern class Lsp_DocumentHighlightClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentHighlightClientCapabilities.dynamicRegistration: boolean?

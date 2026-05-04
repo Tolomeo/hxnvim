@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientCompletionItemOptions
 	```
 **/
-@:native("lsp.ClientCompletionItemOptions") extern class Lsp_ClientCompletionItemOptions {
+extern class Lsp_ClientCompletionItemOptions {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.commitCharactersSupport: boolean?

@@ -9,7 +9,7 @@ package externs.type;
 	
 	Server Capabilities for a {@link SignatureHelpRequest}.
 **/
-@:native("lsp.SignatureHelpOptions") extern class Lsp_SignatureHelpOptions {
+extern class Lsp_SignatureHelpOptions {
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.retriggerCharacters: string[]?

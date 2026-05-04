@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.os_get_passwd.info
 	```
 **/
-@:native("uv.os_get_passwd.info") extern class Uv_OsGetPasswd_Info {
+extern class Uv_OsGetPasswd_Info {
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.gid: integer

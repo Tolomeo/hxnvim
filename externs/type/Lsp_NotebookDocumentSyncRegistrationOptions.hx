@@ -10,7 +10,7 @@ package externs.type;
 	Registration options specific to a notebook.
 	
 **/
-@:native("lsp.NotebookDocumentSyncRegistrationOptions") extern class Lsp_NotebookDocumentSyncRegistrationOptions {
+extern class Lsp_NotebookDocumentSyncRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.id: string?

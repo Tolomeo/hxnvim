@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to the moniker request.
 	
 **/
-@:native("lsp.MonikerClientCapabilities") extern class Lsp_MonikerClientCapabilities {
+extern class Lsp_MonikerClientCapabilities {
 	/**
 		```lua
 		(field) lsp.MonikerClientCapabilities.dynamicRegistration: boolean?

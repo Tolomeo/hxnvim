@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.api.keyset.empty
 	```
 **/
-@:native("vim.api.keyset.empty") extern class Vim_Api_Keyset_Empty {
+extern class Vim_Api_Keyset_Empty {
 
 }

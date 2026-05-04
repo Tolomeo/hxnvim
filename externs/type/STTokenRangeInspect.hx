@@ -13,7 +13,7 @@ package externs.type;
 	
 	 @nodoc
 **/
-@:native("STTokenRangeInspect") extern class STTokenRangeInspect {
+extern class STTokenRangeInspect {
 	/**
 		```lua
 		(field) STTokenRangeInspect.client_id: integer

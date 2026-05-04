@@ -1,3 +1,3 @@
 package externs.type;
 
-@:native("TSCallbackNameOn") extern typedef TSCallbackNameOn = String;
+extern typedef TSCallbackNameOn = String;

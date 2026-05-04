@@ -9,7 +9,7 @@ package externs.type;
 	
 	Code Lens provider options of a {@link CodeLensRequest}.
 **/
-@:native("lsp.CodeLensOptions") extern class Lsp_CodeLensOptions {
+extern class Lsp_CodeLensOptions {
 	/**
 		```lua
 		(field) lsp.CodeLensOptions.resolveProvider: boolean?

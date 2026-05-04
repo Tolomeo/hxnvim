@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.LinkedEditingRangeOptions
 	```
 **/
-@:native("lsp.LinkedEditingRangeOptions") extern class Lsp_LinkedEditingRangeOptions {
+extern class Lsp_LinkedEditingRangeOptions {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeOptions.workDoneProgress: boolean?

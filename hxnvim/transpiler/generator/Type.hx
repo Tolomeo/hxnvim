@@ -8,7 +8,7 @@ using utils.StringTools;
 import transpiler.symbol.Symbol;
 import transpiler.parser.Parser;
 
-class TypeGenerator {
+class LiteralTypeGenerator {
 	public function new() {}
 
 	public function generate(type:LiteralType) {

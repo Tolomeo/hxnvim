@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.cpu_info.cpu.times
 	```
 **/
-@:native("uv.cpu_info.cpu.times") extern class Uv_CpuInfo_Cpu_Times {
+extern class Uv_CpuInfo_Cpu_Times {
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.idle: number

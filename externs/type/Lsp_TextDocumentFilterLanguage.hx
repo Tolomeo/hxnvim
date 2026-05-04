@@ -10,7 +10,7 @@ package externs.type;
 	A document filter where `language` is required field.
 	
 **/
-@:native("lsp.TextDocumentFilterLanguage") extern class Lsp_TextDocumentFilterLanguage {
+extern class Lsp_TextDocumentFilterLanguage {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.language: string

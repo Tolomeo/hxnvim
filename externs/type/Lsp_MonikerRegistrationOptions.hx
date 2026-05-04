@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.MonikerRegistrationOptions
 	```
 **/
-@:native("lsp.MonikerRegistrationOptions") extern class Lsp_MonikerRegistrationOptions {
+extern class Lsp_MonikerRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.MonikerRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

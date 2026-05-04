@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ImplementationOptions
 	```
 **/
-@:native("lsp.ImplementationOptions") extern class Lsp_ImplementationOptions {
+extern class Lsp_ImplementationOptions {
 	/**
 		```lua
 		(field) lsp.ImplementationOptions.workDoneProgress: boolean?

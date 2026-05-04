@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.getaddrinfo.result
 	```
 **/
-@:native("uv.getaddrinfo.result") extern class Uv_Getaddrinfo_Result {
+extern class Uv_Getaddrinfo_Result {
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.addr: string

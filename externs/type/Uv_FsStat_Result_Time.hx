@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_stat.result.time
 	```
 **/
-@:native("uv.fs_stat.result.time") extern class Uv_FsStat_Result_Time {
+extern class Uv_FsStat_Result_Time {
 	/**
 		```lua
 		(field) uv.fs_stat.result.time.nsec: integer

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.open_term
 	```
 **/
-@:native("vim.api.keyset.open_term") extern class Vim_Api_Keyset_OpenTerm {
+extern class Vim_Api_Keyset_OpenTerm {
 	/**
 		```lua
 		(field) vim.api.keyset.open_term.force_crlf: boolean?

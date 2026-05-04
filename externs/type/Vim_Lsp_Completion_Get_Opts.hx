@@ -9,7 +9,7 @@ package externs.type;
 	
 	 @inlinedoc
 **/
-@:native("vim.lsp.completion.get.Opts") extern class Vim_Lsp_Completion_Get_Opts {
+extern class Vim_Lsp_Completion_Get_Opts {
 	/**
 		```lua
 		(field) vim.lsp.completion.get.Opts.ctx: (lsp.CompletionContext)?

@@ -10,7 +10,7 @@ package externs.type;
 	Information about the client
 	
 **/
-@:native("lsp.ClientInfo") extern class Lsp_ClientInfo {
+extern class Lsp_ClientInfo {
 	/**
 		```lua
 		(field) lsp.ClientInfo.name: string

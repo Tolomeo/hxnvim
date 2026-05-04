@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.getaddrinfo.hints
 	```
 **/
-@:native("uv.getaddrinfo.hints") extern class Uv_Getaddrinfo_Hints {
+extern class Uv_Getaddrinfo_Hints {
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.addrconfig: boolean

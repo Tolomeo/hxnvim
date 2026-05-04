@@ -9,7 +9,7 @@ package externs.type;
 	
 	Reference options.
 **/
-@:native("lsp.ReferenceOptions") extern class Lsp_ReferenceOptions {
+extern class Lsp_ReferenceOptions {
 	/**
 		```lua
 		(field) lsp.ReferenceOptions.workDoneProgress: boolean?

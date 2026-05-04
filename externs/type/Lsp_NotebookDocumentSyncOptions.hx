@@ -20,7 +20,7 @@ package externs.type;
 	cell will be synced.
 	
 **/
-@:native("lsp.NotebookDocumentSyncOptions") extern class Lsp_NotebookDocumentSyncOptions {
+extern class Lsp_NotebookDocumentSyncOptions {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncOptions.notebookSelector: (lsp.NotebookDocumentFilterWithCells|lsp.NotebookDocumentFilterWithNotebook)[]

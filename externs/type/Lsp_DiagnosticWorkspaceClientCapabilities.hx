@@ -10,7 +10,7 @@ package externs.type;
 	Workspace client capabilities specific to diagnostic pull requests.
 	
 **/
-@:native("lsp.DiagnosticWorkspaceClientCapabilities") extern class Lsp_DiagnosticWorkspaceClientCapabilities {
+extern class Lsp_DiagnosticWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DiagnosticWorkspaceClientCapabilities.refreshSupport: boolean?

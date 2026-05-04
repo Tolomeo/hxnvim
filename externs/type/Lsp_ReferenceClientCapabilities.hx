@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client Capabilities for a {@link ReferencesRequest}.
 **/
-@:native("lsp.ReferenceClientCapabilities") extern class Lsp_ReferenceClientCapabilities {
+extern class Lsp_ReferenceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ReferenceClientCapabilities.dynamicRegistration: boolean?

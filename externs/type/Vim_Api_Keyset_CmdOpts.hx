@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.cmd_opts
 	```
 **/
-@:native("vim.api.keyset.cmd_opts") extern class Vim_Api_Keyset_CmdOpts {
+extern class Vim_Api_Keyset_CmdOpts {
 	/**
 		```lua
 		(field) vim.api.keyset.cmd_opts.output: boolean?

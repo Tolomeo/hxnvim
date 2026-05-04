@@ -9,7 +9,7 @@ package externs.type;
 	
 	Provider options for a {@link DocumentSymbolRequest}.
 **/
-@:native("lsp.DocumentSymbolOptions") extern class Lsp_DocumentSymbolOptions {
+extern class Lsp_DocumentSymbolOptions {
 	/**
 		```lua
 		(field) lsp.DocumentSymbolOptions.label: string?

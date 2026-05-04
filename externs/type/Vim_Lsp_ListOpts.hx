@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.ListOpts
 	```
 **/
-@:native("vim.lsp.ListOpts") extern class Vim_Lsp_ListOpts {
+extern class Vim_Lsp_ListOpts {
 	/**
 		```lua
 		(field) vim.lsp.ListOpts.loclist: boolean?

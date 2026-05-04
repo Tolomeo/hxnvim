@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.diagnostic.Opts.Underline
 	```
 **/
-@:native("vim.diagnostic.Opts.Underline") extern class Vim_Diagnostic_Opts_Underline {
+extern class Vim_Diagnostic_Opts_Underline {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Underline.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?

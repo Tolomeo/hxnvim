@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities for a text document content provider.
 	
 **/
-@:native("lsp.TextDocumentContentClientCapabilities") extern class Lsp_TextDocumentContentClientCapabilities {
+extern class Lsp_TextDocumentContentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentClientCapabilities.dynamicRegistration: boolean?

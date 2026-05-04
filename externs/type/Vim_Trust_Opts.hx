@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.trust.opts
 	```
 **/
-@:native("vim.trust.opts") extern class Vim_Trust_Opts {
+extern class Vim_Trust_Opts {
 	/**
 		```lua
 		(field) vim.trust.opts.action: 'allow'|'deny'|'remove'

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fs.dir.Opts
 	```
 **/
-@:native("vim.fs.dir.Opts") extern class Vim_Fs_Dir_Opts {
+extern class Vim_Fs_Dir_Opts {
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.depth: integer?

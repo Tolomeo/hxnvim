@@ -10,7 +10,7 @@ package externs.type;
 	 uv.pipe.write_flags
 	
 **/
-@:native("uv.pipe.write_flags") extern class Uv_Pipe_WriteFlags {
+extern class Uv_Pipe_WriteFlags {
 	/**
 		```lua
 		(field) uv.pipe.write_flags.nonblock: boolean

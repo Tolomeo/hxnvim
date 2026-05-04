@@ -9,7 +9,7 @@ package externs.type;
 	
 	Optional arguments:
 **/
-@:native("vim.treesitter.LanguageTree.new.Opts") extern class Vim_Treesitter_LanguageTree_New_Opts {
+extern class Vim_Treesitter_LanguageTree_New_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.LanguageTree.new.Opts.injections: table<string, string>?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.NotebookDocumentFilterWithNotebook
 	```
 **/
-@:native("lsp.NotebookDocumentFilterWithNotebook") extern class Lsp_NotebookDocumentFilterWithNotebook {
+extern class Lsp_NotebookDocumentFilterWithNotebook {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterWithNotebook.cells: lsp.NotebookCellLanguage[]?

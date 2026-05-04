@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.os_uname.info
 	```
 **/
-@:native("uv.os_uname.info") extern class Uv_OsUname_Info {
+extern class Uv_OsUname_Info {
 	/**
 		```lua
 		(field) uv.os_uname.info.machine: string

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.filetype.add.filetypes
 	```
 **/
-@:native("vim.filetype.add.filetypes") extern class Vim_Filetype_Add_Filetypes {
+extern class Vim_Filetype_Add_Filetypes {
 	/**
 		```lua
 		(field) vim.filetype.add.filetypes.extension: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?

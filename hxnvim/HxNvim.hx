@@ -11,6 +11,7 @@ using utils.ArrayTools;
 import Config;
 import Logger;
 import transpiler.Transpiler;
+import transpiler.IO;
 import writer.Writer;
 
 class HxNvim {
@@ -18,10 +19,8 @@ class HxNvim {
 		HxNvim.run();
 	}
 
-	static function source(?directory:String):Array<Map<String, String>> {
-		final directory = directory.or(Config.inputDir);
+	static function source(directory:String):Map<String, String> {
 		final files = new Map<String, String>();
-		final subDirectories = new Array<String>();
 
 		if (!FileSystem.exists(directory)) {
 			throw new Exception('Source directory "${directory}" does not exists');
@@ -31,7 +30,6 @@ class HxNvim {
 			final path = Path.join([directory, file]);
 
 			if (sys.FileSystem.isDirectory(path)) {
-				subDirectories.push(path);
 				continue;
 			}
 
@@ -46,66 +44,26 @@ class HxNvim {
 			files.set(relativePath, spec);
 		}
 
-		return [files].concat(subDirectories.flatMap(dir -> HxNvim.source(dir)));
+		return files;
 	}
 
 	static macro function run() {
-		final outputDir = Config.outputDir;
-		// final packages = [HxNvim.source(Config.inputDir), HxNvim.source('${Config.inputDir}/module')];
-		final packages = HxNvim.source();
+		final namespaces = HxNvim.source(Config.inputDir);
 
-		for (specs in packages) {
-			HxNvim.generate(specs);
-		}
-		/* for (moduleName in Config.modules) {
-				final root = Config.outputDir;
-				final path = moduleName.split(".");
-				final pack = [root].concat(path);
-				final name = path.last().capitalize();
+		HxNvim.generate(Target.Namespace, namespaces);
 
-				final dir = path.join('/');
-				final file = '${name}.hx';
-				final outputFile = new Writer(dir).get(file);
+		final modules = HxNvim.source(Path.join([Config.inputDir, 'module']));
 
-				switch (outputFile.read()) {
-					case None:
-					case Some(_):
-						Logger.info('Using "${moduleName}" generated output found at ${outputFile}');
-						continue;
-				}
+		HxNvim.generate(Target.Module, modules);
 
-				final input = switch (HxNvim.source(moduleName)) {
-					case None: throw '"${moduleName}" input source not found';
-					case Some(source): {
-							moduleName: moduleName,
-							source: source
-						};
-				};
+		final types = HxNvim.source(Path.join([Config.inputDir, 'type']));
 
-				final output = {
-					pack: pack,
-					moduleName: name,
-					native: moduleName,
-					overrides: switch (Config.overrides.get(moduleName)) {
-						case null: {};
-						case moduleOverrides: moduleOverrides;
-					}
-				};
+		HxNvim.generate(Target.Type, types);
 
-				final transpiledModule = Transpiler.transpileModule({
-					input: input,
-					output: output
-				});
-
-				Logger.info('Writing "${output.native}" generated output at ${outputFile}');
-				outputFile.write(transpiledModule);
-			}
-
-			return macro null; */
 		return macro null;
 	}
 
-	static function generate(specs:Map<String, String>) {
+	static function generate(target:Target, specs:Map<String, String>) {
 		for (file => spec in specs.keyValueIterator()) {
 			final filepath = new Path(file);
 			final native = filepath.file;
@@ -142,6 +100,7 @@ class HxNvim {
 			};
 
 			final transpiled = Transpiler.transpile({
+				target: target,
 				input: input,
 				output: output
 			});

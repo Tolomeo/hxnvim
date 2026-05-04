@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities specific to inline values.
 	
 **/
-@:native("lsp.InlineValueClientCapabilities") extern class Lsp_InlineValueClientCapabilities {
+extern class Lsp_InlineValueClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineValueClientCapabilities.dynamicRegistration: boolean?

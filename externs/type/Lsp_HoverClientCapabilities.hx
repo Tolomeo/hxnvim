@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.HoverClientCapabilities
 	```
 **/
-@:native("lsp.HoverClientCapabilities") extern class Lsp_HoverClientCapabilities {
+extern class Lsp_HoverClientCapabilities {
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.contentFormat: "markdown"|"plaintext"[]?

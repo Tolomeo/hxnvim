@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.LanguageTree.tree_for_range.Opts
 	```
 **/
-@:native("vim.treesitter.LanguageTree.tree_for_range.Opts") extern class Vim_Treesitter_LanguageTree_TreeForRange_Opts {
+extern class Vim_Treesitter_LanguageTree_TreeForRange_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.LanguageTree.tree_for_range.Opts.ignore_injections: boolean?

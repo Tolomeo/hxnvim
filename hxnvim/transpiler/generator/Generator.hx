@@ -13,7 +13,7 @@ import transpiler.generator.Enumerator;
 
 typedef Module = Array<TypeDefinition>;
 
-class ModuleGenerator {
+private class Generator {
 	final moduleName:String;
 	final moduleNativeName:String;
 	final modulePack:Array<String>;
@@ -24,6 +24,12 @@ class ModuleGenerator {
 		this.moduleName = state.output.name;
 		this.moduleNativeName = state.output.native;
 		this.modulePack = state.output.pack;
+	}
+}
+
+class NamespaceModuleGenerator extends Generator {
+	public function new() {
+		super();
 	}
 
 	public function make(parsedModule:ParsedModule) {
@@ -68,6 +74,83 @@ class ModuleGenerator {
 				} else {
 					final metaMainEnumerator:Metadata = {name: 'native', params: [enumerator.name]};
 					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaPrivate, metaNative]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: enumerator.name}, [metaMainEnumerator]));
+				}
+			case s:
+				throw new Exception('Unimplemented main generator for symbol ${s}');
+		}
+
+		return moduleTypes;
+	}
+
+	function generatePackage(pack:Array<String>) {
+		return 'package ${pack.join(".")};';
+	}
+
+	public function generate(parsedModule:ParsedModule) {
+		final state = State.consume(v -> v);
+
+		final printer = new Printer();
+		final result = new Array<String>();
+		result.push(this.generatePackage(modulePack));
+
+		final moduleTypes = this.make(parsedModule);
+
+		for (moduleType in moduleTypes) {
+			result.push(printer.printTypeDefinition(moduleType));
+		}
+
+		return result.join("\n\n");
+	}
+}
+
+class TypeModuleGenerator extends Generator {
+	public function new() {
+		super();
+	}
+
+	public function make(parsedModule:ParsedModule) {
+		final moduleTypes = new Array<TypeDefinition>();
+
+		final metaPrivate:Metadata = {name: 'private'};
+		final metaNative:Metadata = {name: 'native', params: [this.moduleNativeName]};
+
+		for (_ => type in parsedModule.types.keyValueIterator()) {
+			switch (type) {
+				/* case ModuleType.Enumerator(parsedEnumerator):
+					result.push(new EnumeratorGenerator(parsedEnumerator).make([metaPrivate])); */
+				case ParsedSymbol.ParsedTable(table):
+					moduleTypes.push(new ClassGenerator().generate(table));
+				case ParsedSymbol.ParsedAlias(alias):
+					moduleTypes.push(new AliasGenerator().generate(alias));
+				case _:
+					throw new Exception('Unsupported type received: ${type}');
+			}
+		}
+
+		switch (parsedModule.main) {
+			case ParsedSymbol.ParsedTable(table):
+				if (this.moduleName == table.name) {
+					moduleTypes.push(new ClassGenerator().generate(table));
+				} else {
+					final metaMainAlias:Metadata = {name: 'native', params: [table.name]};
+					moduleTypes.push(new ClassGenerator().generate(table, [metaPrivate]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: table.name}, [metaMainAlias]));
+				}
+			case ParsedSymbol.ParsedAlias(alias):
+				if (this.moduleName == alias.name) {
+					moduleTypes.push(new AliasGenerator().generate(alias));
+				} else {
+					final metaMainAlias:Metadata = {name: 'native', params: [alias.name]};
+					moduleTypes.push(new AliasGenerator().generate(alias, [metaPrivate]));
+					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: alias.name}, [metaMainAlias]));
+				}
+			case ParsedSymbol.ParsedEnumerator(enumerator):
+				if (this.moduleName == enumerator.name) {
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator));
+				} else {
+					final metaMainEnumerator:Metadata = {name: 'native', params: [enumerator.name]};
+					moduleTypes.push(new EnumeratorGenerator().generate(enumerator, [metaPrivate]));
 					moduleTypes.push(new AliasGenerator().generate({name: moduleName, type: enumerator.name}, [metaMainEnumerator]));
 				}
 			case s:

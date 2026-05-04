@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.fn.winlayout.branch
 	```
 **/
-@:native("vim.fn.winlayout.branch") extern class Vim_Fn_Winlayout_Branch {
+extern class Vim_Fn_Winlayout_Branch {
 
 }

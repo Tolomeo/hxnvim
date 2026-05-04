@@ -2,9 +2,8 @@ package transpiler;
 
 import transpiler.State;
 import transpiler.IO;
-// import transpiler.lexer.Lexer;
 import transpiler.parser.Parser;
-import transpiler.generator.ModuleGenerator;
+import transpiler.generator.Generator;
 
 class Transpiler {
 	static public function transpile(io:IO) {
@@ -13,6 +12,14 @@ class Transpiler {
 			output: io.output,
 		};
 
-		return State.provide(state, () -> new ModuleGenerator().generate(new Parser().parse()));
+		return State.provide(state, () -> {
+			final parsed = new Parser().parse();
+
+			return switch (io.target) {
+				case Target.Type: new TypeModuleGenerator().generate(parsed);
+				case Target.Module: new NamespaceModuleGenerator().generate(parsed);
+				case Target.Namespace: new NamespaceModuleGenerator().generate(parsed);
+			}
+		});
 	}
 }

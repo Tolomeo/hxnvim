@@ -25,7 +25,7 @@ class AliasGenerator {
 		return {
 			name: name,
 			pack: [],
-			kind: TDAlias(new TypeGenerator().generate(alias.type)),
+			kind: TDAlias(new LiteralTypeGenerator().generate(alias.type)),
 			meta: meta.map(m -> new MetaGenerator().generate(m)),
 			fields: [],
 			pos: Context.currentPos(),

@@ -12,7 +12,7 @@ package externs.type;
 	 `uv_req_t` is the base type for all libuv request types.
 	
 **/
-@:native("uv.uv_req_t") extern class Uv_UvReqT {
+extern class Uv_UvReqT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

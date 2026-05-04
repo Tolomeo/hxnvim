@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.interface_addresses.addr
 	```
 **/
-@:native("uv.interface_addresses.addr") extern class Uv_InterfaceAddresses_Addr {
+extern class Uv_InterfaceAddresses_Addr {
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.family: string

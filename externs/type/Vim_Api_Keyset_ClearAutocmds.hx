@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.clear_autocmds
 	```
 **/
-@:native("vim.api.keyset.clear_autocmds") extern class Vim_Api_Keyset_ClearAutocmds {
+extern class Vim_Api_Keyset_ClearAutocmds {
 	/**
 		```lua
 		(field) vim.api.keyset.clear_autocmds.buffer: integer?

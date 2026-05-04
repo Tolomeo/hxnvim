@@ -39,7 +39,7 @@ class ClassGenerator {
 			access: access,
 			name: name,
 			doc: property.doc,
-			kind: FVar(new TypeGenerator().generate(property.type)),
+			kind: FVar(new LiteralTypeGenerator().generate(property.type)),
 			pos: Context.currentPos()
 		}
 	}
@@ -66,14 +66,14 @@ class ClassGenerator {
 			kind: FFun({
 				params: func.params.map(p -> ({
 					name: p.name,
-					constraints: p.constraints.map(c -> new TypeGenerator().generate(c)),
+					constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
 				} : TypeParamDecl)),
 				args: func.args.map(a -> ({
 					name: a.name,
-					type: new TypeGenerator().generate(a.type),
+					type: new LiteralTypeGenerator().generate(a.type),
 					opt: a.opt,
 				} : FunctionArg)),
-				ret: new TypeGenerator().generate(func.ret)
+				ret: new LiteralTypeGenerator().generate(func.ret)
 			}),
 			pos: Context.currentPos()
 		}

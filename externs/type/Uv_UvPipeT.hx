@@ -23,7 +23,7 @@ package externs.type;
 	 ```
 	
 **/
-@:native("uv.uv_pipe_t") extern class Uv_UvPipeT {
+extern class Uv_UvPipeT {
 	/**
 		```lua
 		(method) uv.uv_stream_t:accept(client_stream: uv.uv_stream_t)

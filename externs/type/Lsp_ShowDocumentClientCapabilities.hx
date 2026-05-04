@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities for the showDocument request.
 	
 **/
-@:native("lsp.ShowDocumentClientCapabilities") extern class Lsp_ShowDocumentClientCapabilities {
+extern class Lsp_ShowDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ShowDocumentClientCapabilities.support: boolean

@@ -18,7 +18,7 @@ class EnumeratorGenerator {
 
 		final name = enumerator.name;
 
-		final underlyingType = new TypeGenerator().generate(enumerator.type);
+		final underlyingType = new LiteralTypeGenerator().generate(enumerator.type);
 		final kind = TDAbstract(underlyingType, [AbEnum], [underlyingType], [underlyingType]);
 
 		final fields = new Array<Field>();

@@ -9,7 +9,7 @@ package externs.type;
 	
 	Options to create a file.
 **/
-@:native("lsp.CreateFileOptions") extern class Lsp_CreateFileOptions {
+extern class Lsp_CreateFileOptions {
 	/**
 		```lua
 		(field) lsp.CreateFileOptions.ignoreIfExists: boolean?

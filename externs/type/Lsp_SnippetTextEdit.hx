@@ -10,7 +10,7 @@ package externs.type;
 	An interactive text edit.
 	
 **/
-@:native("lsp.SnippetTextEdit") extern class Lsp_SnippetTextEdit {
+extern class Lsp_SnippetTextEdit {
 	/**
 		```lua
 		(field) lsp.SnippetTextEdit.annotationId: string?

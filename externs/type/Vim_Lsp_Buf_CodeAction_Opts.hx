@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.buf.code_action.Opts
 	```
 **/
-@:native("vim.lsp.buf.code_action.Opts") extern class Vim_Lsp_Buf_CodeAction_Opts {
+extern class Vim_Lsp_Buf_CodeAction_Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.apply: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_readdir.entry
 	```
 **/
-@:native("uv.fs_readdir.entry") extern class Uv_FsReaddir_Entry {
+extern class Uv_FsReaddir_Entry {
 	/**
 		```lua
 		(field) uv.fs_readdir.entry.name: string

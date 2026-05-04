@@ -9,7 +9,7 @@ package externs.type;
 	(class) lsp.DynamicCapabilities
 	```
 **/
-@:native("lsp.DynamicCapabilities") extern class Lsp_DynamicCapabilities {
+extern class Lsp_DynamicCapabilities {
 	/**
 		```lua
 		(field) lsp.DynamicCapabilities.capabilities: table<string, lsp.Registration[]>

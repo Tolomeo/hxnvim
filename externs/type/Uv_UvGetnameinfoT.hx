@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.uv_getnameinfo_t
 	```
 **/
-@:native("uv.uv_getnameinfo_t") extern class Uv_UvGetnameinfoT {
+extern class Uv_UvGetnameinfoT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

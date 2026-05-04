@@ -13,7 +13,7 @@ package externs.type;
 	 defined here work with any handle type.
 	
 **/
-@:native("uv.uv_handle_t") extern class Uv_UvHandleT {
+extern class Uv_UvHandleT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

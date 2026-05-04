@@ -5,7 +5,7 @@ package externs.type;
 	(class) TSTree
 	```
 **/
-@:native("TSTree") extern class TSTree {
+extern class TSTree {
 	/**
 		```lua
 		(method) TSTree:copy()

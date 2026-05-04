@@ -10,7 +10,7 @@ package externs.type;
 	Information about the server
 	
 **/
-@:native("lsp.ServerInfo") extern class Lsp_ServerInfo {
+extern class Lsp_ServerInfo {
 	/**
 		```lua
 		(field) lsp.ServerInfo.name: string

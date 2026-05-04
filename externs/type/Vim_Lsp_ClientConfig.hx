@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.ClientConfig
 	```
 **/
-@:native("vim.lsp.ClientConfig") extern class Vim_Lsp_ClientConfig {
+extern class Vim_Lsp_ClientConfig {
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.before_init: fun(params: lsp.InitializeParams, config: vim.lsp.ClientConfig)?

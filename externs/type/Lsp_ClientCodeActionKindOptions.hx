@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientCodeActionKindOptions
 	```
 **/
-@:native("lsp.ClientCodeActionKindOptions") extern class Lsp_ClientCodeActionKindOptions {
+extern class Lsp_ClientCodeActionKindOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeActionKindOptions.valueSet: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]

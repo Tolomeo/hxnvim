@@ -10,7 +10,7 @@ package externs.type;
 	 uv.getnameinfo.address
 	
 **/
-@:native("uv.getnameinfo.address") extern class Uv_Getnameinfo_Address {
+extern class Uv_Getnameinfo_Address {
 	/**
 		```lua
 		(field) uv.getnameinfo.address.family: string|integer

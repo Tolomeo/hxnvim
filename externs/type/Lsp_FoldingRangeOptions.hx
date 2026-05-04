@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.FoldingRangeOptions
 	```
 **/
-@:native("lsp.FoldingRangeOptions") extern class Lsp_FoldingRangeOptions {
+extern class Lsp_FoldingRangeOptions {
 	/**
 		```lua
 		(field) lsp.FoldingRangeOptions.workDoneProgress: boolean?

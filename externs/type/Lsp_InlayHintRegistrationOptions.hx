@@ -10,7 +10,7 @@ package externs.type;
 	Inlay hint options used during static or dynamic registration.
 	
 **/
-@:native("lsp.InlayHintRegistrationOptions") extern class Lsp_InlayHintRegistrationOptions {
+extern class Lsp_InlayHintRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.InlayHintRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

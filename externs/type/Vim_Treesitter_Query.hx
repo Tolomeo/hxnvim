@@ -10,7 +10,7 @@ package externs.type;
 	Parsed query, see |vim.treesitter.query.parse()|
 	
 **/
-@:native("vim.treesitter.Query") extern class Vim_Treesitter_Query {
+extern class Vim_Treesitter_Query {
 	/**
 		```lua
 		(field) vim.treesitter.Query.captures: string[]

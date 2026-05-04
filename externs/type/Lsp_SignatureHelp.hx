@@ -11,7 +11,7 @@ package externs.type;
 	callable. There can be multiple signature but only one
 	active and only one active parameter.
 **/
-@:native("lsp.SignatureHelp") extern class Lsp_SignatureHelp {
+extern class Lsp_SignatureHelp {
 	/**
 		```lua
 		(field) lsp.SignatureHelp.activeParameter: (integer|nil)?

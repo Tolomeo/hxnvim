@@ -5,6 +5,6 @@ package externs.type;
 	(class) Range4
 	```
 **/
-@:native("Range4") extern class Range4 {
+extern class Range4 {
 
 }

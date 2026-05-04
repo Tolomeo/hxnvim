@@ -9,7 +9,7 @@ package externs.type;
 	
 	Client capabilities of a {@link DocumentRangeFormattingRequest}.
 **/
-@:native("lsp.DocumentRangeFormattingClientCapabilities") extern class Lsp_DocumentRangeFormattingClientCapabilities {
+extern class Lsp_DocumentRangeFormattingClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingClientCapabilities.dynamicRegistration: boolean?

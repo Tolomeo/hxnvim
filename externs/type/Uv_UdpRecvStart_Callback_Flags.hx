@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.udp_recv_start.callback.flags
 	```
 **/
-@:native("uv.udp_recv_start.callback.flags") extern class Uv_UdpRecvStart_Callback_Flags {
+extern class Uv_UdpRecvStart_Callback_Flags {
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.flags.mmsg_chunk: boolean|nil

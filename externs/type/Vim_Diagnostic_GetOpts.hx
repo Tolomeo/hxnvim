@@ -9,7 +9,7 @@ package externs.type;
 	
 	 A table with the following keys:
 **/
-@:native("vim.diagnostic.GetOpts") extern class Vim_Diagnostic_GetOpts {
+extern class Vim_Diagnostic_GetOpts {
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.lnum: integer?

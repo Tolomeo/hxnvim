@@ -9,7 +9,7 @@ package externs.type;
 	
 	The parameters of a {@link ExecuteCommandRequest}.
 **/
-@:native("lsp.ExecuteCommandParams") extern class Lsp_ExecuteCommandParams {
+extern class Lsp_ExecuteCommandParams {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.arguments: boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]?

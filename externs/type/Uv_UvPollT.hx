@@ -33,7 +33,7 @@ package externs.type;
 	 file descriptor that would be accepted by poll(2) can be used.
 	
 **/
-@:native("uv.uv_poll_t") extern class Uv_UvPollT {
+extern class Uv_UvPollT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

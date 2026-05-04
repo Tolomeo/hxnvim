@@ -18,7 +18,7 @@ package externs.type;
 	 ```
 	
 **/
-@:native("uv.uv_check_t") extern class Uv_UvCheckT {
+extern class Uv_UvCheckT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.WorkspaceEditClientCapabilities
 	```
 **/
-@:native("lsp.WorkspaceEditClientCapabilities") extern class Lsp_WorkspaceEditClientCapabilities {
+extern class Lsp_WorkspaceEditClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.changeAnnotationSupport: (lsp.ChangeAnnotationsSupportOptions)?

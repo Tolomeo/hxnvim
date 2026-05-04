@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ServerCompletionItemOptions
 	```
 **/
-@:native("lsp.ServerCompletionItemOptions") extern class Lsp_ServerCompletionItemOptions {
+extern class Lsp_ServerCompletionItemOptions {
 	/**
 		```lua
 		(field) lsp.ServerCompletionItemOptions.labelDetailsSupport: boolean?

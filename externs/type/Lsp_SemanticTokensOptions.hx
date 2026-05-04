@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SemanticTokensOptions
 	```
 **/
-@:native("lsp.SemanticTokensOptions") extern class Lsp_SemanticTokensOptions {
+extern class Lsp_SemanticTokensOptions {
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.full: (boolean|lsp.SemanticTokensFullDelta)?

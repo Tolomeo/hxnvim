@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DeclarationRegistrationOptions
 	```
 **/
-@:native("lsp.DeclarationRegistrationOptions") extern class Lsp_DeclarationRegistrationOptions {
+extern class Lsp_DeclarationRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DeclarationRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.filetype.match.args
 	```
 **/
-@:native("vim.filetype.match.args") extern class Vim_Filetype_Match_Args {
+extern class Vim_Filetype_Match_Args {
 	/**
 		```lua
 		(field) vim.filetype.match.args.buf: integer?

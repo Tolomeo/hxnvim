@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.query.TSMetadata
 	```
 **/
-@:native("vim.treesitter.query.TSMetadata") extern class Vim_Treesitter_Query_TSMetadata {
+extern class Vim_Treesitter_Query_TSMetadata {
 	/**
 		```lua
 		(field) vim.treesitter.query.TSMetadata.conceal: string?

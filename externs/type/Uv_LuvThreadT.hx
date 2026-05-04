@@ -10,7 +10,7 @@ package externs.type;
 	 luv_thread_t
 	
 **/
-@:native("uv.luv_thread_t") extern class Uv_LuvThreadT {
+extern class Uv_LuvThreadT {
 	/**
 		```lua
 		(method) uv.luv_thread_t:equal(other_thread: uv.luv_thread_t)

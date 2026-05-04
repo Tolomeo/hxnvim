@@ -9,7 +9,7 @@ package externs.type;
 	
 	A text document identifier to optionally denote a specific version of a text document.
 **/
-@:native("lsp.OptionalVersionedTextDocumentIdentifier") extern class Lsp_OptionalVersionedTextDocumentIdentifier {
+extern class Lsp_OptionalVersionedTextDocumentIdentifier {
 	/**
 		```lua
 		(field) lsp.OptionalVersionedTextDocumentIdentifier.uri: string

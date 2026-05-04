@@ -9,7 +9,7 @@ package externs.type;
 	
 	The result of a hover request.
 **/
-@:native("lsp.Hover") extern class Lsp_Hover {
+extern class Lsp_Hover {
 	/**
 		```lua
 		(field) lsp.Hover.contents: string|lsp.MarkedStringWithLanguage|lsp.MarkupContent|string|lsp.MarkedStringWithLanguage[]

@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.get_option_info
 	```
 **/
-@:native("vim.api.keyset.get_option_info") extern class Vim_Api_Keyset_GetOptionInfo {
+extern class Vim_Api_Keyset_GetOptionInfo {
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.allows_duplicates: boolean

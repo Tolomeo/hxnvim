@@ -5,6 +5,6 @@ package externs.type;
 	(class) IterMod
 	```
 **/
-@:native("IterMod") extern class IterMod {
+extern class IterMod {
 
 }

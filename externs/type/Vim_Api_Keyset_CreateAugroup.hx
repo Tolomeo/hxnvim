@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.create_augroup
 	```
 **/
-@:native("vim.api.keyset.create_augroup") extern class Vim_Api_Keyset_CreateAugroup {
+extern class Vim_Api_Keyset_CreateAugroup {
 	/**
 		```lua
 		(field) vim.api.keyset.create_augroup.clear: boolean?

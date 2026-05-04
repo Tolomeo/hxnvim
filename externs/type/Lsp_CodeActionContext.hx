@@ -10,7 +10,7 @@ package externs.type;
 	Contains additional diagnostic information about the context in which
 	a {@link CodeActionProvider.provideCodeActions code action} is run.
 **/
-@:native("lsp.CodeActionContext") extern class Lsp_CodeActionContext {
+extern class Lsp_CodeActionContext {
 	/**
 		```lua
 		(field) lsp.CodeActionContext.diagnostics: lsp.Diagnostic[]

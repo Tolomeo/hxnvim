@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.treesitter.LanguageTree
 	```
 **/
-@:native("vim.treesitter.LanguageTree") extern class Vim_Treesitter_LanguageTree {
+extern class Vim_Treesitter_LanguageTree {
 	/**
 		```lua
 		function vim.treesitter.LanguageTree.new(source: string|integer, lang: string, opts?: vim.treesitter.LanguageTree.new.Opts)

@@ -11,7 +11,7 @@ package externs.type;
 	the server is interested in receiving.
 	
 **/
-@:native("lsp.FileOperationFilter") extern class Lsp_FileOperationFilter {
+extern class Lsp_FileOperationFilter {
 	/**
 		```lua
 		(field) lsp.FileOperationFilter.pattern: lsp.FileOperationPattern

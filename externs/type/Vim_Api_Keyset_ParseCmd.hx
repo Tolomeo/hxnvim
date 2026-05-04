@@ -10,7 +10,7 @@ package externs.type;
 	(class) vim.api.keyset.parse_cmd
 	```
 **/
-@:native("vim.api.keyset.parse_cmd") extern class Vim_Api_Keyset_ParseCmd {
+extern class Vim_Api_Keyset_ParseCmd {
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.addr: '?'|'arg'|'buf'|'line'|'load'|'none'|'qf'|'tab'|'win'

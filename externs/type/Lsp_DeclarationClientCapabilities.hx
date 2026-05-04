@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.DeclarationClientCapabilities
 	```
 **/
-@:native("lsp.DeclarationClientCapabilities") extern class Lsp_DeclarationClientCapabilities {
+extern class Lsp_DeclarationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DeclarationClientCapabilities.dynamicRegistration: boolean?

@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.MarkedStringWithLanguage
 	```
 **/
-@:native("lsp.MarkedStringWithLanguage") extern class Lsp_MarkedStringWithLanguage {
+extern class Lsp_MarkedStringWithLanguage {
 	/**
 		```lua
 		(field) lsp.MarkedStringWithLanguage.language: string

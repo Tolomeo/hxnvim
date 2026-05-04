@@ -5,6 +5,6 @@ package externs.type;
 	(class) lsp._anonym1.range
 	```
 **/
-@:native("lsp._anonym1.range") extern class Lsp_Anonym1_Range {
+extern class Lsp_Anonym1_Range {
 
 }

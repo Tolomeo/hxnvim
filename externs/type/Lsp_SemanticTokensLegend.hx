@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SemanticTokensLegend
 	```
 **/
-@:native("lsp.SemanticTokensLegend") extern class Lsp_SemanticTokensLegend {
+extern class Lsp_SemanticTokensLegend {
 	/**
 		```lua
 		(field) lsp.SemanticTokensLegend.tokenModifiers: string[]

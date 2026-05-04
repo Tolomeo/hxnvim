@@ -1,3 +1,3 @@
 package externs.type;
 
-@:native("vim.filetype.maptbl") extern typedef Vim_Filetype_Maptbl = Dynamic;
+extern typedef Vim_Filetype_Maptbl = Dynamic;

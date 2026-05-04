@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ClientDiagnosticsTagOptions
 	```
 **/
-@:native("lsp.ClientDiagnosticsTagOptions") extern class Lsp_ClientDiagnosticsTagOptions {
+extern class Lsp_ClientDiagnosticsTagOptions {
 	/**
 		```lua
 		(field) lsp.ClientDiagnosticsTagOptions.valueSet: 1|2[]

@@ -1,3 +1,3 @@
 package externs.type;
 
-@:native("lsp.CompletionTriggerKind") extern typedef Lsp_CompletionTriggerKind = Float;
+extern typedef Lsp_CompletionTriggerKind = Float;

@@ -10,7 +10,7 @@ package externs.type;
 	 luv_work_ctx_t
 	
 **/
-@:native("uv.luv_work_ctx_t") extern class Uv_LuvWorkCtxT {
+extern class Uv_LuvWorkCtxT {
 	/**
 		```lua
 		(method) uv.luv_work_ctx_t:queue(...any)

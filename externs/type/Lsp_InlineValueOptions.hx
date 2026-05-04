@@ -10,7 +10,7 @@ package externs.type;
 	Inline value options used during static registration.
 	
 **/
-@:native("lsp.InlineValueOptions") extern class Lsp_InlineValueOptions {
+extern class Lsp_InlineValueOptions {
 	/**
 		```lua
 		(field) lsp.InlineValueOptions.workDoneProgress: boolean?

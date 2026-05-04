@@ -5,7 +5,7 @@ package externs.type;
 	(class) uv.fs_stat.result
 	```
 **/
-@:native("uv.fs_stat.result") extern class Uv_FsStat_Result {
+extern class Uv_FsStat_Result {
 	/**
 		```lua
 		(field) uv.fs_stat.result.atime: uv.fs_stat.result.time

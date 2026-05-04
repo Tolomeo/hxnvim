@@ -9,7 +9,7 @@ package externs.type;
 	
 	The parameters of a {@link DocumentFormattingRequest}.
 **/
-@:native("lsp.DocumentFormattingParams") extern class Lsp_DocumentFormattingParams {
+extern class Lsp_DocumentFormattingParams {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.options: lsp.FormattingOptions

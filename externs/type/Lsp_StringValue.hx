@@ -16,7 +16,7 @@ package externs.type;
 	`${name:default value}`.
 	
 **/
-@:native("lsp.StringValue") extern class Lsp_StringValue {
+extern class Lsp_StringValue {
 	/**
 		```lua
 		(field) lsp.StringValue.kind: "snippet"

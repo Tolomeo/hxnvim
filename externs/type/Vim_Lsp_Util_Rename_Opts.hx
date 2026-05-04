@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.lsp.util.rename.Opts
 	```
 **/
-@:native("vim.lsp.util.rename.Opts") extern class Vim_Lsp_Util_Rename_Opts {
+extern class Vim_Lsp_Util_Rename_Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.rename.Opts.ignoreIfExists: boolean?

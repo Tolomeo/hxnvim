@@ -13,7 +13,7 @@ package externs.type;
 	(class) TSLangInfo
 	```
 **/
-@:native("TSLangInfo") extern class TSLangInfo {
+extern class TSLangInfo {
 	/**
 		```lua
 		(field) TSLangInfo._wasm: boolean

@@ -10,7 +10,7 @@ package externs.type;
 	A special text edit to provide an insert and a replace operation.
 	
 **/
-@:native("lsp.InsertReplaceEdit") extern class Lsp_InsertReplaceEdit {
+extern class Lsp_InsertReplaceEdit {
 	/**
 		```lua
 		(field) lsp.InsertReplaceEdit.insert: lsp.Range

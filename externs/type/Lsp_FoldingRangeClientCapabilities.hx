@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.FoldingRangeClientCapabilities
 	```
 **/
-@:native("lsp.FoldingRangeClientCapabilities") extern class Lsp_FoldingRangeClientCapabilities {
+extern class Lsp_FoldingRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.dynamicRegistration: boolean?

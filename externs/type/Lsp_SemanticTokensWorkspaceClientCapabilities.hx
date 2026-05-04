@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.SemanticTokensWorkspaceClientCapabilities
 	```
 **/
-@:native("lsp.SemanticTokensWorkspaceClientCapabilities") extern class Lsp_SemanticTokensWorkspaceClientCapabilities {
+extern class Lsp_SemanticTokensWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SemanticTokensWorkspaceClientCapabilities.refreshSupport: boolean?

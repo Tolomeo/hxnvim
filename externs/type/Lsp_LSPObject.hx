@@ -9,6 +9,6 @@ package externs.type;
 	
 	LSP object definition.
 **/
-@:native("lsp.LSPObject") extern class Lsp_LSPObject {
+extern class Lsp_LSPObject {
 
 }

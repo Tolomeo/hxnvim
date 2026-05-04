@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.api.keyset.create_autocmd.callback_args
 	```
 **/
-@:native("vim.api.keyset.create_autocmd.callback_args") extern class Vim_Api_Keyset_CreateAutocmd_CallbackArgs {
+extern class Vim_Api_Keyset_CreateAutocmd_CallbackArgs {
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.buf: integer

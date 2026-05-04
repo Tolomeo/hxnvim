@@ -1,8 +1,14 @@
 package transpiler;
 
+enum abstract Target(String) {
+	var Type;
+	var Module;
+	var Namespace;
+}
+
 typedef Input = {
-	file: String,
-	spec: String
+	file:String,
+	spec:String
 }
 
 typedef Output = {
@@ -15,6 +21,7 @@ typedef Output = {
 }
 
 typedef IO = {
+	target:Target,
 	input:Input,
 	output:Output
 }

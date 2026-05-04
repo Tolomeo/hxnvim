@@ -10,7 +10,7 @@ package externs.type;
 	(class) vim.api.keyset.parse_cmd.mods
 	```
 **/
-@:native("vim.api.keyset.parse_cmd.mods") extern class Vim_Api_Keyset_ParseCmd_Mods {
+extern class Vim_Api_Keyset_ParseCmd_Mods {
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.browse: boolean

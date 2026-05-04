@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.StaleRequestSupportOptions
 	```
 **/
-@:native("lsp.StaleRequestSupportOptions") extern class Lsp_StaleRequestSupportOptions {
+extern class Lsp_StaleRequestSupportOptions {
 	/**
 		```lua
 		(field) lsp.StaleRequestSupportOptions.cancel: boolean

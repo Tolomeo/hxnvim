@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.SystemCompleted
 	```
 **/
-@:native("vim.SystemCompleted") extern class Vim_SystemCompleted {
+extern class Vim_SystemCompleted {
 	/**
 		```lua
 		(field) vim.SystemCompleted.code: integer

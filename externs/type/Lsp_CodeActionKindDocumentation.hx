@@ -10,7 +10,7 @@ package externs.type;
 	Documentation for a class of code actions.
 	
 **/
-@:native("lsp.CodeActionKindDocumentation") extern class Lsp_CodeActionKindDocumentation {
+extern class Lsp_CodeActionKindDocumentation {
 	/**
 		```lua
 		(field) lsp.CodeActionKindDocumentation.command: lsp.Command

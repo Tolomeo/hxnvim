@@ -11,7 +11,7 @@ package externs.type;
 	of inlay hints.
 	
 **/
-@:native("lsp.InlayHintLabelPart") extern class Lsp_InlayHintLabelPart {
+extern class Lsp_InlayHintLabelPart {
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.command: (lsp.Command)?

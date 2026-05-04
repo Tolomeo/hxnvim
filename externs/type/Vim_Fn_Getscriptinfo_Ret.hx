@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fn.getscriptinfo.ret
 	```
 **/
-@:native("vim.fn.getscriptinfo.ret") extern class Vim_Fn_Getscriptinfo_Ret {
+extern class Vim_Fn_Getscriptinfo_Ret {
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.autoload: false

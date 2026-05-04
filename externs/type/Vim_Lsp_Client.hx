@@ -21,7 +21,7 @@ package externs.type;
 	(class) vim.lsp.Client
 	```
 **/
-@:native("vim.lsp.Client") extern class Vim_Lsp_Client {
+extern class Vim_Lsp_Client {
 	/**
 		```lua
 		(field) vim.lsp.Client._is_stopping: boolean = false

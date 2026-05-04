@@ -5,6 +5,6 @@ package externs.type;
 	(class) vim.api.keyset.get_mark
 	```
 **/
-@:native("vim.api.keyset.get_mark") extern class Vim_Api_Keyset_GetMark {
+extern class Vim_Api_Keyset_GetMark {
 
 }

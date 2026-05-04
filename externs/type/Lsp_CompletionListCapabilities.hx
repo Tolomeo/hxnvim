@@ -11,7 +11,7 @@ package externs.type;
 	capabilities.
 	
 **/
-@:native("lsp.CompletionListCapabilities") extern class Lsp_CompletionListCapabilities {
+extern class Lsp_CompletionListCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionListCapabilities.applyKindSupport: boolean?

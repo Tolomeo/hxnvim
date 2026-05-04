@@ -10,7 +10,7 @@ package externs.type;
 	Client capabilities for the linked editing range request.
 	
 **/
-@:native("lsp.LinkedEditingRangeClientCapabilities") extern class Lsp_LinkedEditingRangeClientCapabilities {
+extern class Lsp_LinkedEditingRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeClientCapabilities.dynamicRegistration: boolean?

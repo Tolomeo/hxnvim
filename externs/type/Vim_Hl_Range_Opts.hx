@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.hl.range.Opts
 	```
 **/
-@:native("vim.hl.range.Opts") extern class Vim_Hl_Range_Opts {
+extern class Vim_Hl_Range_Opts {
 	/**
 		```lua
 		(field) vim.hl.range.Opts.inclusive: boolean?

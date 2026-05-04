@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Dispatchers for LSP message types.
 **/
-@:native("vim.lsp.rpc.Dispatchers") extern class Vim_Lsp_Rpc_Dispatchers {
+extern class Vim_Lsp_Rpc_Dispatchers {
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.notification: fun(method: string, params: table)

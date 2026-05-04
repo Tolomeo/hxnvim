@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Optional keyword arguments:
 **/
-@:native("vim.treesitter.get_node.Opts") extern class Vim_Treesitter_GetNode_Opts {
+extern class Vim_Treesitter_GetNode_Opts {
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.bufnr: integer?

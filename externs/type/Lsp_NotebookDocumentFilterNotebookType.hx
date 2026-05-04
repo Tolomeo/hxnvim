@@ -10,7 +10,7 @@ package externs.type;
 	A notebook document filter where `notebookType` is required field.
 	
 **/
-@:native("lsp.NotebookDocumentFilterNotebookType") extern class Lsp_NotebookDocumentFilterNotebookType {
+extern class Lsp_NotebookDocumentFilterNotebookType {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterNotebookType.notebookType: string

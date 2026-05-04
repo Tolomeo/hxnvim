@@ -9,7 +9,7 @@ package externs.type;
 	
 	 Configuration table with the following keys:
 **/
-@:native("vim.diagnostic.setqflist.Opts") extern class Vim_Diagnostic_Setqflist_Opts {
+extern class Vim_Diagnostic_Setqflist_Opts {
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.namespace: integer?

@@ -13,7 +13,7 @@ package externs.type;
 	A code lens is _unresolved_ when no command is associated to it. For performance
 	reasons the creation of a code lens and resolving should be done in two stages.
 **/
-@:native("lsp.CodeLens") extern class Lsp_CodeLens {
+extern class Lsp_CodeLens {
 	/**
 		```lua
 		(field) lsp.CodeLens.command: (lsp.Command)?

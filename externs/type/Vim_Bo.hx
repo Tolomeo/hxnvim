@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.bo
 	```
 **/
-@:native("vim.bo") extern class Vim_Bo {
+extern class Vim_Bo {
 	/**
 		```lua
 		(field) vim.bo.ai: boolean

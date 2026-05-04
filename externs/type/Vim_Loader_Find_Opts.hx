@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.loader.find.Opts
 	```
 **/
-@:native("vim.loader.find.Opts") extern class Vim_Loader_Find_Opts {
+extern class Vim_Loader_Find_Opts {
 	/**
 		```lua
 		(field) vim.loader.find.Opts.all: boolean?

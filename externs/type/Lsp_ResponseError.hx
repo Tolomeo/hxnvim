@@ -5,7 +5,7 @@ package externs.type;
 	(class) lsp.ResponseError
 	```
 **/
-@:native("lsp.ResponseError") extern class Lsp_ResponseError {
+extern class Lsp_ResponseError {
 	/**
 		```lua
 		(field) lsp.ResponseError.code: integer

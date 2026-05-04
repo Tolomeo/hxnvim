@@ -5,7 +5,7 @@ package externs.type;
 	(class) vim.fs.normalize.Opts
 	```
 **/
-@:native("vim.fs.normalize.Opts") extern class Vim_Fs_Normalize_Opts {
+extern class Vim_Fs_Normalize_Opts {
 	/**
 		```lua
 		(field) vim.fs.normalize.Opts.expand_env: boolean?

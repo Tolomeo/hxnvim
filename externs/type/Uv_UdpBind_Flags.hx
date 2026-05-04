@@ -11,7 +11,7 @@ package externs.type;
 	
 	
 **/
-@:native("uv.udp_bind.flags") extern class Uv_UdpBind_Flags {
+extern class Uv_UdpBind_Flags {
 	/**
 		```lua
 		(field) uv.udp_bind.flags.ipv6only: boolean

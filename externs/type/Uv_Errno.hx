@@ -10,7 +10,7 @@ package externs.type;
 	 A table value which exposes error constants as a map, where the key is the error name (without the UV_ prefix) and its value is a negative number.
 	
 **/
-@:native("uv.errno") extern class Uv_Errno {
+extern class Uv_Errno {
 	/**
 		```lua
 		(field) uv.errno.E2BIG: integer
