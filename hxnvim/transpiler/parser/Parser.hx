@@ -3,7 +3,6 @@ package transpiler.parser;
 import haxe.Exception;
 import haxe.Rest;
 import haxe.Serializer;
-import haxe.extern.EitherType;
 
 using utils.ArrayTools;
 using utils.StringTools;

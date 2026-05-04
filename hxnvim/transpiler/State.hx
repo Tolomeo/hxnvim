@@ -25,9 +25,6 @@ function verbose(msg:String) {
 typedef ModuleConfig = {
 	input:Input,
 	output:Output,
-	logs:Array<String>,
-	/* lexedGenerics:Array<String>,
-	parsedGenerics:Map<String, String> */
 }
 
 final State = new RunState<ModuleConfig>();

@@ -1,5 +1,7 @@
 package utils;
 
+import haxe.Rest;
+
 using Lambda;
 using StringTools;
 
@@ -9,6 +11,28 @@ final startsWith = StringTools.startsWith;
 
 function capitalize(str:String) {
 	return str.charAt(0).toUpperCase() + str.substr(1);
+}
+
+function lTrimChars(str:String, chars:Rest<String>) {
+	for (char in chars) {
+		if (str.startsWith(char))
+			return lTrimChars(str.substr(1), ...chars);
+	}
+
+	return str;
+}
+
+function rTrimChars(str:String, chars:Rest<String>) {
+	for (char in chars) {
+		if (str.endsWith(char))
+			return rTrimChars(str.substr(0, str.length - 1), ...chars);
+	}
+
+	return str;
+}
+
+function trimChars(str:String, chars:Rest<String>) {
+	return lTrimChars(rTrimChars(str, ...chars), ...chars);
 }
 
 // TODO: list all identifiers with no package found here: https://api.haxe.org

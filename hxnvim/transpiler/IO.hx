@@ -1,6 +1,5 @@
 package transpiler;
 
-// TODO: REVISIT
 typedef Input = {
 	file: String,
 	spec: String
