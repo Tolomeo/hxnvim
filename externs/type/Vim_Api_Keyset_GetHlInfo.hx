@@ -53,7 +53,8 @@ package externs.type;
 		(field) vim.api.keyset.get_hl_info.default: true?
 		```
 	**/
-	extern var default : Null<Bool>;
+	@:native("default")
+	extern var default_ : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.fg: integer?

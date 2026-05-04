@@ -65,7 +65,8 @@ package externs.type;
 		(field) vim.api.keyset.highlight.default: boolean?
 		```
 	**/
-	extern var default : Null<Bool>;
+	@:native("default")
+	extern var default_ : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.fallback: boolean?

@@ -23,7 +23,8 @@ package externs.type;
 		(field) vim.api.keyset.get_option_info.default: boolean|string|integer
 		```
 	**/
-	extern var default : haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
+	@:native("default")
+	extern var default_ : haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.flaglist: boolean

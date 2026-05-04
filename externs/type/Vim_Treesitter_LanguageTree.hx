@@ -25,7 +25,8 @@ package externs.type;
 		
 		@*return* `parser` — object
 	**/
-	extern static function new(source:haxe.extern.EitherType<Int, String>, lang:String, opts:Null<externs.type.Vim_Treesitter_LanguageTree_New_Opts>):externs.type.Vim_Treesitter_LanguageTree;
+	@:native("new")
+	extern static function new_(source:haxe.extern.EitherType<Int, String>, lang:String, opts:Null<externs.type.Vim_Treesitter_LanguageTree_New_Opts>):externs.type.Vim_Treesitter_LanguageTree;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:_on_bytes(bufnr: integer, changed_tick: integer, start_row: integer, start_col: integer, start_byte: integer, old_row: integer, old_col: integer, old_byte: integer, new_row: integer, new_col: integer, new_byte: integer)

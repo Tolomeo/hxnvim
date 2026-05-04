@@ -1,6 +1,5 @@
 package transpiler.parser;
 
-import transpiler.symbol.Module.ParsedModule;
 import haxe.Exception;
 import haxe.Serializer;
 
@@ -8,6 +7,7 @@ using utils.ArrayTools;
 using utils.StringTools;
 
 import transpiler.symbol.Symbol;
+import transpiler.symbol.Module;
 import transpiler.parser.LiteralTypeParser;
 import transpiler.parser.MetadataParser;
 import utils.Json;
@@ -188,28 +188,24 @@ class TableSymbolParser {
 
 	public function parse(module:ParsedModule) {
 		final parsedTable = {
-			name: name,
-			doc: doc,
-			meta: meta,
-			access: access,
+			name: this.name,
+			doc: this.doc,
+			meta: this.meta,
+			access: this.access,
 			fields: [],
 		}
 
 		final fields = this.origin.select('fields').array();
 
 		for (_ => field in fields.keyValueIterator()) {
-			final fieldName = field.select('name').string();
+			final fieldJsonName = field.select('name').string();
+			final fieldName = fieldJsonName.toFieldName();
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
 			final fieldAccess = new AccessParser(field.select('meta')).parse();
-			final fieldMetadata = new MetaParser(field.select('meta')).parse();
-
-			/* field.select('meta').array().map(meta -> meta.string()).iter(meta -> switch (meta) {
-				case "static": fieldAccess.push(ParsedAccess.Static);
-				case "private": fieldAccess.push(ParsedAccess.Private);
-				case "deprecated": fieldMetadata.push({name: "deprecated"});
-				case m: throw new Exception('Meta not implemented: ${m}');
-			}); */
-
+			final fieldMetadata = switch (fieldJsonName == fieldName) {
+				case true: new MetaParser(field.select('meta')).parse();
+				case false: [MetaParser.create('native', [fieldJsonName])].concat(new MetaParser(field.select('meta')).parse());
+			}
 			final fieldType = field.select('type');
 
 			switch (fieldType.select('kind').string()) {
@@ -243,7 +239,7 @@ class TableSymbolParser {
 
 				case 'table':
 					final className = fieldName.toTypeName();
-					final classSymbol = new TableSymbolParser(className, "", [{name: 'private'}], [], fieldType).parse(module);
+					final classSymbol = new TableSymbolParser(className, "", [MetaParser.create('private')], [], fieldType).parse(module);
 
 					module.types.set(className, ParsedSymbol.ParsedTable(classSymbol));
 
@@ -261,7 +257,7 @@ class TableSymbolParser {
 					parsedTable.fields.push(TableField.Property(symbol));
 
 				case k:
-					throw new Exception('Unexpected kind "${k}" received for table "${name}" in field "${fieldName}" of type ${fieldType.getValue()}');
+					throw new Exception('Unexpected kind "${k}" received for table "${fieldJsonName}" in field "${fieldName}" of type ${fieldType.getValue()}');
 			}
 		}
 

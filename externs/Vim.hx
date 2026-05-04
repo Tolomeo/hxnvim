@@ -16303,7 +16303,8 @@ package externs;
 		(global) vim.json.new: unknown
 		```
 	**/
-	extern var new : Dynamic;
+	@:native("new")
+	extern var new_ : Dynamic;
 }
 
 @:private extern class Go {
@@ -27098,7 +27099,8 @@ package externs;
 		 Returns 0 on error.
 		
 	**/
-	extern static function function(name:String, ?arglist:Any, ?dict:Any):Any;
+	@:native("function")
+	extern static function function_(name:String, ?arglist:Any, ?dict:Any):Any;
 	/**
 		```lua
 		function table.garbagecollect(atexit?: boolean)

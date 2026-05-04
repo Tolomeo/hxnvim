@@ -54,7 +54,6 @@ private final reservedKeyword = [
 	"break",
 	"function",
 	"default",
-	"default_"
 ];
 
 // TODO: add elements to be sanitized to a separated map, like with reservedKeywords

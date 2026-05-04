@@ -61,7 +61,8 @@ package externs.type;
 		
 		@*return* `Created` — highlighter object
 	**/
-	extern static function new(tree:externs.type.Vim_Treesitter_LanguageTree, opts:haxe.extern.EitherType<lua.Table.AnyTable, Void>):externs.type.Vim_Treesitter_Highlighter;
+	@:native("new")
+	extern static function new_(tree:externs.type.Vim_Treesitter_LanguageTree, opts:haxe.extern.EitherType<lua.Table.AnyTable, Void>):externs.type.Vim_Treesitter_Highlighter;
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.parsing: table<integer, boolean>

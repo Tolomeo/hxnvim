@@ -1,11 +1,20 @@
 package transpiler.parser;
 
+import haxe.Exception;
+
 using utils.ArrayTools;
 
 import utils.Json;
 import transpiler.symbol.Symbol;
 
 class AccessParser {
+	/* public static function create(name:String, ?params:Array<String>) {
+		return switch (name) {
+			case 'native', 'private': {name: name, params: params};
+			case n: throw new Exception('Error creating meta of name "${n}": unrecognised');
+		}
+	} */
+
 	private final origin:Json;
 
 	public function new(origin:Json) {
@@ -27,6 +36,13 @@ class AccessParser {
 }
 
 class MetaParser {
+	public static function create(name:String, ?params:Array<String>) {
+		return switch (name) {
+			case 'native', 'private': {name: name, params: params};
+			case n: throw new Exception('Error creating meta of name "${n}": unrecognised');
+		}
+	}
+
 	private final origin:Json;
 
 	public function new(origin:Json) {
