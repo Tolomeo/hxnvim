@@ -1,5 +1,3 @@
-package;
-
 import sys.io.File;
 import sys.FileSystem;
 import haxe.io.Path;
@@ -16,10 +14,6 @@ import transpiler.IO;
 import writer.Writer;
 
 class HxNvim {
-	static public function main() {
-		HxNvim.run();
-	}
-
 	static function source(directory:String):Map<String, String> {
 		final files = new Map<String, String>();
 
@@ -48,7 +42,9 @@ class HxNvim {
 		return files;
 	}
 
-	static macro function run() {
+	static function run(options:Dynamic<Dynamic>) {
+		Config.set(options);
+
 		final namespaces = HxNvim.source(Config.inputDir);
 
 		HxNvim.generate(Target.Namespace, namespaces);
@@ -60,8 +56,6 @@ class HxNvim {
 		final types = HxNvim.source(Path.join([Config.inputDir, 'type']));
 
 		HxNvim.generate(Target.Type, types);
-
-		return macro null;
 	}
 
 	static function generate(target:Target, specs:Map<String, String>) {

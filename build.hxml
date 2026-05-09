@@ -8,6 +8,8 @@
 -w -WDeprecated
 
 -cp src
--main HxNvim
+-main Main
+
+--macro HxNvim.run({ logLevel: 3 })
 
 --interp
