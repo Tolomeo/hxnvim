@@ -10,6 +10,6 @@
 -cp src
 -main Main
 
---macro HxNvim.run({ logLevel: 3 })
+--macro HxNvim.run({ logLevel: 3, overrides: { "vim.treesitter" : {} } })
 
 --interp
