@@ -1,8 +1,9 @@
+package;
+
 import sys.io.File;
 import sys.FileSystem;
 import haxe.io.Path;
 import haxe.Exception;
-import haxe.ds.Option;
 
 using utils.NullTools;
 using utils.StringTools;

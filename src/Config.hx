@@ -1,6 +1,6 @@
 using utils.RunState;
 
-typedef HxNvimConfig = {
+typedef HxNvimConfigValue = {
 	logLevel:Int,
 	cacheDir:String,
 	outputDir:String,
@@ -12,7 +12,14 @@ typedef HxNvimConfig = {
 	}>,
 }
 
-final Config:HxNvimConfig = {
+@:forward
+abstract HxNvimConfig(HxNvimConfigValue) {
+	public function new(value:HxNvimConfigValue) {
+		this = value;
+	}
+}
+
+final Config = new HxNvimConfig({
 	logLevel: 3,
 	cacheDir: '.cache',
 	outputDir: 'externs',
@@ -30,4 +37,4 @@ final Config:HxNvimConfig = {
 			}",
 		}
 	],
-};
+});

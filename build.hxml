@@ -7,7 +7,7 @@
 -D analyzer-optimize
 -w -WDeprecated
 
--cp hxnvim
+-cp src
 -main HxNvim
 
 --interp
