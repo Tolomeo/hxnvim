@@ -1,0 +1,15 @@
+{
+  "name": "hxnvim",
+  "url": "https://github.com/Tolomeo/hxnvim",
+  "license": "MIT",
+  "tags": ["nvim", "lua", "externs"],
+  "description": "Externs for the lua nvim runtime",
+  "version": "0.0.1",
+  "classPath": "src/",
+  "releasenote": "Initial release.",
+  "contributors": ["Tolomeo"],
+  "dependencies": {
+    "hxjsonast": "1.1.0",
+    "hscript": "2.7.0"
+  }
+}
