@@ -10,6 +10,6 @@
 -cp src
 -main Main
 
---macro HxNvim.run()
+--macro hxnvim.HxNvim.run()
 
 --interp
