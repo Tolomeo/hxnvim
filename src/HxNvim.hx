@@ -43,7 +43,7 @@ class HxNvim {
 	}
 
 	static function run(?options:Dynamic<Dynamic>) {
-		Config.set(options);
+		Config.set(options.or({}));
 
 		final namespaces = HxNvim.source(Config.inputDir);
 

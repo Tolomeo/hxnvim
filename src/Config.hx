@@ -5,7 +5,7 @@ import haxe.DynamicAccess;
 import Reflect;
 
 class Config {
-	public static var logLevel:Int = 2;
+	public static var logLevel:Int = 3;
 	public static var outputDir:String = "externs";
 	public static var outputPack:String = "externs";
 	public static var inputDir:String = "resources/types";
