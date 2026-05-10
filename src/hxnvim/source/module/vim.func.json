@@ -1,0 +1,11 @@
+{
+    "name": "vim.func",
+    "documentation": [],
+    "meta": [],
+    "type": {
+        "fields": [],
+        "indexes": [],
+        "kind": "table",
+        "name": "M"
+    }
+}

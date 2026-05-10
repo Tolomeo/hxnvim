@@ -1,0 +1,33 @@
+{
+    "name": "uv.callback",
+    "documentation": [
+        "```lua",
+        "(alias) uv.callback Expand to fun(err: string|nil)",
+        "```",
+        "",
+        "---",
+        "",
+        "```lua",
+        "function (err: string|nil)",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "kind": "function",
+        "arguments": [
+            {
+                "documentation": [],
+                "name": "err",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "uv.callback.err"
+                }
+            }
+        ],
+        "generics": [],
+        "name": "",
+        "overloads": [],
+        "returns": []
+    }
+}

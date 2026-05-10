@@ -1,0 +1,32 @@
+{
+    "name": "lsp.ClientCompletionItemInsertTextModeOptions",
+    "documentation": [
+        "```lua",
+        "(class) lsp.ClientCompletionItemInsertTextModeOptions",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "valueSet",
+                "documentation": [
+                    "```lua",
+                    "(field) lsp.ClientCompletionItemInsertTextModeOptions.valueSet: 1|2[]",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "array",
+                    "items": {
+                        "kind": "typereference",
+                        "value": "lsp.InsertTextMode"
+                    }
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "lsp.ClientCompletionItemInsertTextModeOptions"
+    }
+}

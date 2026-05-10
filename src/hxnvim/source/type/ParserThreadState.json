@@ -1,0 +1,28 @@
+{
+    "name": "ParserThreadState",
+    "documentation": [
+        "```lua",
+        "(alias) ParserThreadState Expand to { timeout: integer? }",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "timeout",
+                "documentation": [],
+                "meta": [],
+                "type": {
+                    "kind": "optional",
+                    "type": {
+                        "kind": "builtin",
+                        "value": "integer"
+                    }
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": ""
+    }
+}

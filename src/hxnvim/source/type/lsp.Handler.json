@@ -1,0 +1,73 @@
+{
+    "name": "lsp.Handler",
+    "documentation": [
+        "```lua",
+        "(alias) lsp.Handler Expand to fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown",
+        "```",
+        "",
+        "---",
+        "",
+        "```lua",
+        "function (err: (lsp.ResponseError)?, result: any, context: lsp.HandlerContext, config?: table)",
+        "  -\u003e ...unknown",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "kind": "function",
+        "arguments": [
+            {
+                "documentation": [],
+                "name": "err",
+                "optional": false,
+                "type": {
+                    "kind": "optional",
+                    "type": {
+                        "kind": "typereference",
+                        "value": "lsp.ResponseError"
+                    }
+                }
+            },
+            {
+                "documentation": [],
+                "name": "result",
+                "optional": false,
+                "type": {
+                    "kind": "builtin",
+                    "value": "any"
+                }
+            },
+            {
+                "documentation": [],
+                "name": "context",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "lsp.HandlerContext"
+                }
+            },
+            {
+                "documentation": [],
+                "name": "config",
+                "optional": false,
+                "type": {
+                    "kind": "builtin",
+                    "value": "table"
+                }
+            }
+        ],
+        "generics": [],
+        "name": "",
+        "overloads": [],
+        "returns": [
+            {
+                "documentation": [],
+                "name": "",
+                "type": {
+                    "kind": "builtin",
+                    "value": "any"
+                }
+            }
+        ]
+    }
+}

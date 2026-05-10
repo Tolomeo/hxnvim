@@ -1,0 +1,15 @@
+{
+    "name": "IterMod",
+    "documentation": [
+        "```lua",
+        "(class) IterMod",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [],
+        "indexes": [],
+        "kind": "table",
+        "name": "IterMod"
+    }
+}

@@ -1,0 +1,159 @@
+{
+    "name": "vim.provider.python",
+    "documentation": [],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "call",
+                "documentation": [
+                    "```lua",
+                    "function M.call(method: any, args: any)",
+                    "  -\u003e nil",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "method",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "args",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "call",
+                    "overloads": [],
+                    "returns": []
+                }
+            },
+            {
+                "name": "detect_by_module",
+                "documentation": [
+                    "```lua",
+                    "function M.detect_by_module(module: string)",
+                    "  -\u003e path: string?",
+                    "  2. error: string?",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "@*return* `path` — to detected python, if any; nil if not found",
+                    "",
+                    "@*return* `error` — message if python can't be detected by {module}; nil if success"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "module",
+                            "optional": false,
+                            "type": {
+                                "kind": "builtin",
+                                "value": "string"
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "detect_by_module",
+                    "overloads": [],
+                    "returns": [
+                        {
+                            "documentation": [],
+                            "name": "",
+                            "type": {
+                                "kind": "optional",
+                                "type": {
+                                    "kind": "builtin",
+                                    "value": "string"
+                                }
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "",
+                            "type": {
+                                "kind": "optional",
+                                "type": {
+                                    "kind": "builtin",
+                                    "value": "string"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "require",
+                "documentation": [
+                    "```lua",
+                    "function M.require(host: any)",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "host",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "require",
+                    "overloads": [],
+                    "returns": []
+                }
+            },
+            {
+                "name": "start",
+                "documentation": [
+                    "```lua",
+                    "function M.start()",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [],
+                    "generics": [],
+                    "name": "start",
+                    "overloads": [],
+                    "returns": []
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "M"
+    }
+}

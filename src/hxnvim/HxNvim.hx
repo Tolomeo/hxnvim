@@ -4,6 +4,7 @@ import sys.io.File;
 import sys.FileSystem;
 import haxe.io.Path;
 import haxe.Exception;
+import haxe.macro.Context;
 
 using hxnvim.utils.NullTools;
 using hxnvim.utils.StringTools;
@@ -47,15 +48,16 @@ class HxNvim {
 	static function run(?options:Dynamic<Dynamic>) {
 		Config.set(options.or({}));
 
-		final namespaces = HxNvim.source(Config.inputDir);
+		final sources = Context.resolvePath("hxnvim/source");
+		final namespaces = HxNvim.source(sources);
 
 		HxNvim.generate(Target.Namespace, namespaces);
 
-		final modules = HxNvim.source(Path.join([Config.inputDir, 'module']));
+		final modules = HxNvim.source(Path.join([sources, 'module']));
 
 		HxNvim.generate(Target.Module, modules);
 
-		final types = HxNvim.source(Path.join([Config.inputDir, 'type']));
+		final types = HxNvim.source(Path.join([sources, 'type']));
 
 		HxNvim.generate(Target.Type, types);
 	}

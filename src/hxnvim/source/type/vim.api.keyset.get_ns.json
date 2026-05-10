@@ -1,0 +1,32 @@
+{
+    "name": "vim.api.keyset.get_ns",
+    "documentation": [
+        "```lua",
+        "(class) vim.api.keyset.get_ns",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "winid",
+                "documentation": [
+                    "```lua",
+                    "(field) vim.api.keyset.get_ns.winid: integer?",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "optional",
+                    "type": {
+                        "kind": "builtin",
+                        "value": "integer"
+                    }
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "vim.api.keyset.get_ns"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "uv.fs_scandir.callback",
+    "documentation": [
+        "```lua",
+        "(alias) uv.fs_scandir.callback Expand to fun(err: string|nil, success?: uv.uv_fs_t)",
+        "```",
+        "",
+        "---",
+        "",
+        "```lua",
+        "function (err: string|nil, success?: uv.uv_fs_t)",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "kind": "function",
+        "arguments": [
+            {
+                "documentation": [],
+                "name": "err",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "uv.callback.err"
+                }
+            },
+            {
+                "documentation": [],
+                "name": "success",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "uv.uv_fs_t"
+                }
+            }
+        ],
+        "generics": [],
+        "name": "",
+        "overloads": [],
+        "returns": []
+    }
+}

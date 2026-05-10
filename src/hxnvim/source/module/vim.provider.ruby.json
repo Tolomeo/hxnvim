@@ -1,0 +1,130 @@
+{
+    "name": "vim.provider.ruby",
+    "documentation": [],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "call",
+                "documentation": [
+                    "```lua",
+                    "function M.call(method: any, args: any)",
+                    "  -\u003e nil",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "method",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "args",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "call",
+                    "overloads": [],
+                    "returns": []
+                }
+            },
+            {
+                "name": "detect",
+                "documentation": [
+                    "```lua",
+                    "function M.detect()",
+                    "  -\u003e string",
+                    "  2. string",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [],
+                    "generics": [],
+                    "name": "detect",
+                    "overloads": [],
+                    "returns": []
+                }
+            },
+            {
+                "name": "require",
+                "documentation": [
+                    "```lua",
+                    "function M.require(host: any)",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "host",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "require",
+                    "overloads": [],
+                    "returns": []
+                }
+            },
+            {
+                "name": "start",
+                "documentation": [
+                    "```lua",
+                    "function M.start(plugin_path: any)",
+                    "```"
+                ],
+                "meta": [
+                    "static"
+                ],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "plugin_path",
+                            "optional": false,
+                            "type": {
+                                "kind": "unknown",
+                                "documentation": []
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "start",
+                    "overloads": [],
+                    "returns": []
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "M"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "lsp.CodeActionTagOptions",
+    "documentation": [
+        "```lua",
+        "(class) lsp.CodeActionTagOptions",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "valueSet",
+                "documentation": [
+                    "```lua",
+                    "(field) lsp.CodeActionTagOptions.valueSet: 1[]",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "",
+                    "The tags supported by the client."
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "array",
+                    "items": {
+                        "kind": "typereference",
+                        "value": "lsp.CodeActionTag"
+                    }
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "lsp.CodeActionTagOptions"
+    }
+}

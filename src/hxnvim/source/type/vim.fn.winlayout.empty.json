@@ -1,0 +1,15 @@
+{
+    "name": "vim.fn.winlayout.empty",
+    "documentation": [
+        "```lua",
+        "(class) vim.fn.winlayout.empty",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [],
+        "indexes": [],
+        "kind": "table",
+        "name": "vim.fn.winlayout.empty"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "name": "lsp.DocumentColorOptions",
+    "documentation": [
+        "```lua",
+        "(class) lsp.DocumentColorOptions",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "workDoneProgress",
+                "documentation": [
+                    "```lua",
+                    "(field) lsp.DocumentColorOptions.workDoneProgress: boolean?",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "optional",
+                    "type": {
+                        "kind": "builtin",
+                        "value": "boolean"
+                    }
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "lsp.DocumentColorOptions"
+    }
+}

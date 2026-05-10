@@ -1,0 +1,36 @@
+{
+    "name": "lsp.DefinitionOptions",
+    "documentation": [
+        "```lua",
+        "(class) lsp.DefinitionOptions",
+        "```",
+        "",
+        "---",
+        "",
+        "Server Capabilities for a {@link DefinitionRequest}."
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "workDoneProgress",
+                "documentation": [
+                    "```lua",
+                    "(field) lsp.DefinitionOptions.workDoneProgress: boolean?",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "optional",
+                    "type": {
+                        "kind": "builtin",
+                        "value": "boolean"
+                    }
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "lsp.DefinitionOptions"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "name": "lsp.ReferenceContext",
+    "documentation": [
+        "```lua",
+        "(class) lsp.ReferenceContext",
+        "```",
+        "",
+        "---",
+        "",
+        "Value-object that contains additional information when",
+        "requesting references."
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "includeDeclaration",
+                "documentation": [
+                    "```lua",
+                    "(field) lsp.ReferenceContext.includeDeclaration: boolean",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "",
+                    "Include the declaration of the current symbol."
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "builtin",
+                    "value": "boolean"
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "lsp.ReferenceContext"
+    }
+}

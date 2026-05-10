@@ -1,20 +1,25 @@
 all: install
 
-RESOURCES_DIR=resources
-SRC_DIR=$(RESOURCES_DIR)/types
+SRC_DIR=src
 OUT_DIR=externs
 
-$(SRC_DIR):
-	@mkdir -p $(SRC_DIR)
-	@cp -r external/anydev.nvim/out/* $(SRC_DIR)/
+EXTERNAL_SOURCES_DIR=external/anydev.nvim/out
+EXTERNAL_SOURCES=$(shell find $(EXTERNAL_SOURCES_DIR) -type f -name "*.json")
 
-.PHONY=src
-src: $(SRC_DIR)
+SOURCES_DIR=$(SRC_DIR)/hxnvim/source
+SOURCES := $(patsubst $(EXTERNAL_SOURCES_DIR)/%, $(SOURCES_DIR)/%, $(EXTERNAL_SOURCES))
+
+$(SOURCES_DIR)/%: $(EXTERNAL_SOURCES_DIR)/%
+	@mkdir -p $(dir $@)
+	cp $< $@
+
+.PHONY=sources
+sources: $(SOURCES)
 
 .PHONY=build
-build: src
+build: sources
 	@haxe build.hxml
-	@cp -r $(RESOURCES_DIR)/_internal $(OUT_DIR)/
+	# @cp -r $(RESOURCES_DIR)/_internal $(OUT_DIR)/
 
 .PHONY=rebuild
 rebuild: clean
@@ -32,5 +37,5 @@ install:
 
 .PHONY=clean
 clean:
-	@rm -rf $(OUT_DIR)
+	@rm -rf $(SOURCES_DIR)
 

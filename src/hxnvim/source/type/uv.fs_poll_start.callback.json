@@ -1,0 +1,69 @@
+{
+    "name": "uv.fs_poll_start.callback",
+    "documentation": [
+        "```lua",
+        "(alias) uv.fs_poll_start.callback Expand to fun(err: string|nil, prev: uv.fs_stat.result|nil, curr: uv.fs_stat.result|nil)",
+        "```",
+        "",
+        "---",
+        "",
+        "```lua",
+        "function (err: string|nil, prev: uv.fs_stat.result|nil, curr: uv.fs_stat.result|nil)",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "kind": "function",
+        "arguments": [
+            {
+                "documentation": [],
+                "name": "err",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "uv.callback.err"
+                }
+            },
+            {
+                "documentation": [],
+                "name": "prev",
+                "optional": false,
+                "type": {
+                    "kind": "union",
+                    "types": [
+                        {
+                            "kind": "typereference",
+                            "value": "uv.fs_stat.result"
+                        },
+                        {
+                            "kind": "builtin",
+                            "value": "nil"
+                        }
+                    ]
+                }
+            },
+            {
+                "documentation": [],
+                "name": "curr",
+                "optional": false,
+                "type": {
+                    "kind": "union",
+                    "types": [
+                        {
+                            "kind": "typereference",
+                            "value": "uv.fs_stat.result"
+                        },
+                        {
+                            "kind": "builtin",
+                            "value": "nil"
+                        }
+                    ]
+                }
+            }
+        ],
+        "generics": [],
+        "name": "",
+        "overloads": [],
+        "returns": []
+    }
+}

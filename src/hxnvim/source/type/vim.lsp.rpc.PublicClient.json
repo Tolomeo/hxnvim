@@ -1,0 +1,270 @@
+{
+    "name": "vim.lsp.rpc.PublicClient",
+    "documentation": [
+        "```lua",
+        "(class) vim.lsp.rpc.PublicClient",
+        "```",
+        "",
+        "---",
+        "",
+        " Client RPC object"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [
+            {
+                "name": "is_closing",
+                "documentation": [
+                    "```lua",
+                    "(field) vim.lsp.rpc.PublicClient.is_closing: fun():boolean",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "",
+                    " Indicates if the RPC is closing.",
+                    "",
+                    "---",
+                    "",
+                    "```lua",
+                    "function ()",
+                    "  -\u003e boolean",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "function",
+                    "arguments": [],
+                    "generics": [],
+                    "name": "",
+                    "overloads": [],
+                    "returns": [
+                        {
+                            "documentation": [],
+                            "name": "",
+                            "type": {
+                                "kind": "builtin",
+                                "value": "boolean"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "notify",
+                "documentation": [
+                    "```lua",
+                    "(field) vim.lsp.rpc.PublicClient.notify: fun(method: string, params: any):boolean",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "",
+                    " See [vim.lsp.rpc.notify()]",
+                    "",
+                    "---",
+                    "",
+                    "```lua",
+                    "function (method: string, params: any)",
+                    "  -\u003e boolean",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "method",
+                            "optional": false,
+                            "type": {
+                                "kind": "builtin",
+                                "value": "string"
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "params",
+                            "optional": false,
+                            "type": {
+                                "kind": "builtin",
+                                "value": "any"
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "",
+                    "overloads": [],
+                    "returns": [
+                        {
+                            "documentation": [],
+                            "name": "",
+                            "type": {
+                                "kind": "builtin",
+                                "value": "boolean"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "request",
+                "documentation": [
+                    "```lua",
+                    "(field) vim.lsp.rpc.PublicClient.request: fun(method: string, params?: table, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer)):boolean, integer?",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "",
+                    " See [vim.lsp.rpc.request()]",
+                    "",
+                    "---",
+                    "",
+                    "```lua",
+                    "function (method: string, params: table?, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer))",
+                    "  -\u003e boolean",
+                    "  2. integer?",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "function",
+                    "arguments": [
+                        {
+                            "documentation": [],
+                            "name": "method",
+                            "optional": false,
+                            "type": {
+                                "kind": "builtin",
+                                "value": "string"
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "params",
+                            "optional": false,
+                            "type": {
+                                "kind": "optional",
+                                "type": {
+                                    "kind": "builtin",
+                                    "value": "table"
+                                }
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "callback",
+                            "optional": false,
+                            "type": {
+                                "kind": "function",
+                                "arguments": [
+                                    {
+                                        "documentation": [],
+                                        "name": "err",
+                                        "optional": false,
+                                        "type": {
+                                            "kind": "typereference",
+                                            "value": "lsp.ResponseError"
+                                        }
+                                    },
+                                    {
+                                        "documentation": [],
+                                        "name": "result",
+                                        "optional": false,
+                                        "type": {
+                                            "kind": "builtin",
+                                            "value": "any"
+                                        }
+                                    }
+                                ],
+                                "generics": [],
+                                "name": "",
+                                "overloads": [],
+                                "returns": []
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "notify_reply_callback",
+                            "optional": false,
+                            "type": {
+                                "kind": "function",
+                                "arguments": [
+                                    {
+                                        "documentation": [],
+                                        "name": "message_id",
+                                        "optional": false,
+                                        "type": {
+                                            "kind": "builtin",
+                                            "value": "integer"
+                                        }
+                                    }
+                                ],
+                                "generics": [],
+                                "name": "",
+                                "overloads": [],
+                                "returns": []
+                            }
+                        }
+                    ],
+                    "generics": [],
+                    "name": "",
+                    "overloads": [],
+                    "returns": [
+                        {
+                            "documentation": [],
+                            "name": "",
+                            "type": {
+                                "kind": "builtin",
+                                "value": "boolean"
+                            }
+                        },
+                        {
+                            "documentation": [],
+                            "name": "",
+                            "type": {
+                                "kind": "optional",
+                                "type": {
+                                    "kind": "builtin",
+                                    "value": "integer"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "terminate",
+                "documentation": [
+                    "```lua",
+                    "(field) vim.lsp.rpc.PublicClient.terminate: fun()",
+                    "```",
+                    "",
+                    "---",
+                    "",
+                    "",
+                    " Terminates the RPC client.",
+                    "",
+                    "---",
+                    "",
+                    "```lua",
+                    "function ()",
+                    "```"
+                ],
+                "meta": [],
+                "type": {
+                    "kind": "function",
+                    "arguments": [],
+                    "generics": [],
+                    "name": "",
+                    "overloads": [],
+                    "returns": []
+                }
+            }
+        ],
+        "indexes": [],
+        "kind": "table",
+        "name": "vim.lsp.rpc.PublicClient"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "uv.callback_with_success",
+    "documentation": [
+        "```lua",
+        "(alias) uv.callback_with_success Expand to fun(err: string|nil, success: boolean|nil)",
+        "```",
+        "",
+        "---",
+        "",
+        "```lua",
+        "function (err: string|nil, success: boolean|nil)",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "kind": "function",
+        "arguments": [
+            {
+                "documentation": [],
+                "name": "err",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "uv.callback.err"
+                }
+            },
+            {
+                "documentation": [],
+                "name": "success",
+                "optional": false,
+                "type": {
+                    "kind": "typereference",
+                    "value": "uv.callback.success"
+                }
+            }
+        ],
+        "generics": [],
+        "name": "",
+        "overloads": [],
+        "returns": []
+    }
+}

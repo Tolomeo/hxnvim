@@ -1,0 +1,15 @@
+{
+    "name": "vim.NIL",
+    "documentation": [
+        "```lua",
+        "(class) vim.NIL",
+        "```"
+    ],
+    "meta": [],
+    "type": {
+        "fields": [],
+        "indexes": [],
+        "kind": "table",
+        "name": "vim.NIL"
+    }
+}
