@@ -4,20 +4,23 @@ import haxe.Exception;
 
 using hxnvim.utils.ArrayTools;
 using hxnvim.utils.StringTools;
+using hxnvim.utils.NullTools;
 
 import hxnvim.utils.Json;
 import hxnvim.Config;
 
 class LiteralTypeParser {
-	private final origin:Json;
+	private final type:Json;
+	private final params:Array<{name:String}>;
 
-	public function new(origin:Json) {
-		this.origin = origin;
+	public function new(type:Json, ?params:Array<{name:String}>) {
+		this.type = type;
+		this.params = params.or([]);
 	}
 
 	private function parseTableLiteralType(key:Json, value:Json) {
-		final keyType = new LiteralTypeParser(key).parse();
-		final valueType = new LiteralTypeParser(value).parse();
+		final keyType = new LiteralTypeParser(key, this.params).parse();
+		final valueType = new LiteralTypeParser(value, this.params).parse();
 
 		return 'lua.Table<${keyType}, ${valueType}>';
 	}
@@ -25,25 +28,15 @@ class LiteralTypeParser {
 	private function parseLiteralTableStructure(fields:Array<Json>) {
 		final entries = fields.map(field -> ({
 			name: field.select('name').string(),
-			type: new LiteralTypeParser((field.select('type'))).parse()
-		})) /* .map(e -> {
-				final name = switch (e.name.toFieldName()) {
-					case fieldName if (e.name != fieldName): '@:native("${e.name}") ${fieldName}';
-					case fieldName: fieldName;
-				};
-
-				return {
-					name: name,
-					type: e.type
-				};
-			})*/ .map(e -> '${e.name}:${e.type}');
+			type: new LiteralTypeParser(field.select('type'), this.params).parse()
+		})).map(e -> '${e.name}:${e.type}');
 
 		return '{ ${entries.join(", ")} }';
 	}
 
 	public function parse() {
-		return switch (this.origin.select('kind').string()) {
-			case "builtin": switch (this.origin.select('value').string()) {
+		return switch (this.type.select('kind').string()) {
+			case "builtin": switch (this.type.select('value').string()) {
 					case "any": "Any";
 					case "boolean": "Bool";
 					case "function": "haxe.Constraints.Function";
@@ -62,13 +55,13 @@ class LiteralTypeParser {
 
 			case "unknown": "Dynamic";
 
-			case "optional": 'Null<${new LiteralTypeParser((this.origin.select('type'))).parse()}>';
+			case "optional": 'Null<${new LiteralTypeParser(this.type.select('type'), this.params).parse()}>';
 
 			case "union":
 				function makeUnion(members:Array<String>):String {
 					return switch (members) {
 						case [], [_]:
-							throw new Exception('Error creating union type out of ${this.origin.getValue()}');
+							throw new Exception('Error creating union type out of ${this.type.getValue()}');
 						case [left, right]:
 							'haxe.extern.EitherType<${left}, ${right}>';
 						case m:
@@ -76,38 +69,38 @@ class LiteralTypeParser {
 					}
 				}
 
-				switch (this.origin.select('types')
+				switch (this.type.select('types')
 					.array()
 					.copy()
-					.map(t -> new LiteralTypeParser(t).parse())
+					.map(t -> new LiteralTypeParser(t, this.params).parse())
 					.unique()) {
 					case [t]: t;
 					case t: makeUnion(t);
 				}
 
-			case "array": 'Array<${new LiteralTypeParser((this.origin.select('items'))).parse()}>';
+			case "array": 'Array<${new LiteralTypeParser(this.type.select('items'), this.params).parse()}>';
 
 			case "function":
-				final arguments = this.origin.select('arguments').array().map(argument -> switch (argument.select('name').string()) {
-					case '...': '___:haxe.Rest<${new LiteralTypeParser((argument.select('type'))).parse()}>';
+				final arguments = this.type.select('arguments').array().map(argument -> switch (argument.select('name').string()) {
+					case '...': '___:haxe.Rest<${new LiteralTypeParser(argument.select('type'), this.params).parse()}>';
 					case argumentName: switch (argument.select('optional').boolean()) {
-							case true: '?${argumentName}:${new LiteralTypeParser((argument.select('type'))).parse()}';
-							case false: '${argumentName}:${new LiteralTypeParser((argument.select('type'))).parse()}';
+							case true: '?${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parse()}';
+							case false: '${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parse()}';
 						}
 				});
 
-				final return_ = switch (this.origin.select('returns').array()) {
+				final return_ = switch (this.type.select('returns').array()) {
 					case []: "Dynamic";
-					case [r]: new LiteralTypeParser((r.select('type'))).parse();
-					case returns if (returns.length <= 6): 'vim._internal.Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type")).parse()).join(", ")}>';
-					case _: throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+					case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
+					case returns if (returns.length <= 6): 'vim._internal.Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).join(", ")}>';
+					case _: throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
 				}
 
 				'(${arguments.join(", ")}) -> ${return_}';
 
 			case "table":
-				final indexes = this.origin.select('indexes').array();
-				final fields = this.origin.select('fields').array();
+				final indexes = this.type.select('indexes').array();
+				final fields = this.type.select('fields').array();
 
 				return switch ({
 					fields:fields, indexes:indexes
@@ -125,12 +118,15 @@ class LiteralTypeParser {
 
 			case "booleanliteral": "Bool";
 
-			case "typereference": '${Config.outputPack}.type.${this.origin.select('value').string().toTypeName()}';
+			case "typereference": switch (this.type.select('value').string()) {
+					case paramTypeReference if (this.params.find(param -> param.name == paramTypeReference) != null): paramTypeReference;
+					case typereference: '${Config.outputPack}.type.${typereference.toTypeName()}';
+				}
 
-			case "modulereference": '${Config.outputPack}.module.${this.origin.select('value').string().toTypeName()}';
+			case "modulereference": '${Config.outputPack}.module.${this.type.select('value').string().toTypeName()}';
 
 			case _:
-				throw new Exception('Unrecognised type "${this.origin.getValue()}" received');
+				throw new Exception('Unrecognised type "${this.type.getValue()}" received');
 		}
 	}
 }

@@ -34,7 +34,8 @@ class FunctionSymbolParser {
 			final type = param.select('type');
 			final constraints = switch (type.value) {
 				case JsonValue.JNull: [];
-				case _: [new LiteralTypeParser((type)).parse()];
+				// TODO: support for generic values referencing previous generics
+				case _: [new LiteralTypeParser(type).parse()];
 			}
 
 			return {
@@ -45,13 +46,7 @@ class FunctionSymbolParser {
 
 		final args = this.origin.select('arguments').array().map(argument -> {
 			final name = argument.select('name').string();
-			final type = switch (argument.select('type', 'kind').string()) {
-				case 'typereference': switch (argument.select('type', 'value').string()) {
-						case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-						case _: new LiteralTypeParser((argument.select('type'))).parse();
-					}
-				case _: new LiteralTypeParser((argument.select('type'))).parse();
-			}
+			final type = new LiteralTypeParser(argument.select('type'), params).parse();
 
 			return switch (name) {
 				case '...': ({
@@ -69,21 +64,9 @@ class FunctionSymbolParser {
 
 		final ret = switch (this.origin.select('returns').array()) {
 			case []: "Dynamic";
-			case [r]: switch (r.select('type', 'kind').string()) {
-					case 'typereference': switch (r.select('type', 'value').string()) {
-							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-							case _: new LiteralTypeParser((r.select('type'))).parse();
-						}
-					case _: new LiteralTypeParser((r.select('type'))).parse();
-				}
+			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
 			case returns if (returns.length <= 6):
-				final multireturn = returns.map(r -> switch (r.select('type', 'kind').string()) {
-					case 'typereference': switch (r.select('type', 'value').string()) {
-							case genericTypeReference if (params.find(param -> param.name == genericTypeReference) != null): genericTypeReference;
-							case _: new LiteralTypeParser((r.select('type'))).parse();
-						}
-					case _: new LiteralTypeParser((r.select('type'))).parse();
-				});
+				final multireturn = returns.map(r -> new LiteralTypeParser(r.select('type'), params).parse());
 
 				'vim._internal.Multireturn<${multireturn.join(", ")}>';
 
