@@ -60,7 +60,7 @@ class FunctionSymbolParser {
 						opt: false
 					});
 				case n: ({
-						name: n.toSafeIdentifier(),
+						name: n.toIdentifierName(),
 						type: type,
 						opt: argument.select('optional').boolean()
 					});
