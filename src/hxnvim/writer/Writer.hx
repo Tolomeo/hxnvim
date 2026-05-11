@@ -4,7 +4,6 @@ import sys.FileSystem;
 import sys.io.File;
 import haxe.ds.Option;
 import haxe.io.Path;
-
 import hxnvim.Config;
 
 private abstract FileRW(String) to String {
@@ -27,16 +26,15 @@ private abstract FileRW(String) to String {
 }
 
 class Writer {
-	final dir:String;
+	final rootDir:String;
 
-	public function new(root) {
-		final outputDir = Config.outputDir;
-		final dir = Path.join([outputDir, root]);
-		FileSystem.createDirectory(dir);
-		this.dir = dir;
+	public function new(dir) {
+		final root = Path.join([Config.outputDir, dir]);
+		FileSystem.createDirectory(root);
+		this.rootDir = root;
 	}
 
 	public function get(file:String) {
-		return new FileRW(Path.join([this.dir, file]));
+		return new FileRW(Path.join([this.rootDir, file]));
 	}
 }

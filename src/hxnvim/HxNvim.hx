@@ -16,6 +16,8 @@ import hxnvim.transpiler.Transpiler;
 import hxnvim.transpiler.IO;
 import hxnvim.writer.Writer;
 
+final sourcesPath = Context.resolvePath("hxnvim/source");
+
 class HxNvim {
 	static function source(directory:String):Map<String, String> {
 		final files = new Map<String, String>();
@@ -38,7 +40,7 @@ class HxNvim {
 				throw e;
 			}
 
-			final relativePath = path.substr(Path.addTrailingSlash(Config.inputDir).length);
+			final relativePath = path.substr(Path.addTrailingSlash(sourcesPath).length);
 			files.set(relativePath, spec);
 		}
 
@@ -48,16 +50,15 @@ class HxNvim {
 	static function run(?options:Dynamic<Dynamic>) {
 		Config.set(options.or({}));
 
-		final sources = Context.resolvePath("hxnvim/source");
-		final namespaces = HxNvim.source(sources);
+		final namespaces = HxNvim.source(sourcesPath);
 
 		HxNvim.generate(Target.Namespace, namespaces);
 
-		final modules = HxNvim.source(Path.join([sources, 'module']));
+		final modules = HxNvim.source(Path.join([sourcesPath, 'module']));
 
 		HxNvim.generate(Target.Module, modules);
 
-		final types = HxNvim.source(Path.join([sources, 'type']));
+		final types = HxNvim.source(Path.join([sourcesPath, 'type']));
 
 		HxNvim.generate(Target.Type, types);
 	}
@@ -75,6 +76,9 @@ class HxNvim {
 			final targetDir = filepath.dir;
 			final targetFile = '${name}.hx';
 			final targetWriter = new Writer(targetDir).get(targetFile);
+
+			trace("file", file);
+			trace("targetDir", targetDir);
 
 			switch (targetWriter.read()) {
 				case None:

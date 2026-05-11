@@ -8,7 +8,6 @@ class Config {
 	public static var logLevel:Int = 3;
 	public static var outputDir:String = "externs";
 	public static var outputPack:String = "externs";
-	public static var inputDir:String = "resources/types";
 	public static var overrides:DynamicAccess<{
 		?parsedProperty:String,
 		?parsedMethod:String
