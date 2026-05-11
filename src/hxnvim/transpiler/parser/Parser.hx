@@ -1,13 +1,10 @@
 package hxnvim.transpiler.parser;
 
 import haxe.Exception;
-import haxe.Rest;
-import haxe.Serializer;
 
 using hxnvim.utils.ArrayTools;
 using hxnvim.utils.StringTools;
 
-import hxnvim.Config;
 import hxnvim.utils.Json;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;

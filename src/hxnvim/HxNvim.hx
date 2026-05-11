@@ -77,9 +77,6 @@ class HxNvim {
 			final targetFile = '${name}.hx';
 			final targetWriter = new Writer(targetDir).get(targetFile);
 
-			trace("file", file);
-			trace("targetDir", targetDir);
-
 			switch (targetWriter.read()) {
 				case None:
 				case Some(_):
