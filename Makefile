@@ -6,7 +6,7 @@ OUT_DIR=externs
 EXTERNAL_SOURCES_DIR=external/anydev.nvim/out
 EXTERNAL_SOURCES=$(shell find $(EXTERNAL_SOURCES_DIR) -type f -name "*.json")
 
-SOURCES_DIR=$(SRC_DIR)/hxnvim/source
+SOURCES_DIR=$(SRC_DIR)/hxnvim/source/runtime
 SOURCES := $(patsubst $(EXTERNAL_SOURCES_DIR)/%, $(SOURCES_DIR)/%, $(EXTERNAL_SOURCES))
 
 $(SOURCES_DIR)/%: $(EXTERNAL_SOURCES_DIR)/%
@@ -19,7 +19,6 @@ sources: $(SOURCES)
 .PHONY=build
 build: sources
 	@haxe build.hxml
-	# @cp -r $(RESOURCES_DIR)/_internal $(OUT_DIR)/
 
 .PHONY=rebuild
 rebuild: clean

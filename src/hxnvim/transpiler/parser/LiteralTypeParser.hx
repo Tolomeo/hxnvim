@@ -92,7 +92,7 @@ class LiteralTypeParser {
 				final return_ = switch (this.type.select('returns').array()) {
 					case []: "Dynamic";
 					case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
-					case returns if (returns.length <= 6): 'vim._internal.Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).join(", ")}>';
+					case returns if (returns.length <= 6): '${Config.outputPack}.helper.Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).join(", ")}>';
 					case _: throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
 				}
 

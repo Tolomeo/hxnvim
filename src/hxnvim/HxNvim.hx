@@ -17,9 +17,11 @@ import hxnvim.transpiler.IO;
 import hxnvim.writer.Writer;
 
 final sourcesPath = Context.resolvePath("hxnvim/source");
+final helperSourcesPath = Context.resolvePath("hxnvim/source/helper");
+final runtimeSourcesPath = Context.resolvePath("hxnvim/source/runtime");
 
 class HxNvim {
-	static function source(directory:String):Map<String, String> {
+	static function source(directory:String, ?relativeTo:String):Map<String, String> {
 		final files = new Map<String, String>();
 
 		if (!FileSystem.exists(directory)) {
@@ -40,7 +42,7 @@ class HxNvim {
 				throw e;
 			}
 
-			final relativePath = path.substr(Path.addTrailingSlash(sourcesPath).length);
+			final relativePath = path.substr(Path.addTrailingSlash(relativeTo.or(directory)).length);
 			files.set(relativePath, spec);
 		}
 
@@ -50,21 +52,53 @@ class HxNvim {
 	static function run(?options:Dynamic<Dynamic>) {
 		Config.set(options.or({}));
 
-		final namespaces = HxNvim.source(sourcesPath);
+		final helpers = HxNvim.source(helperSourcesPath, sourcesPath);
 
-		HxNvim.generate(Target.Namespace, namespaces);
+		HxNvim.generateHelperPackage(helpers);
 
-		final modules = HxNvim.source(Path.join([sourcesPath, 'module']));
+		final namespaces = HxNvim.source(runtimeSourcesPath);
 
-		HxNvim.generate(Target.Module, modules);
+		HxNvim.generateVimPackage(Target.Namespace, namespaces);
 
-		final types = HxNvim.source(Path.join([sourcesPath, 'type']));
+		final modules = HxNvim.source(Path.join([runtimeSourcesPath, 'module']), runtimeSourcesPath);
 
-		HxNvim.generate(Target.Type, types);
+		HxNvim.generateVimPackage(Target.Module, modules);
+
+		final types = HxNvim.source(Path.join([runtimeSourcesPath, 'type']), runtimeSourcesPath);
+
+		HxNvim.generateVimPackage(Target.Type, types);
 	}
 
-	static function generate(target:Target, specs:Map<String, String>) {
-		for (file => spec in specs.keyValueIterator()) {
+	static function generateHelperPackage(filesources:Map<String, String>) {
+		for (file => fileContent in filesources.keyValueIterator()) {
+			final filepath = new Path(file);
+
+			final name = filepath.file;
+			final pack = switch (filepath.dir) {
+				case null: [Config.outputPack];
+				case dir: [Config.outputPack].concat(dir.split("/"));
+			}
+
+			final targetDir = filepath.dir;
+			final targetFile = '${name}.hx';
+			final targetWriter = new Writer(targetDir).get(targetFile);
+
+			switch (targetWriter.read()) {
+				case None:
+				case Some(_):
+					Logger.info('Using "${Path.join([targetDir, targetFile])}" generated output found');
+					continue;
+			}
+
+			final content = ['package ${pack.join(".")};', fileContent].join("\n\n");
+
+			Logger.info('Writing "${Path.join([targetDir, targetFile])}" output');
+			targetWriter.write(content);
+		}
+	}
+
+	static function generateVimPackage(target:Target, filesources:Map<String, String>) {
+		for (file => spec in filesources.keyValueIterator()) {
 			final filepath = new Path(file);
 			final native = filepath.file;
 			final pack = switch (filepath.dir) {

@@ -68,7 +68,7 @@ class FunctionSymbolParser {
 			case returns if (returns.length <= 6):
 				final multireturn = returns.map(r -> new LiteralTypeParser(r.select('type'), params).parse());
 
-				'vim._internal.Multireturn<${multireturn.join(", ")}>';
+				'${Config.outputPack}.helper.Multireturn<${multireturn.join(", ")}>';
 
 			case _: throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
 		}
