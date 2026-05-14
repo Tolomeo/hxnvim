@@ -13,12 +13,14 @@ import hxnvim.transpiler.parser.SymbolParser;
 import hxnvim.transpiler.parser.MetadataParser;
 
 class Parser {
-	private final json:Json;
+	private final name:String;
+	private final symbol:Json;
 	private var result:ParsedModule = null;
 
 	public function new() {
+		this.name = State.consume(v -> v.output.name);
 		final input = State.consume(v -> v.input);
-		this.json = Json.parse(input.spec, input.file);
+		this.symbol = Json.parse(input.spec, input.file);
 	}
 
 	public function parse():ParsedModule {
@@ -27,13 +29,12 @@ class Parser {
 			main: null
 		}
 
-		this.result.main = this.parseSymbol(this.json);
+		this.result.main = this.parseSymbol(this.name, this.symbol);
 
 		return this.result;
 	}
 
-	private function parseSymbol(symbol:Json) {
-		final name = symbol.select('name').string().toTypeName();
+	private function parseSymbol(name: String, symbol:Json) {
 		final doc = symbol.select('documentation').array().map(line -> line.string()).toDoc();
 		final access = new AccessParser(symbol.select('meta')).parse();
 		final metadata = new MetaParser(symbol.select('meta')).parse();

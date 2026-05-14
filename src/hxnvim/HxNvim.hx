@@ -79,7 +79,7 @@ class HxNvim {
 				case dir: [Config.outputPack].concat(dir.split("/"));
 			}
 
-			final targetDir = filepath.dir;
+			final targetDir = pack.join("/");
 			final targetFile = '${name}.hx';
 			final targetWriter = new Writer(targetDir).get(targetFile);
 
@@ -100,14 +100,18 @@ class HxNvim {
 	static function generateVimPackage(target:Target, filesources:Map<String, String>) {
 		for (file => spec in filesources.keyValueIterator()) {
 			final filepath = new Path(file);
+
 			final native = filepath.file;
+			final typePathName = native.split(".");
+			final typePath = typePathName.initial();
+			final name = typePathName.last().toTypeName();
+
 			final pack = switch (filepath.dir) {
 				case null: [Config.outputPack];
-				case dir: [Config.outputPack].concat(dir.split("/"));
+				case dir: [Config.outputPack].concat(dir.split("/").concat(typePath));
 			}
-			final name = filepath.file.toTypeName();
 
-			final targetDir = filepath.dir;
+			final targetDir = pack.join("/");
 			final targetFile = '${name}.hx';
 			final targetWriter = new Writer(targetDir).get(targetFile);
 
@@ -132,6 +136,8 @@ class HxNvim {
 					case moduleOverrides: moduleOverrides;
 				}
 			};
+
+			trace(output);
 
 			final transpiled = Transpiler.transpile({
 				target: target,

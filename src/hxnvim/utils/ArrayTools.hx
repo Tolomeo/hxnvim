@@ -26,6 +26,12 @@ class ArrayTools {
 		return arr[arr.length - 1];
 	}
 
+	static public function initial<T>(arr:Array<T>):Array<T> {
+		final result = arr.copy();
+		result.pop();
+		return result;
+	}
+
 	static public final has = Lambda.has;
 
 	static public final foreach = Lambda.foreach;

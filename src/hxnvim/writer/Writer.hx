@@ -28,10 +28,9 @@ private abstract FileRW(String) to String {
 class Writer {
 	final rootDir:String;
 
-	public function new(dir) {
-		final root = Path.join([Config.outputDir, dir]);
-		FileSystem.createDirectory(root);
-		this.rootDir = root;
+	public function new(dir:String) {
+		FileSystem.createDirectory(dir);
+		this.rootDir = dir;
 	}
 
 	public function get(file:String) {
