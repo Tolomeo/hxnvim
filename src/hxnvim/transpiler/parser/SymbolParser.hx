@@ -203,10 +203,11 @@ class TableSymbolParser {
 							final functions = new Array<Function>();
 
 							function isEqualSignature(fn1:Function, fn2:Function) {
-								return Serializer.run({args: fn1.args, ret: fn1.ret}) == Serializer.run({args: fn2.args, ret: fn2.ret});
+								return Serializer.run({args: fn1.args}) == Serializer.run({args: fn2.args});
 							}
 
-							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse());
+							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]),
+								fieldType).parse());
 
 							overloads.iter(overload_ -> {
 								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]),
@@ -221,7 +222,7 @@ class TableSymbolParser {
 					}
 
 				case 'table':
-					final className = fieldName.toTypeName();
+					final className = '${this.name}_${fieldName.toTypeName()}';
 					final classSymbol = new TableSymbolParser(className, "", [MetaParser.create('private')], [], fieldType).parse(module);
 
 					module.types.set(className, ParsedSymbol.ParsedTable(classSymbol));
