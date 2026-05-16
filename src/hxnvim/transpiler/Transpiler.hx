@@ -37,7 +37,7 @@ class Transpiler {
 	}
 
 	function transpileSymbol(symbol:Json) {
-		final parsed = new Parser(symbol).parse(this.transpileChildSymbol);
+		final parsed = new Parser(symbol, this.transpileChildSymbol).parse();
 
 		return switch (this.io.target) {
 			case ModuleType.Type: new TypeModuleGenerator().generate(parsed);

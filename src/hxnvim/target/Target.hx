@@ -62,7 +62,6 @@ class Target {
 	}
 
 	public function exists() {
-		trace(this.targetFilePath);
 		return FileSystem.exists(this.toString());
 	}
 

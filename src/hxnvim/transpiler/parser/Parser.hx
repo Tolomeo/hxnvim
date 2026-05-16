@@ -9,25 +9,21 @@ using hxnvim.utils.MapTools;
 import hxnvim.utils.Json;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.symbol.Module;
 import hxnvim.transpiler.parser.SymbolParser;
 import hxnvim.transpiler.parser.MetadataParser;
 
 class Parser {
-	private final name:String;
-	private final symbol:Json;
-	private var result:Array<ParsedSymbol> = null;
+	final symbol:Json;
+	final handleChild:(name:String, child:Json) -> Void;
 
-	public function new(symbol:Json) {
-		this.name = State.consume(v -> v.output.name);
+	public function new(symbol:Json, handleChild:(name:String, child:Json) -> Void) {
 		this.symbol = symbol;
+		this.handleChild = handleChild;
 	}
 
-	public function parse(handleChild:(name:String, child:Json) -> Void) {
-		return this.parseSymbol(this.name, this.symbol, handleChild);
-	}
-
-	private function parseSymbol(name:String, symbol:Json, handleChild:(name:String, child:Json) -> Void) {
+	public function parse() {
+		final symbol = this.symbol;
+		final name = State.consume(v -> v.output.name);
 		final doc = symbol.select('documentation').array().map(line -> line.string()).toDoc();
 		final access = new AccessParser(symbol.select('meta')).parse();
 		final metadata = new MetaParser(symbol.select('meta')).parse();
@@ -35,7 +31,7 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table":
-				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(handleChild);
+				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(this.handleChild);
 				return ParsedSymbol.ParsedTable(symbol);
 
 			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":
