@@ -14,6 +14,7 @@ import hxnvim.Config;
 import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.transpiler.IO;
+import hxnvim.target.Target;
 import hxnvim.writer.Writer;
 
 final sourcesPath = Context.resolvePath("hxnvim/source");
@@ -58,68 +59,40 @@ class HxNvim {
 
 		final namespaces = HxNvim.source(runtimeSourcesPath);
 
-		HxNvim.generateVimPackage(Target.Namespace, namespaces);
+		HxNvim.generateVimPackage(ModuleType.Namespace, namespaces);
 
 		final modules = HxNvim.source(Path.join([runtimeSourcesPath, 'module']), runtimeSourcesPath);
 
-		HxNvim.generateVimPackage(Target.Module, modules);
+		HxNvim.generateVimPackage(ModuleType.Module, modules);
 
 		final types = HxNvim.source(Path.join([runtimeSourcesPath, 'type']), runtimeSourcesPath);
 
-		HxNvim.generateVimPackage(Target.Type, types);
+		HxNvim.generateVimPackage(ModuleType.Type, types);
 	}
 
 	static function generateHelperPackage(filesources:Map<String, String>) {
 		for (file => fileContent in filesources.keyValueIterator()) {
-			final filepath = new Path(file);
+			final target = new Target(file);
 
-			final name = filepath.file;
-			final pack = switch (filepath.dir) {
-				case null: [Config.outputPack];
-				case dir: [Config.outputPack].concat(dir.split("/"));
+			if (target.exists()) {
+				Logger.info('Using "${target}" generated output found');
+				continue;
 			}
 
-			final targetDir = pack.join("/");
-			final targetFile = '${name}.hx';
-			final targetWriter = new Writer(targetDir).get(targetFile);
+			final content = ['package ${target.pack.join(".")};', fileContent].join("\n\n");
 
-			switch (targetWriter.read()) {
-				case None:
-				case Some(_):
-					Logger.info('Using "${Path.join([targetDir, targetFile])}" generated output found');
-					continue;
-			}
-
-			final content = ['package ${pack.join(".")};', fileContent].join("\n\n");
-
-			Logger.info('Writing "${Path.join([targetDir, targetFile])}" output');
-			targetWriter.write(content);
+			Logger.info('Writing "${target}" output');
+			target.write(content);
 		}
 	}
 
-	static function generateVimPackage(target:Target, filesources:Map<String, String>) {
+	static function generateVimPackage(type:ModuleType, filesources:Map<String, String>) {
 		for (file => spec in filesources.keyValueIterator()) {
-			final filepath = new Path(file);
+			final target = new Target(file);
 
-			final native = filepath.file;
-			final typePathName = native.split(".");
-			final typePath = typePathName.initial();
-			final name = typePathName.last().toTypeName();
-
-			final pack = switch (filepath.dir) {
-				case null: [Config.outputPack];
-				case dir: [Config.outputPack].concat(dir.split("/").concat(typePath));
-			}
-
-			final targetDir = pack.join("/");
-			final targetFile = '${name}.hx';
-			final targetWriter = new Writer(targetDir).get(targetFile);
-
-			switch (targetWriter.read()) {
-				case None:
-				case Some(_):
-					Logger.info('Using "${Path.join([targetDir, targetFile])}" generated output found');
-					continue;
+			if (target.exists()) {
+				Logger.info('Using "${target}" generated output found');
+				continue;
 			}
 
 			final input = {
@@ -128,25 +101,23 @@ class HxNvim {
 			}
 
 			final output = {
-				name: name,
-				pack: pack,
-				native: native,
-				overrides: switch (Config.overrides.get(native)) {
+				name: target.name,
+				pack: target.pack,
+				native: target.native,
+				overrides: switch (Config.overrides.get(target.native)) {
 					case null: {};
 					case moduleOverrides: moduleOverrides;
 				}
 			};
 
-			trace(output);
-
 			final transpiled = Transpiler.transpile({
-				target: target,
+				target: type,
 				input: input,
 				output: output
 			});
 
-			Logger.info('Writing "${Path.join([targetDir, targetFile])}" output');
-			targetWriter.write(transpiled);
+			Logger.info('Writing "${target}" output');
+			target.write(transpiled);
 		}
 	}
 }

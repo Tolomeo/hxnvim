@@ -16,9 +16,9 @@ class Transpiler {
 			final parsed = new Parser().parse();
 
 			return switch (io.target) {
-				case Target.Type: new TypeModuleGenerator().generate(parsed);
-				case Target.Module: new RequireModuleGenerator().generate(parsed);
-				case Target.Namespace: new NamespaceModuleGenerator().generate(parsed);
+				case ModuleType.Type: new TypeModuleGenerator().generate(parsed);
+				case ModuleType.Module: new RequireModuleGenerator().generate(parsed);
+				case ModuleType.Namespace: new NamespaceModuleGenerator().generate(parsed);
 			}
 		});
 	}

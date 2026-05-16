@@ -1,6 +1,6 @@
 package hxnvim.transpiler;
 
-enum abstract Target(String) {
+enum abstract ModuleType(String) {
 	var Type;
 	var Module;
 	var Namespace;
@@ -21,7 +21,7 @@ typedef Output = {
 }
 
 typedef IO = {
-	target:Target,
+	target:ModuleType,
 	input:Input,
 	output:Output
 }
