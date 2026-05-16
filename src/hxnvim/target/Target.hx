@@ -10,16 +10,26 @@ using hxnvim.utils.StringTools;
 import hxnvim.Config;
 
 class Target {
-	static public function toHelperReference(reference: String) {
-			return '${Config.outputPack}.helper.${reference}';
+	static public function toHelperReference(reference:String) {
+		return '${Config.outputPack}.helper.${reference}';
 	}
 
-	static public function toTypeReference(reference:String) {
-		return '${Config.outputPack}.type.${reference.toTypeName()}';
+	static public function toTypeReference(native:String) {
+		final nativeTypePath = native.split(".");
+
+		final typePath = nativeTypePath.initial().map(p -> p.toLowerCase().toIdentifierName());
+		final name = nativeTypePath.last().toTypeName();
+
+		return [Config.outputPack, 'type',].concat(typePath).concat([name]).join(".");
 	}
 
-	static public function toModuleReference(reference:String) {
-		return '${Config.outputPack}.module.${reference.toTypeName()}';
+	static public function toModuleReference(native:String) {
+		final nativeTypePath = native.split(".");
+
+		final typePath = nativeTypePath.initial().map(p -> p.toLowerCase());
+		final name = nativeTypePath.last().toTypeName();
+
+		return [Config.outputPack, 'module',].concat(typePath).concat([name]).join(".");
 	}
 
 	final srcFilePath:Path;
@@ -38,7 +48,7 @@ class Target {
 
 		final nativeTypePath = native.split(".");
 
-		this.typePath = nativeTypePath.initial();
+		this.typePath = nativeTypePath.initial().map(p -> p.toLowerCase().toIdentifierName());
 		this.name = nativeTypePath.last().toTypeName();
 
 		this.pack = switch (this.srcFilePath.dir) {
