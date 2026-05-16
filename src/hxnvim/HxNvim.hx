@@ -109,11 +109,11 @@ class HxNvim {
 				}
 			};
 
-			final transpiled = Transpiler.transpile({
+			final transpiled = new Transpiler({
 				target: type,
 				input: input,
 				output: output
-			});
+			}).transpile();
 
 			Logger.info('Writing "${target}" output');
 			target.write(transpiled);
