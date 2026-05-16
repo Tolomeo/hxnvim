@@ -1,5 +1,6 @@
 package hxnvim.transpiler;
 
+import hxnvim.utils.Json;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.IO;
 import hxnvim.transpiler.parser.Parser;

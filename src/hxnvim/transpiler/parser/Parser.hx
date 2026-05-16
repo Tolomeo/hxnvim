@@ -4,6 +4,7 @@ import haxe.Exception;
 
 using hxnvim.utils.ArrayTools;
 using hxnvim.utils.StringTools;
+using hxnvim.utils.MapTools;
 
 import hxnvim.utils.Json;
 import hxnvim.transpiler.State;
@@ -34,7 +35,24 @@ class Parser {
 		return this.result;
 	}
 
-	private function parseSymbol(name: String, symbol:Json) {
+	private function parseNestedSymbol(name:String, symbol:Json) {
+		final outputName = name.toTypeName();
+
+		final nestedParseResult = State.fork(state -> {
+			/* trace(symbol.pos.file);
+				trace(symbol.pos.min, symbol.pos.max);
+				trace(state.input.spec.substring(symbol.pos.min, symbol.pos.max)); */
+			state.output.name = outputName;
+			state.output.native = '${state.output.native}.${name}';
+			state.input.spec = state.input.spec.substring(symbol.pos.min, symbol.pos.max);
+			return state;
+		}, () -> new Parser().parse());
+
+		this.result.types = this.result.types.merge(nestedParseResult.types);
+		this.result.types.set(outputName, nestedParseResult.main);
+	}
+
+	private function parseSymbol(name:String, symbol:Json) {
 		final doc = symbol.select('documentation').array().map(line -> line.string()).toDoc();
 		final access = new AccessParser(symbol.select('meta')).parse();
 		final metadata = new MetaParser(symbol.select('meta')).parse();
@@ -42,7 +60,7 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table":
-				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(this.result);
+				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(this.parseNestedSymbol);
 				return ParsedSymbol.ParsedTable(symbol);
 
 			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":

@@ -13,7 +13,7 @@ import hxnvim.transpiler.parser.MetadataParser;
 import hxnvim.utils.Json;
 import hxnvim.target.Target;
 
-class FunctionSymbolParser {
+private class SymbolParser {
 	private final name:String;
 	private final doc:String;
 	private final meta:Array<Metadata>;
@@ -27,7 +27,9 @@ class FunctionSymbolParser {
 		this.access = access;
 		this.origin = origin;
 	}
+}
 
+class FunctionSymbolParser extends SymbolParser {
 	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
 	public function parse() {
 		final params = this.origin.select('generics').array().map(param -> {
@@ -84,21 +86,7 @@ class FunctionSymbolParser {
 	}
 }
 
-class AliasSymbolParser {
-	private final name:String;
-	private final doc:String;
-	private final meta:Array<Metadata>;
-	private final access:Array<ParsedAccess>;
-	private final origin:Json;
-
-	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, origin:Json) {
-		this.name = name;
-		this.doc = doc;
-		this.meta = meta;
-		this.access = access;
-		this.origin = origin;
-	}
-
+class AliasSymbolParser extends SymbolParser {
 	public function parse() {
 		return {
 			name: name,
@@ -110,21 +98,7 @@ class AliasSymbolParser {
 	}
 }
 
-class EnumeratorSymbolParser {
-	private final name:String;
-	private final doc:String;
-	private final meta:Array<Metadata>;
-	private final access:Array<ParsedAccess>;
-	private final origin:Json;
-
-	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, origin:Json) {
-		this.name = name;
-		this.doc = doc;
-		this.meta = meta;
-		this.access = access;
-		this.origin = origin;
-	}
-
+class EnumeratorSymbolParser extends SymbolParser {
 	public function parse() {
 		final fieldsJson = this.origin.select('fields').array();
 		final type = switch (fieldsJson) {
@@ -153,22 +127,8 @@ class EnumeratorSymbolParser {
 	}
 }
 
-class TableSymbolParser {
-	private final name:String;
-	private final doc:String;
-	private final meta:Array<Metadata>;
-	private final access:Array<ParsedAccess>;
-	private final origin:Json;
-
-	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, origin:Json) {
-		this.name = name;
-		this.doc = doc;
-		this.meta = meta;
-		this.access = access;
-		this.origin = origin;
-	}
-
-	public function parse(module:ParsedModule) {
+class TableSymbolParser extends SymbolParser {
+	public function parse(handleNestedTable:(fieldName:String, origin:Json) -> Void) {
 		final parsedTable = {
 			name: this.name,
 			doc: this.doc,
@@ -221,18 +181,7 @@ class TableSymbolParser {
 					}
 
 				case 'table':
-					final className = '${this.name}_${fieldName.toTypeName()}';
-					final classSymbol = new TableSymbolParser(className, "", [MetaParser.create('private')], [], fieldType).parse(module);
-
-					module.types.set(className, ParsedSymbol.ParsedTable(classSymbol));
-
-					parsedTable.fields.push(TableField.Property({
-						name: fieldName,
-						doc: fieldDoc,
-						meta: fieldMetadata,
-						access: fieldAccess,
-						type: className
-					}));
+					handleNestedTable(fieldName, field);
 
 				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral',
 					'stringliteral':

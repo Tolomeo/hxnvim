@@ -15,7 +15,6 @@ import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.transpiler.IO;
 import hxnvim.target.Target;
-import hxnvim.writer.Writer;
 
 final sourcesPath = Context.resolvePath("hxnvim/source");
 final helperSourcesPath = Context.resolvePath("hxnvim/source/helper");
