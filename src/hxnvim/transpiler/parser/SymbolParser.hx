@@ -11,6 +11,7 @@ import hxnvim.transpiler.symbol.Module;
 import hxnvim.transpiler.parser.LiteralTypeParser;
 import hxnvim.transpiler.parser.MetadataParser;
 import hxnvim.utils.Json;
+import hxnvim.target.Target;
 
 class FunctionSymbolParser {
 	private final name:String;
@@ -66,10 +67,8 @@ class FunctionSymbolParser {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
 			case returns if (returns.length <= 6):
-				final multireturn = returns.map(r -> new LiteralTypeParser(r.select('type'), params).parse());
-
-				'${Config.outputPack}.helper.Multireturn<${multireturn.join(", ")}>';
-
+				final returnTypes = returns.map(r -> new LiteralTypeParser(r.select('type'), params).parse());
+				Target.toHelperReference('Multireturn<${returnTypes.join(", ")}>');
 			case _: throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
 		}
 

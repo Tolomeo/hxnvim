@@ -10,8 +10,20 @@ using hxnvim.utils.StringTools;
 import hxnvim.Config;
 
 class Target {
-	final srcPath:Path;
-	final targetPath:Path;
+	static public function toHelperReference(reference: String) {
+			return '${Config.outputPack}.helper.${reference}';
+	}
+
+	static public function toTypeReference(reference:String) {
+		return '${Config.outputPack}.type.${reference.toTypeName()}';
+	}
+
+	static public function toModuleReference(reference:String) {
+		return '${Config.outputPack}.module.${reference.toTypeName()}';
+	}
+
+	final srcFilePath:Path;
+	final targetFilePath:Path;
 
 	public final native:String;
 	public final typePath:Array<String>;
@@ -21,39 +33,38 @@ class Target {
 	public final file:String;
 
 	public function new(file:String) {
-		this.srcPath = new Path(file);
-		this.native = this.srcPath.file;
+		this.srcFilePath = new Path(file);
+		this.native = this.srcFilePath.file;
 
 		final nativeTypePath = native.split(".");
 
 		this.typePath = nativeTypePath.initial();
 		this.name = nativeTypePath.last().toTypeName();
 
-		this.pack = switch (this.srcPath.dir) {
+		this.pack = switch (this.srcFilePath.dir) {
 			case null: [Config.outputPack];
 			case dir: [Config.outputPack].concat(dir.split("/").concat(this.typePath));
 		}
 
 		this.dir = Path.join([Config.outputDir].concat(this.pack));
 		this.file = '${name}.hx';
-
-		this.targetPath = new Path(Path.join([this.dir, this.file]));
+		this.targetFilePath = new Path(Path.join([this.dir, this.file]));
 	}
 
 	public function exists() {
-		trace(this.targetPath);
+		trace(this.targetFilePath);
 		return FileSystem.exists(this.toString());
 	}
 
 	public function write(content:String) {
-		FileSystem.createDirectory(this.targetPath.dir);
+		FileSystem.createDirectory(this.targetFilePath.dir);
 		final handle = File.write(this.toString(), false);
 		handle.writeString(content);
 		handle.close();
 	}
 
 	public function toString() {
-		return this.targetPath.toString();
+		return this.targetFilePath.toString();
 	}
 
 	public function get() {

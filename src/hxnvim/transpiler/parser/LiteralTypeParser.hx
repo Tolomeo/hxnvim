@@ -8,6 +8,7 @@ using hxnvim.utils.NullTools;
 
 import hxnvim.utils.Json;
 import hxnvim.Config;
+import hxnvim.target.Target;
 
 class LiteralTypeParser {
 	private final type:Json;
@@ -92,7 +93,7 @@ class LiteralTypeParser {
 				final return_ = switch (this.type.select('returns').array()) {
 					case []: "Dynamic";
 					case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
-					case returns if (returns.length <= 6): '${Config.outputPack}.helper.Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).join(", ")}>';
+					case returns if (returns.length <= 6): Target.toHelperReference('Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).join(", ")}>');
 					case _: throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
 				}
 
@@ -120,10 +121,10 @@ class LiteralTypeParser {
 
 			case "typereference": switch (this.type.select('value').string()) {
 					case paramTypeReference if (this.params.find(param -> param.name == paramTypeReference) != null): paramTypeReference;
-					case typereference: '${Config.outputPack}.type.${typereference.toTypeName()}';
+					case typereference: Target.toTypeReference(typereference);
 				}
 
-			case "modulereference": '${Config.outputPack}.module.${this.type.select('value').string().toTypeName()}';
+			case "modulereference": Target.toModuleReference(this.type.select('value').string());
 
 			case _:
 				throw new Exception('Unrecognised type "${this.type.getValue()}" received');
