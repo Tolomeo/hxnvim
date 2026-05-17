@@ -4,6 +4,7 @@ import haxe.Exception;
 
 using hxnvim.utils.StringTools;
 
+import hxnvim.Logger;
 import hxnvim.utils.Json;
 import hxnvim.transpiler.State;
 import hxnvim.target.Target;
@@ -28,13 +29,15 @@ class Transpiler {
 	}
 
 	function transpileSymbol(symbol:Json) {
+		Logger.verbose('Transpiling ${State.consume(target -> target)}');
+
 		final parsed = new Parser(symbol, this.transpileChildSymbol).parse();
 
 		return switch (this.target.output.type) {
 			case TargetType.Annotation: new TypeModuleGenerator().generate(parsed);
 			case TargetType.Module: new RequireModuleGenerator().generate(parsed);
 			case TargetType.Namespace: new NamespaceModuleGenerator().generate(parsed);
-			case _: throw new Exception('Unexpected target type received "${this.target.output}"');
+			case _: throw new Exception('Error transpiling ${this.target.file}: unexpected target type received <${this.target.output}>');
 		}
 	}
 

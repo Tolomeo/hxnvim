@@ -47,10 +47,14 @@ private class Generator {
 				throw new Exception('Unimplemented main generator for symbol ${s}');
 		}
 	}
+
+	public function generate(symbol:ParsedSymbol) {
+		return this.printer.printTypeDefinition(this.generateType(symbol));
+	}
 }
 
 class NamespaceModuleGenerator extends Generator {
-	public function generate(symbol:ParsedSymbol) {
+	override public function generate(symbol:ParsedSymbol) {
 		final native = {
 			name: 'native',
 			params: switch (State.consume(target -> target.output.nativeChild)) {
@@ -70,17 +74,10 @@ class TypeModuleGenerator extends Generator {
 
 		return new ClassGenerator().generate(table, meta);
 	}
-
-	public function generate(symbol:ParsedSymbol) {
-		// final structInit:Metadata = {name: 'structInit'};
-		final typeDefinition = this.generateType(symbol);
-
-		return this.printer.printTypeDefinition(typeDefinition);
-	}
 }
 
 class RequireModuleGenerator extends Generator {
-	public function generate(symbol:ParsedSymbol) {
+	override public function generate(symbol:ParsedSymbol) {
 		final luaRequire:Metadata = {
 			name: 'luaRequire',
 			params: switch (State.consume(target -> target.output.nativeChild)) {

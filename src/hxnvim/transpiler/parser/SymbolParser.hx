@@ -6,12 +6,14 @@ import haxe.Serializer;
 using hxnvim.utils.ArrayTools;
 using hxnvim.utils.StringTools;
 
+import hxnvim.Logger;
+import hxnvim.utils.Json;
+import hxnvim.target.Target;
+import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.symbol.Module;
 import hxnvim.transpiler.parser.LiteralTypeParser;
 import hxnvim.transpiler.parser.MetadataParser;
-import hxnvim.utils.Json;
-import hxnvim.target.Target;
 
 private class SymbolParser {
 	private final name:String;
@@ -139,7 +141,12 @@ class TableSymbolParser extends SymbolParser {
 
 		final fields = this.origin.select('fields').array();
 
-		for (_ => field in fields.keyValueIterator()) {
+		for (fieldJson in fields) {
+			final field = switch (State.consume(t -> t.output.overrides).get(fieldJson.select('name').string())) {
+				case null: fieldJson;
+				case ovrride: fieldJson.merge(ovrride, ovrride);
+			}
+
 			final fieldJsonName = field.select('name').string();
 			final fieldName = fieldJsonName.toFieldName();
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();

@@ -4,23 +4,29 @@ import haxe.Exception;
 import haxe.DynamicAccess;
 import Reflect;
 
+typedef Override = DynamicAccess<String>
+
 class Config {
 	public static var logLevel:Int = 3;
 	public static var outputDir:String = "externs";
 	public static var outputPack:String = "externs";
-	public static var overrides:DynamicAccess<{
-		?parsedProperty:String,
-		?parsedMethod:String
-	}> = {
-		"vim.treesitter": {},
-		"vim.opt": {
-			parsedProperty: "{
-				name: parsedProperty.name,
-				doc: parsedProperty.doc,
-				access: parsedProperty.access,
-				meta: parsedProperty.meta,
-				type:'externs.type.VimOption<' + parsedProperty.type + '>'
-			}",
+	public static var overrides:DynamicAccess<Override> = {
+		/* "vim.treesitter": {},
+			"vim.opt": {
+				parsedProperty: "{
+					name: parsedProperty.name,
+					doc: parsedProperty.doc,
+					access: parsedProperty.access,
+					meta: parsedProperty.meta,
+					type:'externs.type.VimOption<' + parsedProperty.type + '>'
+				}",
+		}*/
+		"TSNode": {
+			range: '{
+				"type": {
+					"overloads": []
+				}
+			}'
 		}
 	};
 

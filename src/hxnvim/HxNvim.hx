@@ -94,9 +94,12 @@ class HxNvim {
 				continue;
 			}
 
+			Logger.info('Traspiling "${file}"');
+
 			final transpiled = new Transpiler(target).transpile();
 
 			Logger.info('Writing "${target.file}" output');
+
 			target.file.write(transpiled);
 		}
 	}

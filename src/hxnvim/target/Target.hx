@@ -20,7 +20,7 @@ private typedef TargetOutput = {
 	nativeChild:Array<String>,
 	name:String,
 	pack:Array<String>,
-	overrides:{?parsedProperty:Null<String>, ?parsedMethod:Null<String>}
+	overrides:Override
 };
 
 private class TargetFile {
@@ -128,7 +128,17 @@ class Target {
 		output.name = name.toTypeName();
 		output.nativeChild.push(name);
 
+		final nativeFullPath = [output.native].concat(output.nativeChild).join(".");
+		output.overrides = switch (Config.overrides.get(nativeFullPath)) {
+			case null: {};
+			case moduleOverrides: moduleOverrides;
+		}
+
 		final file = this.file;
 		return new Target(input, output, file);
+	}
+
+	public function toString() {
+		return 'Target<${this.output}>';
 	}
 }
