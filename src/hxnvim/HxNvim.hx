@@ -94,22 +94,6 @@ class HxNvim {
 				continue;
 			}
 
-			/* final input = {
-					file: file,
-					spec: spec
-				}
-
-				final output = {
-					name: target.output.name,
-					pack: target.output.pack,
-					native: target.output.native,
-					overrides: target.output.overrides,
-			};*/
-			/* final transpiled = new Transpiler({
-				target: type,
-				input: input,
-				output: output
-			}).transpile();*/
 			final transpiled = new Transpiler(target).transpile();
 
 			Logger.info('Writing "${target.file}" output');

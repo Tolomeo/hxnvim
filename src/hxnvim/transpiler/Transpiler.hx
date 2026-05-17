@@ -19,20 +19,12 @@ class Transpiler {
 	}
 
 	function transpileChildSymbol(name:String, symbol:Json) {
-		return;
-		/* final outputName = name.toTypeName();
+		final transpiledChild = State.fork(target -> {
+			final spec = target.input.spec.substring(symbol.pos.min, symbol.pos.max);
+			return target.child(name, spec);
+		}, () -> this.transpileSymbol(symbol));
 
-			final transpiled = State.fork(state -> { */
-		/* trace(symbol.pos.file);
-			trace(symbol.pos.min, symbol.pos.max);
-			trace(state.input.spec.substring(symbol.pos.min, symbol.pos.max)); */
-		/* state.output.name = outputName;
-				state.output.native = '${state.output.native}.${name}';
-				state.input.spec = state.input.spec.substring(symbol.pos.min, symbol.pos.max);
-				return state;
-			}, () -> this.transpileSymbol(symbol));
-
-			this.result.push(transpiled); */
+		this.result.push(transpiledChild);
 	}
 
 	function transpileSymbol(symbol:Json) {

@@ -117,4 +117,16 @@ class Target {
 		this.output = output;
 		this.file = file;
 	}
+
+	public function child(name:String, spec:String) {
+		final input = Reflect.copy(this.input);
+		input.spec = spec;
+
+		final output = Reflect.copy(this.output);
+		output.native = '${output.native}.${name}';
+		output.name = name.toTypeName();
+
+		final file = this.file;
+		return new Target(input, output, file);
+	}
 }
