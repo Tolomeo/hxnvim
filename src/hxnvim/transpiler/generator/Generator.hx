@@ -20,11 +20,11 @@ private class Generator {
 	final modulePack:Array<String>;
 
 	public function new() {
-		final state = State.consume(v -> v);
+		final target = State.consume(v -> v);
 
-		this.moduleName = state.output.name;
-		this.moduleNativeName = state.output.native;
-		this.modulePack = state.output.pack;
+		this.moduleName = target.output.name;
+		this.moduleNativeName = target.output.native;
+		this.modulePack = target.output.pack;
 	}
 
 	function generatePackage() {

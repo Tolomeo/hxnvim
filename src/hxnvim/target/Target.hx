@@ -9,6 +9,19 @@ using hxnvim.utils.StringTools;
 
 import hxnvim.Config;
 
+private typedef TargetInput = {
+	file:String,
+	spec:String
+};
+
+private typedef TargetOutput = {
+	type:TargetType,
+	native:String,
+	name:String,
+	pack:Array<String>,
+	overrides:{?parsedProperty:Null<String>, ?parsedMethod:Null<String>}
+};
+
 private class TargetFile {
 	final path:Path;
 
@@ -30,6 +43,13 @@ private class TargetFile {
 	public function toString() {
 		return this.path.toString();
 	}
+}
+
+enum abstract TargetType(String) {
+	var Annotation;
+	var Module;
+	var Namespace;
+	var Helper;
 }
 
 class Target {
@@ -55,24 +75,10 @@ class Target {
 		return [Config.outputPack, 'module',].concat(typePath).concat([name]).join(".");
 	}
 
-	public final input:{
-		file:String,
-		spec:String
-	}
+	static public function create(type:TargetType, file:String, spec:String) {
+		final input = {file: file, spec: spec};
 
-	public final output:{
-		native:String,
-		name:String,
-		pack:Array<String>,
-		overrides:{?parsedProperty:Null<String>, ?parsedMethod:Null<String>}
-	}
-
-	public final file:TargetFile;
-
-	public function new(file:String, spec:String) {
-		this.input = {file: file, spec: spec};
-
-		final inputFilePath = new Path(this.input.file);
+		final inputFilePath = new Path(input.file);
 		final nativeName = inputFilePath.file;
 		final nativeTypePath = nativeName.split(".");
 		final outputTypePath = nativeTypePath.initial().map(p -> p.toLowerCase().toIdentifierName());
@@ -86,7 +92,8 @@ class Target {
 			case moduleOverrides: moduleOverrides;
 		}
 
-		this.output = {
+		final output = {
+			type: type,
 			native: nativeName,
 			name: outputTypeName,
 			pack: outputPackage,
@@ -94,6 +101,20 @@ class Target {
 		}
 
 		final outputPath = Path.join([Config.outputDir].concat(outputPackage).concat(['${outputTypeName}.hx']));
-		this.file = new TargetFile(outputPath);
+		final file = new TargetFile(outputPath);
+
+		return new Target(input, output, file);
+	}
+
+	public final input:TargetInput;
+
+	public final output:TargetOutput;
+
+	public final file:TargetFile;
+
+	public function new(input:TargetInput, output:TargetOutput, file:TargetFile) {
+		this.input = input;
+		this.output = output;
+		this.file = file;
 	}
 }

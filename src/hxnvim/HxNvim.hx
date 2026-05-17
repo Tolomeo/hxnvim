@@ -58,20 +58,20 @@ class HxNvim {
 
 		final namespaces = HxNvim.source(runtimeSourcesPath);
 
-		HxNvim.generateVimPackage(ModuleType.Namespace, namespaces);
+		HxNvim.generateVimPackage(TargetType.Namespace, namespaces);
 
 		final modules = HxNvim.source(Path.join([runtimeSourcesPath, 'module']), runtimeSourcesPath);
 
-		HxNvim.generateVimPackage(ModuleType.Module, modules);
+		HxNvim.generateVimPackage(TargetType.Module, modules);
 
 		final types = HxNvim.source(Path.join([runtimeSourcesPath, 'type']), runtimeSourcesPath);
 
-		HxNvim.generateVimPackage(ModuleType.Type, types);
+		HxNvim.generateVimPackage(TargetType.Annotation, types);
 	}
 
 	static function generateHelperPackage(filesources:Map<String, String>) {
 		for (file => fileContent in filesources.keyValueIterator()) {
-			final target = new Target(file, fileContent);
+			final target = Target.create(TargetType.Helper, file, fileContent);
 
 			if (target.file.exists()) {
 				Logger.info('Using "${target.file}" generated output found');
@@ -85,32 +85,32 @@ class HxNvim {
 		}
 	}
 
-	static function generateVimPackage(type:ModuleType, filesources:Map<String, String>) {
+	static function generateVimPackage(type:TargetType, filesources:Map<String, String>) {
 		for (file => spec in filesources.keyValueIterator()) {
-			final target = new Target(file, spec);
+			final target = Target.create(type, file, spec);
 
 			if (target.file.exists()) {
 				Logger.info('Using "${target.file}" generated output found');
 				continue;
 			}
 
-			final input = {
-				file: file,
-				spec: spec
-			}
+			/* final input = {
+					file: file,
+					spec: spec
+				}
 
-			final output = {
-				name: target.output.name,
-				pack: target.output.pack,
-				native: target.output.native,
-				overrides: target.output.overrides,
-			};
-
-			final transpiled = new Transpiler({
+				final output = {
+					name: target.output.name,
+					pack: target.output.pack,
+					native: target.output.native,
+					overrides: target.output.overrides,
+			};*/
+			/* final transpiled = new Transpiler({
 				target: type,
 				input: input,
 				output: output
-			}).transpile();
+			}).transpile();*/
+			final transpiled = new Transpiler(target).transpile();
 
 			Logger.info('Writing "${target.file}" output');
 			target.file.write(transpiled);

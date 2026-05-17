@@ -2,6 +2,7 @@ package hxnvim.transpiler;
 
 import hxnvim.Logger;
 import hxnvim.utils.RunState;
+import hxnvim.target.Target;
 import hxnvim.transpiler.IO;
 
 private final logger = Logger.suffix("Transpiler");
@@ -22,9 +23,4 @@ function verbose(msg:String) {
 	return logger.verbose(msg, State.consume(state -> state.output.native));
 }
 
-typedef ModuleConfig = {
-	input:Input,
-	output:Output,
-}
-
-final State = new RunState<ModuleConfig>();
+final State = new RunState<Target>();
