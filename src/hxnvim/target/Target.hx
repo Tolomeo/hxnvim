@@ -17,6 +17,7 @@ private typedef TargetInput = {
 private typedef TargetOutput = {
 	type:TargetType,
 	native:String,
+	nativeChild:Array<String>,
 	name:String,
 	pack:Array<String>,
 	overrides:{?parsedProperty:Null<String>, ?parsedMethod:Null<String>}
@@ -95,6 +96,7 @@ class Target {
 		final output = {
 			type: type,
 			native: nativeName,
+			nativeChild: [],
 			name: outputTypeName,
 			pack: outputPackage,
 			overrides: outputOverrides
@@ -123,8 +125,8 @@ class Target {
 		input.spec = spec;
 
 		final output = Reflect.copy(this.output);
-		output.native = '${output.native}.${name}';
 		output.name = name.toTypeName();
+		output.nativeChild.push(name);
 
 		final file = this.file;
 		return new Target(input, output, file);

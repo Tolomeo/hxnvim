@@ -18,11 +18,11 @@ class Transpiler {
 		this.target = target;
 	}
 
-	function transpileChildSymbol(name:String, symbol:Json) {
+	function transpileChildSymbol(name:String, child:Json) {
 		final transpiledChild = State.fork(target -> {
-			final spec = target.input.spec.substring(symbol.pos.min, symbol.pos.max);
+			final spec = target.input.spec.substring(child.pos.min, child.pos.max);
 			return target.child(name, spec);
-		}, () -> this.transpileSymbol(symbol));
+		}, () -> this.transpileSymbol(child));
 
 		this.result.push(transpiledChild);
 	}

@@ -65,8 +65,14 @@ class NamespaceModuleGenerator extends Generator {
 	}*/
 	public function generate(symbol:ParsedSymbol) {
 		final printer = new Printer();
-		final meta = [{name: 'native', params: [State.consume(s -> s.output.native)]}];
-		final typeDefinition = this.generateType(symbol, meta);
+		final native = {
+			name: 'native',
+			params: switch (State.consume(target -> target.output.nativeChild)) {
+				case []: [State.consume(s -> s.output.native)];
+				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
+			}
+		}
+		final typeDefinition = this.generateType(symbol, [native]);
 
 		return printer.printTypeDefinition(typeDefinition);
 	}
