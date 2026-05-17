@@ -52,17 +52,6 @@ class NamespaceModuleGenerator extends Generator {
 		super();
 	}
 
-	/* public function generateTypes(symbols:Array<ParsedSymbol>) {
-		// moduleTypes.push(this.generateType(parsedModule.main, [{name: 'native', params: [this.moduleNativeName]}]));
-		return symbols.map(s -> this.generateType(s));
-	}*/
-	/* public function generate(symbols:Array<ParsedSymbol>) {
-		final printer = new Printer();
-		final pack = this.generatePackage();
-		final types = this.generateTypes(symbols).map(t -> printer.printTypeDefinition(t));
-
-		return [pack].concat(types).join("\n\n");
-	}*/
 	public function generate(symbol:ParsedSymbol) {
 		final printer = new Printer();
 		final native = {
@@ -83,14 +72,9 @@ class TypeModuleGenerator extends Generator {
 		super();
 	}
 
-	/* public function generateTypes(symbols:Array<ParsedSymbol>) {
-		// final private_:Metadata = {name: 'private'};
-		// final structInit:Metadata = {name: 'structInit'};
-
-		return symbols.map(s -> this.generateType(s));
-	}*/
 	public function generate(symbol:ParsedSymbol) {
 		final printer = new Printer();
+		// final structInit:Metadata = {name: 'structInit'};
 		final typeDefinition = this.generateType(symbol);
 
 		return printer.printTypeDefinition(typeDefinition);
@@ -102,18 +86,16 @@ class RequireModuleGenerator extends Generator {
 		super();
 	}
 
-	// public function generateTypes(symbols:Array<ParsedSymbol>) {
-
-	/* final private_:Metadata = {name: 'private'};
-		final luaRequire:Metadata = {
-			name: 'luaRequire',
-			params: [this.moduleNativeName]
-	};*/
-	/* return symbols.map(s -> this.generateType(s));
-	}*/
 	public function generate(symbol:ParsedSymbol) {
 		final printer = new Printer();
-		final typeDefinition = this.generateType(symbol);
+		final luaRequire:Metadata = {
+			name: 'luaRequire',
+			params: switch (State.consume(target -> target.output.nativeChild)) {
+				case []: [State.consume(s -> s.output.native)];
+				case childPath: [State.consume(s -> s.output.native), childPath.join(".")];
+			}
+		};
+		final typeDefinition = this.generateType(symbol, [luaRequire]);
 
 		return printer.printTypeDefinition(typeDefinition);
 	}
