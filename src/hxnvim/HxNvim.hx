@@ -71,26 +71,26 @@ class HxNvim {
 
 	static function generateHelperPackage(filesources:Map<String, String>) {
 		for (file => fileContent in filesources.keyValueIterator()) {
-			final target = new Target(file);
+			final target = new Target(file, fileContent);
 
-			if (target.exists()) {
-				Logger.info('Using "${target}" generated output found');
+			if (target.file.exists()) {
+				Logger.info('Using "${target.file}" generated output found');
 				continue;
 			}
 
-			final content = ['package ${target.pack.join(".")};', fileContent].join("\n\n");
+			final content = ['package ${target.output.pack.join(".")};', fileContent].join("\n\n");
 
-			Logger.info('Writing "${target}" output');
-			target.write(content);
+			Logger.info('Writing "${target.file}" output');
+			target.file.write(content);
 		}
 	}
 
 	static function generateVimPackage(type:ModuleType, filesources:Map<String, String>) {
 		for (file => spec in filesources.keyValueIterator()) {
-			final target = new Target(file);
+			final target = new Target(file, spec);
 
-			if (target.exists()) {
-				Logger.info('Using "${target}" generated output found');
+			if (target.file.exists()) {
+				Logger.info('Using "${target.file}" generated output found');
 				continue;
 			}
 
@@ -100,13 +100,10 @@ class HxNvim {
 			}
 
 			final output = {
-				name: target.name,
-				pack: target.pack,
-				native: target.native,
-				overrides: switch (Config.overrides.get(target.native)) {
-					case null: {};
-					case moduleOverrides: moduleOverrides;
-				}
+				name: target.output.name,
+				pack: target.output.pack,
+				native: target.output.native,
+				overrides: target.output.overrides,
 			};
 
 			final transpiled = new Transpiler({
@@ -115,8 +112,8 @@ class HxNvim {
 				output: output
 			}).transpile();
 
-			Logger.info('Writing "${target}" output');
-			target.write(transpiled);
+			Logger.info('Writing "${target.file}" output');
+			target.file.write(transpiled);
 		}
 	}
 }
