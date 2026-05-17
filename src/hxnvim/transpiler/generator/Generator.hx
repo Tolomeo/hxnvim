@@ -15,20 +15,22 @@ import hxnvim.transpiler.generator.Enumerator;
 typedef Module = Array<TypeDefinition>;
 
 private class Generator {
-	final moduleName:String;
-	final moduleNativeName:String;
-	final modulePack:Array<String>;
+	final printer:Printer;
 
 	public function new() {
-		final target = State.consume(v -> v);
-
-		this.moduleName = target.output.name;
-		this.moduleNativeName = target.output.native;
-		this.modulePack = target.output.pack;
+		this.printer = new Printer();
 	}
 
-	function generatePackage() {
-		return 'package ${this.modulePack.join(".")};';
+	function generateTableType(table:Table, ?meta:Array<Metadata>) {
+		return new ClassGenerator().generate(table, meta);
+	}
+
+	function generateAliasType(alias:Alias, ?meta:Array<Metadata>) {
+		return new AliasGenerator().generate(alias, meta);
+	}
+
+	function generateEnumeratorType(enumerator:Enumerator, ?meta:Array<Metadata>) {
+		return new EnumeratorGenerator().generate(enumerator, meta);
 	}
 
 	function generateType(symbol:ParsedSymbol, ?meta:Array<Metadata>) {
@@ -36,11 +38,11 @@ private class Generator {
 
 		return switch (symbol) {
 			case ParsedSymbol.ParsedTable(table):
-				new ClassGenerator().generate(table, meta);
+				this.generateTableType(table, meta);
 			case ParsedSymbol.ParsedAlias(alias):
-				new AliasGenerator().generate(alias, meta);
+				this.generateAliasType(alias, meta);
 			case ParsedSymbol.ParsedEnumerator(enumerator):
-				new EnumeratorGenerator().generate(enumerator, meta);
+				this.generateEnumeratorType(enumerator, meta);
 			case s:
 				throw new Exception('Unimplemented main generator for symbol ${s}');
 		}
@@ -48,12 +50,7 @@ private class Generator {
 }
 
 class NamespaceModuleGenerator extends Generator {
-	public function new() {
-		super();
-	}
-
 	public function generate(symbol:ParsedSymbol) {
-		final printer = new Printer();
 		final native = {
 			name: 'native',
 			params: switch (State.consume(target -> target.output.nativeChild)) {
@@ -63,31 +60,27 @@ class NamespaceModuleGenerator extends Generator {
 		}
 		final typeDefinition = this.generateType(symbol, [native]);
 
-		return printer.printTypeDefinition(typeDefinition);
+		return this.printer.printTypeDefinition(typeDefinition);
 	}
 }
 
 class TypeModuleGenerator extends Generator {
-	public function new() {
-		super();
+	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
+		meta = [{name: 'structInit'}].concat(meta.or([]));
+
+		return new ClassGenerator().generate(table, meta);
 	}
 
 	public function generate(symbol:ParsedSymbol) {
-		final printer = new Printer();
 		// final structInit:Metadata = {name: 'structInit'};
 		final typeDefinition = this.generateType(symbol);
 
-		return printer.printTypeDefinition(typeDefinition);
+		return this.printer.printTypeDefinition(typeDefinition);
 	}
 }
 
 class RequireModuleGenerator extends Generator {
-	public function new() {
-		super();
-	}
-
 	public function generate(symbol:ParsedSymbol) {
-		final printer = new Printer();
 		final luaRequire:Metadata = {
 			name: 'luaRequire',
 			params: switch (State.consume(target -> target.output.nativeChild)) {
@@ -97,6 +90,6 @@ class RequireModuleGenerator extends Generator {
 		};
 		final typeDefinition = this.generateType(symbol, [luaRequire]);
 
-		return printer.printTypeDefinition(typeDefinition);
+		return this.printer.printTypeDefinition(typeDefinition);
 	}
 }
