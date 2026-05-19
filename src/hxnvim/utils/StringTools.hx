@@ -106,3 +106,19 @@ function toIdentifierName(name:String) {
 		case true: toSafeIdentifier(name);
 	};
 }
+
+function eval(scriptString:String, ?variables:Map<String, Any>) {
+	final scriptParser = new hscript.Parser();
+	final scriptInterpreter = new hscript.Interp();
+	final script = scriptParser.parseString(scriptString);
+
+	if (variables == null) {
+		return scriptInterpreter.execute(script);
+	}
+
+	for (variableName => variableValue in variables.keyValueIterator()) {
+		scriptInterpreter.variables.set(variableName, variableValue);
+	}
+
+	return scriptInterpreter.execute(script);
+}

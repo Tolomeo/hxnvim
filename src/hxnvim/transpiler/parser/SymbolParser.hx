@@ -5,6 +5,7 @@ import haxe.Serializer;
 
 using hxnvim.utils.ArrayTools;
 using hxnvim.utils.StringTools;
+using hxnvim.utils.DynamicTools;
 
 import hxnvim.Logger;
 import hxnvim.utils.Json;
@@ -144,16 +145,21 @@ class TableSymbolParser extends SymbolParser {
 		for (fieldJson in fields) {
 			final field = switch (State.consume(t -> t.output.overrides).get(fieldJson.select('name').string())) {
 				case null: fieldJson;
-				case ovrride: fieldJson.merge(ovrride, ovrride);
+				case fieldOverride:
+					final fieldValue = fieldJson.getValue();
+					final fieldOverrideValue = fieldOverride.eval(["value" => fieldValue]);
+					final spec = haxe.Json.stringify(fieldValue.merge(fieldOverrideValue));
+					final file = '${fieldJson.pos.file}:${fieldJson.pos.min}-${fieldJson.pos.max}&${fieldOverride}';
+					Json.parse(spec, file);
 			}
 
-			final fieldJsonName = field.select('name').string();
-			final fieldName = fieldJsonName.toFieldName();
+			final fieldNativeName = field.select('name').string();
+			final fieldName = fieldNativeName.toFieldName();
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
 			final fieldAccess = new AccessParser(field.select('meta')).parse();
-			final fieldMetadata = switch (fieldJsonName == fieldName) {
+			final fieldMetadata = switch (fieldNativeName == fieldName) {
 				case true: new MetaParser(field.select('meta')).parse();
-				case false: [MetaParser.create('native', [fieldJsonName])].concat(new MetaParser(field.select('meta')).parse());
+				case false: [MetaParser.create('native', [fieldNativeName])].concat(new MetaParser(field.select('meta')).parse());
 			}
 			final fieldType = field.select('type');
 
@@ -196,7 +202,7 @@ class TableSymbolParser extends SymbolParser {
 					parsedTable.fields.push(TableField.Property(symbol));
 
 				case k:
-					throw new Exception('Unexpected kind "${k}" received for table "${fieldJsonName}" in field "${fieldName}" of type ${fieldType.getValue()}');
+					throw new Exception('Unexpected kind "${k}" received for table "${fieldNativeName}" in field "${fieldName}" of type ${fieldType.getValue()}');
 			}
 		}
 

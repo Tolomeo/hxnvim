@@ -23,8 +23,8 @@ class Config {
 		}*/
 		"TSNode": {
 			range: '{
-				"type": {
-					"overloads": []
+				type: {
+					overloads: []
 				}
 			}'
 		}
