@@ -24,6 +24,9 @@ class Config {
 		"TSNode": {
 			range: '{
 				type: {
+					generics: value.type.overloads[0].generics,
+					arguments: value.type.overloads[0].arguments,
+					returns: value.type.overloads[0].returns,
 					overloads: []
 				}
 			}'
