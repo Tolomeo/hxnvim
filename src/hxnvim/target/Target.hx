@@ -19,7 +19,7 @@ private typedef TargetOutput = {
 	native:String,
 	nativeChild:Array<String>,
 	name:String,
-	pack:Array<String>,
+	pack:String,
 	overrides:Override
 };
 
@@ -79,30 +79,35 @@ class Target {
 	static public function create(type:TargetType, file:String, spec:String) {
 		final input = {file: file, spec: spec};
 
-		final inputFilePath = new Path(input.file);
-		final nativeName = inputFilePath.file;
-		final nativeTypePath = nativeName.split(".");
-		final outputTypePath = nativeTypePath.initial().map(p -> p.toLowerCase().toIdentifierName());
-		final outputTypeName = nativeTypePath.last().toTypeName();
-		final outputPackage = switch (inputFilePath.dir) {
-			case null: [Config.outputPack];
-			case dir: [Config.outputPack].concat(dir.split("/").concat(outputTypePath));
+		final inputPath = new Path(input.file);
+
+		final luaModule = inputPath.file;
+		final luaModuleHierarchy = luaModule.split(".");
+
+		final haxeType = luaModuleHierarchy.last().toTypeName();
+		var haxeParentHierarchy = luaModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
+		haxeParentHierarchy = switch (inputPath.dir) {
+			case null: [Config.outputPack].concat(haxeParentHierarchy);
+			case dir: [Config.outputPack].concat(dir.split("/").concat(haxeParentHierarchy));
 		}
-		final outputOverrides = switch (Config.overrides.get(nativeName)) {
+		final haxePackage = haxeParentHierarchy.join(".");
+
+		final overrides = switch (Config.overrides.get(luaModule)) {
 			case null: {};
 			case moduleOverrides: moduleOverrides;
 		}
 
 		final output = {
 			type: type,
-			native: nativeName,
+			native: luaModule,
 			nativeChild: [],
-			name: outputTypeName,
-			pack: outputPackage,
-			overrides: outputOverrides
+			name: haxeType,
+			pack: haxePackage,
+			overrides: overrides
 		}
 
-		final outputPath = Path.join([Config.outputDir].concat(outputPackage).concat(['${outputTypeName}.hx']));
+		final haxeOutputFile = '${haxeType}.hx';
+		final outputPath = Path.join([Config.outputDir].concat(haxeParentHierarchy).concat([haxeOutputFile]));
 		final file = new TargetFile(outputPath);
 
 		return new Target(input, output, file);

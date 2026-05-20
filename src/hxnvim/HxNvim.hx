@@ -78,7 +78,7 @@ class HxNvim {
 				continue;
 			}
 
-			final content = ['package ${target.output.pack.join(".")};', fileContent].join("\n\n");
+			final content = ['package ${target.output.pack};', fileContent].join("\n\n");
 
 			Logger.verbose('Writing "${target.file}" output');
 			target.file.write(content);
