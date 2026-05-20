@@ -80,7 +80,7 @@ class HxNvim {
 
 			final content = ['package ${target.output.pack.join(".")};', fileContent].join("\n\n");
 
-			Logger.info('Writing "${target.file}" output');
+			Logger.verbose('Writing "${target.file}" output');
 			target.file.write(content);
 		}
 	}
@@ -98,7 +98,7 @@ class HxNvim {
 
 			final transpiled = new Transpiler(target).transpile();
 
-			Logger.info('Writing "${target.file}" output');
+			Logger.verbose('Writing "${target.file}" output');
 
 			target.file.write(transpiled);
 		}

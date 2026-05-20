@@ -148,9 +148,8 @@ class TableSymbolParser extends SymbolParser {
 				case fieldOverride:
 					final fieldValue = fieldJson.getValue();
 					final fieldOverrideValue = fieldOverride.eval(["value" => fieldValue]);
-					final spec = haxe.Json.stringify(fieldValue.merge(fieldOverrideValue));
 					final file = '${fieldJson.pos.file}:${fieldJson.pos.min}-${fieldJson.pos.max}&${fieldOverride}';
-					Json.parse(spec, file);
+					Json.fromDynamic(fieldValue.merge(fieldOverrideValue), file);
 			}
 
 			final fieldNativeName = field.select('name').string();

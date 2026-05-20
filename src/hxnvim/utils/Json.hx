@@ -12,8 +12,12 @@ typedef JsonValue = hxjsonast.Json.JsonValue;
 
 @:forward
 abstract Json(hxjsonast.Json) from hxjsonast.Json {
-	public static function parse(json:String, file:String) {
-		return new Json(hxjsonast.Parser.parse(json, file));
+	public static function fromDynamic(dyn:Dynamic, file:String) {
+		return Json.fromString(haxe.Json.stringify(dyn), file);
+	}
+
+	public static function fromString(str:String, file:String) {
+		return new Json(hxjsonast.Parser.parse(str, file));
 	}
 
 	private function new(json:hxjsonast.Json) {
