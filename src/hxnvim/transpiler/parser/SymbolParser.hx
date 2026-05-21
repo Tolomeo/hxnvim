@@ -7,12 +7,10 @@ using hxnvim.utils.ArrayTools;
 using hxnvim.utils.StringTools;
 using hxnvim.utils.DynamicTools;
 
-import hxnvim.Logger;
 import hxnvim.utils.Json;
 import hxnvim.target.Target;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.symbol.Module;
 import hxnvim.transpiler.parser.LiteralTypeParser;
 import hxnvim.transpiler.parser.MetadataParser;
 
