@@ -141,7 +141,7 @@ class TableSymbolParser extends SymbolParser {
 		final fields = this.origin.select('fields').array();
 
 		for (fieldJson in fields) {
-			final field = switch (State.consume(t -> t.output.overrides).get(fieldJson.select('name').string())) {
+			final field = switch (State.consume(t -> t.overrides).get(fieldJson.select('name').string())) {
 				case null: fieldJson;
 				case fieldOverride:
 					final fieldValue = fieldJson.getValue();

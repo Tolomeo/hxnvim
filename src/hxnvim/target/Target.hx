@@ -19,8 +19,9 @@ private typedef TargetOutput = {
 	nativeChild:Array<String>,
 	name:String,
 	pack:String,
-	overrides:Override
 };
+
+private typedef TargetOverride = Override;
 
 private class TargetFile {
 	final path:Path;
@@ -91,24 +92,23 @@ class Target {
 		}
 		final haxePackage = haxeParentHierarchy.join(".");
 
-		final overrides = switch (Config.overrides.get(luaModule)) {
-			case null: {};
-			case moduleOverrides: moduleOverrides;
-		}
-
 		final output = {
 			native: luaModule,
 			nativeChild: [],
 			name: haxeType,
 			pack: haxePackage,
-			overrides: overrides
+		}
+
+		final overrides = switch (Config.overrides.get(luaModule)) {
+			case null: {};
+			case moduleOverrides: moduleOverrides;
 		}
 
 		final haxeOutputFile = '${haxeType}.hx';
 		final outputPath = Path.join([Config.outputDir].concat(haxeParentHierarchy).concat([haxeOutputFile]));
 		final file = new TargetFile(outputPath);
 
-		return new Target(type, input, output, file);
+		return new Target(type, input, output, overrides, file);
 	}
 
 	public final type:TargetType;
@@ -117,12 +117,15 @@ class Target {
 
 	public final output:TargetOutput;
 
+	public final overrides:TargetOverride;
+
 	public final file:TargetFile;
 
-	public function new(type:TargetType, input:TargetInput, output:TargetOutput, file:TargetFile) {
+	public function new(type:TargetType, input:TargetInput, output:TargetOutput, overrides:TargetOverride, file:TargetFile) {
 		this.type = type;
 		this.input = input;
 		this.output = output;
+		this.overrides = overrides;
 		this.file = file;
 	}
 
@@ -138,13 +141,13 @@ class Target {
 		output.nativeChild.push(name);
 
 		final nativeFullPath = [output.native].concat(output.nativeChild).join(".");
-		output.overrides = switch (Config.overrides.get(nativeFullPath)) {
+		final overrides = switch (Config.overrides.get(nativeFullPath)) {
 			case null: {};
 			case moduleOverrides: moduleOverrides;
 		}
 
 		final file = this.file;
-		return new Target(type, input, output, file);
+		return new Target(type, input, output, overrides, file);
 	}
 
 	public function toString() {
