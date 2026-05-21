@@ -13,7 +13,6 @@ using hxnvim.utils.ArrayTools;
 import hxnvim.Config;
 import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
-import hxnvim.transpiler.IO;
 import hxnvim.target.Target;
 
 final sourcesPath = Context.resolvePath("hxnvim/source");

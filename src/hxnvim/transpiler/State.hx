@@ -3,7 +3,6 @@ package hxnvim.transpiler;
 import hxnvim.Logger;
 import hxnvim.utils.RunState;
 import hxnvim.target.Target;
-import hxnvim.transpiler.IO;
 
 private final logger = Logger.suffix("Transpiler");
 
