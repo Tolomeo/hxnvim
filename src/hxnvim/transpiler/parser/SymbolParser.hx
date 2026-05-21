@@ -3,11 +3,11 @@ package hxnvim.transpiler.parser;
 import haxe.Exception;
 import haxe.Serializer;
 
-using hxnvim.utils.ArrayTools;
-using hxnvim.utils.StringTools;
-using hxnvim.utils.DynamicTools;
+using hxnvim.common.ArrayTools;
+using hxnvim.common.StringTools;
+using hxnvim.common.DynamicTools;
 
-import hxnvim.utils.Json;
+import hxnvim.common.Json;
 import hxnvim.target.Target;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;

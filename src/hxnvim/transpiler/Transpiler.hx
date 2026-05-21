@@ -2,10 +2,10 @@ package hxnvim.transpiler;
 
 import haxe.Exception;
 
-using hxnvim.utils.StringTools;
+using hxnvim.common.StringTools;
 
 import hxnvim.Logger;
-import hxnvim.utils.Json;
+import hxnvim.common.Json;
 import hxnvim.transpiler.State;
 import hxnvim.target.Target;
 import hxnvim.transpiler.parser.Parser;
@@ -19,10 +19,11 @@ class Transpiler {
 		this.target = target;
 	}
 
-	function transpileChildSymbol(name:String, child:Json) {
+	function transpileChildSymbol(childName:String, child:Json) {
 		final transpiledChild = State.fork(target -> {
-			final spec = target.input.spec.substring(child.pos.min, child.pos.max);
-			return target.child(name, spec);
+			final childFile = '${target.input.file}:${child.pos.min},${child.pos.max}';
+			final childSpec = child.toString();
+			return target.child(childName, childFile, childSpec);
 		}, () -> this.transpileSymbol(child));
 
 		this.result.push(transpiledChild);
@@ -33,7 +34,7 @@ class Transpiler {
 
 		final parsed = new Parser(symbol, this.transpileChildSymbol).parse();
 
-		return switch (this.target.output.type) {
+		return switch (this.target.type) {
 			case TargetType.Annotation: new TypeModuleGenerator().generate(parsed);
 			case TargetType.Module: new RequireModuleGenerator().generate(parsed);
 			case TargetType.Namespace: new NamespaceModuleGenerator().generate(parsed);

@@ -1,4 +1,4 @@
-package hxnvim.utils;
+package hxnvim.common;
 
 using Lambda;
 using StringTools;

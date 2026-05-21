@@ -2,11 +2,11 @@ package hxnvim.transpiler.parser;
 
 import haxe.Exception;
 
-using hxnvim.utils.ArrayTools;
-using hxnvim.utils.StringTools;
-using hxnvim.utils.NullTools;
+using hxnvim.common.ArrayTools;
+using hxnvim.common.StringTools;
+using hxnvim.common.NullTools;
 
-import hxnvim.utils.Json;
+import hxnvim.common.Json;
 import hxnvim.Config;
 import hxnvim.target.Target;
 

@@ -6,9 +6,9 @@ import haxe.io.Path;
 import haxe.Exception;
 import haxe.macro.Context;
 
-using hxnvim.utils.NullTools;
-using hxnvim.utils.StringTools;
-using hxnvim.utils.ArrayTools;
+using hxnvim.common.NullTools;
+using hxnvim.common.StringTools;
+using hxnvim.common.ArrayTools;
 
 import hxnvim.Config;
 import hxnvim.Logger;

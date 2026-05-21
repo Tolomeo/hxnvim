@@ -1,4 +1,4 @@
-package hxnvim.utils;
+package hxnvim.common;
 
 function merge<K, T>(map1:Map<K, T>, map2:Map<K, T>) {
 	final merged = map1.copy();

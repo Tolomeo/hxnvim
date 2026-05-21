@@ -2,9 +2,9 @@ package hxnvim.transpiler.parser;
 
 import haxe.Exception;
 
-using hxnvim.utils.ArrayTools;
+using hxnvim.common.ArrayTools;
 
-import hxnvim.utils.Json;
+import hxnvim.common.Json;
 import hxnvim.transpiler.symbol.Symbol;
 
 class AccessParser {

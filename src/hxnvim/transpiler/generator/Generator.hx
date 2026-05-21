@@ -4,7 +4,7 @@ import haxe.macro.Printer;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 
-using hxnvim.utils.NullTools;
+using hxnvim.common.NullTools;
 
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;

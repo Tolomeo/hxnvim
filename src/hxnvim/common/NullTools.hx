@@ -1,5 +1,5 @@
 // https://github.com/RealyUniqueName/Safety/blob/master/src/Safety.hx
-package hxnvim.utils;
+package hxnvim.common;
 
 class NullTools {
 	/**

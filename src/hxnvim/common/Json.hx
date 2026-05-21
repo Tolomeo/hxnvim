@@ -1,12 +1,10 @@
-package hxnvim.utils;
+package hxnvim.common;
 
 import haxe.Rest;
 import haxe.Exception;
-import haxe.DynamicAccess;
 
-// TODO array utils
-using Lambda;
 using hxjsonast.Tools;
+using hxnvim.common.ArrayTools;
 
 typedef JsonValue = hxjsonast.Json.JsonValue;
 
@@ -73,10 +71,7 @@ abstract Json(hxjsonast.Json) from hxjsonast.Json {
 		}
 	}
 
-	public function fieldsMap():Map<String, Json> {
-		return abstract.fields().fold((field:hxjsonast.Json.JObjectField, fieldsMap:Map<String, hxjsonast.Json>) -> {
-			fieldsMap.set(field.name, field.value);
-			return fieldsMap;
-		}, []);
+	public function toString() {
+		return haxe.Json.stringify(this.getValue());
 	}
 }

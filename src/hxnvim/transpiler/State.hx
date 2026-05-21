@@ -1,7 +1,7 @@
 package hxnvim.transpiler;
 
 import hxnvim.Logger;
-import hxnvim.utils.RunState;
+import hxnvim.common.RunState;
 import hxnvim.target.Target;
 
 private final logger = Logger.suffix("Transpiler");

@@ -3,7 +3,7 @@ package hxnvim.transpiler.generator;
 import haxe.macro.Expr;
 import haxe.macro.Context;
 
-using hxnvim.utils.StringTools;
+using hxnvim.common.StringTools;
 
 import hxnvim.transpiler.symbol.Symbol;
 

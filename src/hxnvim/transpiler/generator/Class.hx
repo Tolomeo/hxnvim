@@ -6,8 +6,8 @@ import haxe.macro.Context;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.macro.Expr.Field;
 
-using hxnvim.utils.NullTools;
-using hxnvim.utils.StringTools;
+using hxnvim.common.NullTools;
+using hxnvim.common.StringTools;
 
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.parser.Parser;

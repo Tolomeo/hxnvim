@@ -4,8 +4,8 @@ import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 
-using hxnvim.utils.ArrayTools;
-using hxnvim.utils.StringTools;
+using hxnvim.common.ArrayTools;
+using hxnvim.common.StringTools;
 
 import hxnvim.Config;
 
@@ -15,7 +15,6 @@ private typedef TargetInput = {
 };
 
 private typedef TargetOutput = {
-	type:TargetType,
 	native:String,
 	nativeChild:Array<String>,
 	name:String,
@@ -98,7 +97,6 @@ class Target {
 		}
 
 		final output = {
-			type: type,
 			native: luaModule,
 			nativeChild: [],
 			name: haxeType,
@@ -110,8 +108,10 @@ class Target {
 		final outputPath = Path.join([Config.outputDir].concat(haxeParentHierarchy).concat([haxeOutputFile]));
 		final file = new TargetFile(outputPath);
 
-		return new Target(input, output, file);
+		return new Target(type, input, output, file);
 	}
+
+	public final type:TargetType;
 
 	public final input:TargetInput;
 
@@ -119,14 +119,18 @@ class Target {
 
 	public final file:TargetFile;
 
-	public function new(input:TargetInput, output:TargetOutput, file:TargetFile) {
+	public function new(type:TargetType, input:TargetInput, output:TargetOutput, file:TargetFile) {
+		this.type = type;
 		this.input = input;
 		this.output = output;
 		this.file = file;
 	}
 
-	public function child(name:String, spec:String) {
+	public function child(name:String, file:String, spec:String) {
+		final type = this.type;
+
 		final input = Reflect.copy(this.input);
+		input.file = file;
 		input.spec = spec;
 
 		final output = Reflect.copy(this.output);
@@ -140,7 +144,7 @@ class Target {
 		}
 
 		final file = this.file;
-		return new Target(input, output, file);
+		return new Target(type, input, output, file);
 	}
 
 	public function toString() {
