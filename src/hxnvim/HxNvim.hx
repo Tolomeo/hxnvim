@@ -21,6 +21,8 @@ final runtimeSourcesPath = Context.resolvePath("hxnvim/source/runtime");
 
 class HxNvim {
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {
+		Logger.info('Sourcing ${directory} files');
+
 		final files = new Map<String, String>();
 
 		if (!FileSystem.exists(directory)) {
@@ -51,25 +53,18 @@ class HxNvim {
 	static function run(?options:Dynamic<Dynamic>) {
 		Config.set(options.or({}));
 
-		final helpers = HxNvim.source(helperSourcesPath, sourcesPath);
-
-		HxNvim.generateHelperPackage(helpers);
-
-		final namespaces = HxNvim.source(runtimeSourcesPath);
-
-		HxNvim.generateVimPackage(TargetType.Namespace, namespaces);
-
-		final modules = HxNvim.source(Path.join([runtimeSourcesPath, 'module']), runtimeSourcesPath);
-
-		HxNvim.generateVimPackage(TargetType.Module, modules);
-
-		final types = HxNvim.source(Path.join([runtimeSourcesPath, 'type']), runtimeSourcesPath);
-
-		HxNvim.generateVimPackage(TargetType.Annotation, types);
+		HxNvim.processHelpers();
+		HxNvim.processNamespaces();
+		HxNvim.processModules();
+		HxNvim.processAnnotations();
 	}
 
-	static function generateHelperPackage(filesources:Map<String, String>) {
-		for (file => fileContent in filesources.keyValueIterator()) {
+	static function processHelpers() {
+		Logger.info('Processing helpers');
+
+		final helpers = HxNvim.source(helperSourcesPath, sourcesPath);
+
+		for (file => fileContent in helpers.keyValueIterator()) {
 			final target = Target.create(TargetType.Helper, file, fileContent);
 
 			if (target.file.exists()) {
@@ -79,14 +74,18 @@ class HxNvim {
 
 			final content = ['package ${target.output.pack};', fileContent].join("\n\n");
 
-			Logger.verbose('Writing "${target.file}" output');
+			Logger.info('Writing "${target.file}" output');
 			target.file.write(content);
 		}
 	}
 
-	static function generateVimPackage(type:TargetType, filesources:Map<String, String>) {
-		for (file => spec in filesources.keyValueIterator()) {
-			final target = Target.create(type, file, spec);
+	static function processNamespaces() {
+		Logger.info('Processing namespaces');
+
+		final namespaces = HxNvim.source(runtimeSourcesPath);
+
+		for (file => spec in namespaces.keyValueIterator()) {
+			final target = Target.create(TargetType.Namespace, file, spec);
 
 			if (target.file.exists()) {
 				Logger.info('Using "${target.file}" generated output found');
@@ -97,7 +96,53 @@ class HxNvim {
 
 			final transpiled = new Transpiler(target).transpile();
 
-			Logger.verbose('Writing "${target.file}" output');
+			Logger.info('Writing "${target.file}" output');
+
+			target.file.write(transpiled);
+		}
+	}
+
+	static function processModules() {
+		Logger.info('Processing modules');
+
+		final modules = HxNvim.source(Path.join([runtimeSourcesPath, 'module']), runtimeSourcesPath);
+
+		for (file => spec in modules.keyValueIterator()) {
+			final target = Target.create(TargetType.Module, file, spec);
+
+			if (target.file.exists()) {
+				Logger.info('Using "${target.file}" generated output found');
+				continue;
+			}
+
+			Logger.info('Traspiling "${file}"');
+
+			final transpiled = new Transpiler(target).transpile();
+
+			Logger.info('Writing "${target.file}" output');
+
+			target.file.write(transpiled);
+		}
+	}
+
+	static function processAnnotations() {
+		Logger.info('Processing annotations');
+
+		final annotations = HxNvim.source(Path.join([runtimeSourcesPath, 'type']), runtimeSourcesPath);
+
+		for (file => spec in annotations.keyValueIterator()) {
+			final target = Target.create(TargetType.Annotation, file, spec);
+
+			if (target.file.exists()) {
+				Logger.info('Using "${target.file}" generated output found');
+				continue;
+			}
+
+			Logger.info('Traspiling "${file}"');
+
+			final transpiled = new Transpiler(target).transpile();
+
+			Logger.info('Writing "${target.file}" output');
 
 			target.file.write(transpiled);
 		}
