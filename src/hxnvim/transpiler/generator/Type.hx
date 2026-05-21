@@ -6,7 +6,6 @@ import haxe.macro.Context;
 using hxnvim.utils.StringTools;
 
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.parser.Parser;
 
 class LiteralTypeGenerator {
 	public function new() {}
