@@ -33,28 +33,28 @@ private class Generator {
 		return new EnumeratorGenerator().generate(enumerator, meta);
 	}
 
-	function generateType(symbol:ParsedSymbol, ?meta:Array<Metadata>) {
+	function generateType(symbol:Symbol, ?meta:Array<Metadata>) {
 		meta = meta.or([]);
 
 		return switch (symbol) {
-			case ParsedSymbol.ParsedTable(table):
+			case Symbol.TableSymbol(table):
 				this.generateTableType(table, meta);
-			case ParsedSymbol.ParsedAlias(alias):
+			case Symbol.AliasSymbol(alias):
 				this.generateAliasType(alias, meta);
-			case ParsedSymbol.ParsedEnumerator(enumerator):
+			case Symbol.EnumeratorSymbol(enumerator):
 				this.generateEnumeratorType(enumerator, meta);
 			case s:
 				throw new Exception('Unimplemented main generator for symbol ${s}');
 		}
 	}
 
-	public function generate(symbol:ParsedSymbol) {
+	public function generate(symbol:Symbol) {
 		return this.printer.printTypeDefinition(this.generateType(symbol));
 	}
 }
 
 class NamespaceModuleGenerator extends Generator {
-	override public function generate(symbol:ParsedSymbol) {
+	override public function generate(symbol:Symbol) {
 		final native = {
 			name: 'native',
 			params: switch (State.consume(target -> target.output.nativeChild)) {
@@ -77,7 +77,7 @@ class TypeModuleGenerator extends Generator {
 }
 
 class RequireModuleGenerator extends Generator {
-	override public function generate(symbol:ParsedSymbol) {
+	override public function generate(symbol:Symbol) {
 		final luaRequire:Metadata = {
 			name: 'luaRequire',
 			params: switch (State.consume(target -> target.output.nativeChild)) {

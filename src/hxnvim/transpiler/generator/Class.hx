@@ -28,9 +28,9 @@ class ClassGenerator {
 
 		// TODO: macro this
 		final access = [AExtern].concat(property.access.map(a -> switch (a) {
-			case ParsedAccess.Public: APublic;
-			case ParsedAccess.Static: AStatic;
-			case ParsedAccess.Private: APrivate;
+			case SymbolAccess.Public: APublic;
+			case SymbolAccess.Static: AStatic;
+			case SymbolAccess.Private: APrivate;
 			case _: throw 'Unexpected method access for property ${property}';
 		}));
 
@@ -51,10 +51,10 @@ class ClassGenerator {
 
 		// TODO: macro this
 		final access = [AExtern].concat(func.access.map(a -> switch (a) {
-			case ParsedAccess.Public: APublic;
-			case ParsedAccess.Static: AStatic;
-			case ParsedAccess.Private: APrivate;
-			case ParsedAccess.Overload: AOverload;
+			case SymbolAccess.Public: APublic;
+			case SymbolAccess.Static: AStatic;
+			case SymbolAccess.Private: APrivate;
+			case SymbolAccess.Overload: AOverload;
 			case _: throw "Unexpected method access";
 		}));
 

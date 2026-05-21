@@ -18,10 +18,10 @@ private class SymbolParser {
 	private final name:String;
 	private final doc:String;
 	private final meta:Array<Metadata>;
-	private final access:Array<ParsedAccess>;
+	private final access:Array<SymbolAccess>;
 	private final origin:Json;
 
-	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<ParsedAccess>, origin:Json) {
+	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<SymbolAccess>, origin:Json) {
 		this.name = name;
 		this.doc = doc;
 		this.meta = meta;
@@ -175,11 +175,11 @@ class TableSymbolParser extends SymbolParser {
 								return Serializer.run({args: fn1.args}) == Serializer.run({args: fn2.args});
 							}
 
-							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]),
+							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([SymbolAccess.Overload]),
 								fieldType).parse());
 
 							overloads.iter(overload_ -> {
-								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([ParsedAccess.Overload]),
+								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([SymbolAccess.Overload]),
 									overload_).parse();
 
 								if (functions.foreach(existingFn -> !isEqualSignature(existingFn, fn))) {

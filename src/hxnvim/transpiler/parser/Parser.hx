@@ -32,15 +32,15 @@ class Parser {
 		return switch (type.select('kind').string()) {
 			case "table":
 				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(this.handleChild);
-				return ParsedSymbol.ParsedTable(symbol);
+				return Symbol.TableSymbol(symbol);
 
 			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":
 				final symbol = new AliasSymbolParser(name, doc, metadata, access, type).parse();
-				return ParsedSymbol.ParsedAlias(symbol);
+				return Symbol.AliasSymbol(symbol);
 
 			case "enumerator":
 				final symbol = new EnumeratorSymbolParser(name, doc, metadata, access, type).parse();
-				return ParsedSymbol.ParsedEnumerator(symbol);
+				return Symbol.EnumeratorSymbol(symbol);
 
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}

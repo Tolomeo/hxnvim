@@ -22,11 +22,11 @@ class AccessParser {
 	}
 
 	public function parse() {
-		final access = new Array<ParsedAccess>();
+		final access = new Array<SymbolAccess>();
 
 		this.origin.array().map(meta -> meta.string()).iter(meta -> switch (meta) {
-			case "static": access.push(ParsedAccess.Static);
-			case "private": access.push(ParsedAccess.Private);
+			case "static": access.push(SymbolAccess.Static);
+			case "private": access.push(SymbolAccess.Private);
 			// TODO: info log
 			case _:
 		});

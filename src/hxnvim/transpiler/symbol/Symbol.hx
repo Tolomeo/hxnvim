@@ -3,15 +3,7 @@ package hxnvim.transpiler.symbol;
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
 
-typedef ParsedParam = {
-	name:String,
-	constraints:Array<LiteralType>
-}
-
-typedef ParsedArg = {name:String, type:LiteralType, opt:Bool};
-typedef ParsedReturn = LiteralType;
-
-enum ParsedAccess {
+enum SymbolAccess {
 	Public;
 	Private;
 	Static;
@@ -22,18 +14,26 @@ typedef Variable = {
 	name:String,
 	doc:String,
 	meta:Array<Metadata>,
-	access:Array<ParsedAccess>,
+	access:Array<SymbolAccess>,
 	type:LiteralType,
 }
+
+typedef Param = {
+	name:String,
+	constraints:Array<LiteralType>
+}
+
+typedef Arg = {name:String, type:LiteralType, opt:Bool};
+typedef Return = LiteralType;
 
 typedef Function = {
 	name:String,
 	doc:String,
 	meta:Array<Metadata>,
-	access:Array<ParsedAccess>,
-	params:Array<ParsedParam>,
-	args:Array<ParsedArg>,
-	ret:ParsedReturn,
+	access:Array<SymbolAccess>,
+	params:Array<Param>,
+	args:Array<Arg>,
+	ret:Return,
 }
 
 enum TableField {
@@ -50,7 +50,7 @@ typedef Table = {
 	name:String,
 	doc:String,
 	meta:Array<Metadata>,
-	access:Array<ParsedAccess>,
+	access:Array<SymbolAccess>,
 	fields:Array<TableField>
 }
 
@@ -62,8 +62,8 @@ typedef Enumerator = {
 	fields:Map<String, String>
 }
 
-enum ParsedSymbol {
-	ParsedTable(table:Table);
-	ParsedAlias(alias:Alias);
-	ParsedEnumerator(enumerator:Enumerator);
+enum Symbol {
+	TableSymbol(table:Table);
+	AliasSymbol(alias:Alias);
+	EnumeratorSymbol(enumerator:Enumerator);
 }
