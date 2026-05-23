@@ -77,7 +77,7 @@ class TypeModuleGenerator extends Generator {
 }
 
 class RequireModuleGenerator extends Generator {
-	override public function generate(symbol:Symbol) {
+	/* override public function generate(symbol:Symbol) {
 		final luaRequire:Metadata = {
 			name: 'luaRequire',
 			params: switch (State.consume(target -> target.output.nativeChild)) {
@@ -88,5 +88,5 @@ class RequireModuleGenerator extends Generator {
 		final typeDefinition = this.generateType(symbol, [luaRequire]);
 
 		return this.printer.printTypeDefinition(typeDefinition);
-	}
+	} */
 }

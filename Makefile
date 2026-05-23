@@ -1,7 +1,7 @@
 all: install
 
 SRC_DIR=src
-OUT_DIR=externs
+OUT_DIR=$(SRC_DIR)/externs
 
 EXTERNAL_SOURCES_DIR=external/anydev.nvim/out
 EXTERNAL_SOURCES=$(shell find $(EXTERNAL_SOURCES_DIR) -type f -name "*.json")
@@ -37,4 +37,5 @@ install:
 .PHONY=clean
 clean:
 	@rm -rf $(SOURCES_DIR)
+	@rm -rf $(OUT_DIR)
 
