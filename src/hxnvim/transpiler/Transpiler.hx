@@ -36,7 +36,7 @@ class Transpiler {
 
 		return switch (this.target.type) {
 			case TargetType.Annotation: new TypeModuleGenerator().generate(parsed);
-			case TargetType.Module: new RequireModuleGenerator().generate(parsed);
+			case TargetType.Module: new ModuleGenerator().generate(parsed);
 			case TargetType.Namespace: new NamespaceModuleGenerator().generate(parsed);
 			case _: throw new Exception('Error transpiling ${this.target.file}: unexpected target type received <${this.target.output}>');
 		}

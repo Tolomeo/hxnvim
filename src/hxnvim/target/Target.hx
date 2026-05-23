@@ -132,20 +132,20 @@ class Target {
 		this.file = file;
 	}
 
-	public function child(name:String, file:String, spec:String) {
+	public function child(childName:String, file:String, spec:String) {
 		final type = this.type;
 
 		final input = Reflect.copy(this.input);
 		input.file = file;
 		input.spec = spec;
 
-		final name = name.toTypeName();
+		final name = childName.toTypeName();
 		final qualifiedName = '${output.qualifiedName}.${name}';
 
 		final output = Reflect.copy(this.output);
 		output.name = name;
 		output.qualifiedName = qualifiedName;
-		output.nativeChild.push(name);
+		output.nativeChild.push(childName);
 
 		final nativeFullPath = [output.native].concat(output.nativeChild).join(".");
 		final overrides = switch (Config.overrides.get(nativeFullPath)) {

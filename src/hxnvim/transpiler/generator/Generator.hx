@@ -76,7 +76,7 @@ class TypeModuleGenerator extends Generator {
 	}
 }
 
-class RequireModuleGenerator extends Generator {
+class ModuleGenerator extends Generator {
 	/* override public function generate(symbol:Symbol) {
 		final luaRequire:Metadata = {
 			name: 'luaRequire',
