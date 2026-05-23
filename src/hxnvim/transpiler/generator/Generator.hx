@@ -5,6 +5,7 @@ import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 
 using hxnvim.common.NullTools;
+using hxnvim.common.StringTools;
 
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
@@ -53,29 +54,6 @@ private class Generator {
 	}
 }
 
-class NamespaceModuleGenerator extends Generator {
-	override public function generate(symbol:Symbol) {
-		final native = {
-			name: 'native',
-			params: switch (State.consume(target -> target.output.nativeChild)) {
-				case []: [State.consume(s -> s.output.native)];
-				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
-			}
-		}
-		final typeDefinition = this.generateType(symbol, [native]);
-
-		return this.printer.printTypeDefinition(typeDefinition);
-	}
-}
-
-class TypeModuleGenerator extends Generator {
-	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
-		meta = [{name: 'structInit'}].concat(meta.or([]));
-
-		return new ClassGenerator().generate(table, meta);
-	}
-}
-
 class ModuleGenerator extends Generator {
 	/* override public function generate(symbol:Symbol) {
 		final luaRequire:Metadata = {
@@ -88,5 +66,42 @@ class ModuleGenerator extends Generator {
 		final typeDefinition = this.generateType(symbol, [luaRequire]);
 
 		return this.printer.printTypeDefinition(typeDefinition);
-	} */
+	}*/
+}
+
+class NamespaceModuleGenerator extends Generator {
+	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
+		table.name = State.consume(t -> t.output.qualifiedName.toTypeName());
+		return new ClassGenerator().generate(table, meta);
+	}
+
+	override function generateAliasType(alias:Alias, ?meta:Array<Metadata>) {
+		alias.name = State.consume(t -> t.output.qualifiedName.toTypeName());
+		return new AliasGenerator().generate(alias, meta);
+	}
+
+	override public function generate(symbol:Symbol) {
+		final priv4te = {
+			name: 'private'
+		};
+		final native = {
+			name: 'native',
+			params: switch (State.consume(target -> target.output.nativeChild)) {
+				case []: [State.consume(s -> s.output.native)];
+				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
+			}
+		}
+		final typeDefinition = this.generateType(symbol, [native, priv4te]);
+		final namespace = '@:native("${typeDefinition.name}") extern final ${State.consume(t -> t.output.name)}: ${typeDefinition.name};';
+
+		return '${this.printer.printTypeDefinition(typeDefinition)}\n\n${namespace}';
+	}
+}
+
+class TypeModuleGenerator extends Generator {
+	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
+		meta = [{name: 'structInit'}].concat(meta.or([]));
+
+		return new ClassGenerator().generate(table, meta);
+	}
 }
