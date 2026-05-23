@@ -33,9 +33,9 @@ install:
 	@echo "Installing dependencies"
 	haxelib newrepo
 	haxelib install --always build.hxml
+	@$(MAKE) sources
 
 .PHONY=clean
 clean:
-	@rm -rf $(SOURCES_DIR)
 	@rm -rf $(OUT_DIR)
 

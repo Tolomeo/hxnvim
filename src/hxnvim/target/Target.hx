@@ -17,6 +17,7 @@ private typedef TargetInput = {
 private typedef TargetOutput = {
 	native:String,
 	nativeChild:Array<String>,
+	qualifiedName:String,
 	name:String,
 	pack:String,
 };
@@ -81,31 +82,33 @@ class Target {
 
 		final inputPath = new Path(input.file);
 
-		final luaModule = inputPath.file;
-		final luaModuleHierarchy = luaModule.split(".");
+		final inputModule = inputPath.file;
+		final inputModuleHierarchy = inputModule.split(".");
 
-		final haxeType = luaModuleHierarchy.last().toTypeName();
-		var haxeParentHierarchy = luaModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
-		haxeParentHierarchy = switch (inputPath.dir) {
-			case null: [Config.outputPack].concat(haxeParentHierarchy);
-			case dir: [Config.outputPack].concat(dir.split("/").concat(haxeParentHierarchy));
+		final outputName = inputModuleHierarchy.last().toTypeName();
+		var outputParentHierarchy = inputModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
+		outputParentHierarchy = switch (inputPath.dir) {
+			case null: [Config.outputPack].concat(outputParentHierarchy);
+			case dir: [Config.outputPack].concat(dir.split("/").concat(outputParentHierarchy));
 		}
-		final haxePackage = haxeParentHierarchy.join(".");
+		final outputPackage = outputParentHierarchy.join(".");
+		final qualifiedName = '${outputPackage}.${outputName}';
 
 		final output = {
-			native: luaModule,
+			native: inputModule,
 			nativeChild: [],
-			name: haxeType,
-			pack: haxePackage,
+			qualifiedName: qualifiedName,
+			name: outputName,
+			pack: outputPackage,
 		}
 
-		final overrides = switch (Config.overrides.get(luaModule)) {
+		final overrides = switch (Config.overrides.get(inputModule)) {
 			case null: {};
 			case moduleOverrides: moduleOverrides;
 		}
 
-		final haxeOutputFile = '${haxeType}.hx';
-		final outputPath = Path.join([Config.outputDir].concat(haxeParentHierarchy).concat([haxeOutputFile]));
+		final haxeOutputFile = '${outputName}.hx';
+		final outputPath = Path.join([Config.outputDir].concat(outputParentHierarchy).concat([haxeOutputFile]));
 		final file = new TargetFile(outputPath);
 
 		return new Target(type, input, output, overrides, file);
@@ -136,8 +139,12 @@ class Target {
 		input.file = file;
 		input.spec = spec;
 
+		final name = name.toTypeName();
+		final qualifiedName = '${output.qualifiedName}.${name}';
+
 		final output = Reflect.copy(this.output);
-		output.name = name.toTypeName();
+		output.name = name;
+		output.qualifiedName = qualifiedName;
 		output.nativeChild.push(name);
 
 		final nativeFullPath = [output.native].concat(output.nativeChild).join(".");
