@@ -70,16 +70,6 @@ class ModuleGenerator extends Generator {
 }
 
 class NamespaceModuleGenerator extends Generator {
-	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
-		table.name = State.consume(t -> t.output.qualifiedName.toTypeName());
-		return new ClassGenerator().generate(table, meta);
-	}
-
-	override function generateAliasType(alias:Alias, ?meta:Array<Metadata>) {
-		alias.name = State.consume(t -> t.output.qualifiedName.toTypeName());
-		return new AliasGenerator().generate(alias, meta);
-	}
-
 	override public function generate(symbol:Symbol) {
 		final priv4te = {
 			name: 'private'
@@ -91,10 +81,16 @@ class NamespaceModuleGenerator extends Generator {
 				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
 			}
 		}
-		final typeDefinition = this.generateType(symbol, [native, priv4te]);
-		final namespace = '@:native("${typeDefinition.name}") extern final ${State.consume(t -> t.output.name)}: ${typeDefinition.name};';
 
-		return '${this.printer.printTypeDefinition(typeDefinition)}\n\n${namespace}';
+		final namespaceTypeDefinition = this.generateType(symbol, [native, priv4te]);
+
+		final namespaceName = namespaceTypeDefinition.name;
+		namespaceTypeDefinition.name = State.consume(t -> t.output.qualifiedName).toTypeName();
+
+		// TODO: proper generator
+		final namespace = '@:native("${namespaceTypeDefinition.name}") extern final ${namespaceName}: ${namespaceTypeDefinition.name};';
+
+		return '${this.printer.printTypeDefinition(namespaceTypeDefinition)}\n\n${namespace}';
 	}
 }
 
