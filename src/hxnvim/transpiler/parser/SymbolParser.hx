@@ -31,7 +31,6 @@ private class SymbolParser {
 }
 
 class FunctionSymbolParser extends SymbolParser {
-	// TODO: inject generics into state, because they could be injected into other types rather than being used directly as argument type
 	public function parse() {
 		final params = this.origin.select('generics').array().map(param -> {
 			final name = param.select('name').string();
@@ -66,6 +65,16 @@ class FunctionSymbolParser extends SymbolParser {
 			}
 		});
 
+		final overloads = this.origin.select('overloads').array().map(o -> {
+			final overloadType:Dynamic = o.getValue().merge({
+				kind: 'function'
+			});
+			final overloadFile = '${o.pos.file}:${o.pos.min}-${o.pos.max}';
+			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
+
+			return new LiteralTypeParser(overloadJson, params).parse();
+		});
+
 		final ret = switch (this.origin.select('returns').array()) {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
@@ -82,7 +91,8 @@ class FunctionSymbolParser extends SymbolParser {
 			access: this.access,
 			params: params,
 			args: args,
-			ret: ret
+			ret: ret,
+			overloads: overloads
 		};
 	}
 }
@@ -129,6 +139,23 @@ class EnumeratorSymbolParser extends SymbolParser {
 }
 
 class TableSymbolParser extends SymbolParser {
+	function parseField(name:String, doc:String, meta:Array<SymbolMeta>, access:Array<SymbolAccess>, field:Json) {
+		final type = field.select('type');
+
+		return switch (type.select('kind').string()) {
+			case 'function':
+				final symbol = new FunctionSymbolParser(name, doc, meta, access, type).parse();
+				TableField.Method(symbol);
+
+			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
+				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
+				TableField.Property(symbol);
+
+			case k:
+				throw new Exception('Unexpected kind "${k}" received for table "${this.name}" in field "${name}" of type ${type.getValue()}');
+		}
+	}
+
 	public function parse(handleNestedTable:(fieldName:String, origin:Json) -> Void) {
 		final parsedTable = {
 			name: this.name,
@@ -151,55 +178,19 @@ class TableSymbolParser extends SymbolParser {
 			}
 
 			final fieldName = field.select('name').string();
+
+			if (field.select('type', 'kind').string() == 'table') {
+				handleNestedTable(fieldName, field);
+				continue;
+			}
+
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
 
 			final metaParser = new MetaParser(field.select('meta'));
 			final fieldAccess = metaParser.parseAccess();
 			final fieldMeta = metaParser.parseMeta();
 
-			final fieldType = field.select('type');
-
-			switch (fieldType.select('kind').string()) {
-				case 'function':
-					switch (fieldType.select('overloads').array()) {
-						case []:
-							final symbol = new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess, fieldType).parse();
-							final method = TableField.Method(symbol);
-							parsedTable.fields.push(method);
-
-						case overloads:
-							final functions = new Array<Function>();
-
-							function isEqualSignature(fn1:Function, fn2:Function) {
-								return Serializer.run({args: fn1.args}) == Serializer.run({args: fn2.args});
-							}
-
-							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess.concat([SymbolAccess.Overload]),
-								fieldType).parse());
-
-							overloads.iter(overload_ -> {
-								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess.concat([SymbolAccess.Overload]),
-									overload_).parse();
-
-								if (functions.foreach(existingFn -> !isEqualSignature(existingFn, fn))) {
-									functions.push(fn);
-								}
-							});
-
-							functions.iter(fn -> parsedTable.fields.push(TableField.Method(fn)));
-					}
-
-				case 'table':
-					handleNestedTable(fieldName, field);
-
-				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral',
-					'stringliteral':
-					final symbol = new AliasSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess, fieldType).parse();
-					parsedTable.fields.push(TableField.Property(symbol));
-
-				case k:
-					throw new Exception('Unexpected kind "${k}" received for table "${name}" in field "${fieldName}" of type ${fieldType.getValue()}');
-			}
+			parsedTable.fields.push(this.parseField(fieldName, fieldDoc, fieldMeta, fieldAccess, field));
 		}
 
 		return parsedTable;

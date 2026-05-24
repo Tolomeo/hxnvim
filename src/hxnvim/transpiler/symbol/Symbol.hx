@@ -1,13 +1,10 @@
 package hxnvim.transpiler.symbol;
 
-typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
 
 // TODO: remove overload; add protected and package
 enum SymbolAccess {
-	Public;
 	Private;
-	Static;
 	Overload;
 }
 
@@ -42,6 +39,7 @@ typedef Function = {
 	params:Array<Param>,
 	args:Array<Arg>,
 	ret:Return,
+	overloads: Array<LiteralType>
 }
 
 enum TableField {

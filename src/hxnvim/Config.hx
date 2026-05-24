@@ -21,7 +21,7 @@ class Config {
 					type:'externs.type.VimOption<' + parsedProperty.type + '>'
 				}",
 		}*/
-		"TSNode": {
+		/* "TSNode": {
 			range: '{
 				type: {
 					generics: value.type.overloads[0].generics,
@@ -30,7 +30,7 @@ class Config {
 					overloads: []
 				}
 			}'
-		}
+		} */
 	};
 
 	public static function set(values:Dynamic<Dynamic>) {

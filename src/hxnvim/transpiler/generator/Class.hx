@@ -62,7 +62,7 @@ private class ClassGenerator {
 		});
 	}
 
-	function generateMethodMeta(methodMeta:Array<SymbolMeta>) {
+	function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
 		final methodMetas = new Array();
 
 		methodMeta.iter(m -> switch (m) {
@@ -75,12 +75,17 @@ private class ClassGenerator {
 				throw new Exception('Invalid meta for method: ${m}');
 		});
 
+		/* overloads.iter(o -> {
+			methodMetas.push(new MetaGenerator("overload", [o]).generate());
+		}); */
+
 		return methodMetas;
 	}
 
 	function generateMethod(method:Function) {
 		final name = method.name.toFieldName();
-		final meta = name == method.name ? this.generateMethodMeta(method.meta) : this.generateMethodMeta([SymbolMeta.Native(method.name)].concat(method.meta));
+		final meta = name == method.name ? this.generateMethodMeta(method.meta,
+			method.overloads) : this.generateMethodMeta([SymbolMeta.Native(method.name)].concat(method.meta), method.overloads);
 		final access = this.generateMethodAccess(method.access);
 
 		return {
@@ -159,7 +164,7 @@ private class ClassGenerator {
 }
 
 class InstanceClassGenerator extends ClassGenerator {
-	override function generateMethodMeta(methodMeta:Array<SymbolMeta>) {
+	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads: Array<LiteralType>) {
 		final isMethod = methodMeta.contains(SymbolMeta.Method);
 		final methodMetas = isMethod ? [] : [new MetaGenerator("luaDotMethod").generate()];
 
@@ -172,6 +177,10 @@ class InstanceClassGenerator extends ClassGenerator {
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
 		});
+
+		/* overloads.iter(o -> {
+			methodMetas.push(new MetaGenerator("overload", [o]).generate());
+		}); */
 
 		return methodMetas;
 	}
