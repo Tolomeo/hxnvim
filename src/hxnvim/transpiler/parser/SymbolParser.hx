@@ -150,27 +150,17 @@ class TableSymbolParser extends SymbolParser {
 					Json.fromDynamic(fieldValue.merge(fieldOverrideValue), file);
 			}
 
-			final fieldNativeName = field.select('name').string();
-			final fieldName = fieldNativeName.toFieldName();
+			final fieldName = field.select('name').string();
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
 
 			final metaParser = new MetaParser(field.select('meta'));
 			final fieldAccess = metaParser.parseAccess();
 			final fieldMeta = metaParser.parseMeta();
 
-			/* final fieldAccess = new AccessParser(field.select('meta')).parse();
-			final fieldMetadata = switch (fieldNativeName == fieldName) {
-				case true: new MetaParser(field.select('meta')).parse();
-				case false: [MetaParser.create('native', [fieldNativeName])].concat(new MetaParser(field.select('meta')).parse());
-			} */
 			final fieldType = field.select('type');
 
 			switch (fieldType.select('kind').string()) {
 				case 'function':
-					/* if (!field.select('meta').array().map(m -> m.string()).contains('method')) {
-						fieldMetadata.push(MetaParser.create('luaDotMethod'));
-					} */
-
 					switch (fieldType.select('overloads').array()) {
 						case []:
 							final symbol = new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess, fieldType).parse();
@@ -208,7 +198,7 @@ class TableSymbolParser extends SymbolParser {
 					parsedTable.fields.push(TableField.Property(symbol));
 
 				case k:
-					throw new Exception('Unexpected kind "${k}" received for table "${fieldNativeName}" in field "${fieldName}" of type ${fieldType.getValue()}');
+					throw new Exception('Unexpected kind "${k}" received for table "${name}" in field "${fieldName}" of type ${fieldType.getValue()}');
 			}
 		}
 

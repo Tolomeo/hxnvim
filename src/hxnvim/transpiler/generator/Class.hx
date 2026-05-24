@@ -22,10 +22,6 @@ private class ClassGenerator {
 		this.table = table;
 	}
 
-	function makeMeta(name:String, ?params:Array<Expr>):MetadataEntry {
-		return {name: ':$name', params: params, pos: (macro null).pos};
-	}
-
 	function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
 		return propertyAccess.map(a -> switch (a) {
 			case SymbolAccess.Private: APrivate;
@@ -45,10 +41,8 @@ private class ClassGenerator {
 	}
 
 	function generateProperty(property:Variable) {
-		final meta = this.generatePropertyMeta(property.meta);
-
-		final name = property.name;
-
+		final name = property.name.toFieldName();
+		final meta = name == property.name ? this.generatePropertyMeta(property.meta) : this.generatePropertyMeta([SymbolMeta.Native(property.name)].concat(property.meta));
 		final access = this.generatePropertyAccess(property.access);
 
 		return {
@@ -76,7 +70,7 @@ private class ClassGenerator {
 			case SymbolMeta.Deprecated:
 				methodMetas.push(new MetaGenerator().generate({name: "deprecated"}));
 			case SymbolMeta.Native(native):
-				new MetaGenerator().generate({name: "native", params: [native]});
+				methodMetas.push(new MetaGenerator().generate({name: "native", params: [native]}));
 			case SymbolMeta.Method:
 				// left to children to decide what to do with this
 			case _:
@@ -86,29 +80,27 @@ private class ClassGenerator {
 		return methodMetas;
 	}
 
-	function generateMethod(func:Function) {
-		final meta = this.generateMethodMeta(func.meta);
-
-		final name = func.name;
-
-		final access = this.generateMethodAccess(func.access);
+	function generateMethod(method:Function) {
+		final name = method.name.toFieldName();
+		final meta = name == method.name ? this.generateMethodMeta(method.meta) : this.generateMethodMeta([SymbolMeta.Native(method.name)].concat(method.meta));
+		final access = this.generateMethodAccess(method.access);
 
 		return {
 			meta: meta,
 			access: access,
 			name: name,
-			doc: func.doc,
+			doc: method.doc,
 			kind: FFun({
-				params: func.params.map(p -> ({
+				params: method.params.map(p -> ({
 					name: p.name,
 					constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
 				} : TypeParamDecl)),
-				args: func.args.map(a -> ({
+				args: method.args.map(a -> ({
 					name: a.name,
 					type: new LiteralTypeGenerator().generate(a.type),
 					opt: a.opt,
 				} : FunctionArg)),
-				ret: new LiteralTypeGenerator().generate(func.ret)
+				ret: new LiteralTypeGenerator().generate(method.ret)
 			}),
 			pos: Context.currentPos()
 		}
@@ -178,7 +170,7 @@ class InstanceClassGenerator extends ClassGenerator {
 			case SymbolMeta.Deprecated:
 				methodMetas.push(new MetaGenerator().generate({name: "deprecated"}));
 			case SymbolMeta.Native(native):
-				new MetaGenerator().generate({name: "native", params: [native]});
+				methodMetas.push(new MetaGenerator().generate({name: "native", params: [native]}));
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
 		});

@@ -101,10 +101,11 @@ function toFieldName(name:String) {
 }
 
 function toIdentifierName(name:String) {
-	return switch (isReservedKeyword(name)) {
-		case false: name;
-		case true: toSafeIdentifier(name);
-	};
+	if (reservedKeyword.contains(name)) {
+		return toSafeIdentifier(name);
+	}
+
+	return name;
 }
 
 function eval(scriptString:String, ?variables:Map<String, Any>) {
