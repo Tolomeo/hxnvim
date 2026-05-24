@@ -9,8 +9,9 @@ import haxe.macro.Expr.Field;
 using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
 
+import hxnvim.target.Target.TargetType;
+import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.parser.Parser;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
@@ -21,18 +22,23 @@ class ClassGenerator {
 		return {name: ':$name', params: params, pos: (macro null).pos};
 	}
 
-	function makeProperty(property:Variable) {
-		final meta = property.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+	function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+		return propertyAccess.map(a -> switch (a) {
+			case SymbolAccess.Private: APrivate;
+			case symbolAccess: throw 'Unexpected method access for property ${symbolAccess}';
+		});
+	}
+
+	function generatePropertyMeta(propertyMeta:Array<Metadata>) {
+		return propertyMeta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+	}
+
+	function generateProperty(property:Variable) {
+		final meta = this.generatePropertyMeta(property.meta);
 
 		final name = property.name;
 
-		// TODO: macro this
-		final access = [AExtern].concat(property.access.map(a -> switch (a) {
-			case SymbolAccess.Public: APublic;
-			case SymbolAccess.Static: AStatic;
-			case SymbolAccess.Private: APrivate;
-			case _: throw 'Unexpected method access for property ${property}';
-		}));
+		final access = this.generatePropertyAccess(property.access);
 
 		return {
 			meta: meta,
@@ -44,19 +50,24 @@ class ClassGenerator {
 		}
 	}
 
-	function makeMethod(func:Function) {
-		final meta = func.meta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+	function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
+		return methodAccess.map(a -> switch (a) {
+			case SymbolAccess.Private: APrivate;
+			case SymbolAccess.Overload: AOverload;
+			case symbolAccess: throw 'Unexpected method access ${symbolAccess}';
+		});
+	}
+
+	function generateMethodMeta(methodMeta:Array<Metadata>) {
+		return methodMeta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+	}
+
+	function generateMethod(func:Function) {
+		final meta = this.generateMethodMeta(func.meta);
 
 		final name = func.name;
 
-		// TODO: macro this
-		final access = [AExtern].concat(func.access.map(a -> switch (a) {
-			case SymbolAccess.Public: APublic;
-			case SymbolAccess.Static: AStatic;
-			case SymbolAccess.Private: APrivate;
-			case SymbolAccess.Overload: AOverload;
-			case _: throw "Unexpected method access";
-		}));
+		final access = this.generateMethodAccess(func.access);
 
 		return {
 			meta: meta,
@@ -79,18 +90,22 @@ class ClassGenerator {
 		}
 	}
 
+	function generateFields(fields:Array<TableField>):Array<Field> {
+		return fields.map(field -> {
+			return switch (field) {
+				case TableField.Method(func): this.generateMethod(func);
+				case TableField.Property(prop): this.generateProperty(prop);
+				case s: throw new Exception('Unexpected ${s} table field received');
+			}
+		});
+	}
+
 	public function generate(table:Table, ?meta:Array<Metadata>):TypeDefinition {
 		meta = meta.or([]).concat(table.meta);
 
 		final name = table.name;
 
-		final fields:Array<Field> = table.fields.map(parsedField -> {
-			return switch (parsedField) {
-				case TableField.Method(func): this.makeMethod(func);
-				case TableField.Property(prop): this.makeProperty(prop);
-				case u: throw new Exception('Unexpected ${u} table field received');
-			}
-		});
+		final fields = this.generateFields(table.fields);
 
 		// Not needed? We don't have inheritance anymore
 		/* final kind = switch (this.origin.parent) {
@@ -113,5 +128,24 @@ class ClassGenerator {
 			pos: Context.currentPos(),
 			isExtern: true,
 		};
+	}
+}
+
+class InstanceClassGenerator extends ClassGenerator {}
+
+class SingletonClassGenerator extends ClassGenerator {
+	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+		return [AStatic].concat(propertyAccess.map(a -> switch (a) {
+			case SymbolAccess.Private: APrivate;
+			case symbolAccess: throw 'Unexpected method access for property ${symbolAccess}';
+		}));
+	}
+
+	override function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
+		return [AStatic].concat(methodAccess.map(a -> switch (a) {
+			case SymbolAccess.Private: APrivate;
+			case SymbolAccess.Overload: AOverload;
+			case symbolAccess: throw 'Unexpected method access ${symbolAccess}';
+		}));
 	}
 }

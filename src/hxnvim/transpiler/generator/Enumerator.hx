@@ -6,7 +6,6 @@ import haxe.macro.Expr;
 using hxnvim.common.NullTools;
 
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.parser.Parser;
 import hxnvim.transpiler.generator.Type;
 import hxnvim.transpiler.generator.Meta;
 

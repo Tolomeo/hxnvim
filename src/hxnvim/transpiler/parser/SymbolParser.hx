@@ -162,6 +162,10 @@ class TableSymbolParser extends SymbolParser {
 
 			switch (fieldType.select('kind').string()) {
 				case 'function':
+					if (!field.select('meta').array().map(m -> m.string()).contains('method')) {
+						fieldMetadata.push(MetaParser.create('luaDotMethod'));
+					}
+
 					switch (fieldType.select('overloads').array()) {
 						case []:
 							final symbol = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse();

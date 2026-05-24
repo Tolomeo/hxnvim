@@ -5,7 +5,6 @@ import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 
 using hxnvim.common.NullTools;
-using hxnvim.common.StringTools;
 
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
@@ -54,6 +53,33 @@ private class Generator {
 	}
 }
 
+class NamespaceModuleGenerator extends Generator {
+	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
+		return new SingletonClassGenerator().generate(table, meta);
+	}
+
+	override public function generate(symbol:Symbol) {
+		final native = {
+			name: 'native',
+			params: switch (State.consume(target -> target.output.nativeChild)) {
+				case []: [State.consume(s -> s.output.native)];
+				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
+			}
+		}
+		final typeDefinition = this.generateType(symbol, [native]);
+
+		return this.printer.printTypeDefinition(typeDefinition);
+	}
+}
+
+class TypeModuleGenerator extends Generator {
+	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
+		meta = [{name: 'structInit'}].concat(meta.or([]));
+
+		return new ClassGenerator().generate(table, meta);
+	}
+}
+
 class ModuleGenerator extends Generator {
 	/* override public function generate(symbol:Symbol) {
 		final luaRequire:Metadata = {
@@ -67,37 +93,4 @@ class ModuleGenerator extends Generator {
 
 		return this.printer.printTypeDefinition(typeDefinition);
 	}*/
-}
-
-class NamespaceModuleGenerator extends Generator {
-	override public function generate(symbol:Symbol) {
-		final priv4te = {
-			name: 'private'
-		};
-		final native = {
-			name: 'native',
-			params: switch (State.consume(target -> target.output.nativeChild)) {
-				case []: [State.consume(s -> s.output.native)];
-				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
-			}
-		}
-
-		final namespaceTypeDefinition = this.generateType(symbol, [native, priv4te]);
-
-		final namespaceName = namespaceTypeDefinition.name;
-		namespaceTypeDefinition.name = State.consume(t -> t.output.qualifiedName).toTypeName();
-
-		// TODO: proper generator
-		final namespace = '@:native("${namespaceTypeDefinition.name}") extern final ${namespaceName}: ${namespaceTypeDefinition.name};';
-
-		return '${this.printer.printTypeDefinition(namespaceTypeDefinition)}\n\n${namespace}';
-	}
-}
-
-class TypeModuleGenerator extends Generator {
-	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
-		meta = [{name: 'structInit'}].concat(meta.or([]));
-
-		return new ClassGenerator().generate(table, meta);
-	}
 }

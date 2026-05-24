@@ -13,8 +13,7 @@ class AccessParser {
 			case 'native', 'private': {name: name, params: params};
 			case n: throw new Exception('Error creating meta of name "${n}": unrecognised');
 		}
-	} */
-
+	}*/
 	private final origin:Json;
 
 	public function new(origin:Json) {
@@ -25,8 +24,10 @@ class AccessParser {
 		final access = new Array<SymbolAccess>();
 
 		this.origin.array().map(meta -> meta.string()).iter(meta -> switch (meta) {
-			case "static": access.push(SymbolAccess.Static);
+			// case "static": access.push(SymbolAccess.Static);
 			case "private": access.push(SymbolAccess.Private);
+			case "protected": access.push(SymbolAccess.Private);
+			case "package": access.push(SymbolAccess.Private);
 			// TODO: info log
 			case _:
 		});
@@ -38,7 +39,7 @@ class AccessParser {
 class MetaParser {
 	public static function create(name:String, ?params:Array<String>) {
 		return switch (name) {
-			case 'native', 'private': {name: name, params: params};
+			case 'native', 'private', 'luaDotMethod': {name: name, params: params};
 			case n: throw new Exception('Error creating meta of name "${n}": unrecognised');
 		}
 	}
