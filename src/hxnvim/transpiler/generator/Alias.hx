@@ -11,17 +11,13 @@ import hxnvim.transpiler.parser.Parser;
 import hxnvim.transpiler.generator.Type;
 import hxnvim.transpiler.generator.Meta;
 
-/* import transpiler.parser.Alias.ParsedAlias;
-	import transpiler.parser.Meta.ParsedMetadata;
-	import transpiler.generator.Meta;
-	import transpiler.generator.Type; */
 class AliasGenerator {
 	public function new() {}
 
 	function generateMeta(tableMeta:Array<SymbolMeta>) {
 		return tableMeta.map(m -> switch (m) {
 			case SymbolMeta.Deprecated:
-				new MetaGenerator().generate({name: "deprecated"});
+				new MetaGenerator("deprecated").generate();
 			case _:
 				throw new Exception('Invalid meta for table: ${m}');
 		});

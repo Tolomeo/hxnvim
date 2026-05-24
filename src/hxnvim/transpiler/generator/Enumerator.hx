@@ -16,7 +16,7 @@ class EnumeratorGenerator {
 	function generateMeta(enumeratorMeta:Array<SymbolMeta>) {
 		return enumeratorMeta.map(m -> switch (m) {
 			case SymbolMeta.Deprecated:
-				new MetaGenerator().generate({name: "deprecated"});
+				new MetaGenerator("deprecated").generate();
 			case _:
 				throw new Exception('Invalid meta for enumerator: ${m}');
 		});

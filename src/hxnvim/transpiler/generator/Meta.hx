@@ -4,9 +4,15 @@ import haxe.macro.Expr.MetadataEntry;
 import hxnvim.transpiler.symbol.Symbol;
 
 class MetaGenerator {
-	public function new() {}
+	final name: String;
+	final params: Null<Array<String>>;
 
-	public function generate(parsedMetadata:Metadata):MetadataEntry {
-		return {name: ':${parsedMetadata.name}', params: parsedMetadata.params?.map(p -> macro $v{p}), pos: (macro null).pos};
+	public function new(name: String, ?params: Array<String>) {
+		this.name = name;
+		this.params = params;
+	}
+
+	public function generate():MetadataEntry {
+		return {name: ':${this.name}', params: this.params?.map(p -> macro $v{p}), pos: (macro null).pos};
 	}
 }

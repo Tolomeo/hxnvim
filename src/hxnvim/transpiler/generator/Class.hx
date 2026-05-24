@@ -10,7 +10,6 @@ using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 
-import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
@@ -32,9 +31,9 @@ private class ClassGenerator {
 	function generatePropertyMeta(propertyMeta:Array<SymbolMeta>) {
 		return propertyMeta.map(m -> switch (m) {
 			case SymbolMeta.Deprecated:
-				new MetaGenerator().generate({name: "deprecated"});
+				new MetaGenerator("deprecated").generate();
 			case SymbolMeta.Native(native):
-				new MetaGenerator().generate({name: "native", params: [native]});
+				new MetaGenerator("native", [native]).generate();
 			case _:
 				throw new Exception('Invalid meta for property: ${m}');
 		});
@@ -68,11 +67,10 @@ private class ClassGenerator {
 
 		methodMeta.iter(m -> switch (m) {
 			case SymbolMeta.Deprecated:
-				methodMetas.push(new MetaGenerator().generate({name: "deprecated"}));
+				methodMetas.push(new MetaGenerator("deprecated").generate());
 			case SymbolMeta.Native(native):
-				methodMetas.push(new MetaGenerator().generate({name: "native", params: [native]}));
-			case SymbolMeta.Method:
-				// left to children to decide what to do with this
+				methodMetas.push(new MetaGenerator("native", [native]).generate());
+			case SymbolMeta.Method: // left to children to decide what to do with this
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
 		});
@@ -119,11 +117,11 @@ private class ClassGenerator {
 	function generateMeta(tableMeta:Array<SymbolMeta>) {
 		return tableMeta.map(m -> switch (m) {
 			case SymbolMeta.Deprecated:
-				new MetaGenerator().generate({name: "deprecated"});
+				new MetaGenerator("deprecated").generate();
 			case SymbolMeta.Native(native):
-				new MetaGenerator().generate({name: "native", params: [native]});
+				new MetaGenerator("native", [native]).generate();
 			case StructInit:
-				new MetaGenerator().generate({name: "structInit"});
+				new MetaGenerator("structInit").generate();
 			case _:
 				throw new Exception('Invalid meta for table: ${m}');
 		});
@@ -163,14 +161,14 @@ private class ClassGenerator {
 class InstanceClassGenerator extends ClassGenerator {
 	override function generateMethodMeta(methodMeta:Array<SymbolMeta>) {
 		final isMethod = methodMeta.contains(SymbolMeta.Method);
-		final methodMetas = isMethod ? [] : [new MetaGenerator().generate({name: 'luaDotMethod'})];
+		final methodMetas = isMethod ? [] : [new MetaGenerator("luaDotMethod").generate()];
 
 		methodMeta.iter(m -> switch (m) {
 			case SymbolMeta.Method:
 			case SymbolMeta.Deprecated:
-				methodMetas.push(new MetaGenerator().generate({name: "deprecated"}));
+				methodMetas.push(new MetaGenerator("deprecated").generate());
 			case SymbolMeta.Native(native):
-				methodMetas.push(new MetaGenerator().generate({name: "native", params: [native]}));
+				methodMetas.push(new MetaGenerator("native", [native]).generate());
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
 		});
