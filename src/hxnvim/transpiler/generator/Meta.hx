@@ -1,7 +1,6 @@
 package hxnvim.transpiler.generator;
 
 import haxe.macro.Expr;
-import hxnvim.transpiler.symbol.Symbol;
 
 class MetaGenerator {
 	final name: String;

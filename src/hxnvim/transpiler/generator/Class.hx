@@ -75,9 +75,10 @@ private class ClassGenerator {
 				throw new Exception('Invalid meta for method: ${m}');
 		});
 
-		/* overloads.iter(o -> {
-			methodMetas.push(new MetaGenerator("overload", [o]).generate());
-		}); */
+		overloads.iter(overload_ -> {
+			final declarationSyntax = 'function ${overload_.replace("->", ":")} {}';
+			methodMetas.push(new MetaGenerator("overload", [macro $i{declarationSyntax}]).generate());
+		});
 
 		return methodMetas;
 	}
@@ -178,9 +179,10 @@ class InstanceClassGenerator extends ClassGenerator {
 				throw new Exception('Invalid meta for method: ${m}');
 		});
 
-		/* overloads.iter(o -> {
-			methodMetas.push(new MetaGenerator("overload", [o]).generate());
-		}); */
+		overloads.iter(overload_ -> {
+			final declarationSyntax = 'function ${overload_.replace("->", ":")} {}';
+			methodMetas.push(new MetaGenerator("overload", [macro $i{declarationSyntax}]).generate());
+		});
 
 		return methodMetas;
 	}
