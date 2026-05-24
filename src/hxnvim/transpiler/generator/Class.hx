@@ -33,7 +33,7 @@ private class ClassGenerator {
 			case SymbolMeta.Deprecated:
 				new MetaGenerator("deprecated").generate();
 			case SymbolMeta.Native(native):
-				new MetaGenerator("native", [native]).generate();
+				new MetaGenerator("native", [macro $v{native}]).generate();
 			case _:
 				throw new Exception('Invalid meta for property: ${m}');
 		});
@@ -69,7 +69,7 @@ private class ClassGenerator {
 			case SymbolMeta.Deprecated:
 				methodMetas.push(new MetaGenerator("deprecated").generate());
 			case SymbolMeta.Native(native):
-				methodMetas.push(new MetaGenerator("native", [native]).generate());
+				methodMetas.push(new MetaGenerator("native", [macro $v{native}]).generate());
 			case SymbolMeta.Method: // left to children to decide what to do with this
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
@@ -124,7 +124,7 @@ private class ClassGenerator {
 			case SymbolMeta.Deprecated:
 				new MetaGenerator("deprecated").generate();
 			case SymbolMeta.Native(native):
-				new MetaGenerator("native", [native]).generate();
+				new MetaGenerator("native", [macro $v{native}]).generate();
 			case StructInit:
 				new MetaGenerator("structInit").generate();
 			case _:
@@ -173,7 +173,7 @@ class InstanceClassGenerator extends ClassGenerator {
 			case SymbolMeta.Deprecated:
 				methodMetas.push(new MetaGenerator("deprecated").generate());
 			case SymbolMeta.Native(native):
-				methodMetas.push(new MetaGenerator("native", [native]).generate());
+				methodMetas.push(new MetaGenerator("native", [macro $v{native}]).generate());
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
 		});
