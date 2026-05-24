@@ -21,19 +21,19 @@ private class Generator {
 		this.printer = new Printer();
 	}
 
-	function generateTableType(table:Table, ?meta:Array<Metadata>) {
-		return new ClassGenerator().generate(table, meta);
+	function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
+		return new InstanceClassGenerator().generate(table, meta);
 	}
 
-	function generateAliasType(alias:Alias, ?meta:Array<Metadata>) {
+	function generateAliasType(alias:Alias, ?meta:Array<SymbolMeta>) {
 		return new AliasGenerator().generate(alias, meta);
 	}
 
-	function generateEnumeratorType(enumerator:Enumerator, ?meta:Array<Metadata>) {
+	function generateEnumeratorType(enumerator:Enumerator, ?meta:Array<SymbolMeta>) {
 		return new EnumeratorGenerator().generate(enumerator, meta);
 	}
 
-	function generateType(symbol:Symbol, ?meta:Array<Metadata>) {
+	function generateType(symbol:Symbol, ?meta:Array<SymbolMeta>) {
 		meta = meta.or([]);
 
 		return switch (symbol) {
@@ -54,29 +54,26 @@ private class Generator {
 }
 
 class NamespaceModuleGenerator extends Generator {
-	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
+	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
 		return new SingletonClassGenerator().generate(table, meta);
 	}
 
 	override public function generate(symbol:Symbol) {
-		final native = {
-			name: 'native',
-			params: switch (State.consume(target -> target.output.nativeChild)) {
-				case []: [State.consume(s -> s.output.native)];
-				case childPath: [[State.consume(s -> s.output.native)].concat(childPath).join(".")];
-			}
+		final native = switch (State.consume(target -> target.output.nativeChild)) {
+			case []: State.consume(s -> s.output.native);
+			case childPath: [State.consume(s -> s.output.native)].concat(childPath).join(".");
 		}
-		final typeDefinition = this.generateType(symbol, [native]);
 
+		final typeDefinition = this.generateType(symbol, [SymbolMeta.Native(native)]);
 		return this.printer.printTypeDefinition(typeDefinition);
 	}
 }
 
 class TypeModuleGenerator extends Generator {
-	override function generateTableType(table:Table, ?meta:Array<Metadata>) {
-		meta = [{name: 'structInit'}].concat(meta.or([]));
+	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
+		meta = [SymbolMeta.StructInit].concat(meta.or([]));
 
-		return new ClassGenerator().generate(table, meta);
+		return new InstanceClassGenerator().generate(table, meta);
 	}
 }
 

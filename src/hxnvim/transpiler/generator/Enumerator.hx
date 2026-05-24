@@ -2,6 +2,7 @@ package hxnvim.transpiler.generator;
 
 import haxe.macro.Context;
 import haxe.macro.Expr;
+import haxe.Exception;
 
 using hxnvim.common.NullTools;
 
@@ -12,7 +13,16 @@ import hxnvim.transpiler.generator.Meta;
 class EnumeratorGenerator {
 	public function new() {}
 
-	public function generate(enumerator:Enumerator, ?meta:Array<Metadata>):TypeDefinition {
+	function generateMeta(enumeratorMeta:Array<SymbolMeta>) {
+		return enumeratorMeta.map(m -> switch (m) {
+			case SymbolMeta.Deprecated:
+				new MetaGenerator().generate({name: "deprecated"});
+			case _:
+				throw new Exception('Invalid meta for enumerator: ${m}');
+		});
+	}
+
+	public function generate(enumerator:Enumerator, ?meta:Array<SymbolMeta>):TypeDefinition {
 		meta = meta.or([]).concat(enumerator.meta);
 
 		final name = enumerator.name;
@@ -34,7 +44,7 @@ class EnumeratorGenerator {
 			name: name,
 			pack: [],
 			kind: kind,
-			meta: meta.map(m -> new MetaGenerator().generate(m)),
+			meta: this.generateMeta(meta),
 			fields: fields,
 			pos: Context.currentPos(),
 			isExtern: true

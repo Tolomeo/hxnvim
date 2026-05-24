@@ -2,6 +2,7 @@ package hxnvim.transpiler.generator;
 
 import haxe.macro.Context;
 import haxe.macro.Expr.TypeDefinition;
+import haxe.Exception;
 
 using hxnvim.common.NullTools;
 
@@ -17,7 +18,16 @@ import hxnvim.transpiler.generator.Meta;
 class AliasGenerator {
 	public function new() {}
 
-	public function generate(alias:Alias, ?meta:Array<Metadata>):TypeDefinition {
+	function generateMeta(tableMeta:Array<SymbolMeta>) {
+		return tableMeta.map(m -> switch (m) {
+			case SymbolMeta.Deprecated:
+				new MetaGenerator().generate({name: "deprecated"});
+			case _:
+				throw new Exception('Invalid meta for table: ${m}');
+		});
+	}
+
+	public function generate(alias:Alias, ?meta:Array<SymbolMeta>):TypeDefinition {
 		meta = meta.or([]);
 
 		final name = alias.name;
@@ -26,7 +36,7 @@ class AliasGenerator {
 			name: name,
 			pack: [],
 			kind: TDAlias(new LiteralTypeGenerator().generate(alias.type)),
-			meta: meta.map(m -> new MetaGenerator().generate(m)),
+			meta: this.generateMeta(meta),
 			fields: [],
 			pos: Context.currentPos(),
 			isExtern: true

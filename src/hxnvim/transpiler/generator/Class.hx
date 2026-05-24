@@ -8,14 +8,14 @@ import haxe.macro.Expr.Field;
 
 using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
+using hxnvim.common.ArrayTools;
 
-import hxnvim.target.Target.TargetType;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
-class ClassGenerator {
+private class ClassGenerator {
 	public function new() {}
 
 	function makeMeta(name:String, ?params:Array<Expr>):MetadataEntry {
@@ -29,8 +29,15 @@ class ClassGenerator {
 		});
 	}
 
-	function generatePropertyMeta(propertyMeta:Array<Metadata>) {
-		return propertyMeta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+	function generatePropertyMeta(propertyMeta:Array<SymbolMeta>) {
+		return propertyMeta.map(m -> switch (m) {
+			case SymbolMeta.Deprecated:
+				new MetaGenerator().generate({name: "deprecated"});
+			case SymbolMeta.Native(native):
+				new MetaGenerator().generate({name: "native", params: [native]});
+			case _:
+				throw new Exception('Invalid meta for property: ${m}');
+		});
 	}
 
 	function generateProperty(property:Variable) {
@@ -58,8 +65,21 @@ class ClassGenerator {
 		});
 	}
 
-	function generateMethodMeta(methodMeta:Array<Metadata>) {
-		return methodMeta.map(m -> new MetaGenerator().generate({name: m.name, params: m.params}));
+	function generateMethodMeta(methodMeta:Array<SymbolMeta>) {
+		final methodMetas = new Array();
+
+		methodMeta.iter(m -> switch (m) {
+			case SymbolMeta.Deprecated:
+				methodMetas.push(new MetaGenerator().generate({name: "deprecated"}));
+			case SymbolMeta.Native(native):
+				new MetaGenerator().generate({name: "native", params: [native]});
+			case SymbolMeta.Method:
+				// left to children to decide what to do with this
+			case _:
+				throw new Exception('Invalid meta for method: ${m}');
+		});
+
+		return methodMetas;
 	}
 
 	function generateMethod(func:Function) {
@@ -100,7 +120,20 @@ class ClassGenerator {
 		});
 	}
 
-	public function generate(table:Table, ?meta:Array<Metadata>):TypeDefinition {
+	function generateMeta(tableMeta:Array<SymbolMeta>) {
+		return tableMeta.map(m -> switch (m) {
+			case SymbolMeta.Deprecated:
+				new MetaGenerator().generate({name: "deprecated"});
+			case SymbolMeta.Native(native):
+				new MetaGenerator().generate({name: "native", params: [native]});
+			case StructInit:
+				new MetaGenerator().generate({name: "structInit"});
+			case _:
+				throw new Exception('Invalid meta for table: ${m}');
+		});
+	}
+
+	public function generate(table:Table, ?meta:Array<SymbolMeta>):TypeDefinition {
 		meta = meta.or([]).concat(table.meta);
 
 		final name = table.name;
@@ -123,7 +156,7 @@ class ClassGenerator {
 			doc: table.doc,
 			pack: [],
 			kind: TDClass(),
-			meta: meta.map(m -> new MetaGenerator().generate(m)),
+			meta: this.generateMeta(meta),
 			fields: fields,
 			pos: Context.currentPos(),
 			isExtern: true,
@@ -133,6 +166,7 @@ class ClassGenerator {
 
 class InstanceClassGenerator extends ClassGenerator {}
 
+// TODO: detect when a function is treated as a method, and automatically add the first self argument
 class SingletonClassGenerator extends ClassGenerator {
 	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
 		return [AStatic].concat(propertyAccess.map(a -> switch (a) {

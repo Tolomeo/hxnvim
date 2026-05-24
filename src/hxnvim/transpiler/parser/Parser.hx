@@ -21,25 +21,32 @@ class Parser {
 		this.handleChild = handleChild;
 	}
 
+	/* function parseAccess(symbolMeta: Json) {
+		final accessMetas = new Map(["private" => SymbolAccess., "protected", "package"]);
+		return symbolMeta.array().map(m -> m.string()).filter(m -> )
+	}*/
 	public function parse() {
 		final symbol = this.symbol;
 		final name = State.consume(v -> v.output.name);
 		final doc = symbol.select('documentation').array().map(line -> line.string()).toDoc();
-		final access = new AccessParser(symbol.select('meta')).parse();
-		final metadata = new MetaParser(symbol.select('meta')).parse();
+
+		final metaParser = new MetaParser(symbol.select('meta'));
+		final access = metaParser.parseAccess();
+		final meta = metaParser.parseMeta();
+
 		final type = symbol.select('type');
 
 		return switch (type.select('kind').string()) {
 			case "table":
-				final symbol = new TableSymbolParser(name, doc, metadata, access, type).parse(this.handleChild);
+				final symbol = new TableSymbolParser(name, doc, meta, access, type).parse(this.handleChild);
 				return Symbol.TableSymbol(symbol);
 
 			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":
-				final symbol = new AliasSymbolParser(name, doc, metadata, access, type).parse();
+				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
 				return Symbol.AliasSymbol(symbol);
 
 			case "enumerator":
-				final symbol = new EnumeratorSymbolParser(name, doc, metadata, access, type).parse();
+				final symbol = new EnumeratorSymbolParser(name, doc, meta, access, type).parse();
 				return Symbol.EnumeratorSymbol(symbol);
 
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');

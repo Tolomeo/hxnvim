@@ -3,6 +3,7 @@ package hxnvim.transpiler.symbol;
 typedef Metadata = {name:String, ?params:Array<String>};
 typedef LiteralType = String;
 
+// TODO: remove overload; add protected and package
 enum SymbolAccess {
 	Public;
 	Private;
@@ -10,10 +11,17 @@ enum SymbolAccess {
 	Overload;
 }
 
+enum SymbolMeta {
+	Method;
+	Deprecated;
+	Native(name: String);
+	StructInit;
+}
+
 typedef Variable = {
 	name:String,
 	doc:String,
-	meta:Array<Metadata>,
+	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
 	type:LiteralType,
 }
@@ -29,7 +37,7 @@ typedef Return = LiteralType;
 typedef Function = {
 	name:String,
 	doc:String,
-	meta:Array<Metadata>,
+	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
 	params:Array<Param>,
 	args:Array<Arg>,
@@ -49,7 +57,7 @@ typedef Alias = {
 typedef Table = {
 	name:String,
 	doc:String,
-	meta:Array<Metadata>,
+	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
 	fields:Array<TableField>
 }
@@ -57,7 +65,7 @@ typedef Table = {
 typedef Enumerator = {
 	name:String,
 	doc:String,
-	meta:Array<Metadata>,
+	meta:Array<SymbolMeta>,
 	type:LiteralType,
 	fields:Map<String, String>
 }

@@ -17,11 +17,11 @@ import hxnvim.transpiler.parser.MetadataParser;
 private class SymbolParser {
 	private final name:String;
 	private final doc:String;
-	private final meta:Array<Metadata>;
+	private final meta:Array<SymbolMeta>;
 	private final access:Array<SymbolAccess>;
 	private final origin:Json;
 
-	public function new(name:String, doc:String, meta:Array<Metadata>, access:Array<SymbolAccess>, origin:Json) {
+	public function new(name:String, doc:String, meta:Array<SymbolMeta>, access:Array<SymbolAccess>, origin:Json) {
 		this.name = name;
 		this.doc = doc;
 		this.meta = meta;
@@ -153,22 +153,27 @@ class TableSymbolParser extends SymbolParser {
 			final fieldNativeName = field.select('name').string();
 			final fieldName = fieldNativeName.toFieldName();
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
-			final fieldAccess = new AccessParser(field.select('meta')).parse();
+
+			final metaParser = new MetaParser(field.select('meta'));
+			final fieldAccess = metaParser.parseAccess();
+			final fieldMeta = metaParser.parseMeta();
+
+			/* final fieldAccess = new AccessParser(field.select('meta')).parse();
 			final fieldMetadata = switch (fieldNativeName == fieldName) {
 				case true: new MetaParser(field.select('meta')).parse();
 				case false: [MetaParser.create('native', [fieldNativeName])].concat(new MetaParser(field.select('meta')).parse());
-			}
+			} */
 			final fieldType = field.select('type');
 
 			switch (fieldType.select('kind').string()) {
 				case 'function':
-					if (!field.select('meta').array().map(m -> m.string()).contains('method')) {
+					/* if (!field.select('meta').array().map(m -> m.string()).contains('method')) {
 						fieldMetadata.push(MetaParser.create('luaDotMethod'));
-					}
+					} */
 
 					switch (fieldType.select('overloads').array()) {
 						case []:
-							final symbol = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse();
+							final symbol = new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess, fieldType).parse();
 							final method = TableField.Method(symbol);
 							parsedTable.fields.push(method);
 
@@ -179,11 +184,11 @@ class TableSymbolParser extends SymbolParser {
 								return Serializer.run({args: fn1.args}) == Serializer.run({args: fn2.args});
 							}
 
-							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([SymbolAccess.Overload]),
+							functions.push(new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess.concat([SymbolAccess.Overload]),
 								fieldType).parse());
 
 							overloads.iter(overload_ -> {
-								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess.concat([SymbolAccess.Overload]),
+								final fn = new FunctionSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess.concat([SymbolAccess.Overload]),
 									overload_).parse();
 
 								if (functions.foreach(existingFn -> !isEqualSignature(existingFn, fn))) {
@@ -199,7 +204,7 @@ class TableSymbolParser extends SymbolParser {
 
 				case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral',
 					'stringliteral':
-					final symbol = new AliasSymbolParser(fieldName, fieldDoc, fieldMetadata, fieldAccess, fieldType).parse();
+					final symbol = new AliasSymbolParser(fieldName, fieldDoc, fieldMeta, fieldAccess, fieldType).parse();
 					parsedTable.fields.push(TableField.Property(symbol));
 
 				case k:
