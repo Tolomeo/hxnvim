@@ -22,7 +22,7 @@ private class Generator {
 	}
 
 	function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
-		return new InstanceClassGenerator().generate(table, meta);
+		return new InstanceClassGenerator(table).generate(meta);
 	}
 
 	function generateAliasType(alias:Alias, ?meta:Array<SymbolMeta>) {
@@ -55,7 +55,7 @@ private class Generator {
 
 class NamespaceModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
-		return new SingletonClassGenerator().generate(table, meta);
+		return new SingletonClassGenerator(table).generate(meta);
 	}
 
 	override public function generate(symbol:Symbol) {
@@ -73,7 +73,7 @@ class TypeModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
 		meta = [SymbolMeta.StructInit].concat(meta.or([]));
 
-		return new InstanceClassGenerator().generate(table, meta);
+		return new InstanceClassGenerator(table).generate(meta);
 	}
 }
 

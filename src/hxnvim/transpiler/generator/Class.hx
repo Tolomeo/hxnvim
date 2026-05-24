@@ -16,7 +16,11 @@ import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
 private class ClassGenerator {
-	public function new() {}
+	final table:Table;
+
+	public function new(table:Table) {
+		this.table = table;
+	}
 
 	function makeMeta(name:String, ?params:Array<Expr>):MetadataEntry {
 		return {name: ':$name', params: params, pos: (macro null).pos};
@@ -133,12 +137,12 @@ private class ClassGenerator {
 		});
 	}
 
-	public function generate(table:Table, ?meta:Array<SymbolMeta>):TypeDefinition {
-		meta = meta.or([]).concat(table.meta);
+	public function generate(?meta:Array<SymbolMeta>):TypeDefinition {
+		meta = meta.or([]).concat(this.table.meta);
 
-		final name = table.name;
+		final name = this.table.name;
 
-		final fields = this.generateFields(table.fields);
+		final fields = this.generateFields(this.table.fields);
 
 		// Not needed? We don't have inheritance anymore
 		/* final kind = switch (this.origin.parent) {
@@ -153,7 +157,7 @@ private class ClassGenerator {
 
 		return {
 			name: name,
-			doc: table.doc,
+			doc: this.table.doc,
 			pack: [],
 			kind: TDClass(),
 			meta: this.generateMeta(meta),
@@ -164,7 +168,24 @@ private class ClassGenerator {
 	}
 }
 
-class InstanceClassGenerator extends ClassGenerator {}
+class InstanceClassGenerator extends ClassGenerator {
+	override function generateMethodMeta(methodMeta:Array<SymbolMeta>) {
+		final isMethod = methodMeta.contains(SymbolMeta.Method);
+		final methodMetas = isMethod ? [] : [new MetaGenerator().generate({name: 'luaDotMethod'})];
+
+		methodMeta.iter(m -> switch (m) {
+			case SymbolMeta.Method:
+			case SymbolMeta.Deprecated:
+				methodMetas.push(new MetaGenerator().generate({name: "deprecated"}));
+			case SymbolMeta.Native(native):
+				new MetaGenerator().generate({name: "native", params: [native]});
+			case _:
+				throw new Exception('Invalid meta for method: ${m}');
+		});
+
+		return methodMetas;
+	}
+}
 
 // TODO: detect when a function is treated as a method, and automatically add the first self argument
 class SingletonClassGenerator extends ClassGenerator {
