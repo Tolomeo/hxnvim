@@ -62,9 +62,9 @@ class LiteralTypeParser {
 		return "Dynamic";
 	}
 
-	function parseUnion(types:Array<Json>) {
+	function parseUnion(union:Array<Json>) {
 		function makeUnion(members:Array<String>):String {
-			return switch (members) {
+			return switch (members.copy()) {
 				case [], [_]:
 					throw new Exception('Error creating union type out of ${this.type.getValue()}');
 				case [left, right]:
@@ -74,19 +74,14 @@ class LiteralTypeParser {
 			}
 		}
 
-		var unionTypes = types.copy().map(t -> new LiteralTypeParser(t, this.params).parse()).unique();
-
-		final void = unionTypes.indexOf("Void");
-		if (void != -1) {
-			unionTypes.splice(void, 1);
-		}
-
-		final union = switch (unionTypes) {
+		final types = union.map(t -> new LiteralTypeParser(t, this.params).parse()).unique();
+		final nonNullableTypes = types.filter(type -> type != "Void");
+		final nonNullableUnion = switch (nonNullableTypes) {
 			case [t]: t;
 			case t: makeUnion(t);
 		}
 
-		return (void != -1) ? 'Null<${union}>' : union;
+		return (types.length != nonNullableTypes.length) ? 'Null<${nonNullableUnion}>' : nonNullableUnion;
 	}
 
 	function parseArray(items:Json) {
