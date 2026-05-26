@@ -69,6 +69,10 @@ class FunctionSymbolParser extends SymbolParser {
 
 		var i = args.length;
 		while (--i >= 0) {
+			if (args[i].type.startsWith("haxe.Rest<")) {
+				continue;
+			}
+
 			final optional = args[i].opt || args[i].type.startsWith("Null<");
 
 			if (!optional) {
