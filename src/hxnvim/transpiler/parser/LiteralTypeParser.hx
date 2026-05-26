@@ -74,12 +74,19 @@ class LiteralTypeParser {
 			}
 		}
 
-		return switch (types.copy().map(t -> new LiteralTypeParser(t, this.params).parse()).unique()) {
-			case [t]:
-				t;
-			case t:
-				makeUnion(t);
+		var unionTypes = types.copy().map(t -> new LiteralTypeParser(t, this.params).parse()).unique();
+
+		final void = unionTypes.indexOf("Void");
+		if (void != -1) {
+			unionTypes.splice(void, 1);
 		}
+
+		final union = switch (unionTypes) {
+			case [t]: t;
+			case t: makeUnion(t);
+		}
+
+		return (void != -1) ? 'Null<${union}>' : union;
 	}
 
 	function parseArray(items:Json) {
