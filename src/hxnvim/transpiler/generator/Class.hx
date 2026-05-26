@@ -70,7 +70,7 @@ private class ClassGenerator {
 				methodMetas.push(new MetaGenerator("deprecated").generate());
 			case SymbolMeta.Native(native):
 				methodMetas.push(new MetaGenerator("native", [macro $v{native}]).generate());
-			case SymbolMeta.Method: // left to children to decide what to do with this
+			case SymbolMeta.Method: // it is left to overrides to decide what to do with this
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
 		});
@@ -165,43 +165,21 @@ private class ClassGenerator {
 }
 
 class InstanceClassGenerator extends ClassGenerator {
-	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads: Array<LiteralType>) {
+	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
 		final isMethod = methodMeta.contains(SymbolMeta.Method);
 		final methodMetas = isMethod ? [] : [new MetaGenerator("luaDotMethod").generate()];
 
-		methodMeta.iter(m -> switch (m) {
-			case SymbolMeta.Method:
-			case SymbolMeta.Deprecated:
-				methodMetas.push(new MetaGenerator("deprecated").generate());
-			case SymbolMeta.Native(native):
-				methodMetas.push(new MetaGenerator("native", [macro $v{native}]).generate());
-			case _:
-				throw new Exception('Invalid meta for method: ${m}');
-		});
-
-		overloads.iter(overload_ -> {
-			final declarationSyntax = 'function ${overload_.replace("->", ":")} {}';
-			methodMetas.push(new MetaGenerator("overload", [macro $i{declarationSyntax}]).generate());
-		});
-
-		return methodMetas;
+		return methodMetas.concat(super.generateMethodMeta(methodMeta, overloads));
 	}
 }
 
 // TODO: detect when a function is treated as a method, and automatically add the first self argument
 class SingletonClassGenerator extends ClassGenerator {
 	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
-		return [AStatic].concat(propertyAccess.map(a -> switch (a) {
-			case SymbolAccess.Private: APrivate;
-			case symbolAccess: throw 'Unexpected method access for property ${symbolAccess}';
-		}));
+		return [AStatic].concat(super.generatePropertyAccess(propertyAccess));
 	}
 
 	override function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
-		return [AStatic].concat(methodAccess.map(a -> switch (a) {
-			case SymbolAccess.Private: APrivate;
-			case SymbolAccess.Overload: AOverload;
-			case symbolAccess: throw 'Unexpected method access ${symbolAccess}';
-		}));
+		return [AStatic].concat(super.generateMethodAccess(methodAccess));
 	}
 }

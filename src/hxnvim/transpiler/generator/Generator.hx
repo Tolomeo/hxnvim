@@ -58,14 +58,15 @@ class NamespaceModuleGenerator extends Generator {
 		return new SingletonClassGenerator(table).generate(meta);
 	}
 
-	override public function generate(symbol:Symbol) {
+	override function generateType(symbol:Symbol, ?meta:Array<SymbolMeta>) {
 		final native = switch (State.consume(target -> target.output.nativeChild)) {
 			case []: State.consume(s -> s.output.native);
 			case childPath: [State.consume(s -> s.output.native)].concat(childPath).join(".");
 		}
 
-		final typeDefinition = this.generateType(symbol, [SymbolMeta.Native(native)]);
-		return this.printer.printTypeDefinition(typeDefinition);
+		meta = [SymbolMeta.Native(native)].concat(meta.or([]));
+
+		return super.generateType(symbol, meta);
 	}
 }
 
@@ -73,7 +74,7 @@ class TypeModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
 		meta = [SymbolMeta.StructInit].concat(meta.or([]));
 
-		return new InstanceClassGenerator(table).generate(meta);
+		return super.generateTableType(table, meta);
 	}
 }
 
