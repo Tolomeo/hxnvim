@@ -31,8 +31,8 @@ private class SymbolParser {
 }
 
 class FunctionSymbolParser extends SymbolParser {
-	public function parse() {
-		final params = this.origin.select('generics').array().map(param -> {
+	function parseParams(params:Array<Json>) {
+		return params.map(param -> {
 			final name = param.select('name').string();
 			final type = param.select('type');
 			final constraints = switch (type.value) {
@@ -46,8 +46,10 @@ class FunctionSymbolParser extends SymbolParser {
 				constraints: constraints
 			}
 		});
+	}
 
-		final args = this.origin.select('arguments').array().map(argument -> {
+	function parseArgs(arguments:Array<Json>, params:Array<Param>) {
+		final args = arguments.map(argument -> {
 			final name = argument.select('name').string();
 			final type = new LiteralTypeParser(argument.select('type'), params).parse();
 
@@ -65,7 +67,11 @@ class FunctionSymbolParser extends SymbolParser {
 			}
 		});
 
-		final overloads = this.origin.select('overloads').array().map(o -> {
+		return args;
+	}
+
+	function parseOverloads(overloads:Array<Json>, params:Array<Param>) {
+		return overloads.map(o -> {
 			final overloadType:Dynamic = o.getValue().merge({
 				kind: 'function'
 			});
@@ -74,8 +80,10 @@ class FunctionSymbolParser extends SymbolParser {
 
 			return new LiteralTypeParser(overloadJson, params).parse();
 		});
+	}
 
-		final ret = switch (this.origin.select('returns').array()) {
+	function parseReturns(returns:Array<Json>, params:Array<Param>) {
+		return switch (returns) {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
 			case returns if (returns.length <= 6):
@@ -83,6 +91,13 @@ class FunctionSymbolParser extends SymbolParser {
 				Target.toHelperReference('Multireturn<${returnTypes.join(", ")}>');
 			case _: throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
 		}
+	}
+
+	public function parse() {
+		final params = this.parseParams(this.origin.select('generics').array());
+		final args = this.parseArgs(this.origin.select('arguments').array(), params);
+		final overloads = this.parseOverloads(this.origin.select('overloads').array(), params);
+		final ret = this.parseReturns(this.origin.select('returns').array(), params);
 
 		return {
 			name: this.name,
