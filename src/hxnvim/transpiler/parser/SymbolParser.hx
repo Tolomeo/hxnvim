@@ -48,7 +48,7 @@ class FunctionSymbolParser extends SymbolParser {
 		});
 	}
 
-	function parseArgs(arguments:Array<Json>, params:Array<Param>) {
+	function parseArguments(arguments:Array<Json>, params:Array<Param>) {
 		final args = arguments.map(argument -> {
 			final name = argument.select('name').string();
 			final type = new LiteralTypeParser(argument.select('type'), params).parse();
@@ -66,6 +66,17 @@ class FunctionSymbolParser extends SymbolParser {
 					});
 			}
 		});
+
+		var i = args.length;
+		while (--i >= 0) {
+			final optional = args[i].opt || args[i].type.startsWith("Null<");
+
+			if (!optional) {
+				break;
+			}
+
+			args[i].opt = optional;
+		}
 
 		return args;
 	}
@@ -95,7 +106,7 @@ class FunctionSymbolParser extends SymbolParser {
 
 	public function parse() {
 		final params = this.parseParams(this.origin.select('generics').array());
-		final args = this.parseArgs(this.origin.select('arguments').array(), params);
+		final args = this.parseArguments(this.origin.select('arguments').array(), params);
 		final overloads = this.parseOverloads(this.origin.select('overloads').array(), params);
 		final ret = this.parseReturns(this.origin.select('returns').array(), params);
 
