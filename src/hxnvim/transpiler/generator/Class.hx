@@ -142,13 +142,13 @@ private class ClassGenerator {
 
 		// Not needed? We don't have inheritance anymore
 		/* final kind = switch (this.origin.parent) {
-			case None: TDClass();
-			case Some(parsedParent):
-				final superClass = switch (new TypeGenerator(parsedParent).make()) {
-					case TPath(typePath): typePath;
-					case _: throw 'Cannot extact type path for parent "${parsedParent}"';
-				}
-				TDClass(superClass);
+				  case None: TDClass();
+				  case Some(parsedParent):
+			final superClass = switch (new TypeGenerator(parsedParent).make()) {
+			  case TPath(typePath): typePath;
+			  case _: throw 'Cannot extact type path for parent "${parsedParent}"';
+			}
+			TDClass(superClass);
 		}*/
 
 		return {

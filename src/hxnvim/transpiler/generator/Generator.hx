@@ -81,11 +81,11 @@ class TypeModuleGenerator extends Generator {
 class ModuleGenerator extends Generator {
 	/* override public function generate(symbol:Symbol) {
 		final luaRequire:Metadata = {
-			name: 'luaRequire',
-			params: switch (State.consume(target -> target.output.nativeChild)) {
-				case []: [State.consume(s -> s.output.native)];
-				case childPath: [State.consume(s -> s.output.native), childPath.join(".")];
-			}
+		  name: 'luaRequire',
+		  params: switch (State.consume(target -> target.output.nativeChild)) {
+			case []: [State.consume(s -> s.output.native)];
+			case childPath: [State.consume(s -> s.output.native), childPath.join(".")];
+		  }
 		};
 		final typeDefinition = this.generateType(symbol, [luaRequire]);
 

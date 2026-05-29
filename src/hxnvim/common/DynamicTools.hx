@@ -32,19 +32,19 @@ function merge(left:Dynamic, right:Dynamic, ?callback:(key:String, leftVal:Dynam
 		}
 
 		/* // default rules, as documented
-			if (Std.is(rightVal, Array)) {
-				// All arrays get merged
-				// { a: [1]} && {a: [2,3]} => {a: [1,2,3]}
-				var left:Array<Dynamic> = Reflect.field(left, key);
-				var val:Array<Dynamic> = rightVal;
-				result[key] = left.concat(val);
-			} else if (Std.is(rightVal, Bool) || Std.is(rightVal, Float) || Std.is(rightVal, Int) || Std.is(rightVal, String)) {
-				// All "basic types" get overwritten
-				// { a: 3 } && { a: 4 } => {a: 4}
-				result[key] = rightVal;
-			} else {
-				// all is left is {}, so we recursivly parse down
-				result[key] = mergeJson(Reflect.field(left, key), rightVal);
+				  if (Std.is(rightVal, Array)) {
+			// All arrays get merged
+			// { a: [1]} && {a: [2,3]} => {a: [1,2,3]}
+			var left:Array<Dynamic> = Reflect.field(left, key);
+			var val:Array<Dynamic> = rightVal;
+			result[key] = left.concat(val);
+				  } else if (Std.is(rightVal, Bool) || Std.is(rightVal, Float) || Std.is(rightVal, Int) || Std.is(rightVal, String)) {
+			// All "basic types" get overwritten
+			// { a: 3 } && { a: 4 } => {a: 4}
+			result[key] = rightVal;
+				  } else {
+			// all is left is {}, so we recursivly parse down
+			result[key] = mergeJson(Reflect.field(left, key), rightVal);
 		}*/
 	}
 

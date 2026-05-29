@@ -112,8 +112,7 @@ class LiteralTypeParser {
 		final fields = table.select('fields').array();
 
 		return switch ({
-			fields:fields, indexes:indexes
-		}) {
+			fields:fields, indexes:indexes}) {
 			case {fields: [], indexes: []}: 'lua.Table.AnyTable';
 			case {fields: [], indexes: [index]}: this.parseTableLiteralType(index.select('key'), index.select('value'));
 			case {fields: [], indexes: idxs}: throw new Exception('Unimplemented table with multiple indexes');

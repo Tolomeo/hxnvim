@@ -12,24 +12,24 @@ class Config {
 	public static var outputPack:String = "externs";
 	public static var overrides:DynamicAccess<Override> = {
 		/* "vim.treesitter": {},
-			"vim.opt": {
-				parsedProperty: "{
-					name: parsedProperty.name,
-					doc: parsedProperty.doc,
-					access: parsedProperty.access,
-					meta: parsedProperty.meta,
-					type:'externs.type.VimOption<' + parsedProperty.type + '>'
-				}",
+				  "vim.opt": {
+			parsedProperty: "{
+			  name: parsedProperty.name,
+			  doc: parsedProperty.doc,
+			  access: parsedProperty.access,
+			  meta: parsedProperty.meta,
+			  type:'externs.type.VimOption<' + parsedProperty.type + '>'
+			}",
 		}*/
 		/* "TSNode": {
-			range: '{
-				type: {
-					generics: value.type.overloads[0].generics,
-					arguments: value.type.overloads[0].arguments,
-					returns: value.type.overloads[0].returns,
-					overloads: []
-				}
-			}'
+				  range: '{
+			type: {
+			  generics: value.type.overloads[0].generics,
+			  arguments: value.type.overloads[0].arguments,
+			  returns: value.type.overloads[0].returns,
+			  overloads: []
+			}
+				  }'
 		}*/
 	};
 

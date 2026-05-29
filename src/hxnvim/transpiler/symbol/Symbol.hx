@@ -28,7 +28,12 @@ typedef Param = {
 	constraints:Array<LiteralType>
 }
 
-typedef Arg = {name:String, type:LiteralType, opt:Bool};
+typedef Arg = {
+	name:String,
+	type:LiteralType,
+	opt:Bool
+};
+
 typedef Return = LiteralType;
 
 typedef Function = {
