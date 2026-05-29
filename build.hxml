@@ -1,6 +1,7 @@
 --library hxjsonast:1.1.0
 --library hscript:2.7.0
 --library safety:1.1.2
+--library formatter
 
 --macro nullSafety("hxnvim", Strict)
 

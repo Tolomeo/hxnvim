@@ -11,7 +11,7 @@ enum SymbolAccess {
 enum SymbolMeta {
 	Method;
 	Deprecated;
-	Native(name: String);
+	Native(name:String);
 	StructInit;
 }
 
@@ -39,7 +39,7 @@ typedef Function = {
 	params:Array<Param>,
 	args:Array<Arg>,
 	ret:Return,
-	overloads: Array<LiteralType>
+	overloads:Array<LiteralType>
 }
 
 enum TableField {

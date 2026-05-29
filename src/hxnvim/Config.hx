@@ -30,7 +30,7 @@ class Config {
 					overloads: []
 				}
 			}'
-		} */
+		}*/
 	};
 
 	public static function set(values:Dynamic<Dynamic>) {
