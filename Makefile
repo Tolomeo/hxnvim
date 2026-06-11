@@ -7,7 +7,7 @@ EXTERNAL_SOURCES=$(shell find $(EXTERNAL_SOURCES_DIR) -type f -name "*.json")
 SOURCES_DIR=$(SRC_DIR)/hxnvim/source/runtime
 SOURCES:=$(patsubst $(EXTERNAL_SOURCES_DIR)/%, $(SOURCES_DIR)/%, $(EXTERNAL_SOURCES))
 
-define haxe
+define HAXE
 	docker run --rm \
 		--volume "$(shell pwd)":/src \
 		--workdir /src \
@@ -25,7 +25,7 @@ sources: $(SOURCES)
 
 .PHONY=build
 build: sources
-	@$(call haxe, haxe build.hxml)
+	@$(call HAXE, haxe build.hxml)
 
 .PHONY=rebuild
 rebuild: clean
@@ -38,7 +38,7 @@ install:
 	@echo "Installing json type sources"
 	@$(MAKE) src
 	@echo "Installing dependencies"
-	@$(call haxe, haxelib newrepo && haxelib install --always build.hxml)
+	@$(call HAXE, haxelib newrepo && haxelib install --always build.hxml)
 	@$(MAKE) sources
 
 .PHONY=clean
