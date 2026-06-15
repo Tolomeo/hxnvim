@@ -44079,7 +44079,7 @@ package nvim;
 		
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V>, T>;
+	static function spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V, Void, Void, Void, Void>, T, Void, Void, Void, Void>;
 	/**
 		```lua
 		(global) vim.spell: unknown

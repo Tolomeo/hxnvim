@@ -86,7 +86,7 @@ extern class Ui {
 		@*return* — Error message on failure, or nil on success.
 	**/
 	@:luaDotMethod
-	function open(path:String, ?opt:{ var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>>;
+	function open(path:String, ?opt:{ var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))

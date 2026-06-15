@@ -19,7 +19,7 @@ extern class Text {
 		@*return* — : Error message, if any
 	**/
 	@:luaDotMethod
-	function hexdecode(enc:String):nvim.helper.Multireturn<Null<String>, Null<String>>;
+	function hexdecode(enc:String):nvim.helper.Multireturn<Null<String>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.hexencode(str: string)
@@ -81,5 +81,5 @@ extern class Text {
 		@*return* — Indent size _before_ modification.
 	**/
 	@:luaDotMethod
-	function indent(size:Int, text:String, ?opts:{ var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int>;
+	function indent(size:Int, text:String, ?opts:{ var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
 }

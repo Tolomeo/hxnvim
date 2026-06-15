@@ -403,7 +403,7 @@ extern class Diagnostic {
 		 Show diagnostics in a floating window.
 	**/
 	@:luaDotMethod
-	function open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn<Null<Int>, Null<Int>>;
+	function open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.reset(namespace?: integer, bufnr?: integer)

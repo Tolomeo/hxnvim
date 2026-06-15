@@ -103,7 +103,7 @@ extern class Treesitter {
 		@*param* `node_or_range` — Node or table of positions
 	**/
 	@:luaDotMethod
-	function get_node_range(node_or_range:haxe.extern.EitherType<nvim.type.TSNode, nvim.type.Range4>):nvim.helper.Multireturn<Int, Int, Int, Int>;
+	function get_node_range(node_or_range:haxe.extern.EitherType<nvim.type.TSNode, nvim.type.Range4>):nvim.helper.Multireturn<Int, Int, Int, Int, Void, Void>;
 	/**
 		```lua
 		function M.get_node_text(node: TSNode, source: string|integer, opts: table|nil)
@@ -152,7 +152,7 @@ extern class Treesitter {
 		@*return* `error` — message, if applicable
 	**/
 	@:luaDotMethod
-	function get_parser(?bufnr:Null<Int>, ?lang:Null<String>, ?opts:Null<lua.Table.AnyTable>):nvim.helper.Multireturn<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>>;
+	function get_parser(?bufnr:Null<Int>, ?lang:Null<String>, ?opts:Null<lua.Table.AnyTable>):nvim.helper.Multireturn<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.get_range(node: TSNode, source: string|integer|nil, metadata: vim.treesitter.query.TSMetadata|nil)

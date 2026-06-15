@@ -164,7 +164,7 @@ extern class Lsp {
 		iterate all clients and call their `cancel_request()` methods.
 	**/
 	@:luaDotMethod
-	private function buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Int, Int>, haxe.Constraints.Function>;
+	private function buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Int, Int>, haxe.Constraints.Function, Void, Void, Void, Void>;
 	/**
 		```lua
 		function lsp.buf_request_all(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler: fun(results: table<integer, { err: (lsp.ResponseError)?, result: any }>, context: lsp.HandlerContext, config?: table):...unknown)
@@ -224,7 +224,7 @@ extern class Lsp {
 		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
 	**/
 	@:luaDotMethod
-	function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>>;
+	function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		(global) vim.lsp.client: vim.lsp.Client
@@ -734,7 +734,7 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Int>, Null<String>>;
+	function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Int>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function lsp.status()

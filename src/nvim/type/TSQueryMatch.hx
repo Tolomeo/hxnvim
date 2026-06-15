@@ -27,5 +27,5 @@ package nvim.type;
 		  2. pattern_index: integer
 		```
 	**/
-	function info():nvim.helper.Multireturn<Int, Int>;
+	function info():nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
 }

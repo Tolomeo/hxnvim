@@ -17,7 +17,7 @@ extern class Dev {
 		@*return* `error` — message, if applicable
 	**/
 	@:luaDotMethod
-	private function edit_query(?lang:String):nvim.helper.Multireturn<Null<Bool>, Null<String>>;
+	private function edit_query(?lang:String):nvim.helper.Multireturn<Null<Bool>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.inspect_tree(opts?: vim.treesitter.dev.inspect_tree.Opts)

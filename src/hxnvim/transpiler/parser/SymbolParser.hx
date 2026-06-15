@@ -101,10 +101,10 @@ class FunctionSymbolParser extends SymbolParser {
 		return switch (returns) {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
-			case returns if (returns.length <= 6):
-				final returnTypes = returns.map(r -> new LiteralTypeParser(r.select('type'), params).parse());
-				Target.toHelperReference('Multireturn<${returnTypes.join(", ")}>');
-			case _: throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+			case rs: 
+				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parse()).padEnd(6, "Void"); 
+				Target.toHelperReference('Multireturn<${returns.join(", ")}>');
 		}
 	}
 

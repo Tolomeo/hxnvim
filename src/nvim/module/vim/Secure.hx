@@ -46,5 +46,5 @@ extern class Secure {
 		@*return* `msg` — full path if operation was successful, else error message
 	**/
 	@:luaDotMethod
-	function trust(opts:nvim.type.vim.trust.Opts):nvim.helper.Multireturn<Bool, String>;
+	function trust(opts:nvim.type.vim.trust.Opts):nvim.helper.Multireturn<Bool, String, Void, Void, Void, Void>;
 }

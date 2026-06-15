@@ -185,7 +185,7 @@ package nvim.type;
 		 Returns the child node plus the eventual field name corresponding to this
 		 child node.
 	**/
-	function iter_children():() -> nvim.helper.Multireturn<nvim.type.TSNode, String>;
+	function iter_children():() -> nvim.helper.Multireturn<nvim.type.TSNode, String, Void, Void, Void, Void>;
 	/**
 		```lua
 		(method) TSNode:missing()

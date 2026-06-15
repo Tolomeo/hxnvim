@@ -224,7 +224,7 @@ extern class Fs {
 		@*return*
 	**/
 	@:luaDotMethod
-	function parents(start:String):nvim.helper.Multireturn<() -> Null<String>, Void, Null<String>>;
+	function parents(start:String):nvim.helper.Multireturn<() -> Null<String>, Void, Null<String>, Void, Void, Void>;
 	/**
 		```lua
 		function M.relpath(base: string, target: string, opts?: table)

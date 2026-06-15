@@ -4,6 +4,20 @@ using Lambda;
 using StringTools;
 
 class ArrayTools {
+	static public function padEnd<T>(arr: Array<T>, length: Int, padding: T) {
+		final paddedArr = arr.copy();
+
+		if (paddedArr.length >= length) {
+			return paddedArr;
+		}
+
+		while (paddedArr.length < length) {
+			paddedArr.push(padding);
+		}
+
+		return paddedArr;
+	}
+
 	static public final flatMap = Lambda.flatMap;
 
 	static public function iter<T>(arr:Array<T>, predicate:(item:T) -> Void) {

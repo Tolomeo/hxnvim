@@ -191,7 +191,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_signatureHelp
 	**/
 	@:luaDotMethod
-	function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn<Null<Array<String>>, Null<nvim.type.Range4>>;
+	function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn<Null<Array<String>>, Null<nvim.type.Range4>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.get_effective_tabstop(bufnr?: integer)
@@ -444,7 +444,7 @@ extern class Util {
 		@*return* `winid` — of newly created float window preview window
 	**/
 	@:luaDotMethod
-	function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int>;
+	function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.preview_location(location: lsp.Location|lsp.LocationLink, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -465,7 +465,7 @@ extern class Util {
 		@*return* `window` — id of float window
 	**/
 	@:luaDotMethod
-	function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Null<Int>, Null<Int>>;
+	function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.rename(old_fname: string, new_fname: string, opts?: vim.lsp.util.rename.Opts)
