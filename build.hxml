@@ -11,6 +11,6 @@
 -cp src
 -main Main
 
---macro hxnvim.HxNvim.run({ outputPack: 'externs', outputDir: 'src'})
+--macro hxnvim.HxNvim.run({ outputPack: 'nvim', outputDir: 'src'})
 
 --interp
