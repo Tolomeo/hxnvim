@@ -1,5 +1,5 @@
 SRC_DIR=src
-OUT_DIR=$(SRC_DIR)/externs
+OUT_DIR=$(SRC_DIR)/nvim
 
 EXTERNAL_SOURCES_DIR:=external/anydev.nvim/out
 EXTERNAL_SOURCES=$(shell find $(EXTERNAL_SOURCES_DIR) -type f -name "*.json")
