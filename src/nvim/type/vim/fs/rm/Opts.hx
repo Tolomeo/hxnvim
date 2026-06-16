@@ -5,7 +5,7 @@ package nvim.type.vim.fs.rm;
 	(class) vim.fs.rm.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.rm.Opts.force: boolean?

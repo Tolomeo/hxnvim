@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ResponseError
 	```
 **/
-@:structInit extern class ResponseError {
+@:structInit class ResponseError {
 	/**
 		```lua
 		(field) lsp.ResponseError.code: integer

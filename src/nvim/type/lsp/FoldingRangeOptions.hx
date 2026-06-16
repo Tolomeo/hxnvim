@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.FoldingRangeOptions
 	```
 **/
-@:structInit extern class FoldingRangeOptions {
+@:structInit class FoldingRangeOptions {
 	/**
 		```lua
 		(field) lsp.FoldingRangeOptions.workDoneProgress: boolean?

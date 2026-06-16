@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Semantic tokens options to support deltas for full documents
 	
 **/
-@:structInit extern class SemanticTokensFullDelta {
+@:structInit class SemanticTokensFullDelta {
 	/**
 		```lua
 		(field) lsp.SemanticTokensFullDelta.delta: boolean?

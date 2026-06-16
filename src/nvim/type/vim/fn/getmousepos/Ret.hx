@@ -5,7 +5,7 @@ package nvim.type.vim.fn.getmousepos;
 	(class) vim.fn.getmousepos.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.column: integer

@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSymbolTagOptions
 	```
 **/
-@:structInit extern class ClientSymbolTagOptions {
+@:structInit class ClientSymbolTagOptions {
 	/**
 		```lua
 		(field) lsp.ClientSymbolTagOptions.valueSet: 1[]

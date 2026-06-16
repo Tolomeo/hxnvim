@@ -5,7 +5,7 @@ package nvim.type.vim.fn.sign_placelist.list;
 	(class) vim.fn.sign_placelist.list.item
 	```
 **/
-@:structInit extern class Item {
+@:structInit class Item {
 	/**
 		```lua
 		(field) vim.fn.sign_placelist.list.item.buffer: string|integer

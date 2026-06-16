@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensClientCapabilities
 	```
 **/
-@:structInit extern class SemanticTokensClientCapabilities {
+@:structInit class SemanticTokensClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.augmentsSyntaxTokens: boolean?

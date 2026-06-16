@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Contains additional diagnostic information about the context in which
 	a {@link CodeActionProvider.provideCodeActions code action} is run.
 **/
-@:structInit extern class CodeActionContext {
+@:structInit class CodeActionContext {
 	/**
 		```lua
 		(field) lsp.CodeActionContext.diagnostics: lsp.Diagnostic[]

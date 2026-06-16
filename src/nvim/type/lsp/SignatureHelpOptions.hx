@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Server Capabilities for a {@link SignatureHelpRequest}.
 **/
-@:structInit extern class SignatureHelpOptions {
+@:structInit class SignatureHelpOptions {
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.retriggerCharacters: string[]?

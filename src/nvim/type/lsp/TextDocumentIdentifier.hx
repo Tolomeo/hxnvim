@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	A literal to identify a text document in the client.
 **/
-@:structInit extern class TextDocumentIdentifier {
+@:structInit class TextDocumentIdentifier {
 	/**
 		```lua
 		(field) lsp.TextDocumentIdentifier.uri: string

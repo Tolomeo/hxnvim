@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DeclarationClientCapabilities
 	```
 **/
-@:structInit extern class DeclarationClientCapabilities {
+@:structInit class DeclarationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DeclarationClientCapabilities.dynamicRegistration: boolean?

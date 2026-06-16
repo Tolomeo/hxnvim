@@ -20,7 +20,7 @@ package nvim.type.lsp;
 	cause failure of the operation. How the client recovers from the failure is described by
 	the client capability: `workspace.workspaceEdit.failureHandling`
 **/
-@:structInit extern class WorkspaceEdit {
+@:structInit class WorkspaceEdit {
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.changeAnnotations: table<string, lsp.ChangeAnnotation>?

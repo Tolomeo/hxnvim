@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Call hierarchy options used during static registration.
 	
 **/
-@:structInit extern class CallHierarchyOptions {
+@:structInit class CallHierarchyOptions {
 	/**
 		```lua
 		(field) lsp.CallHierarchyOptions.workDoneProgress: boolean?

@@ -5,7 +5,7 @@ package nvim.type.uv;
 	(class) uv.uv_shutdown_t
 	```
 **/
-@:structInit extern class UvShutdownT {
+@:structInit class UvShutdownT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

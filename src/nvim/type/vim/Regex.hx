@@ -9,7 +9,7 @@ package nvim.type.vim;
 	
 	 @nodoc
 **/
-@:structInit extern class Regex {
+@:structInit class Regex {
 	/**
 		```lua
 		(method) vim.regex:match_line(bufnr: integer, line_idx: integer, start?: integer, end_?: integer)

@@ -11,7 +11,7 @@ package nvim.type.uv;
 	 establish communication channels with it using streams.
 	
 **/
-@:structInit extern class UvProcessT {
+@:structInit class UvProcessT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

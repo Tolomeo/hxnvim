@@ -5,7 +5,7 @@ package nvim.type.vim.fn.sign_getplaced.ret;
 	(class) vim.fn.sign_getplaced.ret.item
 	```
 **/
-@:structInit extern class Item {
+@:structInit class Item {
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.ret.item.bufnr: integer

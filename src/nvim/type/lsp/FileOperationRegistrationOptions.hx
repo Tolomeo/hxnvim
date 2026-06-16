@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	The options to register for file operations.
 	
 **/
-@:structInit extern class FileOperationRegistrationOptions {
+@:structInit class FileOperationRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.FileOperationRegistrationOptions.filters: lsp.FileOperationFilter[]

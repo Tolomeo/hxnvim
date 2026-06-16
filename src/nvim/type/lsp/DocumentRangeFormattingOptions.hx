@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentRangeFormattingRequest}.
 **/
-@:structInit extern class DocumentRangeFormattingOptions {
+@:structInit class DocumentRangeFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingOptions.rangesSupport: boolean?

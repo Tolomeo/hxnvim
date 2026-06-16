@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	capabilities.
 	
 **/
-@:structInit extern class CompletionListCapabilities {
+@:structInit class CompletionListCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionListCapabilities.applyKindSupport: boolean?

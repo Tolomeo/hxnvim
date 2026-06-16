@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Defines the capabilities provided by a language
 	server.
 **/
-@:structInit extern class ServerCapabilities {
+@:structInit class ServerCapabilities {
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.callHierarchyProvider: (boolean|lsp.CallHierarchyOptions|lsp.CallHierarchyRegistrationOptions)?

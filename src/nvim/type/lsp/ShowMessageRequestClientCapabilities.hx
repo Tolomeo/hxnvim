@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Show message request client capabilities
 **/
-@:structInit extern class ShowMessageRequestClientCapabilities {
+@:structInit class ShowMessageRequestClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ShowMessageRequestClientCapabilities.messageActionItem: (lsp.ClientShowMessageActionItemOptions)?

@@ -5,7 +5,7 @@ package nvim.type.vim.lsp;
 	(class) vim.lsp.ClientConfig
 	```
 **/
-@:structInit extern class ClientConfig {
+@:structInit class ClientConfig {
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.before_init: fun(params: lsp.InitializeParams, config: vim.lsp.ClientConfig)?

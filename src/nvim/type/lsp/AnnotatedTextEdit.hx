@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A special text edit with an additional change annotation.
 	
 **/
-@:structInit extern class AnnotatedTextEdit {
+@:structInit class AnnotatedTextEdit {
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.annotationId: string

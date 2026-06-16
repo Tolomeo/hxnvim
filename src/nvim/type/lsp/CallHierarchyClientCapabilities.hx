@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.CallHierarchyClientCapabilities
 	```
 **/
-@:structInit extern class CallHierarchyClientCapabilities {
+@:structInit class CallHierarchyClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CallHierarchyClientCapabilities.dynamicRegistration: boolean?

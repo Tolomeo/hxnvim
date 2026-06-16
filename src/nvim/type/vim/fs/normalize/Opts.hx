@@ -5,7 +5,7 @@ package nvim.type.vim.fs.normalize;
 	(class) vim.fs.normalize.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.normalize.Opts.expand_env: boolean?

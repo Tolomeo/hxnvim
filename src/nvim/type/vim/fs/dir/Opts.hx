@@ -5,7 +5,7 @@ package nvim.type.vim.fs.dir;
 	(class) vim.fs.dir.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.depth: integer?

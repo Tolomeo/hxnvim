@@ -5,7 +5,7 @@ package nvim.type.uv.udp_recv_start.callback;
 	(class) uv.udp_recv_start.callback.flags
 	```
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.flags.mmsg_chunk: boolean|nil

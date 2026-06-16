@@ -5,7 +5,7 @@ package nvim.type.vim.fn;
 	(class) vim.fn.sign
 	```
 **/
-@:structInit extern class Sign {
+@:structInit class Sign {
 	/**
 		```lua
 		(field) vim.fn.sign.group: string

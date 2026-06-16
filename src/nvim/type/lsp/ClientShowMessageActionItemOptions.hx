@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientShowMessageActionItemOptions
 	```
 **/
-@:structInit extern class ClientShowMessageActionItemOptions {
+@:structInit class ClientShowMessageActionItemOptions {
 	/**
 		```lua
 		(field) lsp.ClientShowMessageActionItemOptions.additionalPropertiesSupport: boolean?

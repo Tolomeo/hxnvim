@@ -5,7 +5,7 @@ package nvim.type.vim.filetype.add;
 	(class) vim.filetype.add.filetypes
 	```
 **/
-@:structInit extern class Filetypes {
+@:structInit class Filetypes {
 	/**
 		```lua
 		(field) vim.filetype.add.filetypes.extension: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?

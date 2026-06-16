@@ -19,7 +19,7 @@ package nvim.type.lsp;
 	}
 	```
 **/
-@:structInit extern class Range {
+@:structInit class Range {
 	var end : Dynamic;
 	/**
 		```lua

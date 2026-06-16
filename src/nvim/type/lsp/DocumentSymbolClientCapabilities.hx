@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link DocumentSymbolRequest}.
 **/
-@:structInit extern class DocumentSymbolClientCapabilities {
+@:structInit class DocumentSymbolClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.dynamicRegistration: boolean?

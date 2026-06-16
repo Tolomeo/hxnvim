@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link DocumentHighlightRequest}.
 **/
-@:structInit extern class DocumentHighlightClientCapabilities {
+@:structInit class DocumentHighlightClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentHighlightClientCapabilities.dynamicRegistration: boolean?

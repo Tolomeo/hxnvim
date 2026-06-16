@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.win_text_height
 	```
 **/
-@:structInit extern class WinTextHeight {
+@:structInit class WinTextHeight {
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.end_row: integer?

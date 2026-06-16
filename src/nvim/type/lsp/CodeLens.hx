@@ -13,7 +13,7 @@ package nvim.type.lsp;
 	A code lens is _unresolved_ when no command is associated to it. For performance
 	reasons the creation of a code lens and resolving should be done in two stages.
 **/
-@:structInit extern class CodeLens {
+@:structInit class CodeLens {
 	/**
 		```lua
 		(field) lsp.CodeLens.command: (lsp.Command)?

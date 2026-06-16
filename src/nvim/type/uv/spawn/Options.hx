@@ -10,7 +10,7 @@ package nvim.type.uv.spawn;
 	
 	 Set environment variables for the new process.
 **/
-@:structInit extern class Env {
+@:structInit class Env {
 
 }
 
@@ -24,7 +24,7 @@ package nvim.type.uv.spawn;
 	
 	 Set the file descriptors that will be made available to the child process. The convention is that the first entries are stdin, stdout, and stderr. (**Note**: On Windows, file descriptors after the third are available to the child process only if the child processes uses the MSVCRT runtime.)
 **/
-@:structInit extern class Stdio {
+@:structInit class Stdio {
 
 }
 
@@ -33,7 +33,7 @@ package nvim.type.uv.spawn;
 	(class) uv.spawn.options
 	```
 **/
-@:structInit extern class Options {
+@:structInit class Options {
 	/**
 		```lua
 		(field) uv.spawn.options.args: string[]

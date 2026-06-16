@@ -5,7 +5,7 @@ package nvim.type.vim.snippet;
 	(class) vim.snippet.ActiveFilter
 	```
 **/
-@:structInit extern class ActiveFilter {
+@:structInit class ActiveFilter {
 	/**
 		```lua
 		(field) vim.snippet.ActiveFilter.direction: -1|1

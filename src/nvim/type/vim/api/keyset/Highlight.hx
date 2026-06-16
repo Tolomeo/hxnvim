@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.highlight
 	```
 **/
-@:structInit extern class Highlight {
+@:structInit class Highlight {
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.altfont: boolean?

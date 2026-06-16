@@ -13,7 +13,7 @@ package nvim.type.uv;
 	 defined here work with any handle type.
 	
 **/
-@:structInit extern class UvHandleT {
+@:structInit class UvHandleT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

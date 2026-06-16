@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.RenameClientCapabilities
 	```
 **/
-@:structInit extern class RenameClientCapabilities {
+@:structInit class RenameClientCapabilities {
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.dynamicRegistration: boolean?

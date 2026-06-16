@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	of inlay hints.
 	
 **/
-@:structInit extern class InlayHintLabelPart {
+@:structInit class InlayHintLabelPart {
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.command: (lsp.Command)?

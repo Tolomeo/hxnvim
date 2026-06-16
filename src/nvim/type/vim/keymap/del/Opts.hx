@@ -5,7 +5,7 @@ package nvim.type.vim.keymap.del;
 	(class) vim.keymap.del.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.keymap.del.Opts.buffer: (boolean|integer)?

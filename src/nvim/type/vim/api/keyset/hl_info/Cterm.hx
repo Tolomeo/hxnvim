@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	(class) vim.api.keyset.hl_info.cterm
 	```
 **/
-@:structInit extern class Cterm {
+@:structInit class Cterm {
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.altfont: true?

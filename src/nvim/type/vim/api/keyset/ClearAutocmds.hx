@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.clear_autocmds
 	```
 **/
-@:structInit extern class ClearAutocmds {
+@:structInit class ClearAutocmds {
 	/**
 		```lua
 		(field) vim.api.keyset.clear_autocmds.buffer: integer?

@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Rename file operation
 **/
-@:structInit extern class RenameFile {
+@:structInit class RenameFile {
 	/**
 		```lua
 		(field) lsp.RenameFile.annotationId: string?

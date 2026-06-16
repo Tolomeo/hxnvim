@@ -5,7 +5,7 @@ package nvim.type.vim.lsp;
 	(class) vim.lsp.ListOpts
 	```
 **/
-@:structInit extern class ListOpts {
+@:structInit class ListOpts {
 	/**
 		```lua
 		(field) vim.lsp.ListOpts.loclist: boolean?

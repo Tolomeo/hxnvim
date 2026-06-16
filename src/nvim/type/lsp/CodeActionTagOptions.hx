@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.CodeActionTagOptions
 	```
 **/
-@:structInit extern class CodeActionTagOptions {
+@:structInit class CodeActionTagOptions {
 	/**
 		```lua
 		(field) lsp.CodeActionTagOptions.valueSet: 1[]

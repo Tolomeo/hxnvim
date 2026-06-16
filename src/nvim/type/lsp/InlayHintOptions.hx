@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint options used during static registration.
 	
 **/
-@:structInit extern class InlayHintOptions {
+@:structInit class InlayHintOptions {
 	/**
 		```lua
 		(field) lsp.InlayHintOptions.resolveProvider: boolean?

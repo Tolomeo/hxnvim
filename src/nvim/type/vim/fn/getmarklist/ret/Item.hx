@@ -5,7 +5,7 @@ package nvim.type.vim.fn.getmarklist.ret;
 	(class) vim.fn.getmarklist.ret.item
 	```
 **/
-@:structInit extern class Item {
+@:structInit class Item {
 	/**
 		```lua
 		(field) vim.fn.getmarklist.ret.item.file: string

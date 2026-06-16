@@ -5,7 +5,7 @@ package nvim.type.vim.tbl_contains;
 	(class) vim.tbl_contains.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.tbl_contains.Opts.predicate: boolean?

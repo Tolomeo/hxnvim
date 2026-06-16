@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Options to create a file.
 **/
-@:structInit extern class CreateFileOptions {
+@:structInit class CreateFileOptions {
 	/**
 		```lua
 		(field) lsp.CreateFileOptions.ignoreIfExists: boolean?

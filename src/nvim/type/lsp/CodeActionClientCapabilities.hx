@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The Client Capabilities of a {@link CodeActionRequest}.
 **/
-@:structInit extern class CodeActionClientCapabilities {
+@:structInit class CodeActionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.codeActionLiteralSupport: (lsp.ClientCodeActionLiteralOptions)?

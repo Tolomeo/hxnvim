@@ -5,7 +5,7 @@ package nvim.type.vim.quickfix;
 	(class) vim.quickfix.entry
 	```
 **/
-@:structInit extern class Entry {
+@:structInit class Entry {
 	/**
 		```lua
 		(field) vim.quickfix.entry.bufnr: integer?

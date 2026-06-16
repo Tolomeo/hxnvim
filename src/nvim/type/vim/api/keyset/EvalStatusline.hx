@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.eval_statusline
 	```
 **/
-@:structInit extern class EvalStatusline {
+@:structInit class EvalStatusline {
 	/**
 		```lua
 		(field) vim.api.keyset.eval_statusline.fillchar: string?

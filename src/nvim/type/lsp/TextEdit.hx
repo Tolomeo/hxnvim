@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	A text edit applicable to a text document.
 **/
-@:structInit extern class TextEdit {
+@:structInit class TextEdit {
 	/**
 		```lua
 		(field) lsp.TextEdit.newText: string

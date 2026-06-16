@@ -5,7 +5,7 @@ package nvim.type;
 	(class) TSTree
 	```
 **/
-@:structInit extern class TSTree {
+@:structInit class TSTree {
 	/**
 		```lua
 		(method) TSTree:copy()

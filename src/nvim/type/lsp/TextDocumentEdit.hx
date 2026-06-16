@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	So the creator of a TextDocumentEdit doesn't need to sort the array of edits or do any
 	kind of ordering. However the edits must be non overlapping.
 **/
-@:structInit extern class TextDocumentEdit {
+@:structInit class TextDocumentEdit {
 	/**
 		```lua
 		(field) lsp.TextDocumentEdit.edits: (lsp.AnnotatedTextEdit|lsp.SnippetTextEdit|lsp.TextEdit)[]

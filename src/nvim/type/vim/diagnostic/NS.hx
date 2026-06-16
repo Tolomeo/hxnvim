@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic;
 	(class) vim.diagnostic.NS
 	```
 **/
-@:structInit extern class NS {
+@:structInit class NS {
 	/**
 		```lua
 		(field) vim.diagnostic.NS.disabled: boolean?

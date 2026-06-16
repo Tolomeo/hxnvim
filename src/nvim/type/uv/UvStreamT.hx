@@ -12,7 +12,7 @@ package nvim.type.uv;
 	 in the form of `uv_tcp_t`, `uv_pipe_t` and `uv_tty_t`.
 	
 **/
-@:structInit extern class UvStreamT {
+@:structInit class UvStreamT {
 	/**
 		```lua
 		(method) uv.uv_stream_t:accept(client_stream: uv.uv_stream_t)

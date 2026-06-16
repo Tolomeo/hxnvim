@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	A workspace folder inside a client.
 **/
-@:structInit extern class WorkspaceFolder {
+@:structInit class WorkspaceFolder {
 	/**
 		```lua
 		(field) lsp.WorkspaceFolder.name: string

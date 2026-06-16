@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	can have a label, like a function-name, a doc-comment, and
 	a set of parameters.
 **/
-@:structInit extern class SignatureInformation {
+@:structInit class SignatureInformation {
 	/**
 		```lua
 		(field) lsp.SignatureInformation.activeParameter: (integer|nil)?

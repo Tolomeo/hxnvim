@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.TextDocumentSyncOptions
 	```
 **/
-@:structInit extern class TextDocumentSyncOptions {
+@:structInit class TextDocumentSyncOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.change: (0|1|2)?

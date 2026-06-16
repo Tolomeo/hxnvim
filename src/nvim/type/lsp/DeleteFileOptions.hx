@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Delete file options
 **/
-@:structInit extern class DeleteFileOptions {
+@:structInit class DeleteFileOptions {
 	/**
 		```lua
 		(field) lsp.DeleteFileOptions.ignoreIfNotExists: boolean?

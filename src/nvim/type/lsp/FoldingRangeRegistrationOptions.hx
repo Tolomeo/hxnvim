@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.FoldingRangeRegistrationOptions
 	```
 **/
-@:structInit extern class FoldingRangeRegistrationOptions {
+@:structInit class FoldingRangeRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.FoldingRangeRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

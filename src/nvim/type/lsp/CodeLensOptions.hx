@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Code Lens provider options of a {@link CodeLensRequest}.
 **/
-@:structInit extern class CodeLensOptions {
+@:structInit class CodeLensOptions {
 	/**
 		```lua
 		(field) lsp.CodeLensOptions.resolveProvider: boolean?

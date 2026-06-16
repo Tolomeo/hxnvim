@@ -9,7 +9,7 @@ package nvim.type;
 	
 	token modifiers as a set. E.g., { static = true, readonly = true }
 **/
-@:structInit extern class Modifiers {
+@:structInit class Modifiers {
 
 }
 
@@ -22,7 +22,7 @@ package nvim.type;
 	
 	 @nodoc
 **/
-@:structInit extern class STTokenRangeInspect {
+@:structInit class STTokenRangeInspect {
 	/**
 		```lua
 		(field) STTokenRangeInspect.client_id: integer

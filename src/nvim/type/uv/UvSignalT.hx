@@ -46,7 +46,7 @@ package nvim.type.uv;
 	 ```
 	
 **/
-@:structInit extern class UvSignalT {
+@:structInit class UvSignalT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

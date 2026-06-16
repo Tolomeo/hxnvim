@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Type hierarchy options used during static or dynamic registration.
 	
 **/
-@:structInit extern class TypeHierarchyRegistrationOptions {
+@:structInit class TypeHierarchyRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.TypeHierarchyRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

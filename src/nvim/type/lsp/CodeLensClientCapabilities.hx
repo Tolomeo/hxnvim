@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The client capabilities  of a {@link CodeLensRequest}.
 **/
-@:structInit extern class CodeLensClientCapabilities {
+@:structInit class CodeLensClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeLensClientCapabilities.dynamicRegistration: boolean?

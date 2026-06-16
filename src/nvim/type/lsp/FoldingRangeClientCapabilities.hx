@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.FoldingRangeClientCapabilities
 	```
 **/
-@:structInit extern class FoldingRangeClientCapabilities {
+@:structInit class FoldingRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.dynamicRegistration: boolean?

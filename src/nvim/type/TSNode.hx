@@ -5,7 +5,7 @@ package nvim.type;
 	(class) TSNode
 	```
 **/
-@:structInit extern class TSNode {
+@:structInit class TSNode {
 	/**
 		```lua
 		(method) TSNode:__has_ancestor(node_types: string[])

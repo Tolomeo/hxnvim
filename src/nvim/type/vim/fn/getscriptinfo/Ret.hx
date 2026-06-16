@@ -5,7 +5,7 @@ package nvim.type.vim.fn.getscriptinfo;
 	(class) vim.fn.getscriptinfo.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.autoload: false

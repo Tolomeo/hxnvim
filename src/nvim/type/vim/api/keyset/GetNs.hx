@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_ns
 	```
 **/
-@:structInit extern class GetNs {
+@:structInit class GetNs {
 	/**
 		```lua
 		(field) vim.api.keyset.get_ns.winid: integer?

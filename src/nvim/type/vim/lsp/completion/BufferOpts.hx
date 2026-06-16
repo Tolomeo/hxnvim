@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.completion;
 	
 	 @inlinedoc
 **/
-@:structInit extern class BufferOpts {
+@:structInit class BufferOpts {
 	/**
 		```lua
 		(field) vim.lsp.completion.BufferOpts.autotrigger: boolean?

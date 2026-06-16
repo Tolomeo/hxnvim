@@ -5,7 +5,7 @@ package nvim.type.vim.fs.find;
 	(class) vim.fs.find.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.find.Opts.follow: boolean?

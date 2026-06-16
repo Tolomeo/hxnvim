@@ -18,7 +18,7 @@ package nvim.type.uv;
 	 ```
 	
 **/
-@:structInit extern class UvPrepareT {
+@:structInit class UvPrepareT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

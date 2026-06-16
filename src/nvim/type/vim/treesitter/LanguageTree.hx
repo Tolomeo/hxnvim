@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter;
 	(class) vim.treesitter.LanguageTree
 	```
 **/
-@:structInit extern class LanguageTree {
+@:structInit class LanguageTree {
 	/**
 		```lua
 		function vim.treesitter.LanguageTree.new(source: string|integer, lang: string, opts?: vim.treesitter.LanguageTree.new.Opts)
@@ -25,7 +25,6 @@ package nvim.type.vim.treesitter;
 		
 		@*return* `parser` — object
 	**/
-	@:luaDotMethod
 	@:native("new")
 	function new_(source:haxe.extern.EitherType<Int, String>, lang:String, ?opts:Null<nvim.type.vim.treesitter.languagetree.new_.Opts>):nvim.type.vim.treesitter.LanguageTree;
 	/**

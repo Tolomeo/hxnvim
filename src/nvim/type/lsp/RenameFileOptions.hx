@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Rename file options
 **/
-@:structInit extern class RenameFileOptions {
+@:structInit class RenameFileOptions {
 	/**
 		```lua
 		(field) lsp.RenameFileOptions.ignoreIfExists: boolean?

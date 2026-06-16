@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ServerCompletionItemOptions
 	```
 **/
-@:structInit extern class ServerCompletionItemOptions {
+@:structInit class ServerCompletionItemOptions {
 	/**
 		```lua
 		(field) lsp.ServerCompletionItemOptions.labelDetailsSupport: boolean?

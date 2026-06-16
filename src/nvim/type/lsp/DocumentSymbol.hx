@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	have two ranges: one that encloses its definition and one that points to
 	its most interesting range, e.g. the range of an identifier.
 **/
-@:structInit extern class DocumentSymbol {
+@:structInit class DocumentSymbol {
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.children: lsp.DocumentSymbol[]?

@@ -13,7 +13,7 @@ package nvim.type.vim.diagnostic;
 	 - `table`: Enable this feature with overrides. Use an empty table to use default values.
 	 - `function`: Function with signature (namespace, bufnr) that returns any of the above.
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.float: (boolean|fun(namespace: integer, bufnr: integer):vim.diagnostic.Opts.Float|vim.diagnostic.Opts.Float)?

@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.client;
 	(field) vim.lsp.Client.Progress.pending: table<string|integer, boolean|string|number|lsp.LSPAny[]|table<string, lsp.LSPAny>|nil>
 	```
 **/
-@:structInit extern class Pending {
+@:structInit class Pending {
 
 }
 
@@ -14,7 +14,7 @@ package nvim.type.vim.lsp.client;
 	(class) vim.lsp.Client.Progress
 	```
 **/
-@:structInit extern class Progress {
+@:structInit class Progress {
 	/**
 		```lua
 		function vim.Ringbuf.clear(self: vim.Ringbuf)

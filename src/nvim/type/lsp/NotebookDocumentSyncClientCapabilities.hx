@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Notebook specific client capabilities.
 	
 **/
-@:structInit extern class NotebookDocumentSyncClientCapabilities {
+@:structInit class NotebookDocumentSyncClientCapabilities {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncClientCapabilities.dynamicRegistration: boolean?

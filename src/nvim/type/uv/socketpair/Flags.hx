@@ -10,7 +10,7 @@ package nvim.type.uv.socketpair;
 	 uv.socketpair.flags
 	
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.socketpair.flags.nonblock: true|false

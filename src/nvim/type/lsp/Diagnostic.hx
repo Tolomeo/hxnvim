@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents a diagnostic, such as a compiler error or warning. Diagnostic objects
 	are only valid in the scope of a resource.
 **/
-@:structInit extern class Diagnostic {
+@:structInit class Diagnostic {
 	/**
 		```lua
 		(field) lsp.Diagnostic.code: (string|integer)?

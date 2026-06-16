@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Hover options.
 **/
-@:structInit extern class HoverOptions {
+@:structInit class HoverOptions {
 	/**
 		```lua
 		(field) lsp.HoverOptions.workDoneProgress: boolean?

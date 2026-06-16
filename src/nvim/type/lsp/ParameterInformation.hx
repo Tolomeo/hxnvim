@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents a parameter of a callable-signature. A parameter can
 	have a label and a doc-comment.
 **/
-@:structInit extern class ParameterInformation {
+@:structInit class ParameterInformation {
 	/**
 		```lua
 		(field) lsp.ParameterInformation.documentation: (string|lsp.MarkupContent)?

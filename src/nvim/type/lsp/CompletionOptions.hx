@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Completion options.
 **/
-@:structInit extern class CompletionOptions {
+@:structInit class CompletionOptions {
 	/**
 		```lua
 		(field) lsp.CompletionOptions.allCommitCharacters: string[]?

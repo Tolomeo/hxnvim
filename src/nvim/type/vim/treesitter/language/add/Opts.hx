@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter.language.add;
 	(class) vim.treesitter.language.add.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.language.add.Opts.path: string?

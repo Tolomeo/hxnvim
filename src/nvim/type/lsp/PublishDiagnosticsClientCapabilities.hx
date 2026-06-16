@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The publish diagnostic client capabilities.
 **/
-@:structInit extern class PublishDiagnosticsClientCapabilities {
+@:structInit class PublishDiagnosticsClientCapabilities {
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.codeDescriptionSupport: boolean?

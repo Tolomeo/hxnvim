@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 	(class) vim.lsp.buf.signature_help.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts._update_win: integer?

@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter.query.add_predicate;
 	(class) vim.treesitter.query.add_predicate.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.query.add_predicate.Opts.all: boolean?

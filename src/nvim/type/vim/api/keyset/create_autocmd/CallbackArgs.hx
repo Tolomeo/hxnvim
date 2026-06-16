@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 	(class) vim.api.keyset.create_autocmd.callback_args
 	```
 **/
-@:structInit extern class CallbackArgs {
+@:structInit class CallbackArgs {
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.buf: integer

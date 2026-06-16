@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientFoldingRangeOptions
 	```
 **/
-@:structInit extern class ClientFoldingRangeOptions {
+@:structInit class ClientFoldingRangeOptions {
 	/**
 		```lua
 		(field) lsp.ClientFoldingRangeOptions.collapsedText: boolean?

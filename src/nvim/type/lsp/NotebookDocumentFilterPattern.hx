@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A notebook document filter where `pattern` is required field.
 	
 **/
-@:structInit extern class NotebookDocumentFilterPattern {
+@:structInit class NotebookDocumentFilterPattern {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterPattern.notebookType: string?

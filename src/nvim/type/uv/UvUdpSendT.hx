@@ -5,7 +5,7 @@ package nvim.type.uv;
 	(class) uv.uv_udp_send_t
 	```
 **/
-@:structInit extern class UvUdpSendT {
+@:structInit class UvUdpSendT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

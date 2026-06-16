@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentHighlightRequest}.
 **/
-@:structInit extern class DocumentHighlightOptions {
+@:structInit class DocumentHighlightOptions {
 	/**
 		```lua
 		(field) lsp.DocumentHighlightOptions.workDoneProgress: boolean?

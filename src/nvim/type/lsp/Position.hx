@@ -34,7 +34,7 @@ package nvim.type.lsp;
 	that denotes `\r|\n` or `\n|` where `|` represents the character offset.
 	
 **/
-@:structInit extern class Position {
+@:structInit class Position {
 	/**
 		```lua
 		(field) lsp.Position.character: integer

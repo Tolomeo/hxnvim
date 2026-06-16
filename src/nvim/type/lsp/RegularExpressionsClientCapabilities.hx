@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to regular expressions.
 	
 **/
-@:structInit extern class RegularExpressionsClientCapabilities {
+@:structInit class RegularExpressionsClientCapabilities {
 	/**
 		```lua
 		(field) lsp.RegularExpressionsClientCapabilities.engine: string

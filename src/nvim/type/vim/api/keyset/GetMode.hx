@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_mode
 	```
 **/
-@:structInit extern class GetMode {
+@:structInit class GetMode {
 	/**
 		```lua
 		(field) vim.api.keyset.get_mode.blocking: boolean

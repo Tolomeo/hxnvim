@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	folder root, but it can be another absolute URI as well.
 	
 **/
-@:structInit extern class RelativePattern {
+@:structInit class RelativePattern {
 	/**
 		```lua
 		(field) lsp.RelativePattern.baseUri: string|lsp.WorkspaceFolder

@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensLegend
 	```
 **/
-@:structInit extern class SemanticTokensLegend {
+@:structInit class SemanticTokensLegend {
 	/**
 		```lua
 		(field) lsp.SemanticTokensLegend.tokenModifiers: string[]

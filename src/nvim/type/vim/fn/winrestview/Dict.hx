@@ -5,7 +5,7 @@ package nvim.type.vim.fn.winrestview;
 	(class) vim.fn.winrestview.dict
 	```
 **/
-@:structInit extern class Dict {
+@:structInit class Dict {
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.col: integer?

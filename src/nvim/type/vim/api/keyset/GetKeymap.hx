@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_keymap
 	```
 **/
-@:structInit extern class GetKeymap {
+@:structInit class GetKeymap {
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.abbr: (0|1)?

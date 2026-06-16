@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DidChangeWatchedFilesClientCapabilities
 	```
 **/
-@:structInit extern class DidChangeWatchedFilesClientCapabilities {
+@:structInit class DidChangeWatchedFilesClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DidChangeWatchedFilesClientCapabilities.dynamicRegistration: boolean?

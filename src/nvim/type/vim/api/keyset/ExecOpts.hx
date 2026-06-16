@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.exec_opts
 	```
 **/
-@:structInit extern class ExecOpts {
+@:structInit class ExecOpts {
 	/**
 		```lua
 		(field) vim.api.keyset.exec_opts.output: boolean?

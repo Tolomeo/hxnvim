@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 TCP handles are used to represent both TCP streams and servers.
 	
 **/
-@:structInit extern class UvTcpT {
+@:structInit class UvTcpT {
 	/**
 		```lua
 		(method) uv.uv_stream_t:accept(client_stream: uv.uv_stream_t)

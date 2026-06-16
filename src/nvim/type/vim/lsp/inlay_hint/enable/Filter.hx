@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.inlay_hint.enable;
 	
 	 Optional filters |kwargs|, or `nil` for all.
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.enable.Filter.bufnr: integer?

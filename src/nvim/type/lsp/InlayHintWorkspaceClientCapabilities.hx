@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client workspace capabilities specific to inlay hints.
 	
 **/
-@:structInit extern class InlayHintWorkspaceClientCapabilities {
+@:structInit class InlayHintWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlayHintWorkspaceClientCapabilities.refreshSupport: boolean?

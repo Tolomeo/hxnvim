@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentOnTypeFormattingRequest}.
 **/
-@:structInit extern class DocumentOnTypeFormattingOptions {
+@:structInit class DocumentOnTypeFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentOnTypeFormattingOptions.firstTriggerCharacter: string

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Captures why the code action is currently disabled.
 	
 **/
-@:structInit extern class CodeActionDisabled {
+@:structInit class CodeActionDisabled {
 	/**
 		```lua
 		(field) lsp.CodeActionDisabled.reason: string

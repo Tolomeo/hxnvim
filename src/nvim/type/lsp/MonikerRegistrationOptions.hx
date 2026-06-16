@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.MonikerRegistrationOptions
 	```
 **/
-@:structInit extern class MonikerRegistrationOptions {
+@:structInit class MonikerRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.MonikerRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

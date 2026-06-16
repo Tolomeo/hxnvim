@@ -5,7 +5,7 @@ package nvim.type.uv.fs_stat;
 	(class) uv.fs_stat.result
 	```
 **/
-@:structInit extern class Result {
+@:structInit class Result {
 	/**
 		```lua
 		(field) uv.fs_stat.result.atime: uv.fs_stat.result.time

@@ -5,7 +5,7 @@ package nvim.type.vim.loader;
 	(class) vim.loader.ModuleInfo
 	```
 **/
-@:structInit extern class ModuleInfo {
+@:structInit class ModuleInfo {
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.modname: string

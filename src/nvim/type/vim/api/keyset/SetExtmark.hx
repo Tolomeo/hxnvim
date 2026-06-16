@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.set_extmark
 	```
 **/
-@:structInit extern class SetExtmark {
+@:structInit class SetExtmark {
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.conceal: string?

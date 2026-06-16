@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A completion item represents a text snippet that is
 	proposed to complete text that is being typed.
 **/
-@:structInit extern class CompletionItem {
+@:structInit class CompletionItem {
 	/**
 		```lua
 		(field) lsp.CompletionItem.additionalTextEdits: lsp.TextEdit[]?

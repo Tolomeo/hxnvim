@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to inline completions.
 	
 **/
-@:structInit extern class InlineCompletionClientCapabilities {
+@:structInit class InlineCompletionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineCompletionClientCapabilities.dynamicRegistration: boolean?

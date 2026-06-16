@@ -9,7 +9,7 @@ package nvim.type.vim.treesitter.languagetree.new_;
 	
 	Optional arguments:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.LanguageTree.new.Opts.injections: table<string, string>?

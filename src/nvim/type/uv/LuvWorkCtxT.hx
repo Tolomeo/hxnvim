@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 luv_work_ctx_t
 	
 **/
-@:structInit extern class LuvWorkCtxT {
+@:structInit class LuvWorkCtxT {
 	/**
 		```lua
 		(method) uv.luv_work_ctx_t:queue(...any)

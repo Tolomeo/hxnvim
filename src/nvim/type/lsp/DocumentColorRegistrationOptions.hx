@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DocumentColorRegistrationOptions
 	```
 **/
-@:structInit extern class DocumentColorRegistrationOptions {
+@:structInit class DocumentColorRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DocumentColorRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

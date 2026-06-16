@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Diagnostic registration options.
 	
 **/
-@:structInit extern class DiagnosticRegistrationOptions {
+@:structInit class DiagnosticRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

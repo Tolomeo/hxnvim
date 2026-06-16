@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.SystemOpts
 	```
 **/
-@:structInit extern class SystemOpts {
+@:structInit class SystemOpts {
 	/**
 		```lua
 		(field) vim.SystemOpts.clear_env: boolean?

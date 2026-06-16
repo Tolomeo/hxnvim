@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.util.show_document;
 	(class) vim.lsp.util.show_document.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.show_document.Opts.focus: boolean?

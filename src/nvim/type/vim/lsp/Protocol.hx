@@ -9,7 +9,7 @@ package nvim.type.vim.lsp;
 	
 	 A set of predefined code action kinds
 **/
-@:structInit extern class CodeActionKind {
+@:structInit class CodeActionKind {
 	/**
 		```lua
 		(field) CodeActionKind.Empty: unknown
@@ -87,7 +87,7 @@ package nvim.type.vim.lsp;
 	
 	 The reason why code actions were requested.
 **/
-@:structInit extern class CodeActionTriggerKind {
+@:structInit class CodeActionTriggerKind {
 	/**
 		```lua
 		(field) CodeActionTriggerKind.Automatic: unknown
@@ -111,7 +111,7 @@ package nvim.type.vim.lsp;
 	
 	 The kind of a completion entry.
 **/
-@:structInit extern class CompletionItemKind {
+@:structInit class CompletionItemKind {
 	/**
 		```lua
 		(field) CompletionItemKind.Class: unknown
@@ -274,7 +274,7 @@ package nvim.type.vim.lsp;
 	 Completion item tags are extra annotations that tweak the rendering of a
 	 completion item
 **/
-@:structInit extern class CompletionTag {
+@:structInit class CompletionTag {
 	/**
 		```lua
 		(field) CompletionTag.Deprecated: unknown
@@ -292,7 +292,7 @@ package nvim.type.vim.lsp;
 	
 	 How a completion was triggered
 **/
-@:structInit extern class CompletionTriggerKind {
+@:structInit class CompletionTriggerKind {
 	/**
 		```lua
 		(field) CompletionTriggerKind.Invoked: unknown
@@ -318,7 +318,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.DiagnosticSeverity: table
 	```
 **/
-@:structInit extern class DiagnosticSeverity {
+@:structInit class DiagnosticSeverity {
 	/**
 		```lua
 		(field) DiagnosticSeverity.Error: unknown
@@ -350,7 +350,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.DiagnosticTag: table
 	```
 **/
-@:structInit extern class DiagnosticTag {
+@:structInit class DiagnosticTag {
 	/**
 		```lua
 		(field) DiagnosticTag.Deprecated: unknown
@@ -374,7 +374,7 @@ package nvim.type.vim.lsp;
 	
 	 A document highlight kind.
 **/
-@:structInit extern class DocumentHighlightKind {
+@:structInit class DocumentHighlightKind {
 	/**
 		```lua
 		(field) DocumentHighlightKind.Read: unknown
@@ -400,7 +400,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.ErrorCodes: table
 	```
 **/
-@:structInit extern class ErrorCodes {
+@:structInit class ErrorCodes {
 	/**
 		```lua
 		(field) ErrorCodes.ContentModified: unknown
@@ -474,7 +474,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.FailureHandlingKind: table
 	```
 **/
-@:structInit extern class FailureHandlingKind {
+@:structInit class FailureHandlingKind {
 	/**
 		```lua
 		(field) FailureHandlingKind.Abort: unknown
@@ -534,7 +534,7 @@ package nvim.type.vim.lsp;
 	
 	 The file event type.
 **/
-@:structInit extern class FileChangeType {
+@:structInit class FileChangeType {
 	/**
 		```lua
 		(field) FileChangeType.Changed: unknown
@@ -564,7 +564,7 @@ package nvim.type.vim.lsp;
 	
 	 Known error codes for an `InitializeError`;
 **/
-@:structInit extern class InitializeError {
+@:structInit class InitializeError {
 	/**
 		```lua
 		(field) InitializeError.unknownProtocolVersion: unknown
@@ -583,7 +583,7 @@ package nvim.type.vim.lsp;
 	 Defines whether the insert text in a completion item should be interpreted as
 	 plain text or a snippet.
 **/
-@:structInit extern class InsertTextFormat {
+@:structInit class InsertTextFormat {
 	/**
 		```lua
 		(field) InsertTextFormat.PlainText: unknown
@@ -611,7 +611,7 @@ package nvim.type.vim.lsp;
 	 Please note that `MarkupKinds` must not start with a `$`. This kinds
 	 are reserved for internal usage.
 **/
-@:structInit extern class MarkupKind {
+@:structInit class MarkupKind {
 	/**
 		```lua
 		(field) MarkupKind.Markdown: unknown
@@ -643,7 +643,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.MessageType: table
 	```
 **/
-@:structInit extern class MessageType {
+@:structInit class MessageType {
 	/**
 		```lua
 		(field) MessageType.Debug: unknown
@@ -686,7 +686,7 @@ package nvim.type.vim.lsp;
 	 LSP method names.
 	See: ~https~ ://microsoft.github.io/language-server-protocol/specification/#metaModel
 **/
-@:structInit extern class Methods {
+@:structInit class Methods {
 	var callHierarchy_incomingCalls : nvim.type.vim.lsp.protocol.Methods;
 	var callHierarchy_outgoingCalls : nvim.type.vim.lsp.protocol.Methods;
 	var client_registerCapability : nvim.type.vim.lsp.protocol.Methods;
@@ -789,7 +789,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.ResourceOperationKind: table
 	```
 **/
-@:structInit extern class ResourceOperationKind {
+@:structInit class ResourceOperationKind {
 	/**
 		```lua
 		(field) ResourceOperationKind.Create: unknown
@@ -837,7 +837,7 @@ package nvim.type.vim.lsp;
 	
 	 A symbol kind.
 **/
-@:structInit extern class SymbolKind {
+@:structInit class SymbolKind {
 	/**
 		```lua
 		(field) SymbolKind.Array: unknown
@@ -1005,7 +1005,7 @@ package nvim.type.vim.lsp;
 	
 	 Represents reasons why a text document is saved.
 **/
-@:structInit extern class TextDocumentSaveReason {
+@:structInit class TextDocumentSaveReason {
 	/**
 		```lua
 		(field) TextDocumentSaveReason.AfterDelay: unknown
@@ -1035,7 +1035,7 @@ package nvim.type.vim.lsp;
 	
 	 Defines how the host (editor) should sync document changes to the language server.
 **/
-@:structInit extern class TextDocumentSyncKind {
+@:structInit class TextDocumentSyncKind {
 	/**
 		```lua
 		(field) TextDocumentSyncKind.Full: unknown
@@ -1061,7 +1061,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.protocol.WatchKind: table
 	```
 **/
-@:structInit extern class WatchKind {
+@:structInit class WatchKind {
 	/**
 		```lua
 		(field) WatchKind.Change: unknown
@@ -1093,7 +1093,7 @@ package nvim.type.vim.lsp;
 	 Generated by gen_lsp.lua, keep at end of file.
 	 Maps method names to the required server capability
 **/
-@:structInit extern class RequestNameToCapability {
+@:structInit class RequestNameToCapability {
 
 }
 
@@ -1106,7 +1106,7 @@ package nvim.type.vim.lsp;
 	
 	 Protocol for the Microsoft Language Server Protocol (mslsp)
 **/
-@:structInit extern class Protocol {
+@:structInit class Protocol {
 	/**
 		```lua
 		function vim.lsp.protocol.make_client_capabilities()
@@ -1118,7 +1118,6 @@ package nvim.type.vim.lsp;
 		 Gets a new ClientCapabilities object describing the LSP client
 		 capabilities.
 	**/
-	@:luaDotMethod
 	function make_client_capabilities():nvim.type.lsp.ClientCapabilities;
 	/**
 		```lua
@@ -1134,6 +1133,5 @@ package nvim.type.vim.lsp;
 		
 		@*return* — : Normalized table of capabilities
 	**/
-	@:luaDotMethod
 	function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
 }

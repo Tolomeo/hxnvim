@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The parameters of a {@link DocumentFormattingRequest}.
 **/
-@:structInit extern class DocumentFormattingParams {
+@:structInit class DocumentFormattingParams {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.options: lsp.FormattingOptions

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Additional information that describes document changes.
 	
 **/
-@:structInit extern class ChangeAnnotation {
+@:structInit class ChangeAnnotation {
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.description: string?

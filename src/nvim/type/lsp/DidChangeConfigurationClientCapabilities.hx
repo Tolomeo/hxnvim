@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DidChangeConfigurationClientCapabilities
 	```
 **/
-@:structInit extern class DidChangeConfigurationClientCapabilities {
+@:structInit class DidChangeConfigurationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DidChangeConfigurationClientCapabilities.dynamicRegistration: boolean?

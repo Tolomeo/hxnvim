@@ -10,7 +10,7 @@ package nvim.type.vim.diagnostic;
 	 Configuration table with the keys listed below. Some parameters can have their default values
 	 changed with |vim.diagnostic.config()|.
 **/
-@:structInit extern class JumpOpts {
+@:structInit class JumpOpts {
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.count: integer?

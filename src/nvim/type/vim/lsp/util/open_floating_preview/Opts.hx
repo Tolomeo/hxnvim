@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 	(class) vim.lsp.util.open_floating_preview.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.open_floating_preview.Opts._update_win: integer?

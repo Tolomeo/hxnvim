@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The server capabilities of a {@link ExecuteCommandRequest}.
 **/
-@:structInit extern class ExecuteCommandOptions {
+@:structInit class ExecuteCommandOptions {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandOptions.commands: string[]

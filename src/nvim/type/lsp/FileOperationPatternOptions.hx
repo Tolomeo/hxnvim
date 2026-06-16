@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Matching options for the file operation pattern.
 	
 **/
-@:structInit extern class FileOperationPatternOptions {
+@:structInit class FileOperationPatternOptions {
 	/**
 		```lua
 		(field) lsp.FileOperationPatternOptions.ignoreCase: boolean?

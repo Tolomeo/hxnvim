@@ -10,7 +10,7 @@ package nvim.type.uv.getnameinfo;
 	 uv.getnameinfo.address
 	
 **/
-@:structInit extern class Address {
+@:structInit class Address {
 	/**
 		```lua
 		(field) uv.getnameinfo.address.family: string|integer

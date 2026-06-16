@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.Ringbuf
 	```
 **/
-@:structInit extern class Ringbuf {
+@:structInit class Ringbuf {
 	/**
 		```lua
 		function vim.Ringbuf.clear(self: vim.Ringbuf)

@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 luv_dir_t
 	
 **/
-@:structInit extern class LuvDirT {
+@:structInit class LuvDirT {
 	/**
 		```lua
 		(method) uv.luv_dir_t:closedir()

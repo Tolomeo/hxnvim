@@ -33,7 +33,7 @@ package nvim.type.uv;
 	 file descriptor that would be accepted by poll(2) can be used.
 	
 **/
-@:structInit extern class UvPollT {
+@:structInit class UvPollT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.VersionRange
 	```
 **/
-@:structInit extern class VersionRange {
+@:structInit class VersionRange {
 	/**
 		```lua
 		(field) vim.VersionRange.from: vim.Version

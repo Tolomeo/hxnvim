@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSymbolResolveOptions
 	```
 **/
-@:structInit extern class ClientSymbolResolveOptions {
+@:structInit class ClientSymbolResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientSymbolResolveOptions.properties: string[]

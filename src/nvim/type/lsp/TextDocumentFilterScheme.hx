@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A document filter where `scheme` is required field.
 	
 **/
-@:structInit extern class TextDocumentFilterScheme {
+@:structInit class TextDocumentFilterScheme {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterScheme.language: string?

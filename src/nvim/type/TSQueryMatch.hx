@@ -5,7 +5,7 @@ package nvim.type;
 	(class) TSQueryMatch
 	```
 **/
-@:structInit extern class TSQueryMatch {
+@:structInit class TSQueryMatch {
 	/**
 		```lua
 		(field) TSQueryMatch.captures: fun(self: TSQueryMatch):table<integer, TSNode[]>
@@ -18,7 +18,6 @@ package nvim.type;
 		  -> table<integer, TSNode[]>
 		```
 	**/
-	@:luaDotMethod
 	function captures():lua.Table<Int, Array<nvim.type.TSNode>>;
 	/**
 		```lua

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A document filter where `language` is required field.
 	
 **/
-@:structInit extern class TextDocumentFilterLanguage {
+@:structInit class TextDocumentFilterLanguage {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.language: string

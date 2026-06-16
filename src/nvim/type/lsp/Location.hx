@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents a location inside a resource, such as a line
 	inside a text file.
 **/
-@:structInit extern class Location {
+@:structInit class Location {
 	/**
 		```lua
 		(field) lsp.Location.range: lsp.Range

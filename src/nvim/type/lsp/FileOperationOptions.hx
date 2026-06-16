@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Options for notifications/requests for user operations on files.
 	
 **/
-@:structInit extern class FileOperationOptions {
+@:structInit class FileOperationOptions {
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.didCreate: (lsp.FileOperationRegistrationOptions)?

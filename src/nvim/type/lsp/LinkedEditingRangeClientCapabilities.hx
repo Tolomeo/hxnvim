@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities for the linked editing range request.
 	
 **/
-@:structInit extern class LinkedEditingRangeClientCapabilities {
+@:structInit class LinkedEditingRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeClientCapabilities.dynamicRegistration: boolean?

@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCodeActionLiteralOptions
 	```
 **/
-@:structInit extern class ClientCodeActionLiteralOptions {
+@:structInit class ClientCodeActionLiteralOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeActionLiteralOptions.codeActionKind: lsp.ClientCodeActionKindOptions

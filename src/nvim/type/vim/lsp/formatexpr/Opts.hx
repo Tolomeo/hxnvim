@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.formatexpr;
 	(class) vim.lsp.formatexpr.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.formatexpr.Opts.timeout_ms: integer

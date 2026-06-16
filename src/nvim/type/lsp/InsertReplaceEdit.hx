@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A special text edit to provide an insert and a replace operation.
 	
 **/
-@:structInit extern class InsertReplaceEdit {
+@:structInit class InsertReplaceEdit {
 	/**
 		```lua
 		(field) lsp.InsertReplaceEdit.insert: lsp.Range

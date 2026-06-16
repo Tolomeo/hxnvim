@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Text document content provider registration options.
 	
 **/
-@:structInit extern class TextDocumentContentRegistrationOptions {
+@:structInit class TextDocumentContentRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentRegistrationOptions.id: string?

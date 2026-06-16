@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to the moniker request.
 	
 **/
-@:structInit extern class MonikerClientCapabilities {
+@:structInit class MonikerClientCapabilities {
 	/**
 		```lua
 		(field) lsp.MonikerClientCapabilities.dynamicRegistration: boolean?

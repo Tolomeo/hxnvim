@@ -10,7 +10,7 @@ package nvim.type.vim.treesitter;
 	Parsed query, see |vim.treesitter.query.parse()|
 	
 **/
-@:structInit extern class Query {
+@:structInit class Query {
 	/**
 		```lua
 		(field) vim.treesitter.Query.captures: string[]

@@ -13,7 +13,7 @@ package nvim.type.lsp;
 	like renaming a file in the UI.
 	
 **/
-@:structInit extern class FileOperationClientCapabilities {
+@:structInit class FileOperationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didCreate: boolean?

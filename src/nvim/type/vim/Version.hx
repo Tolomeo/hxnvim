@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.Version
 	```
 **/
-@:structInit extern class Version {
+@:structInit class Version {
 	/**
 		```lua
 		(field) vim.Version.build: string?

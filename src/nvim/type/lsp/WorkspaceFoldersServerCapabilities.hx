@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.WorkspaceFoldersServerCapabilities
 	```
 **/
-@:structInit extern class WorkspaceFoldersServerCapabilities {
+@:structInit class WorkspaceFoldersServerCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersServerCapabilities.changeNotifications: (boolean|string)?

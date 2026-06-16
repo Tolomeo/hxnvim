@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientInlayHintResolveOptions
 	```
 **/
-@:structInit extern class ClientInlayHintResolveOptions {
+@:structInit class ClientInlayHintResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientInlayHintResolveOptions.properties: string[]

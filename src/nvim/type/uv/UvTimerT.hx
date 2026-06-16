@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 Timer handles are used to schedule callbacks to be called in the future.
 	
 **/
-@:structInit extern class UvTimerT {
+@:structInit class UvTimerT {
 	/**
 		```lua
 		(method) uv.uv_timer_t:again()

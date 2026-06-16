@@ -11,7 +11,7 @@ package nvim.type.uv.udp_bind;
 	
 	
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.udp_bind.flags.ipv6only: boolean

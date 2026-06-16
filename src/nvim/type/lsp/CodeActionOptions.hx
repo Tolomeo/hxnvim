@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link CodeActionRequest}.
 **/
-@:structInit extern class CodeActionOptions {
+@:structInit class CodeActionOptions {
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.codeActionKinds: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]?

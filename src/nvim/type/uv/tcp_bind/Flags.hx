@@ -10,7 +10,7 @@ package nvim.type.uv.tcp_bind;
 	 uv.tcp_bind.flags
 	
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.tcp_bind.flags.ipv6only: boolean

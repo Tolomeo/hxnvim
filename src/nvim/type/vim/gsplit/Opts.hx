@@ -5,7 +5,7 @@ package nvim.type.vim.gsplit;
 	(class) vim.gsplit.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.gsplit.Opts.plain: boolean?

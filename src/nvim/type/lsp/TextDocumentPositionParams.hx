@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A parameter literal used in requests to pass a text document and a position inside that
 	document.
 **/
-@:structInit extern class TextDocumentPositionParams {
+@:structInit class TextDocumentPositionParams {
 	/**
 		```lua
 		(field) lsp.TextDocumentPositionParams.position: lsp.Position

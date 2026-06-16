@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inline value options used during static or dynamic registration.
 	
 **/
-@:structInit extern class InlineValueRegistrationOptions {
+@:structInit class InlineValueRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.InlineValueRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

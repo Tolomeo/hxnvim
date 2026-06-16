@@ -5,7 +5,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 	(field) vim.fn.getbufinfo.ret.item.variables: table<string, any>
 	```
 **/
-@:structInit extern class Variables {
+@:structInit class Variables {
 
 }
 
@@ -14,7 +14,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 	(class) vim.fn.getbufinfo.ret.item
 	```
 **/
-@:structInit extern class Item {
+@:structInit class Item {
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.bufnr: integer

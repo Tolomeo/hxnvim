@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to the used markdown parser.
 	
 **/
-@:structInit extern class MarkdownClientCapabilities {
+@:structInit class MarkdownClientCapabilities {
 	/**
 		```lua
 		(field) lsp.MarkdownClientCapabilities.allowedTags: string[]?

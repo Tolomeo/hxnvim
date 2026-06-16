@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Workspace specific client capabilities.
 **/
-@:structInit extern class WorkspaceClientCapabilities {
+@:structInit class WorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.applyEdit: boolean?

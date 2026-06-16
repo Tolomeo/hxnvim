@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The workspace folder change event.
 **/
-@:structInit extern class WorkspaceFoldersChangeEvent {
+@:structInit class WorkspaceFoldersChangeEvent {
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersChangeEvent.added: lsp.WorkspaceFolder[]

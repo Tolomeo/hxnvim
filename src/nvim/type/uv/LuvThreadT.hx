@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 luv_thread_t
 	
 **/
-@:structInit extern class LuvThreadT {
+@:structInit class LuvThreadT {
 	/**
 		```lua
 		(method) uv.luv_thread_t:equal(other_thread: uv.luv_thread_t)

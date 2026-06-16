@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	document by different properties.
 	
 **/
-@:structInit extern class NotebookCellTextDocumentFilter {
+@:structInit class NotebookCellTextDocumentFilter {
 	/**
 		```lua
 		(field) lsp.NotebookCellTextDocumentFilter.language: string?

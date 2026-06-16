@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Save options.
 **/
-@:structInit extern class SaveOptions {
+@:structInit class SaveOptions {
 	/**
 		```lua
 		(field) lsp.SaveOptions.includeText: boolean?

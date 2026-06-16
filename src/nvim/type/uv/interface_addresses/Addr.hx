@@ -5,7 +5,7 @@ package nvim.type.uv.interface_addresses;
 	(class) uv.interface_addresses.addr
 	```
 **/
-@:structInit extern class Addr {
+@:structInit class Addr {
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.family: string

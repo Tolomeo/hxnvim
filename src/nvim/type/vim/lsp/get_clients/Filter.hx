@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.get_clients;
 	
 	 Key-value pairs used to filter the returned clients.
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.bufnr: integer?

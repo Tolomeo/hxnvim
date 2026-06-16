@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensWorkspaceClientCapabilities
 	```
 **/
-@:structInit extern class SemanticTokensWorkspaceClientCapabilities {
+@:structInit class SemanticTokensWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SemanticTokensWorkspaceClientCapabilities.refreshSupport: boolean?

@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(field) vim.api.keyset.parse_cmd.magic: { bar: boolean, file: boolean }
 	```
 **/
-@:structInit extern class Magic {
+@:structInit class Magic {
 	var bar : Bool;
 	var file : Bool;
 }
@@ -15,7 +15,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.parse_cmd
 	```
 **/
-@:structInit extern class ParseCmd {
+@:structInit class ParseCmd {
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.addr: '?'|'arg'|'buf'|'line'|'load'|'none'|'qf'|'tab'|'win'

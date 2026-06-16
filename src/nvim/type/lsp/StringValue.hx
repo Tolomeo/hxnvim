@@ -16,7 +16,7 @@ package nvim.type.lsp;
 	`${name:default value}`.
 	
 **/
-@:structInit extern class StringValue {
+@:structInit class StringValue {
 	/**
 		```lua
 		(field) lsp.StringValue.kind: "snippet"

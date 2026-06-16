@@ -5,7 +5,7 @@ package nvim.type.uv.fs_event_start;
 	(class) uv.fs_event_start.flags
 	```
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.fs_event_start.flags.recursive: boolean|nil

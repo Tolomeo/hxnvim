@@ -5,7 +5,7 @@ package nvim.type.uv.cpu_info;
 	(class) uv.cpu_info.cpu
 	```
 **/
-@:structInit extern class Cpu {
+@:structInit class Cpu {
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.model: string

@@ -9,7 +9,7 @@ package nvim.type.vim.diff;
 	
 	 Optional parameters:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.diff.Opts.algorithm: ('histogram'|'minimal'|'myers'|'patience')?

@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.NotebookDocumentFilterWithCells
 	```
 **/
-@:structInit extern class NotebookDocumentFilterWithCells {
+@:structInit class NotebookDocumentFilterWithCells {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterWithCells.cells: lsp.NotebookCellLanguage[]

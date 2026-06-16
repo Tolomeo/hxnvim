@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.hover;
 	(class) vim.lsp.buf.hover.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts._update_win: integer?

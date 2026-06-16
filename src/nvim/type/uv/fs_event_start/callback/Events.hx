@@ -5,7 +5,7 @@ package nvim.type.uv.fs_event_start.callback;
 	(class) uv.fs_event_start.callback.events
 	```
 **/
-@:structInit extern class Events {
+@:structInit class Events {
 	/**
 		```lua
 		(field) uv.fs_event_start.callback.events.change: boolean|nil

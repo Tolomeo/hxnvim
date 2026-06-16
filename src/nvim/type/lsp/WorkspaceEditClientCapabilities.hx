@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.WorkspaceEditClientCapabilities
 	```
 **/
-@:structInit extern class WorkspaceEditClientCapabilities {
+@:structInit class WorkspaceEditClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.changeAnnotationSupport: (lsp.ChangeAnnotationsSupportOptions)?

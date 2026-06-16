@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link RenameRequest}.
 **/
-@:structInit extern class RenameOptions {
+@:structInit class RenameOptions {
 	/**
 		```lua
 		(field) lsp.RenameOptions.prepareProvider: boolean?

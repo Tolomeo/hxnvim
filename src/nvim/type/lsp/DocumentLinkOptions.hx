@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentLinkRequest}.
 **/
-@:structInit extern class DocumentLinkOptions {
+@:structInit class DocumentLinkOptions {
 	/**
 		```lua
 		(field) lsp.DocumentLinkOptions.resolveProvider: boolean?

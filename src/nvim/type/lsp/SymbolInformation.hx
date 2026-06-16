@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents information about programming constructs like variables, classes,
 	interfaces etc.
 **/
-@:structInit extern class SymbolInformation {
+@:structInit class SymbolInformation {
 	/**
 		```lua
 		(field) lsp.SymbolInformation.containerName: string?

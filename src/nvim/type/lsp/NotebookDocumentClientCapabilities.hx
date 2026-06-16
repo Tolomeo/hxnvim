@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Capabilities specific to the notebook document support.
 	
 **/
-@:structInit extern class NotebookDocumentClientCapabilities {
+@:structInit class NotebookDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentClientCapabilities.synchronization: lsp.NotebookDocumentSyncClientCapabilities

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	An unchanged diagnostic report with a set of related documents.
 	
 **/
-@:structInit extern class RelatedUnchangedDocumentDiagnosticReport {
+@:structInit class RelatedUnchangedDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.kind: "unchanged"

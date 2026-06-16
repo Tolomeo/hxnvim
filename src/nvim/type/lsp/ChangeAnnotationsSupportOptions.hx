@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ChangeAnnotationsSupportOptions
 	```
 **/
-@:structInit extern class ChangeAnnotationsSupportOptions {
+@:structInit class ChangeAnnotationsSupportOptions {
 	/**
 		```lua
 		(field) lsp.ChangeAnnotationsSupportOptions.groupsOnLabel: boolean?

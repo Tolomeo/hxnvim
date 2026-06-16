@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A document filter where `pattern` is required field.
 	
 **/
-@:structInit extern class TextDocumentFilterPattern {
+@:structInit class TextDocumentFilterPattern {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterPattern.language: string?

@@ -5,7 +5,7 @@ package nvim.type.vim.loader.find;
 	(class) vim.loader.find.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.loader.find.Opts.all: boolean?

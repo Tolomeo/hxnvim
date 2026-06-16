@@ -12,7 +12,7 @@ package nvim.type.uv;
 	 they can work on file systems where fs event handles can't.
 	
 **/
-@:structInit extern class UvFsPollT {
+@:structInit class UvFsPollT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

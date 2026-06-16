@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 socket info
 	
 **/
-@:structInit extern class Socketinfo {
+@:structInit class Socketinfo {
 	/**
 		```lua
 		(field) uv.socketinfo.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"

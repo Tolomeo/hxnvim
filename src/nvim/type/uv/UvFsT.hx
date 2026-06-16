@@ -5,7 +5,7 @@ package nvim.type.uv;
 	(class) uv.uv_fs_t
 	```
 **/
-@:structInit extern class UvFsT {
+@:structInit class UvFsT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

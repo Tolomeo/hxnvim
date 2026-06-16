@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Registration options specific to a notebook.
 	
 **/
-@:structInit extern class NotebookDocumentSyncRegistrationOptions {
+@:structInit class NotebookDocumentSyncRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.id: string?

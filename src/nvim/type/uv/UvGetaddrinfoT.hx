@@ -5,7 +5,7 @@ package nvim.type.uv;
 	(class) uv.uv_getaddrinfo_t
 	```
 **/
-@:structInit extern class UvGetaddrinfoT {
+@:structInit class UvGetaddrinfoT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

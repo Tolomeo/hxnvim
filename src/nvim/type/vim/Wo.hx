@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.wo
 	```
 **/
-@:structInit extern class Wo {
+@:structInit class Wo {
 	/**
 		```lua
 		(field) vim.wo.arab: boolean

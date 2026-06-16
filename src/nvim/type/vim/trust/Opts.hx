@@ -5,7 +5,7 @@ package nvim.type.vim.trust;
 	(class) vim.trust.opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.trust.opts.action: 'allow'|'deny'|'remove'

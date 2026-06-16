@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 UDP handles encapsulate UDP communication for both clients and servers.
 	
 **/
-@:structInit extern class UvUdpT {
+@:structInit class UvUdpT {
 	/**
 		```lua
 		(method) uv.uv_udp_t:bind(host: string, port: integer, flags?: uv.udp_bind.flags)

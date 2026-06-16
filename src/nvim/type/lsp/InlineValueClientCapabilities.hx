@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to inline values.
 	
 **/
-@:structInit extern class InlineValueClientCapabilities {
+@:structInit class InlineValueClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineValueClientCapabilities.dynamicRegistration: boolean?

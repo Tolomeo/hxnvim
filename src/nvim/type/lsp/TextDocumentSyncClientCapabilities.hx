@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.TextDocumentSyncClientCapabilities
 	```
 **/
-@:structInit extern class TextDocumentSyncClientCapabilities {
+@:structInit class TextDocumentSyncClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.didSave: boolean?

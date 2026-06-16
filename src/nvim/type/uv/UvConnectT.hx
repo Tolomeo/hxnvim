@@ -5,7 +5,7 @@ package nvim.type.uv;
 	(class) uv.uv_connect_t
 	```
 **/
-@:structInit extern class UvConnectT {
+@:structInit class UvConnectT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

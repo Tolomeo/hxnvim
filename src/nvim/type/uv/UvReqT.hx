@@ -12,7 +12,7 @@ package nvim.type.uv;
 	 `uv_req_t` is the base type for all libuv request types.
 	
 **/
-@:structInit extern class UvReqT {
+@:structInit class UvReqT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()

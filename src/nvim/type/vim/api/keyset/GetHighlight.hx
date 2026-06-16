@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_highlight
 	```
 **/
-@:structInit extern class GetHighlight {
+@:structInit class GetHighlight {
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.create: boolean?

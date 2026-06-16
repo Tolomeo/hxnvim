@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCompletionItemOptions
 	```
 **/
-@:structInit extern class ClientCompletionItemOptions {
+@:structInit class ClientCompletionItemOptions {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.commitCharactersSupport: boolean?

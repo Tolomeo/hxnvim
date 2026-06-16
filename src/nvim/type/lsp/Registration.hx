@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	General parameters to register for a notification or to register a provider.
 **/
-@:structInit extern class Registration {
+@:structInit class Registration {
 	/**
 		```lua
 		(field) lsp.Registration.id: string

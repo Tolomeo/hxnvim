@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.HandlerContext
 	```
 **/
-@:structInit extern class HandlerContext {
+@:structInit class HandlerContext {
 	/**
 		```lua
 		(field) lsp.HandlerContext.bufnr: integer?

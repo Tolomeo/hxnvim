@@ -5,7 +5,7 @@ package nvim.type.vim.fn.setqflist;
 	(class) vim.fn.setqflist.what
 	```
 **/
-@:structInit extern class What {
+@:structInit class What {
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.context: table?

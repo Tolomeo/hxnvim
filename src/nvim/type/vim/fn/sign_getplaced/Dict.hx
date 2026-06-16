@@ -5,7 +5,7 @@ package nvim.type.vim.fn.sign_getplaced;
 	(class) vim.fn.sign_getplaced.dict
 	```
 **/
-@:structInit extern class Dict {
+@:structInit class Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.group: string?

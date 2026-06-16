@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic;
 	(field) vim.diagnostic.OptsResolved.severity_sort: { reverse: boolean }
 	```
 **/
-@:structInit extern class SeveritySort {
+@:structInit class SeveritySort {
 	var reverse : Null<Bool>;
 }
 
@@ -14,7 +14,7 @@ package nvim.type.vim.diagnostic;
 	(class) vim.diagnostic.OptsResolved
 	```
 **/
-@:structInit extern class OptsResolved {
+@:structInit class OptsResolved {
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.float: vim.diagnostic.Opts.Float

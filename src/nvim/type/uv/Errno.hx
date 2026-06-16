@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 A table value which exposes error constants as a map, where the key is the error name (without the UV_ prefix) and its value is a negative number.
 	
 **/
-@:structInit extern class Errno {
+@:structInit class Errno {
 	/**
 		```lua
 		(field) uv.errno.E2BIG: integer

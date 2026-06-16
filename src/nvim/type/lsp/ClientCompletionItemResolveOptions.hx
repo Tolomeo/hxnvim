@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCompletionItemResolveOptions
 	```
 **/
-@:structInit extern class ClientCompletionItemResolveOptions {
+@:structInit class ClientCompletionItemResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemResolveOptions.properties: string[]

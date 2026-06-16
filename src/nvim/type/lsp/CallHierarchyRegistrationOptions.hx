@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Call hierarchy options used during static or dynamic registration.
 	
 **/
-@:structInit extern class CallHierarchyRegistrationOptions {
+@:structInit class CallHierarchyRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.CallHierarchyRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

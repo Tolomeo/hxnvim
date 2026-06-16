@@ -5,7 +5,7 @@ package nvim.type.vim._inspector;
 	(class) vim._inspector.Filter
 	```
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim._inspector.Filter.extmarks: boolean|"all"

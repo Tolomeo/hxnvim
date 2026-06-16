@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.context
 	```
 **/
-@:structInit extern class Context {
+@:structInit class Context {
 	/**
 		```lua
 		(field) vim.api.keyset.context.types: string[]?

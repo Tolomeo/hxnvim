@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.rpc;
 	
 	 Additional context for the LSP server process.
 **/
-@:structInit extern class ExtraSpawnParams {
+@:structInit class ExtraSpawnParams {
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.cwd: string?

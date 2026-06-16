@@ -5,7 +5,7 @@ package nvim.type;
 	(class) TSLangMetadata
 	```
 **/
-@:structInit extern class TSLangMetadata {
+@:structInit class TSLangMetadata {
 	/**
 		```lua
 		(field) TSLangMetadata.major_version: integer

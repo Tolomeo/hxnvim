@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter.query;
 	(class) vim.treesitter.query.TSMetadata
 	```
 **/
-@:structInit extern class TSMetadata {
+@:structInit class TSMetadata {
 	/**
 		```lua
 		(field) vim.treesitter.query.TSMetadata.conceal: string?

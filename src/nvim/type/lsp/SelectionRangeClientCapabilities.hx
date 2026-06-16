@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SelectionRangeClientCapabilities
 	```
 **/
-@:structInit extern class SelectionRangeClientCapabilities {
+@:structInit class SelectionRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SelectionRangeClientCapabilities.dynamicRegistration: boolean?

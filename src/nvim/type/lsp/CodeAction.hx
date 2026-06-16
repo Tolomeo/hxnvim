@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	
 	A CodeAction must set either `edit` and/or a `command`. If both are supplied, the `edit` is applied first, then the `command` is executed.
 **/
-@:structInit extern class CodeAction {
+@:structInit class CodeAction {
 	/**
 		```lua
 		(field) lsp.CodeAction.command: (lsp.Command)?

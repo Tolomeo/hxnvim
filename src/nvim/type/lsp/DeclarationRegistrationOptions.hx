@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DeclarationRegistrationOptions
 	```
 **/
-@:structInit extern class DeclarationRegistrationOptions {
+@:structInit class DeclarationRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DeclarationRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

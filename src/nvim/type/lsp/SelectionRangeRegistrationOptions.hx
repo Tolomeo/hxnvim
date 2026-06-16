@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SelectionRangeRegistrationOptions
 	```
 **/
-@:structInit extern class SelectionRangeRegistrationOptions {
+@:structInit class SelectionRangeRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.SelectionRangeRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

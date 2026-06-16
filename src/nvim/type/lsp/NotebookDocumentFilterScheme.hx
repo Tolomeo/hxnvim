@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A notebook document filter where `scheme` is required field.
 	
 **/
-@:structInit extern class NotebookDocumentFilterScheme {
+@:structInit class NotebookDocumentFilterScheme {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterScheme.notebookType: string?

@@ -10,7 +10,7 @@ package nvim.type.vim.diagnostic;
 	 TODO: inherit from `vim.diagnostic.Opts`, implement its fields.
 	 Optional filters |kwargs|, or `nil` for all.
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.diagnostic.Filter.bufnr: integer?

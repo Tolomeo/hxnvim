@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.VirtualText
 	```
 **/
-@:structInit extern class VirtualText {
+@:structInit class VirtualText {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.current_line: boolean?

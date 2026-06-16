@@ -9,7 +9,7 @@ package nvim.type.vim.diagnostic.setloclist;
 	
 	Configuration table with the following keys:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.namespace: integer?

@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.client;
 	(class) vim.lsp.Client.Flags
 	```
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.allow_incremental_sync: boolean?

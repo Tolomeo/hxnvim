@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Since 3.6.0
 **/
-@:structInit extern class TypeDefinitionClientCapabilities {
+@:structInit class TypeDefinitionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TypeDefinitionClientCapabilities.dynamicRegistration: boolean?

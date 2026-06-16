@@ -5,7 +5,7 @@ package nvim.type.uv.getaddrinfo;
 	(class) uv.getaddrinfo.hints
 	```
 **/
-@:structInit extern class Hints {
+@:structInit class Hints {
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.addrconfig: boolean

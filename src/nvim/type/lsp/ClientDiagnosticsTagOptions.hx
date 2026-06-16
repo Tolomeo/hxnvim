@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientDiagnosticsTagOptions
 	```
 **/
-@:structInit extern class ClientDiagnosticsTagOptions {
+@:structInit class ClientDiagnosticsTagOptions {
 	/**
 		```lua
 		(field) lsp.ClientDiagnosticsTagOptions.valueSet: 1|2[]

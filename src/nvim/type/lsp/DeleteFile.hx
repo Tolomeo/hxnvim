@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Delete file operation
 **/
-@:structInit extern class DeleteFile {
+@:structInit class DeleteFile {
 	/**
 		```lua
 		(field) lsp.DeleteFile.annotationId: string?

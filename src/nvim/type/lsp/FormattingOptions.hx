@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Value-object describing what options formatting should use.
 **/
-@:structInit extern class FormattingOptions {
+@:structInit class FormattingOptions {
 	/**
 		```lua
 		(field) lsp.FormattingOptions.insertFinalNewline: boolean?

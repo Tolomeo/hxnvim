@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.complete_set
 	```
 **/
-@:structInit extern class CompleteSet {
+@:structInit class CompleteSet {
 	/**
 		```lua
 		(field) vim.api.keyset.complete_set.info: string?

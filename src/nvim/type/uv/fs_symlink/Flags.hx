@@ -5,7 +5,7 @@ package nvim.type.uv.fs_symlink;
 	(class) uv.fs_symlink.flags
 	```
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.fs_symlink.flags.dir: boolean

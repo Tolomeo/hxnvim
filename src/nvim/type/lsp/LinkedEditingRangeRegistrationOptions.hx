@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.LinkedEditingRangeRegistrationOptions
 	```
 **/
-@:structInit extern class LinkedEditingRangeRegistrationOptions {
+@:structInit class LinkedEditingRangeRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

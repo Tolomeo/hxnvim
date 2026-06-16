@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Server capabilities for a {@link WorkspaceSymbolRequest}.
 **/
-@:structInit extern class WorkspaceSymbolOptions {
+@:structInit class WorkspaceSymbolOptions {
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolOptions.resolveProvider: boolean?

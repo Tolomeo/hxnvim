@@ -5,7 +5,7 @@ package nvim.type.vim.filetype.match;
 	(class) vim.filetype.match.args
 	```
 **/
-@:structInit extern class Args {
+@:structInit class Args {
 	/**
 		```lua
 		(field) vim.filetype.match.args.buf: integer?

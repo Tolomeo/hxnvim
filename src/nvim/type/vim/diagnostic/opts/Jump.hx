@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.Jump
 	```
 **/
-@:structInit extern class Jump {
+@:structInit class Jump {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.float: (boolean|vim.diagnostic.Opts.Float)?

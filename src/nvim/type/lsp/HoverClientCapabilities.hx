@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.HoverClientCapabilities
 	```
 **/
-@:structInit extern class HoverClientCapabilities {
+@:structInit class HoverClientCapabilities {
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.contentFormat: "markdown"|"plaintext"[]?

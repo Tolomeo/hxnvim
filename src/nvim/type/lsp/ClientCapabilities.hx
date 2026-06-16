@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Defines the capabilities provided by the client.
 **/
-@:structInit extern class ClientCapabilities {
+@:structInit class ClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.experimental: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?

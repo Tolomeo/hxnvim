@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.WindowClientCapabilities
 	```
 **/
-@:structInit extern class WindowClientCapabilities {
+@:structInit class WindowClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.showDocument: (lsp.ShowDocumentClientCapabilities)?

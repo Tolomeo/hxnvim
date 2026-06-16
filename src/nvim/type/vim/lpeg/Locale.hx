@@ -9,7 +9,7 @@ package nvim.type.vim.lpeg;
 	
 	 @nodoc
 **/
-@:structInit extern class Locale {
+@:structInit class Locale {
 	/**
 		```lua
 		(field) vim.lpeg.Locale.alnum: userdata

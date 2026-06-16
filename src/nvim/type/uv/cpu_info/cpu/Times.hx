@@ -5,7 +5,7 @@ package nvim.type.uv.cpu_info.cpu;
 	(class) uv.cpu_info.cpu.times
 	```
 **/
-@:structInit extern class Times {
+@:structInit class Times {
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.idle: number

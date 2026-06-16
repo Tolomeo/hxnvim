@@ -20,7 +20,7 @@ package nvim.type.lsp;
 	cell will be synced.
 	
 **/
-@:structInit extern class NotebookDocumentSyncOptions {
+@:structInit class NotebookDocumentSyncOptions {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncOptions.notebookSelector: (lsp.NotebookDocumentFilterWithCells|lsp.NotebookDocumentFilterWithNotebook)[]

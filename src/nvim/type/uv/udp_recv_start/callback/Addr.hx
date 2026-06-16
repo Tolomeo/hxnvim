@@ -5,7 +5,7 @@ package nvim.type.uv.udp_recv_start.callback;
 	(class) uv.udp_recv_start.callback.addr
 	```
 **/
-@:structInit extern class Addr {
+@:structInit class Addr {
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"

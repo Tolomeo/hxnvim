@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	special attention. Usually a document highlight is visualized by changing
 	the background color of its range.
 **/
-@:structInit extern class DocumentHighlight {
+@:structInit class DocumentHighlight {
 	/**
 		```lua
 		(field) lsp.DocumentHighlight.kind: (1|2|3)?

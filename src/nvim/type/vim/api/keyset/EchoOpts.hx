@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.echo_opts
 	```
 **/
-@:structInit extern class EchoOpts {
+@:structInit class EchoOpts {
 	/**
 		```lua
 		(field) vim.api.keyset.echo_opts.err: boolean?

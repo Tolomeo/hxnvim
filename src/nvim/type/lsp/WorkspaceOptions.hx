@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Defines workspace specific capabilities of the server.
 	
 **/
-@:structInit extern class WorkspaceOptions {
+@:structInit class WorkspaceOptions {
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.fileOperations: (lsp.FileOperationOptions)?

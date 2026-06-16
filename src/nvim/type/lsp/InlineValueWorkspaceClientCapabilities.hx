@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client workspace capabilities specific to inline values.
 	
 **/
-@:structInit extern class InlineValueWorkspaceClientCapabilities {
+@:structInit class InlineValueWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlineValueWorkspaceClientCapabilities.refreshSupport: boolean?

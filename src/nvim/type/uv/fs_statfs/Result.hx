@@ -5,7 +5,7 @@ package nvim.type.uv.fs_statfs;
 	(class) uv.fs_statfs.result
 	```
 **/
-@:structInit extern class Result {
+@:structInit class Result {
 	/**
 		```lua
 		(field) uv.fs_statfs.result.bavail: integer

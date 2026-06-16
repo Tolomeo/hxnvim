@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.open_term
 	```
 **/
-@:structInit extern class OpenTerm {
+@:structInit class OpenTerm {
 	/**
 		```lua
 		(field) vim.api.keyset.open_term.force_crlf: boolean?

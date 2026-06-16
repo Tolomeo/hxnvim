@@ -5,7 +5,7 @@ package nvim.type.uv.getaddrinfo;
 	(class) uv.getaddrinfo.result
 	```
 **/
-@:structInit extern class Result {
+@:structInit class Result {
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.addr: string

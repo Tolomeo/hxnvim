@@ -5,7 +5,7 @@ package nvim.type.vim.fn.getwininfo.ret;
 	(field) vim.fn.getwininfo.ret.item.variables: table<string, any>
 	```
 **/
-@:structInit extern class Variables {
+@:structInit class Variables {
 
 }
 
@@ -14,7 +14,7 @@ package nvim.type.vim.fn.getwininfo.ret;
 	(class) vim.fn.getwininfo.ret.item
 	```
 **/
-@:structInit extern class Item {
+@:structInit class Item {
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.botline: integer

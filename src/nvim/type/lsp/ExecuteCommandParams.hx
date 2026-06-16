@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The parameters of a {@link ExecuteCommandRequest}.
 **/
-@:structInit extern class ExecuteCommandParams {
+@:structInit class ExecuteCommandParams {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.arguments: boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]?

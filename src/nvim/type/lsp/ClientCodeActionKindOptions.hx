@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCodeActionKindOptions
 	```
 **/
-@:structInit extern class ClientCodeActionKindOptions {
+@:structInit class ClientCodeActionKindOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeActionKindOptions.valueSet: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]

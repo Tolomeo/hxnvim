@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Diagnostic options.
 	
 **/
-@:structInit extern class DiagnosticOptions {
+@:structInit class DiagnosticOptions {
 	/**
 		```lua
 		(field) lsp.DiagnosticOptions.identifier: string?

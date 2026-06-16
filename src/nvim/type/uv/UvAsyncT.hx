@@ -21,7 +21,7 @@ package nvim.type.uv;
 	 ```
 	
 **/
-@:structInit extern class UvAsyncT {
+@:structInit class UvAsyncT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

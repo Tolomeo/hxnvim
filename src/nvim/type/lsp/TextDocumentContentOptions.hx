@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Text document content provider options.
 	
 **/
-@:structInit extern class TextDocumentContentOptions {
+@:structInit class TextDocumentContentOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentOptions.schemes: string[]

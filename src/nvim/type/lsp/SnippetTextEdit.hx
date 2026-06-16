@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	An interactive text edit.
 	
 **/
-@:structInit extern class SnippetTextEdit {
+@:structInit class SnippetTextEdit {
 	/**
 		```lua
 		(field) lsp.SnippetTextEdit.annotationId: string?

@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.bo
 	```
 **/
-@:structInit extern class Bo {
+@:structInit class Bo {
 	/**
 		```lua
 		(field) vim.bo.ai: boolean

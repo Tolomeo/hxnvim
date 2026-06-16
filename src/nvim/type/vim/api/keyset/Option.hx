@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.option
 	```
 **/
-@:structInit extern class Option {
+@:structInit class Option {
 	/**
 		```lua
 		(field) vim.api.keyset.option.buf: integer?

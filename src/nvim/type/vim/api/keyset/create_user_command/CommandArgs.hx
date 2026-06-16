@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 	(class) vim.api.keyset.create_user_command.command_args
 	```
 **/
-@:structInit extern class CommandArgs {
+@:structInit class CommandArgs {
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.args: string

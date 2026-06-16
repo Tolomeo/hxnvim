@@ -5,7 +5,7 @@ package nvim.type.vim.fn.sign_define;
 	(class) vim.fn.sign_define.dict
 	```
 **/
-@:structInit extern class Dict {
+@:structInit class Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.culhl: string?

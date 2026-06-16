@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A full diagnostic report with a set of related documents.
 	
 **/
-@:structInit extern class RelatedFullDocumentDiagnosticReport {
+@:structInit class RelatedFullDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.RelatedFullDocumentDiagnosticReport.items: lsp.Diagnostic[]

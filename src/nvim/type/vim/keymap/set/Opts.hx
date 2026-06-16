@@ -13,7 +13,7 @@ package nvim.type.vim.keymap.set;
 	
 	 Also accepts:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.buffer: (boolean|integer)?

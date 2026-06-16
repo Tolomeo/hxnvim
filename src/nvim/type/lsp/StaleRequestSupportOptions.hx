@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.StaleRequestSupportOptions
 	```
 **/
-@:structInit extern class StaleRequestSupportOptions {
+@:structInit class StaleRequestSupportOptions {
 	/**
 		```lua
 		(field) lsp.StaleRequestSupportOptions.cancel: boolean

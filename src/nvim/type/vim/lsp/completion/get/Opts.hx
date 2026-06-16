@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.completion.get;
 	
 	 @inlinedoc
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.completion.get.Opts.ctx: (lsp.CompletionContext)?

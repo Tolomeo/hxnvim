@@ -5,7 +5,7 @@ package nvim.type.uv.fs_readdir;
 	(class) uv.fs_readdir.entry
 	```
 **/
-@:structInit extern class Entry {
+@:structInit class Entry {
 	/**
 		```lua
 		(field) uv.fs_readdir.entry.name: string

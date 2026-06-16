@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.win_config
 	```
 **/
-@:structInit extern class WinConfig {
+@:structInit class WinConfig {
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.anchor: ('NE'|'NW'|'SE'|'SW')?

@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.set_decoration_provider
 	```
 **/
-@:structInit extern class SetDecorationProvider {
+@:structInit class SetDecorationProvider {
 	/**
 		```lua
 		(field) vim.api.keyset.set_decoration_provider._on_conceal_line: fun(_: "conceal_line")?

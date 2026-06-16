@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	General parameters to unregister a request or notification.
 **/
-@:structInit extern class Unregistration {
+@:structInit class Unregistration {
 	/**
 		```lua
 		(field) lsp.Unregistration.id: string

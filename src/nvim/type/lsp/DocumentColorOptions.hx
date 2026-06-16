@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DocumentColorOptions
 	```
 **/
-@:structInit extern class DocumentColorOptions {
+@:structInit class DocumentColorOptions {
 	/**
 		```lua
 		(field) lsp.DocumentColorOptions.workDoneProgress: boolean?

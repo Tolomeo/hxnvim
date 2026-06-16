@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint options used during static or dynamic registration.
 	
 **/
-@:structInit extern class InlayHintRegistrationOptions {
+@:structInit class InlayHintRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.InlayHintRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

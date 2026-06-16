@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Documentation for a class of code actions.
 	
 **/
-@:structInit extern class CodeActionKindDocumentation {
+@:structInit class CodeActionKindDocumentation {
 	/**
 		```lua
 		(field) lsp.CodeActionKindDocumentation.command: lsp.Command

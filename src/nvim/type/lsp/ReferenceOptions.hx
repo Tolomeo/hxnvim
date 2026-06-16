@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Reference options.
 **/
-@:structInit extern class ReferenceOptions {
+@:structInit class ReferenceOptions {
 	/**
 		```lua
 		(field) lsp.ReferenceOptions.workDoneProgress: boolean?

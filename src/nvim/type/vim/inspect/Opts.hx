@@ -9,7 +9,7 @@ package nvim.type.vim.inspect;
 	
 	 @nodoc
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.inspect.Opts.depth: integer?

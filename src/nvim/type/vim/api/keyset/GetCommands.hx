@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_commands
 	```
 **/
-@:structInit extern class GetCommands {
+@:structInit class GetCommands {
 	/**
 		```lua
 		(field) vim.api.keyset.get_commands.builtin: boolean?

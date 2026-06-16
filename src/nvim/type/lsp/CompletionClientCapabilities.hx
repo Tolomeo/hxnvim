@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Completion client capabilities
 **/
-@:structInit extern class CompletionClientCapabilities {
+@:structInit class CompletionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItem: (lsp.ClientCompletionItemOptions)?

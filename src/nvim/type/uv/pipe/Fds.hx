@@ -5,7 +5,7 @@ package nvim.type.uv.pipe;
 	(class) uv.pipe.fds
 	```
 **/
-@:structInit extern class Fds {
+@:structInit class Fds {
 	/**
 		```lua
 		(field) uv.pipe.fds.read: integer

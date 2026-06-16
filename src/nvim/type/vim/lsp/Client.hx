@@ -5,7 +5,7 @@ package nvim.type.vim.lsp;
 	(field) vim.lsp.Client.attached_buffers: table<integer, true>
 	```
 **/
-@:structInit extern class AttachedBuffers {
+@:structInit class AttachedBuffers {
 
 }
 
@@ -19,7 +19,7 @@ package nvim.type.vim.lsp;
 	
 	 Client commands. See [vim.lsp.ClientConfig].
 **/
-@:structInit extern class Commands {
+@:structInit class Commands {
 
 }
 
@@ -33,7 +33,7 @@ package nvim.type.vim.lsp;
 	
 	 See [vim.lsp.ClientConfig].
 **/
-@:structInit extern class Handlers {
+@:structInit class Handlers {
 
 }
 
@@ -52,7 +52,7 @@ package nvim.type.vim.lsp;
 	 "complete" ephemerally while executing |LspRequest| autocmds when replies
 	 are received from the server.
 **/
-@:structInit extern class Requests {
+@:structInit class Requests {
 
 }
 
@@ -61,7 +61,7 @@ package nvim.type.vim.lsp;
 	(class) vim.lsp.Client
 	```
 **/
-@:structInit extern class Client {
+@:structInit class Client {
 	/**
 		```lua
 		(field) vim.lsp.Client._is_stopping: boolean = false
@@ -104,7 +104,6 @@ package nvim.type.vim.lsp;
 		
 		 @nodoc
 	**/
-	@:luaDotMethod
 	function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client>;
 	/**
 		```lua
@@ -145,7 +144,6 @@ package nvim.type.vim.lsp;
 		  -> string
 		```
 	**/
-	@:luaDotMethod
 	function get_language_id(bufnr:Int, filetype:String):String;
 	/**
 		```lua

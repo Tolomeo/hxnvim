@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSemanticTokensRequestFullDelta
 	```
 **/
-@:structInit extern class ClientSemanticTokensRequestFullDelta {
+@:structInit class ClientSemanticTokensRequestFullDelta {
 	/**
 		```lua
 		(field) lsp.ClientSemanticTokensRequestFullDelta.delta: boolean?

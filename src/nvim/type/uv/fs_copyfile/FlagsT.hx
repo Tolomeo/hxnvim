@@ -5,7 +5,7 @@ package nvim.type.uv.fs_copyfile;
 	(class) uv.fs_copyfile.flags_t
 	```
 **/
-@:structInit extern class FlagsT {
+@:structInit class FlagsT {
 	/**
 		```lua
 		(field) uv.fs_copyfile.flags_t.excl: boolean

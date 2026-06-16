@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	General client capabilities.
 	
 **/
-@:structInit extern class GeneralClientCapabilities {
+@:structInit class GeneralClientCapabilities {
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.markdown: (lsp.MarkdownClientCapabilities)?

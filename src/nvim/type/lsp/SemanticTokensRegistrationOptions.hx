@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensRegistrationOptions
 	```
 **/
-@:structInit extern class SemanticTokensRegistrationOptions {
+@:structInit class SemanticTokensRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil

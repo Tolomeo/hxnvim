@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Contains additional information about the context in which a completion request is triggered.
 **/
-@:structInit extern class CompletionContext {
+@:structInit class CompletionContext {
 	/**
 		```lua
 		(field) lsp.CompletionContext.triggerCharacter: string?

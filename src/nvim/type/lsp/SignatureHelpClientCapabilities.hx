@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link SignatureHelpRequest}.
 **/
-@:structInit extern class SignatureHelpClientCapabilities {
+@:structInit class SignatureHelpClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.contextSupport: boolean?

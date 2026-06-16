@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	report is still accurate.
 	
 **/
-@:structInit extern class UnchangedDocumentDiagnosticReport {
+@:structInit class UnchangedDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.UnchangedDocumentDiagnosticReport.kind: "unchanged"

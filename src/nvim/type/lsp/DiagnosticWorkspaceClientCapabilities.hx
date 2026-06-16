@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Workspace client capabilities specific to diagnostic pull requests.
 	
 **/
-@:structInit extern class DiagnosticWorkspaceClientCapabilities {
+@:structInit class DiagnosticWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DiagnosticWorkspaceClientCapabilities.refreshSupport: boolean?

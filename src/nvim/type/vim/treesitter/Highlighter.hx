@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter;
 	(field) vim.treesitter.highlighter._conceal_checked: table<integer, boolean>
 	```
 **/
-@:structInit extern class ConcealChecked {
+@:structInit class ConcealChecked {
 
 }
 
@@ -14,7 +14,7 @@ package nvim.type.vim.treesitter;
 	(field) vim.treesitter.highlighter.active: table<integer, vim.treesitter.highlighter>
 	```
 **/
-@:structInit extern class Active {
+@:structInit class Active {
 
 }
 
@@ -27,7 +27,7 @@ package nvim.type.vim.treesitter;
 	
 	 A map from window ID to whether we are currently parsing that window asynchronously
 **/
-@:structInit extern class Parsing {
+@:structInit class Parsing {
 
 }
 
@@ -36,7 +36,7 @@ package nvim.type.vim.treesitter;
 	(class) vim.treesitter.highlighter
 	```
 **/
-@:structInit extern class Highlighter {
+@:structInit class Highlighter {
 	/**
 		```lua
 		(field) vim.treesitter.highlighter._conceal_line: boolean?
@@ -68,7 +68,6 @@ package nvim.type.vim.treesitter;
 		
 		@*return* `Created` — highlighter object
 	**/
-	@:luaDotMethod
 	@:native("new")
 	function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter;
 	/**

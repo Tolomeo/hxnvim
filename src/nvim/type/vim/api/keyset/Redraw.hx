@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.redraw
 	```
 **/
-@:structInit extern class Redraw {
+@:structInit class Redraw {
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.buf: integer?

@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.SystemCompleted
 	```
 **/
-@:structInit extern class SystemCompleted {
+@:structInit class SystemCompleted {
 	/**
 		```lua
 		(field) vim.SystemCompleted.code: integer

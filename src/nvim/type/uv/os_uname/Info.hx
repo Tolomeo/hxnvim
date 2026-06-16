@@ -5,7 +5,7 @@ package nvim.type.uv.os_uname;
 	(class) uv.os_uname.info
 	```
 **/
-@:structInit extern class Info {
+@:structInit class Info {
 	/**
 		```lua
 		(field) uv.os_uname.info.machine: string

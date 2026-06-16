@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.code_action;
 	(class) vim.lsp.buf.code_action.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.apply: boolean?

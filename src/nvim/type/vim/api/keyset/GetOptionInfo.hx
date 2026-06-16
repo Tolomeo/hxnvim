@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_option_info
 	```
 **/
-@:structInit extern class GetOptionInfo {
+@:structInit class GetOptionInfo {
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.allows_duplicates: boolean

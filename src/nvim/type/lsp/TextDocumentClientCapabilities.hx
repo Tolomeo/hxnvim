@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Text document specific client capabilities.
 **/
-@:structInit extern class TextDocumentClientCapabilities {
+@:structInit class TextDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.callHierarchy: (lsp.CallHierarchyClientCapabilities)?

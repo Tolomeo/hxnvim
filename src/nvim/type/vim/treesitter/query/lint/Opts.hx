@@ -9,7 +9,7 @@ package nvim.type.vim.treesitter.query.lint;
 	
 	 Optional keyword arguments:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.query.lint.Opts.clear: boolean

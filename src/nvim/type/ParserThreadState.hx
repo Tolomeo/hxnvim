@@ -5,6 +5,6 @@ package nvim.type;
 	(alias) ParserThreadState Expand to { timeout: integer? }
 	```
 **/
-@:structInit extern class ParserThreadState {
+@:structInit class ParserThreadState {
 	var timeout : Null<Int>;
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.fn.undotree;
 	(class) vim.fn.undotree.entry
 	```
 **/
-@:structInit extern class Entry {
+@:structInit class Entry {
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.alt: vim.fn.undotree.entry[]?

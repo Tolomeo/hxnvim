@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.start;
 	(class) vim.lsp.start.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.attach: boolean?

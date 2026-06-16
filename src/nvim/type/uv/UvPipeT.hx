@@ -23,7 +23,7 @@ package nvim.type.uv;
 	 ```
 	
 **/
-@:structInit extern class UvPipeT {
+@:structInit class UvPipeT {
 	/**
 		```lua
 		(method) uv.uv_stream_t:accept(client_stream: uv.uv_stream_t)

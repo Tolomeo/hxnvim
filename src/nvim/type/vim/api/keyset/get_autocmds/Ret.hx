@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	(class) vim.api.keyset.get_autocmds.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.buffer: integer?

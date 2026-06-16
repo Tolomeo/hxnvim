@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.format;
 	(class) vim.lsp.buf.format.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.async: boolean?

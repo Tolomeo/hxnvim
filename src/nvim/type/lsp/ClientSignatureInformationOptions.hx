@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSignatureInformationOptions
 	```
 **/
-@:structInit extern class ClientSignatureInformationOptions {
+@:structInit class ClientSignatureInformationOptions {
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.activeParameterSupport: boolean?

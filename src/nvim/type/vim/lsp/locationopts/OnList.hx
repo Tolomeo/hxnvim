@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.locationopts;
 	(class) vim.lsp.LocationOpts.OnList
 	```
 **/
-@:structInit extern class OnList {
+@:structInit class OnList {
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.context: { bufnr: integer, method: string }?

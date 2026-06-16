@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Create file operation.
 **/
-@:structInit extern class CreateFile {
+@:structInit class CreateFile {
 	/**
 		```lua
 		(field) lsp.CreateFile.annotationId: string?

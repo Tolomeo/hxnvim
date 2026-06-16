@@ -5,7 +5,7 @@ package nvim.type;
 	(field) TSLangInfo.supertypes: table<string, string[]>
 	```
 **/
-@:structInit extern class Supertypes {
+@:structInit class Supertypes {
 
 }
 
@@ -14,7 +14,7 @@ package nvim.type;
 	(field) TSLangInfo.symbols: table<string, boolean>
 	```
 **/
-@:structInit extern class Symbols {
+@:structInit class Symbols {
 
 }
 
@@ -23,7 +23,7 @@ package nvim.type;
 	(class) TSLangInfo
 	```
 **/
-@:structInit extern class TSLangInfo {
+@:structInit class TSLangInfo {
 	/**
 		```lua
 		(field) TSLangInfo._wasm: boolean

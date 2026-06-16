@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	the server is interested in receiving.
 	
 **/
-@:structInit extern class FileOperationPattern {
+@:structInit class FileOperationPattern {
 	/**
 		```lua
 		(field) lsp.FileOperationPattern.glob: string

@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.util.rename;
 	(class) vim.lsp.util.rename.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.rename.Opts.ignoreIfExists: boolean?

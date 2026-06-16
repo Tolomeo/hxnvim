@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Additional details for a completion item label.
 	
 **/
-@:structInit extern class CompletionItemLabelDetails {
+@:structInit class CompletionItemLabelDetails {
 	/**
 		```lua
 		(field) lsp.CompletionItemLabelDetails.description: string?

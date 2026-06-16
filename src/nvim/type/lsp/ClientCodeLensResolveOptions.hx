@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCodeLensResolveOptions
 	```
 **/
-@:structInit extern class ClientCodeLensResolveOptions {
+@:structInit class ClientCodeLensResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientCodeLensResolveOptions.properties: string[]

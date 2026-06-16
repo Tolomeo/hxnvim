@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The publish diagnostic notification's parameters.
 **/
-@:structInit extern class PublishDiagnosticsParams {
+@:structInit class PublishDiagnosticsParams {
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.diagnostics: lsp.Diagnostic[]

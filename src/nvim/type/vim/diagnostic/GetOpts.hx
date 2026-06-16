@@ -9,7 +9,7 @@ package nvim.type.vim.diagnostic;
 	
 	 A table with the following keys:
 **/
-@:structInit extern class GetOpts {
+@:structInit class GetOpts {
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.lnum: integer?

@@ -5,7 +5,7 @@ package nvim.type.uv.getrusage;
 	(class) uv.getrusage.result
 	```
 **/
-@:structInit extern class Result {
+@:structInit class Result {
 	/**
 		```lua
 		(field) uv.getrusage.result.idrss: integer

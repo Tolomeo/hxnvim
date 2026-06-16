@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic;
 	(class) vim.diagnostic.Handler
 	```
 **/
-@:structInit extern class Handler {
+@:structInit class Handler {
 	/**
 		```lua
 		(field) vim.diagnostic.Handler.hide: fun(namespace: integer, bufnr: integer)?

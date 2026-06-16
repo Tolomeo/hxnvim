@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint client capabilities.
 	
 **/
-@:structInit extern class InlayHintClientCapabilities {
+@:structInit class InlayHintClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlayHintClientCapabilities.dynamicRegistration: boolean?

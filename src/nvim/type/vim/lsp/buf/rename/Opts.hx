@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.rename;
 	(class) vim.lsp.buf.rename.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.bufnr: integer?

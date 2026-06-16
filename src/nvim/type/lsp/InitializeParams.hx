@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.InitializeParams
 	```
 **/
-@:structInit extern class InitializeParams {
+@:structInit class InitializeParams {
 	/**
 		```lua
 		(field) lsp.InitializeParams.capabilities: lsp.ClientCapabilities

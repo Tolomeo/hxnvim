@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents the connection of two locations. Provides additional metadata over normal {@link Location locations},
 	including an origin range.
 **/
-@:structInit extern class LocationLink {
+@:structInit class LocationLink {
 	/**
 		```lua
 		(field) lsp.LocationLink.originSelectionRange: (lsp.Range)?

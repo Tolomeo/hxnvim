@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.LinkedEditingRangeOptions
 	```
 **/
-@:structInit extern class LinkedEditingRangeOptions {
+@:structInit class LinkedEditingRangeOptions {
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeOptions.workDoneProgress: boolean?

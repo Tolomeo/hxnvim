@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.user_command
 	```
 **/
-@:structInit extern class UserCommand {
+@:structInit class UserCommand {
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.addr: any

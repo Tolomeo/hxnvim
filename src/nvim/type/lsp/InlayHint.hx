@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint information.
 	
 **/
-@:structInit extern class InlayHint {
+@:structInit class InlayHint {
 	/**
 		```lua
 		(field) lsp.InlayHint.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?

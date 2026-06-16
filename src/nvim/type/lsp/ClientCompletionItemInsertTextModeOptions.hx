@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCompletionItemInsertTextModeOptions
 	```
 **/
-@:structInit extern class ClientCompletionItemInsertTextModeOptions {
+@:structInit class ClientCompletionItemInsertTextModeOptions {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemInsertTextModeOptions.valueSet: 1|2[]

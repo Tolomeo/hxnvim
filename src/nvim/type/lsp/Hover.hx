@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The result of a hover request.
 **/
-@:structInit extern class Hover {
+@:structInit class Hover {
 	/**
 		```lua
 		(field) lsp.Hover.contents: string|lsp.MarkedStringWithLanguage|lsp.MarkupContent|string|lsp.MarkedStringWithLanguage[]

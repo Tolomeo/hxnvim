@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.Float
 	```
 **/
-@:structInit extern class Float {
+@:structInit class Float {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.border: string?

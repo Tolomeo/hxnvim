@@ -5,7 +5,7 @@ package nvim.type.vim.api.keyset.parse_cmd;
 	(field) vim.api.keyset.parse_cmd.mods.filter: { force: boolean, pattern: string }
 	```
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	var force : Bool;
 	var pattern : String;
 }
@@ -15,7 +15,7 @@ package nvim.type.vim.api.keyset.parse_cmd;
 	(class) vim.api.keyset.parse_cmd.mods
 	```
 **/
-@:structInit extern class Mods {
+@:structInit class Mods {
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.browse: boolean

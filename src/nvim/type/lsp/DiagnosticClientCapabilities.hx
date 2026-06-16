@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to diagnostic pull requests.
 	
 **/
-@:structInit extern class DiagnosticClientCapabilities {
+@:structInit class DiagnosticClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.codeDescriptionSupport: boolean?

@@ -5,7 +5,7 @@ package nvim.type.vim.hl.range;
 	(class) vim.hl.range.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.hl.range.Opts.inclusive: boolean?

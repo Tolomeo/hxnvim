@@ -12,7 +12,7 @@ package nvim.type.uv;
 	 handle uses the best backend for the job on each platform.
 	
 **/
-@:structInit extern class UvFsEventT {
+@:structInit class UvFsEventT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)

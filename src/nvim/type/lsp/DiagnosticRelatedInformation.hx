@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	used to point to code locations that cause or related to a diagnostics, e.g when duplicating
 	a symbol in a scope.
 **/
-@:structInit extern class DiagnosticRelatedInformation {
+@:structInit class DiagnosticRelatedInformation {
 	/**
 		```lua
 		(field) lsp.DiagnosticRelatedInformation.location: lsp.Location

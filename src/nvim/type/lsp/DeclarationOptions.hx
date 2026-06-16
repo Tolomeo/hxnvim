@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DeclarationOptions
 	```
 **/
-@:structInit extern class DeclarationOptions {
+@:structInit class DeclarationOptions {
 	/**
 		```lua
 		(field) lsp.DeclarationOptions.workDoneProgress: boolean?
