@@ -1,7 +1,6 @@
 package hxnvim.transpiler.parser;
 
 import haxe.Exception;
-import haxe.Serializer;
 
 using hxnvim.common.ArrayTools;
 using hxnvim.common.StringTools;
@@ -92,8 +91,9 @@ class FunctionSymbolParser extends SymbolParser {
 			});
 			final overloadFile = '${o.pos.file}:${o.pos.min}-${o.pos.max}';
 			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
+			final overloadType = new LiteralTypeParser(overloadJson, params).parse();
 
-			return new LiteralTypeParser(overloadJson, params).parse();
+			return 'function ${overloadType.replace("->", ":")} {}';
 		});
 	}
 

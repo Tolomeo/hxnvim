@@ -75,9 +75,8 @@ private class ClassGenerator {
 				throw new Exception('Invalid meta for method: ${m}');
 		});
 
-		overloads.iter(overload_ -> {
-			final declarationSyntax = 'function ${overload_.replace("->", ":")} {}';
-			methodMetas.push(new MetaGenerator("overload", [macro $i{declarationSyntax}]).generate());
+		overloads.iter(o -> {
+			methodMetas.push(new MetaGenerator("overload", [macro $i{o}]).generate());
 		});
 
 		return methodMetas;
