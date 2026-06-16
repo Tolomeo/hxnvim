@@ -177,11 +177,12 @@ class TableSymbolParser extends SymbolParser {
 		return switch (type.select('kind').string()) {
 			case 'function':
 				final symbol = new FunctionSymbolParser(name, doc, meta, access, type).parse();
-				TableField.Method(symbol);
+				TableField.Method(symbol, false);
 
 			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
-				TableField.Property(symbol);
+				final opt = symbol.type.startsWith('Null<');
+				TableField.Property(symbol, opt);
 
 			case k:
 				throw new Exception('Unexpected kind "${k}" received for table "${this.name}" in field "${name}" of type ${type.getValue()}');

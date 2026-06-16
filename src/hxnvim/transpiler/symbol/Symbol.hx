@@ -13,6 +13,7 @@ enum SymbolMeta {
 	Deprecated;
 	Native(name:String);
 	StructInit;
+	Optional;
 }
 
 typedef Variable = {
@@ -52,8 +53,8 @@ typedef Function = {
 }
 
 enum TableField {
-	Property(variable:Variable);
-	Method(function_:Function);
+	Property(symbol:Variable, opt:Bool);
+	Method(symbol:Function, opt:Bool);
 }
 
 typedef Table = {

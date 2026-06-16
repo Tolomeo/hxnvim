@@ -34,14 +34,26 @@ private class ClassGenerator {
 				new MetaGenerator("deprecated").generate();
 			case SymbolMeta.Native(native):
 				new MetaGenerator("native", [macro $v{native}]).generate();
+			case SymbolMeta.Optional:
+				new MetaGenerator("optional").generate();
 			case _:
 				throw new Exception('Invalid meta for property: ${m}');
 		});
 	}
 
-	function generateProperty(property:Variable) {
+	function generateProperty(property:Variable, opt:Bool) {
 		final name = property.name.toFieldName();
-		final meta = name == property.name ? this.generatePropertyMeta(property.meta) : this.generatePropertyMeta([SymbolMeta.Native(property.name)].concat(property.meta));
+
+		final propertyMeta = property.meta.copy();
+		if (name != property.name) {
+			propertyMeta.unshift(SymbolMeta.Native(property.name));
+		}
+		if (opt) {
+			propertyMeta.unshift(SymbolMeta.Optional);
+		}
+
+		final meta = this.generatePropertyMeta(propertyMeta);
+
 		final access = this.generatePropertyAccess(property.access);
 
 		return {
@@ -70,6 +82,8 @@ private class ClassGenerator {
 				methodMetas.push(new MetaGenerator("deprecated").generate());
 			case SymbolMeta.Native(native):
 				methodMetas.push(new MetaGenerator("native", [macro $v{native}]).generate());
+			case SymbolMeta.Optional:
+				methodMetas.push(new MetaGenerator("optional").generate());
 			case SymbolMeta.Method: // it is left to overrides to decide what to do with this
 			case _:
 				throw new Exception('Invalid meta for method: ${m}');
@@ -82,10 +96,19 @@ private class ClassGenerator {
 		return methodMetas;
 	}
 
-	function generateMethod(method:Function) {
+	function generateMethod(method:Function, opt: Bool) {
 		final name = method.name.toFieldName();
-		final meta = name == method.name ? this.generateMethodMeta(method.meta,
-			method.type.overloads) : this.generateMethodMeta([SymbolMeta.Native(method.name)].concat(method.meta), method.type.overloads);
+
+		final methodMeta = method.meta.copy();
+		if (name != method.name) {
+			methodMeta.unshift(SymbolMeta.Native(method.name));
+		}
+		if (opt) {
+			methodMeta.unshift(SymbolMeta.Optional);
+		}
+
+		final meta = this.generateMethodMeta(methodMeta, method.type.overloads);
+		
 		final access = this.generateMethodAccess(method.access);
 
 		return {
@@ -112,8 +135,8 @@ private class ClassGenerator {
 	function generateFields(fields:Array<TableField>):Array<Field> {
 		return fields.map(field -> {
 			return switch (field) {
-				case TableField.Method(func): this.generateMethod(func);
-				case TableField.Property(prop): this.generateProperty(prop);
+				case TableField.Method(func, opt): this.generateMethod(func, opt);
+				case TableField.Property(prop, opt): this.generateProperty(prop, opt);
 				case s: throw new Exception('Unexpected ${s} table field received');
 			}
 		});
