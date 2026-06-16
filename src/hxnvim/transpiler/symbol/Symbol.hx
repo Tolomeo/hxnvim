@@ -36,25 +36,24 @@ typedef Arg = {
 
 typedef Return = LiteralType;
 
-typedef Function = {
-	name:String,
-	doc:String,
-	meta:Array<SymbolMeta>,
-	access:Array<SymbolAccess>,
+typedef Signature = {
 	params:Array<Param>,
 	args:Array<Arg>,
 	ret:Return,
 	overloads:Array<LiteralType>
 }
 
+typedef Function = {
+	name:String,
+	doc:String,
+	meta:Array<SymbolMeta>,
+	access:Array<SymbolAccess>,
+	type:Signature
+}
+
 enum TableField {
 	Property(variable:Variable);
 	Method(function_:Function);
-}
-
-typedef Alias = {
-	name:String,
-	type:LiteralType
 }
 
 typedef Table = {
@@ -63,6 +62,11 @@ typedef Table = {
 	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
 	fields:Array<TableField>
+}
+
+typedef Alias = {
+	name:String,
+	type:LiteralType
 }
 
 typedef Enumerator = {

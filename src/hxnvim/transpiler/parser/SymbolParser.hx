@@ -102,8 +102,8 @@ class FunctionSymbolParser extends SymbolParser {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
 			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
-			case rs: 
-				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parse()).padEnd(6, "Void"); 
+			case rs:
+				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parse()).padEnd(6, "Void");
 				Target.toHelperReference('Multireturn<${returns.join(", ")}>');
 		}
 	}
@@ -119,10 +119,12 @@ class FunctionSymbolParser extends SymbolParser {
 			doc: this.doc,
 			meta: this.meta,
 			access: this.access,
-			params: params,
-			args: args,
-			ret: ret,
-			overloads: overloads
+			type: {
+				params: params,
+				args: args,
+				ret: ret,
+				overloads: overloads
+			}
 		};
 	}
 }

@@ -85,7 +85,7 @@ private class ClassGenerator {
 	function generateMethod(method:Function) {
 		final name = method.name.toFieldName();
 		final meta = name == method.name ? this.generateMethodMeta(method.meta,
-			method.overloads) : this.generateMethodMeta([SymbolMeta.Native(method.name)].concat(method.meta), method.overloads);
+			method.type.overloads) : this.generateMethodMeta([SymbolMeta.Native(method.name)].concat(method.meta), method.type.overloads);
 		final access = this.generateMethodAccess(method.access);
 
 		return {
@@ -94,16 +94,16 @@ private class ClassGenerator {
 			name: name,
 			doc: method.doc,
 			kind: FFun({
-				params: method.params.map(p -> ({
+				params: method.type.params.map(p -> ({
 					name: p.name,
 					constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
 				} : TypeParamDecl)),
-				args: method.args.map(a -> ({
+				args: method.type.args.map(a -> ({
 					name: a.name,
 					type: new LiteralTypeGenerator().generate(a.type),
 					opt: a.opt,
 				} : FunctionArg)),
-				ret: new LiteralTypeGenerator().generate(method.ret)
+				ret: new LiteralTypeGenerator().generate(method.type.ret)
 			}),
 			pos: Context.currentPos()
 		}
