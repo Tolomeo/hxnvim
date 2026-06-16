@@ -164,6 +164,27 @@ private class ClassGenerator {
 	}
 }
 
+class DataClassGenerator extends ClassGenerator {
+	override public function generate(?meta:Array<SymbolMeta>):TypeDefinition {
+		meta = meta.or([]).concat(this.table.meta);
+
+		final name = this.table.name;
+
+		final fields = this.generateFields(this.table.fields);
+
+		return {
+			name: name,
+			doc: this.table.doc,
+			pack: [],
+			kind: TDClass(),
+			meta: this.generateMeta(meta),
+			fields: fields,
+			pos: Context.currentPos(),
+			isExtern: false,
+		};
+	}
+}
+
 class InstanceClassGenerator extends ClassGenerator {
 	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
 		final isMethod = methodMeta.contains(SymbolMeta.Method);
