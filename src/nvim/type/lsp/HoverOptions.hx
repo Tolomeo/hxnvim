@@ -15,5 +15,6 @@ package nvim.type.lsp;
 		(field) lsp.HoverOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

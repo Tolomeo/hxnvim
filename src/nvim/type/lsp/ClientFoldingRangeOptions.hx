@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		folding ranges to display custom labels instead of the default text.
 		
 	**/
+	@:optional
 	var collapsedText : Null<Bool>;
 }

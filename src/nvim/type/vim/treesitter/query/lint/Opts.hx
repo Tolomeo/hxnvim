@@ -33,5 +33,6 @@ package nvim.type.vim.treesitter.query.lint;
 		 Language(s) to use for checking the query.
 		 If multiple languages are specified, queries are validated for all of them
 	**/
+	@:optional
 	var langs : Null<haxe.extern.EitherType<String, Array<String>>>;
 }

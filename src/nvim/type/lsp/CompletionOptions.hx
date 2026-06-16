@@ -26,6 +26,7 @@ package nvim.type.lsp;
 		completion item the ones on the completion item win.
 		
 	**/
+	@:optional
 	var allCommitCharacters : Null<Array<String>>;
 	/**
 		```lua
@@ -39,6 +40,7 @@ package nvim.type.lsp;
 		capabilities.
 		
 	**/
+	@:optional
 	var completionItem : Null<nvim.type.lsp.ServerCompletionItemOptions>;
 	/**
 		```lua
@@ -51,6 +53,7 @@ package nvim.type.lsp;
 		The server provides support to resolve additional
 		information for a completion item.
 	**/
+	@:optional
 	var resolveProvider : Null<Bool>;
 	/**
 		```lua
@@ -69,11 +72,13 @@ package nvim.type.lsp;
 		If code complete should automatically be trigger on characters not being valid inside
 		an identifier (for example `.` in JavaScript) list them in `triggerCharacters`.
 	**/
+	@:optional
 	var triggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

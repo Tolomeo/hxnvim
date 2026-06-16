@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Ignore the operation if the file doesn't exist.
 	**/
+	@:optional
 	var ignoreIfNotExists : Null<Bool>;
 	/**
 		```lua
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		
 		Delete the content recursively if a folder is denoted.
 	**/
+	@:optional
 	var recursive : Null<Bool>;
 }

@@ -25,6 +25,7 @@ package nvim.type.lsp;
 		Will be matched against the language id of the
 		notebook cell document. '*' matches every language.
 	**/
+	@:optional
 	var language : Null<String>;
 	/**
 		```lua

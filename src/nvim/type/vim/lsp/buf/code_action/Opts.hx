@@ -17,6 +17,7 @@ package nvim.type.vim.lsp.buf.code_action;
 		 When set to `true`, and there is just one remaining action
 		 (after filtering), the action is applied without user query.
 	**/
+	@:optional
 	var apply : Null<Bool>;
 	/**
 		```lua
@@ -40,6 +41,7 @@ package nvim.type.vim.lsp.buf.code_action;
 		     or `quickfix`.
 		   - {triggerKind}? (`integer`) The reason why code actions were requested.
 	**/
+	@:optional
 	var context : Null<nvim.type.lsp.CodeActionContext>;
 	/**
 		```lua
@@ -58,6 +60,7 @@ package nvim.type.vim.lsp.buf.code_action;
 		  -> boolean
 		```
 	**/
+	@:optional
 	var filter : Null<(x:haxe.extern.EitherType<nvim.type.lsp.CodeAction, nvim.type.lsp.Command>) -> Bool>;
 	/**
 		```lua
@@ -72,5 +75,6 @@ package nvim.type.vim.lsp.buf.code_action;
 		 Table must contain `start` and `end` keys with {row,col} tuples
 		 using mark-like indexing. See |api-indexing|
 	**/
+	@:optional
 	var range : Null<{ var start : Array<Int>; var end : Array<Int>; }>;
 }

@@ -17,6 +17,7 @@ package nvim.type.vim.gsplit;
 		
 		 Use `sep` literally (as in string.find).
 	**/
+	@:optional
 	var plain : Null<Bool>;
 	/**
 		```lua
@@ -28,5 +29,6 @@ package nvim.type.vim.gsplit;
 		
 		 Discard empty segments at start and end of the sequence.
 	**/
+	@:optional
 	var trimempty : Null<Bool>;
 }

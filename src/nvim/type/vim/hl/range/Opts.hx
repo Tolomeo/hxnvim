@@ -17,6 +17,7 @@ package nvim.type.vim.hl.range;
 		 Indicates whether the range is end-inclusive
 		 (default: `false`)
 	**/
+	@:optional
 	var inclusive : Null<Bool>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.vim.hl.range;
 		 Highlight priority
 		 (default: `vim.hl.priorities.user`)
 	**/
+	@:optional
 	var priority : Null<Int>;
 	/**
 		```lua
@@ -42,6 +44,7 @@ package nvim.type.vim.hl.range;
 		 Type of range. See [getregtype()]
 		 (default: `'v'` i.e. charwise)
 	**/
+	@:optional
 	var regtype : Null<String>;
 	/**
 		```lua
@@ -54,5 +57,6 @@ package nvim.type.vim.hl.range;
 		 Time in ms before highlight is cleared
 		 (default: -1 no timeout)
 	**/
+	@:optional
 	var timeout : Null<Int>;
 }

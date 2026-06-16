@@ -27,5 +27,6 @@ package nvim.type.lsp;
 		is useful for situation where a server for example detects a project wide
 		change that requires such a calculation.
 	**/
+	@:optional
 	var refreshSupport : Null<Bool>;
 }

@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		The type of the enclosing notebook.
 	**/
+	@:optional
 	var notebookType : Null<String>;
 	/**
 		```lua
@@ -66,5 +67,6 @@ package nvim.type.lsp;
 		
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
+	@:optional
 	var scheme : Null<String>;
 }

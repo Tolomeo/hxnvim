@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		to the workspace by supporting the request
 		'workspace/applyEdit'
 	**/
+	@:optional
 	var applyEdit : Null<Bool>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 		workspace.
 		
 	**/
+	@:optional
 	var codeLens : Null<nvim.type.lsp.CodeLensWorkspaceClientCapabilities>;
 	/**
 		```lua
@@ -47,6 +49,7 @@ package nvim.type.lsp;
 		The client supports `workspace/configuration` requests.
 		
 	**/
+	@:optional
 	var configuration : Null<Bool>;
 	/**
 		```lua
@@ -65,6 +68,7 @@ package nvim.type.lsp;
 		workspace.
 		
 	**/
+	@:optional
 	var diagnostics : Null<nvim.type.lsp.DiagnosticWorkspaceClientCapabilities>;
 	/**
 		```lua
@@ -76,6 +80,7 @@ package nvim.type.lsp;
 		
 		Capabilities specific to the `workspace/didChangeConfiguration` notification.
 	**/
+	@:optional
 	var didChangeConfiguration : Null<nvim.type.lsp.DidChangeConfigurationClientCapabilities>;
 	/**
 		```lua
@@ -87,6 +92,7 @@ package nvim.type.lsp;
 		
 		Capabilities specific to the `workspace/didChangeWatchedFiles` notification.
 	**/
+	@:optional
 	var didChangeWatchedFiles : Null<nvim.type.lsp.DidChangeWatchedFilesClientCapabilities>;
 	/**
 		```lua
@@ -102,6 +108,7 @@ package nvim.type.lsp;
 		
 		Capabilities specific to the `workspace/executeCommand` request.
 	**/
+	@:optional
 	var executeCommand : Null<nvim.type.lsp.ExecuteCommandClientCapabilities>;
 	/**
 		```lua
@@ -123,6 +130,7 @@ package nvim.type.lsp;
 		
 		Since 3.16.0
 	**/
+	@:optional
 	var fileOperations : Null<nvim.type.lsp.FileOperationClientCapabilities>;
 	/**
 		```lua
@@ -140,6 +148,7 @@ package nvim.type.lsp;
 		Capabilities specific to the folding range requests scoped to the workspace.
 		
 	**/
+	@:optional
 	var foldingRange : Null<nvim.type.lsp.FoldingRangeWorkspaceClientCapabilities>;
 	/**
 		```lua
@@ -158,6 +167,7 @@ package nvim.type.lsp;
 		workspace.
 		
 	**/
+	@:optional
 	var inlayHint : Null<nvim.type.lsp.InlayHintWorkspaceClientCapabilities>;
 	/**
 		```lua
@@ -176,6 +186,7 @@ package nvim.type.lsp;
 		workspace.
 		
 	**/
+	@:optional
 	var inlineValue : Null<nvim.type.lsp.InlineValueWorkspaceClientCapabilities>;
 	/**
 		```lua
@@ -189,6 +200,7 @@ package nvim.type.lsp;
 		workspace.
 		
 	**/
+	@:optional
 	var semanticTokens : Null<nvim.type.lsp.SemanticTokensWorkspaceClientCapabilities>;
 	/**
 		```lua
@@ -204,6 +216,7 @@ package nvim.type.lsp;
 		
 		Capabilities specific to the `workspace/symbol` request.
 	**/
+	@:optional
 	var symbol : Null<nvim.type.lsp.WorkspaceSymbolClientCapabilities>;
 	/**
 		```lua
@@ -221,6 +234,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `workspace/textDocumentContent` request.
 		
 	**/
+	@:optional
 	var textDocumentContent : Null<nvim.type.lsp.TextDocumentContentClientCapabilities>;
 	/**
 		```lua
@@ -232,6 +246,7 @@ package nvim.type.lsp;
 		
 		Capabilities specific to `WorkspaceEdit`s.
 	**/
+	@:optional
 	var workspaceEdit : Null<nvim.type.lsp.WorkspaceEditClientCapabilities>;
 	/**
 		```lua
@@ -244,5 +259,6 @@ package nvim.type.lsp;
 		The client has support for workspace folders.
 		
 	**/
+	@:optional
 	var workspaceFolders : Null<Bool>;
 }

@@ -20,5 +20,6 @@ package nvim.type.lsp;
 		
 		Whether document highlight supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

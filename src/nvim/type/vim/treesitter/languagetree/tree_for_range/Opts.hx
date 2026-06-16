@@ -18,5 +18,6 @@ package nvim.type.vim.treesitter.languagetree.tree_for_range;
 		 Ignore injected languages
 		 (default: `true`)
 	**/
+	@:optional
 	var ignore_injections : Null<Bool>;
 }

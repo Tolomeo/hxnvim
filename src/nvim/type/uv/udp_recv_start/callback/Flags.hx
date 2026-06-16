@@ -11,11 +11,13 @@ package nvim.type.uv.udp_recv_start.callback;
 		(field) uv.udp_recv_start.callback.flags.mmsg_chunk: boolean|nil
 		```
 	**/
+	@:optional
 	var mmsg_chunk : Null<Bool>;
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.flags.partial: boolean|nil
 		```
 	**/
+	@:optional
 	var partial : Null<Bool>;
 }

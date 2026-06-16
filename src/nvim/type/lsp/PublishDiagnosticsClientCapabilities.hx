@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		Client supports a codeDescription property
 		
 	**/
+	@:optional
 	var codeDescriptionSupport : Null<Bool>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 		`textDocument/codeAction` request.
 		
 	**/
+	@:optional
 	var dataSupport : Null<Bool>;
 	/**
 		```lua
@@ -46,6 +48,7 @@ package nvim.type.lsp;
 		
 		Whether the clients accepts diagnostics with related information.
 	**/
+	@:optional
 	var relatedInformation : Null<Bool>;
 	/**
 		```lua
@@ -59,6 +62,7 @@ package nvim.type.lsp;
 		Clients supporting tags have to handle unknown tags gracefully.
 		
 	**/
+	@:optional
 	var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
 	/**
 		```lua
@@ -72,5 +76,6 @@ package nvim.type.lsp;
 		`textDocument/publishDiagnostics` notification's parameter.
 		
 	**/
+	@:optional
 	var versionSupport : Null<Bool>;
 }

@@ -18,6 +18,7 @@ package nvim.type.lsp;
 		literal.
 		
 	**/
+	@:optional
 	var activeParameterSupport : Null<Bool>;
 	/**
 		```lua
@@ -30,6 +31,7 @@ package nvim.type.lsp;
 		Client supports the following content formats for the documentation
 		property. The order describes the preferred format of the client.
 	**/
+	@:optional
 	var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
@@ -44,6 +46,7 @@ package nvim.type.lsp;
 		indicate that no parameter should be active.
 		
 	**/
+	@:optional
 	var noActiveParameterSupport : Null<Bool>;
 	/**
 		```lua
@@ -55,5 +58,6 @@ package nvim.type.lsp;
 		
 		Client capabilities specific to parameter information.
 	**/
+	@:optional
 	var parameterInformation : Null<nvim.type.lsp.ClientSignatureParameterInformationOptions>;
 }

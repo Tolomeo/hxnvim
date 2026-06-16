@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Ignore if exists.
 	**/
+	@:optional
 	var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		
 		Overwrite existing file. Overwrite wins over `ignoreIfExists`
 	**/
+	@:optional
 	var overwrite : Null<Bool>;
 }

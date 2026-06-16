@@ -26,6 +26,7 @@ package nvim.type.lsp;
 		
 		The server is interested in receiving didCreateFiles notifications.
 	**/
+	@:optional
 	var didCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
@@ -42,6 +43,7 @@ package nvim.type.lsp;
 		
 		The server is interested in receiving didDeleteFiles file notifications.
 	**/
+	@:optional
 	var didDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
@@ -58,6 +60,7 @@ package nvim.type.lsp;
 		
 		The server is interested in receiving didRenameFiles notifications.
 	**/
+	@:optional
 	var didRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
@@ -74,6 +77,7 @@ package nvim.type.lsp;
 		
 		The server is interested in receiving willCreateFiles requests.
 	**/
+	@:optional
 	var willCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
@@ -90,6 +94,7 @@ package nvim.type.lsp;
 		
 		The server is interested in receiving willDeleteFiles file requests.
 	**/
+	@:optional
 	var willDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
@@ -106,5 +111,6 @@ package nvim.type.lsp;
 		
 		The server is interested in receiving willRenameFiles requests.
 	**/
+	@:optional
 	var willRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 }

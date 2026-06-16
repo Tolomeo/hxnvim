@@ -15,6 +15,7 @@ package nvim.type.vim.treesitter.languagetree.new_;
 		(field) vim.treesitter.LanguageTree.new.Opts.injections: table<string, string>?
 		```
 	**/
+	@:optional
 	var injections : Null<lua.Table<String, String>>;
 	/**
 		```lua
@@ -25,5 +26,6 @@ package nvim.type.vim.treesitter.languagetree.new_;
 		
 		Deprecated
 	**/
+	@:optional
 	var queries : Null<lua.Table<String, String>>;
 }

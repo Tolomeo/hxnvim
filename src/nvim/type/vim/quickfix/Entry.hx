@@ -15,6 +15,7 @@ package nvim.type.vim.quickfix;
 		
 		 buffer number; must be the number of a valid buffer
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -26,6 +27,7 @@ package nvim.type.vim.quickfix;
 		
 		 column number
 	**/
+	@:optional
 	var col : Null<Int>;
 	/**
 		```lua
@@ -37,6 +39,7 @@ package nvim.type.vim.quickfix;
 		
 		 end column, if the item spans multiple columns
 	**/
+	@:optional
 	var end_col : Null<Int>;
 	/**
 		```lua
@@ -48,6 +51,7 @@ package nvim.type.vim.quickfix;
 		
 		 end of lines, if the item spans multiple lines
 	**/
+	@:optional
 	var end_lnum : Null<Int>;
 	/**
 		```lua
@@ -60,6 +64,7 @@ package nvim.type.vim.quickfix;
 		 name of a file; only used when "bufnr" is not
 		 present or it is invalid.
 	**/
+	@:optional
 	var filename : Null<String>;
 	/**
 		```lua
@@ -71,6 +76,7 @@ package nvim.type.vim.quickfix;
 		
 		 line number in the file
 	**/
+	@:optional
 	var lnum : Null<Int>;
 	/**
 		```lua
@@ -83,6 +89,7 @@ package nvim.type.vim.quickfix;
 		 name of a module; if given it will be used in
 		 quickfix error window instead of the filename.
 	**/
+	@:optional
 	var module : Null<String>;
 	/**
 		```lua
@@ -94,6 +101,7 @@ package nvim.type.vim.quickfix;
 		
 		 error number
 	**/
+	@:optional
 	var nr : Null<Int>;
 	/**
 		```lua
@@ -105,6 +113,7 @@ package nvim.type.vim.quickfix;
 		
 		 search pattern used to locate the error
 	**/
+	@:optional
 	var pattern : Null<String>;
 	/**
 		```lua
@@ -116,6 +125,7 @@ package nvim.type.vim.quickfix;
 		
 		 description of the error
 	**/
+	@:optional
 	var text : Null<String>;
 	/**
 		```lua
@@ -127,6 +137,7 @@ package nvim.type.vim.quickfix;
 		
 		 single-character error type, 'E', 'W', etc.
 	**/
+	@:optional
 	var type : Null<String>;
 	/**
 		```lua
@@ -139,6 +150,7 @@ package nvim.type.vim.quickfix;
 		 custom data associated with the item, can be
 		 any type.
 	**/
+	@:optional
 	var user_data : Null<Any>;
 	/**
 		```lua
@@ -150,6 +162,7 @@ package nvim.type.vim.quickfix;
 		
 		 recognized error message
 	**/
+	@:optional
 	var valid : Null<Bool>;
 	/**
 		```lua
@@ -162,5 +175,6 @@ package nvim.type.vim.quickfix;
 		 when non-zero: "col" is visual column
 		 when zero: "col" is byte index
 	**/
+	@:optional
 	var vcol : Null<Int>;
 }

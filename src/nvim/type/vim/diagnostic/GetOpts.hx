@@ -20,6 +20,7 @@ package nvim.type.vim.diagnostic;
 		
 		 Limit diagnostics to those spanning the specified line number.
 	**/
+	@:optional
 	var lnum : Null<Int>;
 	/**
 		```lua
@@ -31,6 +32,7 @@ package nvim.type.vim.diagnostic;
 		
 		 Limit diagnostics to one or more namespaces.
 	**/
+	@:optional
 	var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
 	/**
 		```lua
@@ -50,5 +52,6 @@ package nvim.type.vim.diagnostic;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

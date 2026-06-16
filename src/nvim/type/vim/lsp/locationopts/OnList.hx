@@ -15,6 +15,7 @@ package nvim.type.vim.lsp.locationopts;
 		
 		Subset of `ctx` from |lsp-handler|.
 	**/
+	@:optional
 	var context : Null<{ var bufnr : Int; var method : String; }>;
 	/**
 		```lua
@@ -35,5 +36,6 @@ package nvim.type.vim.lsp.locationopts;
 		
 		Title for the list.
 	**/
+	@:optional
 	var title : Null<String>;
 }

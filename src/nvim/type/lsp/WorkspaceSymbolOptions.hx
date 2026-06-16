@@ -22,11 +22,13 @@ package nvim.type.lsp;
 		information for a workspace symbol.
 		
 	**/
+	@:optional
 	var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

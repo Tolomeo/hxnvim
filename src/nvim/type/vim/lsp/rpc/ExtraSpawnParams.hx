@@ -19,6 +19,7 @@ package nvim.type.vim.lsp.rpc;
 		
 		Working directory for the LSP server process
 	**/
+	@:optional
 	var cwd : Null<String>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.vim.lsp.rpc;
 		
 		Detach the LSP server process from the current process
 	**/
+	@:optional
 	var detached : Null<Bool>;
 	/**
 		```lua
@@ -39,5 +41,6 @@ package nvim.type.vim.lsp.rpc;
 		
 		Additional environment variables for LSP server process. See |vim.system()|
 	**/
+	@:optional
 	var env : Null<lua.Table<String, String>>;
 }

@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		Whether inlay hints support dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -33,5 +34,6 @@ package nvim.type.lsp;
 		Indicates which properties a client can resolve lazily on an inlay
 		hint.
 	**/
+	@:optional
 	var resolveSupport : Null<nvim.type.lsp.ClientInlayHintResolveOptions>;
 }

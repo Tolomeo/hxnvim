@@ -11,6 +11,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		(field) vim.lsp.util.open_floating_preview.Opts._update_win: integer?
 		```
 	**/
+	@:optional
 	var _update_win : Null<Int>;
 	/**
 		```lua
@@ -28,6 +29,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		   to display the full window height.
 		 (default: `'auto'`)
 	**/
+	@:optional
 	var anchor_bias : Null<String>;
 	/**
 		```lua
@@ -38,6 +40,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		override `border`
 	**/
+	@:optional
 	var border : Null<haxe.extern.EitherType<String, Array<Dynamic>>>;
 	/**
 		```lua
@@ -49,6 +52,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 List of events that closes the floating window
 	**/
+	@:optional
 	var close_events : Null<lua.Table.AnyTable>;
 	/**
 		```lua
@@ -62,6 +66,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		 window with the same {focus_id}
 		 (default: `true`)
 	**/
+	@:optional
 	var focus : Null<Bool>;
 	/**
 		```lua
@@ -73,6 +78,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 If a popup with this id is opened, then focus it
 	**/
+	@:optional
 	var focus_id : Null<String>;
 	/**
 		```lua
@@ -85,6 +91,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		 Make float focusable.
 		 (default: `true`)
 	**/
+	@:optional
 	var focusable : Null<Bool>;
 	/**
 		```lua
@@ -96,6 +103,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 Height of floating window
 	**/
+	@:optional
 	var height : Null<Int>;
 	/**
 		```lua
@@ -107,6 +115,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 Maximal height of floating window
 	**/
+	@:optional
 	var max_height : Null<Int>;
 	/**
 		```lua
@@ -118,6 +127,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 Maximal width of floating window
 	**/
+	@:optional
 	var max_width : Null<Int>;
 	/**
 		```lua
@@ -129,6 +139,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 offset to add to `col`
 	**/
+	@:optional
 	var offset_x : Null<Int>;
 	/**
 		```lua
@@ -140,6 +151,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 offset to add to `row`
 	**/
+	@:optional
 	var offset_y : Null<Int>;
 	/**
 		```lua
@@ -151,18 +163,21 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 (default: `'cursor'`)
 	**/
+	@:optional
 	var relative : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.util.open_floating_preview.Opts.title: (string|[string, string][])?
 		```
 	**/
+	@:optional
 	var title : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.util.open_floating_preview.Opts.title_pos: ('center'|'left'|'right')?
 		```
 	**/
+	@:optional
 	var title_pos : Null<String>;
 	/**
 		```lua
@@ -174,6 +189,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 Width of floating window
 	**/
+	@:optional
 	var width : Null<Int>;
 	/**
 		```lua
@@ -186,6 +202,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		 Wrap long lines
 		 (default: `true`)
 	**/
+	@:optional
 	var wrap : Null<Bool>;
 	/**
 		```lua
@@ -197,6 +214,7 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		 Character to wrap at for computing height when wrap is enabled
 	**/
+	@:optional
 	var wrap_at : Null<Int>;
 	/**
 		```lua
@@ -207,5 +225,6 @@ package nvim.type.vim.lsp.util.open_floating_preview;
 		
 		override `zindex`, defaults to 50
 	**/
+	@:optional
 	var zindex : Null<Int>;
 }

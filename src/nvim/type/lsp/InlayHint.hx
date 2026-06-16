@@ -38,6 +38,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
@@ -65,6 +66,7 @@ package nvim.type.lsp;
 		    | 2 -- Parameter
 		```
 	**/
+	@:optional
 	var kind : Null<nvim.type.lsp.InlayHintKind>;
 	/**
 		```lua
@@ -94,6 +96,7 @@ package nvim.type.lsp;
 		background color of the hint itself. That means padding can be used
 		to visually align/separate an inlay hint.
 	**/
+	@:optional
 	var paddingLeft : Null<Bool>;
 	/**
 		```lua
@@ -109,6 +112,7 @@ package nvim.type.lsp;
 		background color of the hint itself. That means padding can be used
 		to visually align/separate an inlay hint.
 	**/
+	@:optional
 	var paddingRight : Null<Bool>;
 	/**
 		```lua
@@ -167,6 +171,7 @@ package nvim.type.lsp;
 		hint (or its nearest variant) is now part of the document and the inlay
 		hint itself is now obsolete.
 	**/
+	@:optional
 	var textEdits : Null<Array<nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
@@ -203,5 +208,6 @@ package nvim.type.lsp;
 		
 		The tooltip text when you hover over this item.
 	**/
+	@:optional
 	var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 }

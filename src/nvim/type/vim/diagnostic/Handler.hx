@@ -17,6 +17,7 @@ package nvim.type.vim.diagnostic;
 		function (namespace: integer, bufnr: integer)
 		```
 	**/
+	@:optional
 	var hide : Null<(namespace:Int, bufnr:Int) -> Dynamic>;
 	/**
 		```lua
@@ -29,5 +30,6 @@ package nvim.type.vim.diagnostic;
 		function (namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.OptsResolved)
 		```
 	**/
+	@:optional
 	var show : Null<(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
 }

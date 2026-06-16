@@ -19,5 +19,6 @@ package nvim.type.lsp;
 		receiving a completion item in a resolve call.
 		
 	**/
+	@:optional
 	var labelDetailsSupport : Null<Bool>;
 }

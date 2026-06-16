@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		Insert a newline character at the end of the file if one does not exist.
 		
 	**/
+	@:optional
 	var insertFinalNewline : Null<Bool>;
 	/**
 		```lua
@@ -55,6 +56,7 @@ package nvim.type.lsp;
 		Trim all newlines after the final newline at the end of the file.
 		
 	**/
+	@:optional
 	var trimFinalNewlines : Null<Bool>;
 	/**
 		```lua
@@ -67,5 +69,6 @@ package nvim.type.lsp;
 		Trim trailing whitespace on a line.
 		
 	**/
+	@:optional
 	var trimTrailingWhitespace : Null<Bool>;
 }

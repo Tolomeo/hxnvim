@@ -39,5 +39,6 @@ package nvim.type.vim.loader;
 		
 		 The fs_stat of the module path. Won't be returned for `modname="*"`
 	**/
+	@:optional
 	var stat : Null<nvim.type.uv.fs_stat.Result>;
 }

@@ -21,5 +21,6 @@ package nvim.type.lsp;
 		
 		The server supports deltas for full documents.
 	**/
+	@:optional
 	var delta : Null<Bool>;
 }

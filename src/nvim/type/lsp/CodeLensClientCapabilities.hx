@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Whether code lens supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -33,5 +34,6 @@ package nvim.type.lsp;
 		properties via a separate `codeLens/resolve` request.
 		
 	**/
+	@:optional
 	var resolveSupport : Null<nvim.type.lsp.ClientCodeLensResolveOptions>;
 }

@@ -16,6 +16,7 @@ package nvim.type.lsp;
 		
 		The cells of the matching notebook to be synced.
 	**/
+	@:optional
 	var cells : Null<Array<nvim.type.lsp.NotebookCellLanguage>>;
 	/**
 		```lua

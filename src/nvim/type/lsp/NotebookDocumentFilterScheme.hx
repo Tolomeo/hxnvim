@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		The type of the enclosing notebook.
 	**/
+	@:optional
 	var notebookType : Null<String>;
 	/**
 		```lua
@@ -55,6 +56,7 @@ package nvim.type.lsp;
 		folder root, but it can be another absolute URI as well.
 		
 	**/
+	@:optional
 	var pattern : Null<nvim.type.lsp.GlobPattern>;
 	/**
 		```lua

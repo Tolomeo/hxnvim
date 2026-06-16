@@ -50,5 +50,6 @@ package nvim.type.lsp;
 		
 		An optional token that a server can use to report work done progress.
 	**/
+	@:optional
 	var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 }

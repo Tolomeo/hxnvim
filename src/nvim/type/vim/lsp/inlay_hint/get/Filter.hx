@@ -19,6 +19,7 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		
 		 @inlinedoc
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -39,5 +40,6 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		}
 		```
 	**/
+	@:optional
 	var range : Null<nvim.type.lsp.Range>;
 }

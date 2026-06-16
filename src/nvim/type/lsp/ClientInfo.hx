@@ -32,5 +32,6 @@ package nvim.type.lsp;
 		
 		The client's version as defined by the client.
 	**/
+	@:optional
 	var version : Null<String>;
 }

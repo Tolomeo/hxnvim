@@ -40,6 +40,7 @@ package nvim.type.lsp;
 		a.cpp and result in errors in a header file b.hpp.
 		
 	**/
+	@:optional
 	var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
 	/**
 		```lua

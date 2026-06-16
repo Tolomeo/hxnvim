@@ -39,6 +39,7 @@ package nvim.type.lsp;
 		Actions not of this kind are filtered out by the client before being shown. So servers
 		can omit computing them.
 	**/
+	@:optional
 	var only : Null<Array<nvim.type.lsp.CodeActionKind>>;
 	/**
 		```lua
@@ -66,5 +67,6 @@ package nvim.type.lsp;
 		    | 2 -- Automatic
 		```
 	**/
+	@:optional
 	var triggerKind : Null<nvim.type.lsp.CodeActionTriggerKind>;
 }

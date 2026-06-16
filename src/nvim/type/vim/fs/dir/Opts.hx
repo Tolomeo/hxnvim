@@ -18,6 +18,7 @@ package nvim.type.vim.fs.dir;
 		 How deep the traverse.
 		 (default: `1`)
 	**/
+	@:optional
 	var depth : Null<Int>;
 	/**
 		```lua
@@ -30,6 +31,7 @@ package nvim.type.vim.fs.dir;
 		 Follow symbolic links.
 		 (default: `false`)
 	**/
+	@:optional
 	var follow : Null<Bool>;
 	/**
 		```lua
@@ -51,5 +53,6 @@ package nvim.type.vim.fs.dir;
 		  -> boolean
 		```
 	**/
+	@:optional
 	var skip : Null<(dir_name:String) -> Bool>;
 }

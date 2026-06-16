@@ -42,6 +42,7 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
+	@:optional
 	var id : Null<String>;
 	/**
 		```lua
@@ -54,11 +55,13 @@ package nvim.type.lsp;
 		The server provides support to resolve additional
 		information for an inlay hint item.
 	**/
+	@:optional
 	var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHintRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

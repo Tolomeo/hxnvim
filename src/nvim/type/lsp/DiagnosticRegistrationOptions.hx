@@ -42,6 +42,7 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
+	@:optional
 	var id : Null<String>;
 	/**
 		```lua
@@ -54,6 +55,7 @@ package nvim.type.lsp;
 		An optional identifier under which the diagnostics are
 		managed by the client.
 	**/
+	@:optional
 	var identifier : Null<String>;
 	/**
 		```lua
@@ -74,6 +76,7 @@ package nvim.type.lsp;
 		(field) lsp.DiagnosticRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 	/**
 		```lua

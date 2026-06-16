@@ -11,5 +11,6 @@ package nvim.type.lsp;
 		(field) lsp.FoldingRangeOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

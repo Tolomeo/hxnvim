@@ -31,5 +31,6 @@ package nvim.type.lsp;
 		(field) lsp.MonikerRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

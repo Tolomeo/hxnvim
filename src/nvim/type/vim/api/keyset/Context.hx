@@ -11,5 +11,6 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.context.types: string[]?
 		```
 	**/
+	@:optional
 	var types : Null<Array<String>>;
 }

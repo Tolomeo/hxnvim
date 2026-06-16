@@ -11,6 +11,7 @@ package nvim.type.vim;
 		(field) vim.Version.build: string?
 		```
 	**/
+	@:optional
 	var build : Null<String>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.vim;
 		(field) vim.Version.prerelease: string?
 		```
 	**/
+	@:optional
 	var prerelease : Null<String>;
 	/**
 		```lua

@@ -18,6 +18,7 @@ package nvim.type.vim;
 		(field) vim.Diagnostic._tags: { deprecated: boolean, unnecessary: boolean }?
 		```
 	**/
+	@:optional
 	var _tags : Null<{ var deprecated : Bool; var unnecessary : Bool; }>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.vim;
 		
 		 Buffer number
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -40,6 +42,7 @@ package nvim.type.vim;
 		
 		 The diagnostic code
 	**/
+	@:optional
 	var code : Null<haxe.extern.EitherType<String, Int>>;
 	/**
 		```lua
@@ -62,6 +65,7 @@ package nvim.type.vim;
 		
 		 The final column of the diagnostic (0-indexed)
 	**/
+	@:optional
 	var end_col : Null<Int>;
 	/**
 		```lua
@@ -73,6 +77,7 @@ package nvim.type.vim;
 		
 		 The final line of the diagnostic (0-indexed)
 	**/
+	@:optional
 	var end_lnum : Null<Int>;
 	/**
 		```lua
@@ -101,6 +106,7 @@ package nvim.type.vim;
 		(field) vim.Diagnostic.namespace: integer?
 		```
 	**/
+	@:optional
 	var namespace : Null<Int>;
 	/**
 		```lua
@@ -116,6 +122,7 @@ package nvim.type.vim;
 		
 		 The severity of the diagnostic |vim.diagnostic.severity|
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.Severity>;
 	/**
 		```lua
@@ -127,6 +134,7 @@ package nvim.type.vim;
 		
 		 The source of the diagnostic
 	**/
+	@:optional
 	var source : Null<String>;
 	/**
 		```lua
@@ -137,5 +145,6 @@ package nvim.type.vim;
 		
 		arbitrary data plugins can add
 	**/
+	@:optional
 	var user_data : Null<Any>;
 }

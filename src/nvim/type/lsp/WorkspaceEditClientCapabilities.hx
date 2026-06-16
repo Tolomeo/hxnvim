@@ -18,6 +18,7 @@ package nvim.type.lsp;
 		create file, rename file and delete file changes.
 		
 	**/
+	@:optional
 	var changeAnnotationSupport : Null<nvim.type.lsp.ChangeAnnotationsSupportOptions>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.lsp;
 		
 		The client supports versioned document changes in `WorkspaceEdit`s
 	**/
+	@:optional
 	var documentChanges : Null<Bool>;
 	/**
 		```lua
@@ -52,6 +54,7 @@ package nvim.type.lsp;
 		    | "undo" -- Undo
 		```
 	**/
+	@:optional
 	var failureHandling : Null<nvim.type.lsp.FailureHandlingKind>;
 	/**
 		```lua
@@ -64,6 +67,7 @@ package nvim.type.lsp;
 		Whether the client supports `WorkspaceEditMetadata` in `WorkspaceEdit`s.
 		
 	**/
+	@:optional
 	var metadataSupport : Null<Bool>;
 	/**
 		```lua
@@ -80,6 +84,7 @@ package nvim.type.lsp;
 		character.
 		
 	**/
+	@:optional
 	var normalizesLineEndings : Null<Bool>;
 	/**
 		```lua
@@ -93,6 +98,7 @@ package nvim.type.lsp;
 		support 'create', 'rename' and 'delete' files and folders.
 		
 	**/
+	@:optional
 	var resourceOperations : Null<Array<nvim.type.lsp.ResourceOperationKind>>;
 	/**
 		```lua
@@ -105,5 +111,6 @@ package nvim.type.lsp;
 		Whether the client supports snippets as text edits.
 		
 	**/
+	@:optional
 	var snippetEditSupport : Null<Bool>;
 }

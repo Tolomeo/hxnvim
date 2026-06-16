@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		The diagnostic's code, which usually appear in the user interface.
 	**/
+	@:optional
 	var code : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
@@ -39,6 +40,7 @@ package nvim.type.lsp;
 		Requires the code field (above) to be present/not null.
 		
 	**/
+	@:optional
 	var codeDescription : Null<nvim.type.lsp.CodeDescription>;
 	/**
 		```lua
@@ -68,6 +70,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
@@ -116,6 +119,7 @@ package nvim.type.lsp;
 		An array of related diagnostic information, e.g. when symbol-names within
 		a scope collide all definitions can be marked via this property.
 	**/
+	@:optional
 	var relatedInformation : Null<Array<nvim.type.lsp.DiagnosticRelatedInformation>>;
 	/**
 		```lua
@@ -144,6 +148,7 @@ package nvim.type.lsp;
 		    | 4 -- Hint
 		```
 	**/
+	@:optional
 	var severity : Null<nvim.type.lsp.DiagnosticSeverity>;
 	/**
 		```lua
@@ -157,6 +162,7 @@ package nvim.type.lsp;
 		diagnostic, e.g. 'typescript' or 'super lint'. It usually
 		appears in the user interface.
 	**/
+	@:optional
 	var source : Null<String>;
 	/**
 		```lua
@@ -169,5 +175,6 @@ package nvim.type.lsp;
 		Additional metadata about the diagnostic.
 		
 	**/
+	@:optional
 	var tags : Null<Array<nvim.type.lsp.DiagnosticTag>>;
 }

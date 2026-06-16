@@ -17,6 +17,7 @@ package nvim.type.vim;
 		(field) vim.VersionRange.to: (vim.Version)?
 		```
 	**/
+	@:optional
 	var to : Null<nvim.type.vim.Version>;
 	/**
 		```lua

@@ -16,5 +16,6 @@ package nvim.type.lsp;
 		(field) lsp.InlineCompletionOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

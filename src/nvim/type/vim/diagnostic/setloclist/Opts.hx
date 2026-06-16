@@ -21,6 +21,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		
 		 Only add diagnostics from the given namespace.
 	**/
+	@:optional
 	var namespace : Null<Int>;
 	/**
 		```lua
@@ -33,6 +34,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		 Open the location list after setting.
 		 (default: `true`)
 	**/
+	@:optional
 	var open : Null<Bool>;
 	/**
 		```lua
@@ -52,6 +54,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -63,6 +66,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		
 		 Title of the location list. Defaults to "Diagnostics".
 	**/
+	@:optional
 	var title : Null<String>;
 	/**
 		```lua
@@ -75,5 +79,6 @@ package nvim.type.vim.diagnostic.setloclist;
 		 Window number to set location list for.
 		 (default: `0`)
 	**/
+	@:optional
 	var winnr : Null<Int>;
 }

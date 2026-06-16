@@ -27,6 +27,7 @@ package nvim.type.lsp;
 		Client capabilities specific to the client's markdown parser.
 		
 	**/
+	@:optional
 	var markdown : Null<nvim.type.lsp.MarkdownClientCapabilities>;
 	/**
 		```lua
@@ -54,6 +55,7 @@ package nvim.type.lsp;
 		side.
 		
 	**/
+	@:optional
 	var positionEncodings : Null<Array<nvim.type.lsp.PositionEncodingKind>>;
 	/**
 		```lua
@@ -71,6 +73,7 @@ package nvim.type.lsp;
 		Client capabilities specific to regular expressions.
 		
 	**/
+	@:optional
 	var regularExpressions : Null<nvim.type.lsp.RegularExpressionsClientCapabilities>;
 	/**
 		```lua
@@ -86,5 +89,6 @@ package nvim.type.lsp;
 		anymore since the information is outdated).
 		
 	**/
+	@:optional
 	var staleRequestSupport : Null<nvim.type.lsp.StaleRequestSupportOptions>;
 }

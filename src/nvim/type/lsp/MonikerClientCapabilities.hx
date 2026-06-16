@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the client supports the new `MonikerRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

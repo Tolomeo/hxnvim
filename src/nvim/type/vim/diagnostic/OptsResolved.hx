@@ -6,6 +6,7 @@ package nvim.type.vim.diagnostic;
 	```
 **/
 @:structInit class SeveritySort {
+	@:optional
 	var reverse : Null<Bool>;
 }
 

@@ -17,5 +17,6 @@ package nvim.type.lsp;
 		The client will send the `textDocument/semanticTokens/full/delta` request if
 		the server provides a corresponding handler.
 	**/
+	@:optional
 	var delta : Null<Bool>;
 }

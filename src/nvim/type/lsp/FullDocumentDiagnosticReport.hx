@@ -45,5 +45,6 @@ package nvim.type.lsp;
 		be sent on the next diagnostic request for the
 		same document.
 	**/
+	@:optional
 	var resultId : Null<String>;
 }

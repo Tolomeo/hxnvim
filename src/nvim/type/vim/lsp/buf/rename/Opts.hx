@@ -16,6 +16,7 @@ package nvim.type.vim.lsp.buf.rename;
 		
 		 (default: current buffer)
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -36,6 +37,7 @@ package nvim.type.vim.lsp.buf.rename;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
 	/**
 		```lua
@@ -48,5 +50,6 @@ package nvim.type.vim.lsp.buf.rename;
 		 Restrict clients used for rename to ones where client.name matches
 		 this field.
 	**/
+	@:optional
 	var name : Null<String>;
 }

@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Arguments that the command should be invoked with.
 	**/
+	@:optional
 	var arguments : Null<Array<nvim.type.lsp.LSPAny>>;
 	/**
 		```lua
@@ -42,5 +43,6 @@ package nvim.type.lsp;
 		
 		An optional token that a server can use to report work done progress.
 	**/
+	@:optional
 	var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 }

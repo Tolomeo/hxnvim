@@ -18,5 +18,6 @@ package nvim.type.vim.keymap.del;
 		 Remove a mapping from the given buffer.
 		 When `0` or `true`, use the current buffer.
 	**/
+	@:optional
 	var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
 }

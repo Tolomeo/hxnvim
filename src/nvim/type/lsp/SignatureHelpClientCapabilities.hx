@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		`SignatureHelpOptions`.
 		
 	**/
+	@:optional
 	var contextSupport : Null<Bool>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 		
 		Whether signature help supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -47,5 +49,6 @@ package nvim.type.lsp;
 		The client supports the following `SignatureInformation`
 		specific properties.
 	**/
+	@:optional
 	var signatureInformation : Null<nvim.type.lsp.ClientSignatureInformationOptions>;
 }

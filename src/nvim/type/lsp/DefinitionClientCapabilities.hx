@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Whether definition supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -32,5 +33,6 @@ package nvim.type.lsp;
 		The client supports additional metadata in the form of definition links.
 		
 	**/
+	@:optional
 	var linkSupport : Null<Bool>;
 }

@@ -17,6 +17,7 @@ package nvim.type.vim.loader.find;
 		 Search for all matches.
 		 (default: `false`)
 	**/
+	@:optional
 	var all : Null<Bool>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.vim.loader.find;
 		 Extra paths to search for modname
 		 (default: `{}`)
 	**/
+	@:optional
 	var paths : Null<Array<String>>;
 	/**
 		```lua
@@ -42,6 +44,7 @@ package nvim.type.vim.loader.find;
 		 A pattern is a string added to the basename of the Lua module being searched.
 		 (default: `{"/init.lua", ".lua"}`)
 	**/
+	@:optional
 	var patterns : Null<Array<String>>;
 	/**
 		```lua
@@ -55,5 +58,6 @@ package nvim.type.vim.loader.find;
 		 Search for modname in the runtime path.
 		 (default: `true`)
 	**/
+	@:optional
 	var rtp : Null<Bool>;
 }

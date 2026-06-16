@@ -85,5 +85,6 @@ package nvim.type.lsp;
 		An optional range inside the text document that is used to
 		visualize the hover, e.g. by changing the background color.
 	**/
+	@:optional
 	var range : Null<nvim.type.lsp.Range>;
 }

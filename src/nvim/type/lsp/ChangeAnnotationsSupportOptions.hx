@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		for instance all edits labelled with "Changes in Strings" would
 		be a tree node.
 	**/
+	@:optional
 	var groupsOnLabel : Null<Bool>;
 }

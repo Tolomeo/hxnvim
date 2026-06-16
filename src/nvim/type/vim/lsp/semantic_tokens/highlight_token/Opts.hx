@@ -18,5 +18,6 @@ package nvim.type.vim.lsp.semantic_tokens.highlight_token;
 		 Priority for the applied extmark.
 		 (Default: `vim.hl.priorities.semantic_tokens + 3`)
 	**/
+	@:optional
 	var priority : Null<Int>;
 }

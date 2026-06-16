@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
+	@:optional
 	var id : Null<String>;
 	/**
 		```lua
@@ -45,5 +46,6 @@ package nvim.type.lsp;
 		Whether save notification should be forwarded to
 		the server. Will only be honored if mode === `notebook`.
 	**/
+	@:optional
 	var save : Null<Bool>;
 }

@@ -11,6 +11,7 @@ package nvim.type.lsp;
 		(field) lsp.HandlerContext.bufnr: integer?
 		```
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -29,11 +30,13 @@ package nvim.type.lsp;
 		(field) lsp.HandlerContext.params: any
 		```
 	**/
+	@:optional
 	var params : Null<Any>;
 	/**
 		```lua
 		(field) lsp.HandlerContext.version: integer?
 		```
 	**/
+	@:optional
 	var version : Null<Int>;
 }

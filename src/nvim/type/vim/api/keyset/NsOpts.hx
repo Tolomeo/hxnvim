@@ -11,5 +11,6 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.ns_opts.wins: any[]?
 		```
 	**/
+	@:optional
 	var wins : Null<Array<Any>>;
 }

@@ -20,6 +20,7 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients attached to this buffer
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -32,6 +33,7 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients with the given id
 	**/
+	@:optional
 	var id : Null<Int>;
 	/**
 		```lua
@@ -43,6 +45,7 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients supporting the given method
 	**/
+	@:optional
 	var method : Null<String>;
 	/**
 		```lua
@@ -54,5 +57,6 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients with the given name
 	**/
+	@:optional
 	var name : Null<String>;
 }

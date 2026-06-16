@@ -17,6 +17,7 @@ package nvim.type.vim.fn.getscriptinfo;
 		(field) vim.fn.getscriptinfo.ret.functions: string[]?
 		```
 	**/
+	@:optional
 	var functions : Null<Array<String>>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.vim.fn.getscriptinfo;
 		(field) vim.fn.getscriptinfo.ret.variables: table<string, any>?
 		```
 	**/
+	@:optional
 	var variables : Null<lua.Table<String, Any>>;
 	/**
 		```lua

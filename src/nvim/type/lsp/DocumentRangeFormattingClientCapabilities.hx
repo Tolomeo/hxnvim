@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Whether range formatting supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -32,5 +33,6 @@ package nvim.type.lsp;
 		Whether the client supports formatting multiple ranges at once.
 		
 	**/
+	@:optional
 	var rangesSupport : Null<Bool>;
 }

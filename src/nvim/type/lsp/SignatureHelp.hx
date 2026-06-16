@@ -37,6 +37,7 @@ package nvim.type.lsp;
 		mandatory (but still nullable) to better express the active parameter if
 		the active signature does have any.
 	**/
+	@:optional
 	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
 	/**
 		```lua
@@ -56,6 +57,7 @@ package nvim.type.lsp;
 		In future version of the protocol this property might become
 		mandatory to better express this.
 	**/
+	@:optional
 	var activeSignature : Null<nvim.type.Uinteger>;
 	/**
 		```lua

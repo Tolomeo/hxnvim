@@ -11,5 +11,6 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.cmd_opts.output: boolean?
 		```
 	**/
+	@:optional
 	var output : Null<Bool>;
 }

@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		Arguments that the command handler should be
 		invoked with.
 	**/
+	@:optional
 	var arguments : Null<Array<nvim.type.lsp.LSPAny>>;
 	/**
 		```lua
@@ -58,5 +59,6 @@ package nvim.type.lsp;
 		An optional tooltip.
 		
 	**/
+	@:optional
 	var tooltip : Null<String>;
 }

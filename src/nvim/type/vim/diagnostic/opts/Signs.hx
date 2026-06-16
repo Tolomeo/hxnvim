@@ -17,6 +17,7 @@ package nvim.type.vim.diagnostic.opts;
 		 A table mapping |diagnostic-severity| to the highlight group used for the
 		 whole line the sign is placed in.
 	**/
+	@:optional
 	var linehl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.vim.diagnostic.opts;
 		 A table mapping |diagnostic-severity| to the highlight group used for the
 		 line number where the sign is placed.
 	**/
+	@:optional
 	var numhl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 	/**
 		```lua
@@ -43,6 +45,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Otherwise, all signs use the same priority.
 		 (default: `10`)
 	**/
+	@:optional
 	var priority : Null<Int>;
 	/**
 		```lua
@@ -63,6 +66,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -81,5 +85,6 @@ package nvim.type.vim.diagnostic.opts;
 		 })
 		 ```
 	**/
+	@:optional
 	var text : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 }

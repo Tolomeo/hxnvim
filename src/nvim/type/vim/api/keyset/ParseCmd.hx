@@ -45,6 +45,7 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.parse_cmd.count: integer?
 		```
 	**/
+	@:optional
 	var count : Null<Int>;
 	/**
 		```lua
@@ -69,11 +70,13 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.parse_cmd.range: integer[]?
 		```
 	**/
+	@:optional
 	var range : Null<Array<Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.reg: string?
 		```
 	**/
+	@:optional
 	var reg : Null<String>;
 }

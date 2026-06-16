@@ -16,5 +16,6 @@ package nvim.type.lsp;
 		
 		Did change configuration notification supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

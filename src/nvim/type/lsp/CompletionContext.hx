@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		The trigger character (a single character) that has trigger code complete.
 		Is undefined if `triggerKind !== CompletionTriggerKind.TriggerCharacter`
 	**/
+	@:optional
 	var triggerCharacter : Null<String>;
 	/**
 		```lua

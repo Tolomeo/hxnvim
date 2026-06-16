@@ -31,6 +31,7 @@ package nvim.type.vim.diagnostic;
 		  -> vim.diagnostic.Opts.Float
 		```
 	**/
+	@:optional
 	var float : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Float, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.Float>>>;
 	/**
 		```lua
@@ -42,6 +43,7 @@ package nvim.type.vim.diagnostic;
 		
 		 Default values for |vim.diagnostic.jump()|. See |vim.diagnostic.Opts.Jump|.
 	**/
+	@:optional
 	var jump : Null<nvim.type.vim.diagnostic.opts.Jump>;
 	/**
 		```lua
@@ -58,6 +60,7 @@ package nvim.type.vim.diagnostic;
 		   - {reverse}? (boolean) Reverse sort order
 		 (default: `false`)
 	**/
+	@:optional
 	var severity_sort : Null<haxe.extern.EitherType<Bool, { var reverse : Null<Bool>; }>>;
 	/**
 		```lua
@@ -77,6 +80,7 @@ package nvim.type.vim.diagnostic;
 		  -> vim.diagnostic.Opts.Signs
 		```
 	**/
+	@:optional
 	var signs : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Signs, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.Signs>>>;
 	/**
 		```lua
@@ -96,6 +100,7 @@ package nvim.type.vim.diagnostic;
 		  -> vim.diagnostic.Opts.Underline
 		```
 	**/
+	@:optional
 	var underline : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Underline, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.Underline>>>;
 	/**
 		```lua
@@ -109,6 +114,7 @@ package nvim.type.vim.diagnostic;
 		 (if `false`, diagnostics are updated on |InsertLeave|)
 		 (default: `false`)
 	**/
+	@:optional
 	var update_in_insert : Null<Bool>;
 	/**
 		```lua
@@ -128,6 +134,7 @@ package nvim.type.vim.diagnostic;
 		  -> vim.diagnostic.Opts.VirtualLines
 		```
 	**/
+	@:optional
 	var virtual_lines : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.VirtualLines, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.VirtualLines>>>;
 	/**
 		```lua
@@ -149,5 +156,6 @@ package nvim.type.vim.diagnostic;
 		  -> vim.diagnostic.Opts.VirtualText
 		```
 	**/
+	@:optional
 	var virtual_text : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.VirtualText, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.VirtualText>>>;
 }

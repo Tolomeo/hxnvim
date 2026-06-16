@@ -17,6 +17,7 @@ package nvim.type.uv.getaddrinfo;
 		(field) uv.getaddrinfo.result.canonname: string|nil
 		```
 	**/
+	@:optional
 	var canonname : Null<String>;
 	/**
 		```lua
@@ -45,6 +46,7 @@ package nvim.type.uv.getaddrinfo;
 		(field) uv.getaddrinfo.result.port: integer|nil
 		```
 	**/
+	@:optional
 	var port : Null<Int>;
 	/**
 		```lua

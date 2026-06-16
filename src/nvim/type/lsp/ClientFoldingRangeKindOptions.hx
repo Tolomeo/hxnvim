@@ -19,5 +19,6 @@ package nvim.type.lsp;
 		handle values outside its set gracefully and falls back
 		to a default value when unknown.
 	**/
+	@:optional
 	var valueSet : Null<Array<nvim.type.lsp.FoldingRangeKind>>;
 }

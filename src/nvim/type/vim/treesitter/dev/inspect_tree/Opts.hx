@@ -16,6 +16,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		
 		 Buffer to draw the tree into. If omitted, a new buffer is created.
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -28,6 +29,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 Vimscript command to create the window. Default value is "60vnew".
 		 Only used when {winid} is nil.
 	**/
+	@:optional
 	var command : Null<String>;
 	/**
 		```lua
@@ -41,6 +43,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 The language of the source buffer. If omitted, the filetype of the source
 		 buffer is used.
 	**/
+	@:optional
 	var lang : Null<String>;
 	/**
 		```lua
@@ -72,5 +75,6 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 Window id to display the tree buffer in. If omitted, a new window is
 		 created with {command}.
 	**/
+	@:optional
 	var winid : Null<Int>;
 }

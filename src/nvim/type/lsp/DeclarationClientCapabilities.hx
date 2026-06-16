@@ -18,6 +18,7 @@ package nvim.type.lsp;
 		the client supports the new `DeclarationRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -29,5 +30,6 @@ package nvim.type.lsp;
 		
 		The client supports additional metadata in the form of declaration links.
 	**/
+	@:optional
 	var linkSupport : Null<Bool>;
 }

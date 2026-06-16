@@ -33,6 +33,7 @@ package nvim.type.lsp;
 		    | 2 -- Incremental
 		```
 	**/
+	@:optional
 	var change : Null<nvim.type.lsp.TextDocumentSyncKind>;
 	/**
 		```lua
@@ -45,6 +46,7 @@ package nvim.type.lsp;
 		Open and close notifications are sent to the server. If omitted open close notification should not
 		be sent.
 	**/
+	@:optional
 	var openClose : Null<Bool>;
 	/**
 		```lua
@@ -61,6 +63,7 @@ package nvim.type.lsp;
 		If present save notifications are sent to the server. If omitted the notification should not be
 		sent.
 	**/
+	@:optional
 	var save : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SaveOptions>>;
 	/**
 		```lua
@@ -73,6 +76,7 @@ package nvim.type.lsp;
 		If present will save notifications are sent to the server. If omitted the notification should not be
 		sent.
 	**/
+	@:optional
 	var willSave : Null<Bool>;
 	/**
 		```lua
@@ -85,5 +89,6 @@ package nvim.type.lsp;
 		If present will save wait until requests are sent to the server. If omitted the request should not be
 		sent.
 	**/
+	@:optional
 	var willSaveWaitUntil : Null<Bool>;
 }

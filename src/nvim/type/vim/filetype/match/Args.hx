@@ -17,6 +17,7 @@ package nvim.type.vim.filetype.match;
 		
 		 Buffer number to use for matching. Mutually exclusive with {contents}
 	**/
+	@:optional
 	var buf : Null<Int>;
 	/**
 		```lua
@@ -30,6 +31,7 @@ package nvim.type.vim.filetype.match;
 		 matching. Can be used with {filename}. Mutually exclusive
 		 with {buf}.
 	**/
+	@:optional
 	var contents : Null<Array<String>>;
 	/**
 		```lua
@@ -47,5 +49,6 @@ package nvim.type.vim.filetype.match;
 		 the filetype in cases where the filename alone is not
 		 enough to disambiguate the filetype.
 	**/
+	@:optional
 	var filename : Null<String>;
 }

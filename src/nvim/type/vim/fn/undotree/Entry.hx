@@ -18,6 +18,7 @@ package nvim.type.vim.fn.undotree;
 		 blocks.  Each item may again have an "alt"
 		 item.
 	**/
+	@:optional
 	var alt : Null<Array<nvim.type.vim.fn.undotree.Entry>>;
 	/**
 		```lua
@@ -34,6 +35,7 @@ package nvim.type.vim.fn.undotree;
 		 undone after the last change this item will
 		 not appear anywhere.
 	**/
+	@:optional
 	var curhead : Null<Int>;
 	/**
 		```lua
@@ -47,6 +49,7 @@ package nvim.type.vim.fn.undotree;
 		 that was added.  This marks the last change
 		 and where further changes will be added.
 	**/
+	@:optional
 	var newhead : Null<Int>;
 	/**
 		```lua
@@ -61,6 +64,7 @@ package nvim.type.vim.fn.undotree;
 		 first write has number 1, the last one the
 		 "save_last" mentioned above.
 	**/
+	@:optional
 	var save : Null<Int>;
 	/**
 		```lua

@@ -19,6 +19,7 @@ package nvim.type.lsp;
 		`FoldingRangeRegistrationOptions` return value for the corresponding
 		server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -31,6 +32,7 @@ package nvim.type.lsp;
 		Specific options for the folding range.
 		
 	**/
+	@:optional
 	var foldingRange : Null<nvim.type.lsp.ClientFoldingRangeOptions>;
 	/**
 		```lua
@@ -43,6 +45,7 @@ package nvim.type.lsp;
 		Specific options for the folding range kind.
 		
 	**/
+	@:optional
 	var foldingRangeKind : Null<nvim.type.lsp.ClientFoldingRangeKindOptions>;
 	/**
 		```lua
@@ -56,6 +59,7 @@ package nvim.type.lsp;
 		If set, client will ignore specified `startCharacter` and `endCharacter`
 		properties in a FoldingRange.
 	**/
+	@:optional
 	var lineFoldingOnly : Null<Bool>;
 	/**
 		```lua
@@ -69,5 +73,6 @@ package nvim.type.lsp;
 		per document. The value serves as a hint, servers are free to follow the
 		limit.
 	**/
+	@:optional
 	var rangeLimit : Null<nvim.type.Uinteger>;
 }

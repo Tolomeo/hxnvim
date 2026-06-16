@@ -18,6 +18,7 @@ package nvim.type.vim.fs.normalize;
 		 Expand environment variables.
 		 (default: `true`)
 	**/
+	@:optional
 	var expand_env : Null<Bool>;
 	/**
 		```lua
@@ -30,5 +31,6 @@ package nvim.type.vim.fs.normalize;
 		 Path is a Windows path.
 		 (default: `true` in Windows, `false` otherwise)
 	**/
+	@:optional
 	var win : Null<Bool>;
 }

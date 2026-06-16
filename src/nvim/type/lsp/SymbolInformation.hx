@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		if necessary). It can't be used to re-infer a hierarchy for the document
 		symbols.
 	**/
+	@:optional
 	var containerName : Null<String>;
 	/**
 		```lua
@@ -36,6 +37,7 @@ package nvim.type.lsp;
 		Indicates if this symbol is deprecated.
 		
 	**/
+	@:optional
 	var deprecated : Null<Bool>;
 	/**
 		```lua
@@ -131,5 +133,6 @@ package nvim.type.lsp;
 		Tags for this symbol.
 		
 	**/
+	@:optional
 	var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
 }

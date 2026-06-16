@@ -16,6 +16,7 @@ package nvim.type.vim.fn.setqflist;
 		
 		 quickfix list context. See |quickfix-context|
 	**/
+	@:optional
 	var context : Null<lua.Table.AnyTable>;
 	/**
 		```lua
@@ -30,6 +31,7 @@ package nvim.type.vim.fn.setqflist;
 		 'errorformat' option value is used.
 		 See |quickfix-parse|
 	**/
+	@:optional
 	var efm : Null<String>;
 	/**
 		```lua
@@ -41,6 +43,7 @@ package nvim.type.vim.fn.setqflist;
 		
 		 quickfix list identifier |quickfix-ID|
 	**/
+	@:optional
 	var id : Null<Int>;
 	/**
 		```lua
@@ -54,6 +57,7 @@ package nvim.type.vim.fn.setqflist;
 		 then the last entry in the list is set as the
 		 current entry. See |quickfix-index|
 	**/
+	@:optional
 	var idx : Null<Int>;
 	/**
 		```lua
@@ -66,6 +70,7 @@ package nvim.type.vim.fn.setqflist;
 		 list of quickfix entries. Same as the {list}
 		 argument.
 	**/
+	@:optional
 	var items : Null<Array<nvim.type.vim.quickfix.Entry>>;
 	/**
 		```lua
@@ -80,6 +85,7 @@ package nvim.type.vim.fn.setqflist;
 		 {nr} or {id}. Only a |List| value is supported.
 		 See |quickfix-parse|
 	**/
+	@:optional
 	var lines : Null<Array<String>>;
 	/**
 		```lua
@@ -93,6 +99,7 @@ package nvim.type.vim.fn.setqflist;
 		 means the current quickfix list and "$" means
 		 the last quickfix list.
 	**/
+	@:optional
 	var nr : Null<Int>;
 	/**
 		```lua
@@ -108,6 +115,7 @@ package nvim.type.vim.fn.setqflist;
 		 to |quickfix-window-function| for an explanation
 		 of how to write the function and an example.
 	**/
+	@:optional
 	var quickfixtextfunc : Null<haxe.Constraints.Function>;
 	/**
 		```lua
@@ -119,5 +127,6 @@ package nvim.type.vim.fn.setqflist;
 		
 		 quickfix list title text. See |quickfix-title|
 	**/
+	@:optional
 	var title : Null<String>;
 }

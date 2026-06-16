@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the completion items kinds from `Text` to `Reference` as defined in
 		the initial version of the protocol.
 	**/
+	@:optional
 	var valueSet : Null<Array<nvim.type.lsp.CompletionItemKind>>;
 }

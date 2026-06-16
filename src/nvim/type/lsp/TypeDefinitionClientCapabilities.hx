@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		the client supports the new `TypeDefinitionRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -35,5 +36,6 @@ package nvim.type.lsp;
 		
 		Since 3.14.0
 	**/
+	@:optional
 	var linkSupport : Null<Bool>;
 }

@@ -23,5 +23,6 @@ package nvim.type.vim.lsp.completion.get;
 		
 		Completion context. Defaults to a trigger kind of `invoked`.
 	**/
+	@:optional
 	var ctx : Null<nvim.type.lsp.CompletionContext>;
 }

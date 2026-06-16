@@ -17,6 +17,7 @@ package nvim.type.vim.fs.find;
 		 Follow symbolic links.
 		 (default: `false`)
 	**/
+	@:optional
 	var follow : Null<Bool>;
 	/**
 		```lua
@@ -30,6 +31,7 @@ package nvim.type.vim.fs.find;
 		 Use `math.huge` to place no limit on the number of matches.
 		 (default: `1`)
 	**/
+	@:optional
 	var limit : Null<Float>;
 	/**
 		```lua
@@ -43,6 +45,7 @@ package nvim.type.vim.fs.find;
 		 Path to begin searching from. If
 		 omitted, the |current-directory| is used.
 	**/
+	@:optional
 	var path : Null<String>;
 	/**
 		```lua
@@ -55,6 +58,7 @@ package nvim.type.vim.fs.find;
 		 Stop searching when this directory is reached.
 		 The directory itself is not searched.
 	**/
+	@:optional
 	var stop : Null<String>;
 	/**
 		```lua
@@ -67,6 +71,7 @@ package nvim.type.vim.fs.find;
 		 Find only items of the given type.
 		 If omitted, all items that match {names} are included.
 	**/
+	@:optional
 	var type : Null<String>;
 	/**
 		```lua
@@ -80,5 +85,6 @@ package nvim.type.vim.fs.find;
 		 Otherwise, search through child directories (recursively).
 		 (default: `false`)
 	**/
+	@:optional
 	var upward : Null<Bool>;
 }

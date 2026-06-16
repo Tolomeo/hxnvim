@@ -21,6 +21,7 @@ package nvim.type.vim.diagnostic;
 		
 		 Buffer number, or 0 for current buffer, or `nil` for all buffers.
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -33,5 +34,6 @@ package nvim.type.vim.diagnostic;
 		
 		 Diagnostic namespace, or `nil` for all.
 	**/
+	@:optional
 	var ns_id : Null<Int>;
 }

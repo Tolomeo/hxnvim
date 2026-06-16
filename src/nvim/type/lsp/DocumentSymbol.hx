@@ -23,6 +23,7 @@ package nvim.type.lsp;
 		
 		Children of this symbol, e.g. properties of a class.
 	**/
+	@:optional
 	var children : Null<Array<nvim.type.lsp.DocumentSymbol>>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 		Indicates if this symbol is deprecated.
 		
 	**/
+	@:optional
 	var deprecated : Null<Bool>;
 	/**
 		```lua
@@ -46,6 +48,7 @@ package nvim.type.lsp;
 		
 		More detail for this symbol, e.g the signature of a function.
 	**/
+	@:optional
 	var detail : Null<String>;
 	/**
 		```lua
@@ -171,5 +174,6 @@ package nvim.type.lsp;
 		Tags for this document symbol.
 		
 	**/
+	@:optional
 	var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
 }

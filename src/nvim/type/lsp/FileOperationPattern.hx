@@ -58,6 +58,7 @@ package nvim.type.lsp;
 		    | "folder" -- folder
 		```
 	**/
+	@:optional
 	var matches : Null<nvim.type.lsp.FileOperationPatternKind>;
 	/**
 		```lua
@@ -74,5 +75,6 @@ package nvim.type.lsp;
 		
 		Additional options used during matching.
 	**/
+	@:optional
 	var options : Null<nvim.type.lsp.FileOperationPatternOptions>;
 }

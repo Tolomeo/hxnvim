@@ -25,6 +25,7 @@ package nvim.type.lsp;
 		An optional annotation identifier describing the operation.
 		
 	**/
+	@:optional
 	var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
 	/**
 		```lua
@@ -73,5 +74,6 @@ package nvim.type.lsp;
 		
 		Rename options.
 	**/
+	@:optional
 	var options : Null<nvim.type.lsp.RenameFileOptions>;
 }

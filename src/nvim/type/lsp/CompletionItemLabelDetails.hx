@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		An optional string which is rendered less prominently after {@link CompletionItem.detail}. Should be used
 		for fully qualified names and file paths.
 	**/
+	@:optional
 	var description : Null<String>;
 	/**
 		```lua
@@ -34,5 +35,6 @@ package nvim.type.lsp;
 		An optional string which is rendered less prominently directly after {@link CompletionItem.label label},
 		without any spacing. Should be used for function signatures and type annotations.
 	**/
+	@:optional
 	var detail : Null<String>;
 }

@@ -17,6 +17,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "conceal_line")
 		```
 	**/
+	@:optional
 	var _on_conceal_line : Null<(_:String) -> Dynamic>;
 	/**
 		```lua
@@ -29,6 +30,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "hl_def")
 		```
 	**/
+	@:optional
 	var _on_hl_def : Null<(_:String) -> Dynamic>;
 	/**
 		```lua
@@ -41,6 +43,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "spell_nav")
 		```
 	**/
+	@:optional
 	var _on_spell_nav : Null<(_:String) -> Dynamic>;
 	/**
 		```lua
@@ -53,6 +56,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "buf", bufnr: integer, tick: integer)
 		```
 	**/
+	@:optional
 	var on_buf : Null<(_:String, bufnr:Int, tick:Int) -> Dynamic>;
 	/**
 		```lua
@@ -65,6 +69,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "end", tick: integer)
 		```
 	**/
+	@:optional
 	var on_end : Null<(_:String, tick:Int) -> Dynamic>;
 	/**
 		```lua
@@ -78,6 +83,7 @@ package nvim.type.vim.api.keyset;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var on_line : Null<(_:String, winid:Int, bufnr:Int, row:Int) -> Null<Bool>>;
 	/**
 		```lua
@@ -91,6 +97,7 @@ package nvim.type.vim.api.keyset;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var on_start : Null<(_:String, tick:Int) -> Null<Bool>>;
 	/**
 		```lua
@@ -104,5 +111,6 @@ package nvim.type.vim.api.keyset;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var on_win : Null<(_:String, winid:Int, bufnr:Int, toprow:Int, botrow:Int) -> Null<Bool>>;
 }

@@ -51,5 +51,6 @@ package nvim.type.lsp;
 		A notebook document filter where `pattern` is required field.
 		
 	**/
+	@:optional
 	var notebook : Null<haxe.extern.EitherType<String, nvim.type.lsp.NotebookDocumentFilter>>;
 }

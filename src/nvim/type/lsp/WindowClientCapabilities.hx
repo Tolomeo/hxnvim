@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		Capabilities specific to the showDocument request.
 		
 	**/
+	@:optional
 	var showDocument : Null<nvim.type.lsp.ShowDocumentClientCapabilities>;
 	/**
 		```lua
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 		Capabilities specific to the showMessage request.
 		
 	**/
+	@:optional
 	var showMessage : Null<nvim.type.lsp.ShowMessageRequestClientCapabilities>;
 	/**
 		```lua
@@ -56,5 +58,6 @@ package nvim.type.lsp;
 		capabilities.
 		
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

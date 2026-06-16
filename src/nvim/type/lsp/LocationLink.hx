@@ -38,6 +38,7 @@ package nvim.type.lsp;
 		Used as the underlined span for mouse interaction. Defaults to the word range at
 		the definition position.
 	**/
+	@:optional
 	var originSelectionRange : Null<nvim.type.lsp.Range>;
 	/**
 		```lua

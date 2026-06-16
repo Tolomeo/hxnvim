@@ -37,6 +37,7 @@ package nvim.type.lsp;
 		Information about the client
 		
 	**/
+	@:optional
 	var clientInfo : Null<nvim.type.lsp.ClientInfo>;
 	/**
 		```lua
@@ -64,6 +65,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var initializationOptions : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
@@ -81,6 +83,7 @@ package nvim.type.lsp;
 		(See https://en.wikipedia.org/wiki/IETF_language_tag)
 		
 	**/
+	@:optional
 	var locale : Null<String>;
 	/**
 		```lua
@@ -109,6 +112,7 @@ package nvim.type.lsp;
 		if no folder is open.
 		
 	**/
+	@:optional
 	var rootPath : Null<haxe.extern.EitherType<String, nvim.type.lsp.Null>>;
 	/**
 		```lua
@@ -143,6 +147,7 @@ package nvim.type.lsp;
 		    | "verbose" -- Verbose
 		```
 	**/
+	@:optional
 	var trace : Null<nvim.type.lsp.TraceValue>;
 	/**
 		```lua
@@ -154,6 +159,7 @@ package nvim.type.lsp;
 		
 		An optional token that a server can use to report work done progress.
 	**/
+	@:optional
 	var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 	/**
 		```lua
@@ -170,5 +176,6 @@ package nvim.type.lsp;
 		configured.
 		
 	**/
+	@:optional
 	var workspaceFolders : Null<haxe.extern.EitherType<Array<nvim.type.lsp.WorkspaceFolder>, nvim.type.lsp.Null>>;
 }

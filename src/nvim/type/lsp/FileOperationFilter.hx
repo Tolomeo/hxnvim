@@ -39,5 +39,6 @@ package nvim.type.lsp;
 		
 		A Uri scheme like `file` or `untitled`.
 	**/
+	@:optional
 	var scheme : Null<String>;
 }

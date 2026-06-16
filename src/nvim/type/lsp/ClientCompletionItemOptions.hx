@@ -16,6 +16,7 @@ package nvim.type.lsp;
 		
 		Client supports commit characters on a completion item.
 	**/
+	@:optional
 	var commitCharactersSupport : Null<Bool>;
 	/**
 		```lua
@@ -27,6 +28,7 @@ package nvim.type.lsp;
 		
 		Client supports the deprecated property on a completion item.
 	**/
+	@:optional
 	var deprecatedSupport : Null<Bool>;
 	/**
 		```lua
@@ -39,6 +41,7 @@ package nvim.type.lsp;
 		Client supports the following content formats for the documentation
 		property. The order describes the preferred format of the client.
 	**/
+	@:optional
 	var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
@@ -52,6 +55,7 @@ package nvim.type.lsp;
 		completion item is inserted in the text or should replace text.
 		
 	**/
+	@:optional
 	var insertReplaceSupport : Null<Bool>;
 	/**
 		```lua
@@ -66,6 +70,7 @@ package nvim.type.lsp;
 		as defined by the client (see `insertTextMode`).
 		
 	**/
+	@:optional
 	var insertTextModeSupport : Null<nvim.type.lsp.ClientCompletionItemInsertTextModeOptions>;
 	/**
 		```lua
@@ -79,6 +84,7 @@ package nvim.type.lsp;
 		details (see also `CompletionItemLabelDetails`).
 		
 	**/
+	@:optional
 	var labelDetailsSupport : Null<Bool>;
 	/**
 		```lua
@@ -90,6 +96,7 @@ package nvim.type.lsp;
 		
 		Client supports the preselect property on a completion item.
 	**/
+	@:optional
 	var preselectSupport : Null<Bool>;
 	/**
 		```lua
@@ -104,6 +111,7 @@ package nvim.type.lsp;
 		and `details` could be resolved lazily.
 		
 	**/
+	@:optional
 	var resolveSupport : Null<nvim.type.lsp.ClientCompletionItemResolveOptions>;
 	/**
 		```lua
@@ -120,6 +128,7 @@ package nvim.type.lsp;
 		the end of the snippet. Placeholders with equal identifiers are linked,
 		that is typing in one will update others too.
 	**/
+	@:optional
 	var snippetSupport : Null<Bool>;
 	/**
 		```lua
@@ -135,5 +144,6 @@ package nvim.type.lsp;
 		a resolve call.
 		
 	**/
+	@:optional
 	var tagSupport : Null<nvim.type.lsp.CompletionItemTagOptions>;
 }

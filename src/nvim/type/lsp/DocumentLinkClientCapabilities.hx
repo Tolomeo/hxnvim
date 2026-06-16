@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Whether document link supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -32,5 +33,6 @@ package nvim.type.lsp;
 		Whether the client supports the `tooltip` property on `DocumentLink`.
 		
 	**/
+	@:optional
 	var tooltipSupport : Null<Bool>;
 }

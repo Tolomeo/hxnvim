@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		An optional identifier under which the diagnostics are
 		managed by the client.
 	**/
+	@:optional
 	var identifier : Null<String>;
 	/**
 		```lua
@@ -42,6 +43,7 @@ package nvim.type.lsp;
 		(field) lsp.DiagnosticOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 	/**
 		```lua

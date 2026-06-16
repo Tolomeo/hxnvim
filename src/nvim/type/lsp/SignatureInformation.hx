@@ -31,6 +31,7 @@ package nvim.type.lsp;
 		`SignatureHelp.activeParameter`.
 		
 	**/
+	@:optional
 	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
 	/**
 		```lua
@@ -68,6 +69,7 @@ package nvim.type.lsp;
 		The human-readable doc-comment of this signature. Will be shown
 		in the UI but can be omitted.
 	**/
+	@:optional
 	var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
@@ -91,5 +93,6 @@ package nvim.type.lsp;
 		
 		The parameters of this signature.
 	**/
+	@:optional
 	var parameters : Null<Array<nvim.type.lsp.ParameterInformation>>;
 }

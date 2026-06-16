@@ -15,6 +15,7 @@ package nvim.type.uv.fs_event_start;
 		
 		default: false
 	**/
+	@:optional
 	var recursive : Null<Bool>;
 	/**
 		```lua
@@ -25,6 +26,7 @@ package nvim.type.uv.fs_event_start;
 		
 		default: false
 	**/
+	@:optional
 	var stat : Null<Bool>;
 	/**
 		```lua
@@ -35,5 +37,6 @@ package nvim.type.uv.fs_event_start;
 		
 		default: false
 	**/
+	@:optional
 	var watch_entry : Null<Bool>;
 }

@@ -18,6 +18,7 @@ package nvim.type.lsp;
 		that the current protocol doesn't support static configuration for file changes
 		from the server side.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		or not.
 		
 	**/
+	@:optional
 	var relativePatternSupport : Null<Bool>;
 }

@@ -23,11 +23,13 @@ package nvim.type.vim;
 		(field) vim.SystemCompleted.stderr: string?
 		```
 	**/
+	@:optional
 	var stderr : Null<String>;
 	/**
 		```lua
 		(field) vim.SystemCompleted.stdout: string?
 		```
 	**/
+	@:optional
 	var stdout : Null<String>;
 }

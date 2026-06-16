@@ -21,5 +21,6 @@ package nvim.type.lsp;
 		
 		Whether implementation supports dynamic registration for inline value providers.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

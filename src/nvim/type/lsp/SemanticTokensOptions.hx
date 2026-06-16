@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		Server supports providing semantic tokens for a full document.
 	**/
+	@:optional
 	var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
 	/**
 		```lua
@@ -44,11 +45,13 @@ package nvim.type.lsp;
 		Server supports providing semantic tokens for a specific range
 		of a document.
 	**/
+	@:optional
 	var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

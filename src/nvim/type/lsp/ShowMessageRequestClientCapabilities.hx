@@ -20,5 +20,6 @@ package nvim.type.lsp;
 		
 		Capabilities specific to the `MessageActionItem` type.
 	**/
+	@:optional
 	var messageActionItem : Null<nvim.type.lsp.ClientShowMessageActionItemOptions>;
 }

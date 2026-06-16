@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		side. The ID can be used to unregister for these events
 		using the `client/unregisterCapability` request.
 	**/
+	@:optional
 	var changeNotifications : Null<haxe.extern.EitherType<String, Bool>>;
 	/**
 		```lua
@@ -33,5 +34,6 @@ package nvim.type.lsp;
 		
 		The server has support for workspace folders
 	**/
+	@:optional
 	var supported : Null<Bool>;
 }

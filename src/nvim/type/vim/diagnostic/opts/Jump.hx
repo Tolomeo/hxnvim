@@ -17,6 +17,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Default value of the {float} parameter of |vim.diagnostic.jump()|.
 		 (default: false)
 	**/
+	@:optional
 	var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
 	/**
 		```lua
@@ -36,6 +37,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -48,5 +50,6 @@ package nvim.type.vim.diagnostic.opts;
 		 Default value of the {wrap} parameter of |vim.diagnostic.jump()|.
 		 (default: true)
 	**/
+	@:optional
 	var wrap : Null<Bool>;
 }

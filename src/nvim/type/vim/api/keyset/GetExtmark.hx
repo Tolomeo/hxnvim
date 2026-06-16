@@ -11,11 +11,13 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.get_extmark.details: boolean?
 		```
 	**/
+	@:optional
 	var details : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmark.hl_name: boolean?
 		```
 	**/
+	@:optional
 	var hl_name : Null<Bool>;
 }

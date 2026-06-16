@@ -21,11 +21,13 @@ package nvim.type.lsp;
 		Renames should be checked and tested before being executed.
 		
 	**/
+	@:optional
 	var prepareProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

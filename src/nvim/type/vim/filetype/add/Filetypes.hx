@@ -11,12 +11,14 @@ package nvim.type.vim.filetype.add;
 		(field) vim.filetype.add.filetypes.extension: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?
 		```
 	**/
+	@:optional
 	var extension : Null<nvim.type.vim.filetype.Mapping>;
 	/**
 		```lua
 		(field) vim.filetype.add.filetypes.filename: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?
 		```
 	**/
+	@:optional
 	var filename : Null<nvim.type.vim.filetype.Mapping>;
 	/**
 		```lua
@@ -27,5 +29,6 @@ package nvim.type.vim.filetype.add;
 		
 		 @inlinedoc
 	**/
+	@:optional
 	var pattern : Null<nvim.type.vim.filetype.Mapping>;
 }

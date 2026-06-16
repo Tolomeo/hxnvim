@@ -17,5 +17,6 @@ package nvim.type.lsp;
 		The client supports Relative Patterns.
 		
 	**/
+	@:optional
 	var relativePatternSupport : Null<Bool>;
 }

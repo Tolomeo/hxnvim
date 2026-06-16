@@ -11,6 +11,7 @@ package nvim.type.vim.lsp.util.rename;
 		(field) vim.lsp.util.rename.Opts.ignoreIfExists: boolean?
 		```
 	**/
+	@:optional
 	var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
@@ -21,5 +22,6 @@ package nvim.type.vim.lsp.util.rename;
 		
 		 @inlinedoc
 	**/
+	@:optional
 	var overwrite : Null<Bool>;
 }

@@ -29,6 +29,7 @@ package nvim.type.vim.trust;
 		
 		 Buffer number to update. Mutually exclusive with {path}.
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -41,5 +42,6 @@ package nvim.type.vim.trust;
 		 Path to a file to update. Mutually exclusive with {bufnr}.
 		 Cannot be used when {action} is "allow".
 	**/
+	@:optional
 	var path : Null<String>;
 }

@@ -25,6 +25,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		arbitrary data passed from |nvim_exec_autocmds()|                       *event-data*
 	**/
+	@:optional
 	var data : Null<Any>;
 	/**
 		```lua
@@ -55,6 +56,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		autocommand group id, if any
 	**/
+	@:optional
 	var group : Null<Int>;
 	/**
 		```lua

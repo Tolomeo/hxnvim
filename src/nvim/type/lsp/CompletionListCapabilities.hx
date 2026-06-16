@@ -31,6 +31,7 @@ package nvim.type.lsp;
 		defined in `CompletionList.applyKind`.
 		
 	**/
+	@:optional
 	var applyKindSupport : Null<Bool>;
 	/**
 		```lua
@@ -48,5 +49,6 @@ package nvim.type.lsp;
 		no properties are supported.
 		
 	**/
+	@:optional
 	var itemDefaults : Null<Array<String>>;
 }

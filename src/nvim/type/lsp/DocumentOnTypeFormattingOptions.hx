@@ -31,5 +31,6 @@ package nvim.type.lsp;
 		
 		More trigger characters.
 	**/
+	@:optional
 	var moreTriggerCharacter : Null<Array<String>>;
 }

@@ -47,6 +47,7 @@ package nvim.type.lsp;
 		The human-readable doc-comment of this parameter. Will be shown
 		in the UI but can be omitted.
 	**/
+	@:optional
 	var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua

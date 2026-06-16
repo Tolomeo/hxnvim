@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the symbol kinds from `File` to `Array` as defined in
 		the initial version of the protocol.
 	**/
+	@:optional
 	var valueSet : Null<Array<nvim.type.lsp.SymbolKind>>;
 }

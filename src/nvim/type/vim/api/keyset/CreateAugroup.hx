@@ -11,5 +11,6 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.create_augroup.clear: boolean?
 		```
 	**/
+	@:optional
 	var clear : Null<Bool>;
 }

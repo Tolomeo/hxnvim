@@ -18,6 +18,7 @@ package nvim.type.vim.treesitter.query.add_predicate;
 		 a list of nodes instead of a single node. Defaults to true. This option will
 		 be removed in a future release.
 	**/
+	@:optional
 	var all : Null<Bool>;
 	/**
 		```lua
@@ -30,5 +31,6 @@ package nvim.type.vim.treesitter.query.add_predicate;
 		
 		 Override an existing predicate of the same name
 	**/
+	@:optional
 	var force : Null<Bool>;
 }

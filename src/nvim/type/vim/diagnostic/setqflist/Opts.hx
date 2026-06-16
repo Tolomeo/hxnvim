@@ -21,6 +21,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		
 		 Only add diagnostics from the given namespace.
 	**/
+	@:optional
 	var namespace : Null<Int>;
 	/**
 		```lua
@@ -33,6 +34,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		 Open quickfix list after setting.
 		 (default: `true`)
 	**/
+	@:optional
 	var open : Null<Bool>;
 	/**
 		```lua
@@ -52,6 +54,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -64,5 +67,6 @@ package nvim.type.vim.diagnostic.setqflist;
 		 Title of quickfix list. Defaults to "Diagnostics". If there's already a quickfix list with this
 		 title, it's updated. If not, a new quickfix list is created.
 	**/
+	@:optional
 	var title : Null<String>;
 }

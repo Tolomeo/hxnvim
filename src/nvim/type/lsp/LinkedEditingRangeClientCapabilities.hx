@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the client supports the new `(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
 		return value for the corresponding server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

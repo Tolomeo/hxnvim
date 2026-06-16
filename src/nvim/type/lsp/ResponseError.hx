@@ -17,6 +17,7 @@ package nvim.type.lsp;
 		(field) lsp.ResponseError.data: boolean|string|number|table|table[]|nil
 		```
 	**/
+	@:optional
 	var data : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<Array<lua.Table.AnyTable>, lua.Table.AnyTable>>>>>;
 	/**
 		```lua

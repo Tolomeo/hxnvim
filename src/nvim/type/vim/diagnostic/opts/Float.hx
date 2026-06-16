@@ -15,6 +15,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		see |nvim_open_win()|.
 	**/
+	@:optional
 	var border : Null<String>;
 	/**
 		```lua
@@ -27,12 +28,14 @@ package nvim.type.vim.diagnostic.opts;
 		 Buffer number to show diagnostics from.
 		 (default: current buffer)
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.focus_id: string?
 		```
 	**/
+	@:optional
 	var focus_id : Null<String>;
 	/**
 		```lua
@@ -54,6 +57,7 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string?
 		```
 	**/
+	@:optional
 	var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
 	/**
 		```lua
@@ -67,6 +71,7 @@ package nvim.type.vim.diagnostic.opts;
 		 interpreted as a `[text, hl_group]` tuple.
 		 Overrides the setting from |vim.diagnostic.config()|.
 	**/
+	@:optional
 	var header : Null<String>;
 	/**
 		```lua
@@ -78,6 +83,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 Limit diagnostics to the given namespace
 	**/
+	@:optional
 	var namespace : Null<Int>;
 	/**
 		```lua
@@ -120,6 +126,7 @@ package nvim.type.vim.diagnostic.opts;
 		  2. string
 		```
 	**/
+	@:optional
 	var prefix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, Void, Void, Void, Void>>>>;
 	/**
 		```lua
@@ -134,6 +141,7 @@ package nvim.type.vim.diagnostic.opts;
 		 are also accepted (`c` for `cursor`, `l` for `line`, `b` for `buffer`).
 		 (default: `line`)
 	**/
+	@:optional
 	var scope : Null<String>;
 	/**
 		```lua
@@ -154,6 +162,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -167,6 +176,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Overrides the setting from |vim.diagnostic.config()|.
 		 (default: `false`)
 	**/
+	@:optional
 	var severity_sort : Null<haxe.extern.EitherType<Bool, { var reverse : Null<Bool>; }>>;
 	/**
 		```lua
@@ -182,6 +192,7 @@ package nvim.type.vim.diagnostic.opts;
 		 the diagnostic source.
 		 Overrides the setting from |vim.diagnostic.config()|.
 	**/
+	@:optional
 	var source : Null<haxe.extern.EitherType<Bool, String>>;
 	/**
 		```lua
@@ -203,5 +214,6 @@ package nvim.type.vim.diagnostic.opts;
 		  2. string
 		```
 	**/
+	@:optional
 	var suffix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, Void, Void, Void, Void>>>>;
 }

@@ -43,5 +43,6 @@ package nvim.type.lsp;
 		Optional the version number of the document the diagnostics are published for.
 		
 	**/
+	@:optional
 	var version : Null<Int>;
 }

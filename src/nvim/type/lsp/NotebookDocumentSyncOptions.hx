@@ -43,5 +43,6 @@ package nvim.type.lsp;
 		Whether save notification should be forwarded to
 		the server. Will only be honored if mode === `notebook`.
 	**/
+	@:optional
 	var save : Null<Bool>;
 }

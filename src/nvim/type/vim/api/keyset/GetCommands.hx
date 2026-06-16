@@ -11,5 +11,6 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.get_commands.builtin: boolean?
 		```
 	**/
+	@:optional
 	var builtin : Null<Bool>;
 }

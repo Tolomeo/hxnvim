@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		simple label string.
 		
 	**/
+	@:optional
 	var labelOffsetSupport : Null<Bool>;
 }

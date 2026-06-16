@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		
 		The client has support for sending didCreateFiles notifications.
 	**/
+	@:optional
 	var didCreate : Null<Bool>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 		
 		The client has support for sending didDeleteFiles notifications.
 	**/
+	@:optional
 	var didDelete : Null<Bool>;
 	/**
 		```lua
@@ -46,6 +48,7 @@ package nvim.type.lsp;
 		
 		The client has support for sending didRenameFiles notifications.
 	**/
+	@:optional
 	var didRename : Null<Bool>;
 	/**
 		```lua
@@ -57,6 +60,7 @@ package nvim.type.lsp;
 		
 		Whether the client supports dynamic registration for file requests/notifications.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -68,6 +72,7 @@ package nvim.type.lsp;
 		
 		The client has support for sending willCreateFiles requests.
 	**/
+	@:optional
 	var willCreate : Null<Bool>;
 	/**
 		```lua
@@ -79,6 +84,7 @@ package nvim.type.lsp;
 		
 		The client has support for sending willDeleteFiles requests.
 	**/
+	@:optional
 	var willDelete : Null<Bool>;
 	/**
 		```lua
@@ -90,5 +96,6 @@ package nvim.type.lsp;
 		
 		The client has support for sending willRenameFiles requests.
 	**/
+	@:optional
 	var willRename : Null<Bool>;
 }

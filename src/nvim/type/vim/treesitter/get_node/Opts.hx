@@ -21,6 +21,7 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Buffer number (nil or 0 for current buffer)
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -32,6 +33,7 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Ignore injected languages (default true)
 	**/
+	@:optional
 	var ignore_injections : Null<Bool>;
 	/**
 		```lua
@@ -43,6 +45,7 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Include anonymous nodes (default false)
 	**/
+	@:optional
 	var include_anonymous : Null<Bool>;
 	/**
 		```lua
@@ -54,6 +57,7 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Parser language. (default: from buffer filetype)
 	**/
+	@:optional
 	var lang : Null<String>;
 	/**
 		```lua

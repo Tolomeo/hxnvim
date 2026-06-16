@@ -55,6 +55,7 @@ package nvim.type;
 		
 		ABI 15 only
 	**/
+	@:optional
 	var metadata : Null<nvim.type.TSLangMetadata>;
 	/**
 		```lua

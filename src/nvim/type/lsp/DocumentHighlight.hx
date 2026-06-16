@@ -36,6 +36,7 @@ package nvim.type.lsp;
 		    | 3 -- Write
 		```
 	**/
+	@:optional
 	var kind : Null<nvim.type.lsp.DocumentHighlightKind>;
 	/**
 		```lua

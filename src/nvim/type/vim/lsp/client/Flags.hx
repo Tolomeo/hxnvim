@@ -18,6 +18,7 @@ package nvim.type.vim.lsp.client;
 		 Allow using incremental sync for buffer edits
 		 (default: `true`)
 	**/
+	@:optional
 	var allow_incremental_sync : Null<Bool>;
 	/**
 		```lua

@@ -55,6 +55,7 @@ package nvim.type.lsp;
 		folder root, but it can be another absolute URI as well.
 		
 	**/
+	@:optional
 	var pattern : Null<nvim.type.lsp.GlobPattern>;
 	/**
 		```lua
@@ -66,5 +67,6 @@ package nvim.type.lsp;
 		
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
+	@:optional
 	var scheme : Null<String>;
 }

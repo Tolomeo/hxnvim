@@ -31,6 +31,7 @@ package nvim.type.lsp;
 		
 		The command this code lens represents.
 	**/
+	@:optional
 	var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
@@ -59,6 +60,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua

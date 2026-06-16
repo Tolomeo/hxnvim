@@ -17,6 +17,7 @@ package nvim.type.vim.lsp.start;
 		 Whether to attach the client to a buffer (default true).
 		 If set to `false`, `reuse_client` and `bufnr` will be ignored.
 	**/
+	@:optional
 	var attach : Null<Bool>;
 	/**
 		```lua
@@ -28,6 +29,7 @@ package nvim.type.vim.lsp.start;
 		
 		 Buffer handle to attach to if starting or re-using a client (0 for current).
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -50,6 +52,7 @@ package nvim.type.vim.lsp.start;
 		  -> boolean
 		```
 	**/
+	@:optional
 	var reuse_client : Null<(client:nvim.type.vim.lsp.Client, config:nvim.type.vim.lsp.ClientConfig) -> Bool>;
 	/**
 		```lua
@@ -61,5 +64,6 @@ package nvim.type.vim.lsp.start;
 		
 		 Suppress error reporting if the LSP server fails to start (default false).
 	**/
+	@:optional
 	var silent : Null<Bool>;
 }

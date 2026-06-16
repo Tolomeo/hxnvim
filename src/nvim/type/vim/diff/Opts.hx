@@ -25,6 +25,7 @@ package nvim.type.vim.diff;
 		   - `histogram`: histogram diff algorithm
 		 (default: `'myers'`)
 	**/
+	@:optional
 	var algorithm : Null<String>;
 	/**
 		```lua
@@ -35,6 +36,7 @@ package nvim.type.vim.diff;
 		
 		Context length
 	**/
+	@:optional
 	var ctxlen : Null<Int>;
 	/**
 		```lua
@@ -45,6 +47,7 @@ package nvim.type.vim.diff;
 		
 		Ignore blank lines
 	**/
+	@:optional
 	var ignore_blank_lines : Null<Bool>;
 	/**
 		```lua
@@ -55,6 +58,7 @@ package nvim.type.vim.diff;
 		
 		Ignore carriage return at end-of-line
 	**/
+	@:optional
 	var ignore_cr_at_eol : Null<Bool>;
 	/**
 		```lua
@@ -65,6 +69,7 @@ package nvim.type.vim.diff;
 		
 		Ignore whitespace
 	**/
+	@:optional
 	var ignore_whitespace : Null<Bool>;
 	/**
 		```lua
@@ -75,6 +80,7 @@ package nvim.type.vim.diff;
 		
 		Ignore whitespace change
 	**/
+	@:optional
 	var ignore_whitespace_change : Null<Bool>;
 	/**
 		```lua
@@ -85,6 +91,7 @@ package nvim.type.vim.diff;
 		
 		Ignore whitespace change at end-of-line.
 	**/
+	@:optional
 	var ignore_whitespace_change_at_eol : Null<Bool>;
 	/**
 		```lua
@@ -95,6 +102,7 @@ package nvim.type.vim.diff;
 		
 		Use the indent heuristic for the internal diff library.
 	**/
+	@:optional
 	var indent_heuristic : Null<Bool>;
 	/**
 		```lua
@@ -105,6 +113,7 @@ package nvim.type.vim.diff;
 		
 		Inter hunk context length
 	**/
+	@:optional
 	var interhunkctxlen : Null<Int>;
 	/**
 		```lua
@@ -118,6 +127,7 @@ package nvim.type.vim.diff;
 		 upto this size in lines are run through linematch.
 		 Requires `result_type = indices`, ignored otherwise.
 	**/
+	@:optional
 	var linematch : Null<haxe.extern.EitherType<Bool, Int>>;
 	/**
 		```lua
@@ -143,6 +153,7 @@ package nvim.type.vim.diff;
 		  -> integer?
 		```
 	**/
+	@:optional
 	var on_hunk : Null<(start_a:Int, count_a:Int, start_b:Int, count_b:Int) -> Null<Int>>;
 	/**
 		```lua
@@ -158,5 +169,6 @@ package nvim.type.vim.diff;
 		 Note: This option is ignored if `on_hunk` is used.
 		 (default: `'unified'`)
 	**/
+	@:optional
 	var result_type : Null<String>;
 }

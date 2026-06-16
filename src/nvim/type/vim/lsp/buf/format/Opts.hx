@@ -19,6 +19,7 @@ package nvim.type.vim.lsp.buf.format;
 		 changes.
 		 (Default: false)
 	**/
+	@:optional
 	var async : Null<Bool>;
 	/**
 		```lua
@@ -31,6 +32,7 @@ package nvim.type.vim.lsp.buf.format;
 		 Restrict formatting to the clients attached to the given buffer.
 		 (default: current buffer)
 	**/
+	@:optional
 	var bufnr : Null<Int>;
 	/**
 		```lua
@@ -56,6 +58,7 @@ package nvim.type.vim.lsp.buf.format;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
 	/**
 		```lua
@@ -70,6 +73,7 @@ package nvim.type.vim.lsp.buf.format;
 		 automatically derived from the current Nvim options.
 		 See https://microsoft.github.io/language-server-protocol/specification/#formattingOptions
 	**/
+	@:optional
 	var formatting_options : Null<lua.Table.AnyTable>;
 	/**
 		```lua
@@ -81,6 +85,7 @@ package nvim.type.vim.lsp.buf.format;
 		
 		 Restrict formatting to the client with ID (client.id) matching this field.
 	**/
+	@:optional
 	var id : Null<Int>;
 	/**
 		```lua
@@ -92,6 +97,7 @@ package nvim.type.vim.lsp.buf.format;
 		
 		 Restrict formatting to the client with name (client.name) matching this field.
 	**/
+	@:optional
 	var name : Null<String>;
 	/**
 		```lua
@@ -109,6 +115,7 @@ package nvim.type.vim.lsp.buf.format;
 		 (Default: current selection in visual mode, `nil` in other modes,
 		 formatting the full buffer)
 	**/
+	@:optional
 	var range : Null<Dynamic>;
 	/**
 		```lua
@@ -121,5 +128,6 @@ package nvim.type.vim.lsp.buf.format;
 		 Time in milliseconds to block for formatting requests. No effect if async=true.
 		 (default: `1000`)
 	**/
+	@:optional
 	var timeout_ms : Null<Int>;
 }

@@ -35,6 +35,7 @@ package nvim.type.lsp;
 		Whether clients honor this property depends on the client capability `workspace.changeAnnotationSupport`.
 		
 	**/
+	@:optional
 	var changeAnnotations : Null<lua.Table<nvim.type.lsp.ChangeAnnotationIdentifier, nvim.type.lsp.ChangeAnnotation>>;
 	/**
 		```lua
@@ -46,6 +47,7 @@ package nvim.type.lsp;
 		
 		Holds changes to existing resources.
 	**/
+	@:optional
 	var changes : Null<lua.Table<nvim.type.lsp.DocumentUri, Array<nvim.type.lsp.TextEdit>>>;
 	/**
 		```lua
@@ -66,5 +68,6 @@ package nvim.type.lsp;
 		If a client neither supports `documentChanges` nor `workspace.workspaceEdit.resourceOperations` then
 		only plain `TextEdit`s using the `changes` property are supported.
 	**/
+	@:optional
 	var documentChanges : Null<Array<haxe.extern.EitherType<nvim.type.lsp.TextDocumentEdit, haxe.extern.EitherType<nvim.type.lsp.CreateFile, haxe.extern.EitherType<nvim.type.lsp.RenameFile, nvim.type.lsp.DeleteFile>>>>>;
 }

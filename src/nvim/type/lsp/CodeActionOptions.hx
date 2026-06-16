@@ -23,6 +23,7 @@ package nvim.type.lsp;
 		The list of kinds may be generic, such as `CodeActionKind.Refactor`, or the server
 		may list out every specific kind they provide.
 	**/
+	@:optional
 	var codeActionKinds : Null<Array<nvim.type.lsp.CodeActionKind>>;
 	/**
 		```lua
@@ -46,6 +47,7 @@ package nvim.type.lsp;
 		At most one documentation entry should be shown per provider.
 		
 	**/
+	@:optional
 	var documentation : Null<Array<nvim.type.lsp.CodeActionKindDocumentation>>;
 	/**
 		```lua
@@ -59,11 +61,13 @@ package nvim.type.lsp;
 		information for a code action.
 		
 	**/
+	@:optional
 	var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

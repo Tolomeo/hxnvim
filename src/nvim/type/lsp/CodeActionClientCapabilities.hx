@@ -23,6 +23,7 @@ package nvim.type.lsp;
 		set the request can only return `Command` literals.
 		
 	**/
+	@:optional
 	var codeActionLiteralSupport : Null<nvim.type.lsp.ClientCodeActionLiteralOptions>;
 	/**
 		```lua
@@ -37,6 +38,7 @@ package nvim.type.lsp;
 		`codeAction/resolve` request.
 		
 	**/
+	@:optional
 	var dataSupport : Null<Bool>;
 	/**
 		```lua
@@ -49,6 +51,7 @@ package nvim.type.lsp;
 		Whether code action supports the `disabled` property.
 		
 	**/
+	@:optional
 	var disabledSupport : Null<Bool>;
 	/**
 		```lua
@@ -62,6 +65,7 @@ package nvim.type.lsp;
 		code actions.
 		
 	**/
+	@:optional
 	var documentationSupport : Null<Bool>;
 	/**
 		```lua
@@ -73,6 +77,7 @@ package nvim.type.lsp;
 		
 		Whether code action supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -89,6 +94,7 @@ package nvim.type.lsp;
 		for confirmation.
 		
 	**/
+	@:optional
 	var honorsChangeAnnotations : Null<Bool>;
 	/**
 		```lua
@@ -101,6 +107,7 @@ package nvim.type.lsp;
 		Whether code action supports the `isPreferred` property.
 		
 	**/
+	@:optional
 	var isPreferredSupport : Null<Bool>;
 	/**
 		```lua
@@ -114,6 +121,7 @@ package nvim.type.lsp;
 		properties via a separate `codeAction/resolve` request.
 		
 	**/
+	@:optional
 	var resolveSupport : Null<nvim.type.lsp.ClientCodeActionResolveOptions>;
 	/**
 		```lua
@@ -127,5 +135,6 @@ package nvim.type.lsp;
 		supporting tags have to handle unknown tags gracefully.
 		
 	**/
+	@:optional
 	var tagSupport : Null<nvim.type.lsp.CodeActionTagOptions>;
 }

@@ -32,6 +32,7 @@ package nvim.type.lsp;
 		Depending on the client capability `inlayHint.resolveSupport` clients
 		might resolve this property late using the resolve request.
 	**/
+	@:optional
 	var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
@@ -58,6 +59,7 @@ package nvim.type.lsp;
 		Depending on the client capability `inlayHint.resolveSupport` clients
 		might resolve this property late using the resolve request.
 	**/
+	@:optional
 	var location : Null<nvim.type.lsp.Location>;
 	/**
 		```lua
@@ -96,6 +98,7 @@ package nvim.type.lsp;
 		the client capability `inlayHint.resolveSupport` clients might resolve
 		this property late using the resolve request.
 	**/
+	@:optional
 	var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua

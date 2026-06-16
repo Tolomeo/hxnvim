@@ -17,6 +17,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Only show diagnostics for the current line.
 		 (default `false`)
 	**/
+	@:optional
 	var current_line : Null<Bool>;
 	/**
 		```lua
@@ -44,6 +45,7 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string?
 		```
 	**/
+	@:optional
 	var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
 	/**
 		```lua
@@ -55,6 +57,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
+	@:optional
 	var hl_mode : Null<String>;
 	/**
 		```lua
@@ -76,6 +79,7 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string
 		```
 	**/
+	@:optional
 	var prefix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> String>>;
 	/**
 		```lua
@@ -96,6 +100,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -109,6 +114,7 @@ package nvim.type.vim.diagnostic.opts;
 		 show sources if there is more than one diagnostic source in the buffer.
 		 Otherwise, any truthy value means to always show the diagnostic source.
 	**/
+	@:optional
 	var source : Null<haxe.extern.EitherType<Bool, String>>;
 	/**
 		```lua
@@ -120,6 +126,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 Amount of empty spaces inserted at the beginning of the virtual text.
 	**/
+	@:optional
 	var spacing : Null<Int>;
 	/**
 		```lua
@@ -139,6 +146,7 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string
 		```
 	**/
+	@:optional
 	var suffix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic) -> String>>;
 	/**
 		```lua
@@ -161,6 +169,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
+	@:optional
 	var virt_text_hide : Null<Bool>;
 	/**
 		```lua
@@ -172,6 +181,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
+	@:optional
 	var virt_text_pos : Null<String>;
 	/**
 		```lua
@@ -183,5 +193,6 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
+	@:optional
 	var virt_text_win_col : Null<Int>;
 }

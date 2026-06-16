@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		are preserved and send back to the server in the
 		request's response.
 	**/
+	@:optional
 	var additionalPropertiesSupport : Null<Bool>;
 }

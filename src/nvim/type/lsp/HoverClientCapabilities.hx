@@ -17,6 +17,7 @@ package nvim.type.lsp;
 		Client supports the following content formats for the content
 		property. The order describes the preferred format of the client.
 	**/
+	@:optional
 	var contentFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
@@ -28,5 +29,6 @@ package nvim.type.lsp;
 		
 		Whether hover supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

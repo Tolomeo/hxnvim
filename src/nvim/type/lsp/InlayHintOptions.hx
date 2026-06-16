@@ -22,11 +22,13 @@ package nvim.type.lsp;
 		The server provides support to resolve additional
 		information for an inlay hint item.
 	**/
+	@:optional
 	var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHintOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

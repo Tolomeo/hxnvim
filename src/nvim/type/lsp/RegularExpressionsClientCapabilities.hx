@@ -32,5 +32,6 @@ package nvim.type.lsp;
 		
 		The engine's version.
 	**/
+	@:optional
 	var version : Null<String>;
 }

@@ -20,6 +20,7 @@ package nvim.type.lsp;
 		
 		Symbol request supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -34,6 +35,7 @@ package nvim.type.lsp;
 		properties.
 		
 	**/
+	@:optional
 	var resolveSupport : Null<nvim.type.lsp.ClientSymbolResolveOptions>;
 	/**
 		```lua
@@ -45,6 +47,7 @@ package nvim.type.lsp;
 		
 		Specific capabilities for the `SymbolKind` in the `workspace/symbol` request.
 	**/
+	@:optional
 	var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
 	/**
 		```lua
@@ -58,5 +61,6 @@ package nvim.type.lsp;
 		Clients supporting tags have to handle unknown tags gracefully.
 		
 	**/
+	@:optional
 	var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
 }

@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		the client supports the new `SelectionRangeRegistrationOptions` return value for the corresponding server
 		capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 }

@@ -59,5 +59,6 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var registerOptions : Null<nvim.type.lsp.LSPAny>;
 }

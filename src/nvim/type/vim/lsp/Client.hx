@@ -161,6 +161,7 @@ package nvim.type.vim.lsp;
 		(field) vim.lsp.Client.initialized: true?
 		```
 	**/
+	@:optional
 	var initialized : Null<Bool>;
 	/**
 		```lua
@@ -213,6 +214,7 @@ package nvim.type.vim.lsp;
 		
 		 See [vim.lsp.ClientConfig].
 	**/
+	@:optional
 	var root_dir : Null<String>;
 	/**
 		```lua
@@ -245,6 +247,7 @@ package nvim.type.vim.lsp;
 		
 		 Response from the server sent on `initialize` describing the server's capabilities.
 	**/
+	@:optional
 	var server_capabilities : Null<nvim.type.lsp.ServerCapabilities>;
 	/**
 		```lua
@@ -261,6 +264,7 @@ package nvim.type.vim.lsp;
 		
 		 Response from the server sent on `initialize` describing server information (e.g. version).
 	**/
+	@:optional
 	var server_info : Null<nvim.type.lsp.ServerInfo>;
 	/**
 		```lua
@@ -287,6 +291,7 @@ package nvim.type.vim.lsp;
 		
 		 See [vim.lsp.ClientConfig].
 	**/
+	@:optional
 	var workspace_folders : Null<Array<nvim.type.lsp.WorkspaceFolder>>;
 	/**
 		```lua

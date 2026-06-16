@@ -17,6 +17,7 @@ package nvim.type.vim.lsp.util.show_document;
 		 Whether to focus/jump to location if possible.
 		 (defaults: true)
 	**/
+	@:optional
 	var focus : Null<Bool>;
 	/**
 		```lua
@@ -29,5 +30,6 @@ package nvim.type.vim.lsp.util.show_document;
 		
 		 Jump to existing window if buffer is already open.
 	**/
+	@:optional
 	var reuse_win : Null<Bool>;
 }

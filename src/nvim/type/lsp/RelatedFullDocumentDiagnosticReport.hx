@@ -48,6 +48,7 @@ package nvim.type.lsp;
 		a.cpp and result in errors in a header file b.hpp.
 		
 	**/
+	@:optional
 	var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
 	/**
 		```lua
@@ -61,5 +62,6 @@ package nvim.type.lsp;
 		be sent on the next diagnostic request for the
 		same document.
 	**/
+	@:optional
 	var resultId : Null<String>;
 }

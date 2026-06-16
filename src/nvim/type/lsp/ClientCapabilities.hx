@@ -36,6 +36,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var experimental : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
@@ -53,6 +54,7 @@ package nvim.type.lsp;
 		General client capabilities.
 		
 	**/
+	@:optional
 	var general : Null<nvim.type.lsp.GeneralClientCapabilities>;
 	/**
 		```lua
@@ -70,6 +72,7 @@ package nvim.type.lsp;
 		Capabilities specific to the notebook document support.
 		
 	**/
+	@:optional
 	var notebookDocument : Null<nvim.type.lsp.NotebookDocumentClientCapabilities>;
 	/**
 		```lua
@@ -85,6 +88,7 @@ package nvim.type.lsp;
 		
 		Text document specific client capabilities.
 	**/
+	@:optional
 	var textDocument : Null<nvim.type.lsp.TextDocumentClientCapabilities>;
 	/**
 		```lua
@@ -96,6 +100,7 @@ package nvim.type.lsp;
 		
 		Window specific client capabilities.
 	**/
+	@:optional
 	var window : Null<nvim.type.lsp.WindowClientCapabilities>;
 	/**
 		```lua
@@ -111,5 +116,6 @@ package nvim.type.lsp;
 		
 		Workspace specific client capabilities.
 	**/
+	@:optional
 	var workspace : Null<nvim.type.lsp.WorkspaceClientCapabilities>;
 }

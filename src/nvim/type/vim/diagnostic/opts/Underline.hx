@@ -25,5 +25,6 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

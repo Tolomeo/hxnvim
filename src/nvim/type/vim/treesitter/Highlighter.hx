@@ -42,6 +42,7 @@ package nvim.type.vim.treesitter;
 		(field) vim.treesitter.highlighter._conceal_line: boolean?
 		```
 	**/
+	@:optional
 	var _conceal_line : Null<Bool>;
 	/**
 		```lua

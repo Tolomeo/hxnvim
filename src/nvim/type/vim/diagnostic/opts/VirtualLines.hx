@@ -17,6 +17,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Only show diagnostics for the current line.
 		 (default: `false`)
 	**/
+	@:optional
 	var current_line : Null<Bool>;
 	/**
 		```lua
@@ -37,6 +38,7 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string?
 		```
 	**/
+	@:optional
 	var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
 	/**
 		```lua
@@ -57,5 +59,6 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

@@ -23,6 +23,7 @@ package nvim.type.lsp;
 		Markdown.
 		
 	**/
+	@:optional
 	var allowedTags : Null<Array<String>>;
 	/**
 		```lua
@@ -45,5 +46,6 @@ package nvim.type.lsp;
 		
 		The version of the parser.
 	**/
+	@:optional
 	var version : Null<String>;
 }

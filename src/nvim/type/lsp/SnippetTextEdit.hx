@@ -25,6 +25,7 @@ package nvim.type.lsp;
 		
 		The actual identifier of the snippet edit.
 	**/
+	@:optional
 	var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
 	/**
 		```lua

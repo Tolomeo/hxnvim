@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		are also counted as re-trigger characters.
 		
 	**/
+	@:optional
 	var retriggerCharacters : Null<Array<String>>;
 	/**
 		```lua
@@ -35,11 +36,13 @@ package nvim.type.lsp;
 		
 		List of characters that trigger signature help automatically.
 	**/
+	@:optional
 	var triggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.workDoneProgress: boolean?
 		```
 	**/
+	@:optional
 	var workDoneProgress : Null<Bool>;
 }

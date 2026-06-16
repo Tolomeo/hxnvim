@@ -11,5 +11,6 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.complete_set.info: string?
 		```
 	**/
+	@:optional
 	var info : Null<String>;
 }

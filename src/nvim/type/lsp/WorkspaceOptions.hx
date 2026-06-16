@@ -27,6 +27,7 @@ package nvim.type.lsp;
 		The server is interested in notifications/requests for operations on files.
 		
 	**/
+	@:optional
 	var fileOperations : Null<nvim.type.lsp.FileOperationOptions>;
 	/**
 		```lua
@@ -49,6 +50,7 @@ package nvim.type.lsp;
 		Text document content provider registration options.
 		
 	**/
+	@:optional
 	var textDocumentContent : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentContentOptions, nvim.type.lsp.TextDocumentContentRegistrationOptions>>;
 	/**
 		```lua
@@ -61,5 +63,6 @@ package nvim.type.lsp;
 		The server supports workspace folder.
 		
 	**/
+	@:optional
 	var workspaceFolders : Null<nvim.type.lsp.WorkspaceFoldersServerCapabilities>;
 }

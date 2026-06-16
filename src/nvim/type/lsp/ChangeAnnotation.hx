@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		A human-readable string which is rendered less prominent in
 		the user interface.
 	**/
+	@:optional
 	var description : Null<String>;
 	/**
 		```lua
@@ -46,5 +47,6 @@ package nvim.type.lsp;
 		A flag which indicates that user confirmation is needed
 		before applying the change.
 	**/
+	@:optional
 	var needsConfirmation : Null<Bool>;
 }

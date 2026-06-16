@@ -19,6 +19,7 @@ package nvim.type.vim.lsp;
 		 vim.lsp.buf.references(nil, { loclist = false })
 		 ```
 	**/
+	@:optional
 	var loclist : Null<Bool>;
 	/**
 		```lua
@@ -47,5 +48,6 @@ package nvim.type.vim.lsp;
 		function (t: vim.lsp.LocationOpts.OnList)
 		```
 	**/
+	@:optional
 	var on_list : Null<(t:nvim.type.vim.lsp.locationopts.OnList) -> Dynamic>;
 }

@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		specified.
 		
 	**/
+	@:optional
 	var augmentsSyntaxTokens : Null<Bool>;
 	/**
 		```lua
@@ -37,6 +38,7 @@ package nvim.type.lsp;
 		the client supports the new `(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
 		return value for the corresponding server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -59,6 +61,7 @@ package nvim.type.lsp;
 		
 		Whether the client supports tokens that can span multiple lines.
 	**/
+	@:optional
 	var multilineTokenSupport : Null<Bool>;
 	/**
 		```lua
@@ -70,6 +73,7 @@ package nvim.type.lsp;
 		
 		Whether the client supports tokens that can overlap each other.
 	**/
+	@:optional
 	var overlappingTokenSupport : Null<Bool>;
 	/**
 		```lua
@@ -103,6 +107,7 @@ package nvim.type.lsp;
 		needs to retrigger the request.
 		
 	**/
+	@:optional
 	var serverCancelSupport : Null<Bool>;
 	/**
 		```lua

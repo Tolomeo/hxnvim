@@ -24,6 +24,7 @@ package nvim.type.lsp;
 		`(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
 		return value for the corresponding server capability as well.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -35,5 +36,6 @@ package nvim.type.lsp;
 		
 		The client supports sending execution summary data per cell.
 	**/
+	@:optional
 	var executionSummarySupport : Null<Bool>;
 }

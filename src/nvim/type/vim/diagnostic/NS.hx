@@ -11,6 +11,7 @@ package nvim.type.vim.diagnostic;
 		(field) vim.diagnostic.NS.disabled: boolean?
 		```
 	**/
+	@:optional
 	var disabled : Null<Bool>;
 	/**
 		```lua

@@ -32,6 +32,7 @@ package nvim.type.lsp;
 		provides an edit and a command, first the edit is
 		executed and then the command.
 	**/
+	@:optional
 	var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
@@ -61,6 +62,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
@@ -72,6 +74,7 @@ package nvim.type.lsp;
 		
 		The diagnostics that this code action resolves.
 	**/
+	@:optional
 	var diagnostics : Null<Array<nvim.type.lsp.Diagnostic>>;
 	/**
 		```lua
@@ -101,6 +104,7 @@ package nvim.type.lsp;
 		    error message with `reason` in the editor.
 		
 	**/
+	@:optional
 	var disabled : Null<nvim.type.lsp.CodeActionDisabled>;
 	/**
 		```lua
@@ -127,6 +131,7 @@ package nvim.type.lsp;
 		
 		The workspace edit this code action performs.
 	**/
+	@:optional
 	var edit : Null<nvim.type.lsp.WorkspaceEdit>;
 	/**
 		```lua
@@ -143,6 +148,7 @@ package nvim.type.lsp;
 		A refactoring should be marked preferred if it is the most reasonable choice of actions to take.
 		
 	**/
+	@:optional
 	var isPreferred : Null<Bool>;
 	/**
 		```lua
@@ -178,6 +184,7 @@ package nvim.type.lsp;
 		    | "notebook" -- Notebook
 		```
 	**/
+	@:optional
 	var kind : Null<nvim.type.lsp.CodeActionKind>;
 	/**
 		```lua
@@ -190,6 +197,7 @@ package nvim.type.lsp;
 		Tags for this code action.
 		
 	**/
+	@:optional
 	var tags : Null<Array<nvim.type.lsp.CodeActionTag>>;
 	/**
 		```lua

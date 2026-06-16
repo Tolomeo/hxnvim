@@ -32,6 +32,7 @@ package nvim.type.lsp;
 		Call hierarchy options used during static or dynamic registration.
 		
 	**/
+	@:optional
 	var callHierarchyProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.CallHierarchyOptions, nvim.type.lsp.CallHierarchyRegistrationOptions>>>;
 	/**
 		```lua
@@ -49,6 +50,7 @@ package nvim.type.lsp;
 		specified if the client states that it supports
 		`codeActionLiteralSupport` in its initial `initialize` request.
 	**/
+	@:optional
 	var codeActionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.CodeActionOptions>>;
 	/**
 		```lua
@@ -64,6 +66,7 @@ package nvim.type.lsp;
 		
 		The server provides code lens.
 	**/
+	@:optional
 	var codeLensProvider : Null<nvim.type.lsp.CodeLensOptions>;
 	/**
 		```lua
@@ -75,6 +78,7 @@ package nvim.type.lsp;
 		
 		The server provides color provider support.
 	**/
+	@:optional
 	var colorProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.DocumentColorOptions, nvim.type.lsp.DocumentColorRegistrationOptions>>>;
 	/**
 		```lua
@@ -90,6 +94,7 @@ package nvim.type.lsp;
 		
 		The server provides completion support.
 	**/
+	@:optional
 	var completionProvider : Null<nvim.type.lsp.CompletionOptions>;
 	/**
 		```lua
@@ -101,6 +106,7 @@ package nvim.type.lsp;
 		
 		The server provides Goto Declaration support.
 	**/
+	@:optional
 	var declarationProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.DeclarationOptions, nvim.type.lsp.DeclarationRegistrationOptions>>>;
 	/**
 		```lua
@@ -116,6 +122,7 @@ package nvim.type.lsp;
 		
 		The server provides goto definition support.
 	**/
+	@:optional
 	var definitionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DefinitionOptions>>;
 	/**
 		```lua
@@ -138,6 +145,7 @@ package nvim.type.lsp;
 		Diagnostic registration options.
 		
 	**/
+	@:optional
 	var diagnosticProvider : Null<haxe.extern.EitherType<nvim.type.lsp.DiagnosticOptions, nvim.type.lsp.DiagnosticRegistrationOptions>>;
 	/**
 		```lua
@@ -153,6 +161,7 @@ package nvim.type.lsp;
 		
 		The server provides document formatting.
 	**/
+	@:optional
 	var documentFormattingProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentFormattingOptions>>;
 	/**
 		```lua
@@ -168,6 +177,7 @@ package nvim.type.lsp;
 		
 		The server provides document highlight support.
 	**/
+	@:optional
 	var documentHighlightProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentHighlightOptions>>;
 	/**
 		```lua
@@ -183,6 +193,7 @@ package nvim.type.lsp;
 		
 		The server provides document link support.
 	**/
+	@:optional
 	var documentLinkProvider : Null<nvim.type.lsp.DocumentLinkOptions>;
 	/**
 		```lua
@@ -198,6 +209,7 @@ package nvim.type.lsp;
 		
 		The server provides document formatting on typing.
 	**/
+	@:optional
 	var documentOnTypeFormattingProvider : Null<nvim.type.lsp.DocumentOnTypeFormattingOptions>;
 	/**
 		```lua
@@ -213,6 +225,7 @@ package nvim.type.lsp;
 		
 		The server provides document range formatting.
 	**/
+	@:optional
 	var documentRangeFormattingProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentRangeFormattingOptions>>;
 	/**
 		```lua
@@ -228,6 +241,7 @@ package nvim.type.lsp;
 		
 		The server provides document symbol support.
 	**/
+	@:optional
 	var documentSymbolProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentSymbolOptions>>;
 	/**
 		```lua
@@ -243,6 +257,7 @@ package nvim.type.lsp;
 		
 		The server provides execute command support.
 	**/
+	@:optional
 	var executeCommandProvider : Null<nvim.type.lsp.ExecuteCommandOptions>;
 	/**
 		```lua
@@ -270,6 +285,7 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
+	@:optional
 	var experimental : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
@@ -281,6 +297,7 @@ package nvim.type.lsp;
 		
 		The server provides folding provider support.
 	**/
+	@:optional
 	var foldingRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.FoldingRangeOptions, nvim.type.lsp.FoldingRangeRegistrationOptions>>>;
 	/**
 		```lua
@@ -296,6 +313,7 @@ package nvim.type.lsp;
 		
 		The server provides hover support.
 	**/
+	@:optional
 	var hoverProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.HoverOptions>>;
 	/**
 		```lua
@@ -307,6 +325,7 @@ package nvim.type.lsp;
 		
 		The server provides Goto Implementation support.
 	**/
+	@:optional
 	var implementationProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.ImplementationOptions, nvim.type.lsp.ImplementationRegistrationOptions>>>;
 	/**
 		```lua
@@ -329,6 +348,7 @@ package nvim.type.lsp;
 		Inlay hint options used during static or dynamic registration.
 		
 	**/
+	@:optional
 	var inlayHintProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.InlayHintOptions, nvim.type.lsp.InlayHintRegistrationOptions>>>;
 	/**
 		```lua
@@ -346,6 +366,7 @@ package nvim.type.lsp;
 		Inline completion options used during static registration.
 		
 	**/
+	@:optional
 	var inlineCompletionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.InlineCompletionOptions>>;
 	/**
 		```lua
@@ -368,6 +389,7 @@ package nvim.type.lsp;
 		Inline value options used during static or dynamic registration.
 		
 	**/
+	@:optional
 	var inlineValueProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.InlineValueOptions, nvim.type.lsp.InlineValueRegistrationOptions>>>;
 	/**
 		```lua
@@ -380,6 +402,7 @@ package nvim.type.lsp;
 		The server provides linked editing range support.
 		
 	**/
+	@:optional
 	var linkedEditingRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.LinkedEditingRangeOptions, nvim.type.lsp.LinkedEditingRangeRegistrationOptions>>>;
 	/**
 		```lua
@@ -392,6 +415,7 @@ package nvim.type.lsp;
 		The server provides moniker support.
 		
 	**/
+	@:optional
 	var monikerProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.MonikerOptions, nvim.type.lsp.MonikerRegistrationOptions>>>;
 	/**
 		```lua
@@ -424,6 +448,7 @@ package nvim.type.lsp;
 		Registration options specific to a notebook.
 		
 	**/
+	@:optional
 	var notebookDocumentSync : Null<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentSyncOptions, nvim.type.lsp.NotebookDocumentSyncRegistrationOptions>>;
 	/**
 		```lua
@@ -458,6 +483,7 @@ package nvim.type.lsp;
 		    | "utf-32" -- UTF32
 		```
 	**/
+	@:optional
 	var positionEncoding : Null<nvim.type.lsp.PositionEncodingKind>;
 	/**
 		```lua
@@ -473,6 +499,7 @@ package nvim.type.lsp;
 		
 		The server provides find references support.
 	**/
+	@:optional
 	var referencesProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.ReferenceOptions>>;
 	/**
 		```lua
@@ -490,6 +517,7 @@ package nvim.type.lsp;
 		specified if the client states that it supports
 		`prepareSupport` in its initial `initialize` request.
 	**/
+	@:optional
 	var renameProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.RenameOptions>>;
 	/**
 		```lua
@@ -501,6 +529,7 @@ package nvim.type.lsp;
 		
 		The server provides selection range support.
 	**/
+	@:optional
 	var selectionRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.SelectionRangeOptions, nvim.type.lsp.SelectionRangeRegistrationOptions>>>;
 	/**
 		```lua
@@ -513,6 +542,7 @@ package nvim.type.lsp;
 		The server provides semantic tokens support.
 		
 	**/
+	@:optional
 	var semanticTokensProvider : Null<haxe.extern.EitherType<nvim.type.lsp.SemanticTokensOptions, nvim.type.lsp.SemanticTokensRegistrationOptions>>;
 	/**
 		```lua
@@ -528,6 +558,7 @@ package nvim.type.lsp;
 		
 		The server provides signature help support.
 	**/
+	@:optional
 	var signatureHelpProvider : Null<nvim.type.lsp.SignatureHelpOptions>;
 	/**
 		```lua
@@ -557,6 +588,7 @@ package nvim.type.lsp;
 		    | 2 -- Incremental
 		```
 	**/
+	@:optional
 	var textDocumentSync : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentSyncOptions, nvim.type.lsp.TextDocumentSyncKind>>;
 	/**
 		```lua
@@ -568,6 +600,7 @@ package nvim.type.lsp;
 		
 		The server provides Goto Type Definition support.
 	**/
+	@:optional
 	var typeDefinitionProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.TypeDefinitionOptions, nvim.type.lsp.TypeDefinitionRegistrationOptions>>>;
 	/**
 		```lua
@@ -590,6 +623,7 @@ package nvim.type.lsp;
 		Type hierarchy options used during static or dynamic registration.
 		
 	**/
+	@:optional
 	var typeHierarchyProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.TypeHierarchyOptions, nvim.type.lsp.TypeHierarchyRegistrationOptions>>>;
 	/**
 		```lua
@@ -606,6 +640,7 @@ package nvim.type.lsp;
 		
 		Workspace specific server capabilities.
 	**/
+	@:optional
 	var workspace : Null<nvim.type.lsp.WorkspaceOptions>;
 	/**
 		```lua
@@ -621,5 +656,6 @@ package nvim.type.lsp;
 		
 		The server provides workspace symbol support.
 	**/
+	@:optional
 	var workspaceSymbolProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.WorkspaceSymbolOptions>>;
 }

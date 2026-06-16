@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		A language id, like `typescript`.
 	**/
+	@:optional
 	var language : Null<String>;
 	/**
 		```lua
@@ -69,5 +70,6 @@ package nvim.type.lsp;
 		
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
+	@:optional
 	var scheme : Null<String>;
 }

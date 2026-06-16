@@ -11,23 +11,27 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.option.buf: integer?
 		```
 	**/
+	@:optional
 	var buf : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.option.filetype: string?
 		```
 	**/
+	@:optional
 	var filetype : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.option.scope: string?
 		```
 	**/
+	@:optional
 	var scope : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.option.win: integer?
 		```
 	**/
+	@:optional
 	var win : Null<Int>;
 }

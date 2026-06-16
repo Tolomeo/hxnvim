@@ -21,12 +21,14 @@ package nvim.type.lsp;
 		The client supports the following `CompletionItem` specific
 		capabilities.
 	**/
+	@:optional
 	var completionItem : Null<nvim.type.lsp.ClientCompletionItemOptions>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItemKind: (lsp.ClientCompletionItemOptionsKind)?
 		```
 	**/
+	@:optional
 	var completionItemKind : Null<nvim.type.lsp.ClientCompletionItemOptionsKind>;
 	/**
 		```lua
@@ -46,6 +48,7 @@ package nvim.type.lsp;
 		capabilities.
 		
 	**/
+	@:optional
 	var completionList : Null<nvim.type.lsp.CompletionListCapabilities>;
 	/**
 		```lua
@@ -58,6 +61,7 @@ package nvim.type.lsp;
 		The client supports to send additional context information for a
 		`textDocument/completion` request.
 	**/
+	@:optional
 	var contextSupport : Null<Bool>;
 	/**
 		```lua
@@ -69,6 +73,7 @@ package nvim.type.lsp;
 		
 		Whether completion supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -100,5 +105,6 @@ package nvim.type.lsp;
 		    | 2 -- adjustIndentation
 		```
 	**/
+	@:optional
 	var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
 }

@@ -17,6 +17,7 @@ package nvim.type.lsp;
 		The client will send the `textDocument/semanticTokens/full` request if
 		the server provides a corresponding handler.
 	**/
+	@:optional
 	var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.ClientSemanticTokensRequestFullDelta>>;
 	/**
 		```lua
@@ -29,5 +30,6 @@ package nvim.type.lsp;
 		The client will send the `textDocument/semanticTokens/range` request if
 		the server provides a corresponding handler.
 	**/
+	@:optional
 	var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym2.Range>>;
 }

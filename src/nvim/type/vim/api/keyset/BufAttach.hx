@@ -18,6 +18,7 @@ package nvim.type.vim.api.keyset;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var on_bytes : Null<(_:String, bufnr:Int, changedtick:Int, start_row:Int, start_col:Int, start_byte:Int, old_end_row:Int, old_end_col:Int, old_end_byte:Int, new_end_row:Int, new_end_col:Int, new_end_byte:Int) -> Null<Bool>>;
 	/**
 		```lua
@@ -30,6 +31,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "changedtick", bufnr: integer, changedtick: integer)
 		```
 	**/
+	@:optional
 	var on_changedtick : Null<(_:String, bufnr:Int, changedtick:Int) -> Dynamic>;
 	/**
 		```lua
@@ -42,6 +44,7 @@ package nvim.type.vim.api.keyset;
 		function (_: "detach", bufnr: integer)
 		```
 	**/
+	@:optional
 	var on_detach : Null<(_:String, bufnr:Int) -> Dynamic>;
 	/**
 		```lua
@@ -55,6 +58,7 @@ package nvim.type.vim.api.keyset;
 		  -> boolean?
 		```
 	**/
+	@:optional
 	var on_lines : Null<(_:String, bufnr:Int, changedtick:Int, first:Int, last_old:Int, last_new:Int, byte_count:Int, deleted_codepoints:Int, deleted_codeunits:Int) -> Null<Bool>>;
 	/**
 		```lua
@@ -67,17 +71,20 @@ package nvim.type.vim.api.keyset;
 		function (_: "reload", bufnr: integer)
 		```
 	**/
+	@:optional
 	var on_reload : Null<(_:String, bufnr:Int) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.api.keyset.buf_attach.preview: boolean?
 		```
 	**/
+	@:optional
 	var preview : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.buf_attach.utf_sizes: boolean?
 		```
 	**/
+	@:optional
 	var utf_sizes : Null<Bool>;
 }

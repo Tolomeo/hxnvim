@@ -16,6 +16,7 @@ package nvim.type.lsp;
 		
 		Whether rename supports dynamic registration.
 	**/
+	@:optional
 	var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
@@ -32,6 +33,7 @@ package nvim.type.lsp;
 		for confirmation.
 		
 	**/
+	@:optional
 	var honorsChangeAnnotations : Null<Bool>;
 	/**
 		```lua
@@ -45,6 +47,7 @@ package nvim.type.lsp;
 		before execution.
 		
 	**/
+	@:optional
 	var prepareSupport : Null<Bool>;
 	/**
 		```lua
@@ -67,5 +70,6 @@ package nvim.type.lsp;
 		    | 1 -- Identifier
 		```
 	**/
+	@:optional
 	var prepareSupportDefaultBehavior : Null<nvim.type.lsp.PrepareSupportDefaultBehavior>;
 }

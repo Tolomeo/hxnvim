@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		
 		A language id, like `typescript`.
 	**/
+	@:optional
 	var language : Null<String>;
 	/**
 		```lua
@@ -58,6 +59,7 @@ package nvim.type.lsp;
 		folder root, but it can be another absolute URI as well.
 		
 	**/
+	@:optional
 	var pattern : Null<nvim.type.lsp.GlobPattern>;
 	/**
 		```lua

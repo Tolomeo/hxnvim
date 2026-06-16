@@ -23,6 +23,7 @@ package nvim.type.vim.diagnostic;
 		 integer moves forward by {count} diagnostics, while a negative integer moves
 		 backward by {count} diagnostics. Mutually exclusive with {diagnostic}.
 	**/
+	@:optional
 	var count : Null<Int>;
 	/**
 		```lua
@@ -42,6 +43,7 @@ package nvim.type.vim.diagnostic;
 		 The diagnostic to jump to. Mutually exclusive with {count}, {namespace},
 		 and {severity}.
 	**/
+	@:optional
 	var diagnostic : Null<nvim.type.vim.Diagnostic>;
 	/**
 		```lua
@@ -57,6 +59,7 @@ package nvim.type.vim.diagnostic;
 		 position (as if "cursor" were passed to the "scope" option).
 		 (default: `false`)
 	**/
+	@:optional
 	var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
 	/**
 		```lua
@@ -68,6 +71,7 @@ package nvim.type.vim.diagnostic;
 		
 		 Limit diagnostics to those spanning the specified line number.
 	**/
+	@:optional
 	var lnum : Null<Int>;
 	/**
 		```lua
@@ -79,6 +83,7 @@ package nvim.type.vim.diagnostic;
 		
 		 Limit diagnostics to one or more namespaces.
 	**/
+	@:optional
 	var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
 	/**
 		```lua
@@ -111,6 +116,7 @@ package nvim.type.vim.diagnostic;
 		
 		 @nodoc
 	**/
+	@:optional
 	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
@@ -123,6 +129,7 @@ package nvim.type.vim.diagnostic;
 		 Window ID
 		 (default: `0`)
 	**/
+	@:optional
 	var winid : Null<Int>;
 	/**
 		```lua
@@ -135,5 +142,6 @@ package nvim.type.vim.diagnostic;
 		 Whether to loop around file or not. Similar to 'wrapscan'.
 		 (default: `true`)
 	**/
+	@:optional
 	var wrap : Null<Bool>;
 }
