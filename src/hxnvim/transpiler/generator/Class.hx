@@ -96,7 +96,7 @@ private class ClassGenerator {
 		return methodMetas;
 	}
 
-	function generateMethod(method:Function, opt: Bool) {
+	function generateMethod(method:Function, opt:Bool) {
 		final name = method.name.toFieldName();
 
 		final methodMeta = method.meta.copy();
@@ -108,7 +108,7 @@ private class ClassGenerator {
 		}
 
 		final meta = this.generateMethodMeta(methodMeta, method.type.overloads);
-		
+
 		final access = this.generateMethodAccess(method.access);
 
 		return {
@@ -155,12 +155,21 @@ private class ClassGenerator {
 		});
 	}
 
-	public function generate(?meta:Array<SymbolMeta>):TypeDefinition {
+	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>, isExtern: Bool):TypeDefinition {
+		return {
+			name: name,
+			doc: doc,
+			pack: [],
+			kind: TDClass(),
+			meta: meta,
+			fields: fields,
+			pos: Context.currentPos(),
+			isExtern: isExtern,
+		};
+	}
+
+	public function generate(?meta:Array<SymbolMeta>) {
 		meta = meta.or([]).concat(this.table.meta);
-
-		final name = this.table.name;
-
-		final fields = this.generateFields(this.table.fields);
 
 		// Not needed? We don't have inheritance anymore
 		/* final kind = switch (this.origin.parent) {
@@ -173,37 +182,22 @@ private class ClassGenerator {
 			TDClass(superClass);
 		}*/
 
-		return {
-			name: name,
-			doc: this.table.doc,
-			pack: [],
-			kind: TDClass(),
-			meta: this.generateMeta(meta),
-			fields: fields,
-			pos: Context.currentPos(),
-			isExtern: true,
-		};
+		return this.generateDefinition(this.table.name, this.table.doc, this.generateMeta(meta), this.generateFields(this.table.fields), true);
 	}
 }
 
 class DataClassGenerator extends ClassGenerator {
-	override public function generate(?meta:Array<SymbolMeta>):TypeDefinition {
+	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+		final isMethod = methodMeta.contains(SymbolMeta.Method);
+		final methodMetas = isMethod ? [] : [new MetaGenerator("luaDotMethod").generate()];
+
+		return methodMetas.concat(super.generateMethodMeta(methodMeta, overloads));
+	}
+
+	override public function generate(?meta:Array<SymbolMeta>) {
 		meta = meta.or([]).concat(this.table.meta);
 
-		final name = this.table.name;
-
-		final fields = this.generateFields(this.table.fields);
-
-		return {
-			name: name,
-			doc: this.table.doc,
-			pack: [],
-			kind: TDClass(),
-			meta: this.generateMeta(meta),
-			fields: fields,
-			pos: Context.currentPos(),
-			isExtern: false,
-		};
+		return this.generateDefinition(this.table.name, this.table.doc, this.generateMeta(meta), this.generateFields(this.table.fields), false);
 	}
 }
 
