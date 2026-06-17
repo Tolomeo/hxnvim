@@ -1118,6 +1118,7 @@ package nvim.type.vim.lsp;
 		 Gets a new ClientCapabilities object describing the LSP client
 		 capabilities.
 	**/
+	@:luaDotMethod
 	function make_client_capabilities():nvim.type.lsp.ClientCapabilities;
 	/**
 		```lua
@@ -1133,5 +1134,6 @@ package nvim.type.vim.lsp;
 		
 		@*return* — : Normalized table of capabilities
 	**/
+	@:luaDotMethod
 	function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
 }

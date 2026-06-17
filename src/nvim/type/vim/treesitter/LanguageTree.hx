@@ -25,6 +25,7 @@ package nvim.type.vim.treesitter;
 		
 		@*return* `parser` — object
 	**/
+	@:luaDotMethod
 	@:native("new")
 	function new_(source:haxe.extern.EitherType<Int, String>, lang:String, ?opts:Null<nvim.type.vim.treesitter.languagetree.new_.Opts>):nvim.type.vim.treesitter.LanguageTree;
 	/**

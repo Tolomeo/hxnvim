@@ -24,6 +24,7 @@ package nvim.type.vim;
 		  -> boolean
 		```
 	**/
+	@:luaDotMethod
 	function is_closing():Bool;
 	/**
 		```lua
@@ -36,6 +37,7 @@ package nvim.type.vim;
 		function (self: vim.SystemObj, signal: string|integer)
 		```
 	**/
+	@:luaDotMethod
 	function kill(signal:haxe.extern.EitherType<Int, String>):Dynamic;
 	/**
 		```lua
@@ -55,6 +57,7 @@ package nvim.type.vim;
 		  -> vim.SystemCompleted
 		```
 	**/
+	@:luaDotMethod
 	function wait(timeout:Int):nvim.type.vim.SystemCompleted;
 	/**
 		```lua
@@ -67,5 +70,6 @@ package nvim.type.vim;
 		function (self: vim.SystemObj, data?: string|string[])
 		```
 	**/
+	@:luaDotMethod
 	function write(data:haxe.extern.EitherType<String, Array<String>>):Dynamic;
 }

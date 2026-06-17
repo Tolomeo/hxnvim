@@ -27,6 +27,7 @@ package nvim.type.vim.lsp.rpc;
 		  -> boolean
 		```
 	**/
+	@:luaDotMethod
 	function is_closing():Bool;
 	/**
 		```lua
@@ -45,6 +46,7 @@ package nvim.type.vim.lsp.rpc;
 		  -> boolean
 		```
 	**/
+	@:luaDotMethod
 	function notify(method:String, params:Any):Bool;
 	/**
 		```lua
@@ -64,6 +66,7 @@ package nvim.type.vim.lsp.rpc;
 		  2. integer?
 		```
 	**/
+	@:luaDotMethod
 	function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Int) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
@@ -81,5 +84,6 @@ package nvim.type.vim.lsp.rpc;
 		function ()
 		```
 	**/
+	@:luaDotMethod
 	function terminate():Dynamic;
 }

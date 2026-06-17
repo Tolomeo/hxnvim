@@ -18,6 +18,7 @@ package nvim.type;
 		  -> table<integer, TSNode[]>
 		```
 	**/
+	@:luaDotMethod
 	function captures():lua.Table<Int, Array<nvim.type.TSNode>>;
 	/**
 		```lua

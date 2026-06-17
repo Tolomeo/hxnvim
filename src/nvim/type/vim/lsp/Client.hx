@@ -104,6 +104,7 @@ package nvim.type.vim.lsp;
 		
 		 @nodoc
 	**/
+	@:luaDotMethod
 	function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client>;
 	/**
 		```lua
@@ -144,6 +145,7 @@ package nvim.type.vim.lsp;
 		  -> string
 		```
 	**/
+	@:luaDotMethod
 	function get_language_id(bufnr:Int, filetype:String):String;
 	/**
 		```lua
