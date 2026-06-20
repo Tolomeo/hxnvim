@@ -228,10 +228,13 @@ class DataClassGenerator extends ClassGenerator {
 
 class InstanceClassGenerator extends ClassGenerator {
 	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
-		final isMethod = methodMeta.contains(SymbolMeta.Method);
-		final methodMetas = isMethod ? [] : [new MetaGenerator("luaDotMethod").generate()];
+		final instanceClassMethodMeta = new Array<MetadataEntry>();
 
-		return methodMetas.concat(super.generateMethodMeta(methodMeta, overloads));
+		if (!methodMeta.contains(SymbolMeta.Method)) {
+			instanceClassMethodMeta.push(new MetaGenerator("luaDotMethod").generate());
+		}
+
+		return instanceClassMethodMeta.concat(super.generateMethodMeta(methodMeta, overloads));
 	}
 }
 
