@@ -166,6 +166,21 @@ class LiteralTypeParser {
 	}
 
 	public function parse():LiteralType {
-		return LiteralType.Override(this.parseString());
+		return switch (this.type.select('kind').string()) {
+			case "builtin":
+				LiteralType.Builtin(this.type.select('value').string());
+			/* case "unknown": this.parseUnknown();
+				case "optional": this.parseOptional(this.type.select('type'));
+				case "union": this.parseUnion(this.type.select('types').array());
+				case "array": this.parseArray(this.type.select('items'));
+				case "function": this.parseFunction(this.type);
+				case "table": this.parseTable(this.type);
+				case "numericliteral": this.parseNumericLiteral();
+				case "stringliteral": this.parseStringLiteral();
+				case "booleanliteral": this.parseBooleanLiteral();
+				case "typereference": this.parseTypeReference(this.type.select('value').string());
+				case "modulereference": this.parseModuleReference(this.type.select('value').string()); */
+			case _: LiteralType.Override(this.parseString());
+		}
 	}
 }

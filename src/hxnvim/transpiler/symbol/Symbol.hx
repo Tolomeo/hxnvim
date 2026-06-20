@@ -1,7 +1,8 @@
 package hxnvim.transpiler.symbol;
 
 enum LiteralType {
-	Override(type: String);
+	Builtin(value:String);
+	Override(type:String);
 }
 
 // TODO: remove overload; add protected and package
