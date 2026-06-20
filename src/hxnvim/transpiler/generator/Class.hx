@@ -41,8 +41,21 @@ private class ClassGenerator {
 		});
 	}
 
+	function generatePropertyDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, type:ComplexType) {
+		return {
+			name: name,
+			doc: doc,
+			meta: meta,
+			access: access,
+			kind: FVar(type),
+			pos: Context.currentPos()
+		};
+	}
+
 	function generateProperty(property:Variable, opt:Bool) {
 		final name = property.name.toFieldName();
+
+		final doc = property.doc;
 
 		final propertyMeta = property.meta.copy();
 		if (name != property.name) {
@@ -56,14 +69,9 @@ private class ClassGenerator {
 
 		final access = this.generatePropertyAccess(property.access);
 
-		return {
-			meta: meta,
-			access: access,
-			name: name,
-			doc: property.doc,
-			kind: FVar(new LiteralTypeGenerator().generate(property.type)),
-			pos: Context.currentPos()
-		}
+		final type = new LiteralTypeGenerator().generate(property.type);
+
+		return this.generatePropertyDefinition(name, doc, meta, access, type);
 	}
 
 	function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
@@ -96,8 +104,32 @@ private class ClassGenerator {
 		return methodMetas;
 	}
 
+	function generateMethodDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, type:Signature) {
+		return {
+			meta: meta,
+			access: access,
+			name: name,
+			doc: doc,
+			kind: FFun({
+				params: type.params.map(p -> ({
+					name: p.name,
+					constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+				} : TypeParamDecl)),
+				args: type.args.map(a -> ({
+					name: a.name,
+					type: new LiteralTypeGenerator().generate(a.type),
+					opt: a.opt,
+				} : FunctionArg)),
+				ret: new LiteralTypeGenerator().generate(type.ret)
+			}),
+			pos: Context.currentPos()
+		};
+	}
+
 	function generateMethod(method:Function, opt:Bool) {
 		final name = method.name.toFieldName();
+
+		final doc = method.doc;
 
 		final methodMeta = method.meta.copy();
 		if (name != method.name) {
@@ -111,25 +143,9 @@ private class ClassGenerator {
 
 		final access = this.generateMethodAccess(method.access);
 
-		return {
-			meta: meta,
-			access: access,
-			name: name,
-			doc: method.doc,
-			kind: FFun({
-				params: method.type.params.map(p -> ({
-					name: p.name,
-					constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
-				} : TypeParamDecl)),
-				args: method.type.args.map(a -> ({
-					name: a.name,
-					type: new LiteralTypeGenerator().generate(a.type),
-					opt: a.opt,
-				} : FunctionArg)),
-				ret: new LiteralTypeGenerator().generate(method.type.ret)
-			}),
-			pos: Context.currentPos()
-		}
+		final type = method.type;
+
+		return this.generateMethodDefinition(name, doc, meta, access, type);
 	}
 
 	function generateFields(fields:Array<TableField>):Array<Field> {
@@ -155,7 +171,7 @@ private class ClassGenerator {
 		});
 	}
 
-	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>, isExtern: Bool):TypeDefinition {
+	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>, isExtern:Bool):TypeDefinition {
 		return {
 			name: name,
 			doc: doc,
@@ -187,17 +203,26 @@ private class ClassGenerator {
 }
 
 class DataClassGenerator extends ClassGenerator {
-	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
-		final isMethod = methodMeta.contains(SymbolMeta.Method);
-		final methodMetas = isMethod ? [] : [new MetaGenerator("luaDotMethod").generate()];
-
-		return methodMetas.concat(super.generateMethodMeta(methodMeta, overloads));
+	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+		return [AExtern].concat(super.generatePropertyAccess(propertyAccess));
 	}
 
-	override public function generate(?meta:Array<SymbolMeta>) {
-		meta = meta.or([]).concat(this.table.meta);
+	override function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
+		return [AExtern].concat(super.generateMethodAccess(methodAccess));
+	}
 
-		return this.generateDefinition(this.table.name, this.table.doc, this.generateMeta(meta), this.generateFields(this.table.fields), false);
+	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+		final dataClassMethodMeta = new Array<MetadataEntry>();
+
+		if (!methodMeta.contains(SymbolMeta.Method)) {
+			dataClassMethodMeta.push(new MetaGenerator("luaDotMethod").generate());
+		}
+
+		return dataClassMethodMeta.concat(super.generateMethodMeta(methodMeta, overloads));
+	}
+
+	override function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>, _:Bool):TypeDefinition {
+		return super.generateDefinition(name, doc, meta, fields, false);
 	}
 }
 
