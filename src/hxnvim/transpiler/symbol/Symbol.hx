@@ -7,6 +7,8 @@ enum LiteralType {
 	Optional(type:LiteralType);
 	Union(types:Array<LiteralType>);
 	Array(itemsType:LiteralType);
+	Function(signature: Signature);
+	Multireturn(types: Array<LiteralType>);
 }
 
 // TODO: remove overload; add protected and package
@@ -47,7 +49,7 @@ typedef Return = LiteralType;
 typedef Signature = {
 	params:Array<Param>,
 	args:Array<Arg>,
-	ret:Return,
+	ret:LiteralType,
 	overloads:Array<LiteralType>
 }
 

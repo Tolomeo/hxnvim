@@ -10,11 +10,105 @@ import hxnvim.common.Json;
 import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 
+class FunctionTypeParser {
+	private final origin:Json;
+	private final params:Array<Param>;
+
+	public function new(origin:Json, ?params:Array<Param>) {
+		this.origin = origin;
+		this.params = params.or([]);
+	}
+
+	function parseArguments(arguments:Array<Json>, params:Array<Param>) {
+		final args = arguments.map(argument -> {
+			final name = argument.select('name').string();
+			final type = new LiteralTypeParser(argument.select('type'), params).parseString();
+
+			return switch (name) {
+				case '...': ({
+						name: '___',
+						type: 'haxe.Rest<${type}>',
+						opt: false
+					});
+				case n: ({
+						name: n.toIdentifierName(),
+						type: type,
+						opt: argument.select('optional').boolean()
+					});
+			}
+		});
+
+		var i = args.length;
+		while (--i >= 0) {
+			if (args[i].type.startsWith("haxe.Rest<")) {
+				continue;
+			}
+
+			final optional = args[i].opt || args[i].type.startsWith("Null<");
+
+			if (!optional) {
+				break;
+			}
+
+			args[i].opt = optional;
+		}
+
+		return args.map(a -> ({
+			name: a.name,
+			type: LiteralType.Override(a.type),
+			opt: a.opt
+		}));
+	}
+
+	function parseReturns(returns:Array<Json>, params:Array<Param>) {
+		if (returns.length > 6) {
+			throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+		}
+
+		return switch (returns) {
+			case []: LiteralType.Override("Dynamic");
+			case [r]: LiteralType.Override(new LiteralTypeParser(r.select('type'), params).parseString());
+			case rs:
+				LiteralType.Multireturn(rs.map(r -> LiteralType.Override(new LiteralTypeParser(r.select("type"), params).parseString()))
+					.padEnd(6, LiteralType.Override("Void")));
+		}
+	}
+
+	public function parse():Signature {
+		final args = this.parseArguments(this.origin.select('arguments').array(), this.params);
+		final ret = this.parseReturns(this.origin.select('returns').array(), this.params);
+
+		/* final arguments = this.type.select('arguments').array().map(argument -> switch (argument.select('name').string()) {
+				case '...': '___:haxe.Rest<${new LiteralTypeParser(argument.select('type'), this.params).parseString()}>';
+				case argumentName: switch (argument.select('optional').boolean()) {
+						case true: '?${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parseString()}';
+						case false: '${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parseString()}';
+					}
+			});
+
+			final return_ = switch (this.type.select('returns').array()) {
+				case []: "Dynamic";
+				case [r]: new LiteralTypeParser(r.select('type'), this.params).parseString();
+				case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
+				case rs:
+					final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), this.params).parseString()).padEnd(6, "Void");
+					Target.toHelperReference('Multireturn<${returns.join(", ")}>');
+		}*/
+
+		return {
+			params: [],
+			args: args,
+			ret: ret,
+			overloads: []
+		}
+	}
+}
+
 class LiteralTypeParser {
 	private final type:Json;
-	private final params:Array<{name:String}>;
+	private final params:Array<Param>;
 
-	public function new(type:Json, ?params:Array<{name:String}>) {
+	public function new(type:Json, ?params:Array<Param>) {
 		this.type = type;
 		this.params = params.or([]);
 	}
@@ -172,8 +266,8 @@ class LiteralTypeParser {
 			case "optional": LiteralType.Optional(new LiteralTypeParser(this.type.select('type'), this.params).parse());
 			case "union": LiteralType.Union(this.type.select('types').array().map(t -> new LiteralTypeParser(t, this.params).parse()));
 			case "array": LiteralType.Array(new LiteralTypeParser(this.type.select('items'), this.params).parse());
-			/* case "function": this.parseFunction(this.type);
-				case "table": this.parseTable(this.type);
+			case "function": LiteralType.Function(new FunctionTypeParser(this.type, this.params).parse());
+			/* case "table": this.parseTable(this.type);
 				case "numericliteral": this.parseNumericLiteral();
 				case "stringliteral": this.parseStringLiteral();
 				case "booleanliteral": this.parseBooleanLiteral();

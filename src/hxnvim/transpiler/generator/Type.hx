@@ -7,6 +7,7 @@ import haxe.Exception;
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 
+import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 
 class LiteralTypeGenerator {
@@ -65,13 +66,39 @@ class LiteralTypeGenerator {
 		return 'Array<${this.generateType(itemsType)}>';
 	}
 
+	function generateFunctionType(signature:Signature) {
+		final args = signature.args.map(argument -> switch (argument.name) {
+			case '...': '___:haxe.Rest<${this.generateType(argument.type)}>';
+			case argumentName: switch (argument.opt) {
+					case true: '?${argumentName}:${this.generateType(argument.type)}';
+					case false: '${argumentName}:${this.generateType(argument.type)}';
+				}
+		});
+
+		/* final return_ = switch (signature.ret) {
+			case LiteralType.Multireturn(rs): Target.toHelperReference('Multireturn<${rs.map(r -> this.generateType(r)).join(", ")}>');
+			case r: this.generateType(r);
+		} */
+
+		final ret = this.generateType(signature.ret);
+
+		return '(${args.join(", ")}) -> ${ret}';
+	}
+
+	function generateMultireturnType(returnTypes: Array<LiteralType>) {
+		return Target.toHelperReference('Multireturn<${returnTypes.map(r -> this.generateType(r)).join(", ")}>');
+	}
+
+
 	function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Unknown: this.generateUnknownType();
-			case LiteralType.Builtin(value):this.generateBuiltinType(value);
+			case LiteralType.Builtin(value): this.generateBuiltinType(value);
 			case LiteralType.Optional(type): this.generateOptionalType(type);
 			case LiteralType.Union(types): this.generateUnionType(types);
 			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
+			case LiteralType.Function(signature): this.generateFunctionType(signature);
+			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

@@ -103,14 +103,26 @@ class FunctionSymbolParser extends SymbolParser {
 	}
 
 	function parseReturns(returns:Array<Json>, params:Array<Param>) {
+		if (returns.length > 6) {
+			throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+		}
+
 		return switch (returns) {
 			case []: LiteralType.Override("Dynamic");
 			case [r]: LiteralType.Override(new LiteralTypeParser(r.select('type'), params).parseString());
+			case rs:
+				LiteralType.Multireturn(rs.map(r -> LiteralType.Override(new LiteralTypeParser(r.select("type"), params).parseString()))
+					.padEnd(6, LiteralType.Override("Void")));
+		}
+
+		/* return switch (returns) {
+			case []: [LiteralType.Override("Dynamic")];
+			case [r]: [LiteralType.Override(new LiteralTypeParser(r.select('type'), params).parseString())];
 			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
 			case rs:
 				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parseString()).padEnd(6, "Void");
 				LiteralType.Override(Target.toHelperReference('Multireturn<${returns.join(", ")}>'));
-		}
+		}*/
 	}
 
 	public function parse() {
