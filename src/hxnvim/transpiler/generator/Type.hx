@@ -34,10 +34,15 @@ class LiteralTypeGenerator {
 		}
 	}
 
-	public function generateType(type:LiteralType) {
+	function generateOptionalType(type:LiteralType) {
+		return 'Null<${this.generateType(type)}>';
+	}
+
+	function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Builtin(value):this.generateBuiltinType(value);
 			case LiteralType.Unknown: this.generateUnknownType();
+			case LiteralType.Optional(type): this.generateOptionalType(type);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

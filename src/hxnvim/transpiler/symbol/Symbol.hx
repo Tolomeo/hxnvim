@@ -4,6 +4,7 @@ enum LiteralType {
 	Builtin(value:String);
 	Override(type:String);
 	Unknown;
+	Optional(type:LiteralType);
 }
 
 // TODO: remove overload; add protected and package

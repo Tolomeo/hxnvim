@@ -170,8 +170,8 @@ class LiteralTypeParser {
 			case "builtin":
 				LiteralType.Builtin(this.type.select('value').string());
 			case "unknown": LiteralType.Unknown;
-			/* case "optional": this.parseOptional(this.type.select('type'));
-				case "union": this.parseUnion(this.type.select('types').array());
+			case "optional": LiteralType.Optional(new LiteralTypeParser(this.type.select('type')).parse());
+			/* case "union": this.parseUnion(this.type.select('types').array());
 				case "array": this.parseArray(this.type.select('items'));
 				case "function": this.parseFunction(this.type);
 				case "table": this.parseTable(this.type);

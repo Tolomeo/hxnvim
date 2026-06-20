@@ -186,6 +186,7 @@ class TableSymbolParser extends SymbolParser {
 			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
 				final opt = switch (symbol.type) {
+					case LiteralType.Optional(_): true;
 					case LiteralType.Override(aliasType): aliasType.startsWith('Null<');
 					case _: false;
 				}
