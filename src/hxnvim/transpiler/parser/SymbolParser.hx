@@ -5,6 +5,7 @@ import haxe.Exception;
 using hxnvim.common.ArrayTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.DynamicTools;
+using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.common.Json;
 import hxnvim.target.Target;
@@ -185,18 +186,7 @@ class TableSymbolParser extends SymbolParser {
 
 			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
-
-				function isOpt(type:LiteralType) {
-					return switch (type) {
-						case LiteralType.Optional(_): true;
-						case LiteralType.Builtin(value): ["nil", "void"].contains(value);
-						case LiteralType.Union(unionTypes): unionTypes.exists(unionType -> isOpt(unionType));
-						case LiteralType.Override(aliasType): aliasType.startsWith('Null<');
-						case _: false;
-					}
-				}
-
-				final opt = isOpt(symbol.type);
+				final opt = symbol.type.isNullable();
 
 				if (name == "data") {
 					trace(symbol);
