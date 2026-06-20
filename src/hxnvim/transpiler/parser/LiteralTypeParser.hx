@@ -61,10 +61,6 @@ class FunctionTypeParser {
 	}
 
 	function parseReturns(returns:Array<Json>) {
-		if (returns.length > 6) {
-			throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
-		}
-
 		return switch (returns) {
 			case []: LiteralType.Override("Dynamic");
 			case [r]: LiteralType.Override(new LiteralTypeParser(r.select('type'), this.params).parseString());
@@ -247,9 +243,14 @@ class LiteralTypeParser {
 			case "optional": LiteralType.Optional(new LiteralTypeParser(this.type.select('type'), this.params).parse());
 			case "union": LiteralType.Union(this.type.select('types').array().map(t -> new LiteralTypeParser(t, this.params).parse()));
 			case "array": LiteralType.Array(new LiteralTypeParser(this.type.select('items'), this.params).parse());
-			case "function": 
+			case "function":
 				final functionType = new FunctionTypeParser(this.type, this.params).parse();
-				LiteralType.Function({ params: [], args: functionType.args, ret: functionType.ret, overloads: []});
+				LiteralType.Function({
+					params: [],
+					args: functionType.args,
+					ret: functionType.ret,
+					overloads: []
+				});
 			/* case "table": this.parseTable(this.type);
 				case "numericliteral": this.parseNumericLiteral();
 				case "stringliteral": this.parseStringLiteral();

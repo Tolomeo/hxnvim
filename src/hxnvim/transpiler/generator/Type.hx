@@ -81,7 +81,13 @@ class LiteralTypeGenerator {
 	}
 
 	function generateMultireturnType(returnTypes:Array<LiteralType>) {
-		return Target.toHelperReference('Multireturn<${returnTypes.map(r -> this.generateType(r)).join(", ")}>');
+		if (returnTypes.length > 6) {
+			throw new Exception('Error generating multireturn type: too many values in ${returnTypes}, the maximum allowed is currently 6');
+		}
+
+		final types = returnTypes.map(r -> this.generateType(r)).padEnd(6, "Void");
+
+		return Target.toHelperReference('Multireturn<${types.join(", ")}>');
 	}
 
 	function generateType(type:LiteralType) {
