@@ -171,7 +171,7 @@ private class ClassGenerator {
 		});
 	}
 
-	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>, isExtern:Bool):TypeDefinition {
+	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>):TypeDefinition {
 		return {
 			name: name,
 			doc: doc,
@@ -180,7 +180,7 @@ private class ClassGenerator {
 			meta: meta,
 			fields: fields,
 			pos: Context.currentPos(),
-			isExtern: isExtern,
+			isExtern: true
 		};
 	}
 
@@ -198,7 +198,7 @@ private class ClassGenerator {
 			TDClass(superClass);
 		}*/
 
-		return this.generateDefinition(this.table.name, this.table.doc, this.generateMeta(meta), this.generateFields(this.table.fields), true);
+		return this.generateDefinition(this.table.name, this.table.doc, this.generateMeta(meta), this.generateFields(this.table.fields));
 	}
 }
 
@@ -221,8 +221,12 @@ class DataClassGenerator extends ClassGenerator {
 		return dataClassMethodMeta.concat(super.generateMethodMeta(methodMeta, overloads));
 	}
 
-	override function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>, _:Bool):TypeDefinition {
-		return super.generateDefinition(name, doc, meta, fields, false);
+	override function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>):TypeDefinition {
+		final definition = super.generateDefinition(name, doc, meta, fields);
+
+		definition.isExtern = false;
+
+		return definition;
 	}
 }
 
