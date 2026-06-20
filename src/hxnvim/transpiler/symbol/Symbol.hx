@@ -5,6 +5,7 @@ enum LiteralType {
 	Override(type:String);
 	Unknown;
 	Optional(type:LiteralType);
+	Union(types:Array<LiteralType>);
 }
 
 // TODO: remove overload; add protected and package

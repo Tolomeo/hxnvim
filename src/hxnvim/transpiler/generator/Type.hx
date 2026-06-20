@@ -5,6 +5,7 @@ import haxe.macro.Context;
 import haxe.Exception;
 
 using hxnvim.common.StringTools;
+using hxnvim.common.ArrayTools;
 
 import hxnvim.transpiler.symbol.Symbol;
 
@@ -38,11 +39,34 @@ class LiteralTypeGenerator {
 		return 'Null<${this.generateType(type)}>';
 	}
 
+	function generateUnionType(union:Array<LiteralType>) {
+		function makeUnion(members:Array<String>):String {
+			return switch (members.copy()) {
+				case [], [_]:
+					throw new Exception('Error generating union type out of ${union}');
+				case [left, right]:
+					'haxe.extern.EitherType<${left}, ${right}>';
+				case m:
+					'haxe.extern.EitherType<${m.shift()}, ${makeUnion(m)}>';
+			}
+		}
+
+		final types = union.map(t -> this.generateType(t)).unique();
+		final nonNullableTypes = types.filter(type -> type != "Void");
+		final nonNullableUnion = switch (nonNullableTypes) {
+			case [t]: t;
+			case t: makeUnion(t);
+		}
+
+		return (types.length != nonNullableTypes.length) ? 'Null<${nonNullableUnion}>' : nonNullableUnion;
+	}
+
 	function generateType(type:LiteralType) {
 		return switch (type) {
-			case LiteralType.Builtin(value):this.generateBuiltinType(value);
 			case LiteralType.Unknown: this.generateUnknownType();
+			case LiteralType.Builtin(value):this.generateBuiltinType(value);
 			case LiteralType.Optional(type): this.generateOptionalType(type);
+			case LiteralType.Union(types): this.generateUnionType(types);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

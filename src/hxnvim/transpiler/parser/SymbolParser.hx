@@ -185,10 +185,22 @@ class TableSymbolParser extends SymbolParser {
 
 			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
-				final opt = switch (symbol.type) {
-					case LiteralType.Optional(_): true;
-					case LiteralType.Override(aliasType): aliasType.startsWith('Null<');
-					case _: false;
+
+				function isOpt(type:LiteralType) {
+					return switch (type) {
+						case LiteralType.Optional(_): true;
+						case LiteralType.Builtin(value): ["nil", "void"].contains(value);
+						case LiteralType.Union(unionTypes): unionTypes.exists(unionType -> isOpt(unionType));
+						case LiteralType.Override(aliasType): aliasType.startsWith('Null<');
+						case _: false;
+					}
+				}
+
+				final opt = isOpt(symbol.type);
+
+				if (name == "data") {
+					trace(symbol);
+					trace(opt);
 				}
 
 				TableField.Property(symbol, opt);
