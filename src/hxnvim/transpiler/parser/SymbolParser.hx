@@ -50,7 +50,7 @@ class FunctionSymbolParser extends SymbolParser {
 	function parseArguments(arguments:Array<Json>, params:Array<Param>) {
 		final args = arguments.map(argument -> {
 			final name = argument.select('name').string();
-			final type = new LiteralTypeParser(argument.select('type'), params).parse();
+			final type = new LiteralTypeParser(argument.select('type'), params).parseString();
 
 			return switch (name) {
 				case '...': ({
@@ -81,7 +81,11 @@ class FunctionSymbolParser extends SymbolParser {
 			args[i].opt = optional;
 		}
 
-		return args;
+		return args.map(a -> ({
+			name: a.name,
+			type: LiteralType.Override(a.type),
+			opt: a.opt
+		}));
 	}
 
 	function parseOverloads(overloads:Array<Json>, params:Array<Param>) {
@@ -91,20 +95,20 @@ class FunctionSymbolParser extends SymbolParser {
 			});
 			final overloadFile = '${o.pos.file}:${o.pos.min}-${o.pos.max}';
 			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
-			final overloadFunctionType = new LiteralTypeParser(overloadJson, params).parse();
+			final overloadFunctionType = new LiteralTypeParser(overloadJson, params).parseString();
 
-			return 'function ${overloadFunctionType.replace("->", ":")} {}';
+			return LiteralType.Override('function ${overloadFunctionType.replace("->", ":")} {}');
 		});
 	}
 
 	function parseReturns(returns:Array<Json>, params:Array<Param>) {
 		return switch (returns) {
-			case []: "Dynamic";
-			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
+			case []: LiteralType.Override("Dynamic");
+			case [r]: LiteralType.Override(new LiteralTypeParser(r.select('type'), params).parseString());
 			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
 			case rs:
-				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parse()).padEnd(6, "Void");
-				Target.toHelperReference('Multireturn<${returns.join(", ")}>');
+				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parseString()).padEnd(6, "Void");
+				LiteralType.Override(Target.toHelperReference('Multireturn<${returns.join(", ")}>'));
 		}
 	}
 
@@ -146,12 +150,12 @@ class EnumeratorSymbolParser extends SymbolParser {
 		final fieldsJson = this.origin.select('fields').array();
 		final type = switch (fieldsJson) {
 			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
-			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parse();
+			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parseString();
 		}
 		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
 			final fieldName = field.select('name').string().toTypeName();
 			final fieldValue = switch (field.select('value')) {
-				case v if (new LiteralTypeParser(v).parse() == type): v.select('value').string().trimChars("'", "\"");
+				case v if (new LiteralTypeParser(v).parseString() == type): v.select('value').string().trimChars("'", "\"");
 				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
 			}
 
@@ -164,7 +168,7 @@ class EnumeratorSymbolParser extends SymbolParser {
 			name: name,
 			doc: doc,
 			meta: meta,
-			type: type,
+			type: LiteralType.Override(type),
 			fields: fields
 		}
 	}
@@ -181,7 +185,11 @@ class TableSymbolParser extends SymbolParser {
 
 			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
-				final opt = symbol.type.startsWith('Null<');
+				final opt = switch (symbol.type) {
+					case LiteralType.Override(aliasType): aliasType.startsWith('Null<');
+					case _: false;
+				}
+
 				TableField.Property(symbol, opt);
 
 			case k:

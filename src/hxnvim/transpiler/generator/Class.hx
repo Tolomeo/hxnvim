@@ -98,7 +98,11 @@ private abstract class ClassGenerator {
 		});
 
 		overloads.iter(o -> {
-			methodMetas.push(new MetaGenerator("overload", [macro $i{o}]).generate());
+			final overloadType = switch (o) {
+				case LiteralType.Override(oType): macro $i{oType};
+				case _: throw new Exception('Error generating overload: unimplemented ${o} type received');
+			}
+			methodMetas.push(new MetaGenerator("overload", [overloadType]).generate());
 		});
 
 		return methodMetas;

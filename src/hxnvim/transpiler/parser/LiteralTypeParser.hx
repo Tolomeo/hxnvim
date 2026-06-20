@@ -8,6 +8,7 @@ using hxnvim.common.NullTools;
 
 import hxnvim.common.Json;
 import hxnvim.target.Target;
+import hxnvim.transpiler.symbol.Symbol;
 
 class LiteralTypeParser {
 	private final type:Json;
@@ -19,8 +20,8 @@ class LiteralTypeParser {
 	}
 
 	function parseTableLiteralType(key:Json, value:Json) {
-		final keyType = new LiteralTypeParser(key, this.params).parse();
-		final valueType = new LiteralTypeParser(value, this.params).parse();
+		final keyType = new LiteralTypeParser(key, this.params).parseString();
+		final valueType = new LiteralTypeParser(value, this.params).parseString();
 
 		return 'lua.Table<${keyType}, ${valueType}>';
 	}
@@ -28,7 +29,7 @@ class LiteralTypeParser {
 	function parseLiteralTableStructure(fields:Array<Json>) {
 		final entries = fields.map(field -> ({
 			name: field.select('name').string(),
-			type: new LiteralTypeParser(field.select('type'), this.params).parse()
+			type: new LiteralTypeParser(field.select('type'), this.params).parseString()
 		})).map(e -> '${e.name}:${e.type}');
 
 		return '{ ${entries.join(", ")} }';
@@ -54,7 +55,7 @@ class LiteralTypeParser {
 	}
 
 	function parseOptional(optional:Json) {
-		return 'Null<${new LiteralTypeParser(optional, this.params).parse()}>';
+		return 'Null<${new LiteralTypeParser(optional, this.params).parseString()}>';
 	}
 
 	function parseUnknown() {
@@ -73,7 +74,7 @@ class LiteralTypeParser {
 			}
 		}
 
-		final types = union.map(t -> new LiteralTypeParser(t, this.params).parse()).unique();
+		final types = union.map(t -> new LiteralTypeParser(t, this.params).parseString()).unique();
 		final nonNullableTypes = types.filter(type -> type != "Void");
 		final nonNullableUnion = switch (nonNullableTypes) {
 			case [t]: t;
@@ -84,24 +85,24 @@ class LiteralTypeParser {
 	}
 
 	function parseArray(items:Json) {
-		return 'Array<${new LiteralTypeParser(items, this.params).parse()}>';
+		return 'Array<${new LiteralTypeParser(items, this.params).parseString()}>';
 	}
 
 	function parseFunction(func:Json) {
 		final arguments = func.select('arguments').array().map(argument -> switch (argument.select('name').string()) {
-			case '...': '___:haxe.Rest<${new LiteralTypeParser(argument.select('type'), this.params).parse()}>';
+			case '...': '___:haxe.Rest<${new LiteralTypeParser(argument.select('type'), this.params).parseString()}>';
 			case argumentName: switch (argument.select('optional').boolean()) {
-					case true: '?${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parse()}';
-					case false: '${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parse()}';
+					case true: '?${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parseString()}';
+					case false: '${argumentName}:${new LiteralTypeParser(argument.select('type'), this.params).parseString()}';
 				}
 		});
 
 		final return_ = switch (func.select('returns').array()) {
 			case []: "Dynamic";
-			case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
+			case [r]: new LiteralTypeParser(r.select('type'), this.params).parseString();
 			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
-			case rs: 
-				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).padEnd(6, "Void"); 
+			case rs:
+				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), this.params).parseString()).padEnd(6, "Void");
 				Target.toHelperReference('Multireturn<${returns.join(", ")}>');
 		}
 
@@ -145,7 +146,7 @@ class LiteralTypeParser {
 		return Target.toModuleReference(reference);
 	}
 
-	public function parse() {
+	public function parseString() {
 		return switch (this.type.select('kind').string()) {
 			case "builtin": this.parseBuiltin(this.type.select('value').string());
 			case "unknown": this.parseUnknown();
@@ -162,5 +163,9 @@ class LiteralTypeParser {
 			case _:
 				throw new Exception('Unrecognised type "${this.type.getValue()}" received');
 		}
+	}
+
+	public function parse():LiteralType {
+		return LiteralType.Override(this.parseString());
 	}
 }
