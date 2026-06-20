@@ -23,7 +23,7 @@ extern class Python {
 		@*return* `error` — message if python can't be detected by {module}; nil if success
 	**/
 	@:luaDotMethod
-	function detect_by_module(module:String):nvim.helper.Multireturn<Null<String>, Null<String>>;
+	function detect_by_module(module:String):nvim.helper.Multireturn<Null<String>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.require(host: any)

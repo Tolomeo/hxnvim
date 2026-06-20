@@ -23,7 +23,7 @@ extern class Perl {
 		@*return* `error` — message if perl can't be detected; nil if success
 	**/
 	@:luaDotMethod
-	function detect():nvim.helper.Multireturn<Null<String>, Null<String>>;
+	function detect():nvim.helper.Multireturn<Null<String>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.require(host: any, prog: any)

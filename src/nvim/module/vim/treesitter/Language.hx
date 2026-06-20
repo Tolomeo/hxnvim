@@ -29,7 +29,7 @@ extern class Language {
 		@*return* `Error` — if parser cannot be loaded
 	**/
 	@:luaDotMethod
-	function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn<Null<Bool>, Null<String>>;
+	function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn<Null<Bool>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.get_filetypes(lang: string)

@@ -50,7 +50,7 @@ extern class Re {
 		```
 	**/
 	@:luaDotMethod
-	function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>>;
+	function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function vim.re.gsub(subject: string, pattern: string|vim.lpeg.Pattern, replacement: string)

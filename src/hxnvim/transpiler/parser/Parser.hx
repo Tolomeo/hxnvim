@@ -21,10 +21,6 @@ class Parser {
 		this.handleChild = handleChild;
 	}
 
-	/* function parseAccess(symbolMeta: Json) {
-		final accessMetas = new Map(["private" => SymbolAccess., "protected", "package"]);
-		return symbolMeta.array().map(m -> m.string()).filter(m -> )
-	}*/
 	public function parse() {
 		final symbol = this.symbol;
 		final name = State.consume(v -> v.output.name);

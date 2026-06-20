@@ -23,7 +23,7 @@ class Transpiler {
 		final transpiledChild = State.fork(target -> {
 			final childFile = '${target.input.file}:${child.pos.min},${child.pos.max}';
 			final childSpec = child.toString();
-			return target.child(childName, childFile, childSpec);
+			return target.createChild(childName, target.type, childFile, childSpec);
 		}, () -> this.transpileSymbol(child));
 
 		this.result.push(transpiledChild);

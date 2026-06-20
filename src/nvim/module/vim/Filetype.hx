@@ -178,5 +178,5 @@ extern class Filetype {
 		                     its only argument.
 	**/
 	@:luaDotMethod
-	function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>>;
+	function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>, Void, Void, Void, Void>;
 }

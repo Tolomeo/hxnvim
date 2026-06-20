@@ -7,7 +7,6 @@ using hxnvim.common.StringTools;
 using hxnvim.common.NullTools;
 
 import hxnvim.common.Json;
-import hxnvim.Config;
 import hxnvim.target.Target;
 
 class LiteralTypeParser {
@@ -100,8 +99,10 @@ class LiteralTypeParser {
 		final return_ = switch (func.select('returns').array()) {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
-			case returns if (returns.length <= 6): Target.toHelperReference('Multireturn<${returns.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).join(", ")}>');
-			case _: throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
+			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.type.getValue()}');
+			case rs: 
+				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()).padEnd(6, "Void"); 
+				Target.toHelperReference('Multireturn<${returns.join(", ")}>');
 		}
 
 		return '(${arguments.join(", ")}) -> ${return_}';

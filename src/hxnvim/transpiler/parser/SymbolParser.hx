@@ -1,7 +1,6 @@
 package hxnvim.transpiler.parser;
 
 import haxe.Exception;
-import haxe.Serializer;
 
 using hxnvim.common.ArrayTools;
 using hxnvim.common.StringTools;
@@ -92,8 +91,9 @@ class FunctionSymbolParser extends SymbolParser {
 			});
 			final overloadFile = '${o.pos.file}:${o.pos.min}-${o.pos.max}';
 			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
+			final overloadFunctionType = new LiteralTypeParser(overloadJson, params).parse();
 
-			return new LiteralTypeParser(overloadJson, params).parse();
+			return 'function ${overloadFunctionType.replace("->", ":")} {}';
 		});
 	}
 
@@ -101,10 +101,10 @@ class FunctionSymbolParser extends SymbolParser {
 		return switch (returns) {
 			case []: "Dynamic";
 			case [r]: new LiteralTypeParser(r.select('type'), params).parse();
-			case returns if (returns.length <= 6):
-				final returnTypes = returns.map(r -> new LiteralTypeParser(r.select('type'), params).parse());
-				Target.toHelperReference('Multireturn<${returnTypes.join(", ")}>');
-			case _: throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
+			case rs:
+				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parse()).padEnd(6, "Void");
+				Target.toHelperReference('Multireturn<${returns.join(", ")}>');
 		}
 	}
 
@@ -119,10 +119,12 @@ class FunctionSymbolParser extends SymbolParser {
 			doc: this.doc,
 			meta: this.meta,
 			access: this.access,
-			params: params,
-			args: args,
-			ret: ret,
-			overloads: overloads
+			type: {
+				params: params,
+				args: args,
+				ret: ret,
+				overloads: overloads
+			}
 		};
 	}
 }
@@ -175,11 +177,12 @@ class TableSymbolParser extends SymbolParser {
 		return switch (type.select('kind').string()) {
 			case 'function':
 				final symbol = new FunctionSymbolParser(name, doc, meta, access, type).parse();
-				TableField.Method(symbol);
+				TableField.Method(symbol, false);
 
 			case 'unknown', 'modulereference', 'typereference', 'builtin', 'union', 'optional', 'array', 'booleanliteral', 'numericliteral', 'stringliteral':
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
-				TableField.Property(symbol);
+				final opt = symbol.type.startsWith('Null<');
+				TableField.Property(symbol, opt);
 
 			case k:
 				throw new Exception('Unexpected kind "${k}" received for table "${this.name}" in field "${name}" of type ${type.getValue()}');

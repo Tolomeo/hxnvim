@@ -105,5 +105,5 @@ extern class Hl {
 		 nil is returned if timeout is not specified
 	**/
 	@:luaDotMethod
-	function range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<Array<Int>, String>, finish:haxe.extern.EitherType<Array<Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>>;
+	function range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<Array<Int>, String>, finish:haxe.extern.EitherType<Array<Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>, Void, Void, Void, Void>;
 }

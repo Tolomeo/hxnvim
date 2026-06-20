@@ -13,6 +13,7 @@ enum SymbolMeta {
 	Deprecated;
 	Native(name:String);
 	StructInit;
+	Optional;
 }
 
 typedef Variable = {
@@ -36,25 +37,24 @@ typedef Arg = {
 
 typedef Return = LiteralType;
 
-typedef Function = {
-	name:String,
-	doc:String,
-	meta:Array<SymbolMeta>,
-	access:Array<SymbolAccess>,
+typedef Signature = {
 	params:Array<Param>,
 	args:Array<Arg>,
 	ret:Return,
 	overloads:Array<LiteralType>
 }
 
-enum TableField {
-	Property(variable:Variable);
-	Method(function_:Function);
+typedef Function = {
+	name:String,
+	doc:String,
+	meta:Array<SymbolMeta>,
+	access:Array<SymbolAccess>,
+	type:Signature
 }
 
-typedef Alias = {
-	name:String,
-	type:LiteralType
+enum TableField {
+	Property(symbol:Variable, opt:Bool);
+	Method(symbol:Function, opt:Bool);
 }
 
 typedef Table = {
@@ -63,6 +63,11 @@ typedef Table = {
 	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
 	fields:Array<TableField>
+}
+
+typedef Alias = {
+	name:String,
+	type:LiteralType
 }
 
 typedef Enumerator = {

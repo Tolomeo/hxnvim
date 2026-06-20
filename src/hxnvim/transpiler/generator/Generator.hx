@@ -74,7 +74,7 @@ class TypeModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
 		meta = [SymbolMeta.StructInit].concat(meta.or([]));
 
-		return super.generateTableType(table, meta);
+		return new DataClassGenerator(table).generate(meta);
 	}
 }
 
