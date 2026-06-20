@@ -75,20 +75,14 @@ class LiteralTypeGenerator {
 				}
 		});
 
-		/* final return_ = switch (signature.ret) {
-			case LiteralType.Multireturn(rs): Target.toHelperReference('Multireturn<${rs.map(r -> this.generateType(r)).join(", ")}>');
-			case r: this.generateType(r);
-		} */
-
 		final ret = this.generateType(signature.ret);
 
 		return '(${args.join(", ")}) -> ${ret}';
 	}
 
-	function generateMultireturnType(returnTypes: Array<LiteralType>) {
+	function generateMultireturnType(returnTypes:Array<LiteralType>) {
 		return Target.toHelperReference('Multireturn<${returnTypes.map(r -> this.generateType(r)).join(", ")}>');
 	}
-
 
 	function generateType(type:LiteralType) {
 		return switch (type) {

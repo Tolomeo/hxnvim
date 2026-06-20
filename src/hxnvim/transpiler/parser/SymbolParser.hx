@@ -48,47 +48,6 @@ class FunctionSymbolParser extends SymbolParser {
 		});
 	}
 
-	function parseArguments(arguments:Array<Json>, params:Array<Param>) {
-		final args = arguments.map(argument -> {
-			final name = argument.select('name').string();
-			final type = new LiteralTypeParser(argument.select('type'), params).parseString();
-
-			return switch (name) {
-				case '...': ({
-						name: '___',
-						type: 'haxe.Rest<${type}>',
-						opt: false
-					});
-				case n: ({
-						name: n.toIdentifierName(),
-						type: type,
-						opt: argument.select('optional').boolean()
-					});
-			}
-		});
-
-		var i = args.length;
-		while (--i >= 0) {
-			if (args[i].type.startsWith("haxe.Rest<")) {
-				continue;
-			}
-
-			final optional = args[i].opt || args[i].type.startsWith("Null<");
-
-			if (!optional) {
-				break;
-			}
-
-			args[i].opt = optional;
-		}
-
-		return args.map(a -> ({
-			name: a.name,
-			type: LiteralType.Override(a.type),
-			opt: a.opt
-		}));
-	}
-
 	function parseOverloads(overloads:Array<Json>, params:Array<Param>) {
 		return overloads.map(o -> {
 			final overloadType:Dynamic = o.getValue().merge({
@@ -102,34 +61,10 @@ class FunctionSymbolParser extends SymbolParser {
 		});
 	}
 
-	function parseReturns(returns:Array<Json>, params:Array<Param>) {
-		if (returns.length > 6) {
-			throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
-		}
-
-		return switch (returns) {
-			case []: LiteralType.Override("Dynamic");
-			case [r]: LiteralType.Override(new LiteralTypeParser(r.select('type'), params).parseString());
-			case rs:
-				LiteralType.Multireturn(rs.map(r -> LiteralType.Override(new LiteralTypeParser(r.select("type"), params).parseString()))
-					.padEnd(6, LiteralType.Override("Void")));
-		}
-
-		/* return switch (returns) {
-			case []: [LiteralType.Override("Dynamic")];
-			case [r]: [LiteralType.Override(new LiteralTypeParser(r.select('type'), params).parseString())];
-			case r if (r.length > 6): throw new Exception('Unsupported number of return types for function ${this.origin.getValue()}');
-			case rs:
-				final returns = rs.map(r -> new LiteralTypeParser(r.select("type"), params).parseString()).padEnd(6, "Void");
-				LiteralType.Override(Target.toHelperReference('Multireturn<${returns.join(", ")}>'));
-		}*/
-	}
-
 	public function parse() {
 		final params = this.parseParams(this.origin.select('generics').array());
-		final args = this.parseArguments(this.origin.select('arguments').array(), params);
+		final functionType = new FunctionTypeParser(this.origin, params).parse();
 		final overloads = this.parseOverloads(this.origin.select('overloads').array(), params);
-		final ret = this.parseReturns(this.origin.select('returns').array(), params);
 
 		return {
 			name: this.name,
@@ -138,8 +73,8 @@ class FunctionSymbolParser extends SymbolParser {
 			access: this.access,
 			type: {
 				params: params,
-				args: args,
-				ret: ret,
+				args: functionType.args,
+				ret: functionType.ret,
 				overloads: overloads
 			}
 		};
