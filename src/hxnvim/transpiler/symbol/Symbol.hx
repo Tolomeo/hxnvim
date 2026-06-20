@@ -6,6 +6,7 @@ enum LiteralType {
 	Unknown;
 	Optional(type:LiteralType);
 	Union(types:Array<LiteralType>);
+	Array(itemsType:LiteralType);
 }
 
 // TODO: remove overload; add protected and package

@@ -61,12 +61,17 @@ class LiteralTypeGenerator {
 		return (types.length != nonNullableTypes.length) ? 'Null<${nonNullableUnion}>' : nonNullableUnion;
 	}
 
+	function generateArrayType(itemsType:LiteralType) {
+		return 'Array<${this.generateType(itemsType)}>';
+	}
+
 	function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Unknown: this.generateUnknownType();
 			case LiteralType.Builtin(value):this.generateBuiltinType(value);
 			case LiteralType.Optional(type): this.generateOptionalType(type);
 			case LiteralType.Union(types): this.generateUnionType(types);
+			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

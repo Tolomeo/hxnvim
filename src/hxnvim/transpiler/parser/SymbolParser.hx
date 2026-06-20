@@ -188,11 +188,6 @@ class TableSymbolParser extends SymbolParser {
 				final symbol = new AliasSymbolParser(name, doc, meta, access, type).parse();
 				final opt = symbol.type.isNullable();
 
-				if (name == "data") {
-					trace(symbol);
-					trace(opt);
-				}
-
 				TableField.Property(symbol, opt);
 
 			case k:
