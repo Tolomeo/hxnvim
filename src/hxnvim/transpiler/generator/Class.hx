@@ -14,7 +14,7 @@ import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
-private class ClassGenerator {
+private abstract class ClassGenerator {
 	final table:Table;
 
 	public function new(table:Table) {
