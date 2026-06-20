@@ -46,7 +46,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var stderr : Null<haxe.extern.EitherType<(err:Null<String>, data:Null<String>) -> Dynamic, Bool>>;
+	extern var stderr : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.stdin: (string|string[]|true)?
@@ -66,7 +66,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var stdout : Null<haxe.extern.EitherType<(err:Null<String>, data:Null<String>) -> Dynamic, Bool>>;
+	extern var stdout : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.text: boolean?
