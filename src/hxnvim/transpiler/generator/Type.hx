@@ -11,6 +11,10 @@ import hxnvim.transpiler.symbol.Symbol;
 class LiteralTypeGenerator {
 	public function new() {}
 
+	function generateUnknownType() {
+		return "Dynamic";
+	}
+
 	function generateBuiltinType(builtin:String) {
 		return switch (builtin) {
 			case "any": "Any";
@@ -30,16 +34,17 @@ class LiteralTypeGenerator {
 		}
 	}
 
-	public function generateTypeString(type:LiteralType) {
+	public function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Builtin(value):this.generateBuiltinType(value);
+			case LiteralType.Unknown: this.generateUnknownType();
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}
 	}
 
 	public function generate(type:LiteralType) {
-		final typeString = this.generateTypeString(type);
+		final typeString = this.generateType(type);
 
 		try {
 			return switch (Context.parse('(null:${typeString})', (macro null).pos).expr) {

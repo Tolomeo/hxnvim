@@ -169,8 +169,8 @@ class LiteralTypeParser {
 		return switch (this.type.select('kind').string()) {
 			case "builtin":
 				LiteralType.Builtin(this.type.select('value').string());
-			/* case "unknown": this.parseUnknown();
-				case "optional": this.parseOptional(this.type.select('type'));
+			case "unknown": LiteralType.Unknown;
+			/* case "optional": this.parseOptional(this.type.select('type'));
 				case "union": this.parseUnion(this.type.select('types').array());
 				case "array": this.parseArray(this.type.select('items'));
 				case "function": this.parseFunction(this.type);
