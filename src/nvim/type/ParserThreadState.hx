@@ -7,5 +7,5 @@ package nvim.type;
 **/
 @:structInit class ParserThreadState {
 	@:optional
-	var timeout : Null<Int>;
+	extern var timeout : Null<Int>;
 }

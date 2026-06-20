@@ -19,7 +19,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var changeAnnotationSupport : Null<nvim.type.lsp.ChangeAnnotationsSupportOptions>;
+	extern var changeAnnotationSupport : Null<nvim.type.lsp.ChangeAnnotationsSupportOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.documentChanges: boolean?
@@ -31,7 +31,7 @@ package nvim.type.lsp;
 		The client supports versioned document changes in `WorkspaceEdit`s
 	**/
 	@:optional
-	var documentChanges : Null<Bool>;
+	extern var documentChanges : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.failureHandling: ("abort"|"textOnlyTransactional"|"transactional"|"undo")?
@@ -55,7 +55,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	var failureHandling : Null<nvim.type.lsp.FailureHandlingKind>;
+	extern var failureHandling : Null<nvim.type.lsp.FailureHandlingKind>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.metadataSupport: boolean?
@@ -68,7 +68,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var metadataSupport : Null<Bool>;
+	extern var metadataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.normalizesLineEndings: boolean?
@@ -85,7 +85,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var normalizesLineEndings : Null<Bool>;
+	extern var normalizesLineEndings : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.resourceOperations: "create"|"delete"|"rename"[]?
@@ -99,7 +99,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var resourceOperations : Null<Array<nvim.type.lsp.ResourceOperationKind>>;
+	extern var resourceOperations : Null<Array<nvim.type.lsp.ResourceOperationKind>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.snippetEditSupport: boolean?
@@ -112,5 +112,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var snippetEditSupport : Null<Bool>;
+	extern var snippetEditSupport : Null<Bool>;
 }

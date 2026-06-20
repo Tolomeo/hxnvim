@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		
 		The format options.
 	**/
-	var options : nvim.type.lsp.FormattingOptions;
+	extern var options : nvim.type.lsp.FormattingOptions;
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.textDocument: lsp.TextDocumentIdentifier
@@ -39,7 +39,7 @@ package nvim.type.lsp;
 		
 		The document to format.
 	**/
-	var textDocument : nvim.type.lsp.TextDocumentIdentifier;
+	extern var textDocument : nvim.type.lsp.TextDocumentIdentifier;
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.workDoneToken: (string|integer)?
@@ -51,5 +51,5 @@ package nvim.type.lsp;
 		An optional token that a server can use to report work done progress.
 	**/
 	@:optional
-	var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+	extern var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 }

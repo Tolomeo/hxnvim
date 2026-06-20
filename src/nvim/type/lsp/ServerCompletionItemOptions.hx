@@ -20,5 +20,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var labelDetailsSupport : Null<Bool>;
+	extern var labelDetailsSupport : Null<Bool>;
 }

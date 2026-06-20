@@ -22,7 +22,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		 Only add diagnostics from the given namespace.
 	**/
 	@:optional
-	var namespace : Null<Int>;
+	extern var namespace : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.open: boolean?
@@ -35,7 +35,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		 (default: `true`)
 	**/
 	@:optional
-	var open : Null<Bool>;
+	extern var open : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -55,7 +55,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		 @nodoc
 	**/
 	@:optional
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.title: string?
@@ -67,7 +67,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		 Title of the location list. Defaults to "Diagnostics".
 	**/
 	@:optional
-	var title : Null<String>;
+	extern var title : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.winnr: integer?
@@ -80,5 +80,5 @@ package nvim.type.vim.diagnostic.setloclist;
 		 (default: `0`)
 	**/
 	@:optional
-	var winnr : Null<Int>;
+	extern var winnr : Null<Int>;
 }

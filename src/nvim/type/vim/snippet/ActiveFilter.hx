@@ -23,5 +23,5 @@ package nvim.type.vim.snippet;
 		    | 1
 		```
 	**/
-	var direction : nvim.type.vim.snippet.Direction;
+	extern var direction : nvim.type.vim.snippet.Direction;
 }

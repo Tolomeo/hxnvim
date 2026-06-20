@@ -12,7 +12,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		```
 	**/
 	@:optional
-	var _update_win : Null<Int>;
+	extern var _update_win : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.anchor_bias: ('above'|'auto'|'below')?
@@ -30,7 +30,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 (default: `'auto'`)
 	**/
 	@:optional
-	var anchor_bias : Null<String>;
+	extern var anchor_bias : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.border: (string|(string|[string, string])[])?
@@ -41,7 +41,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		override `border`
 	**/
 	@:optional
-	var border : Null<haxe.extern.EitherType<String, Array<Dynamic>>>;
+	extern var border : Null<haxe.extern.EitherType<String, Array<Dynamic>>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.close_events: table?
@@ -53,7 +53,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 List of events that closes the floating window
 	**/
 	@:optional
-	var close_events : Null<lua.Table.AnyTable>;
+	extern var close_events : Null<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.focus: boolean?
@@ -67,7 +67,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 (default: `true`)
 	**/
 	@:optional
-	var focus : Null<Bool>;
+	extern var focus : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.focus_id: string?
@@ -79,7 +79,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 If a popup with this id is opened, then focus it
 	**/
 	@:optional
-	var focus_id : Null<String>;
+	extern var focus_id : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.focusable: boolean?
@@ -92,7 +92,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 (default: `true`)
 	**/
 	@:optional
-	var focusable : Null<Bool>;
+	extern var focusable : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.height: integer?
@@ -104,7 +104,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Height of floating window
 	**/
 	@:optional
-	var height : Null<Int>;
+	extern var height : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.max_height: integer?
@@ -116,7 +116,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Maximal height of floating window
 	**/
 	@:optional
-	var max_height : Null<Int>;
+	extern var max_height : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.max_width: integer?
@@ -128,7 +128,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Maximal width of floating window
 	**/
 	@:optional
-	var max_width : Null<Int>;
+	extern var max_width : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.offset_x: integer?
@@ -140,7 +140,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 offset to add to `col`
 	**/
 	@:optional
-	var offset_x : Null<Int>;
+	extern var offset_x : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.offset_y: integer?
@@ -152,7 +152,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 offset to add to `row`
 	**/
 	@:optional
-	var offset_y : Null<Int>;
+	extern var offset_y : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.relative: ('cursor'|'editor'|'mouse')?
@@ -164,28 +164,28 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 (default: `'cursor'`)
 	**/
 	@:optional
-	var relative : Null<String>;
+	extern var relative : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.silent: boolean?
 		```
 	**/
 	@:optional
-	var silent : Null<Bool>;
+	extern var silent : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.title: (string|[string, string][])?
 		```
 	**/
 	@:optional
-	var title : Null<String>;
+	extern var title : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.title_pos: ('center'|'left'|'right')?
 		```
 	**/
 	@:optional
-	var title_pos : Null<String>;
+	extern var title_pos : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.width: integer?
@@ -197,7 +197,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Width of floating window
 	**/
 	@:optional
-	var width : Null<Int>;
+	extern var width : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.wrap: boolean?
@@ -210,7 +210,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 (default: `true`)
 	**/
 	@:optional
-	var wrap : Null<Bool>;
+	extern var wrap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.wrap_at: integer?
@@ -222,7 +222,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Character to wrap at for computing height when wrap is enabled
 	**/
 	@:optional
-	var wrap_at : Null<Int>;
+	extern var wrap_at : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.zindex: integer?
@@ -233,5 +233,5 @@ package nvim.type.vim.lsp.buf.signature_help;
 		override `zindex`, defaults to 50
 	**/
 	@:optional
-	var zindex : Null<Int>;
+	extern var zindex : Null<Int>;
 }

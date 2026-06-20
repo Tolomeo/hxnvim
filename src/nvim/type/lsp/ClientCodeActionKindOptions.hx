@@ -19,5 +19,5 @@ package nvim.type.lsp;
 		handle values outside its set gracefully and falls back
 		to a default value when unknown.
 	**/
-	var valueSet : Array<nvim.type.lsp.CodeActionKind>;
+	extern var valueSet : Array<nvim.type.lsp.CodeActionKind>;
 }

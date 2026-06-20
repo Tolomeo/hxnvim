@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		A character on which formatting should be triggered, like `{`.
 	**/
-	var firstTriggerCharacter : String;
+	extern var firstTriggerCharacter : String;
 	/**
 		```lua
 		(field) lsp.DocumentOnTypeFormattingOptions.moreTriggerCharacter: string[]?
@@ -32,5 +32,5 @@ package nvim.type.lsp;
 		More trigger characters.
 	**/
 	@:optional
-	var moreTriggerCharacter : Null<Array<String>>;
+	extern var moreTriggerCharacter : Null<Array<String>>;
 }

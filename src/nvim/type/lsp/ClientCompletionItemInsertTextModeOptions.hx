@@ -11,5 +11,5 @@ package nvim.type.lsp;
 		(field) lsp.ClientCompletionItemInsertTextModeOptions.valueSet: 1|2[]
 		```
 	**/
-	var valueSet : Array<nvim.type.lsp.InsertTextMode>;
+	extern var valueSet : Array<nvim.type.lsp.InsertTextMode>;
 }

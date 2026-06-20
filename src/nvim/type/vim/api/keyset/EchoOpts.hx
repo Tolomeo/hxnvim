@@ -12,12 +12,12 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var err : Null<Bool>;
+	extern var err : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.echo_opts.verbose: boolean?
 		```
 	**/
 	@:optional
-	var verbose : Null<Bool>;
+	extern var verbose : Null<Bool>;
 }

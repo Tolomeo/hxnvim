@@ -26,42 +26,42 @@ package nvim.type.vim.keymap.set;
 		 Creates buffer-local mapping, `0` or `true` for current buffer.
 	**/
 	@:optional
-	var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
+	extern var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.callback: function?
 		```
 	**/
 	@:optional
-	var callback : Null<haxe.Constraints.Function>;
+	extern var callback : Null<haxe.Constraints.Function>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.desc: string?
 		```
 	**/
 	@:optional
-	var desc : Null<String>;
+	extern var desc : Null<String>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.expr: boolean?
 		```
 	**/
 	@:optional
-	var expr : Null<Bool>;
+	extern var expr : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.noremap: boolean?
 		```
 	**/
 	@:optional
-	var noremap : Null<Bool>;
+	extern var noremap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.nowait: boolean?
 		```
 	**/
 	@:optional
-	var nowait : Null<Bool>;
+	extern var nowait : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.remap: boolean?
@@ -74,33 +74,33 @@ package nvim.type.vim.keymap.set;
 		 (Default: `false`)
 	**/
 	@:optional
-	var remap : Null<Bool>;
+	extern var remap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.replace_keycodes: boolean?
 		```
 	**/
 	@:optional
-	var replace_keycodes : Null<Bool>;
+	extern var replace_keycodes : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.script: boolean?
 		```
 	**/
 	@:optional
-	var script : Null<Bool>;
+	extern var script : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.silent: boolean?
 		```
 	**/
 	@:optional
-	var silent : Null<Bool>;
+	extern var silent : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.unique: boolean?
 		```
 	**/
 	@:optional
-	var unique : Null<Bool>;
+	extern var unique : Null<Bool>;
 }

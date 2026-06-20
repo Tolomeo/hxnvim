@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		Whether on type formatting supports dynamic registration.
 	**/
 	@:optional
-	var dynamicRegistration : Null<Bool>;
+	extern var dynamicRegistration : Null<Bool>;
 }

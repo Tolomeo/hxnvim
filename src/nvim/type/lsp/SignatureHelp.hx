@@ -38,7 +38,7 @@ package nvim.type.lsp;
 		the active signature does have any.
 	**/
 	@:optional
-	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
+	extern var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelp.activeSignature: integer?
@@ -58,7 +58,7 @@ package nvim.type.lsp;
 		mandatory to better express this.
 	**/
 	@:optional
-	var activeSignature : Null<nvim.type.Uinteger>;
+	extern var activeSignature : Null<nvim.type.Uinteger>;
 	/**
 		```lua
 		(field) lsp.SignatureHelp.signatures: lsp.SignatureInformation[]
@@ -69,5 +69,5 @@ package nvim.type.lsp;
 		
 		One or more signatures.
 	**/
-	var signatures : Array<nvim.type.lsp.SignatureInformation>;
+	extern var signatures : Array<nvim.type.lsp.SignatureInformation>;
 }

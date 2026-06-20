@@ -34,7 +34,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	var change : Null<nvim.type.lsp.TextDocumentSyncKind>;
+	extern var change : Null<nvim.type.lsp.TextDocumentSyncKind>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.openClose: boolean?
@@ -47,7 +47,7 @@ package nvim.type.lsp;
 		be sent.
 	**/
 	@:optional
-	var openClose : Null<Bool>;
+	extern var openClose : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.save: (boolean|lsp.SaveOptions)?
@@ -64,7 +64,7 @@ package nvim.type.lsp;
 		sent.
 	**/
 	@:optional
-	var save : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SaveOptions>>;
+	extern var save : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SaveOptions>>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.willSave: boolean?
@@ -77,7 +77,7 @@ package nvim.type.lsp;
 		sent.
 	**/
 	@:optional
-	var willSave : Null<Bool>;
+	extern var willSave : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.willSaveWaitUntil: boolean?
@@ -90,5 +90,5 @@ package nvim.type.lsp;
 		sent.
 	**/
 	@:optional
-	var willSaveWaitUntil : Null<Bool>;
+	extern var willSaveWaitUntil : Null<Bool>;
 }

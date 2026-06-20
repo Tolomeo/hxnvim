@@ -18,7 +18,7 @@ package nvim.type.vim.lsp.buf.code_action;
 		 (after filtering), the action is applied without user query.
 	**/
 	@:optional
-	var apply : Null<Bool>;
+	extern var apply : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.context: (lsp.CodeActionContext)?
@@ -42,7 +42,7 @@ package nvim.type.vim.lsp.buf.code_action;
 		   - {triggerKind}? (`integer`) The reason why code actions were requested.
 	**/
 	@:optional
-	var context : Null<nvim.type.lsp.CodeActionContext>;
+	extern var context : Null<nvim.type.lsp.CodeActionContext>;
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.filter: (fun(x: lsp.CodeAction|lsp.Command):boolean)?
@@ -61,7 +61,7 @@ package nvim.type.vim.lsp.buf.code_action;
 		```
 	**/
 	@:optional
-	var filter : Null<(x:haxe.extern.EitherType<nvim.type.lsp.CodeAction, nvim.type.lsp.Command>) -> Bool>;
+	extern var filter : Null<(x:haxe.extern.EitherType<nvim.type.lsp.CodeAction, nvim.type.lsp.Command>) -> Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.range: { start: integer[], end: integer[] }?
@@ -76,5 +76,5 @@ package nvim.type.vim.lsp.buf.code_action;
 		 using mark-like indexing. See |api-indexing|
 	**/
 	@:optional
-	var range : Null<{ var start : Array<Int>; var end : Array<Int>; }>;
+	extern var range : Null<{ var start : Array<Int>; var end : Array<Int>; }>;
 }

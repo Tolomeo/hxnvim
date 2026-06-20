@@ -17,7 +17,7 @@ package nvim.type.vim.fs.rm;
 		 Ignore nonexistent files and arguments
 	**/
 	@:optional
-	var force : Null<Bool>;
+	extern var force : Null<Bool>;
 	/**
 		```lua
 		(field) vim.fs.rm.Opts.recursive: boolean?
@@ -30,5 +30,5 @@ package nvim.type.vim.fs.rm;
 		 Remove directories and their contents recursively
 	**/
 	@:optional
-	var recursive : Null<Bool>;
+	extern var recursive : Null<Bool>;
 }

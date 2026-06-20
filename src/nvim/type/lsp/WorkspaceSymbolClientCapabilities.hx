@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Symbol request supports dynamic registration.
 	**/
 	@:optional
-	var dynamicRegistration : Null<Bool>;
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.resolveSupport: (lsp.ClientSymbolResolveOptions)?
@@ -36,7 +36,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var resolveSupport : Null<nvim.type.lsp.ClientSymbolResolveOptions>;
+	extern var resolveSupport : Null<nvim.type.lsp.ClientSymbolResolveOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.symbolKind: (lsp.ClientSymbolKindOptions)?
@@ -48,7 +48,7 @@ package nvim.type.lsp;
 		Specific capabilities for the `SymbolKind` in the `workspace/symbol` request.
 	**/
 	@:optional
-	var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
+	extern var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.tagSupport: (lsp.ClientSymbolTagOptions)?
@@ -62,5 +62,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
+	extern var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
 }

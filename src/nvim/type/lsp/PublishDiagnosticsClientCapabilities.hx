@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var codeDescriptionSupport : Null<Bool>;
+	extern var codeDescriptionSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.dataSupport: boolean?
@@ -37,7 +37,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var dataSupport : Null<Bool>;
+	extern var dataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.relatedInformation: boolean?
@@ -49,7 +49,7 @@ package nvim.type.lsp;
 		Whether the clients accepts diagnostics with related information.
 	**/
 	@:optional
-	var relatedInformation : Null<Bool>;
+	extern var relatedInformation : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.tagSupport: (lsp.ClientDiagnosticsTagOptions)?
@@ -63,7 +63,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
+	extern var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.versionSupport: boolean?
@@ -77,5 +77,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var versionSupport : Null<Bool>;
+	extern var versionSupport : Null<Bool>;
 }

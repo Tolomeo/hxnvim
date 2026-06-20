@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var insertFinalNewline : Null<Bool>;
+	extern var insertFinalNewline : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.insertSpaces: boolean
@@ -33,7 +33,7 @@ package nvim.type.lsp;
 		
 		Prefer spaces over tabs.
 	**/
-	var insertSpaces : Bool;
+	extern var insertSpaces : Bool;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.tabSize: integer
@@ -44,7 +44,7 @@ package nvim.type.lsp;
 		
 		Size of a tab in spaces.
 	**/
-	var tabSize : nvim.type.Uinteger;
+	extern var tabSize : nvim.type.Uinteger;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.trimFinalNewlines: boolean?
@@ -57,7 +57,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var trimFinalNewlines : Null<Bool>;
+	extern var trimFinalNewlines : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.trimTrailingWhitespace: boolean?
@@ -70,5 +70,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var trimTrailingWhitespace : Null<Bool>;
+	extern var trimTrailingWhitespace : Null<Bool>;
 }

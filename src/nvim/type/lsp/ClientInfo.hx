@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		The name of the client as defined by the client.
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) lsp.ClientInfo.version: string?
@@ -33,5 +33,5 @@ package nvim.type.lsp;
 		The client's version as defined by the client.
 	**/
 	@:optional
-	var version : Null<String>;
+	extern var version : Null<String>;
 }

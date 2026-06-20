@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var retriggerCharacters : Null<Array<String>>;
+	extern var retriggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.triggerCharacters: string[]?
@@ -37,12 +37,12 @@ package nvim.type.lsp;
 		List of characters that trigger signature help automatically.
 	**/
 	@:optional
-	var triggerCharacters : Null<Array<String>>;
+	extern var triggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

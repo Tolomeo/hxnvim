@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		using the `client/unregisterCapability` request.
 	**/
 	@:optional
-	var changeNotifications : Null<haxe.extern.EitherType<String, Bool>>;
+	extern var changeNotifications : Null<haxe.extern.EitherType<String, Bool>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersServerCapabilities.supported: boolean?
@@ -35,5 +35,5 @@ package nvim.type.lsp;
 		The server has support for workspace folders
 	**/
 	@:optional
-	var supported : Null<Bool>;
+	extern var supported : Null<Bool>;
 }

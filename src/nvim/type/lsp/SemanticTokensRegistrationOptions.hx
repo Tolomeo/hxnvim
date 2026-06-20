@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		A document selector to identify the scope of the registration. If set to null
 		the document selector provided on the client side will be used.
 	**/
-	var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+	extern var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.full: (boolean|lsp.SemanticTokensFullDelta)?
@@ -42,7 +42,7 @@ package nvim.type.lsp;
 		Server supports providing semantic tokens for a full document.
 	**/
 	@:optional
-	var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
+	extern var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.id: string?
@@ -55,7 +55,7 @@ package nvim.type.lsp;
 		the request again. See also Registration#id.
 	**/
 	@:optional
-	var id : Null<String>;
+	extern var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.legend: lsp.SemanticTokensLegend
@@ -66,7 +66,7 @@ package nvim.type.lsp;
 		
 		The legend used by the server
 	**/
-	var legend : nvim.type.lsp.SemanticTokensLegend;
+	extern var legend : nvim.type.lsp.SemanticTokensLegend;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.range: (boolean|lsp._anonym1.range)?
@@ -79,12 +79,12 @@ package nvim.type.lsp;
 		of a document.
 	**/
 	@:optional
-	var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
+	extern var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

@@ -11,11 +11,11 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.get_mode.blocking: boolean
 		```
 	**/
-	var blocking : Bool;
+	extern var blocking : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.get_mode.mode: string
 		```
 	**/
-	var mode : String;
+	extern var mode : String;
 }

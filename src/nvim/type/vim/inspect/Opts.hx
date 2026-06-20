@@ -16,14 +16,14 @@ package nvim.type.vim.inspect;
 		```
 	**/
 	@:optional
-	var depth : Null<Int>;
+	extern var depth : Null<Int>;
 	/**
 		```lua
 		(field) vim.inspect.Opts.newline: string?
 		```
 	**/
 	@:optional
-	var newline : Null<String>;
+	extern var newline : Null<String>;
 	/**
 		```lua
 		(field) vim.inspect.Opts.process: (fun(item: any, path: string[]):any)?
@@ -37,5 +37,5 @@ package nvim.type.vim.inspect;
 		```
 	**/
 	@:optional
-	var process : Null<(item:Any, path:Array<String>) -> Any>;
+	extern var process : Null<(item:Any, path:Array<String>) -> Any>;
 }

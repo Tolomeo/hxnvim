@@ -24,5 +24,5 @@ package nvim.type.lsp;
 		the initial version of the protocol.
 	**/
 	@:optional
-	var valueSet : Null<Array<nvim.type.lsp.CompletionItemKind>>;
+	extern var valueSet : Null<Array<nvim.type.lsp.CompletionItemKind>>;
 }

@@ -21,7 +21,7 @@ package nvim.type.vim.lsp.get_clients;
 		 Only return clients attached to this buffer
 	**/
 	@:optional
-	var bufnr : Null<Int>;
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.id: integer?
@@ -34,7 +34,7 @@ package nvim.type.vim.lsp.get_clients;
 		 Only return clients with the given id
 	**/
 	@:optional
-	var id : Null<Int>;
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.method: string?
@@ -46,7 +46,7 @@ package nvim.type.vim.lsp.get_clients;
 		 Only return clients supporting the given method
 	**/
 	@:optional
-	var method : Null<String>;
+	extern var method : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.name: string?
@@ -58,5 +58,5 @@ package nvim.type.vim.lsp.get_clients;
 		 Only return clients with the given name
 	**/
 	@:optional
-	var name : Null<String>;
+	extern var name : Null<String>;
 }

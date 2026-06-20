@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		return value for the corresponding server capability as well.
 	**/
 	@:optional
-	var dynamicRegistration : Null<Bool>;
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncClientCapabilities.executionSummarySupport: boolean?
@@ -37,5 +37,5 @@ package nvim.type.lsp;
 		The client supports sending execution summary data per cell.
 	**/
 	@:optional
-	var executionSummarySupport : Null<Bool>;
+	extern var executionSummarySupport : Null<Bool>;
 }

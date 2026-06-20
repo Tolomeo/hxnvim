@@ -19,5 +19,5 @@ package nvim.type.vim.keymap.del;
 		 When `0` or `true`, use the current buffer.
 	**/
 	@:optional
-	var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
+	extern var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
 }

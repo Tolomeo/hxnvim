@@ -16,7 +16,7 @@ package nvim.type.vim.quickfix;
 		 buffer number; must be the number of a valid buffer
 	**/
 	@:optional
-	var bufnr : Null<Int>;
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.col: integer?
@@ -28,7 +28,7 @@ package nvim.type.vim.quickfix;
 		 column number
 	**/
 	@:optional
-	var col : Null<Int>;
+	extern var col : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.end_col: integer?
@@ -40,7 +40,7 @@ package nvim.type.vim.quickfix;
 		 end column, if the item spans multiple columns
 	**/
 	@:optional
-	var end_col : Null<Int>;
+	extern var end_col : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.end_lnum: integer?
@@ -52,7 +52,7 @@ package nvim.type.vim.quickfix;
 		 end of lines, if the item spans multiple lines
 	**/
 	@:optional
-	var end_lnum : Null<Int>;
+	extern var end_lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.filename: string?
@@ -65,7 +65,7 @@ package nvim.type.vim.quickfix;
 		 present or it is invalid.
 	**/
 	@:optional
-	var filename : Null<String>;
+	extern var filename : Null<String>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.lnum: integer?
@@ -77,7 +77,7 @@ package nvim.type.vim.quickfix;
 		 line number in the file
 	**/
 	@:optional
-	var lnum : Null<Int>;
+	extern var lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.module: string?
@@ -90,7 +90,7 @@ package nvim.type.vim.quickfix;
 		 quickfix error window instead of the filename.
 	**/
 	@:optional
-	var module : Null<String>;
+	extern var module : Null<String>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.nr: integer?
@@ -102,7 +102,7 @@ package nvim.type.vim.quickfix;
 		 error number
 	**/
 	@:optional
-	var nr : Null<Int>;
+	extern var nr : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.pattern: string?
@@ -114,7 +114,7 @@ package nvim.type.vim.quickfix;
 		 search pattern used to locate the error
 	**/
 	@:optional
-	var pattern : Null<String>;
+	extern var pattern : Null<String>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.text: string?
@@ -126,7 +126,7 @@ package nvim.type.vim.quickfix;
 		 description of the error
 	**/
 	@:optional
-	var text : Null<String>;
+	extern var text : Null<String>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.type: string?
@@ -138,7 +138,7 @@ package nvim.type.vim.quickfix;
 		 single-character error type, 'E', 'W', etc.
 	**/
 	@:optional
-	var type : Null<String>;
+	extern var type : Null<String>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.user_data: any
@@ -151,7 +151,7 @@ package nvim.type.vim.quickfix;
 		 any type.
 	**/
 	@:optional
-	var user_data : Null<Any>;
+	extern var user_data : Null<Any>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.valid: boolean?
@@ -163,7 +163,7 @@ package nvim.type.vim.quickfix;
 		 recognized error message
 	**/
 	@:optional
-	var valid : Null<Bool>;
+	extern var valid : Null<Bool>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.vcol: integer?
@@ -176,5 +176,5 @@ package nvim.type.vim.quickfix;
 		 when zero: "col" is byte index
 	**/
 	@:optional
-	var vcol : Null<Int>;
+	extern var vcol : Null<Int>;
 }

@@ -11,11 +11,11 @@ package nvim.type.lsp;
 		(field) lsp.MarkedStringWithLanguage.language: string
 		```
 	**/
-	var language : String;
+	extern var language : String;
 	/**
 		```lua
 		(field) lsp.MarkedStringWithLanguage.value: string
 		```
 	**/
-	var value : String;
+	extern var value : String;
 }

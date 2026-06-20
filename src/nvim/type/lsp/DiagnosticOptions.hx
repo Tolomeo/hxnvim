@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		managed by the client.
 	**/
 	@:optional
-	var identifier : Null<String>;
+	extern var identifier : Null<String>;
 	/**
 		```lua
 		(field) lsp.DiagnosticOptions.interFileDependencies: boolean
@@ -37,14 +37,14 @@ package nvim.type.lsp;
 		set in another file. Inter file dependencies are common for
 		most programming languages and typically uncommon for linters.
 	**/
-	var interFileDependencies : Bool;
+	extern var interFileDependencies : Bool;
 	/**
 		```lua
 		(field) lsp.DiagnosticOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticOptions.workspaceDiagnostics: boolean
@@ -55,5 +55,5 @@ package nvim.type.lsp;
 		
 		The server provides support for workspace diagnostics as well.
 	**/
-	var workspaceDiagnostics : Bool;
+	extern var workspaceDiagnostics : Bool;
 }

@@ -12,26 +12,26 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var buffer : Null<Int>;
+	extern var buffer : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.clear_autocmds.event: (string|string[])?
 		```
 	**/
 	@:optional
-	var event : Null<haxe.extern.EitherType<String, Array<String>>>;
+	extern var event : Null<haxe.extern.EitherType<String, Array<String>>>;
 	/**
 		```lua
 		(field) vim.api.keyset.clear_autocmds.group: (string|integer)?
 		```
 	**/
 	@:optional
-	var group : Null<haxe.extern.EitherType<Int, String>>;
+	extern var group : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.clear_autocmds.pattern: (string|string[])?
 		```
 	**/
 	@:optional
-	var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
+	extern var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
 }

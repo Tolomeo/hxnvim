@@ -21,12 +21,12 @@ package nvim.type.lsp;
 		Code lens has a resolve provider as well.
 	**/
 	@:optional
-	var resolveProvider : Null<Bool>;
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeLensOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

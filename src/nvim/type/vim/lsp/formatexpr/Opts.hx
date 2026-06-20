@@ -18,5 +18,5 @@ package nvim.type.vim.lsp.formatexpr;
 		 The timeout period for the formatting request.
 		 (default: 500ms).
 	**/
-	var timeout_ms : Int;
+	extern var timeout_ms : Int;
 }

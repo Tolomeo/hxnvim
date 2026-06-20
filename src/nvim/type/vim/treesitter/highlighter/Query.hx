@@ -12,5 +12,5 @@ package nvim.type.vim.treesitter.highlighter;
 		  -> vim.treesitter.Query
 		```
 	**/
-	function query():Dynamic;
+	extern function query():Dynamic;
 }

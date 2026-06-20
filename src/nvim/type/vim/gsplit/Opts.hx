@@ -18,7 +18,7 @@ package nvim.type.vim.gsplit;
 		 Use `sep` literally (as in string.find).
 	**/
 	@:optional
-	var plain : Null<Bool>;
+	extern var plain : Null<Bool>;
 	/**
 		```lua
 		(field) vim.gsplit.Opts.trimempty: boolean?
@@ -30,5 +30,5 @@ package nvim.type.vim.gsplit;
 		 Discard empty segments at start and end of the sequence.
 	**/
 	@:optional
-	var trimempty : Null<Bool>;
+	extern var trimempty : Null<Bool>;
 }

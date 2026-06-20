@@ -18,5 +18,5 @@ package nvim.type.lsp;
 		the server provides a corresponding handler.
 	**/
 	@:optional
-	var delta : Null<Bool>;
+	extern var delta : Null<Bool>;
 }

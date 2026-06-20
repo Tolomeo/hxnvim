@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
+	extern var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
 	/**
 		```lua
 		(field) lsp.SignatureInformation.documentation: (string|lsp.MarkupContent)?
@@ -70,7 +70,7 @@ package nvim.type.lsp;
 		in the UI but can be omitted.
 	**/
 	@:optional
-	var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	extern var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
 		(field) lsp.SignatureInformation.label: string
@@ -82,7 +82,7 @@ package nvim.type.lsp;
 		The label of this signature. Will be shown in
 		the UI.
 	**/
-	var label : String;
+	extern var label : String;
 	/**
 		```lua
 		(field) lsp.SignatureInformation.parameters: lsp.ParameterInformation[]?
@@ -94,5 +94,5 @@ package nvim.type.lsp;
 		The parameters of this signature.
 	**/
 	@:optional
-	var parameters : Null<Array<nvim.type.lsp.ParameterInformation>>;
+	extern var parameters : Null<Array<nvim.type.lsp.ParameterInformation>>;
 }

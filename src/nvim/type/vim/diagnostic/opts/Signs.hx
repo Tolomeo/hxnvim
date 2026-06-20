@@ -18,7 +18,7 @@ package nvim.type.vim.diagnostic.opts;
 		 whole line the sign is placed in.
 	**/
 	@:optional
-	var linehl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+	extern var linehl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.numhl: table<vim.diagnostic.Severity, string>?
@@ -31,7 +31,7 @@ package nvim.type.vim.diagnostic.opts;
 		 line number where the sign is placed.
 	**/
 	@:optional
-	var numhl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+	extern var numhl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.priority: integer?
@@ -46,7 +46,7 @@ package nvim.type.vim.diagnostic.opts;
 		 (default: `10`)
 	**/
 	@:optional
-	var priority : Null<Int>;
+	extern var priority : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -67,7 +67,7 @@ package nvim.type.vim.diagnostic.opts;
 		 @nodoc
 	**/
 	@:optional
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.text: table<vim.diagnostic.Severity, string>?
@@ -86,5 +86,5 @@ package nvim.type.vim.diagnostic.opts;
 		 ```
 	**/
 	@:optional
-	var text : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+	extern var text : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 }

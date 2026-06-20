@@ -21,12 +21,12 @@ package nvim.type.lsp;
 		Document links have a resolve provider as well.
 	**/
 	@:optional
-	var resolveProvider : Null<Bool>;
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentLinkOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

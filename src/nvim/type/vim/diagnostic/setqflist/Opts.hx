@@ -22,7 +22,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		 Only add diagnostics from the given namespace.
 	**/
 	@:optional
-	var namespace : Null<Int>;
+	extern var namespace : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.open: boolean?
@@ -35,7 +35,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		 (default: `true`)
 	**/
 	@:optional
-	var open : Null<Bool>;
+	extern var open : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -55,7 +55,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		 @nodoc
 	**/
 	@:optional
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.title: string?
@@ -68,5 +68,5 @@ package nvim.type.vim.diagnostic.setqflist;
 		 title, it's updated. If not, a new quickfix list is created.
 	**/
 	@:optional
-	var title : Null<String>;
+	extern var title : Null<String>;
 }

@@ -12,5 +12,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var info : Null<String>;
+	extern var info : Null<String>;
 }

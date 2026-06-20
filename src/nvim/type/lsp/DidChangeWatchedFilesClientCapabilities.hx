@@ -19,7 +19,7 @@ package nvim.type.lsp;
 		from the server side.
 	**/
 	@:optional
-	var dynamicRegistration : Null<Bool>;
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DidChangeWatchedFilesClientCapabilities.relativePatternSupport: boolean?
@@ -33,5 +33,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var relativePatternSupport : Null<Bool>;
+	extern var relativePatternSupport : Null<Bool>;
 }

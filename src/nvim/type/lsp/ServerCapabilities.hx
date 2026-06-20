@@ -33,7 +33,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var callHierarchyProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.CallHierarchyOptions, nvim.type.lsp.CallHierarchyRegistrationOptions>>>;
+	extern var callHierarchyProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.CallHierarchyOptions, nvim.type.lsp.CallHierarchyRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.codeActionProvider: (boolean|lsp.CodeActionOptions)?
@@ -51,7 +51,7 @@ package nvim.type.lsp;
 		`codeActionLiteralSupport` in its initial `initialize` request.
 	**/
 	@:optional
-	var codeActionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.CodeActionOptions>>;
+	extern var codeActionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.CodeActionOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.codeLensProvider: (lsp.CodeLensOptions)?
@@ -67,7 +67,7 @@ package nvim.type.lsp;
 		The server provides code lens.
 	**/
 	@:optional
-	var codeLensProvider : Null<nvim.type.lsp.CodeLensOptions>;
+	extern var codeLensProvider : Null<nvim.type.lsp.CodeLensOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.colorProvider: (boolean|lsp.DocumentColorOptions|lsp.DocumentColorRegistrationOptions)?
@@ -79,7 +79,7 @@ package nvim.type.lsp;
 		The server provides color provider support.
 	**/
 	@:optional
-	var colorProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.DocumentColorOptions, nvim.type.lsp.DocumentColorRegistrationOptions>>>;
+	extern var colorProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.DocumentColorOptions, nvim.type.lsp.DocumentColorRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.completionProvider: (lsp.CompletionOptions)?
@@ -95,7 +95,7 @@ package nvim.type.lsp;
 		The server provides completion support.
 	**/
 	@:optional
-	var completionProvider : Null<nvim.type.lsp.CompletionOptions>;
+	extern var completionProvider : Null<nvim.type.lsp.CompletionOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.declarationProvider: (boolean|lsp.DeclarationOptions|lsp.DeclarationRegistrationOptions)?
@@ -107,7 +107,7 @@ package nvim.type.lsp;
 		The server provides Goto Declaration support.
 	**/
 	@:optional
-	var declarationProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.DeclarationOptions, nvim.type.lsp.DeclarationRegistrationOptions>>>;
+	extern var declarationProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.DeclarationOptions, nvim.type.lsp.DeclarationRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.definitionProvider: (boolean|lsp.DefinitionOptions)?
@@ -123,7 +123,7 @@ package nvim.type.lsp;
 		The server provides goto definition support.
 	**/
 	@:optional
-	var definitionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DefinitionOptions>>;
+	extern var definitionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DefinitionOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.diagnosticProvider: (lsp.DiagnosticOptions|lsp.DiagnosticRegistrationOptions)?
@@ -146,7 +146,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var diagnosticProvider : Null<haxe.extern.EitherType<nvim.type.lsp.DiagnosticOptions, nvim.type.lsp.DiagnosticRegistrationOptions>>;
+	extern var diagnosticProvider : Null<haxe.extern.EitherType<nvim.type.lsp.DiagnosticOptions, nvim.type.lsp.DiagnosticRegistrationOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.documentFormattingProvider: (boolean|lsp.DocumentFormattingOptions)?
@@ -162,7 +162,7 @@ package nvim.type.lsp;
 		The server provides document formatting.
 	**/
 	@:optional
-	var documentFormattingProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentFormattingOptions>>;
+	extern var documentFormattingProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentFormattingOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.documentHighlightProvider: (boolean|lsp.DocumentHighlightOptions)?
@@ -178,7 +178,7 @@ package nvim.type.lsp;
 		The server provides document highlight support.
 	**/
 	@:optional
-	var documentHighlightProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentHighlightOptions>>;
+	extern var documentHighlightProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentHighlightOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.documentLinkProvider: (lsp.DocumentLinkOptions)?
@@ -194,7 +194,7 @@ package nvim.type.lsp;
 		The server provides document link support.
 	**/
 	@:optional
-	var documentLinkProvider : Null<nvim.type.lsp.DocumentLinkOptions>;
+	extern var documentLinkProvider : Null<nvim.type.lsp.DocumentLinkOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.documentOnTypeFormattingProvider: (lsp.DocumentOnTypeFormattingOptions)?
@@ -210,7 +210,7 @@ package nvim.type.lsp;
 		The server provides document formatting on typing.
 	**/
 	@:optional
-	var documentOnTypeFormattingProvider : Null<nvim.type.lsp.DocumentOnTypeFormattingOptions>;
+	extern var documentOnTypeFormattingProvider : Null<nvim.type.lsp.DocumentOnTypeFormattingOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.documentRangeFormattingProvider: (boolean|lsp.DocumentRangeFormattingOptions)?
@@ -226,7 +226,7 @@ package nvim.type.lsp;
 		The server provides document range formatting.
 	**/
 	@:optional
-	var documentRangeFormattingProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentRangeFormattingOptions>>;
+	extern var documentRangeFormattingProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentRangeFormattingOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.documentSymbolProvider: (boolean|lsp.DocumentSymbolOptions)?
@@ -242,7 +242,7 @@ package nvim.type.lsp;
 		The server provides document symbol support.
 	**/
 	@:optional
-	var documentSymbolProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentSymbolOptions>>;
+	extern var documentSymbolProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.DocumentSymbolOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.executeCommandProvider: (lsp.ExecuteCommandOptions)?
@@ -258,7 +258,7 @@ package nvim.type.lsp;
 		The server provides execute command support.
 	**/
 	@:optional
-	var executeCommandProvider : Null<nvim.type.lsp.ExecuteCommandOptions>;
+	extern var executeCommandProvider : Null<nvim.type.lsp.ExecuteCommandOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.experimental: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -286,7 +286,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	var experimental : Null<nvim.type.lsp.LSPAny>;
+	extern var experimental : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.foldingRangeProvider: (boolean|lsp.FoldingRangeOptions|lsp.FoldingRangeRegistrationOptions)?
@@ -298,7 +298,7 @@ package nvim.type.lsp;
 		The server provides folding provider support.
 	**/
 	@:optional
-	var foldingRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.FoldingRangeOptions, nvim.type.lsp.FoldingRangeRegistrationOptions>>>;
+	extern var foldingRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.FoldingRangeOptions, nvim.type.lsp.FoldingRangeRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.hoverProvider: (boolean|lsp.HoverOptions)?
@@ -314,7 +314,7 @@ package nvim.type.lsp;
 		The server provides hover support.
 	**/
 	@:optional
-	var hoverProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.HoverOptions>>;
+	extern var hoverProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.HoverOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.implementationProvider: (boolean|lsp.ImplementationOptions|lsp.ImplementationRegistrationOptions)?
@@ -326,7 +326,7 @@ package nvim.type.lsp;
 		The server provides Goto Implementation support.
 	**/
 	@:optional
-	var implementationProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.ImplementationOptions, nvim.type.lsp.ImplementationRegistrationOptions>>>;
+	extern var implementationProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.ImplementationOptions, nvim.type.lsp.ImplementationRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.inlayHintProvider: (boolean|lsp.InlayHintOptions|lsp.InlayHintRegistrationOptions)?
@@ -349,7 +349,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var inlayHintProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.InlayHintOptions, nvim.type.lsp.InlayHintRegistrationOptions>>>;
+	extern var inlayHintProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.InlayHintOptions, nvim.type.lsp.InlayHintRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.inlineCompletionProvider: (boolean|lsp.InlineCompletionOptions)?
@@ -367,7 +367,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var inlineCompletionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.InlineCompletionOptions>>;
+	extern var inlineCompletionProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.InlineCompletionOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.inlineValueProvider: (boolean|lsp.InlineValueOptions|lsp.InlineValueRegistrationOptions)?
@@ -390,7 +390,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var inlineValueProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.InlineValueOptions, nvim.type.lsp.InlineValueRegistrationOptions>>>;
+	extern var inlineValueProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.InlineValueOptions, nvim.type.lsp.InlineValueRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.linkedEditingRangeProvider: (boolean|lsp.LinkedEditingRangeOptions|lsp.LinkedEditingRangeRegistrationOptions)?
@@ -403,7 +403,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var linkedEditingRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.LinkedEditingRangeOptions, nvim.type.lsp.LinkedEditingRangeRegistrationOptions>>>;
+	extern var linkedEditingRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.LinkedEditingRangeOptions, nvim.type.lsp.LinkedEditingRangeRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.monikerProvider: (boolean|lsp.MonikerOptions|lsp.MonikerRegistrationOptions)?
@@ -416,7 +416,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var monikerProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.MonikerOptions, nvim.type.lsp.MonikerRegistrationOptions>>>;
+	extern var monikerProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.MonikerOptions, nvim.type.lsp.MonikerRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.notebookDocumentSync: (lsp.NotebookDocumentSyncOptions|lsp.NotebookDocumentSyncRegistrationOptions)?
@@ -449,7 +449,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var notebookDocumentSync : Null<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentSyncOptions, nvim.type.lsp.NotebookDocumentSyncRegistrationOptions>>;
+	extern var notebookDocumentSync : Null<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentSyncOptions, nvim.type.lsp.NotebookDocumentSyncRegistrationOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.positionEncoding: ("utf-16"|"utf-32"|"utf-8")?
@@ -484,7 +484,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	var positionEncoding : Null<nvim.type.lsp.PositionEncodingKind>;
+	extern var positionEncoding : Null<nvim.type.lsp.PositionEncodingKind>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.referencesProvider: (boolean|lsp.ReferenceOptions)?
@@ -500,7 +500,7 @@ package nvim.type.lsp;
 		The server provides find references support.
 	**/
 	@:optional
-	var referencesProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.ReferenceOptions>>;
+	extern var referencesProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.ReferenceOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.renameProvider: (boolean|lsp.RenameOptions)?
@@ -518,7 +518,7 @@ package nvim.type.lsp;
 		`prepareSupport` in its initial `initialize` request.
 	**/
 	@:optional
-	var renameProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.RenameOptions>>;
+	extern var renameProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.RenameOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.selectionRangeProvider: (boolean|lsp.SelectionRangeOptions|lsp.SelectionRangeRegistrationOptions)?
@@ -530,7 +530,7 @@ package nvim.type.lsp;
 		The server provides selection range support.
 	**/
 	@:optional
-	var selectionRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.SelectionRangeOptions, nvim.type.lsp.SelectionRangeRegistrationOptions>>>;
+	extern var selectionRangeProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.SelectionRangeOptions, nvim.type.lsp.SelectionRangeRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.semanticTokensProvider: (lsp.SemanticTokensOptions|lsp.SemanticTokensRegistrationOptions)?
@@ -543,7 +543,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var semanticTokensProvider : Null<haxe.extern.EitherType<nvim.type.lsp.SemanticTokensOptions, nvim.type.lsp.SemanticTokensRegistrationOptions>>;
+	extern var semanticTokensProvider : Null<haxe.extern.EitherType<nvim.type.lsp.SemanticTokensOptions, nvim.type.lsp.SemanticTokensRegistrationOptions>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.signatureHelpProvider: (lsp.SignatureHelpOptions)?
@@ -559,7 +559,7 @@ package nvim.type.lsp;
 		The server provides signature help support.
 	**/
 	@:optional
-	var signatureHelpProvider : Null<nvim.type.lsp.SignatureHelpOptions>;
+	extern var signatureHelpProvider : Null<nvim.type.lsp.SignatureHelpOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.textDocumentSync: (0|1|2|lsp.TextDocumentSyncOptions)?
@@ -589,7 +589,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	var textDocumentSync : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentSyncOptions, nvim.type.lsp.TextDocumentSyncKind>>;
+	extern var textDocumentSync : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentSyncOptions, nvim.type.lsp.TextDocumentSyncKind>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.typeDefinitionProvider: (boolean|lsp.TypeDefinitionOptions|lsp.TypeDefinitionRegistrationOptions)?
@@ -601,7 +601,7 @@ package nvim.type.lsp;
 		The server provides Goto Type Definition support.
 	**/
 	@:optional
-	var typeDefinitionProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.TypeDefinitionOptions, nvim.type.lsp.TypeDefinitionRegistrationOptions>>>;
+	extern var typeDefinitionProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.TypeDefinitionOptions, nvim.type.lsp.TypeDefinitionRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.typeHierarchyProvider: (boolean|lsp.TypeHierarchyOptions|lsp.TypeHierarchyRegistrationOptions)?
@@ -624,7 +624,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var typeHierarchyProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.TypeHierarchyOptions, nvim.type.lsp.TypeHierarchyRegistrationOptions>>>;
+	extern var typeHierarchyProvider : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.lsp.TypeHierarchyOptions, nvim.type.lsp.TypeHierarchyRegistrationOptions>>>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.workspace: (lsp.WorkspaceOptions)?
@@ -641,7 +641,7 @@ package nvim.type.lsp;
 		Workspace specific server capabilities.
 	**/
 	@:optional
-	var workspace : Null<nvim.type.lsp.WorkspaceOptions>;
+	extern var workspace : Null<nvim.type.lsp.WorkspaceOptions>;
 	/**
 		```lua
 		(field) lsp.ServerCapabilities.workspaceSymbolProvider: (boolean|lsp.WorkspaceSymbolOptions)?
@@ -657,5 +657,5 @@ package nvim.type.lsp;
 		The server provides workspace symbol support.
 	**/
 	@:optional
-	var workspaceSymbolProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.WorkspaceSymbolOptions>>;
+	extern var workspaceSymbolProvider : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.WorkspaceSymbolOptions>>;
 }

@@ -20,7 +20,7 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		 @inlinedoc
 	**/
 	@:optional
-	var bufnr : Null<Int>;
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.Filter.range: (lsp.Range)?
@@ -41,5 +41,5 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		```
 	**/
 	@:optional
-	var range : Null<nvim.type.lsp.Range>;
+	extern var range : Null<nvim.type.lsp.Range>;
 }

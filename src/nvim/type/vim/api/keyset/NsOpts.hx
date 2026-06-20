@@ -12,5 +12,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var wins : Null<Array<Any>>;
+	extern var wins : Null<Array<Any>>;
 }

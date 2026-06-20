@@ -19,5 +19,5 @@ package nvim.type.vim.lsp.semantic_tokens.highlight_token;
 		 (Default: `vim.hl.priorities.semantic_tokens + 3`)
 	**/
 	@:optional
-	var priority : Null<Int>;
+	extern var priority : Null<Int>;
 }

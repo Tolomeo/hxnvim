@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var allowedTags : Null<Array<String>>;
+	extern var allowedTags : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.MarkdownClientCapabilities.parser: string
@@ -35,7 +35,7 @@ package nvim.type.lsp;
 		
 		The name of the parser.
 	**/
-	var parser : String;
+	extern var parser : String;
 	/**
 		```lua
 		(field) lsp.MarkdownClientCapabilities.version: string?
@@ -47,5 +47,5 @@ package nvim.type.lsp;
 		The version of the parser.
 	**/
 	@:optional
-	var version : Null<String>;
+	extern var version : Null<String>;
 }

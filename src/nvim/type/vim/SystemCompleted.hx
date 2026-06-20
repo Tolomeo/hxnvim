@@ -11,25 +11,25 @@ package nvim.type.vim;
 		(field) vim.SystemCompleted.code: integer
 		```
 	**/
-	var code : Int;
+	extern var code : Int;
 	/**
 		```lua
 		(field) vim.SystemCompleted.signal: integer
 		```
 	**/
-	var signal : Int;
+	extern var signal : Int;
 	/**
 		```lua
 		(field) vim.SystemCompleted.stderr: string?
 		```
 	**/
 	@:optional
-	var stderr : Null<String>;
+	extern var stderr : Null<String>;
 	/**
 		```lua
 		(field) vim.SystemCompleted.stdout: string?
 		```
 	**/
 	@:optional
-	var stdout : Null<String>;
+	extern var stdout : Null<String>;
 }

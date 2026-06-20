@@ -17,7 +17,7 @@ package nvim.type.vim.treesitter.language.add;
 		Optional path the parser is located at
 	**/
 	@:optional
-	var path : Null<String>;
+	extern var path : Null<String>;
 	/**
 		```lua
 		(field) vim.treesitter.language.add.Opts.symbol_name: string?
@@ -29,5 +29,5 @@ package nvim.type.vim.treesitter.language.add;
 		Internal symbol name for the language to load
 	**/
 	@:optional
-	var symbol_name : Null<String>;
+	extern var symbol_name : Null<String>;
 }

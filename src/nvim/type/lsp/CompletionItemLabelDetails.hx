@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		for fully qualified names and file paths.
 	**/
 	@:optional
-	var description : Null<String>;
+	extern var description : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItemLabelDetails.detail: string?
@@ -36,5 +36,5 @@ package nvim.type.lsp;
 		without any spacing. Should be used for function signatures and type annotations.
 	**/
 	@:optional
-	var detail : Null<String>;
+	extern var detail : Null<String>;
 }

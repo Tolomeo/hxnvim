@@ -12,5 +12,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var winid : Null<Int>;
+	extern var winid : Null<Int>;
 }

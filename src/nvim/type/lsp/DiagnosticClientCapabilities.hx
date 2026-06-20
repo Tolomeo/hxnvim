@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var codeDescriptionSupport : Null<Bool>;
+	extern var codeDescriptionSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.dataSupport: boolean?
@@ -38,7 +38,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var dataSupport : Null<Bool>;
+	extern var dataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.dynamicRegistration: boolean?
@@ -52,7 +52,7 @@ package nvim.type.lsp;
 		return value for the corresponding server capability as well.
 	**/
 	@:optional
-	var dynamicRegistration : Null<Bool>;
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.relatedDocumentSupport: boolean?
@@ -64,7 +64,7 @@ package nvim.type.lsp;
 		Whether the clients supports related documents for document diagnostic pulls.
 	**/
 	@:optional
-	var relatedDocumentSupport : Null<Bool>;
+	extern var relatedDocumentSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.relatedInformation: boolean?
@@ -76,7 +76,7 @@ package nvim.type.lsp;
 		Whether the clients accepts diagnostics with related information.
 	**/
 	@:optional
-	var relatedInformation : Null<Bool>;
+	extern var relatedInformation : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.tagSupport: (lsp.ClientDiagnosticsTagOptions)?
@@ -90,5 +90,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
+	extern var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
 }

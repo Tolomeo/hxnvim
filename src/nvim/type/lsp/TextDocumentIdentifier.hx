@@ -20,5 +20,5 @@ package nvim.type.lsp;
 		
 		The text document's uri.
 	**/
-	var uri : nvim.type.lsp.DocumentUri;
+	extern var uri : nvim.type.lsp.DocumentUri;
 }

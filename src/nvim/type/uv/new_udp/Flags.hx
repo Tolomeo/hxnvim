@@ -48,7 +48,7 @@ package nvim.type.uv.new_udp;
 		```
 	**/
 	@:optional
-	var family : Null<nvim.type.uv.new_udp.flags.Family>;
+	extern var family : Null<nvim.type.uv.new_udp.flags.Family>;
 	/**
 		```lua
 		(field) uv.new_udp.flags.mmsgs: integer|nil
@@ -59,5 +59,5 @@ package nvim.type.uv.new_udp;
 		default `1`
 	**/
 	@:optional
-	var mmsgs : Null<Int>;
+	extern var mmsgs : Null<Int>;
 }

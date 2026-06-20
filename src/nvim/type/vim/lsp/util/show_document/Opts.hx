@@ -18,7 +18,7 @@ package nvim.type.vim.lsp.util.show_document;
 		 (defaults: true)
 	**/
 	@:optional
-	var focus : Null<Bool>;
+	extern var focus : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.util.show_document.Opts.reuse_win: boolean?
@@ -31,5 +31,5 @@ package nvim.type.vim.lsp.util.show_document;
 		 Jump to existing window if buffer is already open.
 	**/
 	@:optional
-	var reuse_win : Null<Bool>;
+	extern var reuse_win : Null<Bool>;
 }

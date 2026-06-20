@@ -30,11 +30,11 @@ package nvim.type.lsp;
 		}
 		```
 	**/
-	var range : nvim.type.lsp.Range;
+	extern var range : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.Location.uri: string
 		```
 	**/
-	var uri : nvim.type.lsp.DocumentUri;
+	extern var uri : nvim.type.lsp.DocumentUri;
 }

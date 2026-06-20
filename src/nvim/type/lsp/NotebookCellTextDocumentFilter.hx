@@ -26,7 +26,7 @@ package nvim.type.lsp;
 		notebook cell document. '*' matches every language.
 	**/
 	@:optional
-	var language : Null<String>;
+	extern var language : Null<String>;
 	/**
 		```lua
 		(field) lsp.NotebookCellTextDocumentFilter.notebook: string|lsp.NotebookDocumentFilterNotebookType|lsp.NotebookDocumentFilterPattern|lsp.NotebookDocumentFilterScheme
@@ -62,5 +62,5 @@ package nvim.type.lsp;
 		A notebook document filter where `pattern` is required field.
 		
 	**/
-	var notebook : haxe.extern.EitherType<String, nvim.type.lsp.NotebookDocumentFilter>;
+	extern var notebook : haxe.extern.EitherType<String, nvim.type.lsp.NotebookDocumentFilter>;
 }

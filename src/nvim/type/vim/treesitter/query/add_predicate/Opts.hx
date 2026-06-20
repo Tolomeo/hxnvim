@@ -19,7 +19,7 @@ package nvim.type.vim.treesitter.query.add_predicate;
 		 be removed in a future release.
 	**/
 	@:optional
-	var all : Null<Bool>;
+	extern var all : Null<Bool>;
 	/**
 		```lua
 		(field) vim.treesitter.query.add_predicate.Opts.force: boolean?
@@ -32,5 +32,5 @@ package nvim.type.vim.treesitter.query.add_predicate;
 		 Override an existing predicate of the same name
 	**/
 	@:optional
-	var force : Null<Bool>;
+	extern var force : Null<Bool>;
 }

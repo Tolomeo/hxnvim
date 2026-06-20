@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		The client is supposed to include the content on save.
 	**/
 	@:optional
-	var includeText : Null<Bool>;
+	extern var includeText : Null<Bool>;
 }

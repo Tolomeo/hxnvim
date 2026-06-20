@@ -20,5 +20,5 @@ package nvim.type;
 		(field) TSQueryInfo.captures: string[]
 		```
 	**/
-	var captures : Array<String>;
+	extern var captures : Array<String>;
 }

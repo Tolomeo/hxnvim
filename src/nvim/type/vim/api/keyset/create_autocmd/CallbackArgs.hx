@@ -15,7 +15,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		expanded value of <abuf>
 	**/
-	var buf : Int;
+	extern var buf : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.data: any
@@ -26,7 +26,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		arbitrary data passed from |nvim_exec_autocmds()|                       *event-data*
 	**/
 	@:optional
-	var data : Null<Any>;
+	extern var data : Null<Any>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.event: string
@@ -36,7 +36,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		name of the triggered event |autocmd-events|
 	**/
-	var event : String;
+	extern var event : String;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.file: string
@@ -46,7 +46,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		expanded value of <afile>
 	**/
-	var file : String;
+	extern var file : String;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.group: integer?
@@ -57,7 +57,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		autocommand group id, if any
 	**/
 	@:optional
-	var group : Null<Int>;
+	extern var group : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.id: integer
@@ -67,7 +67,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		autocommand id
 	**/
-	var id : Int;
+	extern var id : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.match: string
@@ -77,5 +77,5 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		expanded value of <amatch>
 	**/
-	var match : String;
+	extern var match : String;
 }

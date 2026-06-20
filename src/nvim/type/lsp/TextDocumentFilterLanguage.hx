@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		A language id, like `typescript`.
 	**/
-	var language : String;
+	extern var language : String;
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.pattern: (string|lsp.RelativePattern)?
@@ -59,7 +59,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var pattern : Null<nvim.type.lsp.GlobPattern>;
+	extern var pattern : Null<nvim.type.lsp.GlobPattern>;
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.scheme: string?
@@ -71,5 +71,5 @@ package nvim.type.lsp;
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
 	@:optional
-	var scheme : Null<String>;
+	extern var scheme : Null<String>;
 }

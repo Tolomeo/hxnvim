@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		may list out every specific kind they provide.
 	**/
 	@:optional
-	var codeActionKinds : Null<Array<nvim.type.lsp.CodeActionKind>>;
+	extern var codeActionKinds : Null<Array<nvim.type.lsp.CodeActionKind>>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.documentation: lsp.CodeActionKindDocumentation[]?
@@ -48,7 +48,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var documentation : Null<Array<nvim.type.lsp.CodeActionKindDocumentation>>;
+	extern var documentation : Null<Array<nvim.type.lsp.CodeActionKindDocumentation>>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.resolveProvider: boolean?
@@ -62,12 +62,12 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var resolveProvider : Null<Bool>;
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

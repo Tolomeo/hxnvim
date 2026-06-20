@@ -33,7 +33,7 @@ package nvim.type.lsp;
 		executed and then the command.
 	**/
 	@:optional
-	var command : Null<nvim.type.lsp.Command>;
+	extern var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
 		(field) lsp.CodeAction.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -63,7 +63,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	var data : Null<nvim.type.lsp.LSPAny>;
+	extern var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.CodeAction.diagnostics: lsp.Diagnostic[]?
@@ -75,7 +75,7 @@ package nvim.type.lsp;
 		The diagnostics that this code action resolves.
 	**/
 	@:optional
-	var diagnostics : Null<Array<nvim.type.lsp.Diagnostic>>;
+	extern var diagnostics : Null<Array<nvim.type.lsp.Diagnostic>>;
 	/**
 		```lua
 		(field) lsp.CodeAction.disabled: (lsp.CodeActionDisabled)?
@@ -105,7 +105,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var disabled : Null<nvim.type.lsp.CodeActionDisabled>;
+	extern var disabled : Null<nvim.type.lsp.CodeActionDisabled>;
 	/**
 		```lua
 		(field) lsp.CodeAction.edit: (lsp.WorkspaceEdit)?
@@ -132,7 +132,7 @@ package nvim.type.lsp;
 		The workspace edit this code action performs.
 	**/
 	@:optional
-	var edit : Null<nvim.type.lsp.WorkspaceEdit>;
+	extern var edit : Null<nvim.type.lsp.WorkspaceEdit>;
 	/**
 		```lua
 		(field) lsp.CodeAction.isPreferred: boolean?
@@ -149,7 +149,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var isPreferred : Null<Bool>;
+	extern var isPreferred : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeAction.kind: (""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports")?
@@ -185,7 +185,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	var kind : Null<nvim.type.lsp.CodeActionKind>;
+	extern var kind : Null<nvim.type.lsp.CodeActionKind>;
 	/**
 		```lua
 		(field) lsp.CodeAction.tags: 1[]?
@@ -198,7 +198,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var tags : Null<Array<nvim.type.lsp.CodeActionTag>>;
+	extern var tags : Null<Array<nvim.type.lsp.CodeActionTag>>;
 	/**
 		```lua
 		(field) lsp.CodeAction.title: string
@@ -209,5 +209,5 @@ package nvim.type.lsp;
 		
 		A short, human-readable, title for this code action.
 	**/
-	var title : String;
+	extern var title : String;
 }

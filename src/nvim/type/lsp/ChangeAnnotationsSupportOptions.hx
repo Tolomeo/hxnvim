@@ -19,5 +19,5 @@ package nvim.type.lsp;
 		be a tree node.
 	**/
 	@:optional
-	var groupsOnLabel : Null<Bool>;
+	extern var groupsOnLabel : Null<Bool>;
 }

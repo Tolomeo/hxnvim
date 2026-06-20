@@ -22,14 +22,14 @@ package nvim.type.lsp;
 		capabilities.
 	**/
 	@:optional
-	var completionItem : Null<nvim.type.lsp.ClientCompletionItemOptions>;
+	extern var completionItem : Null<nvim.type.lsp.ClientCompletionItemOptions>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItemKind: (lsp.ClientCompletionItemOptionsKind)?
 		```
 	**/
 	@:optional
-	var completionItemKind : Null<nvim.type.lsp.ClientCompletionItemOptionsKind>;
+	extern var completionItemKind : Null<nvim.type.lsp.ClientCompletionItemOptionsKind>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionList: (lsp.CompletionListCapabilities)?
@@ -49,7 +49,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var completionList : Null<nvim.type.lsp.CompletionListCapabilities>;
+	extern var completionList : Null<nvim.type.lsp.CompletionListCapabilities>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.contextSupport: boolean?
@@ -62,7 +62,7 @@ package nvim.type.lsp;
 		`textDocument/completion` request.
 	**/
 	@:optional
-	var contextSupport : Null<Bool>;
+	extern var contextSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.dynamicRegistration: boolean?
@@ -74,7 +74,7 @@ package nvim.type.lsp;
 		Whether completion supports dynamic registration.
 	**/
 	@:optional
-	var dynamicRegistration : Null<Bool>;
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.insertTextMode: (1|2)?
@@ -106,5 +106,5 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
+	extern var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
 }

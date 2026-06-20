@@ -37,7 +37,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	var experimental : Null<nvim.type.lsp.LSPAny>;
+	extern var experimental : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.general: (lsp.GeneralClientCapabilities)?
@@ -55,7 +55,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var general : Null<nvim.type.lsp.GeneralClientCapabilities>;
+	extern var general : Null<nvim.type.lsp.GeneralClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.notebookDocument: (lsp.NotebookDocumentClientCapabilities)?
@@ -73,7 +73,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var notebookDocument : Null<nvim.type.lsp.NotebookDocumentClientCapabilities>;
+	extern var notebookDocument : Null<nvim.type.lsp.NotebookDocumentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.textDocument: (lsp.TextDocumentClientCapabilities)?
@@ -89,7 +89,7 @@ package nvim.type.lsp;
 		Text document specific client capabilities.
 	**/
 	@:optional
-	var textDocument : Null<nvim.type.lsp.TextDocumentClientCapabilities>;
+	extern var textDocument : Null<nvim.type.lsp.TextDocumentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.window: (lsp.WindowClientCapabilities)?
@@ -101,7 +101,7 @@ package nvim.type.lsp;
 		Window specific client capabilities.
 	**/
 	@:optional
-	var window : Null<nvim.type.lsp.WindowClientCapabilities>;
+	extern var window : Null<nvim.type.lsp.WindowClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.workspace: (lsp.WorkspaceClientCapabilities)?
@@ -117,5 +117,5 @@ package nvim.type.lsp;
 		Workspace specific client capabilities.
 	**/
 	@:optional
-	var workspace : Null<nvim.type.lsp.WorkspaceClientCapabilities>;
+	extern var workspace : Null<nvim.type.lsp.WorkspaceClientCapabilities>;
 }

@@ -12,12 +12,12 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var do_source : Null<Bool>;
+	extern var do_source : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.runtime.is_lua: boolean?
 		```
 	**/
 	@:optional
-	var is_lua : Null<Bool>;
+	extern var is_lua : Null<Bool>;
 }

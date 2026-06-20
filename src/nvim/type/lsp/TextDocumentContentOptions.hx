@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		
 		The schemes for which the server provides content.
 	**/
-	var schemes : Array<String>;
+	extern var schemes : Array<String>;
 }

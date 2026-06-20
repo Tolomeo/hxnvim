@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Ignores if target exists.
 	**/
 	@:optional
-	var ignoreIfExists : Null<Bool>;
+	extern var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameFileOptions.overwrite: boolean?
@@ -33,5 +33,5 @@ package nvim.type.lsp;
 		Overwrite target if existing. Overwrite wins over `ignoreIfExists`
 	**/
 	@:optional
-	var overwrite : Null<Bool>;
+	extern var overwrite : Null<Bool>;
 }

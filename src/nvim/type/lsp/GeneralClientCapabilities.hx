@@ -28,7 +28,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var markdown : Null<nvim.type.lsp.MarkdownClientCapabilities>;
+	extern var markdown : Null<nvim.type.lsp.MarkdownClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.positionEncodings: "utf-16"|"utf-32"|"utf-8"[]?
@@ -56,7 +56,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var positionEncodings : Null<Array<nvim.type.lsp.PositionEncodingKind>>;
+	extern var positionEncodings : Null<Array<nvim.type.lsp.PositionEncodingKind>>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.regularExpressions: (lsp.RegularExpressionsClientCapabilities)?
@@ -74,7 +74,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var regularExpressions : Null<nvim.type.lsp.RegularExpressionsClientCapabilities>;
+	extern var regularExpressions : Null<nvim.type.lsp.RegularExpressionsClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.staleRequestSupport: (lsp.StaleRequestSupportOptions)?
@@ -90,5 +90,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var staleRequestSupport : Null<nvim.type.lsp.StaleRequestSupportOptions>;
+	extern var staleRequestSupport : Null<nvim.type.lsp.StaleRequestSupportOptions>;
 }

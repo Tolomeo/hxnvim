@@ -23,5 +23,5 @@ package nvim.type.lsp;
 		change that requires such a calculation.
 	**/
 	@:optional
-	var refreshSupport : Null<Bool>;
+	extern var refreshSupport : Null<Bool>;
 }

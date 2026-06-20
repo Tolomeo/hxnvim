@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		Server supports providing semantic tokens for a full document.
 	**/
 	@:optional
-	var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
+	extern var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.legend: lsp.SemanticTokensLegend
@@ -33,7 +33,7 @@ package nvim.type.lsp;
 		
 		The legend used by the server
 	**/
-	var legend : nvim.type.lsp.SemanticTokensLegend;
+	extern var legend : nvim.type.lsp.SemanticTokensLegend;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.range: (boolean|lsp._anonym1.range)?
@@ -46,12 +46,12 @@ package nvim.type.lsp;
 		of a document.
 	**/
 	@:optional
-	var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
+	extern var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

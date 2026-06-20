@@ -12,12 +12,12 @@ package nvim.type.vim.fn.sign_unplace;
 		```
 	**/
 	@:optional
-	var buffer : Null<haxe.extern.EitherType<Int, String>>;
+	extern var buffer : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.fn.sign_unplace.dict.id: integer?
 		```
 	**/
 	@:optional
-	var id : Null<Int>;
+	extern var id : Null<Int>;
 }

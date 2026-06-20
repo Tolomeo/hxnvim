@@ -17,11 +17,11 @@ package nvim.type.uv.udp_bind;
 		(field) uv.udp_bind.flags.ipv6only: boolean
 		```
 	**/
-	var ipv6only : Bool;
+	extern var ipv6only : Bool;
 	/**
 		```lua
 		(field) uv.udp_bind.flags.reuseaddr: boolean
 		```
 	**/
-	var reuseaddr : Bool;
+	extern var reuseaddr : Bool;
 }

@@ -12,5 +12,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var builtin : Null<Bool>;
+	extern var builtin : Null<Bool>;
 }

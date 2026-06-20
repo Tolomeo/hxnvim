@@ -12,39 +12,39 @@ package nvim.type.vim.fn.sign_define;
 		```
 	**/
 	@:optional
-	var culhl : Null<String>;
+	extern var culhl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.icon: string?
 		```
 	**/
 	@:optional
-	var icon : Null<String>;
+	extern var icon : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.linehl: string?
 		```
 	**/
 	@:optional
-	var linehl : Null<String>;
+	extern var linehl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.numhl: string?
 		```
 	**/
 	@:optional
-	var numhl : Null<String>;
+	extern var numhl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.text: string
 		```
 	**/
-	var text : String;
+	extern var text : String;
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.texthl: string?
 		```
 	**/
 	@:optional
-	var texthl : Null<String>;
+	extern var texthl : Null<String>;
 }

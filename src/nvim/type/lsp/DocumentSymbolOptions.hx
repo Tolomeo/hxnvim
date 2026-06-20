@@ -23,12 +23,12 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	var label : Null<String>;
+	extern var label : Null<String>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbolOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	var workDoneProgress : Null<Bool>;
+	extern var workDoneProgress : Null<Bool>;
 }

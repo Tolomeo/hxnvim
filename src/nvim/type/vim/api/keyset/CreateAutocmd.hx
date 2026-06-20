@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var buffer : Null<Int>;
+	extern var buffer : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback: (string|fun(args: vim.api.keyset.create_autocmd.callback_args):boolean?)?
@@ -26,47 +26,47 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	var callback : Null<haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_autocmd.CallbackArgs) -> Null<Bool>>>;
+	extern var callback : Null<haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_autocmd.CallbackArgs) -> Null<Bool>>>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.command: string?
 		```
 	**/
 	@:optional
-	var command : Null<String>;
+	extern var command : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.desc: string?
 		```
 	**/
 	@:optional
-	var desc : Null<String>;
+	extern var desc : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.group: (string|integer)?
 		```
 	**/
 	@:optional
-	var group : Null<haxe.extern.EitherType<Int, String>>;
+	extern var group : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.nested: boolean?
 		```
 	**/
 	@:optional
-	var nested : Null<Bool>;
+	extern var nested : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.once: boolean?
 		```
 	**/
 	@:optional
-	var once : Null<Bool>;
+	extern var once : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.pattern: (string|string[])?
 		```
 	**/
 	@:optional
-	var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
+	extern var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
 }

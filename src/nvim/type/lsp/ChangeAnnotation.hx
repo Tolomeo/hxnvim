@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		the user interface.
 	**/
 	@:optional
-	var description : Null<String>;
+	extern var description : Null<String>;
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.label: string
@@ -35,7 +35,7 @@ package nvim.type.lsp;
 		A human-readable string describing the actual change. The string
 		is rendered prominent in the user interface.
 	**/
-	var label : String;
+	extern var label : String;
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.needsConfirmation: boolean?
@@ -48,5 +48,5 @@ package nvim.type.lsp;
 		before applying the change.
 	**/
 	@:optional
-	var needsConfirmation : Null<Bool>;
+	extern var needsConfirmation : Null<Bool>;
 }

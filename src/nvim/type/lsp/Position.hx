@@ -48,7 +48,7 @@ package nvim.type.lsp;
 		The meaning of this offset is determined by the negotiated
 		`PositionEncodingKind`.
 	**/
-	var character : nvim.type.Uinteger;
+	extern var character : nvim.type.Uinteger;
 	/**
 		```lua
 		(field) lsp.Position.line: integer
@@ -59,5 +59,5 @@ package nvim.type.lsp;
 		
 		Line position in a document (zero-based).
 	**/
-	var line : nvim.type.Uinteger;
+	extern var line : nvim.type.Uinteger;
 }

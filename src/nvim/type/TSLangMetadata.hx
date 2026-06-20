@@ -11,17 +11,17 @@ package nvim.type;
 		(field) TSLangMetadata.major_version: integer
 		```
 	**/
-	var major_version : Int;
+	extern var major_version : Int;
 	/**
 		```lua
 		(field) TSLangMetadata.minor_version: integer
 		```
 	**/
-	var minor_version : Int;
+	extern var minor_version : Int;
 	/**
 		```lua
 		(field) TSLangMetadata.patch_version: integer
 		```
 	**/
-	var patch_version : Int;
+	extern var patch_version : Int;
 }
