@@ -101,7 +101,7 @@ class LiteralTypeGenerator {
 		return '{ ${entries.join(", ")} }';
 	}
 
-	function generateTable(key:LiteralType, value:LiteralType) {
+	function generateTableType(key:LiteralType, value:LiteralType) {
 		return 'lua.Table<${this.generateType(key)}, ${this.generateType(value)}>';
 	}
 
@@ -118,7 +118,7 @@ class LiteralTypeGenerator {
 			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
 			case LiteralType.Function(signature): this.generateFunctionType(signature);
 			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
-			case LiteralType.Table(key, value): this.generateTable(key, value);
+			case LiteralType.Table(key, value): this.generateTableType(key, value);
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
 			case LiteralType.NumericLiteral(_):this.generateNumericLiteralType();
 			case LiteralType.Override(stringType): stringType;
