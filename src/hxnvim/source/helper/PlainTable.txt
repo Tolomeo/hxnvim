@@ -1,9 +1,7 @@
-@:forward
-abstract PlainTable<T>(T) {
-    @:from
-    public static inline function fromType<T>(obj:T):PlainTable<T> {
+class PlainTable {
+    public static inline function clean<T>(obj:T):T {
         untyped obj.__fields__ = null;
         lua.Lua.setmetatable(cast obj, null);
-        return cast obj;
+        return obj;
     }
 }

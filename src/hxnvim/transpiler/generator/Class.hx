@@ -153,7 +153,10 @@ private abstract class ClassGenerator {
 		final facadeDoc = doc;
 
 		final methodMeta = method.meta.copy();
-		if (name != method.name) {
+		if (!methodMeta.exists(m -> switch (m) {
+			case SymbolMeta.Native(_): true;
+			case _: false;
+		})) {
 			methodMeta.unshift(SymbolMeta.Native(method.name));
 		}
 		if (opt) {
@@ -162,17 +165,19 @@ private abstract class ClassGenerator {
 
 		final meta = this.generateMethodMeta(methodMeta, method.type.overloads);
 		final methodMeta = meta.filter(m -> switch (m) {
-			case {name: "deprecated"}: false;
+			case {name: ":deprecated"}: false;
 			case _: true;
 		});
 		final facadeMeta = meta.filter(m -> switch (m) {
-			case {name: "native"}: false;
+			case {name: ":native"}: false;
+			case {name: ":overload"}: false;
 			case _: true;
 		});
 
 		final access = this.generateMethodAccess(method.access);
 		final methodAccess = [Access.APrivate].concat(access.filter(a -> switch (a) {
 			case Access.APublic: false;
+			case Access.APrivate: false;
 			case _: true;
 		}));
 		final facadeAccess = [Access.AInline].concat(access.filter(a -> switch (a) {
@@ -190,14 +195,15 @@ private abstract class ClassGenerator {
 			opt: a.opt,
 		} : FunctionArg));
 		final ret = new LiteralTypeGenerator().generate(method.type.ret);
+		final facadeRet = method.type.ret.is("Multireturn") ? new LiteralTypeGenerator().generate(LiteralType.Any) : ret;
 		final methodKind = FieldType.FFun({
 			params: params,
 			args: args,
 			ret: ret
 		});
 		final methodCallArguments = method.type.args.map(a -> {
-			if (a.type.isOneOf("AnyTable", "Table", "TableStructure")) {
-				return Target.toHelperReference('PlainTable<${a.name}>');
+			if (a.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
+				return Target.toHelperReference('PlainTable.clean(${a.name})');
 			} else {
 				return a.name;
 			}
@@ -206,7 +212,7 @@ private abstract class ClassGenerator {
 		final facadeKind = FieldType.FFun({
 			params: params,
 			args: args,
-			ret: ret,
+			ret: facadeRet,
 			expr: macro $b{[macro $i{facade}]},
 		});
 
@@ -220,11 +226,11 @@ private abstract class ClassGenerator {
 		return fields.flatMap(field -> {
 			return switch (field) {
 				case TableField.Method(func, opt):
-					final needsFacade = func.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure"));
+					final needsFacade = func.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference"));
 
 					if (needsFacade) {
 						final facadedMethod = this.generateFacadedMethod(func, opt);
-						[facadedMethod.method, facadedMethod.facade];
+						[facadedMethod.facade, facadedMethod.method];
 					} else {
 						final method = this.generateMethod(func, opt);
 						[method];
