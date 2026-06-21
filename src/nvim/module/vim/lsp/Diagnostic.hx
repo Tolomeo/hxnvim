@@ -84,6 +84,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	@:luaDotMethod
+	private private function __reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic;
 	/**
 		```lua
 		function M.reset(client_id: integer, buffer_client_map: table<integer, table<integer, table>>)
@@ -100,5 +102,7 @@ extern class Diagnostic {
 		@*param* `buffer_client_map` — map of buffers to active clients
 	**/
 	@:luaDotMethod
-	private function reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic;
+	inline private function reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic {
+		return __reset(client_id,buffer_client_map);
+	}
 }

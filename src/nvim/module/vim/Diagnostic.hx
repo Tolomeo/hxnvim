@@ -345,6 +345,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function jump(opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
+	@:luaDotMethod
+	private function __match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic>;
 	/**
 		```lua
 		function M.match(str: string, pat: string, groups: string[], severity_map: table, defaults?: table)
@@ -390,7 +392,9 @@ extern class Diagnostic {
 		@*return* — : |vim.Diagnostic| structure or `nil` if {pat} fails to match {str}.
 	**/
 	@:luaDotMethod
-	function match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic>;
+	inline function match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
+		return __match(str,pat,groups,severity_map,defaults);
+	}
 	/**
 		```lua
 		function M.open_float(opts?: vim.diagnostic.Opts.Float, ...any)

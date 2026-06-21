@@ -1,6 +1,8 @@
 package nvim.module.vim;
 
 extern class Re {
+	@:luaDotMethod
+	private function __compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.re.compile(string: string, defs?: table)
@@ -21,7 +23,9 @@ extern class Re {
 		```
 	**/
 	@:luaDotMethod
-	function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern;
+	inline function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern {
+		return __compile(string,defs);
+	}
 	/**
 		```lua
 		function vim.re.find(subject: string, pattern: string|vim.lpeg.Pattern, init?: integer)

@@ -36,6 +36,9 @@ extern class Text {
 	**/
 	@:luaDotMethod
 	function hexencode(str:String):String;
+	@:luaDotMethod
+	private function __indent(size:Int, text:String, ?opts:{ @:optional
+	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.indent(size: integer, text: string, opts?: { expandtab: number })
@@ -81,6 +84,8 @@ extern class Text {
 		@*return* — Indent size _before_ modification.
 	**/
 	@:luaDotMethod
-	function indent(size:Int, text:String, ?opts:{ @:optional
-	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
+	inline function indent(size:Int, text:String, ?opts:{ @:optional
+	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, Void, Void, Void, Void> {
+		return __indent(size,text,opts);
+	}
 }

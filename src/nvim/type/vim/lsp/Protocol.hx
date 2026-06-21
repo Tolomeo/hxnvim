@@ -1120,6 +1120,8 @@ package nvim.type.vim.lsp;
 	**/
 	@:luaDotMethod
 	extern function make_client_capabilities():nvim.type.lsp.ClientCapabilities;
+	@:luaDotMethod
+	private extern function __resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
 	/**
 		```lua
 		function vim.lsp.protocol.resolve_capabilities(server_capabilities: table)
@@ -1135,5 +1137,7 @@ package nvim.type.vim.lsp;
 		@*return* — : Normalized table of capabilities
 	**/
 	@:luaDotMethod
-	extern function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
+	inline function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities> {
+		return __resolve_capabilities(server_capabilities);
+	}
 }

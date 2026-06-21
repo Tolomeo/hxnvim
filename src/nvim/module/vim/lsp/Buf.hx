@@ -39,6 +39,9 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	function code_action(?opts:nvim.type.vim.lsp.buf.code_action.Opts):Dynamic;
+	@:luaDotMethod
+	@:deprecated
+	private function __completion(context:lua.Table.AnyTable):Dynamic;
 	/**
 		```lua
 		function M.completion(context: table)
@@ -60,7 +63,9 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function completion(context:lua.Table.AnyTable):Dynamic;
+	inline function completion(context:lua.Table.AnyTable):Dynamic {
+		return __completion(context);
+	}
 	/**
 		```lua
 		function M.declaration(opts?: vim.lsp.LocationOpts)

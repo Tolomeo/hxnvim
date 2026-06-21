@@ -107,6 +107,7 @@ package nvim;
 		@*return* — its argument.
 	**/
 	static function nvim__id_array(arr:Array<Any>):Array<Any>;
+	private static function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim__id_dict(dct: table<string, any>)
@@ -124,7 +125,9 @@ package nvim;
 		
 		@*return* — its argument.
 	**/
-	static function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
+	inline static function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any> {
+		return __nvim__id_dict(dct);
+	}
 	/**
 		```lua
 		function vim.api.nvim__id_float(flt: number)
@@ -2650,6 +2653,7 @@ package nvim;
 		@*return* — List of |window-ID|s
 	**/
 	static function nvim_list_wins():Array<Int>;
+	private static function __nvim_load_context(dict:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_load_context(dict: table<string, any>)
@@ -2662,7 +2666,11 @@ package nvim;
 		
 		@*param* `dict` — `Context` map.
 	**/
-	static function nvim_load_context(dict:lua.Table<String, Any>):Any;
+	inline static function nvim_load_context(dict:lua.Table<String, Any>):Any {
+		return __nvim_load_context(dict);
+	}
+	@:deprecated
+	private static function __nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_notify(msg: string, log_level: integer, opts: table<string, any>)
@@ -2670,7 +2678,9 @@ package nvim;
 		```
 	**/
 	@:deprecated
-	static function nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any;
+	inline static function nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any {
+		return __nvim_notify(msg,log_level,opts);
+	}
 	/**
 		```lua
 		function vim.api.nvim_open_term(buffer: integer, opts: vim.api.keyset.open_term)
@@ -5877,6 +5887,7 @@ package nvim;
 		 Otherwise, all context types are included.
 	**/
 	static function ctxpush(?types:Array<String>):Any;
+	private static function __ctxset(context:lua.Table.AnyTable, ?index:Int):Int;
 	/**
 		```lua
 		function table.ctxset(context: table, index?: integer)
@@ -5890,7 +5901,9 @@ package nvim;
 		 {context} is a Dictionary with context data (|context-dict|).
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
-	static function ctxset(context:lua.Table.AnyTable, ?index:Int):Int;
+	inline static function ctxset(context:lua.Table.AnyTable, ?index:Int):Int {
+		return __ctxset(context,index);
+	}
 	/**
 		```lua
 		function table.ctxsize()
@@ -6043,6 +6056,7 @@ package nvim;
 		 to refer to the last line in buffer {buf}.
 	**/
 	static function deletebufline(buf:haxe.extern.EitherType<Int, String>, first:haxe.extern.EitherType<Int, String>, ?last:haxe.extern.EitherType<Int, String>):Any;
+	private static function __dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function table.dictwatcheradd(dict: table, pattern: string, callback: function)
@@ -6090,7 +6104,9 @@ package nvim;
 		 This function can be used by plugins to implement options with
 		 validation and parsing logic.
 	**/
-	static function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
+	inline static function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any {
+		return __dictwatcheradd(dict,pattern,callback);
+	}
 	/**
 		```lua
 		function table.dictwatcherdel(dict: any, pattern: string, callback: function)
@@ -6234,6 +6250,7 @@ package nvim;
 		 <
 	**/
 	static function digraph_set(chars:String, digraph:String):Any;
+	private static function __digraph_setlist(digraphlist:lua.Table<Int, Array<String>>):Any;
 	/**
 		```lua
 		function table.digraph_setlist(digraphlist: table<integer, string[]>)
@@ -6256,7 +6273,9 @@ package nvim;
 		 <Except that the function returns after the first error,
 		 following digraphs will not be added.
 	**/
-	static function digraph_setlist(digraphlist:lua.Table<Int, Array<String>>):Any;
+	inline static function digraph_setlist(digraphlist:lua.Table<Int, Array<String>>):Any {
+		return __digraph_setlist(digraphlist);
+	}
 	/**
 		```lua
 		function table.empty(expr: any)
@@ -6681,6 +6700,7 @@ package nvim;
 		```
 	**/
 	static function expand(string:String, ?nosuf:Bool, ?list:Null<Bool>):String;
+	private static function __expandcmd(string:String, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.expandcmd(string: string, options?: table)
@@ -6712,7 +6732,10 @@ package nvim;
 		   echo expandcmd('make %<.o', {'errmsg': v:true})
 		 <
 	**/
-	static function expandcmd(string:String, ?options:lua.Table.AnyTable):Any;
+	inline static function expandcmd(string:String, ?options:lua.Table.AnyTable):Any {
+		return __expandcmd(string,options);
+	}
+	private static function __extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.extend(expr1: table, expr2: table, expr3?: table)
@@ -6757,7 +6780,10 @@ package nvim;
 		 fails.
 		 Returns {expr1}.  Returns 0 on error.
 	**/
-	static function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
+	inline static function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
+		return __extend(expr1,expr2,expr3);
+	}
+	private static function __extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.extendnew(expr1: table, expr2: table, expr3?: table)
@@ -6770,7 +6796,9 @@ package nvim;
 		 List or Dictionary is created and returned.  {expr1} remains
 		 unchanged.
 	**/
-	static function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
+	inline static function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
+		return __extendnew(expr1,expr2,expr3);
+	}
 	/**
 		```lua
 		function table.feedkeys(string: string, mode?: string)
@@ -7761,6 +7789,7 @@ package nvim;
 		 buffers, it is set to the length of the list.
 	**/
 	static function getchangelist(?buf:haxe.extern.EitherType<Int, String>):Array<lua.Table.AnyTable>;
+	private static function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
 	/**
 		```lua
 		function table.getchar(expr?: -1|0|1, opts?: table)
@@ -7870,7 +7899,9 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
+	inline static function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String> {
+		return __getchar(expr,opts);
+	}
 	/**
 		```lua
 		function table.getcharmod()
@@ -7945,6 +7976,7 @@ package nvim;
 		 <Also see |setcharsearch()|.
 	**/
 	static function getcharsearch():lua.Table.AnyTable;
+	private static function __getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
 	/**
 		```lua
 		function table.getcharstr(expr?: -1|0|1, opts?: table)
@@ -7964,7 +7996,9 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
+	inline static function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
+		return __getcharstr(expr,opts);
+	}
 	/**
 		```lua
 		function table.getcmdcomplpat()
@@ -8497,6 +8531,7 @@ package nvim;
 		```
 	**/
 	static function getline(lnum:haxe.extern.EitherType<Int, String>, ?end_:Null<Bool>):String;
+	private static function __getloclist(nr:Int, ?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.getloclist(nr: integer, what?: table)
@@ -8536,7 +8571,9 @@ package nvim;
 		   echo getloclist(5, {'filewinid': 0})
 		 <
 	**/
-	static function getloclist(nr:Int, ?what:lua.Table.AnyTable):Any;
+	inline static function getloclist(nr:Int, ?what:lua.Table.AnyTable):Any {
+		return __getloclist(nr,what);
+	}
 	/**
 		```lua
 		function table.getmarklist(buf?: integer)
@@ -8722,6 +8759,7 @@ package nvim;
 		 Also see |getcharpos()|, |getcurpos()| and |setpos()|.
 	**/
 	static function getpos(expr:String):Array<Int>;
+	private static function __getqflist(?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.getqflist(what?: table)
@@ -8833,7 +8871,9 @@ package nvim;
 		   echo getqflist({'lines' : ["F1:10:L10"]})
 		 <
 	**/
-	static function getqflist(?what:lua.Table.AnyTable):Any;
+	inline static function getqflist(?what:lua.Table.AnyTable):Any {
+		return __getqflist(what);
+	}
 	/**
 		```lua
 		function table.getreg(regname?: string, list?: false)
@@ -8917,6 +8957,7 @@ package nvim;
 		 The returned Dictionary can be passed to |setreg()|.
 	**/
 	static function getreginfo(?regname:String):lua.Table.AnyTable;
+	private static function __getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<String>;
 	/**
 		```lua
 		function table.getregion(pos1: table, pos2: table, opts?: table)
@@ -8979,7 +9020,10 @@ package nvim;
 		   \ getpos('v'), getpos('.'), #{ type: mode() })<CR>
 		 <
 	**/
-	static function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<String>;
+	inline static function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<String> {
+		return __getregion(pos1,pos2,opts);
+	}
+	private static function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<Array<Array<Int>>>;
 	/**
 		```lua
 		function table.getregionpos(pos1: table, pos2: table, opts?: table)
@@ -9019,7 +9063,9 @@ package nvim;
 		       value of 0 is used for both positions.
 		       (default: |FALSE|)
 	**/
-	static function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<Array<Array<Int>>>;
+	inline static function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<Array<Array<Int>>> {
+		return __getregionpos(pos1,pos2,opts);
+	}
 	/**
 		```lua
 		function table.getregtype(regname?: string)
@@ -9039,6 +9085,7 @@ package nvim;
 		 specified, |v:register| is used.
 	**/
 	static function getregtype(?regname:String):String;
+	private static function __getscriptinfo(?opts:lua.Table.AnyTable):Array<nvim.type.vim.fn.getscriptinfo.Ret>;
 	/**
 		```lua
 		function table.getscriptinfo(opts?: table)
@@ -9083,7 +9130,9 @@ package nvim;
 		   echo getscriptinfo({'sid': 15})[0].variables
 		 <
 	**/
-	static function getscriptinfo(?opts:lua.Table.AnyTable):Array<nvim.type.vim.fn.getscriptinfo.Ret>;
+	inline static function getscriptinfo(?opts:lua.Table.AnyTable):Array<nvim.type.vim.fn.getscriptinfo.Ret> {
+		return __getscriptinfo(opts);
+	}
 	/**
 		```lua
 		function table.getstacktrace()
@@ -9543,6 +9592,7 @@ package nvim;
 		```
 	**/
 	static function has(feature:String):Float;
+	private static function __has_key(dict:lua.Table.AnyTable, key:String):Float;
 	/**
 		```lua
 		function table.has_key(dict: table, key: string)
@@ -9562,7 +9612,9 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function has_key(dict:lua.Table.AnyTable, key:String):Float;
+	inline static function has_key(dict:lua.Table.AnyTable, key:String):Float {
+		return __has_key(dict,key);
+	}
 	/**
 		```lua
 		function table.haslocaldir(winnr?: integer, tabnr?: integer)
@@ -9941,6 +9993,7 @@ package nvim;
 		 <
 	**/
 	static function index(object:Any, expr:Any, ?start:Int, ?ic:Bool):Int;
+	private static function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function table.indexof(object: any, expr: any, opts?: table)
@@ -9987,7 +10040,9 @@ package nvim;
 		   echo indexof(l, "v:val.n == 20", #{startidx: 1})
 		 <
 	**/
-	static function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int;
+	inline static function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int {
+		return __indexof(object,expr,opts);
+	}
 	/**
 		```lua
 		function table.input(prompt: string, text?: string, completion?: string)
@@ -10385,6 +10440,7 @@ package nvim;
 		```
 	**/
 	static function isnan(expr:Float):Float;
+	private static function __items(dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.items(dict: table)
@@ -10406,7 +10462,9 @@ package nvim;
 		 cases, items() returns a List with the index and the value at
 		 the index.
 	**/
-	static function items(dict:lua.Table.AnyTable):Any;
+	inline static function items(dict:lua.Table.AnyTable):Any {
+		return __items(dict);
+	}
 	/**
 		```lua
 		function table.jobclose(...any)
@@ -10455,6 +10513,7 @@ package nvim;
 	**/
 	@:deprecated
 	static function jobsend(___:haxe.Rest<Any>):Any;
+	private static function __jobstart(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function table.jobstart(cmd: string|string[], opts?: table)
@@ -10555,7 +10614,9 @@ package nvim;
 		   - -1 if {cmd}[0] is not executable.
 		 See also |job-control|, |channel|, |msgpack-rpc|.
 	**/
-	static function jobstart(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int;
+	inline static function jobstart(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int {
+		return __jobstart(cmd,opts);
+	}
 	/**
 		```lua
 		function table.jobstop(id: integer)
@@ -10665,6 +10726,7 @@ package nvim;
 		 |Blob|s are converted to arrays of the individual bytes.
 	**/
 	static function json_encode(expr:Any):String;
+	private static function __keys(dict:lua.Table.AnyTable):Array<String>;
 	/**
 		```lua
 		function table.keys(dict: table)
@@ -10676,7 +10738,9 @@ package nvim;
 		 Return a |List| with all the keys of {dict}.  The |List| is in
 		 arbitrary order.  Also see |items()| and |values()|.
 	**/
-	static function keys(dict:lua.Table.AnyTable):Array<String>;
+	inline static function keys(dict:lua.Table.AnyTable):Array<String> {
+		return __keys(dict);
+	}
 	/**
 		```lua
 		function table.keytrans(string: string)
@@ -11216,6 +11280,7 @@ package nvim;
 		 don't want that use |deepcopy()| first.
 	**/
 	static function mapnew(expr1:Any, expr2:Any):Any;
+	private static function __mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function table.mapset(mode: string, abbr?: boolean, dict?: table<string, any>)
@@ -11267,7 +11332,9 @@ package nvim;
 		   endfor
 		 <
 	**/
-	static function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any;
+	inline static function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any {
+		return __mapset(mode,abbr,dict);
+	}
 	/**
 		```lua
 		function table.match(expr: string|any[], pat: string, start?: integer, count?: integer)
@@ -11470,6 +11537,7 @@ package nvim;
 		 to three matches. |matchadd()| does not have this limitation.
 	**/
 	static function matcharg(nr:Int):Any;
+	private static function __matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchbufline(buf: string|integer, pat: string, lnum: string|integer, end_: string|integer, dict?: table)
@@ -11521,7 +11589,9 @@ package nvim;
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	static function matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any;
+	inline static function matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any {
+		return __matchbufline(buf,pat,lnum,end_,dict);
+	}
 	/**
 		```lua
 		function table.matchdelete(id: integer, win?: integer)
@@ -11565,6 +11635,7 @@ package nvim;
 		 When {expr} is a |List| the result is equal to |match()|.
 	**/
 	static function matchend(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
+	private static function __matchfuzzy(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchfuzzy(list: any[], str: string, dict?: table)
@@ -11635,7 +11706,10 @@ package nvim;
 		         \ {'matchseq': 1})
 		 <results in `['two one']`.
 	**/
-	static function matchfuzzy(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any;
+	inline static function matchfuzzy(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+		return __matchfuzzy(list,str,dict);
+	}
+	private static function __matchfuzzypos(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchfuzzypos(list: any[], str: string, dict?: table)
@@ -11665,7 +11739,9 @@ package nvim;
 		     \ ->matchfuzzypos('ll', {'key' : 'text'})
 		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
 	**/
-	static function matchfuzzypos(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any;
+	inline static function matchfuzzypos(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+		return __matchfuzzypos(list,str,dict);
+	}
 	/**
 		```lua
 		function table.matchlist(expr: any, pat: string, start?: integer, count?: integer)
@@ -11707,6 +11783,7 @@ package nvim;
 		 The type isn't changed, it's not necessarily a String.
 	**/
 	static function matchstr(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
+	private static function __matchstrlist(list:Array<String>, pat:String, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchstrlist(list: string[], pat: string, dict?: table)
@@ -11747,7 +11824,9 @@ package nvim;
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	static function matchstrlist(list:Array<String>, pat:String, ?dict:lua.Table.AnyTable):Any;
+	inline static function matchstrlist(list:Array<String>, pat:String, ?dict:lua.Table.AnyTable):Any {
+		return __matchstrlist(list,pat,dict);
+	}
 	/**
 		```lua
 		function table.matchstrpos(expr: any, pat: string, start?: integer, count?: integer)
@@ -14658,6 +14737,7 @@ package nvim;
 		 The 'n' flag tells the function not to move the cursor.
 	**/
 	static function search(pattern:String, ?flags:String, ?stopline:Int, ?timeout:Int, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Int;
+	private static function __searchcount(?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.searchcount(options?: table)
@@ -14786,7 +14866,9 @@ package nvim;
 		         value. see |cursor()|, |getpos()|
 		         (default: cursor's position)
 	**/
-	static function searchcount(?options:lua.Table.AnyTable):Any;
+	inline static function searchcount(?options:lua.Table.AnyTable):Any {
+		return __searchcount(options);
+	}
 	/**
 		```lua
 		function table.searchdecl(name: string, global?: boolean, thisblock?: boolean)
@@ -15304,6 +15386,7 @@ package nvim;
 		 <Note: The '[ and '] marks are not set.
 	**/
 	static function setline(lnum:haxe.extern.EitherType<Int, String>, text:Any):Any;
+	private static function __setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.setloclist(nr: integer, list: any, action?: string, what?: table)
@@ -15327,7 +15410,9 @@ package nvim;
 		 only the items listed in {what} are set. Refer to |setqflist()|
 		 for the list of supported keys in {what}.
 	**/
-	static function setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
+	inline static function setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
+		return __setloclist(nr,list,action,what);
+	}
 	/**
 		```lua
 		function table.setmatches(list: any, win?: integer)
@@ -16319,6 +16404,7 @@ package nvim;
 		 Returns an empty value if {start} or {end} are invalid.
 	**/
 	static function slice(expr:Any, start:Int, ?end_:Int):Any;
+	private static function __sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.sockconnect(mode: string, address: string, opts?: table)
@@ -16351,7 +16437,9 @@ package nvim;
 		   - The channel ID on success (greater than zero)
 		   - 0 on invalid arguments or connection failure.
 	**/
-	static function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
+	inline static function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any {
+		return __sockconnect(mode,address,opts);
+	}
 	/**
 		```lua
 		function table.sort(list: <T>[], how?: string|function, dict?: any)
@@ -16625,6 +16713,7 @@ package nvim;
 		     s  screen has scrolled for messages
 	**/
 	static function state(?what:String):Any;
+	private static function __stdioopen(opts:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.stdioopen(opts: table)
@@ -16653,7 +16742,9 @@ package nvim;
 		   - |channel-id| on success (value is always 1)
 		   - 0 on invalid arguments
 	**/
-	static function stdioopen(opts:lua.Table.AnyTable):Any;
+	inline static function stdioopen(opts:lua.Table.AnyTable):Any {
+		return __stdioopen(opts);
+	}
 	/**
 		```lua
 		function table.stdpath(what: 'cache'|'config'|'config_dirs'|'data'|'data_dirs'|'log'|'run'|'state')
@@ -17797,6 +17888,8 @@ package nvim;
 		 <
 	**/
 	static function tempname():String;
+	@:deprecated
+	private static function __termopen(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function table.termopen(cmd: string|string[], opts?: table)
@@ -17808,7 +17901,9 @@ package nvim;
 		 Use |jobstart()| with `{term: v:true}` instead.
 	**/
 	@:deprecated
-	static function termopen(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int;
+	inline static function termopen(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int {
+		return __termopen(cmd,opts);
+	}
 	/**
 		```lua
 		(global) table.test_garbagecollect_now: unknown
@@ -17865,6 +17960,7 @@ package nvim;
 		 See |non-zero-arg|.
 	**/
 	static function timer_pause(timer:Int, paused:Bool):Any;
+	private static function __timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.timer_start(time: number, callback: string|function, options?: table)
@@ -17902,7 +17998,9 @@ package nvim;
 		     \ {'repeat': 3})
 		 <This invokes MyHandler() three times at 500 msec intervals.
 	**/
-	static function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
+	inline static function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any {
+		return __timer_start(time,callback,options);
+	}
 	/**
 		```lua
 		function table.timer_stop(timer: integer)
@@ -18573,6 +18671,7 @@ package nvim;
 		 Returns [0, 0] if the window cannot be found.
 	**/
 	static function win_screenpos(nr:Int):Any;
+	private static function __win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.win_splitmove(nr: integer, target: integer, options?: table)
@@ -18600,7 +18699,9 @@ package nvim;
 		     present, the values of 'splitbelow' and
 		     'splitright' are used.
 	**/
-	static function win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any;
+	inline static function win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any {
+		return __win_splitmove(nr,target,options);
+	}
 	/**
 		```lua
 		function table.winbufnr(nr: integer)
@@ -26444,6 +26545,7 @@ package nvim;
 	```
 **/
 @:native("vim.json") extern class Json {
+	private static function __decode(str:String, ?opts:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.json.decode(str: string, opts?: table<string, any>)
@@ -26475,7 +26577,10 @@ package nvim;
 		                                 - array: (boolean) When true, converts `null` in JSON arrays
 		                                   to Lua `nil` instead of |vim.NIL|.
 	**/
-	static function decode(str:String, ?opts:lua.Table<String, Any>):Any;
+	inline static function decode(str:String, ?opts:lua.Table<String, Any>):Any {
+		return __decode(str,opts);
+	}
+	private static function __encode(obj:Any, ?opts:lua.Table<String, Any>):String;
 	/**
 		```lua
 		function vim.json.encode(obj: any, opts?: table<string, any>)
@@ -26491,7 +26596,9 @@ package nvim;
 		                                 - escape_slash: (boolean) (default false) Escape slash
 		                                   characters "/" in string values.
 	**/
-	static function encode(obj:Any, ?opts:lua.Table<String, Any>):String;
+	inline static function encode(obj:Any, ?opts:lua.Table<String, Any>):String {
+		return __encode(obj,opts);
+	}
 	/**
 		```lua
 		(global) vim.json.new: unknown
@@ -26811,6 +26918,7 @@ package nvim;
 		 ```
 	**/
 	static function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, lua.UserData>>>>>):nvim.type.vim.lpeg.Pattern;
+	private static function __locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale;
 	/**
 		```lua
 		function vim.lpeg.locale(tab?: table)
@@ -26843,7 +26951,9 @@ package nvim;
 		 assert(type(locale.digit) == 'userdata')
 		 ```
 	**/
-	static function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale;
+	inline static function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale {
+		return __locale(tab);
+	}
 	/**
 		```lua
 		function vim.lpeg.match(pattern: boolean|string|integer|function|table|vim.lpeg.Pattern, subject: string, init?: integer, ...any)
@@ -43326,6 +43436,7 @@ package nvim;
 		```
 	**/
 	static var is_thread : Dynamic;
+	private static function __isarray(?t:lua.Table.AnyTable):Bool;
 	/**
 		```lua
 		function vim.isarray(t?: table)
@@ -43346,7 +43457,10 @@ package nvim;
 		
 		See: ~https~ ://github.com/openresty/luajit2#tableisarray
 	**/
-	static function isarray(?t:lua.Table.AnyTable):Bool;
+	inline static function isarray(?t:lua.Table.AnyTable):Bool {
+		return __isarray(t);
+	}
+	private static function __islist(?t:lua.Table.AnyTable):Bool;
 	/**
 		```lua
 		function vim.islist(t?: table)
@@ -43364,7 +43478,9 @@ package nvim;
 		
 		@*return* — `true` if list-like table, else `false`.
 	**/
-	static function islist(?t:lua.Table.AnyTable):Bool;
+	inline static function islist(?t:lua.Table.AnyTable):Bool {
+		return __islist(t);
+	}
 	/**
 		```lua
 		(global) vim.iter: IterMod
@@ -43399,6 +43515,7 @@ package nvim;
 		```
 	**/
 	static var keymap : nvim.module.vim.Keymap;
+	private static function __list_contains(t:lua.Table.AnyTable, value:Any):Bool;
 	/**
 		```lua
 		function vim.list_contains(t: table, value: any)
@@ -43416,7 +43533,10 @@ package nvim;
 		
 		@*return* — `true` if `t` contains `value`
 	**/
-	static function list_contains(t:lua.Table.AnyTable, value:Any):Bool;
+	inline static function list_contains(t:lua.Table.AnyTable, value:Any):Bool {
+		return __list_contains(t,value);
+	}
+	private static function __list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T;
 	/**
 		```lua
 		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
@@ -43438,7 +43558,9 @@ package nvim;
 		
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
-	static function list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T;
+	inline static function list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T {
+		return __list_extend(dst,src,start,finish);
+	}
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -44356,6 +44478,8 @@ package nvim;
 		```
 	**/
 	static var t : nvim.type.vim.VarAccessor;
+	@:deprecated
+	private static function __tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function vim.tbl_add_reverse_lookup(o: table)
@@ -44373,7 +44497,10 @@ package nvim;
 		@*param* `o` — Table to add the reverse to
 	**/
 	@:deprecated
-	static function tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable;
+	inline static function tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable {
+		return __tbl_add_reverse_lookup(o);
+	}
+	private static function __tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool;
 	/**
 		```lua
 		function vim.tbl_contains(t: table, value: any, opts?: vim.tbl_contains.Opts)
@@ -44403,7 +44530,10 @@ package nvim;
 		
 		@*return* — `true` if `t` contains `value`
 	**/
-	static function tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool;
+	inline static function tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool {
+		return __tbl_contains(t,value,opts);
+	}
+	private static function __tbl_count(t:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function vim.tbl_count(t: table)
@@ -44425,7 +44555,9 @@ package nvim;
 		
 		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
 	**/
-	static function tbl_count(t:lua.Table.AnyTable):Int;
+	inline static function tbl_count(t:lua.Table.AnyTable):Int {
+		return __tbl_count(t);
+	}
 	/**
 		```lua
 		function vim.tbl_deep_extend(behavior: 'error'|'force'|'keep', ...<T2:table>)
@@ -44489,6 +44621,7 @@ package nvim;
 		```
 	**/
 	static function tbl_extend(behavior:String, ___:haxe.Rest<lua.Table.AnyTable>):lua.Table.AnyTable;
+	private static function __tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):Array<T>;
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
@@ -44505,7 +44638,11 @@ package nvim;
 		
 		@*return* — : Table of filtered values
 	**/
-	static function tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):Array<T>;
+	inline static function tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):Array<T> {
+		return __tbl_filter(func,t);
+	}
+	@:deprecated
+	private static function __tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function vim.tbl_flatten(t: table)
@@ -44525,7 +44662,10 @@ package nvim;
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	@:deprecated
-	static function tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable;
+	inline static function tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable {
+		return __tbl_flatten(t);
+	}
+	private static function __tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		function vim.tbl_get(o: table, ...any)
@@ -44550,7 +44690,10 @@ package nvim;
 		
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
-	static function tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any;
+	inline static function tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any {
+		return __tbl_get(o,___);
+	}
+	private static function __tbl_isempty(t:lua.Table.AnyTable):Bool;
 	/**
 		```lua
 		function vim.tbl_isempty(t: table)
@@ -44568,7 +44711,9 @@ package nvim;
 		
 		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function tbl_isempty(t:lua.Table.AnyTable):Bool;
+	inline static function tbl_isempty(t:lua.Table.AnyTable):Bool {
+		return __tbl_isempty(t);
+	}
 	/**
 		```lua
 		function vim.tbl_islist(t: any)
@@ -44577,6 +44722,7 @@ package nvim;
 	**/
 	@:deprecated
 	static function tbl_islist(t:Dynamic):Dynamic;
+	private static function __tbl_keys<T>(t:lua.Table<T, Any>):Array<T>;
 	/**
 		```lua
 		function vim.tbl_keys(t: table<<T>, any>)
@@ -44595,7 +44741,10 @@ package nvim;
 		
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function tbl_keys<T>(t:lua.Table<T, Any>):Array<T>;
+	inline static function tbl_keys<T>(t:lua.Table<T, Any>):Array<T> {
+		return __tbl_keys(t);
+	}
+	private static function __tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable;
 	/**
 		```lua
 		function vim.tbl_map(func: fun(value: <T>):any, t: table<any, <T>>)
@@ -44612,7 +44761,10 @@ package nvim;
 		
 		@*return* — : Table of transformed values
 	**/
-	static function tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable;
+	inline static function tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable {
+		return __tbl_map(func,t);
+	}
+	private static function __tbl_values<T>(t:lua.Table<Any, T>):Array<T>;
 	/**
 		```lua
 		function vim.tbl_values(t: table<any, <T>>)
@@ -44628,7 +44780,9 @@ package nvim;
 		
 		@*return* — : List of values
 	**/
-	static function tbl_values<T>(t:lua.Table<Any, T>):Array<T>;
+	inline static function tbl_values<T>(t:lua.Table<Any, T>):Array<T> {
+		return __tbl_values(t);
+	}
 	/**
 		```lua
 		(global) vim.text: table
@@ -44676,6 +44830,7 @@ package nvim;
 		```
 	**/
 	static var ui : nvim.module.vim.Ui;
+	private static function __ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
 	/**
 		```lua
 		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
@@ -44723,7 +44878,9 @@ package nvim;
 		
 		 @since 0
 	**/
-	static function ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
+	inline static function ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic {
+		return __ui_attach(ns,options,callback);
+	}
 	/**
 		```lua
 		function vim.ui_detach(ns: integer)

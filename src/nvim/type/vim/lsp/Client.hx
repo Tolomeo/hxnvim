@@ -385,6 +385,8 @@ package nvim.type.vim.lsp;
 		 @see |Client:notify()|
 	**/
 	extern function cancel_request(id:Int):Bool;
+	private extern function __exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
+	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:exec_cmd(command: lsp.Command, context?: { bufnr: integer }, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown)
@@ -397,8 +399,10 @@ package nvim.type.vim.lsp;
 		
 		@*param* `handler` — only called if a server command
 	**/
-	extern function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
-	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic;
+	inline function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
+	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic {
+		return __exec_cmd(command,context,handler);
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:initialize()
@@ -456,6 +460,7 @@ package nvim.type.vim.lsp;
 		@*param* `bufnr` — Buffer number
 	**/
 	extern function on_attach(bufnr:Int):Dynamic;
+	private extern function __request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
 		(method) vim.lsp.Client:request(method: string, params?: table, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, bufnr?: integer)
@@ -488,7 +493,11 @@ package nvim.type.vim.lsp;
 		 to cancel the-request.
 		 @see |vim.lsp.buf_request_all()|
 	**/
-	extern function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
+	inline function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void> {
+		return __request(method,params,handler,bufnr);
+	}
+	private extern function __request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn<Null<{ @:optional
+	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		(method) vim.lsp.Client:request_sync(method: string, params: table, timeout_ms?: integer, bufnr?: integer)
@@ -521,8 +530,10 @@ package nvim.type.vim.lsp;
 		                 string describing the failure reason.
 		 @see |vim.lsp.buf_request_sync()|
 	**/
-	extern function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn<Null<{ @:optional
-	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>, Void, Void, Void, Void>;
+	inline function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn<Null<{ @:optional
+	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>, Void, Void, Void, Void> {
+		return __request_sync(method,params,timeout_ms,bufnr);
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:stop(force?: boolean)
