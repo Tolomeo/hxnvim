@@ -11,6 +11,7 @@ enum LiteralType {
 	Table(key:LiteralType, value:LiteralType);
 	TableStructure(fields:Array<{name:String, type:LiteralType}>);
 	NumericLiteral(value:String);
+	StringLiteral(value:String);
 	Override(type:String);
 }
 

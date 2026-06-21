@@ -293,8 +293,8 @@ class LiteralTypeParser {
 				});
 			case "table": new TableTypeParser(this.type).parse();
 			case "numericliteral": LiteralType.NumericLiteral(this.type.select('value').string());
-				/* case "stringliteral": this.parseStringLiteral();
-				case "booleanliteral": this.parseBooleanLiteral();
+			case "stringliteral": LiteralType.StringLiteral(this.type.select('value').string().trimChars("'", "\""));
+			/* case "booleanliteral": this.parseBooleanLiteral();
 				case "typereference": this.parseTypeReference(this.type.select('value').string());
 				case "modulereference": this.parseModuleReference(this.type.select('value').string()); */
 			case _: LiteralType.Override(this.parseString());
