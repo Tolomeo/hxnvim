@@ -56,10 +56,8 @@ class FunctionSymbolParser extends SymbolParser {
 			final overloadFile = '${o.pos.file}:${o.pos.min}-${o.pos.max}';
 			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
 			final functionType = new FunctionTypeParser(overloadJson, params).parse();
-			// final overloadFunctionType = new LiteralTypeParser(overloadJson, params).parseString();
 
 			return LiteralType.Overload(functionType.args, functionType.ret);
-			// return LiteralType.Overload('function ${overloadFunctionType.replace("->", ":")} {}');
 		});
 	}
 
@@ -100,12 +98,12 @@ class EnumeratorSymbolParser extends SymbolParser {
 		final fieldsJson = this.origin.select('fields').array();
 		final type = switch (fieldsJson) {
 			case []: throw new Exception('Error parsing enumerator "${name}": empty fields');
-			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parseString();
+			case _: new LiteralTypeParser((fieldsJson[0].select('value'))).parse();
 		}
 		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
 			final fieldName = field.select('name').string().toTypeName();
 			final fieldValue = switch (field.select('value')) {
-				case v if (new LiteralTypeParser(v).parseString() == type): v.select('value').string().trimChars("'", "\"");
+				case v if (new LiteralTypeParser(v).parse().matches(type)): v.select('value').string().trimChars("'", "\"");
 				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
 			}
 
@@ -118,7 +116,7 @@ class EnumeratorSymbolParser extends SymbolParser {
 			name: name,
 			doc: doc,
 			meta: meta,
-			type: LiteralType.Override(type),
+			type: type,
 			fields: fields
 		}
 	}

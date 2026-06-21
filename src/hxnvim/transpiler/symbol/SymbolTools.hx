@@ -18,3 +18,11 @@ function isNullable(type:LiteralType) {
 function is(type:LiteralType, name:String) {
 	return Type.enumConstructor(type) == name;
 }
+
+function matches(a:LiteralType, b:LiteralType) {
+	if (Type.getEnum(a) != Type.getEnum(b)) {
+		return false;
+	}
+
+	return Type.enumIndex(a) == Type.enumIndex(b);
+}
