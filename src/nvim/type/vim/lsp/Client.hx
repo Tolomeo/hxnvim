@@ -397,7 +397,8 @@ package nvim.type.vim.lsp;
 		
 		@*param* `handler` — only called if a server command
 	**/
-	extern function exec_cmd(command:nvim.type.lsp.Command, ?context:{ var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic;
+	extern function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
+	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:initialize()

@@ -12344,7 +12344,7 @@ package nvim.type;
 	**/
 	@:luaDotMethod
 	@:overload(function (len:Int, flags:Void, callback:nvim.type.uv.random.Callback) : nvim.helper.Multireturn<Null<Float>, Null<String>, Null<String>, Void, Void, Void> {})
-	extern function random(len:Int, ?flags:Null<haxe.extern.EitherType<Float, lua.Table.AnyTable>>):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function random(len:Int, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		function uv.read_start(stream: uv.uv_stream_t, callback: fun(err: string|nil, data?: string))
