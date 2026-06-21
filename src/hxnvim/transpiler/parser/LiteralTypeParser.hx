@@ -295,8 +295,13 @@ class LiteralTypeParser {
 			case "numericliteral": LiteralType.NumericLiteral(this.type.select('value').string());
 			case "stringliteral": LiteralType.StringLiteral(this.type.select('value').string().trimChars("'", "\""));
 			case "booleanliteral": LiteralType.BooleanLiteral(this.type.select('value').string());
-			/* case "typereference": this.parseTypeReference(this.type.select('value').string());
-				case "modulereference": this.parseModuleReference(this.type.select('value').string()); */
+			case "typereference": switch (this.type.select('value').string()) {
+					case paramTypeReference if (this.params.exists(param -> param.name == paramTypeReference)):
+						LiteralType.GenericTypeReference(paramTypeReference);
+					case typereference: LiteralType.TypeReference(typereference);
+				}
+			// case "typereference": this.parseTypeReference(this.type.select('value').string());
+			// case "modulereference": this.parseModuleReference(this.type.select('value').string());
 			case _: LiteralType.Override(this.parseString());
 		}
 	}

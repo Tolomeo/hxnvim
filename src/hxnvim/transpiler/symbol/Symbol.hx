@@ -13,6 +13,9 @@ enum LiteralType {
 	NumericLiteral(value:String);
 	StringLiteral(value:String);
 	BooleanLiteral(value:String);
+	GenericTypeReference(name:String);
+	TypeReference(name:String);
+	ModuelReference(name:String);
 	Override(type:String);
 }
 
