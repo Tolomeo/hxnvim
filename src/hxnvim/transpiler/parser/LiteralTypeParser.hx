@@ -300,8 +300,7 @@ class LiteralTypeParser {
 						LiteralType.GenericTypeReference(paramTypeReference);
 					case typereference: LiteralType.TypeReference(typereference);
 				}
-			// case "typereference": this.parseTypeReference(this.type.select('value').string());
-			// case "modulereference": this.parseModuleReference(this.type.select('value').string());
+			case "modulereference": LiteralType.ModuleReference(this.type.select('value').string());
 			case _: LiteralType.Override(this.parseString());
 		}
 	}

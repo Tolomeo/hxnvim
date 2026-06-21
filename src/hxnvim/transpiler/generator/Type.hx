@@ -131,8 +131,9 @@ class LiteralTypeGenerator {
 			case LiteralType.NumericLiteral(_):this.generateNumericLiteralType();
 			case LiteralType.StringLiteral(_):this.generateStringLiteralType();
 			case LiteralType.BooleanLiteral(_):this.generateBooleanLiteralType();
-			case LiteralType.GenericTypeReference(genericType): genericType;
-			case LiteralType.TypeReference(genericType): Target.toTypeReference(genericType);
+			case LiteralType.GenericTypeReference(genericName): genericName;
+			case LiteralType.TypeReference(typeName): Target.toTypeReference(typeName);
+			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}
