@@ -11,6 +11,7 @@ using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 using hxnvim.transpiler.symbol.SymbolTools;
 
+import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
@@ -194,11 +195,19 @@ private abstract class ClassGenerator {
 			args: args,
 			ret: ret
 		});
+		final methodCallArguments = method.type.args.map(a -> {
+			if (a.type.isOneOf("AnyTable", "Table", "TableStructure")) {
+				return Target.toHelperReference('PlainTable<${a.name}>');
+			} else {
+				return a.name;
+			}
+		});
+		final facade = 'return ${methodName}(${methodCallArguments.join(",")})';
 		final facadeKind = FieldType.FFun({
 			params: params,
 			args: args,
 			ret: ret,
-			expr: macro $b{[macro $i{'return ${methodName}(${method.type.args.map(a -> a.name).join(",")})'}]},
+			expr: macro $b{[macro $i{facade}]},
 		});
 
 		final method = this.generateFieldDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind);
