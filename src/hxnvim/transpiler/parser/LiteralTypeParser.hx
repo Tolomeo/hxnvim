@@ -301,7 +301,7 @@ class LiteralTypeParser {
 					case typereference: LiteralType.TypeReference(typereference);
 				}
 			case "modulereference": LiteralType.ModuleReference(this.type.select('value').string());
-			case _: LiteralType.Override(this.parseString());
+			case kind: throw new Exception('Error parsing literal type: unimplemented "${kind}" kind');
 		}
 	}
 }
