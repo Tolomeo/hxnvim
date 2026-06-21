@@ -60,10 +60,9 @@ class FunctionTypeParser {
 	function parseReturns(returns:Array<Json>) {
 		return switch (returns) {
 			case []: LiteralType.Override("Dynamic");
-			case [r]: LiteralType.Override(new LiteralTypeParser(r.select('type'), this.params).parseString());
+			case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
 			case rs:
-				LiteralType.Multireturn(rs.map(r -> LiteralType.Override(new LiteralTypeParser(r.select("type"), this.params).parseString()))
-					.padEnd(6, LiteralType.Override("Void")));
+				LiteralType.Multireturn(rs.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()));
 		}
 	}
 
