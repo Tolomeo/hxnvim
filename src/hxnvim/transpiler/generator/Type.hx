@@ -96,7 +96,7 @@ class LiteralTypeGenerator {
 			name: field.name,
 			type: this.generateType(field.type),
 			opt: field.type.isNullable()
-		})).map(entry -> (entry.opt ? '?' : '') + '${entry.name}:${entry.type}');
+		})).map(entry -> (entry.opt ? '?${entry.name}' : entry.name) + ':${entry.type}');
 
 		return '{ ${entries.join(", ")} }';
 	}
