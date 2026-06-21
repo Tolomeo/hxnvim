@@ -5,6 +5,7 @@ import haxe.Exception;
 using hxnvim.common.ArrayTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.NullTools;
+using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.common.Json;
 import hxnvim.target.Target;
@@ -22,12 +23,12 @@ class FunctionTypeParser {
 	function parseArguments(arguments:Array<Json>) {
 		final args = arguments.map(argument -> {
 			final name = argument.select('name').string();
-			final type = new LiteralTypeParser(argument.select('type'), this.params).parseString();
+			final type = new LiteralTypeParser(argument.select('type'), this.params).parse();
 
 			return switch (name) {
 				case '...': ({
 						name: '___',
-						type: 'haxe.Rest<${type}>',
+						type: LiteralType.Rest(type),
 						opt: false
 					});
 				case n: ({
@@ -40,11 +41,11 @@ class FunctionTypeParser {
 
 		var i = args.length;
 		while (--i >= 0) {
-			if (args[i].type.startsWith("haxe.Rest<")) {
+			if (args[i].type.is("Rest")) {
 				continue;
 			}
 
-			final optional = args[i].opt || args[i].type.startsWith("Null<");
+			final optional = args[i].opt || args[i].type.isNullable();
 
 			if (!optional) {
 				break;
@@ -53,11 +54,7 @@ class FunctionTypeParser {
 			args[i].opt = optional;
 		}
 
-		return args.map(a -> ({
-			name: a.name,
-			type: LiteralType.Override(a.type),
-			opt: a.opt
-		}));
+		return args;
 	}
 
 	function parseReturns(returns:Array<Json>) {
@@ -291,7 +288,7 @@ class LiteralTypeParser {
 					ret: functionType.ret,
 					overloads: []
 				});
-			case "table": new TableTypeParser(this.type).parse();
+			case "table": new TableTypeParser(this.type, this.params).parse();
 			case "numericliteral": LiteralType.NumericLiteral(this.type.select('value').string());
 			case "stringliteral": LiteralType.StringLiteral(this.type.select('value').string().trimChars("'", "\""));
 			case "booleanliteral": LiteralType.BooleanLiteral(this.type.select('value').string());

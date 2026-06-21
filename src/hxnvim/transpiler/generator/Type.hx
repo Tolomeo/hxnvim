@@ -81,6 +81,10 @@ class LiteralTypeGenerator {
 		return '(${args.join(", ")}) -> ${ret}';
 	}
 
+	function generateRestType(type:LiteralType) {
+		return 'haxe.Rest<${this.generateType(type)}>';
+	}
+
 	function generateMultireturnType(returnTypes:Array<LiteralType>) {
 		if (returnTypes.length > 6) {
 			throw new Exception('Error generating multireturn type: too many values in ${returnTypes}, the maximum allowed is currently 6');
@@ -125,6 +129,7 @@ class LiteralTypeGenerator {
 			case LiteralType.Union(types): this.generateUnionType(types);
 			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
 			case LiteralType.Function(signature): this.generateFunctionType(signature);
+			case LiteralType.Rest(type): this.generateRestType(type);
 			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
 			case LiteralType.Table(key, value): this.generateTableType(key, value);
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);

@@ -16,6 +16,7 @@ enum LiteralType {
 	GenericTypeReference(name:String);
 	TypeReference(name:String);
 	ModuleReference(name:String);
+	Rest(type:LiteralType);
 	Override(type:String);
 }
 

@@ -14,3 +14,7 @@ function isNullable(type:LiteralType) {
 		case _: false;
 	}
 }
+
+function is(type:LiteralType, name:String) {
+	return Type.enumConstructor(type) == name;
+}
