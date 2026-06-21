@@ -14,29 +14,6 @@ import hxnvim.transpiler.symbol.Symbol;
 class LiteralTypeGenerator {
 	public function new() {}
 
-	function generateUnknownType() {
-		return "Dynamic";
-	}
-
-	function generateBuiltinType(builtin:String) {
-		return switch (builtin) {
-			case "any": "Any";
-			case "boolean": "Bool";
-			case "function": "haxe.Constraints.Function";
-			case "integer": "Int";
-			// NB: didn't find exactly lightuserdata in haxe.lua
-			case "lightuserdata": "lua.UserData";
-			case "nil": "Void";
-			case "void": "Void";
-			case "number": "Float";
-			case "string": "String";
-			case "table": "lua.Table.AnyTable";
-			case "thread": throw new Exception('Unsupported builtin type value "thread" received');
-			case "userdata": "lua.UserData";
-			case v: throw new Exception('Error generating builtin literal type: unimplemented ${builtin}');
-		}
-	}
-
 	function generateOptionalType(type:LiteralType) {
 		return 'Null<${this.generateType(type)}>';
 	}
@@ -120,22 +97,22 @@ class LiteralTypeGenerator {
 		return 'lua.Table<${this.generateType(key)}, ${this.generateType(value)}>';
 	}
 
-	function generateNumericLiteralType() {
-		return "Float";
-	}
-
-	function generateStringLiteralType() {
-		return "String";
-	}
-
-	function generateBooleanLiteralType() {
-		return "Bool";
-	}
-
 	public function generateType(type:LiteralType) {
 		return switch (type) {
-			case LiteralType.Unknown: this.generateUnknownType();
-			case LiteralType.Builtin(value): this.generateBuiltinType(value);
+			case LiteralType.Unknown: "Dynamic";
+			case LiteralType.Any: "Any";
+			case LiteralType.Boolean: "Bool";
+			case LiteralType.AnyFunction: "haxe.Constraints.Function";
+			case LiteralType.Integer: "Int";
+			case LiteralType.UserData: "lua.UserData";
+			case LiteralType.Nil: "Void";
+			case LiteralType.Void: "Void";
+			case LiteralType.Number: "Float";
+			case LiteralType.Str: "String";
+			case LiteralType.AnyTable: "lua.Table.AnyTable";
+			case LiteralType.NumericLiteral(_): "Float";
+			case LiteralType.StringLiteral(_): "String";
+			case LiteralType.BooleanLiteral(_): "Bool";
 			case LiteralType.Optional(type): this.generateOptionalType(type);
 			case LiteralType.Union(types): this.generateUnionType(types);
 			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
@@ -144,9 +121,6 @@ class LiteralTypeGenerator {
 			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
 			case LiteralType.Table(key, value): this.generateTableType(key, value);
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
-			case LiteralType.NumericLiteral(_): this.generateNumericLiteralType();
-			case LiteralType.StringLiteral(_): this.generateStringLiteralType();
-			case LiteralType.BooleanLiteral(_): this.generateBooleanLiteralType();
 			case LiteralType.GenericTypeReference(genericName): genericName;
 			case LiteralType.TypeReference(typeName): Target.toTypeReference(typeName);
 			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);

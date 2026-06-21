@@ -128,8 +128,22 @@ class LiteralTypeParser {
 
 	public function parse():LiteralType {
 		return switch (this.type.select('kind').string()) {
-			case "builtin": LiteralType.Builtin(this.type.select('value').string());
 			case "unknown": LiteralType.Unknown;
+			case "builtin": switch (this.type.select('value').string()) {
+					case "any": LiteralType.Any;
+					case "boolean": LiteralType.Boolean;
+					case "function": LiteralType.AnyFunction;
+					case "integer": LiteralType.Integer;
+					case "nil": LiteralType.Nil;
+					case "void": LiteralType.Void;
+					case "number": LiteralType.Number;
+					case "string": LiteralType.Str;
+					case "table": LiteralType.AnyTable;
+					case "userdata": LiteralType.UserData;
+					case "lightuserdata": LiteralType.UserData; // NB: didn't find exactly lightuserdata in haxe.lua
+					case "thread": throw new Exception('Unsupported builtin type value "thread" received');
+					case v: throw new Exception('Error parsing builtin type: unimplemented "${v}"');
+				};
 			case "optional": LiteralType.Optional(new LiteralTypeParser(this.type.select('type'), this.params).parse());
 			case "union": LiteralType.Union(this.type.select('types').array().map(t -> new LiteralTypeParser(t, this.params).parse()));
 			case "array": LiteralType.Array(new LiteralTypeParser(this.type.select('items'), this.params).parse());

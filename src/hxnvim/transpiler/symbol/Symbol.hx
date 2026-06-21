@@ -2,7 +2,17 @@ package hxnvim.transpiler.symbol;
 
 enum LiteralType {
 	Unknown;
-	Builtin(value:String);
+	Any;
+	Boolean;
+	AnyFunction;
+	Integer;
+	UserData;
+	LightUserData;
+	Nil;
+	Void;
+	Number;
+	Str;
+	AnyTable;
 	Optional(type:LiteralType);
 	Union(types:Array<LiteralType>);
 	Array(itemsType:LiteralType);
