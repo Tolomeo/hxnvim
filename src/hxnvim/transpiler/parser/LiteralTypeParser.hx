@@ -292,8 +292,8 @@ class LiteralTypeParser {
 					overloads: []
 				});
 			case "table": new TableTypeParser(this.type).parse();
-			/* case "numericliteral": this.parseNumericLiteral();
-				case "stringliteral": this.parseStringLiteral();
+			case "numericliteral": LiteralType.NumericLiteral(this.type.select('value').string());
+				/* case "stringliteral": this.parseStringLiteral();
 				case "booleanliteral": this.parseBooleanLiteral();
 				case "typereference": this.parseTypeReference(this.type.select('value').string());
 				case "modulereference": this.parseModuleReference(this.type.select('value').string()); */

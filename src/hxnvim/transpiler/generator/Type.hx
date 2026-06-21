@@ -105,6 +105,10 @@ class LiteralTypeGenerator {
 		return 'lua.Table<${this.generateType(key)}, ${this.generateType(value)}>';
 	}
 
+	function generateNumericLiteralType() {
+		return "Float";
+	}
+
 	function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Unknown: this.generateUnknownType();
@@ -116,6 +120,7 @@ class LiteralTypeGenerator {
 			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
 			case LiteralType.Table(key, value): this.generateTable(key, value);
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
+			case LiteralType.NumericLiteral(_):this.generateNumericLiteralType();
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

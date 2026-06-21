@@ -10,6 +10,7 @@ enum LiteralType {
 	Multireturn(types:Array<LiteralType>);
 	Table(key:LiteralType, value:LiteralType);
 	TableStructure(fields:Array<{name:String, type:LiteralType}>);
+	NumericLiteral(value:String);
 	Override(type:String);
 }
 
