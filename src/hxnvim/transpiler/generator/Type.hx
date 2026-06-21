@@ -113,6 +113,10 @@ class LiteralTypeGenerator {
 		return "String";
 	}
 
+	function generateBooleanLiteralType() {
+		return "Bool";
+	}
+
 	function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Unknown: this.generateUnknownType();
@@ -126,6 +130,7 @@ class LiteralTypeGenerator {
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
 			case LiteralType.NumericLiteral(_):this.generateNumericLiteralType();
 			case LiteralType.StringLiteral(_):this.generateStringLiteralType();
+			case LiteralType.BooleanLiteral(_):this.generateBooleanLiteralType();
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

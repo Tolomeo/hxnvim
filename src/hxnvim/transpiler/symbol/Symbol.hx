@@ -12,6 +12,7 @@ enum LiteralType {
 	TableStructure(fields:Array<{name:String, type:LiteralType}>);
 	NumericLiteral(value:String);
 	StringLiteral(value:String);
+	BooleanLiteral(value:String);
 	Override(type:String);
 }
 
