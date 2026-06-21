@@ -177,7 +177,8 @@ package nvim.type.vim.diagnostic.opts;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var severity_sort : Null<haxe.extern.EitherType<Bool, { var reverse : Null<Bool>; }>>;
+	extern var severity_sort : Null<haxe.extern.EitherType<Bool, { @:optional
+	var reverse : Null<Bool>; }>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.source: (boolean|'if_many')?

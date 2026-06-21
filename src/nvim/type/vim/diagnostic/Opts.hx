@@ -61,7 +61,8 @@ package nvim.type.vim.diagnostic;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var severity_sort : Null<haxe.extern.EitherType<Bool, { var reverse : Null<Bool>; }>>;
+	extern var severity_sort : Null<haxe.extern.EitherType<Bool, { @:optional
+	var reverse : Null<Bool>; }>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.signs: (boolean|fun(namespace: integer, bufnr: integer):vim.diagnostic.Opts.Signs|vim.diagnostic.Opts.Signs)?
