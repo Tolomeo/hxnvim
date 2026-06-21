@@ -8,11 +8,10 @@ using hxnvim.common.DynamicTools;
 using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.common.Json;
-import hxnvim.target.Target;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.parser.LiteralTypeParser;
-import hxnvim.transpiler.parser.MetadataParser;
+import hxnvim.transpiler.parser.Type;
+import hxnvim.transpiler.parser.Metadata;
 
 private class SymbolParser {
 	private final name:String;

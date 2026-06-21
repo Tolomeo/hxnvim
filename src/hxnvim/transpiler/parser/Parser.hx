@@ -9,8 +9,8 @@ using hxnvim.common.MapTools;
 import hxnvim.common.Json;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.parser.SymbolParser;
-import hxnvim.transpiler.parser.MetadataParser;
+import hxnvim.transpiler.parser.Symbol;
+import hxnvim.transpiler.parser.Metadata;
 
 class Parser {
 	final symbol:Json;
