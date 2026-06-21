@@ -20,6 +20,10 @@ function is(type:LiteralType, name:String) {
 	return Type.enumConstructor(type) == name;
 }
 
+function isOneOf(type:LiteralType, names:haxe.Rest<String>) {
+	return names.toArray().exists(name -> is(type, name));
+}
+
 function matches(a:LiteralType, b:LiteralType) {
 	if (Type.getEnum(a) != Type.getEnum(b)) {
 		return false;

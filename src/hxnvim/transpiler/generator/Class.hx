@@ -9,6 +9,7 @@ import haxe.macro.Expr.Field;
 using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
+using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
@@ -41,17 +42,6 @@ private abstract class ClassGenerator {
 		});
 	}
 
-	function generatePropertyDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, type:ComplexType) {
-		return {
-			name: name,
-			doc: doc,
-			meta: meta,
-			access: access,
-			kind: FVar(type),
-			pos: Context.currentPos()
-		};
-	}
-
 	function generateProperty(property:Variable, opt:Bool) {
 		final name = property.name.toFieldName();
 
@@ -69,9 +59,9 @@ private abstract class ClassGenerator {
 
 		final access = this.generatePropertyAccess(property.access);
 
-		final type = new LiteralTypeGenerator().generate(property.type);
+		final kind = FieldType.FVar(new LiteralTypeGenerator().generate(property.type));
 
-		return this.generatePropertyDefinition(name, doc, meta, access, type);
+		return this.generateFieldDefinition(name, doc, meta, access, kind);
 	}
 
 	function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
@@ -100,7 +90,7 @@ private abstract class ClassGenerator {
 		overloads.iter(o -> {
 			final overloadType = switch (o) {
 				case LiteralType.Overload(_, _): macro $i{new LiteralTypeGenerator().generateType(o)};
-				case _: throw new Exception('Error generating overload: unexpected ${o} type received');
+				case _: throw new Exception('Error generating method overload: unexpected ${o} type received');
 			}
 			methodMetas.push(new MetaGenerator("overload", [overloadType]).generate());
 		});
@@ -108,24 +98,13 @@ private abstract class ClassGenerator {
 		return methodMetas;
 	}
 
-	function generateMethodDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, type:Signature) {
+	function generateFieldDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
 		return {
 			meta: meta,
 			access: access,
 			name: name,
 			doc: doc,
-			kind: FFun({
-				params: type.params.map(p -> ({
-					name: p.name,
-					constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
-				} : TypeParamDecl)),
-				args: type.args.map(a -> ({
-					name: a.name,
-					type: new LiteralTypeGenerator().generate(a.type),
-					opt: a.opt,
-				} : FunctionArg)),
-				ret: new LiteralTypeGenerator().generate(type.ret)
-			}),
+			kind: kind,
 			pos: Context.currentPos()
 		};
 	}
@@ -147,16 +126,101 @@ private abstract class ClassGenerator {
 
 		final access = this.generateMethodAccess(method.access);
 
-		final type = method.type;
+		final kind = FieldType.FFun({
+			params: method.type.params.map(p -> ({
+				name: p.name,
+				constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+			} : TypeParamDecl)),
+			args: method.type.args.map(a -> ({
+				name: a.name,
+				type: new LiteralTypeGenerator().generate(a.type),
+				opt: a.opt,
+			} : FunctionArg)),
+			ret: new LiteralTypeGenerator().generate(method.type.ret)
+		});
 
-		return this.generateMethodDefinition(name, doc, meta, access, type);
+		return this.generateFieldDefinition(name, doc, meta, access, kind);
+	}
+
+	function generateFacadedMethod(method:Function, opt:Bool) {
+		final name = method.name.toFieldName();
+		final methodName = '__${name}';
+		final facadeName = name;
+
+		final doc = method.doc;
+		final methodDoc = "";
+		final facadeDoc = doc;
+
+		final methodMeta = method.meta.copy();
+		if (name != method.name) {
+			methodMeta.unshift(SymbolMeta.Native(method.name));
+		}
+		if (opt) {
+			methodMeta.unshift(SymbolMeta.Optional);
+		}
+
+		final meta = this.generateMethodMeta(methodMeta, method.type.overloads);
+		final methodMeta = meta.filter(m -> switch (m) {
+			case {name: "deprecated"}: false;
+			case _: true;
+		});
+		final facadeMeta = meta.filter(m -> switch (m) {
+			case {name: "native"}: false;
+			case _: true;
+		});
+
+		final access = this.generateMethodAccess(method.access);
+		final methodAccess = [Access.APrivate].concat(access.filter(a -> switch (a) {
+			case Access.APublic: false;
+			case _: true;
+		}));
+		final facadeAccess = [Access.AInline].concat(access.filter(a -> switch (a) {
+			case AExtern: false;
+			case _: true;
+		}));
+
+		final params = method.type.params.map(p -> ({
+			name: p.name,
+			constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+		} : TypeParamDecl));
+		final args = method.type.args.map(a -> ({
+			name: a.name,
+			type: new LiteralTypeGenerator().generate(a.type),
+			opt: a.opt,
+		} : FunctionArg));
+		final ret = new LiteralTypeGenerator().generate(method.type.ret);
+		final methodKind = FieldType.FFun({
+			params: params,
+			args: args,
+			ret: ret
+		});
+		final facadeKind = FieldType.FFun({
+			params: params,
+			args: args,
+			ret: ret,
+			expr: macro $b{[macro $i{'return ${methodName}(${method.type.args.map(a -> a.name).join(",")})'}]},
+		});
+
+		final method = this.generateFieldDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind);
+		final facade = this.generateFieldDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess, facadeKind);
+
+		return {method: method, facade: facade};
 	}
 
 	function generateFields(fields:Array<TableField>):Array<Field> {
-		return fields.map(field -> {
+		return fields.flatMap(field -> {
 			return switch (field) {
-				case TableField.Method(func, opt): this.generateMethod(func, opt);
-				case TableField.Property(prop, opt): this.generateProperty(prop, opt);
+				case TableField.Method(func, opt):
+					final needsFacade = func.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure"));
+
+					if (needsFacade) {
+						final facadedMethod = this.generateFacadedMethod(func, opt);
+						[facadedMethod.method, facadedMethod.facade];
+					} else {
+						final method = this.generateMethod(func, opt);
+						[method];
+					}
+				case TableField.Property(prop, opt): [this.generateProperty(prop, opt)];
 				case s: throw new Exception('Unexpected ${s} table field received');
 			}
 		});
