@@ -6,6 +6,7 @@ import haxe.Exception;
 
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
+using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
@@ -90,6 +91,20 @@ class LiteralTypeGenerator {
 		return Target.toHelperReference('Multireturn<${types.join(", ")}>');
 	}
 
+	function generateTableStructure(fields:Array<{name:String, type:LiteralType}>) {
+		final entries = fields.map(field -> ({
+			name: field.name,
+			type: this.generateType(field.type),
+			opt: field.type.isNullable()
+		})).map(entry -> (entry.opt ? '?' : '') + '${entry.name}:${entry.type}');
+
+		return '{ ${entries.join(", ")} }';
+	}
+
+	function generateTable(key:LiteralType, value:LiteralType) {
+		return 'lua.Table<${this.generateType(key)}, ${this.generateType(value)}>';
+	}
+
 	function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Unknown: this.generateUnknownType();
@@ -99,6 +114,8 @@ class LiteralTypeGenerator {
 			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
 			case LiteralType.Function(signature): this.generateFunctionType(signature);
 			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
+			case LiteralType.Table(key, value): this.generateTable(key, value);
+			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

@@ -1,14 +1,16 @@
 package hxnvim.transpiler.symbol;
 
 enum LiteralType {
-	Builtin(value:String);
-	Override(type:String);
 	Unknown;
+	Builtin(value:String);
 	Optional(type:LiteralType);
 	Union(types:Array<LiteralType>);
 	Array(itemsType:LiteralType);
-	Function(signature: Signature);
-	Multireturn(types: Array<LiteralType>);
+	Function(signature:Signature);
+	Multireturn(types:Array<LiteralType>);
+	Table(key:LiteralType, value:LiteralType);
+	TableStructure(fields:Array<{name:String, type:LiteralType}>);
+	Override(type:String);
 }
 
 // TODO: remove overload; add protected and package

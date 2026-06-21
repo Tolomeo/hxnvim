@@ -81,6 +81,46 @@ class FunctionTypeParser {
 	}
 }
 
+class TableTypeParser {
+	private final origin:Json;
+	private final params:Array<Param>;
+
+	public function new(origin:Json, ?params:Array<Param>) {
+		this.origin = origin;
+		this.params = params.or([]);
+	}
+
+	function parseTable(key:Json, value:Json) {
+		return {
+			key: new LiteralTypeParser(key, this.params).parse(),
+			value: new LiteralTypeParser(value, this.params).parse()
+		}
+	}
+
+	function parseTableStructure(fields:Array<Json>) {
+		return fields.map(field -> ({
+			name: field.select('name').string(),
+			type: new LiteralTypeParser(field.select('type'), this.params).parse()
+		}));
+	}
+
+	public function parse() {
+		final indexes = this.origin.select('indexes').array();
+		final fields = this.origin.select('fields').array();
+
+		return switch ({
+			fields:fields, indexes:indexes}) {
+			case {fields: [], indexes: []}: LiteralType.Table(LiteralType.Override("Any"), LiteralType.Override("Any"));
+			case {fields: [], indexes: [index]}:
+				final table = this.parseTable(index.select('key'), index.select('value'));
+				LiteralType.Table(table.key, table.value);
+			case {fields: [], indexes: idxs}: throw new Exception('Error parsing table type: unimplemented table with multiple indexes');
+			case {fields: flds, indexes: []}: LiteralType.TableStructure(this.parseTableStructure(flds));
+			case _: throw new Exception('Error parsing table type: unimplemented table structure with indexes');
+		}
+	}
+}
+
 class LiteralTypeParser {
 	private final type:Json;
 	private final params:Array<Param>;
@@ -251,8 +291,8 @@ class LiteralTypeParser {
 					ret: functionType.ret,
 					overloads: []
 				});
-			/* case "table": this.parseTable(this.type);
-				case "numericliteral": this.parseNumericLiteral();
+			case "table": new TableTypeParser(this.type).parse();
+			/* case "numericliteral": this.parseNumericLiteral();
 				case "stringliteral": this.parseStringLiteral();
 				case "booleanliteral": this.parseBooleanLiteral();
 				case "typereference": this.parseTypeReference(this.type.select('value').string());
