@@ -81,6 +81,17 @@ class LiteralTypeGenerator {
 		return '(${args.join(", ")}) -> ${ret}';
 	}
 
+	function generateOverloadType(args:Array<Arg>, ret:LiteralType) {
+		final signature = {
+			params: [],
+			args: args,
+			ret: ret,
+			overloads: []
+		};
+
+		return 'function ${this.generateFunctionType(signature).replace("->", ":")} {}';
+	}
+
 	function generateRestType(type:LiteralType) {
 		return 'haxe.Rest<${this.generateType(type)}>';
 	}
@@ -121,7 +132,7 @@ class LiteralTypeGenerator {
 		return "Bool";
 	}
 
-	function generateType(type:LiteralType) {
+	public function generateType(type:LiteralType) {
 		return switch (type) {
 			case LiteralType.Unknown: this.generateUnknownType();
 			case LiteralType.Builtin(value): this.generateBuiltinType(value);
@@ -133,12 +144,13 @@ class LiteralTypeGenerator {
 			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
 			case LiteralType.Table(key, value): this.generateTableType(key, value);
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
-			case LiteralType.NumericLiteral(_):this.generateNumericLiteralType();
-			case LiteralType.StringLiteral(_):this.generateStringLiteralType();
-			case LiteralType.BooleanLiteral(_):this.generateBooleanLiteralType();
+			case LiteralType.NumericLiteral(_): this.generateNumericLiteralType();
+			case LiteralType.StringLiteral(_): this.generateStringLiteralType();
+			case LiteralType.BooleanLiteral(_): this.generateBooleanLiteralType();
 			case LiteralType.GenericTypeReference(genericName): genericName;
 			case LiteralType.TypeReference(typeName): Target.toTypeReference(typeName);
 			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);
+			case LiteralType.Overload(args, ret): this.generateOverloadType(args, ret);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
 		}

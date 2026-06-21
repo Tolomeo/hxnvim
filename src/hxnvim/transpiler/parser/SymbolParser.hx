@@ -55,9 +55,11 @@ class FunctionSymbolParser extends SymbolParser {
 			});
 			final overloadFile = '${o.pos.file}:${o.pos.min}-${o.pos.max}';
 			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
-			final overloadFunctionType = new LiteralTypeParser(overloadJson, params).parseString();
+			final functionType = new FunctionTypeParser(overloadJson, params).parse();
+			// final overloadFunctionType = new LiteralTypeParser(overloadJson, params).parseString();
 
-			return LiteralType.Override('function ${overloadFunctionType.replace("->", ":")} {}');
+			return LiteralType.Overload(functionType.args, functionType.ret);
+			// return LiteralType.Overload('function ${overloadFunctionType.replace("->", ":")} {}');
 		});
 	}
 
