@@ -235,7 +235,6 @@ package nvim.type.vim.treesitter;
 		     of trees. Otherwise, it returns `nil`.
 	**/
 	extern function parse(?range:Null<haxe.extern.EitherType<Bool, nvim.type.Range>>, ?on_parse:Null<(err:String, trees:lua.Table<Int, nvim.type.TSTree>) -> Dynamic>):Null<lua.Table<Int, nvim.type.TSTree>>;
-	private extern function __register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:register_cbs(cbs: table<'on_bytes'|'on_changedtree'|'on_child_added'|'on_child_removed'|'on_detach', function>, recursive?: boolean)
@@ -260,9 +259,7 @@ package nvim.type.vim.treesitter;
 		
 		                           also inherit the callbacks.
 	**/
-	inline function register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic {
-		return __register_cbs(cbs,recursive);
-	}
+	extern function register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:source()

@@ -299,8 +299,6 @@ extern class Treesitter {
 		 @nodoc
 	**/
 	var minimum_language_version : Int;
-	@:luaDotMethod
-	private function __node_contains(node:nvim.type.TSNode, range:lua.Table.AnyTable):Bool;
 	/**
 		```lua
 		function M.node_contains(node: TSNode, range: table)
@@ -315,9 +313,7 @@ extern class Treesitter {
 		@*return* `True` — if the {node} contains the {range}
 	**/
 	@:luaDotMethod
-	inline function node_contains(node:nvim.type.TSNode, range:lua.Table.AnyTable):Bool {
-		return __node_contains(node,range);
-	}
+	function node_contains(node:nvim.type.TSNode, range:lua.Table.AnyTable):Bool;
 	/**
 		```lua
 		(global) vim.treesitter.query: table

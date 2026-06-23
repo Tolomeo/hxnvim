@@ -1,9 +1,6 @@
 package nvim.module.vim.lsp;
 
 extern class Handlers {
-	@:luaDotMethod
-	@:deprecated
-	private function __hover(_:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.Hover, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic;
 	/**
 		```lua
 		(global) vim.lsp.handlers.hover: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown
@@ -39,12 +36,7 @@ extern class Handlers {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	inline function hover(_:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.Hover, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic {
-		return __hover(_,result,ctx,config);
-	}
-	@:luaDotMethod
-	@:deprecated
-	private function __signature_help(_:Null<nvim.type.lsp.ResponseError>, result:Null<nvim.type.lsp.SignatureHelp>, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic;
+	function hover(_:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.Hover, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic;
 	/**
 		```lua
 		(global) vim.lsp.handlers.signature_help: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown
@@ -84,7 +76,5 @@ extern class Handlers {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	inline function signature_help(_:Null<nvim.type.lsp.ResponseError>, result:Null<nvim.type.lsp.SignatureHelp>, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic {
-		return __signature_help(_,result,ctx,config);
-	}
+	function signature_help(_:Null<nvim.type.lsp.ResponseError>, result:Null<nvim.type.lsp.SignatureHelp>, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic;
 }

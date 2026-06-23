@@ -44,9 +44,6 @@ extern class Ui {
 	**/
 	@:luaDotMethod
 	function input(opts:Null<lua.Table.AnyTable>, on_confirm:Dynamic):Dynamic;
-	@:luaDotMethod
-	private function __open(path:String, ?opt:{ @:optional
-	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.open(path: string, opt?: { cmd: string[] })
@@ -89,12 +86,8 @@ extern class Ui {
 		@*return* — Error message on failure, or nil on success.
 	**/
 	@:luaDotMethod
-	inline function open(path:String, ?opt:{ @:optional
-	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void> {
-		return __open(path,opt);
-	}
-	@:luaDotMethod
-	private function __select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
+	function open(path:String, ?opt:{ @:optional
+	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))
@@ -140,7 +133,5 @@ extern class Ui {
 		               `nil` if the user aborted the dialog.
 	**/
 	@:luaDotMethod
-	inline function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
-		return __select(items,opts,on_choice);
-	}
+	function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
 }

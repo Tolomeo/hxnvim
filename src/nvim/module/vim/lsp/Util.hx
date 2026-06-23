@@ -262,9 +262,6 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	function locations_to_items(locations:haxe.extern.EitherType<Array<nvim.type.lsp.Location>, Array<nvim.type.lsp.LocationLink>>, ?position_encoding:String):Array<nvim.type.vim.quickfix.Entry>;
-	@:luaDotMethod
-	@:deprecated
-	private function __lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>>;
 	/**
 		```lua
 		function M.lookup_section(settings: table, section: string)
@@ -283,9 +280,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	inline function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>> {
-		return __lookup_section(settings,section);
-	}
+	function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>>;
 	/**
 		```lua
 		function M.make_floating_popup_options(width: integer, height: integer, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -424,8 +419,6 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	function make_workspace_params(added:Array<nvim.type.lsp.WorkspaceFolder>, removed:Array<nvim.type.lsp.WorkspaceFolder>):nvim.type.lsp.WorkspaceFoldersChangeEvent;
-	@:luaDotMethod
-	private function __open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.open_floating_preview(contents: table, syntax: string, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -451,9 +444,7 @@ extern class Util {
 		@*return* `winid` — of newly created float window preview window
 	**/
 	@:luaDotMethod
-	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void> {
-		return __open_floating_preview(contents,syntax,opts);
-	}
+	function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.preview_location(location: lsp.Location|lsp.LocationLink, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -540,8 +531,6 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool;
-	@:luaDotMethod
-	private function __stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.stylize_markdown(bufnr: integer, contents: string[], opts?: table)
@@ -573,9 +562,7 @@ extern class Util {
 		@*return* `stripped` — content
 	**/
 	@:luaDotMethod
-	inline function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
-		return __stylize_markdown(bufnr,contents,opts);
-	}
+	function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.symbols_to_items(symbols: lsp.DocumentSymbol[]|lsp.SymbolInformation[], bufnr?: integer, position_encoding?: 'utf-16'|'utf-32'|'utf-8')
@@ -603,9 +590,6 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	function symbols_to_items(symbols:haxe.extern.EitherType<Array<nvim.type.lsp.DocumentSymbol>, Array<nvim.type.lsp.SymbolInformation>>, ?bufnr:Int, ?position_encoding:String):Array<nvim.type.vim.quickfix.Entry>;
-	@:luaDotMethod
-	@:deprecated
-	private function __trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.trim_empty_lines(lines: table)
@@ -622,9 +606,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	inline function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable {
-		return __trim_empty_lines(lines);
-	}
+	function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.try_trim_markdown_code_blocks(lines: string[])

@@ -93,7 +93,6 @@ package nvim.type.vim.treesitter;
 		 Splits the query patterns into predicates and directives.
 	**/
 	extern function _process_patterns():Dynamic;
-	private extern function __iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, Void>;
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_captures(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -146,10 +145,7 @@ package nvim.type.vim.treesitter;
 		
 		        capture id, capture node, metadata, match, tree
 	**/
-	inline function iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, Void> {
-		return __iter_captures(node,source,start,stop,opts);
-	}
-	private extern function __iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, Array<nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, Void, Void>;
+	extern function iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, Void>;
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_matches(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -201,7 +197,5 @@ package nvim.type.vim.treesitter;
 		
 		@*return* — : pattern id, match, metadata, tree
 	**/
-	inline function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, Array<nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, Void, Void> {
-		return __iter_matches(node,source,start,stop,opts);
-	}
+	extern function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, Array<nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, Void, Void>;
 }

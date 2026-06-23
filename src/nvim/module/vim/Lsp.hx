@@ -804,9 +804,6 @@ extern class Lsp {
 		```
 	**/
 	var util : nvim.module.vim.lsp.Util;
-	@:luaDotMethod
-	@:deprecated
-	private function __with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic;
 	/**
 		```lua
 		function lsp.with(handler: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, override_config: table)
@@ -823,7 +820,5 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	inline function with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic {
-		return __with(handler,override_config);
-	}
+	function with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic;
 }

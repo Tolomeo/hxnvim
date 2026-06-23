@@ -42,8 +42,6 @@ extern class Rpc {
 	**/
 	@:luaDotMethod
 	private function create_read_loop(handle_body:(body:String) -> Dynamic, ?on_exit:() -> Dynamic, on_error:(err:Any) -> Dynamic):Dynamic;
-	@:luaDotMethod
-	private function __format_rpc_error(err:lua.Table.AnyTable):String;
 	/**
 		```lua
 		function M.format_rpc_error(err: table)
@@ -59,9 +57,7 @@ extern class Rpc {
 		@*return* `error_message` — The formatted error message
 	**/
 	@:luaDotMethod
-	inline function format_rpc_error(err:lua.Table.AnyTable):String {
-		return __format_rpc_error(err);
-	}
+	function format_rpc_error(err:lua.Table.AnyTable):String;
 	/**
 		```lua
 		function M.rpc_response_error(code: integer, message?: string, data?: any)
