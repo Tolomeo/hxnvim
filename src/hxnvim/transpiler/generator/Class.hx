@@ -38,7 +38,7 @@ class MethodGenerator extends FieldGenerator {
 		this.opt = opt;
 	}
 
-	function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
+	function generateAccess(methodAccess:Array<SymbolAccess>) {
 		return methodAccess.map(a -> switch (a) {
 			case SymbolAccess.Private: APrivate;
 			case SymbolAccess.Overload: AOverload;
@@ -46,7 +46,7 @@ class MethodGenerator extends FieldGenerator {
 		});
 	}
 
-	function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+	function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
 		final methodMetas = new Array();
 
 		methodMeta.iter(m -> switch (m) {
@@ -85,9 +85,9 @@ class MethodGenerator extends FieldGenerator {
 			methodMeta.unshift(SymbolMeta.Optional);
 		}
 
-		final meta = this.generateMethodMeta(methodMeta, this.method.type.overloads);
+		final meta = this.generateMeta(methodMeta, this.method.type.overloads);
 
-		final access = this.generateMethodAccess(this.method.access);
+		final access = this.generateAccess(this.method.access);
 
 		final kind = FieldType.FFun({
 			params: this.method.type.params.map(p -> ({
@@ -313,18 +313,18 @@ private abstract class ClassGenerator {
 }
 
 class DataMethodGenerator extends MethodGenerator {
-	override function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
-		return [AExtern].concat(super.generateMethodAccess(methodAccess));
+	override function generateAccess(methodAccess:Array<SymbolAccess>) {
+		return [AExtern].concat(super.generateAccess(methodAccess));
 	}
 
-	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
 		final dataClassMethodMeta = new Array<MetadataEntry>();
 
 		if (!methodMeta.contains(SymbolMeta.Method)) {
 			dataClassMethodMeta.push(new MetaGenerator("luaDotMethod").generate());
 		}
 
-		return dataClassMethodMeta.concat(super.generateMethodMeta(methodMeta, overloads));
+		return dataClassMethodMeta.concat(super.generateMeta(methodMeta, overloads));
 	}
 }
 
@@ -347,14 +347,14 @@ class DataClassGenerator extends ClassGenerator {
 }
 
 class InstanceMethodGenerator extends MethodGenerator {
-	override function generateMethodMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
 		final instanceClassMethodMeta = new Array<MetadataEntry>();
 
 		if (!methodMeta.contains(SymbolMeta.Method)) {
 			instanceClassMethodMeta.push(new MetaGenerator("luaDotMethod").generate());
 		}
 
-		return instanceClassMethodMeta.concat(super.generateMethodMeta(methodMeta, overloads));
+		return instanceClassMethodMeta.concat(super.generateMeta(methodMeta, overloads));
 	}
 }
 
@@ -365,8 +365,8 @@ class InstanceClassGenerator extends ClassGenerator {
 }
 
 class SingletonMethodGenerator extends MethodGenerator {
-	override function generateMethodAccess(methodAccess:Array<SymbolAccess>) {
-		return [AStatic].concat(super.generateMethodAccess(methodAccess));
+	override function generateAccess(methodAccess:Array<SymbolAccess>) {
+		return [AStatic].concat(super.generateAccess(methodAccess));
 	}
 }
 
