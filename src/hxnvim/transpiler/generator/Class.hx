@@ -59,20 +59,28 @@ class MethodGenerator {
 		return methodMetas;
 	}
 
-	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature):Field {
-		final kind = FieldType.FFun({
-			params: signature.params.map(p -> ({
-				name: p.name,
-				constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
-			} : TypeParamDecl)),
-			args: signature.args.map(a -> ({
-				name: a.name,
-				type: new LiteralTypeGenerator().generate(a.type),
-				opt: a.opt,
-			} : FunctionArg)),
-			ret: new LiteralTypeGenerator().generate(signature.ret)
-		});
+	function generateDefinitionKind(params:Array<Param>, args:Array<Arg>, ret:LiteralType, ?expr:Expr) {
+		final params = params.map(p -> ({
+			name: p.name,
+			constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+		} : TypeParamDecl));
+		final args = args.map(a -> ({
+			name: a.name,
+			type: new LiteralTypeGenerator().generate(a.type),
+			opt: a.opt,
+		} : FunctionArg));
 
+		final ret = new LiteralTypeGenerator().generate(ret);
+
+		return FieldType.FFun({
+			params: params,
+			args: args,
+			ret: ret,
+			expr: expr,
+		});
+	}
+
+	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
 		return {
 			meta: meta,
 			access: access,
@@ -83,27 +91,6 @@ class MethodGenerator {
 		};
 	}
 
-	public function generate() {
-		final name = this.method.name.toFieldName();
-
-		final doc = this.method.doc;
-
-		final methodMeta = this.method.meta.copy();
-		if (name != this.method.name) {
-			methodMeta.unshift(SymbolMeta.Native(this.method.name));
-		}
-		if (this.opt) {
-			methodMeta.unshift(SymbolMeta.Optional);
-		}
-
-		final meta = this.generateMeta(methodMeta, this.method.type.overloads);
-
-		final access = this.generateAccess(this.method.access);
-
-		final signature = this.method.type;
-
-		return this.generateDefinition(name, doc, meta, access, signature);
-	}
 	/* function generateFacadedMethod(method:Function, opt:Bool) {
 		final name = method.name.toFieldName();
 		final methodName = '__${name}';
@@ -182,6 +169,103 @@ class MethodGenerator {
 
 		return {method: method, facade: facade};
 	}*/
+	function generateFacadedDefinitions(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
+		final methodName = '__${name}';
+		final methodDoc = "";
+		final methodMeta = meta.copy();
+		if (!methodMeta.exists(m -> switch (m) {
+			case {name: ':native'}: true;
+			case _: false;
+		})) {
+			methodMeta.unshift(new MetaGenerator("native", [macro $v{method.name}]).generate());
+		}
+		final methodAccess = [Access.APrivate].concat(access.filter(a -> switch (a) {
+			case Access.APublic: false;
+			case Access.APrivate: false;
+			case _: true;
+		}));
+
+		return [
+			this.generateDefinition(methodName, methodDoc, methodMeta, methodAccess,
+				this.generateDefinitionKind(signature.params, signature.args, signature.ret))
+		];
+
+		/* final facadeName = name;
+			final facadeDoc = doc;
+			final facadeMeta = meta.filter(m -> switch (m) {
+				case {name: ":native"}: false;
+				case {name: ":overload"}: false;
+				case _: true;
+			});
+			final facadeAccess = [Access.AInline].concat(access.filter(a -> switch (a) {
+				case AExtern: false;
+				case _: true;
+			}));
+
+			final params = signature.params.map(p -> ({
+				name: p.name,
+				constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+			} : TypeParamDecl));
+			final args = signature.args.map(a -> ({
+				name: a.name,
+				type: new LiteralTypeGenerator().generate(a.type),
+				opt: a.opt,
+			} : FunctionArg));
+			final ret = new LiteralTypeGenerator().generate(method.type.ret);
+
+			final facadeRet = method.type.ret.is("Multireturn") ? new LiteralTypeGenerator().generate(LiteralType.Any) : ret;
+			final methodKind = FieldType.FFun({
+				params: params,
+				args: args,
+				ret: ret
+			});
+			final methodCallArguments = method.type.args.map(a -> {
+				if (a.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
+					return Target.toHelperReference('PlainTable.clean(${a.name})');
+				} else {
+					return a.name;
+				}
+			});
+			final facade = 'return ${methodName}(${methodCallArguments.join(",")})';
+			final facadeKind = FieldType.FFun({
+				params: params,
+				args: args,
+				ret: facadeRet,
+				expr: macro $b{[macro $i{facade}]},
+			});
+
+			final method = this.generateFieldDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind);
+			final facade = this.generateFieldDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess, facadeKind);
+			return []; */
+	}
+
+	public function generate():Array<Field> {
+		final name = this.method.name.toFieldName();
+
+		final doc = this.method.doc;
+
+		final methodMeta = this.method.meta.copy();
+		if (name != this.method.name) {
+			methodMeta.unshift(SymbolMeta.Native(this.method.name));
+		}
+		if (this.opt) {
+			methodMeta.unshift(SymbolMeta.Optional);
+		}
+
+		final meta = this.generateMeta(methodMeta, this.method.type.overloads);
+
+		final access = this.generateAccess(this.method.access);
+
+		final signature = this.method.type;
+
+		if (signature.ret.is("Multireturn")) {
+			return this.generateFacadedDefinitions(name, doc, meta, access, signature);
+		}
+
+		return [
+			this.generateDefinition(name, doc, meta, access, this.generateDefinitionKind(signature.params, signature.args, signature.ret))
+		];
+	}
 }
 
 private abstract class ClassGenerator {
@@ -251,7 +335,7 @@ private abstract class ClassGenerator {
 	function generateFields(fields:Array<TableField>):Array<Field> {
 		return fields.flatMap(field -> {
 			return switch (field) {
-				case TableField.Method(func, opt): [this.generateMethod(func, opt)];
+				case TableField.Method(func, opt): this.generateMethod(func, opt);
 				/* case TableField.Method(func, opt):
 					final needsFacade = func.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference"));
 
