@@ -16,20 +16,7 @@ import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
-private abstract class FieldGenerator {
-	function generateFieldDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType):Field {
-		return {
-			meta: meta,
-			access: access,
-			name: name,
-			doc: doc,
-			kind: kind,
-			pos: Context.currentPos()
-		};
-	}
-}
-
-class MethodGenerator extends FieldGenerator {
+class MethodGenerator {
 	final method:Function;
 	final opt:Bool;
 
@@ -72,6 +59,30 @@ class MethodGenerator extends FieldGenerator {
 		return methodMetas;
 	}
 
+	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature):Field {
+		final kind = FieldType.FFun({
+			params: signature.params.map(p -> ({
+				name: p.name,
+				constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+			} : TypeParamDecl)),
+			args: signature.args.map(a -> ({
+				name: a.name,
+				type: new LiteralTypeGenerator().generate(a.type),
+				opt: a.opt,
+			} : FunctionArg)),
+			ret: new LiteralTypeGenerator().generate(signature.ret)
+		});
+
+		return {
+			meta: meta,
+			access: access,
+			name: name,
+			doc: doc,
+			kind: kind,
+			pos: Context.currentPos()
+		};
+	}
+
 	public function generate() {
 		final name = this.method.name.toFieldName();
 
@@ -89,20 +100,9 @@ class MethodGenerator extends FieldGenerator {
 
 		final access = this.generateAccess(this.method.access);
 
-		final kind = FieldType.FFun({
-			params: this.method.type.params.map(p -> ({
-				name: p.name,
-				constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
-			} : TypeParamDecl)),
-			args: this.method.type.args.map(a -> ({
-				name: a.name,
-				type: new LiteralTypeGenerator().generate(a.type),
-				opt: a.opt,
-			} : FunctionArg)),
-			ret: new LiteralTypeGenerator().generate(this.method.type.ret)
-		});
+		final signature = this.method.type;
 
-		return this.generateFieldDefinition(name, doc, meta, access, kind);
+		return this.generateDefinition(name, doc, meta, access, signature);
 	}
 	/* function generateFacadedMethod(method:Function, opt:Bool) {
 		final name = method.name.toFieldName();
