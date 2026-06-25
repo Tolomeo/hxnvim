@@ -20,6 +20,8 @@ class ArrayTools {
 
 	static public final flatMap = Lambda.flatMap;
 
+	static public final mapi = Lambda.mapi;
+
 	static public function iter<T>(arr:Array<T>, predicate:(item:T) -> Void) {
 		return Lambda.iter(arr, predicate);
 	}
