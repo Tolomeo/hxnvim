@@ -11,7 +11,7 @@ using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 using hxnvim.transpiler.symbol.SymbolTools;
 
-// import hxnvim.target.Target;
+import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
@@ -69,7 +69,6 @@ class MethodGenerator {
 			type: new LiteralTypeGenerator().generate(a.type),
 			opt: a.opt,
 		} : FunctionArg));
-
 		final ret = new LiteralTypeGenerator().generate(ret);
 
 		return FieldType.FFun({
@@ -169,7 +168,9 @@ class MethodGenerator {
 
 		return {method: method, facade: facade};
 	}*/
-	function generateFacadedDefinitions(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
+	function generateFacadedDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
+		final definitions = new Array<Field>();
+
 		final methodName = '__${name}';
 		final methodDoc = "";
 		final methodMeta = meta.copy();
@@ -184,59 +185,50 @@ class MethodGenerator {
 			case Access.APrivate: false;
 			case _: true;
 		}));
+		final methodKind = this.generateDefinitionKind(signature.params, signature.args, signature.ret);
 
-		return [
-			this.generateDefinition(methodName, methodDoc, methodMeta, methodAccess,
-				this.generateDefinitionKind(signature.params, signature.args, signature.ret))
-		];
+		definitions.push(this.generateDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind));
 
-		/* final facadeName = name;
-			final facadeDoc = doc;
-			final facadeMeta = meta.filter(m -> switch (m) {
-				case {name: ":native"}: false;
-				case {name: ":overload"}: false;
-				case _: true;
-			});
-			final facadeAccess = [Access.AInline].concat(access.filter(a -> switch (a) {
-				case AExtern: false;
-				case _: true;
-			}));
+		final facadeName = name;
+		final facadeDoc = doc;
+		final facadeMeta = meta.filter(m -> switch (m) {
+			case {name: ":native"}: false;
+			case {name: ":overload"}: false;
+			case _: true;
+		});
+		final facadeAccess = [Access.AInline].concat(access.filter(a -> switch (a) {
+			case AExtern: false;
+			case _: true;
+		}));
+		final facadeSignature = {
+			params: signature.params,
+			args: signature.args,
+			ret: switch (signature.ret) {
+				case LiteralType.Multireturn(rs):
+					final returns = rs.map(r -> new LiteralTypeGenerator().generateType(r));
+					LiteralType.Override(Target.toHelperReference('Return${returns.length}<${returns.join(", ")}>'));
+				case r: r;
+			}
+		}
+		final facadeKind = this.generateDefinitionKind(facadeSignature.params, facadeSignature.args, facadeSignature.ret);
 
-			final params = signature.params.map(p -> ({
-				name: p.name,
-				constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
-			} : TypeParamDecl));
-			final args = signature.args.map(a -> ({
-				name: a.name,
-				type: new LiteralTypeGenerator().generate(a.type),
-				opt: a.opt,
-			} : FunctionArg));
-			final ret = new LiteralTypeGenerator().generate(method.type.ret);
+		definitions.push(this.generateDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess, facadeKind));
+		/* final methodCallArguments = method.type.args.map(a -> {
+			if (a.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
+				return Target.toHelperReference('PlainTable.clean(${a.name})');
+			} else {
+				return a.name;
+			}
+		});
+		final facade = 'return ${methodName}(${methodCallArguments.join(",")})';
+		final facadeKind = FieldType.FFun({
+			params: params,
+			args: args,
+			ret: facadeRet,
+			expr: macro $b{[macro $i{facade}]},
+		}); */
 
-			final facadeRet = method.type.ret.is("Multireturn") ? new LiteralTypeGenerator().generate(LiteralType.Any) : ret;
-			final methodKind = FieldType.FFun({
-				params: params,
-				args: args,
-				ret: ret
-			});
-			final methodCallArguments = method.type.args.map(a -> {
-				if (a.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
-					return Target.toHelperReference('PlainTable.clean(${a.name})');
-				} else {
-					return a.name;
-				}
-			});
-			final facade = 'return ${methodName}(${methodCallArguments.join(",")})';
-			final facadeKind = FieldType.FFun({
-				params: params,
-				args: args,
-				ret: facadeRet,
-				expr: macro $b{[macro $i{facade}]},
-			});
-
-			final method = this.generateFieldDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind);
-			final facade = this.generateFieldDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess, facadeKind);
-			return []; */
+		return definitions;
 	}
 
 	public function generate():Array<Field> {
@@ -259,7 +251,7 @@ class MethodGenerator {
 		final signature = this.method.type;
 
 		if (signature.ret.is("Multireturn")) {
-			return this.generateFacadedDefinitions(name, doc, meta, access, signature);
+			return this.generateFacadedDefinition(name, doc, meta, access, signature);
 		}
 
 		return [
