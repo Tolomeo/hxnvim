@@ -182,14 +182,18 @@ class MethodGenerator {
 		}));
 		final returnTypes = switch (signature.ret) {
 			case LiteralType.Multireturn(rs):
-				rs.map(r -> new LiteralTypeGenerator().generateType(r));
+				rs.map(r -> switch (r) {
+					case LiteralType.Void: Target.toHelperReference("Nothing");
+					case LiteralType.Nil: Target.toHelperReference("Nothing");
+					case t: new LiteralTypeGenerator().generateType(r);
+				});
 			case r: throw new Exception('Error generating method facade: expected multireturn but received ${r}');
 		}
-		final returnType = Target.toHelperReference('Return${returnTypes.length}<${returnTypes.join(", ")}>');
+		final returnType = Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
 
-		final resultAssignment = 'final result = ${facadedName}(${signature.args.map(a -> switch(a.name){
-			case "___": "...___";
-			case n: n;
+		final resultAssignment = 'final result = ${facadedName}(${signature.args.map(a -> switch(a.type){
+			case LiteralType.Rest(_): "..." + a.name; 
+			case _: a.name;
 		}).join(", ")})';
 		final returnStatement = 'return new ${returnType}(${returnTypes.mapi((i, t) -> "result._" + i).join(", ")})';
 		final facadeSignature = {

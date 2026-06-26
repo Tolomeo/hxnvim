@@ -78,7 +78,11 @@ class LiteralTypeGenerator {
 			throw new Exception('Error generating multireturn type: too many values in ${returnTypes}, the maximum allowed is currently 6');
 		}
 
-		final types = returnTypes.map(r -> this.generateType(r)).padEnd(6, "Void");
+		final types = returnTypes.map(r -> switch (r) {
+			case LiteralType.Void: Target.toHelperReference("Nothing");
+			case LiteralType.Nil: Target.toHelperReference("Nothing");
+			case r: this.generateType(r);
+		}).padEnd(6, Target.toHelperReference("Nothing"));
 
 		return Target.toHelperReference('Multireturn<${types.join(", ")}>');
 	}
