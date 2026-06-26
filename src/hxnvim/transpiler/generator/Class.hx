@@ -187,46 +187,49 @@ class MethodGenerator {
 					case LiteralType.Nil: Target.toHelperReference("Nothing");
 					case t: new LiteralTypeGenerator().generateType(r);
 				});
-			case r: throw new Exception('Error generating method facade: expected multireturn but received ${r}');
+			case r: [new LiteralTypeGenerator().generateType(r)];
+		};
+		final returnType = switch (returnTypes) {
+			case [r]: r;
+			case r: Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
 		}
-		final returnType = Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
 
-		final resultAssignment = 'final result = ${facadedName}(${signature.args.map(a -> switch(a.type){
-			case LiteralType.Rest(_): "..." + a.name; 
+		final callArgs = signature.args.map(a -> switch (a.type) {
+			case LiteralType.Rest(_): "..." + a.name;
+			case LiteralType.AnyTable: Target.toHelperReference("Table") + ".clean(" + a.name + ")";
+			case LiteralType.Table(_, _): Target.toHelperReference("Table") + ".clean(" + a.name + ")";
+			case LiteralType.TableStructure(_): Target.toHelperReference("Table") + ".clean(" + a.name + ")";
+			case LiteralType.TypeReference(_): Target.toHelperReference("Table") + ".clean(" + a.name + ")";
 			case _: a.name;
-		}).join(", ")})';
-		final returnStatement = 'return new ${returnType}(${returnTypes.mapi((i, t) -> "result._" + i).join(", ")})';
+		});
+		final call = '${facadedName}(${callArgs.join(", ")})';
+		final callResultAssignment = 'final result = ${call}';
+		final returnStatement = switch (returnTypes) {
+			case [r]: 'return result';
+			case r:
+				final returnArgs = returnTypes.mapi((i, t) -> 'result._${i}');
+				'return new ${returnType}(${returnArgs.join(", ")})';
+		}
 		final facadeSignature = {
 			params: signature.params,
 			args: signature.args,
 			ret: LiteralType.Override(returnType),
 			expr: macro $b{
-				[macro $i{resultAssignment}, macro $i{returnStatement}]
+				[macro $i{callResultAssignment}, macro $i{returnStatement}]
 			}
 		}
 		final facadeKind = this.generateDefinitionKind(facadeSignature.params, facadeSignature.args, facadeSignature.ret, facadeSignature.expr);
 
 		return this.generateDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess, facadeKind);
-		/* final methodCallArguments = method.type.args.map(a -> {
-				if (a.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
-					return Target.toHelperReference('PlainTable.clean(${a.name})');
-				} else {
-					return a.name;
-				}
-			});
-			final facade = 'return ${methodName}(${methodCallArguments.join(",")})';
-			final facadeKind = FieldType.FFun({
-				params: params,
-				args: args,
-				ret: facadeRet,
-				expr: macro $b{[macro $i{facade}]},
-		});*/
 	}
 
 	function generateFacadedDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
 		final methodName = '__${name}';
 		final methodDoc = doc;
-		final methodMeta = meta.copy();
+		final methodMeta = meta.copy().filter(m -> switch (m) {
+			case {name: ":deprecated"}: false;
+			case _: true;
+		});
 		if (!methodMeta.exists(m -> switch (m) {
 			case {name: ':native'}: true;
 			case _: false;
@@ -243,6 +246,11 @@ class MethodGenerator {
 		return this.generateDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind);
 	}
 
+	function facaded() {
+		return this.method.type.ret.is("Multireturn")
+			|| this.method.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference"));
+	}
+
 	public function generate():Array<Field> {
 		final name = this.method.name.toFieldName();
 		final doc = this.method.doc;
@@ -257,7 +265,7 @@ class MethodGenerator {
 		final access = this.generateAccess(this.method.access);
 		final signature = this.method.type;
 
-		if (signature.ret.is("Multireturn")) {
+		if (this.facaded()) {
 			final facadedDefinition = this.generateFacadedDefinition(name, doc, meta, access, signature);
 
 			return [
