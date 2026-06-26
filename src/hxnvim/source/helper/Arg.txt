@@ -1,0 +1,14 @@
+class Arg {
+		public static inline function pureTable<T>(obj:T) {
+        untyped obj.__fields__ = null;
+        lua.Lua.setmetatable(cast obj, null);
+		}
+
+    public static inline function pure<T>(obj:T):T {
+      if (lua.Lua.type(obj) == "table") {
+        pureTable(obj);
+      }
+
+      return obj;
+    }
+}

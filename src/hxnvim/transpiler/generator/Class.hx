@@ -196,10 +196,10 @@ class MethodGenerator {
 
 		final callArgs = signature.args.map(a -> switch (a.type) {
 			case LiteralType.Rest(_): "..." + a.name;
-			case LiteralType.AnyTable: Target.toHelperReference("Table") + ".clean(" + a.name + ")";
-			case LiteralType.Table(_, _): Target.toHelperReference("Table") + ".clean(" + a.name + ")";
-			case LiteralType.TableStructure(_): Target.toHelperReference("Table") + ".clean(" + a.name + ")";
-			case LiteralType.TypeReference(_): Target.toHelperReference("Table") + ".clean(" + a.name + ")";
+			case LiteralType.AnyTable: Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
+			case LiteralType.Table(_, _): Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
+			case LiteralType.TableStructure(_): Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
+			case LiteralType.TypeReference(_): Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
 			case _: a.name;
 		});
 		final call = '${facadedName}(${callArgs.join(", ")})';
