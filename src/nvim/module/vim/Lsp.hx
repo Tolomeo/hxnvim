@@ -163,8 +163,46 @@ extern class Lsp {
 		cancel all the requests. You could instead
 		iterate all clients and call their `cancel_request()` methods.
 	**/
+	@:native("buf_request")
 	@:luaDotMethod
-	private function buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Int, Int>, haxe.Constraints.Function, Void, Void, Void, Void>;
+	private function __buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Int, Int>, haxe.Constraints.Function, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function lsp.buf_request(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, on_unsupported?: fun())
+		  -> client_request_ids: table<integer, integer>
+		  2. _cancel_all_requests: function
+		```
+		
+		---
+		
+		 Sends an async request for all active clients attached to the
+		 buffer.
+		
+		@*param* `bufnr` — Buffer handle, or 0 for current.
+		
+		@*param* `method` — LSP method name
+		
+		@*param* `params` — Parameters to send to the server
+		
+		@*param* `handler` — See |lsp-handler|
+		
+		       If nil, follows resolution strategy defined in |lsp-handler-configuration|
+		       Defaults to an `ERROR` level notification.
+		
+		@*return* `client_request_ids` — Map of client-id:request-id pairs
+		
+		for all successful requests.
+		
+		@*return* `_cancel_all_requests` — Function which can be used to
+		
+		cancel all the requests. You could instead
+		iterate all clients and call their `cancel_request()` methods.
+	**/
+	@:luaDotMethod
+	inline private function buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn.Return2<lua.Table<Int, Int>, haxe.Constraints.Function> {
+		final result = __buf_request(bufnr, method, params, handler, on_unsupported);
+		return new nvim.helper.Multireturn.Return2<lua.Table<Int, Int>, haxe.Constraints.Function>(result._0, result._1);
+	}
 	/**
 		```lua
 		function lsp.buf_request_all(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler: fun(results: table<integer, { err: (lsp.ResponseError)?, result: any }>, context: lsp.HandlerContext, config?: table):...unknown)
@@ -223,9 +261,45 @@ extern class Lsp {
 		
 		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
 	**/
+	@:native("buf_request_sync")
 	@:luaDotMethod
-	function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { @:optional
-	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>, Void, Void, Void, Void>;
+	private function __buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { @:optional
+	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function lsp.buf_request_sync(bufnr: integer, method: string, params?: table, timeout_ms?: integer)
+		  -> result: table<integer, { error: (lsp.ResponseError)?, result: any }>?
+		  2. err: string?
+		```
+		
+		---
+		
+		 Sends a request to all server and waits for the response of all of them.
+		
+		 Calls |vim.lsp.buf_request_all()| but blocks Nvim while awaiting the result.
+		 Parameters are the same as |vim.lsp.buf_request_all()| but the result is
+		 different. Waits a maximum of {timeout_ms}.
+		
+		@*param* `bufnr` — Buffer handle, or 0 for current.
+		
+		@*param* `method` — LSP method name
+		
+		@*param* `params` — Parameters to send to the server
+		
+		@*param* `timeout_ms` — Maximum time in milliseconds to wait for a result.
+		
+		                           (default: `1000`)
+		
+		@*return* `result` — Map of client_id:request_result.
+		
+		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
+	**/
+	@:luaDotMethod
+	inline function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn.Return2<Null<lua.Table<Int, { @:optional
+	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>> {
+		final result = __buf_request_sync(bufnr, method, params, timeout_ms);
+		return new nvim.helper.Multireturn.Return2<Null<lua.Table<Int, { ?error:Null<nvim.type.lsp.ResponseError>, result:Any }>>, Null<String>>(result._0, result._1);
+	}
 	/**
 		```lua
 		(global) vim.lsp.client: vim.lsp.Client
@@ -733,9 +807,36 @@ extern class Lsp {
 		
 		@*return* — Error message, if any
 	**/
+	@:native("start_client")
 	@:luaDotMethod
 	@:deprecated
-	function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Int>, Null<String>, Void, Void, Void, Void>;
+	private function __start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Int>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function lsp.start_client(config: vim.lsp.ClientConfig)
+		  -> client_id: integer?
+		  2. string?
+		```
+		
+		---
+		
+		 Starts and initializes a client with the given configuration.
+		
+		@*param* `config` — Configuration for the server.
+		
+		@*return* `client_id` — |vim.lsp.get_client_by_id()| Note: client may not be
+		
+		         fully initialized. Use `on_init` to do any actions once
+		         the client has been initialized.
+		
+		@*return* — Error message, if any
+	**/
+	@:luaDotMethod
+	@:deprecated
+	inline function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn.Return2<Null<Int>, Null<String>> {
+		final result = __start_client(config);
+		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<String>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function lsp.status()

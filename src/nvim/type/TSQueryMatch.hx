@@ -27,5 +27,17 @@ package nvim.type;
 		  2. pattern_index: integer
 		```
 	**/
-	extern function info():nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
+	@:native("info")
+	private extern function __info():nvim.helper.Multireturn<Int, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		(method) TSQueryMatch:info()
+		  -> match_id: integer
+		  2. pattern_index: integer
+		```
+	**/
+	inline function info():nvim.helper.Multireturn.Return2<Int, Int> {
+		final result = __info();
+		return new nvim.helper.Multireturn.Return2<Int, Int>(result._0, result._1);
+	}
 }

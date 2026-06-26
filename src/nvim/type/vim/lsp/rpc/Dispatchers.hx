@@ -66,6 +66,25 @@ package nvim.type.vim.lsp.rpc;
 		  2. (lsp.ResponseError)?
 		```
 	**/
+	@:native("server_request")
 	@:luaDotMethod
-	extern function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn<Null<Any>, Null<nvim.type.lsp.ResponseError>, Void, Void, Void, Void>;
+	private extern function __server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn<Null<Any>, Null<nvim.type.lsp.ResponseError>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		(field) vim.lsp.rpc.Dispatchers.server_request: fun(method: string, params: table):any, (lsp.ResponseError)?
+		```
+		
+		---
+		
+		```lua
+		function (method: string, params: table)
+		  -> any
+		  2. (lsp.ResponseError)?
+		```
+	**/
+	@:luaDotMethod
+	inline function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>> {
+		final result = __server_request(method, params);
+		return new nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>>(result._0, result._1);
+	}
 }

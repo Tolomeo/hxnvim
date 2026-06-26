@@ -402,8 +402,25 @@ extern class Diagnostic {
 		
 		 Show diagnostics in a floating window.
 	**/
+	@:native("open_float")
 	@:luaDotMethod
-	function open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
+	private function __open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.open_float(opts?: vim.diagnostic.Opts.Float, ...any)
+		  -> float_bufnr: integer?
+		  2. winid: integer?
+		```
+		
+		---
+		
+		 Show diagnostics in a floating window.
+	**/
+	@:luaDotMethod
+	inline function open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+		final result = __open_float(opts, ...___);
+		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function M.reset(namespace?: integer, bufnr?: integer)

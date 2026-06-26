@@ -223,8 +223,50 @@ extern class Fs {
 		
 		@*return*
 	**/
+	@:native("parents")
 	@:luaDotMethod
-	function parents(start:String):nvim.helper.Multireturn<() -> Null<String>, Void, Null<String>, Void, Void, Void>;
+	private function __parents(start:String):nvim.helper.Multireturn<() -> Null<String>, nvim.helper.Nothing, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.parents(start: string)
+		  -> fun(_: any, dir: string):string?
+		  2. nil
+		  3. string|nil
+		```
+		
+		---
+		
+		 Iterate over all the parents of the given path (not expanded/resolved, the caller must do that).
+		
+		 Example:
+		
+		 ```lua
+		 local root_dir
+		 for dir in vim.fs.parents(vim.api.nvim_buf_get_name(0)) do
+		   if vim.fn.isdirectory(dir .. '/.git') == 1 then
+		     root_dir = dir
+		     break
+		   end
+		 end
+		
+		 if root_dir then
+		   print('Found git repository at', root_dir)
+		 end
+		 ```
+		
+		@*param* `start` — Initial path.
+		
+		@*return* — Iterator
+		
+		@*return*
+		
+		@*return*
+	**/
+	@:luaDotMethod
+	inline function parents(start:String):nvim.helper.Multireturn.Return3<() -> Null<String>, nvim.helper.Nothing, Null<String>> {
+		final result = __parents(start);
+		return new nvim.helper.Multireturn.Return3<() -> Null<String>, nvim.helper.Nothing, Null<String>>(result._0, result._1, result._2);
+	}
 	/**
 		```lua
 		function M.relpath(base: string, target: string, opts?: table)

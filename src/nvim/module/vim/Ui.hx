@@ -85,9 +85,57 @@ extern class Ui {
 		
 		@*return* — Error message on failure, or nil on success.
 	**/
+	@:native("open")
 	@:luaDotMethod
-	function open(path:String, ?opt:{ @:optional
-	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void>;
+	private function __open(path:String, ?opt:{ @:optional
+	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.open(path: string, opt?: { cmd: string[] })
+		  -> vim.SystemObj|nil
+		  2. string|nil
+		```
+		
+		---
+		
+		 Opens `path` with the system default handler (macOS `open`, Windows `explorer.exe`, Linux
+		 `xdg-open`, …), or returns (but does not show) an error message on failure.
+		
+		 Can also be invoked with `:Open`. [:Open](file:///usr/local/share/nvim/runtime/lua/vim)
+		
+		 Expands "~/" and environment variables in filesystem paths.
+		
+		 Examples:
+		
+		 ```lua
+		 -- Asynchronous.
+		 vim.ui.open("https://neovim.io/")
+		 vim.ui.open("~/path/to/file")
+		 -- Use the "osurl" command to handle the path or URL.
+		 vim.ui.open("gh#neovim/neovim!29490", { cmd = { 'osurl' } })
+		 -- Synchronous (wait until the process exits).
+		 local cmd, err = vim.ui.open("$VIMRUNTIME")
+		 if cmd then
+		   cmd:wait()
+		 end
+		 ```
+		
+		@*param* `path` — Path or URL to open
+		
+		@*param* `opt` — Options
+		
+		     - cmd string[]|nil Command used to open the path or URL.
+		
+		@*return* — Command object, or nil if not found.
+		
+		@*return* — Error message on failure, or nil on success.
+	**/
+	@:luaDotMethod
+	inline function open(path:String, ?opt:{ @:optional
+	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
+		final result = __open(path, opt);
+		return new nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))

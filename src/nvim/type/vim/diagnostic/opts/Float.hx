@@ -127,7 +127,7 @@ package nvim.type.vim.diagnostic.opts;
 		```
 	**/
 	@:optional
-	extern var prefix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, Void, Void, Void, Void>>>>;
+	extern var prefix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>>>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.scope: ('b'|'buffer'|'c'|'cursor'|'l'|'line')?
@@ -216,5 +216,5 @@ package nvim.type.vim.diagnostic.opts;
 		```
 	**/
 	@:optional
-	extern var suffix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, Void, Void, Void, Void>>>>;
+	extern var suffix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>>>>;
 }

@@ -177,6 +177,61 @@ extern class Filetype {
 		                     filetype specific buffer variables). The function accepts a buffer number as
 		                     its only argument.
 	**/
+	@:native("match")
 	@:luaDotMethod
-	function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>, Void, Void, Void, Void>;
+	private function __match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.match(args: vim.filetype.match.args)
+		  -> string|nil
+		  2. function|nil
+		```
+		
+		---
+		
+		 Perform filetype detection.
+		
+		 The filetype can be detected using one of three methods:
+		 1. Using an existing buffer
+		 2. Using only a file name
+		 3. Using only file contents
+		
+		 Of these, option 1 provides the most accurate result as it uses both the buffer's filename and
+		 (optionally) the buffer contents. Options 2 and 3 can be used without an existing buffer, but
+		 may not always provide a match in cases where the filename (or contents) cannot unambiguously
+		 determine the filetype.
+		
+		 Each of the three options is specified using a key to the single argument of this function.
+		 Example:
+		
+		 ```lua
+		 -- Using a buffer number
+		 vim.filetype.match({ buf = 42 })
+		
+		 -- Override the filename of the given buffer
+		 vim.filetype.match({ buf = 42, filename = 'foo.c' })
+		
+		 -- Using a filename without a buffer
+		 vim.filetype.match({ filename = 'main.lua' })
+		
+		 -- Using file contents
+		 vim.filetype.match({ contents = {'#!/usr/bin/env bash'} })
+		 ```
+		
+		@*param* `args` — Table specifying which matching strategy to use.
+		
+		                 Accepted keys are:
+		
+		@*return* — If a match was found, the matched filetype.
+		
+		@*return* — A function that modifies buffer state when called (for example, to set some
+		
+		                     filetype specific buffer variables). The function accepts a buffer number as
+		                     its only argument.
+	**/
+	@:luaDotMethod
+	inline function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>> {
+		final result = __match(args);
+		return new nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>>(result._0, result._1);
+	}
 }

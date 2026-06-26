@@ -190,8 +190,37 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_signatureHelp
 	**/
+	@:native("convert_signature_help_to_markdown_lines")
 	@:luaDotMethod
-	function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn<Null<Array<String>>, Null<nvim.type.Range4>, Void, Void, Void, Void>;
+	private function __convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn<Null<Array<String>>, Null<nvim.type.Range4>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.convert_signature_help_to_markdown_lines(signature_help: lsp.SignatureHelp, ft?: string, triggers?: string[])
+		  -> string[]?
+		  2. Range4?
+		```
+		
+		---
+		
+		 Converts `textDocument/signatureHelp` response to markdown lines.
+		
+		@*param* `signature_help` — Response of `textDocument/SignatureHelp`
+		
+		@*param* `ft` — filetype that will be use as the `lang` for the label markdown code block
+		
+		@*param* `triggers` — list of trigger characters from the lsp server. used to better determine parameter offsets
+		
+		@*return* — lines of converted markdown.
+		
+		@*return* — highlight range for the active parameter
+		
+		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_signatureHelp
+	**/
+	@:luaDotMethod
+	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>> {
+		final result = __convert_signature_help_to_markdown_lines(signature_help, ft, triggers);
+		return new nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function M.get_effective_tabstop(bufnr?: integer)
@@ -443,8 +472,60 @@ extern class Util {
 		
 		@*return* `winid` — of newly created float window preview window
 	**/
+	@:native("open_floating_preview")
 	@:luaDotMethod
-	function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
+	private function __open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.open_floating_preview(contents: table, syntax: string, opts?: vim.lsp.util.open_floating_preview.Opts)
+		  -> bufnr: integer
+		  2. winid: integer
+		```
+		
+		---
+		
+		 Shows contents in a floating window.
+		
+		@*param* `contents` — of lines to show in window
+		
+		@*param* `syntax` — of syntax to set for opened buffer
+		
+		@*param* `opts` — with optional fields
+		
+		 (additional keys are filtered with |vim.lsp.util.make_floating_popup_options()|
+		 before they are passed on to |nvim_open_win()|)
+		
+		@*return* `bufnr` — of newly created float window
+		
+		@*return* `winid` — of newly created float window preview window
+	**/
+	@:luaDotMethod
+	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Int, Int> {
+		final result = __open_floating_preview(contents, syntax, opts);
+		return new nvim.helper.Multireturn.Return2<Int, Int>(result._0, result._1);
+	}
+	/**
+		```lua
+		function M.preview_location(location: lsp.Location|lsp.LocationLink, opts?: vim.lsp.util.open_floating_preview.Opts)
+		  -> buffer: integer?
+		  2. window: integer?
+		```
+		
+		---
+		
+		 Previews a location in a floating window
+		
+		 behavior depends on type of location:
+		   - for Location, range is shown (e.g., function definition)
+		   - for LocationLink, targetRange is shown (e.g., body of function definition)
+		
+		@*return* `buffer` — id of float window
+		
+		@*return* `window` — id of float window
+	**/
+	@:native("preview_location")
+	@:luaDotMethod
+	private function __preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.preview_location(location: lsp.Location|lsp.LocationLink, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -465,7 +546,10 @@ extern class Util {
 		@*return* `window` — id of float window
 	**/
 	@:luaDotMethod
-	function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
+	inline function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+		final result = __preview_location(location, opts);
+		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function M.rename(old_fname: string, new_fname: string, opts?: vim.lsp.util.rename.Opts)

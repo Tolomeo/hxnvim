@@ -488,7 +488,44 @@ package nvim.type.vim.lsp;
 		 to cancel the-request.
 		 @see |vim.lsp.buf_request_all()|
 	**/
-	extern function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
+	@:native("request")
+	private extern function __request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn<Bool, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		(method) vim.lsp.Client:request(method: string, params?: table, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, bufnr?: integer)
+		  -> status: boolean
+		  2. request_id: integer?
+		```
+		
+		---
+		
+		 Sends a request to the server.
+		
+		 This is a thin wrapper around {client.rpc.request} with some additional
+		 checks for capabilities and handler availability.
+		
+		@*param* `method` — LSP method name.
+		
+		@*param* `params` — LSP request params.
+		
+		@*param* `handler` — Response |lsp-handler| for this method.
+		
+		@*param* `bufnr` — (default: 0) Buffer handle, or 0 for current.
+		
+		@*return* `status` — indicates whether the request was successful.
+		
+		     If it is `false`, then it will always be `false` (the client has shutdown).
+		
+		@*return* `request_id` — Can be used with |Client:cancel_request()|.
+		
+		                             `nil` is request failed.
+		 to cancel the-request.
+		 @see |vim.lsp.buf_request_all()|
+	**/
+	inline function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
+		final result = __request(method, params, handler, bufnr);
+		return new nvim.helper.Multireturn.Return2<Bool, Null<Int>>(result._0, result._1);
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:request_sync(method: string, params: table, timeout_ms?: integer, bufnr?: integer)
@@ -521,8 +558,46 @@ package nvim.type.vim.lsp;
 		                 string describing the failure reason.
 		 @see |vim.lsp.buf_request_sync()|
 	**/
-	extern function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn<Null<{ @:optional
-	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>, Void, Void, Void, Void>;
+	@:native("request_sync")
+	private extern function __request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn<Null<{ @:optional
+	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		(method) vim.lsp.Client:request_sync(method: string, params: table, timeout_ms?: integer, bufnr?: integer)
+		  -> { err: (lsp.ResponseError)?, result: any }?
+		  2. err: string?
+		```
+		
+		---
+		
+		 Sends a request to the server and synchronously waits for the response.
+		
+		 This is a wrapper around |Client:request()|
+		
+		@*param* `method` — LSP method name.
+		
+		@*param* `params` — LSP request params.
+		
+		@*param* `timeout_ms` — Maximum time in milliseconds to wait for
+		
+		                                a result. Defaults to 1000
+		
+		@*param* `bufnr` — (default: 0) Buffer handle, or 0 for current.
+		
+		@*return* — `result` and `err` from the |lsp-handler|.
+		
+		                 `nil` is the request was unsuccessful
+		
+		@*return* `err` — On timeout, cancel or error, where `err` is a
+		
+		                 string describing the failure reason.
+		 @see |vim.lsp.buf_request_sync()|
+	**/
+	inline function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn.Return2<Null<{ @:optional
+	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>> {
+		final result = __request_sync(method, params, timeout_ms, bufnr);
+		return new nvim.helper.Multireturn.Return2<Null<{ ?err:Null<nvim.type.lsp.ResponseError>, result:Any }>, Null<String>>(result._0, result._1);
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:stop(force?: boolean)

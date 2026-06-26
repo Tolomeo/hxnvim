@@ -49,8 +49,41 @@ extern class Re {
 		  2. unknown|nil
 		```
 	**/
+	@:native("find")
 	@:luaDotMethod
-	function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
+	private function __find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function vim.re.find(subject: string, pattern: string|vim.lpeg.Pattern, init?: integer)
+		  -> integer|nil
+		  2. integer|nil
+		```
+		
+		---
+		
+		 Searches the given {pattern} in the given {subject}. If it finds a match, returns the index
+		 where this occurrence starts and the index where it ends. Otherwise, returns nil.
+		
+		 An optional numeric argument {init} makes the search starts at that position in the subject
+		 string. As usual in Lua libraries, a negative value counts from the end.
+		
+		@*return* — : the index where the occurrence starts, nil if no match
+		
+		@*return* — : the index where the occurrence ends, nil if no match
+		
+		---
+		
+		```lua
+		function find(s: any, p: any, i: any)
+		  -> unknown
+		  2. unknown|nil
+		```
+	**/
+	@:luaDotMethod
+	inline function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+		final result = __find(subject, pattern, init);
+		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function vim.re.gsub(subject: string, pattern: string|vim.lpeg.Pattern, replacement: string)

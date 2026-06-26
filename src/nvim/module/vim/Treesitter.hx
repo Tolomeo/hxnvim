@@ -102,8 +102,29 @@ extern class Treesitter {
 		
 		@*param* `node_or_range` — Node or table of positions
 	**/
+	@:native("get_node_range")
 	@:luaDotMethod
-	function get_node_range(node_or_range:haxe.extern.EitherType<nvim.type.TSNode, nvim.type.Range4>):nvim.helper.Multireturn<Int, Int, Int, Int, Void, Void>;
+	private function __get_node_range(node_or_range:haxe.extern.EitherType<nvim.type.TSNode, nvim.type.Range4>):nvim.helper.Multireturn<Int, Int, Int, Int, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.get_node_range(node_or_range: Range4|TSNode)
+		  -> start_row: integer
+		  2. start_col: integer
+		  3. end_row: integer
+		  4. end_col: integer
+		```
+		
+		---
+		
+		 Returns the node's range or an unpacked range table
+		
+		@*param* `node_or_range` — Node or table of positions
+	**/
+	@:luaDotMethod
+	inline function get_node_range(node_or_range:haxe.extern.EitherType<nvim.type.TSNode, nvim.type.Range4>):nvim.helper.Multireturn.Return4<Int, Int, Int, Int> {
+		final result = __get_node_range(node_or_range);
+		return new nvim.helper.Multireturn.Return4<Int, Int, Int, Int>(result._0, result._1, result._2, result._3);
+	}
 	/**
 		```lua
 		function M.get_node_text(node: TSNode, source: string|integer, opts: table|nil)
@@ -151,8 +172,42 @@ extern class Treesitter {
 		
 		@*return* `error` — message, if applicable
 	**/
+	@:native("get_parser")
 	@:luaDotMethod
-	function get_parser(?bufnr:Null<Int>, ?lang:Null<String>, ?opts:Null<lua.Table.AnyTable>):nvim.helper.Multireturn<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>, Void, Void, Void, Void>;
+	private function __get_parser(?bufnr:Null<Int>, ?lang:Null<String>, ?opts:Null<lua.Table.AnyTable>):nvim.helper.Multireturn<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.get_parser(bufnr: integer|nil, lang: string|nil, opts: table|nil)
+		  -> object: (vim.treesitter.LanguageTree)?
+		  2. error: string?
+		```
+		
+		---
+		
+		 Returns the parser for a specific buffer and attaches it to the buffer
+		
+		 If needed, this will create the parser.
+		
+		 If no parser can be created, an error is thrown. Set `opts.error = false` to suppress this and
+		 return nil (and an error message) instead. WARNING: This behavior will become default in Nvim
+		 0.12 and the option will be removed.
+		
+		@*param* `bufnr` — Buffer the parser should be tied to (default: current buffer)
+		
+		@*param* `lang` — Language of this parser (default: from buffer filetype)
+		
+		@*param* `opts` — Options to pass to the created language tree
+		
+		
+		@*return* `object` — to use for parsing
+		
+		@*return* `error` — message, if applicable
+	**/
+	@:luaDotMethod
+	inline function get_parser(?bufnr:Null<Int>, ?lang:Null<String>, ?opts:Null<lua.Table.AnyTable>):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>> {
+		final result = __get_parser(bufnr, lang, opts);
+		return new nvim.helper.Multireturn.Return2<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function M.get_range(node: TSNode, source: string|integer|nil, metadata: vim.treesitter.query.TSMetadata|nil)

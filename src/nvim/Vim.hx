@@ -44079,7 +44079,32 @@ package nvim;
 		
 		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
-	static function spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V, Void, Void, Void, Void>, T, Void, Void, Void, Void>;
+	@:native("spairs")
+	private static function __spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function vim.spairs(t: <T:table>)
+		  -> fun(table: table<<K>, <V>>, index?: <K>):<K>, <V>
+		  2. <T:table>
+		```
+		
+		---
+		
+		 Enumerates key-value pairs of a table, ordered by key.
+		
+		
+		@*param* `t` — Dict-like table
+		
+		@*return* — |for-in| iterator over sorted keys and their values
+		
+		@*return*
+		
+		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
+	**/
+	inline static function spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn.Return2<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T> {
+		final result = __spairs(t);
+		return new nvim.helper.Multireturn.Return2<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T>(result._0, result._1);
+	}
 	/**
 		```lua
 		(global) vim.spell: unknown
