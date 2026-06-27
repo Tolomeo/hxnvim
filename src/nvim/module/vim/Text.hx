@@ -154,7 +154,8 @@ extern class Text {
 	@:luaDotMethod
 	inline function indent(size:Int, text:String, ?opts:{ @:optional
 	var expandtab : Null<Float>; }):nvim.helper.Multireturn.Return2<String, Int> {
-		final result = __indent(size, text, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __indent(size, text, opts);
 		return new nvim.helper.Multireturn.Return2<String, Int>(result._0, result._1);
 	}
 }

@@ -164,7 +164,8 @@ extern class Treesitter {
 	**/
 	@:luaDotMethod
 	inline function get_node_text(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?opts:Null<lua.Table.AnyTable>):String {
-		final result = __get_node_text(nvim.helper.Arg.pure(node), source, opts);
+		node = nvim.helper.Arg.pure(node);
+		final result = __get_node_text(node, source, opts);
 		return result;
 	}
 	/**
@@ -262,7 +263,8 @@ extern class Treesitter {
 	**/
 	@:luaDotMethod
 	inline function get_range(node:nvim.type.TSNode, ?source:Null<haxe.extern.EitherType<Int, String>>, ?metadata:Null<nvim.type.vim.treesitter.query.TSMetadata>):nvim.type.Range6 {
-		final result = __get_range(nvim.helper.Arg.pure(node), source, metadata);
+		node = nvim.helper.Arg.pure(node);
+		final result = __get_range(node, source, metadata);
 		return result;
 	}
 	/**
@@ -363,7 +365,9 @@ extern class Treesitter {
 	**/
 	@:luaDotMethod
 	inline function is_ancestor(dest:nvim.type.TSNode, source:nvim.type.TSNode):Bool {
-		final result = __is_ancestor(nvim.helper.Arg.pure(dest), nvim.helper.Arg.pure(source));
+		dest = nvim.helper.Arg.pure(dest);
+		source = nvim.helper.Arg.pure(source);
+		final result = __is_ancestor(dest, source);
 		return result;
 	}
 	/**
@@ -409,7 +413,8 @@ extern class Treesitter {
 	**/
 	@:luaDotMethod
 	inline function is_in_node_range(node:nvim.type.TSNode, line:Int, col:Int):Bool {
-		final result = __is_in_node_range(nvim.helper.Arg.pure(node), line, col);
+		node = nvim.helper.Arg.pure(node);
+		final result = __is_in_node_range(node, line, col);
 		return result;
 	}
 	/**
@@ -475,7 +480,9 @@ extern class Treesitter {
 	**/
 	@:luaDotMethod
 	inline function node_contains(node:nvim.type.TSNode, range:lua.Table.AnyTable):Bool {
-		final result = __node_contains(nvim.helper.Arg.pure(node), nvim.helper.Arg.pure(range));
+		node = nvim.helper.Arg.pure(node);
+		range = nvim.helper.Arg.pure(range);
+		final result = __node_contains(node, range);
 		return result;
 	}
 	/**

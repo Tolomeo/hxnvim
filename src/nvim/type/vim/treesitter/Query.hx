@@ -200,7 +200,9 @@ package nvim.type.vim.treesitter;
 		        capture id, capture node, metadata, match, tree
 	**/
 	inline function iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, nvim.helper.Nothing> {
-		final result = __iter_captures(nvim.helper.Arg.pure(node), source, start, stop, nvim.helper.Arg.pure(opts));
+		node = nvim.helper.Arg.pure(node);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __iter_captures(node, source, start, stop, opts);
 		return result;
 	}
 	/**
@@ -308,7 +310,9 @@ package nvim.type.vim.treesitter;
 		@*return* — : pattern id, match, metadata, tree
 	**/
 	inline function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, Array<nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing> {
-		final result = __iter_matches(nvim.helper.Arg.pure(node), source, start, stop, nvim.helper.Arg.pure(opts));
+		node = nvim.helper.Arg.pure(node);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __iter_matches(node, source, start, stop, opts);
 		return result;
 	}
 }

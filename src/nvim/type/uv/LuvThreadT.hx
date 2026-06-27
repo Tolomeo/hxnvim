@@ -36,7 +36,8 @@ package nvim.type.uv;
 		 equivalent to the `__eq` metamethod.
 	**/
 	inline function equal(other_thread:nvim.type.uv.LuvThreadT):Bool {
-		final result = __equal(nvim.helper.Arg.pure(other_thread));
+		other_thread = nvim.helper.Arg.pure(other_thread);
+		final result = __equal(other_thread);
 		return result;
 	}
 	/**

@@ -85,7 +85,8 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	inline function dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_ {
-		final result = __dir(path, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __dir(path, opts);
 		return result;
 	}
 	/**
@@ -205,7 +206,8 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	inline function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):Array<String> {
-		final result = __find(names, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __find(names, opts);
 		return result;
 	}
 	/**
@@ -313,7 +315,8 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	inline function normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String {
-		final result = __normalize(path, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __normalize(path, opts);
 		return result;
 	}
 	/**
@@ -446,7 +449,8 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	inline function rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic {
-		final result = __rm(path, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __rm(path, opts);
 		return result;
 	}
 	/**

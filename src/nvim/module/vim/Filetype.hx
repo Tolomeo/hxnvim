@@ -192,7 +192,8 @@ extern class Filetype {
 	**/
 	@:luaDotMethod
 	inline function add(filetypes:nvim.type.vim.filetype.add.Filetypes):Dynamic {
-		final result = __add(nvim.helper.Arg.pure(filetypes));
+		filetypes = nvim.helper.Arg.pure(filetypes);
+		final result = __add(filetypes);
 		return result;
 	}
 	/**
@@ -330,7 +331,8 @@ extern class Filetype {
 	**/
 	@:luaDotMethod
 	inline function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>> {
-		final result = __match(nvim.helper.Arg.pure(args));
+		args = nvim.helper.Arg.pure(args);
+		final result = __match(args);
 		return new nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>>(result._0, result._1);
 	}
 }

@@ -119,7 +119,8 @@ package nvim.type.vim.lsp;
 	**/
 	@:luaDotMethod
 	inline function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
-		final result = __create(nvim.helper.Arg.pure(config));
+		config = nvim.helper.Arg.pure(config);
+		final result = __create(config);
 		return result;
 	}
 	/**
@@ -430,7 +431,10 @@ package nvim.type.vim.lsp;
 	**/
 	inline function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
 	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic {
-		final result = __exec_cmd(nvim.helper.Arg.pure(command), nvim.helper.Arg.pure(context), nvim.helper.Arg.pure(handler));
+		command = nvim.helper.Arg.pure(command);
+		context = nvim.helper.Arg.pure(context);
+		handler = nvim.helper.Arg.pure(handler);
+		final result = __exec_cmd(command, context, handler);
 		return result;
 	}
 	/**
@@ -557,7 +561,9 @@ package nvim.type.vim.lsp;
 		 @see |vim.lsp.buf_request_all()|
 	**/
 	inline function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
-		final result = __request(method, nvim.helper.Arg.pure(params), nvim.helper.Arg.pure(handler), bufnr);
+		params = nvim.helper.Arg.pure(params);
+		handler = nvim.helper.Arg.pure(handler);
+		final result = __request(method, params, handler, bufnr);
 		return new nvim.helper.Multireturn.Return2<Bool, Null<Int>>(result._0, result._1);
 	}
 	/**
@@ -629,7 +635,8 @@ package nvim.type.vim.lsp;
 	**/
 	inline function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn.Return2<Null<{ @:optional
 	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>> {
-		final result = __request_sync(method, nvim.helper.Arg.pure(params), timeout_ms, bufnr);
+		params = nvim.helper.Arg.pure(params);
+		final result = __request_sync(method, params, timeout_ms, bufnr);
 		return new nvim.helper.Multireturn.Return2<Null<{ ?err:Null<nvim.type.lsp.ResponseError>, result:Any }>, Null<String>>(result._0, result._1);
 	}
 	/**

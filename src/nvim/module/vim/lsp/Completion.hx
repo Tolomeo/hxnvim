@@ -64,7 +64,8 @@ extern class Completion {
 	**/
 	@:luaDotMethod
 	inline function enable(enable:Bool, client_id:Int, bufnr:Int, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic {
-		final result = __enable(enable, client_id, bufnr, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __enable(enable, client_id, bufnr, opts);
 		return result;
 	}
 	/**
@@ -118,7 +119,8 @@ extern class Completion {
 	**/
 	@:luaDotMethod
 	inline function get(?opts:nvim.type.vim.lsp.completion.get.Opts):Dynamic {
-		final result = __get(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __get(opts);
 		return result;
 	}
 }

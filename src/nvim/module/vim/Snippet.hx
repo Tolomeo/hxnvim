@@ -38,7 +38,8 @@ extern class Snippet {
 	**/
 	@:luaDotMethod
 	inline function active(?filter:nvim.type.vim.snippet.ActiveFilter):Bool {
-		final result = __active(nvim.helper.Arg.pure(filter));
+		filter = nvim.helper.Arg.pure(filter);
+		final result = __active(filter);
 		return result;
 	}
 	/**
@@ -119,7 +120,8 @@ extern class Snippet {
 	**/
 	@:luaDotMethod
 	inline function jump(direction:nvim.type.vim.snippet.Direction):Dynamic {
-		final result = __jump(nvim.helper.Arg.pure(direction));
+		direction = nvim.helper.Arg.pure(direction);
+		final result = __jump(direction);
 		return result;
 	}
 	/**

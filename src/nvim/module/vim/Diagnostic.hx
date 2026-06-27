@@ -113,7 +113,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function count(?bufnr:Int, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table.AnyTable {
-		final result = __count(bufnr, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __count(bufnr, opts);
 		return result;
 	}
 	/**
@@ -204,7 +205,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):Array<nvim.type.vim.Diagnostic> {
-		final result = __get(bufnr, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __get(bufnr, opts);
 		return result;
 	}
 	/**
@@ -266,7 +268,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function get_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
-		final result = __get_next(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __get_next(opts);
 		return result;
 	}
 	/**
@@ -313,7 +316,8 @@ extern class Diagnostic {
 	@:luaDotMethod
 	@:deprecated
 	inline function get_next_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool> {
-		final result = __get_next_pos(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __get_next_pos(opts);
 		return result;
 	}
 	/**
@@ -345,7 +349,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function get_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
-		final result = __get_prev(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __get_prev(opts);
 		return result;
 	}
 	/**
@@ -392,7 +397,8 @@ extern class Diagnostic {
 	@:luaDotMethod
 	@:deprecated
 	inline function get_prev_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool> {
-		final result = __get_prev_pos(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __get_prev_pos(opts);
 		return result;
 	}
 	/**
@@ -419,7 +425,8 @@ extern class Diagnostic {
 	@:luaDotMethod
 	@:deprecated
 	inline function goto_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic {
-		final result = __goto_next(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __goto_next(opts);
 		return result;
 	}
 	/**
@@ -446,7 +453,8 @@ extern class Diagnostic {
 	@:luaDotMethod
 	@:deprecated
 	inline function goto_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic {
-		final result = __goto_prev(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __goto_prev(opts);
 		return result;
 	}
 	/**
@@ -527,7 +535,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function jump(opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
-		final result = __jump(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __jump(opts);
 		return result;
 	}
 	/**
@@ -623,7 +632,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
-		final result = __match(str, pat, groups, nvim.helper.Arg.pure(severity_map), defaults);
+		severity_map = nvim.helper.Arg.pure(severity_map);
+		final result = __match(str, pat, groups, severity_map, defaults);
 		return result;
 	}
 	/**
@@ -715,7 +725,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function set(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
-		final result = __set(namespace, bufnr, diagnostics, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __set(namespace, bufnr, diagnostics, opts);
 		return result;
 	}
 	/**
@@ -741,7 +752,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function setloclist(?opts:nvim.type.vim.diagnostic.setloclist.Opts):Dynamic {
-		final result = __setloclist(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __setloclist(opts);
 		return result;
 	}
 	/**
@@ -767,7 +779,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function setqflist(?opts:nvim.type.vim.diagnostic.setqflist.Opts):Dynamic {
-		final result = __setqflist(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __setqflist(opts);
 		return result;
 	}
 	/**
@@ -829,7 +842,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<Array<nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
-		final result = __show(namespace, bufnr, diagnostics, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __show(namespace, bufnr, diagnostics, opts);
 		return result;
 	}
 	/**

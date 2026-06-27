@@ -85,7 +85,9 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		final result = __on_diagnostic(error, nvim.helper.Arg.pure(result), nvim.helper.Arg.pure(ctx));
+		result = nvim.helper.Arg.pure(result);
+		ctx = nvim.helper.Arg.pure(ctx);
+		final result = __on_diagnostic(error, result, ctx);
 		return result;
 	}
 	/**
@@ -115,7 +117,9 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline function on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		final result = __on_publish_diagnostics(_, nvim.helper.Arg.pure(params), nvim.helper.Arg.pure(ctx));
+		params = nvim.helper.Arg.pure(params);
+		ctx = nvim.helper.Arg.pure(ctx);
+		final result = __on_publish_diagnostics(_, params, ctx);
 		return result;
 	}
 	/**
@@ -153,7 +157,8 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	inline private function reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic {
-		final result = __reset(client_id, nvim.helper.Arg.pure(buffer_client_map));
+		buffer_client_map = nvim.helper.Arg.pure(buffer_client_map);
+		final result = __reset(client_id, buffer_client_map);
 		return result;
 	}
 }

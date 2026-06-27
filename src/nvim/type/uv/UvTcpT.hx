@@ -246,7 +246,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function accept(client_stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __accept(nvim.helper.Arg.pure(client_stream));
+		client_stream = nvim.helper.Arg.pure(client_stream);
+		final result = __accept(client_stream);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -482,7 +483,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function bind(addr:String, port:Int, ?flags:nvim.type.uv.tcp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __bind(addr, port, nvim.helper.Arg.pure(flags));
+		flags = nvim.helper.Arg.pure(flags);
+		final result = __bind(addr, port, flags);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -937,7 +939,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function connect(host:String, port:Int, callback:nvim.type.uv.tcp_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __connect(host, port, nvim.helper.Arg.pure(callback));
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __connect(host, port, callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -2694,7 +2697,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function listen(backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __listen(backlog, nvim.helper.Arg.pure(callback));
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __listen(backlog, callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -3360,7 +3364,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function read_start(callback:nvim.type.uv.read_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __read_start(nvim.helper.Arg.pure(callback));
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __read_start(callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -4562,7 +4567,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function shutdown(?callback:nvim.type.uv.shutdown.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __shutdown(nvim.helper.Arg.pure(callback));
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __shutdown(callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -4994,7 +5000,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function try_write(data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __try_write(nvim.helper.Arg.pure(data));
+		data = nvim.helper.Arg.pure(data);
+		final result = __try_write(data);
 		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -5202,7 +5209,9 @@ package nvim.type.uv;
 		```
 	**/
 	inline function try_write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __try_write2(nvim.helper.Arg.pure(data), nvim.helper.Arg.pure(send_handle));
+		data = nvim.helper.Arg.pure(data);
+		send_handle = nvim.helper.Arg.pure(send_handle);
+		final result = __try_write2(data, send_handle);
 		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -5427,7 +5436,9 @@ package nvim.type.uv;
 		```
 	**/
 	inline function write(data:nvim.type.uv.Buffer, ?callback:nvim.type.uv.write.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __write(nvim.helper.Arg.pure(data), nvim.helper.Arg.pure(callback));
+		data = nvim.helper.Arg.pure(data);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __write(data, callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -5641,7 +5652,10 @@ package nvim.type.uv;
 		```
 	**/
 	inline function write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.write2.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __write2(nvim.helper.Arg.pure(data), nvim.helper.Arg.pure(send_handle), nvim.helper.Arg.pure(callback));
+		data = nvim.helper.Arg.pure(data);
+		send_handle = nvim.helper.Arg.pure(send_handle);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __write2(data, send_handle, callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**

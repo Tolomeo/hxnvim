@@ -1153,7 +1153,8 @@ package nvim.type.vim.lsp;
 	**/
 	@:luaDotMethod
 	inline function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities> {
-		final result = __resolve_capabilities(nvim.helper.Arg.pure(server_capabilities));
+		server_capabilities = nvim.helper.Arg.pure(server_capabilities);
+		final result = __resolve_capabilities(server_capabilities);
 		return result;
 	}
 }

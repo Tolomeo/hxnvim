@@ -44,7 +44,8 @@ extern class Re {
 	**/
 	@:luaDotMethod
 	inline function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern {
-		final result = __compile(string, nvim.helper.Arg.pure(defs));
+		defs = nvim.helper.Arg.pure(defs);
+		final result = __compile(string, defs);
 		return result;
 	}
 	/**

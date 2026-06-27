@@ -46,7 +46,8 @@ extern class Query {
 	**/
 	@:luaDotMethod
 	inline function add_directive(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
-		final result = __add_directive(name, handler, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __add_directive(name, handler, opts);
 		return result;
 	}
 	/**
@@ -80,7 +81,8 @@ extern class Query {
 	**/
 	@:luaDotMethod
 	inline function add_predicate(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
-		final result = __add_predicate(name, handler, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __add_predicate(name, handler, opts);
 		return result;
 	}
 	/**
@@ -187,7 +189,8 @@ extern class Query {
 	**/
 	@:luaDotMethod
 	inline function lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic {
-		final result = __lint(buf, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __lint(buf, opts);
 		return result;
 	}
 	/**

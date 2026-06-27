@@ -77,7 +77,8 @@ extern class Loader {
 	**/
 	@:luaDotMethod
 	inline function find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):Array<nvim.type.vim.loader.ModuleInfo> {
-		final result = __find(modname, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __find(modname, opts);
 		return result;
 	}
 	/**

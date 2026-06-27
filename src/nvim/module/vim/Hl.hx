@@ -138,7 +138,8 @@ extern class Hl {
 	**/
 	@:luaDotMethod
 	inline function range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<Array<Int>, String>, finish:haxe.extern.EitherType<Array<Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>> {
-		final result = __range(bufnr, ns, higroup, start, finish, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __range(bufnr, ns, higroup, start, finish, opts);
 		return new nvim.helper.Multireturn.Return2<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>>(result._0, result._1);
 	}
 }

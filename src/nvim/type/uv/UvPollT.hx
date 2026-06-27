@@ -1760,7 +1760,9 @@ package nvim.type.uv;
 		```
 	**/
 	inline function start(events:nvim.type.uv.poll.Eventspec, callback:nvim.type.uv.poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __start(nvim.helper.Arg.pure(events), nvim.helper.Arg.pure(callback));
+		events = nvim.helper.Arg.pure(events);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __start(events, callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**

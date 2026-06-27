@@ -59,7 +59,8 @@ package nvim.type.vim.treesitter;
 		```
 	**/
 	inline function _subtract_time(thread_state:nvim.type.ParserThreadState, time:Int):Dynamic {
-		final result = ___subtract_time(nvim.helper.Arg.pure(thread_state), time);
+		thread_state = nvim.helper.Arg.pure(thread_state);
+		final result = ___subtract_time(thread_state, time);
 		return result;
 	}
 	/**
@@ -96,7 +97,8 @@ package nvim.type.vim.treesitter;
 		 Determines whether {range} is contained in the |LanguageTree|.
 	**/
 	inline function contains(range:nvim.type.Range4):Bool {
-		final result = __contains(nvim.helper.Arg.pure(range));
+		range = nvim.helper.Arg.pure(range);
+		final result = __contains(range);
 		return result;
 	}
 	/**
@@ -208,7 +210,8 @@ package nvim.type.vim.treesitter;
 		@*return* `tree` — Managing {range}
 	**/
 	inline function language_for_range(range:nvim.type.Range4):nvim.type.vim.treesitter.LanguageTree {
-		final result = __language_for_range(nvim.helper.Arg.pure(range));
+		range = nvim.helper.Arg.pure(range);
+		final result = __language_for_range(range);
 		return result;
 	}
 	/**
@@ -234,7 +237,9 @@ package nvim.type.vim.treesitter;
 		 Gets the smallest named node that contains {range}.
 	**/
 	inline function named_node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode> {
-		final result = __named_node_for_range(nvim.helper.Arg.pure(range), nvim.helper.Arg.pure(opts));
+		range = nvim.helper.Arg.pure(range);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __named_node_for_range(range, opts);
 		return result;
 	}
 	/**
@@ -260,7 +265,9 @@ package nvim.type.vim.treesitter;
 		 Gets the smallest node that contains {range}.
 	**/
 	inline function node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode> {
-		final result = __node_for_range(nvim.helper.Arg.pure(range), nvim.helper.Arg.pure(opts));
+		range = nvim.helper.Arg.pure(range);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __node_for_range(range, opts);
 		return result;
 	}
 	/**
@@ -358,7 +365,8 @@ package nvim.type.vim.treesitter;
 		                           also inherit the callbacks.
 	**/
 	inline function register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic {
-		final result = __register_cbs(nvim.helper.Arg.pure(cbs), recursive);
+		cbs = nvim.helper.Arg.pure(cbs);
+		final result = __register_cbs(cbs, recursive);
 		return result;
 	}
 	/**
@@ -395,7 +403,9 @@ package nvim.type.vim.treesitter;
 		 Gets the tree that contains {range}.
 	**/
 	inline function tree_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSTree> {
-		final result = __tree_for_range(nvim.helper.Arg.pure(range), nvim.helper.Arg.pure(opts));
+		range = nvim.helper.Arg.pure(range);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __tree_for_range(range, opts);
 		return result;
 	}
 	/**

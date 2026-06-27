@@ -73,7 +73,10 @@ extern class Handlers {
 	@:luaDotMethod
 	@:deprecated
 	inline function hover(_:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.Hover, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic {
-		final result = __hover(_, nvim.helper.Arg.pure(result), nvim.helper.Arg.pure(ctx), nvim.helper.Arg.pure(config));
+		result = nvim.helper.Arg.pure(result);
+		ctx = nvim.helper.Arg.pure(ctx);
+		config = nvim.helper.Arg.pure(config);
+		final result = __hover(_, result, ctx, config);
 		return result;
 	}
 	/**
@@ -156,7 +159,9 @@ extern class Handlers {
 	@:luaDotMethod
 	@:deprecated
 	inline function signature_help(_:Null<nvim.type.lsp.ResponseError>, result:Null<nvim.type.lsp.SignatureHelp>, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic {
-		final result = __signature_help(_, result, nvim.helper.Arg.pure(ctx), nvim.helper.Arg.pure(config));
+		ctx = nvim.helper.Arg.pure(ctx);
+		config = nvim.helper.Arg.pure(config);
+		final result = __signature_help(_, result, ctx, config);
 		return result;
 	}
 }

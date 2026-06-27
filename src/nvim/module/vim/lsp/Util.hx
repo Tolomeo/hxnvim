@@ -57,7 +57,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Int, ?position_encoding:String):Dynamic {
-		final result = __apply_text_document_edit(nvim.helper.Arg.pure(text_document_edit), index, position_encoding);
+		text_document_edit = nvim.helper.Arg.pure(text_document_edit);
+		final result = __apply_text_document_edit(text_document_edit, index, position_encoding);
 		return result;
 	}
 	/**
@@ -127,7 +128,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic {
-		final result = __apply_workspace_edit(nvim.helper.Arg.pure(workspace_edit), position_encoding);
+		workspace_edit = nvim.helper.Arg.pure(workspace_edit);
+		final result = __apply_workspace_edit(workspace_edit, position_encoding);
 		return result;
 	}
 	/**
@@ -271,7 +273,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>> {
-		final result = __convert_signature_help_to_markdown_lines(nvim.helper.Arg.pure(signature_help), ft, triggers);
+		signature_help = nvim.helper.Arg.pure(signature_help);
+		final result = __convert_signature_help_to_markdown_lines(signature_help, ft, triggers);
 		return new nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>>(result._0, result._1);
 	}
 	/**
@@ -382,7 +385,8 @@ extern class Util {
 	@:luaDotMethod
 	@:deprecated
 	inline function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>> {
-		final result = __lookup_section(nvim.helper.Arg.pure(settings), section);
+		settings = nvim.helper.Arg.pure(settings);
+		final result = __lookup_section(settings, section);
 		return result;
 	}
 	/**
@@ -420,7 +424,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function make_floating_popup_options(width:Int, height:Int, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig {
-		final result = __make_floating_popup_options(width, height, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __make_floating_popup_options(width, height, opts);
 		return result;
 	}
 	/**
@@ -597,7 +602,9 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Int, Int> {
-		final result = __open_floating_preview(nvim.helper.Arg.pure(contents), syntax, nvim.helper.Arg.pure(opts));
+		contents = nvim.helper.Arg.pure(contents);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __open_floating_preview(contents, syntax, opts);
 		return new nvim.helper.Multireturn.Return2<Int, Int>(result._0, result._1);
 	}
 	/**
@@ -643,7 +650,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
-		final result = __preview_location(location, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __preview_location(location, opts);
 		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
 	}
 	/**
@@ -685,7 +693,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function rename(old_fname:String, new_fname:String, ?opts:nvim.type.vim.lsp.util.rename.Opts):Dynamic {
-		final result = __rename(old_fname, new_fname, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __rename(old_fname, new_fname, opts);
 		return result;
 	}
 	/**
@@ -756,7 +765,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool {
-		final result = __show_document(location, position_encoding, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __show_document(location, position_encoding, opts);
 		return result;
 	}
 	/**
@@ -824,7 +834,8 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
-		final result = __stylize_markdown(bufnr, contents, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __stylize_markdown(bufnr, contents, opts);
 		return result;
 	}
 	/**
@@ -888,7 +899,8 @@ extern class Util {
 	@:luaDotMethod
 	@:deprecated
 	inline function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable {
-		final result = __trim_empty_lines(nvim.helper.Arg.pure(lines));
+		lines = nvim.helper.Arg.pure(lines);
+		final result = __trim_empty_lines(lines);
 		return result;
 	}
 	/**

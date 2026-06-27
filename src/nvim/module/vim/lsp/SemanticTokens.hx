@@ -102,7 +102,9 @@ extern class SemanticTokens {
 	**/
 	@:luaDotMethod
 	inline function highlight_token(token:lua.Table.AnyTable, bufnr:Int, client_id:Int, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic {
-		final result = __highlight_token(nvim.helper.Arg.pure(token), bufnr, client_id, hl_group, nvim.helper.Arg.pure(opts));
+		token = nvim.helper.Arg.pure(token);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __highlight_token(token, bufnr, client_id, hl_group, opts);
 		return result;
 	}
 	/**
@@ -168,7 +170,8 @@ extern class SemanticTokens {
 	**/
 	@:luaDotMethod
 	inline function start(bufnr:Int, client_id:Int, ?opts:lua.Table.AnyTable):Dynamic {
-		final result = __start(bufnr, client_id, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __start(bufnr, client_id, opts);
 		return result;
 	}
 	/**

@@ -133,7 +133,8 @@ extern class Ui {
 	@:luaDotMethod
 	inline function open(path:String, ?opt:{ @:optional
 	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
-		final result = __open(path, nvim.helper.Arg.pure(opt));
+		opt = nvim.helper.Arg.pure(opt);
+		final result = __open(path, opt);
 		return new nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>>(result._0, result._1);
 	}
 	/**
@@ -229,7 +230,8 @@ extern class Ui {
 	**/
 	@:luaDotMethod
 	inline function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
-		final result = __select(items, nvim.helper.Arg.pure(opts), on_choice);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __select(items, opts, on_choice);
 		return result;
 	}
 }

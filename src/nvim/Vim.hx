@@ -71,7 +71,8 @@ package nvim;
 		 - bufnr: (number) buffer id in floating window
 	**/
 	inline static function nvim__complete_set(index:Int, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any> {
-		final result = __nvim__complete_set(index, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim__complete_set(index, opts);
 		return result;
 	}
 	/**
@@ -120,7 +121,8 @@ package nvim;
 		@*return* — list of absolute paths to the found files
 	**/
 	inline static function nvim__get_runtime(pat:Array<Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):Array<String> {
-		final result = __nvim__get_runtime(pat, all, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim__get_runtime(pat, all, opts);
 		return result;
 	}
 	/**
@@ -196,7 +198,8 @@ package nvim;
 		@*return* — its argument.
 	**/
 	inline static function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any> {
-		final result = __nvim__id_dict(nvim.helper.Arg.pure(dct));
+		dct = nvim.helper.Arg.pure(dct);
+		final result = __nvim__id_dict(dct);
 		return result;
 	}
 	/**
@@ -293,7 +296,8 @@ package nvim;
 		 - wins: a list of windows to be scoped in
 	**/
 	inline static function nvim__ns_set(ns_id:Int, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic {
-		final result = __nvim__ns_set(ns_id, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim__ns_set(ns_id, opts);
 		return result;
 	}
 	/**
@@ -369,7 +373,8 @@ package nvim;
 		 - tabline: Redraw the 'tabline'.
 	**/
 	inline static function nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic {
-		final result = __nvim__redraw(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim__redraw(opts);
 		return result;
 	}
 	/**
@@ -590,7 +595,8 @@ package nvim;
 		See: ~vim.api.nvim_buf_detach~
 	**/
 	inline static function nvim_buf_attach(buffer:Int, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool {
-		final result = __nvim_buf_attach(buffer, send_buffer, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_attach(buffer, send_buffer, opts);
 		return result;
 	}
 	/**
@@ -682,7 +688,8 @@ package nvim;
 		See: [vim.api.nvim_create_user_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1026#9)
 	**/
 	inline static function nvim_buf_create_user_command(buffer:Int, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
-		final result = __nvim_buf_create_user_command(buffer, name, command, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_create_user_command(buffer, name, command, opts);
 		return result;
 	}
 	/**
@@ -810,7 +817,8 @@ package nvim;
 		 - unload: Unloaded only, do not delete. See `:bunload`
 	**/
 	inline static function nvim_buf_delete(buffer:Int, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic {
-		final result = __nvim_buf_delete(buffer, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_delete(buffer, opts);
 		return result;
 	}
 	/**
@@ -863,7 +871,8 @@ package nvim;
 		@*return* — Map of maps describing commands.
 	**/
 	inline static function nvim_buf_get_commands(buffer:Int, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
-		final result = __nvim_buf_get_commands(buffer, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_get_commands(buffer, opts);
 		return result;
 	}
 	/**
@@ -919,7 +928,8 @@ package nvim;
 		 absent
 	**/
 	inline static function nvim_buf_get_extmark_by_id(buffer:Int, ns_id:Int, id:Int, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById {
-		final result = __nvim_buf_get_extmark_by_id(buffer, ns_id, id, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_get_extmark_by_id(buffer, ns_id, id, opts);
 		return result;
 	}
 	/**
@@ -1073,7 +1083,8 @@ package nvim;
 		@*return* — List of `[extmark_id, row, col]` tuples in "traversal order".
 	**/
 	inline static function nvim_buf_get_extmarks(buffer:Int, ns_id:Int, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):Array<nvim.type.vim.api.keyset.GetExtmarkItem> {
-		final result = __nvim_buf_get_extmarks(buffer, ns_id, start, end_, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_get_extmarks(buffer, ns_id, start, end_, opts);
 		return result;
 	}
 	/**
@@ -1269,7 +1280,8 @@ package nvim;
 		@*return* — Array of lines, or empty array for unloaded buffer.
 	**/
 	inline static function nvim_buf_get_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, opts:nvim.type.vim.api.keyset.Empty):Array<String> {
-		final result = __nvim_buf_get_text(buffer, start_row, start_col, end_row, end_col, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_get_text(buffer, start_row, start_col, end_row, end_col, opts);
 		return result;
 	}
 	/**
@@ -1665,7 +1677,8 @@ package nvim;
 		@*return* — Id of the created/updated extmark
 	**/
 	inline static function nvim_buf_set_extmark(buffer:Int, ns_id:Int, line:Int, col:Int, opts:nvim.type.vim.api.keyset.SetExtmark):Int {
-		final result = __nvim_buf_set_extmark(buffer, ns_id, line, col, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_set_extmark(buffer, ns_id, line, col, opts);
 		return result;
 	}
 	/**
@@ -1699,7 +1712,8 @@ package nvim;
 		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
 	**/
 	inline static function nvim_buf_set_keymap(buffer:Int, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
-		final result = __nvim_buf_set_keymap(buffer, mode, lhs, rhs, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts);
 		return result;
 	}
 	/**
@@ -1804,7 +1818,8 @@ package nvim;
 		  * [vim.api.nvim_buf_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#457#9)
 	**/
 	inline static function nvim_buf_set_mark(buffer:Int, name:String, line:Int, col:Int, opts:nvim.type.vim.api.keyset.Empty):Bool {
-		final result = __nvim_buf_set_mark(buffer, name, line, col, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_set_mark(buffer, name, line, col, opts);
 		return result;
 	}
 	/**
@@ -1898,7 +1913,8 @@ package nvim;
 	**/
 	@:deprecated
 	inline static function nvim_buf_set_virtual_text(buffer:Int, src_id:Int, line:Int, chunks:Array<Any>, opts:nvim.type.vim.api.keyset.Empty):Int {
-		final result = __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, opts);
 		return result;
 	}
 	/**
@@ -2024,7 +2040,8 @@ package nvim;
 		     - NOTE: If not passed, will only delete autocmds *not* in any group.
 	**/
 	inline static function nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic {
-		final result = __nvim_clear_autocmds(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_clear_autocmds(opts);
 		return result;
 	}
 	/**
@@ -2104,7 +2121,9 @@ package nvim;
 		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
 	**/
 	inline static function nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String {
-		final result = __nvim_cmd(nvim.helper.Arg.pure(cmd), nvim.helper.Arg.pure(opts));
+		cmd = nvim.helper.Arg.pure(cmd);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_cmd(cmd, opts);
 		return result;
 	}
 	/**
@@ -2197,7 +2216,8 @@ package nvim;
 		@*return* — Integer id of the created group.
 	**/
 	inline static function nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Int {
-		final result = __nvim_create_augroup(name, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_create_augroup(name, opts);
 		return result;
 	}
 	/**
@@ -2345,7 +2365,8 @@ package nvim;
 		See: [vim.api.nvim_del_autocmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1050#9)
 	**/
 	inline static function nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Int {
-		final result = __nvim_create_autocmd(event, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_create_autocmd(event, opts);
 		return result;
 	}
 	/**
@@ -2499,7 +2520,8 @@ package nvim;
 		   - preview: (function) Preview callback for 'inccommand' `:command-preview`
 	**/
 	inline static function nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
-		final result = __nvim_create_user_command(name, command, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_create_user_command(name, command, opts);
 		return result;
 	}
 	/**
@@ -2676,7 +2698,8 @@ package nvim;
 		   will write the message to the "log" file instead of standard output.
 	**/
 	inline static function nvim_echo(chunks:Array<Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
-		final result = __nvim_echo(chunks, history, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_echo(chunks, history, opts);
 		return result;
 	}
 	/**
@@ -2767,7 +2790,8 @@ package nvim;
 		     - groups: (array) Names of stacked highlight groups (highest priority last).
 	**/
 	inline static function nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any> {
-		final result = __nvim_eval_statusline(str, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_eval_statusline(str, opts);
 		return result;
 	}
 	/**
@@ -2851,7 +2875,8 @@ package nvim;
 		  * [vim.api.nvim_cmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#868#9)
 	**/
 	inline static function nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any> {
-		final result = __nvim_exec2(src, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_exec2(src, opts);
 		return result;
 	}
 	/**
@@ -2909,7 +2934,8 @@ package nvim;
 		 `nvim_create_autocmd()` for details.
 	**/
 	inline static function nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic {
-		final result = __nvim_exec_autocmds(event, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_exec_autocmds(event, opts);
 		return result;
 	}
 	/**
@@ -3082,7 +3108,8 @@ package nvim;
 		   If the autocommand is buffer local |autocmd-buffer-local|:
 	**/
 	inline static function nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):Array<nvim.type.vim.api.keyset.get_autocmds.Ret> {
-		final result = __nvim_get_autocmds(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_autocmds(opts);
 		return result;
 	}
 	/**
@@ -3204,7 +3231,8 @@ package nvim;
 		See: [vim.api.nvim_get_all_options_info](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1219#9)
 	**/
 	inline static function nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
-		final result = __nvim_get_commands(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_commands(opts);
 		return result;
 	}
 	/**
@@ -3244,7 +3272,8 @@ package nvim;
 		@*return* — map of global |context|.
 	**/
 	inline static function nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any> {
-		final result = __nvim_get_context(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_context(opts);
 		return result;
 	}
 	/**
@@ -3362,7 +3391,8 @@ package nvim;
 		 or only a single highlight definition map if requested by name or id.
 	**/
 	inline static function nvim_get_hl(ns_id:Int, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo {
-		final result = __nvim_get_hl(ns_id, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_hl(ns_id, opts);
 		return result;
 	}
 	/**
@@ -3443,7 +3473,8 @@ package nvim;
 		@*return* — Namespace id, or -1
 	**/
 	inline static function nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Int {
-		final result = __nvim_get_hl_ns(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_hl_ns(opts);
 		return result;
 	}
 	/**
@@ -3522,7 +3553,8 @@ package nvim;
 		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
 	**/
 	inline static function nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark {
-		final result = __nvim_get_mark(name, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_mark(name, opts);
 		return result;
 	}
 	/**
@@ -3659,7 +3691,8 @@ package nvim;
 		@*return* — Option Information
 	**/
 	inline static function nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo {
-		final result = __nvim_get_option_info2(name, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_option_info2(name, opts);
 		return result;
 	}
 	/**
@@ -3723,7 +3756,8 @@ package nvim;
 		@*return* — Option value
 	**/
 	inline static function nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any {
-		final result = __nvim_get_option_value(name, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_get_option_value(name, opts);
 		return result;
 	}
 	/**
@@ -4001,7 +4035,8 @@ package nvim;
 		@*param* `dict` — `Context` map.
 	**/
 	inline static function nvim_load_context(dict:lua.Table<String, Any>):Any {
-		final result = __nvim_load_context(nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __nvim_load_context(dict);
 		return result;
 	}
 	/**
@@ -4020,7 +4055,8 @@ package nvim;
 	**/
 	@:deprecated
 	inline static function nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any {
-		final result = __nvim_notify(msg, log_level, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_notify(msg, log_level, opts);
 		return result;
 	}
 	/**
@@ -4118,7 +4154,8 @@ package nvim;
 		@*return* — Channel id, or 0 on error
 	**/
 	inline static function nvim_open_term(buffer:Int, opts:nvim.type.vim.api.keyset.OpenTerm):Int {
-		final result = __nvim_open_term(buffer, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_open_term(buffer, opts);
 		return result;
 	}
 	/**
@@ -4484,7 +4521,8 @@ package nvim;
 		@*return* — |window-ID|, or 0 on error
 	**/
 	inline static function nvim_open_win(buffer:Int, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Int {
-		final result = __nvim_open_win(buffer, enter, nvim.helper.Arg.pure(config));
+		config = nvim.helper.Arg.pure(config);
+		final result = __nvim_open_win(buffer, enter, config);
 		return result;
 	}
 	/**
@@ -4633,7 +4671,8 @@ package nvim;
 		       - "botright": |:botright|.
 	**/
 	inline static function nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd {
-		final result = __nvim_parse_cmd(str, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_parse_cmd(str, opts);
 		return result;
 	}
 	/**
@@ -4879,7 +4918,8 @@ package nvim;
 		@*param* `opts` — Optional parameters. Reserved for future use.
 	**/
 	inline static function nvim_select_popupmenu_item(item:Int, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic {
-		final result = __nvim_select_popupmenu_item(item, insert, finish, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_select_popupmenu_item(item, insert, finish, opts);
 		return result;
 	}
 	/**
@@ -5069,7 +5109,8 @@ package nvim;
 		   ```
 	**/
 	inline static function nvim_set_decoration_provider(ns_id:Int, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic {
-		final result = __nvim_set_decoration_provider(ns_id, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_set_decoration_provider(ns_id, opts);
 		return result;
 	}
 	/**
@@ -5193,7 +5234,8 @@ package nvim;
 		 - force: if true force update the highlight group when it exists.
 	**/
 	inline static function nvim_set_hl(ns_id:Int, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic {
-		final result = __nvim_set_hl(ns_id, name, nvim.helper.Arg.pure(val));
+		val = nvim.helper.Arg.pure(val);
+		final result = __nvim_set_hl(ns_id, name, val);
 		return result;
 	}
 	/**
@@ -5318,7 +5360,8 @@ package nvim;
 		   "callback" is equivalent to returning an empty string.
 	**/
 	inline static function nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
-		final result = __nvim_set_keymap(mode, lhs, rhs, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_set_keymap(mode, lhs, rhs, opts);
 		return result;
 	}
 	/**
@@ -5379,7 +5422,8 @@ package nvim;
 		 - buf: Buffer number. Used for setting buffer local option.
 	**/
 	inline static function nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic {
-		final result = __nvim_set_option_value(name, value, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_set_option_value(name, value, opts);
 		return result;
 	}
 	/**
@@ -5847,7 +5891,8 @@ package nvim;
 		See: [vim.api.nvim_open_win](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1848#9)
 	**/
 	inline static function nvim_win_set_config(window:Int, config:nvim.type.vim.api.keyset.WinConfig):Dynamic {
-		final result = __nvim_win_set_config(window, nvim.helper.Arg.pure(config));
+		config = nvim.helper.Arg.pure(config);
+		final result = __nvim_win_set_config(window, config);
 		return result;
 	}
 	/**
@@ -6018,7 +6063,8 @@ package nvim;
 		 - fill: The number of diff filler or virtual lines among them.
 	**/
 	inline static function nvim_win_text_height(window:Int, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any> {
-		final result = __nvim_win_text_height(window, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __nvim_win_text_height(window, opts);
 		return result;
 	}
 }
@@ -7881,7 +7927,8 @@ package nvim;
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
 	inline static function ctxset(context:lua.Table.AnyTable, ?index:Int):Int {
-		final result = __ctxset(nvim.helper.Arg.pure(context), index);
+		context = nvim.helper.Arg.pure(context);
+		final result = __ctxset(context, index);
 		return result;
 	}
 	/**
@@ -8133,7 +8180,8 @@ package nvim;
 		 validation and parsing logic.
 	**/
 	inline static function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any {
-		final result = __dictwatcheradd(nvim.helper.Arg.pure(dict), pattern, callback);
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __dictwatcheradd(dict, pattern, callback);
 		return result;
 	}
 	/**
@@ -8326,7 +8374,8 @@ package nvim;
 		 following digraphs will not be added.
 	**/
 	inline static function digraph_setlist(digraphlist:lua.Table<Int, Array<String>>):Any {
-		final result = __digraph_setlist(nvim.helper.Arg.pure(digraphlist));
+		digraphlist = nvim.helper.Arg.pure(digraphlist);
+		final result = __digraph_setlist(digraphlist);
 		return result;
 	}
 	/**
@@ -8818,7 +8867,8 @@ package nvim;
 		 <
 	**/
 	inline static function expandcmd(string:String, ?options:lua.Table.AnyTable):Any {
-		final result = __expandcmd(string, nvim.helper.Arg.pure(options));
+		options = nvim.helper.Arg.pure(options);
+		final result = __expandcmd(string, options);
 		return result;
 	}
 	/**
@@ -8912,7 +8962,10 @@ package nvim;
 		 Returns {expr1}.  Returns 0 on error.
 	**/
 	inline static function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
-		final result = __extend(nvim.helper.Arg.pure(expr1), nvim.helper.Arg.pure(expr2), nvim.helper.Arg.pure(expr3));
+		expr1 = nvim.helper.Arg.pure(expr1);
+		expr2 = nvim.helper.Arg.pure(expr2);
+		expr3 = nvim.helper.Arg.pure(expr3);
+		final result = __extend(expr1, expr2, expr3);
 		return result;
 	}
 	/**
@@ -8942,7 +8995,10 @@ package nvim;
 		 unchanged.
 	**/
 	inline static function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
-		final result = __extendnew(nvim.helper.Arg.pure(expr1), nvim.helper.Arg.pure(expr2), nvim.helper.Arg.pure(expr3));
+		expr1 = nvim.helper.Arg.pure(expr1);
+		expr2 = nvim.helper.Arg.pure(expr2);
+		expr3 = nvim.helper.Arg.pure(expr3);
+		final result = __extendnew(expr1, expr2, expr3);
 		return result;
 	}
 	/**
@@ -10156,7 +10212,8 @@ package nvim;
 		```
 	**/
 	inline static function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String> {
-		final result = __getchar(expr, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __getchar(expr, opts);
 		return result;
 	}
 	/**
@@ -10274,7 +10331,8 @@ package nvim;
 		```
 	**/
 	inline static function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
-		final result = __getcharstr(expr, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __getcharstr(expr, opts);
 		return result;
 	}
 	/**
@@ -10890,7 +10948,8 @@ package nvim;
 		 <
 	**/
 	inline static function getloclist(nr:Int, ?what:lua.Table.AnyTable):Any {
-		final result = __getloclist(nr, nvim.helper.Arg.pure(what));
+		what = nvim.helper.Arg.pure(what);
+		final result = __getloclist(nr, what);
 		return result;
 	}
 	/**
@@ -11303,7 +11362,8 @@ package nvim;
 		 <
 	**/
 	inline static function getqflist(?what:lua.Table.AnyTable):Any {
-		final result = __getqflist(nvim.helper.Arg.pure(what));
+		what = nvim.helper.Arg.pure(what);
+		final result = __getqflist(what);
 		return result;
 	}
 	/**
@@ -11516,7 +11576,10 @@ package nvim;
 		 <
 	**/
 	inline static function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<String> {
-		final result = __getregion(nvim.helper.Arg.pure(pos1), nvim.helper.Arg.pure(pos2), nvim.helper.Arg.pure(opts));
+		pos1 = nvim.helper.Arg.pure(pos1);
+		pos2 = nvim.helper.Arg.pure(pos2);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __getregion(pos1, pos2, opts);
 		return result;
 	}
 	/**
@@ -11600,7 +11663,10 @@ package nvim;
 		       (default: |FALSE|)
 	**/
 	inline static function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):Array<Array<Array<Int>>> {
-		final result = __getregionpos(nvim.helper.Arg.pure(pos1), nvim.helper.Arg.pure(pos2), nvim.helper.Arg.pure(opts));
+		pos1 = nvim.helper.Arg.pure(pos1);
+		pos2 = nvim.helper.Arg.pure(pos2);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __getregionpos(pos1, pos2, opts);
 		return result;
 	}
 	/**
@@ -11713,7 +11779,8 @@ package nvim;
 		 <
 	**/
 	inline static function getscriptinfo(?opts:lua.Table.AnyTable):Array<nvim.type.vim.fn.getscriptinfo.Ret> {
-		final result = __getscriptinfo(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __getscriptinfo(opts);
 		return result;
 	}
 	/**
@@ -12216,7 +12283,8 @@ package nvim;
 		```
 	**/
 	inline static function has_key(dict:lua.Table.AnyTable, key:String):Float {
-		final result = __has_key(nvim.helper.Arg.pure(dict), key);
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __has_key(dict, key);
 		return result;
 	}
 	/**
@@ -12692,7 +12760,8 @@ package nvim;
 		 <
 	**/
 	inline static function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int {
-		final result = __indexof(object, expr, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __indexof(object, expr, opts);
 		return result;
 	}
 	/**
@@ -13137,7 +13206,8 @@ package nvim;
 		 the index.
 	**/
 	inline static function items(dict:lua.Table.AnyTable):Any {
-		final result = __items(nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __items(dict);
 		return result;
 	}
 	/**
@@ -13391,7 +13461,8 @@ package nvim;
 		 See also |job-control|, |channel|, |msgpack-rpc|.
 	**/
 	inline static function jobstart(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int {
-		final result = __jobstart(cmd, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __jobstart(cmd, opts);
 		return result;
 	}
 	/**
@@ -13528,7 +13599,8 @@ package nvim;
 		 arbitrary order.  Also see |items()| and |values()|.
 	**/
 	inline static function keys(dict:lua.Table.AnyTable):Array<String> {
-		final result = __keys(nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __keys(dict);
 		return result;
 	}
 	/**
@@ -14175,7 +14247,8 @@ package nvim;
 		 <
 	**/
 	inline static function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any {
-		final result = __mapset(mode, abbr, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __mapset(mode, abbr, dict);
 		return result;
 	}
 	/**
@@ -14485,7 +14558,8 @@ package nvim;
 		 submatch.
 	**/
 	inline static function matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any {
-		final result = __matchbufline(buf, pat, lnum, end_, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __matchbufline(buf, pat, lnum, end_, dict);
 		return result;
 	}
 	/**
@@ -14674,7 +14748,8 @@ package nvim;
 		 <results in `['two one']`.
 	**/
 	inline static function matchfuzzy(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
-		final result = __matchfuzzy(list, str, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __matchfuzzy(list, str, dict);
 		return result;
 	}
 	/**
@@ -14738,7 +14813,8 @@ package nvim;
 		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
 	**/
 	inline static function matchfuzzypos(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
-		final result = __matchfuzzypos(list, str, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __matchfuzzypos(list, str, dict);
 		return result;
 	}
 	/**
@@ -14865,7 +14941,8 @@ package nvim;
 		 submatch.
 	**/
 	inline static function matchstrlist(list:Array<String>, pat:String, ?dict:lua.Table.AnyTable):Any {
-		final result = __matchstrlist(list, pat, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __matchstrlist(list, pat, dict);
 		return result;
 	}
 	/**
@@ -18037,7 +18114,8 @@ package nvim;
 		         (default: cursor's position)
 	**/
 	inline static function searchcount(?options:lua.Table.AnyTable):Any {
-		final result = __searchcount(nvim.helper.Arg.pure(options));
+		options = nvim.helper.Arg.pure(options);
+		final result = __searchcount(options);
 		return result;
 	}
 	/**
@@ -18606,7 +18684,8 @@ package nvim;
 		 for the list of supported keys in {what}.
 	**/
 	inline static function setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
-		final result = __setloclist(nr, list, action, nvim.helper.Arg.pure(what));
+		what = nvim.helper.Arg.pure(what);
+		final result = __setloclist(nr, list, action, what);
 		return result;
 	}
 	/**
@@ -18931,7 +19010,8 @@ package nvim;
 		 `:cc 1` to jump to the first position.
 	**/
 	inline static function setqflist(list:Array<nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int {
-		final result = __setqflist(list, action, nvim.helper.Arg.pure(what));
+		what = nvim.helper.Arg.pure(what);
+		final result = __setqflist(list, action, what);
 		return result;
 	}
 	/**
@@ -19316,7 +19396,8 @@ package nvim;
 		 <
 	**/
 	inline static function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float {
-		final result = __sign_define(name, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __sign_define(name, dict);
 		return result;
 	}
 	/**
@@ -19503,7 +19584,8 @@ package nvim;
 		 <
 	**/
 	inline static function sign_getplaced(?buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):Array<nvim.type.vim.fn.sign_getplaced.ret.Item> {
-		final result = __sign_getplaced(buf, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __sign_getplaced(buf, dict);
 		return result;
 	}
 	/**
@@ -19645,7 +19727,8 @@ package nvim;
 		 <
 	**/
 	inline static function sign_place(id:Int, group:String, name:String, buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Int {
-		final result = __sign_place(id, group, name, buf, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __sign_place(id, group, name, buf, dict);
 		return result;
 	}
 	/**
@@ -19877,7 +19960,8 @@ package nvim;
 		```
 	**/
 	inline static function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float {
-		final result = __sign_unplace(group, nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __sign_unplace(group, dict);
 		return result;
 	}
 	/**
@@ -19955,7 +20039,8 @@ package nvim;
 		 <
 	**/
 	inline static function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):Array<Float> {
-		final result = __sign_unplacelist(nvim.helper.Arg.pure(list));
+		list = nvim.helper.Arg.pure(list);
+		final result = __sign_unplacelist(list);
 		return result;
 	}
 	/**
@@ -20105,7 +20190,8 @@ package nvim;
 		   - 0 on invalid arguments or connection failure.
 	**/
 	inline static function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any {
-		final result = __sockconnect(mode, address, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __sockconnect(mode, address, opts);
 		return result;
 	}
 	/**
@@ -20440,7 +20526,8 @@ package nvim;
 		   - 0 on invalid arguments
 	**/
 	inline static function stdioopen(opts:lua.Table.AnyTable):Any {
-		final result = __stdioopen(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __stdioopen(opts);
 		return result;
 	}
 	/**
@@ -21610,7 +21697,8 @@ package nvim;
 	**/
 	@:deprecated
 	inline static function termopen(cmd:haxe.extern.EitherType<String, Array<String>>, ?opts:lua.Table.AnyTable):Int {
-		final result = __termopen(cmd, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __termopen(cmd, opts);
 		return result;
 	}
 	/**
@@ -21746,7 +21834,8 @@ package nvim;
 		 <This invokes MyHandler() three times at 500 msec intervals.
 	**/
 	inline static function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any {
-		final result = __timer_start(time, callback, nvim.helper.Arg.pure(options));
+		options = nvim.helper.Arg.pure(options);
+		final result = __timer_start(time, callback, options);
 		return result;
 	}
 	/**
@@ -22476,7 +22565,8 @@ package nvim;
 		     'splitright' are used.
 	**/
 	inline static function win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any {
-		final result = __win_splitmove(nr, target, nvim.helper.Arg.pure(options));
+		options = nvim.helper.Arg.pure(options);
+		final result = __win_splitmove(nr, target, options);
 		return result;
 	}
 	/**
@@ -22711,7 +22801,8 @@ package nvim;
 		 If the window size changed the result won't be the same.
 	**/
 	inline static function winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any {
-		final result = __winrestview(nvim.helper.Arg.pure(dict));
+		dict = nvim.helper.Arg.pure(dict);
+		final result = __winrestview(dict);
 		return result;
 	}
 	/**
@@ -30415,7 +30506,8 @@ package nvim;
 		                                   to Lua `nil` instead of |vim.NIL|.
 	**/
 	inline static function decode(str:String, ?opts:lua.Table<String, Any>):Any {
-		final result = __decode(str, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __decode(str, opts);
 		return result;
 	}
 	/**
@@ -30451,7 +30543,8 @@ package nvim;
 		                                   characters "/" in string values.
 	**/
 	inline static function encode(obj:Any, ?opts:lua.Table<String, Any>):String {
-		final result = __encode(obj, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __encode(obj, opts);
 		return result;
 	}
 	/**
@@ -30840,7 +30933,8 @@ package nvim;
 		 ```
 	**/
 	inline static function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale {
-		final result = __locale(nvim.helper.Arg.pure(tab));
+		tab = nvim.helper.Arg.pure(tab);
+		final result = __locale(tab);
 		return result;
 	}
 	/**
@@ -47106,7 +47200,8 @@ package nvim;
 		     See {opts.result_type}. `nil` if {opts.on_hunk} is given.
 	**/
 	inline static function diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<Array<Array<Int>>>> {
-		final result = __diff(a, b, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __diff(a, b, opts);
 		return result;
 	}
 	/**
@@ -47276,7 +47371,8 @@ package nvim;
 		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
 	**/
 	inline static function gsplit(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):() -> Null<String> {
-		final result = __gsplit(s, sep, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __gsplit(s, sep, opts);
 		return result;
 	}
 	/**
@@ -47383,7 +47479,8 @@ package nvim;
 		```
 	**/
 	inline static function inspect(x:Any, opts:nvim.type.vim.inspect.Opts):String {
-		final result = __inspect(x, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __inspect(x, opts);
 		return result;
 	}
 	/**
@@ -47449,7 +47546,8 @@ package nvim;
 		               - col: the col used to get the items
 	**/
 	inline static function inspect_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Int; var col : Int; var row : Int; } {
-		final result = __inspect_pos(bufnr, row, col, nvim.helper.Arg.pure(filter));
+		filter = nvim.helper.Arg.pure(filter);
+		final result = __inspect_pos(bufnr, row, col, filter);
 		return result;
 	}
 	/**
@@ -47516,7 +47614,8 @@ package nvim;
 		See: ~https~ ://github.com/openresty/luajit2#tableisarray
 	**/
 	inline static function isarray(?t:lua.Table.AnyTable):Bool {
-		final result = __isarray(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __isarray(t);
 		return result;
 	}
 	/**
@@ -47556,7 +47655,8 @@ package nvim;
 		@*return* — `true` if list-like table, else `false`.
 	**/
 	inline static function islist(?t:lua.Table.AnyTable):Bool {
-		final result = __islist(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __islist(t);
 		return result;
 	}
 	/**
@@ -47630,7 +47730,8 @@ package nvim;
 		@*return* — `true` if `t` contains `value`
 	**/
 	inline static function list_contains(t:lua.Table.AnyTable, value:Any):Bool {
-		final result = __list_contains(nvim.helper.Arg.pure(t), value);
+		t = nvim.helper.Arg.pure(t);
+		final result = __list_contains(t, value);
 		return result;
 	}
 	/**
@@ -47678,7 +47779,8 @@ package nvim;
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
 	inline static function list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T {
-		final result = __list_extend(dst, nvim.helper.Arg.pure(src), start, finish);
+		src = nvim.helper.Arg.pure(src);
+		final result = __list_extend(dst, src, start, finish);
 		return result;
 	}
 	/**
@@ -48321,7 +48423,8 @@ package nvim;
 		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
 	**/
 	inline static function show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):Dynamic {
-		final result = __show_pos(bufnr, row, col, nvim.helper.Arg.pure(filter));
+		filter = nvim.helper.Arg.pure(filter);
+		final result = __show_pos(bufnr, row, col, filter);
 		return result;
 	}
 	/**
@@ -48443,7 +48546,8 @@ package nvim;
 		@*return* — : List of split components
 	**/
 	inline static function split(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):Array<String> {
-		final result = __split(s, sep, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __split(s, sep, opts);
 		return result;
 	}
 	/**
@@ -48722,7 +48826,8 @@ package nvim;
 	**/
 	@:deprecated
 	inline static function tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable {
-		final result = __tbl_add_reverse_lookup(nvim.helper.Arg.pure(o));
+		o = nvim.helper.Arg.pure(o);
+		final result = __tbl_add_reverse_lookup(o);
 		return result;
 	}
 	/**
@@ -48786,7 +48891,9 @@ package nvim;
 		@*return* — `true` if `t` contains `value`
 	**/
 	inline static function tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool {
-		final result = __tbl_contains(nvim.helper.Arg.pure(t), value, nvim.helper.Arg.pure(opts));
+		t = nvim.helper.Arg.pure(t);
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __tbl_contains(t, value, opts);
 		return result;
 	}
 	/**
@@ -48834,7 +48941,8 @@ package nvim;
 		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
 	**/
 	inline static function tbl_count(t:lua.Table.AnyTable):Int {
-		final result = __tbl_count(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_count(t);
 		return result;
 	}
 	/**
@@ -48935,7 +49043,8 @@ package nvim;
 		@*return* — : Table of filtered values
 	**/
 	inline static function tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):Array<T> {
-		final result = __tbl_filter(func, nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_filter(func, t);
 		return result;
 	}
 	/**
@@ -48978,7 +49087,8 @@ package nvim;
 	**/
 	@:deprecated
 	inline static function tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable {
-		final result = __tbl_flatten(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_flatten(t);
 		return result;
 	}
 	/**
@@ -49032,7 +49142,8 @@ package nvim;
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
 	inline static function tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any {
-		final result = __tbl_get(nvim.helper.Arg.pure(o), ...___);
+		o = nvim.helper.Arg.pure(o);
+		final result = __tbl_get(o, ...___);
 		return result;
 	}
 	/**
@@ -49072,7 +49183,8 @@ package nvim;
 		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	inline static function tbl_isempty(t:lua.Table.AnyTable):Bool {
-		final result = __tbl_isempty(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_isempty(t);
 		return result;
 	}
 	/**
@@ -49122,7 +49234,8 @@ package nvim;
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	inline static function tbl_keys<T>(t:lua.Table<T, Any>):Array<T> {
-		final result = __tbl_keys(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_keys(t);
 		return result;
 	}
 	/**
@@ -49160,7 +49273,8 @@ package nvim;
 		@*return* — : Table of transformed values
 	**/
 	inline static function tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable {
-		final result = __tbl_map(func, nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_map(func, t);
 		return result;
 	}
 	/**
@@ -49196,7 +49310,8 @@ package nvim;
 		@*return* — : List of values
 	**/
 	inline static function tbl_values<T>(t:lua.Table<Any, T>):Array<T> {
-		final result = __tbl_values(nvim.helper.Arg.pure(t));
+		t = nvim.helper.Arg.pure(t);
+		final result = __tbl_values(t);
 		return result;
 	}
 	/**
@@ -49343,7 +49458,8 @@ package nvim;
 		 @since 0
 	**/
 	inline static function ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic {
-		final result = __ui_attach(ns, nvim.helper.Arg.pure(options), callback);
+		options = nvim.helper.Arg.pure(options);
+		final result = __ui_attach(ns, options, callback);
 		return result;
 	}
 	/**
@@ -49860,7 +49976,8 @@ package nvim;
 		```
 	**/
 	inline static function validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic {
-		final result = __validate(name, value, nvim.helper.Arg.pure(validator), optional, message);
+		validator = nvim.helper.Arg.pure(validator);
+		final result = __validate(name, value, validator, optional, message);
 		return result;
 	}
 	/**

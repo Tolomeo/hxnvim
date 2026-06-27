@@ -1879,7 +1879,9 @@ package nvim.type.uv;
 		```
 	**/
 	inline function start(path:String, flags:nvim.type.uv.fs_event_start.Flags, callback:nvim.type.uv.fs_event_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __start(path, nvim.helper.Arg.pure(flags), nvim.helper.Arg.pure(callback));
+		flags = nvim.helper.Arg.pure(flags);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __start(path, flags, callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**

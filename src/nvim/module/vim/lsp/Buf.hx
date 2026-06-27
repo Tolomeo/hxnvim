@@ -55,7 +55,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function code_action(?opts:nvim.type.vim.lsp.buf.code_action.Opts):Dynamic {
-		final result = __code_action(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __code_action(opts);
 		return result;
 	}
 	/**
@@ -102,7 +103,8 @@ extern class Buf {
 	@:luaDotMethod
 	@:deprecated
 	inline function completion(context:lua.Table.AnyTable):Dynamic {
-		final result = __completion(nvim.helper.Arg.pure(context));
+		context = nvim.helper.Arg.pure(context);
+		final result = __completion(context);
 		return result;
 	}
 	/**
@@ -130,7 +132,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function declaration(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		final result = __declaration(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __declaration(opts);
 		return result;
 	}
 	/**
@@ -156,7 +159,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function definition(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		final result = __definition(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __definition(opts);
 		return result;
 	}
 	/**
@@ -207,7 +211,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function document_symbol(?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
-		final result = __document_symbol(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __document_symbol(opts);
 		return result;
 	}
 	/**
@@ -236,7 +241,8 @@ extern class Buf {
 	@:luaDotMethod
 	@:deprecated
 	inline function execute_command(command_params:nvim.type.lsp.ExecuteCommandParams):Dynamic {
-		final result = __execute_command(nvim.helper.Arg.pure(command_params));
+		command_params = nvim.helper.Arg.pure(command_params);
+		final result = __execute_command(command_params);
 		return result;
 	}
 	/**
@@ -264,7 +270,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function format(?opts:nvim.type.vim.lsp.buf.format.Opts):Dynamic {
-		final result = __format(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __format(opts);
 		return result;
 	}
 	/**
@@ -322,7 +329,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function hover(?config:nvim.type.vim.lsp.buf.hover.Opts):Dynamic {
-		final result = __hover(nvim.helper.Arg.pure(config));
+		config = nvim.helper.Arg.pure(config);
+		final result = __hover(config);
 		return result;
 	}
 	/**
@@ -350,7 +358,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function implementation(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		final result = __implementation(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __implementation(opts);
 		return result;
 	}
 	/**
@@ -422,7 +431,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function references(?context:Null<nvim.type.lsp.ReferenceContext>, ?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
-		final result = __references(context, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __references(context, opts);
 		return result;
 	}
 	/**
@@ -473,7 +483,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function rename(?new_name:Null<String>, ?opts:nvim.type.vim.lsp.buf.rename.Opts):Dynamic {
-		final result = __rename(new_name, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __rename(new_name, opts);
 		return result;
 	}
 	/**
@@ -501,7 +512,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function signature_help(?config:nvim.type.vim.lsp.buf.signature_help.Opts):Dynamic {
-		final result = __signature_help(nvim.helper.Arg.pure(config));
+		config = nvim.helper.Arg.pure(config);
+		final result = __signature_help(config);
 		return result;
 	}
 	/**
@@ -527,7 +539,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function type_definition(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		final result = __type_definition(nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __type_definition(opts);
 		return result;
 	}
 	/**
@@ -584,7 +597,8 @@ extern class Buf {
 	**/
 	@:luaDotMethod
 	inline function workspace_symbol(?query:Null<String>, ?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
-		final result = __workspace_symbol(query, nvim.helper.Arg.pure(opts));
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __workspace_symbol(query, opts);
 		return result;
 	}
 }

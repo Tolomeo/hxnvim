@@ -220,7 +220,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function bind(host:String, port:Int, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __bind(host, port, nvim.helper.Arg.pure(flags));
+		flags = nvim.helper.Arg.pure(flags);
+		final result = __bind(host, port, flags);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -2487,7 +2488,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function recv_start(callback:nvim.type.uv.udp_recv_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __recv_start(nvim.helper.Arg.pure(callback));
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __recv_start(callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -2917,7 +2919,9 @@ package nvim.type.uv;
 		```
 	**/
 	inline function send(data:nvim.type.uv.Buffer, host:String, port:Int, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __send(nvim.helper.Arg.pure(data), host, port, nvim.helper.Arg.pure(callback));
+		data = nvim.helper.Arg.pure(data);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __send(data, host, port, callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
@@ -4903,7 +4907,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline function try_send(data:nvim.type.uv.Buffer, host:String, port:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __try_send(nvim.helper.Arg.pure(data), host, port);
+		data = nvim.helper.Arg.pure(data);
+		final result = __try_send(data, host, port);
 		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
