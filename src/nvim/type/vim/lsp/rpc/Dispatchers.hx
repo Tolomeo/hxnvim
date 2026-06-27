@@ -25,8 +25,29 @@ package nvim.type.vim.lsp.rpc;
 		function (method: string, params: table)
 		```
 	**/
+	@:native("notification")
 	@:luaDotMethod
-	extern function notification(method:String, params:lua.Table.AnyTable):Dynamic;
+	private extern function __notification(method:String, params:lua.Table.AnyTable):Dynamic;
+	/**
+		```lua
+		(field) vim.lsp.rpc.Dispatchers.notification: fun(method: string, params: table)
+		```
+		
+		---
+		
+		 @inlinedoc
+		
+		---
+		
+		```lua
+		function (method: string, params: table)
+		```
+	**/
+	@:luaDotMethod
+	inline function notification(method:String, params:lua.Table.AnyTable):Dynamic {
+		final result = __notification(method, nvim.helper.Arg.pure(params));
+		return result;
+	}
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.on_error: fun(code: integer, err: any)
@@ -84,7 +105,7 @@ package nvim.type.vim.lsp.rpc;
 	**/
 	@:luaDotMethod
 	inline function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>> {
-		final result = __server_request(method, params);
+		final result = __server_request(method, nvim.helper.Arg.pure(params));
 		return new nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>>(result._0, result._1);
 	}
 }

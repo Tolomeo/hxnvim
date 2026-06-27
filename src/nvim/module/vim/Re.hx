@@ -20,8 +20,33 @@ extern class Re {
 		  -> unknown
 		```
 	**/
+	@:native("compile")
 	@:luaDotMethod
-	function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern;
+	private function __compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern;
+	/**
+		```lua
+		function vim.re.compile(string: string, defs?: table)
+		  -> vim.lpeg.Pattern
+		```
+		
+		---
+		
+		 Compiles the given {string} and returns an equivalent LPeg pattern. The given string may define
+		 either an expression or a grammar. The optional {defs} table provides extra Lua values to be used
+		 by the pattern.
+		
+		---
+		
+		```lua
+		function compile(p: any, defs: any)
+		  -> unknown
+		```
+	**/
+	@:luaDotMethod
+	inline function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern {
+		final result = __compile(string, nvim.helper.Arg.pure(defs));
+		return result;
+	}
 	/**
 		```lua
 		function vim.re.find(subject: string, pattern: string|vim.lpeg.Pattern, init?: integer)

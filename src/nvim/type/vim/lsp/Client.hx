@@ -104,8 +104,24 @@ package nvim.type.vim.lsp;
 		
 		 @nodoc
 	**/
+	@:native("create")
 	@:luaDotMethod
-	extern function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client>;
+	private extern function __create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client>;
+	/**
+		```lua
+		function vim.lsp.Client.create(config: vim.lsp.ClientConfig)
+		  -> (vim.lsp.Client)?
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	@:luaDotMethod
+	inline function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
+		final result = __create(nvim.helper.Arg.pure(config));
+		return result;
+	}
 	/**
 		```lua
 		(field) vim.lsp.Client.dynamic_capabilities: lsp.DynamicCapabilities
@@ -397,8 +413,26 @@ package nvim.type.vim.lsp;
 		
 		@*param* `handler` — only called if a server command
 	**/
-	extern function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
+	@:native("exec_cmd")
+	private extern function __exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
 	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic;
+	/**
+		```lua
+		(method) vim.lsp.Client:exec_cmd(command: lsp.Command, context?: { bufnr: integer }, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown)
+		```
+		
+		---
+		
+		 Execute a lsp command, either via client command function (if available)
+		 or via workspace/executeCommand (if supported by the server)
+		
+		@*param* `handler` — only called if a server command
+	**/
+	inline function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
+	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic {
+		final result = __exec_cmd(nvim.helper.Arg.pure(command), nvim.helper.Arg.pure(context), nvim.helper.Arg.pure(handler));
+		return result;
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:initialize()
@@ -523,7 +557,7 @@ package nvim.type.vim.lsp;
 		 @see |vim.lsp.buf_request_all()|
 	**/
 	inline function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
-		final result = __request(method, params, handler, bufnr);
+		final result = __request(method, nvim.helper.Arg.pure(params), nvim.helper.Arg.pure(handler), bufnr);
 		return new nvim.helper.Multireturn.Return2<Bool, Null<Int>>(result._0, result._1);
 	}
 	/**
@@ -595,7 +629,7 @@ package nvim.type.vim.lsp;
 	**/
 	inline function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn.Return2<Null<{ @:optional
 	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>> {
-		final result = __request_sync(method, params, timeout_ms, bufnr);
+		final result = __request_sync(method, nvim.helper.Arg.pure(params), timeout_ms, bufnr);
 		return new nvim.helper.Multireturn.Return2<Null<{ ?err:Null<nvim.type.lsp.ResponseError>, result:Any }>, Null<String>>(result._0, result._1);
 	}
 	/**

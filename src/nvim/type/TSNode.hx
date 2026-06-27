@@ -71,7 +71,32 @@ package nvim.type;
 		 a:child_with_descendant(a) == nil
 		 ```
 	**/
-	extern function child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode>;
+	@:native("child_with_descendant")
+	private extern function __child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode>;
+	/**
+		```lua
+		(method) TSNode:child_with_descendant(descendant: TSNode)
+		  -> TSNode?
+		```
+		
+		---
+		
+		 Get the node's child that contains {descendant} (includes {descendant}).
+		
+		 For example, with the following node hierarchy:
+		
+		 ```
+		 a -> b -> c
+		
+		 a:child_with_descendant(c) == b
+		 a:child_with_descendant(b) == b
+		 a:child_with_descendant(a) == nil
+		 ```
+	**/
+	inline function child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode> {
+		final result = __child_with_descendant(nvim.helper.Arg.pure(descendant));
+		return result;
+	}
 	/**
 		```lua
 		(method) TSNode:descendant_for_range(start_row: integer, start_col: integer, end_row: integer, end_col: integer)
@@ -108,7 +133,22 @@ package nvim.type;
 		
 		 Check if {node} refers to the same node within the same tree.
 	**/
-	extern function equal(node:nvim.type.TSNode):Bool;
+	@:native("equal")
+	private extern function __equal(node:nvim.type.TSNode):Bool;
+	/**
+		```lua
+		(method) TSNode:equal(node: TSNode)
+		  -> boolean
+		```
+		
+		---
+		
+		 Check if {node} refers to the same node within the same tree.
+	**/
+	inline function equal(node:nvim.type.TSNode):Bool {
+		final result = __equal(nvim.helper.Arg.pure(node));
+		return result;
+	}
 	/**
 		```lua
 		(method) TSNode:extra()

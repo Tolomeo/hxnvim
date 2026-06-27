@@ -31,8 +31,35 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocumentEdit
 	**/
+	@:native("apply_text_document_edit")
 	@:luaDotMethod
-	function apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Int, ?position_encoding:String):Dynamic;
+	private function __apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Int, ?position_encoding:String):Dynamic;
+	/**
+		```lua
+		function M.apply_text_document_edit(text_document_edit: lsp.TextDocumentEdit, index?: integer, position_encoding?: 'utf-16'|'utf-32'|'utf-8')
+		```
+		
+		---
+		
+		 Applies a `TextDocumentEdit`, which is a list of changes to a single
+		 document.
+		
+		@*param* `index` — : Optional index of the edit, if from a list of edits (or nil, if not from a list)
+		
+		```lua
+		position_encoding:
+		    | 'utf-8'
+		    | 'utf-16'
+		    | 'utf-32'
+		```
+		
+		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocumentEdit
+	**/
+	@:luaDotMethod
+	inline function apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Int, ?position_encoding:String):Dynamic {
+		final result = __apply_text_document_edit(nvim.helper.Arg.pure(text_document_edit), index, position_encoding);
+		return result;
+	}
 	/**
 		```lua
 		function M.apply_text_edits(text_edits: lsp.TextEdit[], bufnr: integer, position_encoding: 'utf-16'|'utf-32'|'utf-8')
@@ -75,8 +102,34 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#workspace_applyEdit
 	**/
+	@:native("apply_workspace_edit")
 	@:luaDotMethod
-	function apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic;
+	private function __apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic;
+	/**
+		```lua
+		function M.apply_workspace_edit(workspace_edit: lsp.WorkspaceEdit, position_encoding: 'utf-16'|'utf-32'|'utf-8')
+		```
+		
+		---
+		
+		 Applies a `WorkspaceEdit`.
+		
+		@*param* `position_encoding` — (required)
+		
+		```lua
+		position_encoding:
+		    | 'utf-8'
+		    | 'utf-16'
+		    | 'utf-32'
+		```
+		
+		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#workspace_applyEdit
+	**/
+	@:luaDotMethod
+	inline function apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic {
+		final result = __apply_workspace_edit(nvim.helper.Arg.pure(workspace_edit), position_encoding);
+		return result;
+	}
 	/**
 		```lua
 		function M.buf_clear_references(bufnr?: integer)
@@ -218,7 +271,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>> {
-		final result = __convert_signature_help_to_markdown_lines(signature_help, ft, triggers);
+		final result = __convert_signature_help_to_markdown_lines(nvim.helper.Arg.pure(signature_help), ft, triggers);
 		return new nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>>(result._0, result._1);
 	}
 	/**
@@ -307,9 +360,49 @@ extern class Util {
 		
 		@*return* `The` — value of settings accessed via section. `vim.NIL` if not found.
 	**/
+	@:native("lookup_section")
+	@:luaDotMethod
+	private function __lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>>;
+	/**
+		```lua
+		function M.lookup_section(settings: table, section: string)
+		  -> The: string|table|vim.NIL
+		```
+		
+		---
+		
+		 Helper function to return nested values in language server settings
+		
+		@*param* `settings` — language server settings
+		
+		@*param* `section` — indicating the field of the settings table
+		
+		@*return* `The` — value of settings accessed via section. `vim.NIL` if not found.
+	**/
 	@:luaDotMethod
 	@:deprecated
-	function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>>;
+	inline function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>> {
+		final result = __lookup_section(nvim.helper.Arg.pure(settings), section);
+		return result;
+	}
+	/**
+		```lua
+		function M.make_floating_popup_options(width: integer, height: integer, opts?: vim.lsp.util.open_floating_preview.Opts)
+		  -> vim.api.keyset.win_config
+		```
+		
+		---
+		
+		 Creates a table with sensible default options for a floating window. The
+		 table can be passed to |nvim_open_win()|.
+		
+		@*param* `width` — window width (in character cells)
+		
+		@*param* `height` — window height (in character cells)
+	**/
+	@:native("make_floating_popup_options")
+	@:luaDotMethod
+	private function __make_floating_popup_options(width:Int, height:Int, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig;
 	/**
 		```lua
 		function M.make_floating_popup_options(width: integer, height: integer, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -326,7 +419,10 @@ extern class Util {
 		@*param* `height` — window height (in character cells)
 	**/
 	@:luaDotMethod
-	function make_floating_popup_options(width:Int, height:Int, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig;
+	inline function make_floating_popup_options(width:Int, height:Int, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig {
+		final result = __make_floating_popup_options(width, height, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.make_formatting_params(options?: lsp.FormattingOptions)
@@ -501,7 +597,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Int, Int> {
-		final result = __open_floating_preview(contents, syntax, opts);
+		final result = __open_floating_preview(nvim.helper.Arg.pure(contents), syntax, nvim.helper.Arg.pure(opts));
 		return new nvim.helper.Multireturn.Return2<Int, Int>(result._0, result._1);
 	}
 	/**
@@ -547,7 +643,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	inline function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
-		final result = __preview_location(location, opts);
+		final result = __preview_location(location, nvim.helper.Arg.pure(opts));
 		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
 	}
 	/**
@@ -567,8 +663,31 @@ extern class Util {
 		
 		@*param* `opts` — Options:
 	**/
+	@:native("rename")
 	@:luaDotMethod
-	function rename(old_fname:String, new_fname:String, ?opts:nvim.type.vim.lsp.util.rename.Opts):Dynamic;
+	private function __rename(old_fname:String, new_fname:String, ?opts:nvim.type.vim.lsp.util.rename.Opts):Dynamic;
+	/**
+		```lua
+		function M.rename(old_fname: string, new_fname: string, opts?: vim.lsp.util.rename.Opts)
+		```
+		
+		---
+		
+		 Rename old_fname to new_fname
+		
+		 Existing buffers are renamed as well, while maintaining their bufnr.
+		
+		 It deletes existing buffers that conflict with the renamed file name only when
+		 * `opts` requests overwriting; or
+		 * the conflicting buffers are not loaded, so that deleting them does not result in data loss.
+		
+		@*param* `opts` — Options:
+	**/
+	@:luaDotMethod
+	inline function rename(old_fname:String, new_fname:String, ?opts:nvim.type.vim.lsp.util.rename.Opts):Dynamic {
+		final result = __rename(old_fname, new_fname, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.set_lines(lines: string[], A: [integer, integer], B: [integer, integer], new_lines: string[])
@@ -613,8 +732,66 @@ extern class Util {
 		    | 'utf-32'
 		```
 	**/
+	@:native("show_document")
 	@:luaDotMethod
-	function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool;
+	private function __show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool;
+	/**
+		```lua
+		function M.show_document(location: lsp.Location|lsp.LocationLink, position_encoding?: 'utf-16'|'utf-32'|'utf-8', opts?: vim.lsp.util.show_document.Opts)
+		  -> boolean
+		```
+		
+		---
+		
+		 Shows document and optionally jumps to the location.
+		
+		@*return* — `true` if succeeded
+		
+		```lua
+		position_encoding:
+		    | 'utf-8'
+		    | 'utf-16'
+		    | 'utf-32'
+		```
+	**/
+	@:luaDotMethod
+	inline function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool {
+		final result = __show_document(location, position_encoding, nvim.helper.Arg.pure(opts));
+		return result;
+	}
+	/**
+		```lua
+		function M.stylize_markdown(bufnr: integer, contents: string[], opts?: table)
+		  -> stripped: table
+		```
+		
+		---
+		
+		 Converts markdown into syntax highlighted regions by stripping the code
+		 blocks and converting them into highlighted code.
+		 This will by default insert a blank line separator after those code block
+		 regions to improve readability.
+		
+		 This method configures the given buffer and returns the lines to set.
+		
+		 If you want to open a popup with fancy markdown, use `open_floating_preview` instead
+		
+		@*param* `contents` — of lines to show in window
+		
+		@*param* `opts` — with optional fields
+		
+		  - height    of floating window
+		  - width     of floating window
+		  - wrap_at   character to wrap at for computing height
+		  - max_width  maximal width of floating window
+		  - max_height maximal height of floating window
+		  - separator insert separator after code block
+		
+		@*return* `stripped` — content
+	**/
+	@:native("stylize_markdown")
+	@:luaDotMethod
+	private function __stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.stylize_markdown(bufnr: integer, contents: string[], opts?: table)
@@ -646,7 +823,10 @@ extern class Util {
 		@*return* `stripped` — content
 	**/
 	@:luaDotMethod
-	function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
+	inline function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
+		final result = __stylize_markdown(bufnr, contents, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.symbols_to_items(symbols: lsp.DocumentSymbol[]|lsp.SymbolInformation[], bufnr?: integer, position_encoding?: 'utf-16'|'utf-32'|'utf-8')
@@ -688,9 +868,29 @@ extern class Util {
 		
 		@*return* `trimmed` — list of lines
 	**/
+	@:native("trim_empty_lines")
+	@:luaDotMethod
+	private function __trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable;
+	/**
+		```lua
+		function M.trim_empty_lines(lines: table)
+		  -> trimmed: table
+		```
+		
+		---
+		
+		 Removes empty lines from the beginning and end.
+		
+		@*param* `lines` — list of lines to trim
+		
+		@*return* `trimmed` — list of lines
+	**/
 	@:luaDotMethod
 	@:deprecated
-	function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable;
+	inline function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable {
+		final result = __trim_empty_lines(nvim.helper.Arg.pure(lines));
+		return result;
+	}
 	/**
 		```lua
 		function M.try_trim_markdown_code_blocks(lines: string[])

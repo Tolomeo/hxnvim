@@ -64,8 +64,38 @@ extern class InlayHint {
 		 Query whether inlay hint is enabled in the {filter}ed scope
 		 @since 12
 	**/
+	@:native("is_enabled")
 	@:luaDotMethod
-	function is_enabled(?filter:nvim.type.vim.lsp.inlay_hint.enable.Filter):Bool;
+	private function __is_enabled(?filter:nvim.type.vim.lsp.inlay_hint.enable.Filter):Bool;
+	/**
+		```lua
+		function M.is_enabled(filter?: vim.lsp.inlay_hint.enable.Filter)
+		  -> boolean
+		```
+		
+		---
+		
+		 Query whether inlay hint is enabled in the {filter}ed scope
+		 @since 12
+	**/
+	@:luaDotMethod
+	inline function is_enabled(?filter:nvim.type.vim.lsp.inlay_hint.enable.Filter):Bool {
+		final result = __is_enabled(nvim.helper.Arg.pure(filter));
+		return result;
+	}
+	/**
+		```lua
+		function M.on_inlayhint(err: any, result?: lsp.InlayHint[], ctx: lsp.HandlerContext)
+		```
+		
+		---
+		
+		 |lsp-handler| for the method `textDocument/inlayHint`
+		 Store hints for a specific buffer and client
+	**/
+	@:native("on_inlayhint")
+	@:luaDotMethod
+	private function __on_inlayhint(err:Dynamic, result:Null<Array<nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
 	/**
 		```lua
 		function M.on_inlayhint(err: any, result?: lsp.InlayHint[], ctx: lsp.HandlerContext)
@@ -77,7 +107,23 @@ extern class InlayHint {
 		 Store hints for a specific buffer and client
 	**/
 	@:luaDotMethod
-	private function on_inlayhint(err:Dynamic, result:Null<Array<nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	inline private function on_inlayhint(err:Dynamic, result:Null<Array<nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+		final result = __on_inlayhint(err, result, nvim.helper.Arg.pure(ctx));
+		return result;
+	}
+	/**
+		```lua
+		function M.on_refresh(err: any, _: any, ctx: lsp.HandlerContext)
+		  -> vim.NIL
+		```
+		
+		---
+		
+		 |lsp-handler| for the method `workspace/inlayHint/refresh`
+	**/
+	@:native("on_refresh")
+	@:luaDotMethod
+	private function __on_refresh(err:Dynamic, _:Dynamic, ctx:nvim.type.lsp.HandlerContext):Dynamic;
 	/**
 		```lua
 		function M.on_refresh(err: any, _: any, ctx: lsp.HandlerContext)
@@ -89,5 +135,8 @@ extern class InlayHint {
 		 |lsp-handler| for the method `workspace/inlayHint/refresh`
 	**/
 	@:luaDotMethod
-	private function on_refresh(err:Dynamic, _:Dynamic, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	inline private function on_refresh(err:Dynamic, _:Dynamic, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+		final result = __on_refresh(err, _, nvim.helper.Arg.pure(ctx));
+		return result;
+	}
 }

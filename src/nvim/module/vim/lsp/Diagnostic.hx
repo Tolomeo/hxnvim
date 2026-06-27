@@ -69,8 +69,39 @@ extern class Diagnostic {
 		
 		 See |vim.diagnostic.config()| for configuration options.
 	**/
+	@:native("on_diagnostic")
 	@:luaDotMethod
-	function on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	private function __on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	/**
+		```lua
+		function M.on_diagnostic(error?: lsp.ResponseError, result: lsp.RelatedFullDocumentDiagnosticReport|lsp.RelatedUnchangedDocumentDiagnosticReport, ctx: lsp.HandlerContext)
+		```
+		
+		---
+		
+		 |lsp-handler| for the method "textDocument/diagnostic"
+		
+		 See |vim.diagnostic.config()| for configuration options.
+	**/
+	@:luaDotMethod
+	inline function on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+		final result = __on_diagnostic(error, nvim.helper.Arg.pure(result), nvim.helper.Arg.pure(ctx));
+		return result;
+	}
+	/**
+		```lua
+		function M.on_publish_diagnostics(_?: lsp.ResponseError, params: lsp.PublishDiagnosticsParams, ctx: lsp.HandlerContext)
+		```
+		
+		---
+		
+		 |lsp-handler| for the method "textDocument/publishDiagnostics"
+		
+		 See |vim.diagnostic.config()| for configuration options.
+	**/
+	@:native("on_publish_diagnostics")
+	@:luaDotMethod
+	private function __on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic;
 	/**
 		```lua
 		function M.on_publish_diagnostics(_?: lsp.ResponseError, params: lsp.PublishDiagnosticsParams, ctx: lsp.HandlerContext)
@@ -83,7 +114,28 @@ extern class Diagnostic {
 		 See |vim.diagnostic.config()| for configuration options.
 	**/
 	@:luaDotMethod
-	function on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	inline function on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+		final result = __on_publish_diagnostics(_, nvim.helper.Arg.pure(params), nvim.helper.Arg.pure(ctx));
+		return result;
+	}
+	/**
+		```lua
+		function M.reset(client_id: integer, buffer_client_map: table<integer, table<integer, table>>)
+		```
+		
+		---
+		
+		 Clear push diagnostics and diagnostic cache.
+		
+		 Diagnostic producers should prefer |vim.diagnostic.reset()|. However,
+		 this method signature is still used internally in some parts of the LSP
+		 implementation so it's simply marked @private rather than @deprecated.
+		
+		@*param* `buffer_client_map` — map of buffers to active clients
+	**/
+	@:native("reset")
+	@:luaDotMethod
+	private function __reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic;
 	/**
 		```lua
 		function M.reset(client_id: integer, buffer_client_map: table<integer, table<integer, table>>)
@@ -100,5 +152,8 @@ extern class Diagnostic {
 		@*param* `buffer_client_map` — map of buffers to active clients
 	**/
 	@:luaDotMethod
-	private function reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic;
+	inline private function reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic {
+		final result = __reset(client_id, nvim.helper.Arg.pure(buffer_client_map));
+		return result;
+	}
 }

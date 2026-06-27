@@ -67,7 +67,7 @@ extern class Secure {
 	**/
 	@:luaDotMethod
 	inline function trust(opts:nvim.type.vim.trust.Opts):nvim.helper.Multireturn.Return2<Bool, String> {
-		final result = __trust(opts);
+		final result = __trust(nvim.helper.Arg.pure(opts));
 		return new nvim.helper.Multireturn.Return2<Bool, String>(result._0, result._1);
 	}
 }

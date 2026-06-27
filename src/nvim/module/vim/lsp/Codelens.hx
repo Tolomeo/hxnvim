@@ -52,8 +52,45 @@ extern class Codelens {
 		
 		 |lsp-handler| for the method `textDocument/codeLens`
 	**/
+	@:native("on_codelens")
 	@:luaDotMethod
-	function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:Array<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	private function __on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:Array<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	/**
+		```lua
+		function M.on_codelens(err?: lsp.ResponseError, result: lsp.CodeLens[], ctx: lsp.HandlerContext)
+		```
+		
+		---
+		
+		 |lsp-handler| for the method `textDocument/codeLens`
+	**/
+	@:luaDotMethod
+	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:Array<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+		final result = __on_codelens(err, result, nvim.helper.Arg.pure(ctx));
+		return result;
+	}
+	/**
+		```lua
+		function M.refresh(opts?: vim.lsp.codelens.refresh.Opts)
+		```
+		
+		---
+		
+		 Refresh the lenses.
+		
+		 It is recommended to trigger this using an autocmd or via keymap.
+		
+		 Example:
+		
+		 ```vim
+		 autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
+		 ```
+		
+		@*param* `opts` — Optional fields
+	**/
+	@:native("refresh")
+	@:luaDotMethod
+	private function __refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic;
 	/**
 		```lua
 		function M.refresh(opts?: vim.lsp.codelens.refresh.Opts)
@@ -74,7 +111,10 @@ extern class Codelens {
 		@*param* `opts` — Optional fields
 	**/
 	@:luaDotMethod
-	function refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic;
+	inline function refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic {
+		final result = __refresh(nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.run()

@@ -1134,6 +1134,26 @@ package nvim.type.vim.lsp;
 		
 		@*return* — : Normalized table of capabilities
 	**/
+	@:native("resolve_capabilities")
 	@:luaDotMethod
-	extern function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
+	private extern function __resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
+	/**
+		```lua
+		function vim.lsp.protocol.resolve_capabilities(server_capabilities: table)
+		  -> lsp.ServerCapabilities|nil
+		```
+		
+		---
+		
+		 Creates a normalized object describing LSP server capabilities.
+		
+		@*param* `server_capabilities` — Table of capabilities supported by the server
+		
+		@*return* — : Normalized table of capabilities
+	**/
+	@:luaDotMethod
+	inline function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities> {
+		final result = __resolve_capabilities(nvim.helper.Arg.pure(server_capabilities));
+		return result;
+	}
 }

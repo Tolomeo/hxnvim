@@ -71,7 +71,31 @@ package nvim.type.vim.treesitter;
 	**/
 	@:luaDotMethod
 	@:native("new")
-	extern function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter;
+	private extern function __new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter;
+	/**
+		```lua
+		function vim.treesitter.highlighter.new(tree: vim.treesitter.LanguageTree, opts: table|nil)
+		  -> Created: vim.treesitter.highlighter
+		```
+		
+		---
+		
+		
+		 Creates a highlighter for `tree`.
+		
+		@*param* `tree` — parser object to use for highlighting
+		
+		@*param* `opts` — Configuration of the highlighter:
+		
+		           - queries table overwrite queries used by the highlighter
+		
+		@*return* `Created` — highlighter object
+	**/
+	@:luaDotMethod
+	inline function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter {
+		final result = __new_(nvim.helper.Arg.pure(tree), opts);
+		return result;
+	}
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.tree: vim.treesitter.LanguageTree

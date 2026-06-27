@@ -21,8 +21,50 @@ extern class Query {
 		   - predicate: list of strings containing the full directive being called, e.g.
 		     `(node (#set! conceal "-"))` would get the predicate `{ "#set!", "conceal", "-" }`
 	**/
+	@:native("add_directive")
 	@:luaDotMethod
-	function add_directive(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	private function __add_directive(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	/**
+		```lua
+		function M.add_directive(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata), opts: vim.treesitter.query.add_predicate.Opts)
+		```
+		
+		---
+		
+		 Adds a new directive to be used in queries
+		
+		 Handlers can set match level data by setting directly on the
+		 metadata object `metadata.key = value`. Additionally, handlers
+		 can set node level data by using the capture id on the
+		 metadata table `metadata[capture_id].key = value`
+		
+		@*param* `name` — Name of the directive, without leading #
+		
+		   - pattern: the index of the matching pattern in the query file
+		   - predicate: list of strings containing the full directive being called, e.g.
+		     `(node (#set! conceal "-"))` would get the predicate `{ "#set!", "conceal", "-" }`
+	**/
+	@:luaDotMethod
+	inline function add_directive(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
+		final result = __add_directive(name, handler, nvim.helper.Arg.pure(opts));
+		return result;
+	}
+	/**
+		```lua
+		function M.add_predicate(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata):boolean?, opts?: vim.treesitter.query.add_predicate.Opts)
+		```
+		
+		---
+		
+		 Adds a new predicate to be used in queries
+		
+		@*param* `name` — Name of the predicate, without leading #
+		
+		   - see |vim.treesitter.query.add_directive()| for argument meanings
+	**/
+	@:native("add_predicate")
+	@:luaDotMethod
+	private function __add_predicate(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
 	/**
 		```lua
 		function M.add_predicate(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata):boolean?, opts?: vim.treesitter.query.add_predicate.Opts)
@@ -37,7 +79,10 @@ extern class Query {
 		   - see |vim.treesitter.query.add_directive()| for argument meanings
 	**/
 	@:luaDotMethod
-	function add_predicate(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	inline function add_predicate(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
+		final result = __add_predicate(name, handler, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.edit(lang?: string)
@@ -115,8 +160,36 @@ extern class Query {
 		
 		@*param* `buf` — Buffer handle
 	**/
+	@:native("lint")
 	@:luaDotMethod
-	function lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic;
+	private function __lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic;
+	/**
+		```lua
+		function M.lint(buf: integer, opts?: vim.treesitter.query.lint.Opts)
+		```
+		
+		---
+		
+		 Lint treesitter queries using installed parser, or clear lint errors.
+		
+		 Use |treesitter-parsers| in runtimepath to check the query file in {buf} for errors:
+		
+		   - verify that used nodes are valid identifiers in the grammar.
+		   - verify that predicates and directives are valid.
+		   - verify that top-level s-expressions are valid.
+		
+		 The found diagnostics are reported using |diagnostic-api|.
+		 By default, the parser used for verification is determined by the containing folder
+		 of the query file, e.g., if the path ends in `/lua/highlights.scm`, the parser for the
+		 `lua` language will be used.
+		
+		@*param* `buf` — Buffer handle
+	**/
+	@:luaDotMethod
+	inline function lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic {
+		final result = __lint(buf, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.list_directives()

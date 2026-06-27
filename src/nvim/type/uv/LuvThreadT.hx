@@ -22,7 +22,23 @@ package nvim.type.uv;
 		 Returns a boolean indicating whether two threads are the same. This function is
 		 equivalent to the `__eq` metamethod.
 	**/
-	extern function equal(other_thread:nvim.type.uv.LuvThreadT):Bool;
+	@:native("equal")
+	private extern function __equal(other_thread:nvim.type.uv.LuvThreadT):Bool;
+	/**
+		```lua
+		(method) uv.luv_thread_t:equal(other_thread: uv.luv_thread_t)
+		  -> boolean
+		```
+		
+		---
+		
+		 Returns a boolean indicating whether two threads are the same. This function is
+		 equivalent to the `__eq` metamethod.
+	**/
+	inline function equal(other_thread:nvim.type.uv.LuvThreadT):Bool {
+		final result = __equal(nvim.helper.Arg.pure(other_thread));
+		return result;
+	}
 	/**
 		```lua
 		(method) uv.luv_thread_t:join()

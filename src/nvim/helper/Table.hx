@@ -1,9 +1,0 @@
-package nvim.helper;
-
-class Table {
-    public static inline function clean<T>(obj:T):T {
-        untyped obj.__fields__ = null;
-        lua.Lua.setmetatable(cast obj, null);
-        return obj;
-    }
-}

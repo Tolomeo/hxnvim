@@ -58,8 +58,36 @@ extern class Fs {
 		        "type" is one of the following:
 		        "file", "directory", "link", "fifo", "socket", "char", "block", "unknown".
 	**/
+	@:native("dir")
 	@:luaDotMethod
-	function dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_;
+	private function __dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_;
+	/**
+		```lua
+		function M.dir(path: string, opts?: vim.fs.dir.Opts)
+		  -> over: fun():string?, string?
+		```
+		
+		---
+		
+		 Return an iterator over the items located in {path}
+		
+		@*param* `path` — An absolute or relative path to the directory to iterate
+		
+		            over. The path is first normalized |vim.fs.normalize()|.
+		
+		@*param* `opts` — Optional keyword arguments:
+		
+		@*return* `over` — items in {path}. Each iteration yields two values: "name" and "type".
+		
+		        "name" is the basename of the item relative to {path}.
+		        "type" is one of the following:
+		        "file", "directory", "link", "fifo", "socket", "char", "block", "unknown".
+	**/
+	@:luaDotMethod
+	inline function dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_ {
+		final result = __dir(path, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.dirname(file: <T:string|nil>)
@@ -124,8 +152,62 @@ extern class Fs {
 		
 		@*return* — Normalized paths |vim.fs.normalize()| of all matching items
 	**/
+	@:native("find")
 	@:luaDotMethod
-	function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):Array<String>;
+	private function __find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):Array<String>;
+	/**
+		```lua
+		function M.find(names: string|fun(name: string, path: string):boolean|string[], opts?: vim.fs.find.Opts)
+		  -> string[]
+		```
+		
+		---
+		
+		 Find files or directories (or other items as specified by `opts.type`) in the given path.
+		
+		 Finds items given in {names} starting from {path}. If {upward} is "true"
+		 then the search traverses upward through parent directories; otherwise,
+		 the search traverses downward. Note that downward searches are recursive
+		 and may search through many directories! If {stop} is non-nil, then the
+		 search stops when the directory given in {stop} is reached. The search
+		 terminates when {limit} (default 1) matches are found. You can set {type}
+		 to "file", "directory", "link", "socket", "char", "block", or "fifo"
+		 to narrow the search to find only that type.
+		
+		 Examples:
+		
+		 ```lua
+		 -- List all test directories under the runtime directory.
+		 local dirs = vim.fs.find(
+		   { 'test', 'tst', 'testdir' },
+		   { limit = math.huge, type = 'directory', path = './runtime/' }
+		 )
+		
+		 -- Get all "lib/*.cpp" and "lib/*.hpp" files, using Lua patterns.
+		 -- Or use `vim.glob.to_lpeg(…):match(…)` for glob/wildcard matching.
+		 local files = vim.fs.find(function(name, path)
+		   return name:match('.*%.[ch]pp$') and path:match('[/\\]lib$')
+		 end, { limit = math.huge, type = 'file' })
+		 ```
+		
+		@*param* `names` — Names of the items to find.
+		
+		             Must be base names, paths and globs are not supported when {names} is a string or a table.
+		             If {names} is a function, it is called for each traversed item with args:
+		             - name: base name of the current item
+		             - path: full path of the current item
+		
+		             The function should return `true` if the given item is considered a match.
+		
+		@*param* `opts` — Optional keyword arguments:
+		
+		@*return* — Normalized paths |vim.fs.normalize()| of all matching items
+	**/
+	@:luaDotMethod
+	inline function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):Array<String> {
+		final result = __find(names, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.joinpath(...string)
@@ -185,8 +267,55 @@ extern class Fs {
 		
 		@*return* — : Normalized path
 	**/
+	@:native("normalize")
 	@:luaDotMethod
-	function normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String;
+	private function __normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String;
+	/**
+		```lua
+		function M.normalize(path: string, opts?: vim.fs.normalize.Opts)
+		  -> string
+		```
+		
+		---
+		
+		 Normalize a path to a standard format. A tilde (~) character at the beginning of the path is
+		 expanded to the user's home directory and environment variables are also expanded. "." and ".."
+		 components are also resolved, except when the path is relative and trying to resolve it would
+		 result in an absolute path.
+		 - "." as the only part in a relative path:
+		   - "." => "."
+		   - "././" => "."
+		 - ".." when it leads outside the current directory
+		   - "foo/../../bar" => "../bar"
+		   - "../../foo" => "../../foo"
+		 - ".." in the root directory returns the root directory.
+		   - "/../../" => "/"
+		
+		 On Windows, backslash (\) characters are converted to forward slashes (/).
+		
+		 Examples:
+		 ```lua
+		 [[C:\Users\jdoe]]                         => "C:/Users/jdoe"
+		 "~/src/neovim"                            => "/home/jdoe/src/neovim"
+		 "$XDG_CONFIG_HOME/nvim/init.vim"          => "/Users/jdoe/.config/nvim/init.vim"
+		 "~/src/nvim/api/../tui/./tui.c"           => "/home/jdoe/src/nvim/tui/tui.c"
+		 "./foo/bar"                               => "foo/bar"
+		 "foo/../../../bar"                        => "../../bar"
+		 "/home/jdoe/../../../bar"                 => "/bar"
+		 "C:foo/../../baz"                         => "C:../baz"
+		 "C:/foo/../../baz"                        => "C:/baz"
+		 [[\\?\UNC\server\share\foo\..\..\..\bar]] => "//?/UNC/server/share/bar"
+		 ```
+		
+		@*param* `path` — Path to normalize
+		
+		@*return* — : Normalized path
+	**/
+	@:luaDotMethod
+	inline function normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String {
+		final result = __normalize(path, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.parents(start: string)
@@ -300,8 +429,26 @@ extern class Fs {
 		
 		@*param* `path` — Path to remove
 	**/
+	@:native("rm")
 	@:luaDotMethod
-	function rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic;
+	private function __rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic;
+	/**
+		```lua
+		function M.rm(path: string, opts?: vim.fs.rm.Opts)
+		```
+		
+		---
+		
+		 Remove files or directories
+		 @since 13
+		
+		@*param* `path` — Path to remove
+	**/
+	@:luaDotMethod
+	inline function rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic {
+		final result = __rm(path, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		function M.root(source: string|integer, marker: string|(string|fun(name: string, path: string):boolean|string[])[]|fun(name: string, path: string):boolean)

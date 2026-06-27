@@ -133,7 +133,7 @@ extern class Ui {
 	@:luaDotMethod
 	inline function open(path:String, ?opt:{ @:optional
 	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
-		final result = __open(path, opt);
+		final result = __open(path, nvim.helper.Arg.pure(opt));
 		return new nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>>(result._0, result._1);
 	}
 	/**
@@ -180,6 +180,56 @@ extern class Ui {
 		               `idx` is the 1-based index of `item` within `items`.
 		               `nil` if the user aborted the dialog.
 	**/
+	@:native("select")
 	@:luaDotMethod
-	function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
+	private function __select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
+	/**
+		```lua
+		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))
+		```
+		
+		---
+		
+		 Prompts the user to pick from a list of items, allowing arbitrary (potentially asynchronous)
+		 work until `on_choice`.
+		
+		 Example:
+		
+		 ```lua
+		 vim.ui.select({ 'tabs', 'spaces' }, {
+		     prompt = 'Select tabs or spaces:',
+		     format_item = function(item)
+		         return "I'd like to choose " .. item
+		     end,
+		 }, function(choice)
+		     if choice == 'spaces' then
+		         vim.o.expandtab = true
+		     else
+		         vim.o.expandtab = false
+		     end
+		 end)
+		 ```
+		
+		@*param* `items` — Arbitrary items
+		
+		@*param* `opts` — Additional options
+		
+		     - prompt (string|nil)
+		               Text of the prompt. Defaults to `Select one of:`
+		     - format_item (function item -> text)
+		               Function to format an
+		               individual item from `items`. Defaults to `tostring`.
+		     - kind (string|nil)
+		               Arbitrary hint string indicating the item shape.
+		               Plugins reimplementing `vim.ui.select` may wish to
+		               use this to infer the structure or semantics of
+		               `items`, or the context in which select() was called.
+		               `idx` is the 1-based index of `item` within `items`.
+		               `nil` if the user aborted the dialog.
+	**/
+	@:luaDotMethod
+	inline function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
+		final result = __select(items, nvim.helper.Arg.pure(opts), on_choice);
+		return result;
+	}
 }

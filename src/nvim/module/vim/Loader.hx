@@ -56,8 +56,30 @@ extern class Loader {
 		
 		@*param* `opts` — Options for finding a module:
 	**/
+	@:native("find")
 	@:luaDotMethod
-	function find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):Array<nvim.type.vim.loader.ModuleInfo>;
+	private function __find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):Array<nvim.type.vim.loader.ModuleInfo>;
+	/**
+		```lua
+		function M.find(modname: string, opts?: vim.loader.find.Opts)
+		  -> vim.loader.ModuleInfo[]
+		```
+		
+		---
+		
+		 Finds Lua modules for the given module name.
+		
+		 @since 0
+		
+		@*param* `modname` — Module name, or `"*"` to find the top-level modules instead
+		
+		@*param* `opts` — Options for finding a module:
+	**/
+	@:luaDotMethod
+	inline function find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):Array<nvim.type.vim.loader.ModuleInfo> {
+		final result = __find(modname, nvim.helper.Arg.pure(opts));
+		return result;
+	}
 	/**
 		```lua
 		(global) vim.loader.path: string

@@ -60,7 +60,7 @@ extern class Language {
 	**/
 	@:luaDotMethod
 	inline function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>> {
-		final result = __add(lang, opts);
+		final result = __add(lang, nvim.helper.Arg.pure(opts));
 		return new nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>>(result._0, result._1);
 	}
 	/**
