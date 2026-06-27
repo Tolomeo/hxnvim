@@ -1,16 +1,13 @@
 package nvim.helper;
 
 class Arg {
-		public static inline function pureTable<T>(obj:T) {
-        untyped obj.__fields__ = null;
-        lua.Lua.setmetatable(cast obj, null);
+		public static function pureTable<T>(obj:T):T {
+			untyped obj.__fields__ = null;
+			lua.Lua.setmetatable(cast obj, null);
+			return obj;
 		}
 
-    public static inline function pure<T>(obj:T):T {
-      if (lua.Lua.type(obj) == "table") {
-        pureTable(obj);
-      }
-
-      return obj;
+    public static function pure<T>(obj:T):T {
+			return lua.Lua.type(obj) == 'table' ? pureTable(obj) : obj;
     }
 }
