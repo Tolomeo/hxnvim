@@ -194,12 +194,14 @@ class MethodGenerator {
 			case r: Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
 		}
 
+		final pureArgs = signature.args.fold((arg:Arg, pures:Array<String>) -> {
+			if (arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
+				pures.push('${arg.name} = ${Target.toHelperReference("Arg")}.pure(${arg.name})');
+			}
+			return pures;
+		}, []);
 		final callArgs = signature.args.map(a -> switch (a.type) {
 			case LiteralType.Rest(_): "..." + a.name;
-			case LiteralType.AnyTable: Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
-			case LiteralType.Table(_, _): Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
-			case LiteralType.TableStructure(_): Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
-			case LiteralType.TypeReference(_): Target.toHelperReference("Arg") + ".pure(" + a.name + ")";
 			case _: a.name;
 		});
 		final call = '${facadedName}(${callArgs.join(", ")})';
@@ -215,7 +217,7 @@ class MethodGenerator {
 			args: signature.args,
 			ret: LiteralType.Override(returnType),
 			expr: macro $b{
-				[macro $i{callResultAssignment}, macro $i{returnStatement}]
+				pureArgs.map(arg -> macro $i{arg}).concat([macro $i{callResultAssignment}, macro $i{returnStatement}])
 			}
 		}
 		final facadeKind = this.generateDefinitionKind(facadeSignature.params, facadeSignature.args, facadeSignature.ret, facadeSignature.expr);
