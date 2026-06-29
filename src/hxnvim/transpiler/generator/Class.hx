@@ -16,6 +16,69 @@ import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
+class PropertyGenerator {
+	final property:Variable;
+	final opt:Bool;
+
+	public function new(property:Variable, opt:Bool) {
+		this.property = property;
+		this.opt = opt;
+	}
+
+	function generateFieldDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
+		return {
+			meta: meta,
+			access: access,
+			name: name,
+			doc: doc,
+			kind: kind,
+			pos: Context.currentPos()
+		};
+	}
+
+	function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+		return propertyAccess.map(a -> switch (a) {
+			case SymbolAccess.Private: APrivate;
+			case symbolAccess: throw 'Unexpected method access for property ${symbolAccess}';
+		});
+	}
+
+	function generatePropertyMeta(propertyMeta:Array<SymbolMeta>) {
+		return propertyMeta.map(m -> switch (m) {
+			case SymbolMeta.Deprecated:
+				new MetaGenerator("deprecated").generate();
+			case SymbolMeta.Native(native):
+				new MetaGenerator("native", [macro $v{native}]).generate();
+			case SymbolMeta.Optional:
+				new MetaGenerator("optional").generate();
+			case _:
+				throw new Exception('Invalid meta for property: ${m}');
+		});
+	}
+
+	public function generate() {
+		final name = this.property.name.toFieldName();
+
+		final doc = this.property.doc;
+
+		final propertyMeta = this.property.meta.copy();
+		if (name != this.property.name) {
+			propertyMeta.unshift(SymbolMeta.Native(this.property.name));
+		}
+		if (this.opt) {
+			propertyMeta.unshift(SymbolMeta.Optional);
+		}
+
+		final meta = this.generatePropertyMeta(propertyMeta);
+
+		final access = this.generatePropertyAccess(this.property.access);
+
+		final kind = FieldType.FVar(new LiteralTypeGenerator().generate(this.property.type));
+
+		return this.generateFieldDefinition(name, doc, meta, access, kind);
+	}
+}
+
 class MethodGenerator {
 	final method:Function;
 	final opt:Bool;
@@ -90,84 +153,6 @@ class MethodGenerator {
 		};
 	}
 
-	/* function generateFacadedMethod(method:Function, opt:Bool) {
-		final name = method.name.toFieldName();
-		final methodName = '__${name}';
-		final facadeName = name;
-
-		final doc = method.doc;
-		final methodDoc = "";
-		final facadeDoc = doc;
-
-		final methodMeta = method.meta.copy();
-		if (!methodMeta.exists(m -> switch (m) {
-			case SymbolMeta.Native(_): true;
-			case _: false;
-		})) {
-			methodMeta.unshift(SymbolMeta.Native(method.name));
-		}
-		if (opt) {
-			methodMeta.unshift(SymbolMeta.Optional);
-		}
-
-		final meta = this.generateMethodMeta(methodMeta, method.type.overloads);
-		final methodMeta = meta.filter(m -> switch (m) {
-			case {name: ":deprecated"}: false;
-			case _: true;
-		});
-		final facadeMeta = meta.filter(m -> switch (m) {
-			case {name: ":native"}: false;
-			case {name: ":overload"}: false;
-			case _: true;
-		});
-
-		final access = this.generateMethodAccess(method.access);
-		final methodAccess = [Access.APrivate].concat(access.filter(a -> switch (a) {
-			case Access.APublic: false;
-			case Access.APrivate: false;
-			case _: true;
-		}));
-		final facadeAccess = [Access.AInline].concat(access.filter(a -> switch (a) {
-			case AExtern: false;
-			case _: true;
-		}));
-
-		final params = method.type.params.map(p -> ({
-			name: p.name,
-			constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
-		} : TypeParamDecl));
-		final args = method.type.args.map(a -> ({
-			name: a.name,
-			type: new LiteralTypeGenerator().generate(a.type),
-			opt: a.opt,
-		} : FunctionArg));
-		final ret = new LiteralTypeGenerator().generate(method.type.ret);
-		final facadeRet = method.type.ret.is("Multireturn") ? new LiteralTypeGenerator().generate(LiteralType.Any) : ret;
-		final methodKind = FieldType.FFun({
-			params: params,
-			args: args,
-			ret: ret
-		});
-		final methodCallArguments = method.type.args.map(a -> {
-			if (a.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
-				return Target.toHelperReference('PlainTable.clean(${a.name})');
-			} else {
-				return a.name;
-			}
-		});
-		final facade = 'return ${methodName}(${methodCallArguments.join(",")})';
-		final facadeKind = FieldType.FFun({
-			params: params,
-			args: args,
-			ret: facadeRet,
-			expr: macro $b{[macro $i{facade}]},
-		});
-
-		final method = this.generateFieldDefinition(methodName, methodDoc, methodMeta, methodAccess, methodKind);
-		final facade = this.generateFieldDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess, facadeKind);
-
-		return {method: method, facade: facade};
-	}*/
 	function generateFacadeDefinition(facadedName:String, name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
 		final facadeName = name;
 		final facadeDoc = doc;
@@ -289,57 +274,8 @@ private abstract class ClassGenerator {
 		this.table = table;
 	}
 
-	function generateFieldDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
-		return {
-			meta: meta,
-			access: access,
-			name: name,
-			doc: doc,
-			kind: kind,
-			pos: Context.currentPos()
-		};
-	}
-
-	function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
-		return propertyAccess.map(a -> switch (a) {
-			case SymbolAccess.Private: APrivate;
-			case symbolAccess: throw 'Unexpected method access for property ${symbolAccess}';
-		});
-	}
-
-	function generatePropertyMeta(propertyMeta:Array<SymbolMeta>) {
-		return propertyMeta.map(m -> switch (m) {
-			case SymbolMeta.Deprecated:
-				new MetaGenerator("deprecated").generate();
-			case SymbolMeta.Native(native):
-				new MetaGenerator("native", [macro $v{native}]).generate();
-			case SymbolMeta.Optional:
-				new MetaGenerator("optional").generate();
-			case _:
-				throw new Exception('Invalid meta for property: ${m}');
-		});
-	}
-
 	function generateProperty(property:Variable, opt:Bool) {
-		final name = property.name.toFieldName();
-
-		final doc = property.doc;
-
-		final propertyMeta = property.meta.copy();
-		if (name != property.name) {
-			propertyMeta.unshift(SymbolMeta.Native(property.name));
-		}
-		if (opt) {
-			propertyMeta.unshift(SymbolMeta.Optional);
-		}
-
-		final meta = this.generatePropertyMeta(propertyMeta);
-
-		final access = this.generatePropertyAccess(property.access);
-
-		final kind = FieldType.FVar(new LiteralTypeGenerator().generate(property.type));
-
-		return this.generateFieldDefinition(name, doc, meta, access, kind);
+		return new PropertyGenerator(property, opt).generate();
 	}
 
 	function generateMethod(method:Function, opt:Bool) {
@@ -410,6 +346,12 @@ private abstract class ClassGenerator {
 	}
 }
 
+class DataPropertyGenerator extends PropertyGenerator {
+	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+		return [AExtern].concat(super.generatePropertyAccess(propertyAccess));
+	}
+}
+
 class DataMethodGenerator extends MethodGenerator {
 	override function generateAccess(methodAccess:Array<SymbolAccess>) {
 		final dataMethodAccess = super.generateAccess(methodAccess);
@@ -436,12 +378,12 @@ class DataMethodGenerator extends MethodGenerator {
 }
 
 class DataClassGenerator extends ClassGenerator {
-	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
-		return [AExtern].concat(super.generatePropertyAccess(propertyAccess));
-	}
-
 	override function generateMethod(method:Function, opt:Bool) {
 		return new DataMethodGenerator(method, opt).generate();
+	}
+
+	override function generateProperty(property:Variable, opt:Bool) {
+		return new DataPropertyGenerator(property, opt).generate();
 	}
 
 	override function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>):TypeDefinition {
@@ -471,6 +413,12 @@ class InstanceClassGenerator extends ClassGenerator {
 	}
 }
 
+class SingletonPropertyGenerator extends PropertyGenerator {
+	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+		return [AStatic].concat(super.generatePropertyAccess(propertyAccess));
+	}
+}
+
 class SingletonMethodGenerator extends MethodGenerator {
 	override function generateAccess(methodAccess:Array<SymbolAccess>) {
 		return [AStatic].concat(super.generateAccess(methodAccess));
@@ -479,11 +427,11 @@ class SingletonMethodGenerator extends MethodGenerator {
 
 // TODO: detect when a function is treated as a method, and automatically add the first self argument
 class SingletonClassGenerator extends ClassGenerator {
-	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
-		return [AStatic].concat(super.generatePropertyAccess(propertyAccess));
-	}
-
 	override function generateMethod(method:Function, opt:Bool) {
 		return new SingletonMethodGenerator(method, opt).generate();
+	}
+
+	override function generateProperty(property:Variable, opt:Bool) {
+		return new SingletonPropertyGenerator(property, opt).generate();
 	}
 }
