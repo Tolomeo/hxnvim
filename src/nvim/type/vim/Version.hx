@@ -44,5 +44,5 @@ package nvim.type.vim;
 		  -> string
 		```
 	**/
-	extern function __tostring():Dynamic;
+	extern public function __tostring():Dynamic;
 }

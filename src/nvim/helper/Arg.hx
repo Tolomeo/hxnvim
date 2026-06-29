@@ -1,7 +1,7 @@
 package nvim.helper;
 
 class Arg {
-		public static function pureTable<T>(obj:T):T {
+		inline public static function pureTable<T>(obj:T):T {
 			untyped obj.__fields__ = null;
 			lua.Lua.setmetatable(cast obj, null);
 			return obj;

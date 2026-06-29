@@ -46,7 +46,7 @@ package nvim.type.vim;
 		
 		@*return* — match end (byte index) relative to `start`, or `nil` if no match
 	**/
-	inline function match_line(bufnr:Int, line_idx:Int, ?start:Int, ?end_:Int):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+	inline public function match_line(bufnr:Int, line_idx:Int, ?start:Int, ?end_:Int):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
 		final result = __match_line(bufnr, line_idx, start, end_);
 		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
 	}
@@ -88,7 +88,7 @@ package nvim.type.vim;
 		
 		@*return* — match end (byte index), or `nil` if no match
 	**/
-	inline function match_str(str:String):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+	inline public function match_str(str:String):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
 		final result = __match_str(str);
 		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
 	}

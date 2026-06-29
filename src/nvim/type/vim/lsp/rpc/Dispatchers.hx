@@ -44,7 +44,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	inline function notification(method:String, params:lua.Table.AnyTable):Dynamic {
+	inline public function notification(method:String, params:lua.Table.AnyTable):Dynamic {
 		params = nvim.helper.Arg.pure(params);
 		final result = __notification(method, params);
 		return result;
@@ -61,7 +61,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern function on_error(code:Int, err:Any):Dynamic;
+	extern public function on_error(code:Int, err:Any):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.on_exit: fun(code: integer, signal: integer)
@@ -74,7 +74,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern function on_exit(code:Int, signal:Int):Dynamic;
+	extern public function on_exit(code:Int, signal:Int):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.server_request: fun(method: string, params: table):any, (lsp.ResponseError)?
@@ -105,7 +105,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	inline function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>> {
+	inline public function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>> {
 		params = nvim.helper.Arg.pure(params);
 		final result = __server_request(method, params);
 		return new nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>>(result._0, result._1);

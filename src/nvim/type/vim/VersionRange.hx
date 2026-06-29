@@ -25,5 +25,5 @@ package nvim.type.vim;
 		  -> boolean
 		```
 	**/
-	extern function has(version:haxe.extern.EitherType<String, nvim.type.vim.Version>):Dynamic;
+	extern public function has(version:haxe.extern.EitherType<String, nvim.type.vim.Version>):Dynamic;
 }

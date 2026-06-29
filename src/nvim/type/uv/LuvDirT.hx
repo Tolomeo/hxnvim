@@ -232,7 +232,7 @@ package nvim.type.uv;
 		  -> uv.uv_fs_t
 		```
 	**/
-	inline function closedir():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function closedir():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __closedir();
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -477,7 +477,7 @@ package nvim.type.uv;
 		  -> uv.uv_fs_t
 		```
 	**/
-	inline function readdir():nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function readdir():nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __readdir();
 		return new nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}

@@ -216,7 +216,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function cancel():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function cancel():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __cancel();
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -246,7 +246,7 @@ package nvim.type.uv;
 		 Returns the name of the struct for a given request (e.g. `"fs"` for `uv_fs_t`)
 		 and the libuv enum integer for the request's type (`uv_req_type`).
 	**/
-	inline function get_type():nvim.helper.Multireturn.Return2<String, Int> {
+	inline public function get_type():nvim.helper.Multireturn.Return2<String, Int> {
 		final result = __get_type();
 		return new nvim.helper.Multireturn.Return2<String, Int>(result._0, result._1);
 	}

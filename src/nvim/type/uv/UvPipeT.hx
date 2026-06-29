@@ -258,7 +258,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function accept(client_stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function accept(client_stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		client_stream = nvim.helper.Arg.pure(client_stream);
 		final result = __accept(client_stream);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -475,7 +475,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function bind(name:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function bind(name:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __bind(name);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -707,7 +707,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function chmod(flags:nvim.type.uv.pipe_chmod.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function chmod(flags:nvim.type.uv.pipe_chmod.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		final result = __chmod(flags);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -732,7 +732,7 @@ package nvim.type.uv;
 		 In-progress requests, like `uv_connect_t` or `uv_write_t`, are cancelled and
 		 have their callbacks called asynchronously with `ECANCELED`.
 	**/
-	extern function close(?callback:haxe.Constraints.Function):Dynamic;
+	extern public function close(?callback:haxe.Constraints.Function):Dynamic;
 	/**
 		```lua
 		(method) uv.uv_pipe_t:connect(name: string, callback?: fun(err: string|nil))
@@ -939,7 +939,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function connect(name:String, ?callback:nvim.type.uv.pipe_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function connect(name:String, ?callback:nvim.type.uv.pipe_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __connect(name, callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -1162,7 +1162,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function fileno():nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fileno():nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fileno();
 		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -1192,7 +1192,7 @@ package nvim.type.uv;
 		 Returns the name of the struct for a given handle (e.g. `"pipe"` for `uv_pipe_t`)
 		 and the libuv enum integer for the handle's type (`uv_handle_type`).
 	**/
-	inline function get_type():nvim.helper.Multireturn.Return2<String, Int> {
+	inline public function get_type():nvim.helper.Multireturn.Return2<String, Int> {
 		final result = __get_type();
 		return new nvim.helper.Multireturn.Return2<String, Int>(result._0, result._1);
 	}
@@ -1206,7 +1206,7 @@ package nvim.type.uv;
 		
 		 Returns the stream's write queue size.
 	**/
-	extern function get_write_queue_size():Int;
+	extern public function get_write_queue_size():Int;
 	/**
 		```lua
 		(method) uv.uv_pipe_t:getpeername()
@@ -1409,7 +1409,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function getpeername():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function getpeername():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __getpeername();
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -1613,7 +1613,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function getsockname():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function getsockname():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __getsockname();
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -1817,7 +1817,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function has_ref():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function has_ref():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __has_ref();
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -2037,7 +2037,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function is_active():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function is_active():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __is_active();
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -2247,7 +2247,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function is_closing():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function is_closing():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __is_closing();
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -2261,7 +2261,7 @@ package nvim.type.uv;
 		
 		 Returns `true` if the stream is readable, `false` otherwise.
 	**/
-	extern function is_readable():Bool;
+	extern public function is_readable():Bool;
 	/**
 		```lua
 		(method) uv.uv_stream_t:is_writable()
@@ -2272,7 +2272,7 @@ package nvim.type.uv;
 		
 		 Returns `true` if the stream is writable, `false` otherwise.
 	**/
-	extern function is_writable():Bool;
+	extern public function is_writable():Bool;
 	/**
 		```lua
 		(method) uv.uv_stream_t:listen(backlog: integer, callback: fun(err: string|nil))
@@ -2487,7 +2487,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function listen(backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function listen(backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __listen(backlog, callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -2702,7 +2702,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function open(fd:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function open(fd:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __open(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -2716,7 +2716,7 @@ package nvim.type.uv;
 		
 		 Returns the pending pipe count for the named pipe.
 	**/
-	extern function pending_count():Int;
+	extern public function pending_count():Int;
 	/**
 		```lua
 		(method) uv.uv_pipe_t:pending_instances(count: integer)
@@ -2729,7 +2729,7 @@ package nvim.type.uv;
 		
 		 **Note**: This setting applies to Windows only.
 	**/
-	extern function pending_instances(count:Int):Dynamic;
+	extern public function pending_instances(count:Int):Dynamic;
 	/**
 		```lua
 		(method) uv.uv_pipe_t:pending_type()
@@ -2744,7 +2744,7 @@ package nvim.type.uv;
 		 the given type, returned by `uv.pipe_pending_type()` and call
 		 `uv.accept(pipe, handle)`.
 	**/
-	extern function pending_type():String;
+	extern public function pending_type():String;
 	/**
 		```lua
 		(method) uv.uv_stream_t:read_start(callback: fun(err: string|nil, data?: string))
@@ -2983,7 +2983,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function read_start(callback:nvim.type.uv.read_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function read_start(callback:nvim.type.uv.read_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __read_start(callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -3202,7 +3202,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function read_stop():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function read_stop():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __read_stop();
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -3472,7 +3472,7 @@ package nvim.type.uv;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	inline function recv_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function recv_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __recv_buffer_size(size);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -3487,7 +3487,7 @@ package nvim.type.uv;
 		
 		 References are idempotent, that is, if a handle is already referenced calling this function again will have no effect.
 	**/
-	extern function ref():Dynamic;
+	extern public function ref():Dynamic;
 	/**
 		```lua
 		(method) uv.uv_handle_t:send_buffer_size(size: integer)
@@ -3748,7 +3748,7 @@ package nvim.type.uv;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	inline function send_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function send_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __send_buffer_size(size);
 		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -3980,7 +3980,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function set_blocking(blocking:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function set_blocking(blocking:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __set_blocking(blocking);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -4186,7 +4186,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function shutdown(?callback:nvim.type.uv.shutdown.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function shutdown(?callback:nvim.type.uv.shutdown.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __shutdown(callback);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -4397,7 +4397,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function try_write(data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function try_write(data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		final result = __try_write(data);
 		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -4606,7 +4606,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function try_write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function try_write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		send_handle = nvim.helper.Arg.pure(send_handle);
 		final result = __try_write2(data, send_handle);
@@ -4622,7 +4622,7 @@ package nvim.type.uv;
 		 Un-reference the given handle. References are idempotent, that is, if a handle
 		 is not referenced calling this function again will have no effect.
 	**/
-	extern function unref():Dynamic;
+	extern public function unref():Dynamic;
 	/**
 		```lua
 		(method) uv.uv_stream_t:write(data: string|string[], callback?: fun(err: string|nil))
@@ -4833,7 +4833,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function write(data:nvim.type.uv.Buffer, ?callback:nvim.type.uv.write.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function write(data:nvim.type.uv.Buffer, ?callback:nvim.type.uv.write.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __write(data, callback);
@@ -5049,7 +5049,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.write2.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.write2.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		send_handle = nvim.helper.Arg.pure(send_handle);
 		callback = nvim.helper.Arg.pure(callback);

@@ -118,7 +118,7 @@ package nvim.type.vim.lsp;
 		 @nodoc
 	**/
 	@:luaDotMethod
-	inline function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
+	inline public function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
 		config = nvim.helper.Arg.pure(config);
 		final result = __create(config);
 		return result;
@@ -163,7 +163,7 @@ package nvim.type.vim.lsp;
 		```
 	**/
 	@:luaDotMethod
-	extern function get_language_id(bufnr:Int, filetype:String):String;
+	extern public function get_language_id(bufnr:Int, filetype:String):String;
 	/**
 		```lua
 		(field) vim.lsp.Client.id: integer
@@ -321,14 +321,14 @@ package nvim.type.vim.lsp;
 		
 		 Add a directory to the workspace folders.
 	**/
-	extern function _add_workspace_folder(?dir:Null<String>):Dynamic;
+	extern public function _add_workspace_folder(?dir:Null<String>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_get_registration(method: string, bufnr?: integer)
 		  -> (lsp.Registration)?
 		```
 	**/
-	extern function _get_registration(method:String, ?bufnr:Int):Null<nvim.type.lsp.Registration>;
+	extern public function _get_registration(method:String, ?bufnr:Int):Null<nvim.type.lsp.Registration>;
 	/**
 		```lua
 		(method) vim.lsp.Client:_get_registration_options(method: string, bufnr?: integer)
@@ -339,13 +339,13 @@ package nvim.type.vim.lsp;
 		
 		 Get options for a method that is registered dynamically.
 	**/
-	extern function _get_registration_options(method:String, ?bufnr:Int):Null<nvim.type.lsp.LSPAny>;
+	extern public function _get_registration_options(method:String, ?bufnr:Int):Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(method) vim.lsp.Client:_register(registrations: lsp.Registration[])
 		```
 	**/
-	extern function _register(registrations:Array<nvim.type.lsp.Registration>):Dynamic;
+	extern public function _register(registrations:Array<nvim.type.lsp.Registration>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_remove_workspace_folder(dir?: string)
@@ -355,7 +355,7 @@ package nvim.type.vim.lsp;
 		
 		 Remove a directory to the workspace folders.
 	**/
-	extern function _remove_workspace_folder(?dir:Null<String>):Dynamic;
+	extern public function _remove_workspace_folder(?dir:Null<String>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_supports_registration(method: string)
@@ -366,7 +366,7 @@ package nvim.type.vim.lsp;
 		
 		 Get options for a method that is registered dynamically.
 	**/
-	extern function _supports_registration(method:String):Dynamic;
+	extern public function _supports_registration(method:String):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_text_document_did_open_handler(bufnr: integer)
@@ -378,13 +378,13 @@ package nvim.type.vim.lsp;
 		
 		@*param* `bufnr` — Number of the buffer, or 0 for current
 	**/
-	extern function _text_document_did_open_handler(bufnr:Int):Dynamic;
+	extern public function _text_document_did_open_handler(bufnr:Int):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_unregister(unregistrations: lsp.Unregistration[])
 		```
 	**/
-	extern function _unregister(unregistrations:Array<nvim.type.lsp.Unregistration>):Dynamic;
+	extern public function _unregister(unregistrations:Array<nvim.type.lsp.Unregistration>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:cancel_request(id: integer)
@@ -401,7 +401,7 @@ package nvim.type.vim.lsp;
 		
 		 @see |Client:notify()|
 	**/
-	extern function cancel_request(id:Int):Bool;
+	extern public function cancel_request(id:Int):Bool;
 	/**
 		```lua
 		(method) vim.lsp.Client:exec_cmd(command: lsp.Command, context?: { bufnr: integer }, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown)
@@ -429,7 +429,7 @@ package nvim.type.vim.lsp;
 		
 		@*param* `handler` — only called if a server command
 	**/
-	inline function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
+	inline public function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
 	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic {
 		command = nvim.helper.Arg.pure(command);
 		context = nvim.helper.Arg.pure(context);
@@ -446,7 +446,7 @@ package nvim.type.vim.lsp;
 		
 		 @nodoc
 	**/
-	extern function initialize():Dynamic;
+	extern public function initialize():Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:is_stopped()
@@ -461,7 +461,7 @@ package nvim.type.vim.lsp;
 		
 		 stopped; false otherwise
 	**/
-	extern function is_stopped():Bool;
+	extern public function is_stopped():Bool;
 	/**
 		```lua
 		(method) vim.lsp.Client:notify(method: string, params?: table)
@@ -480,7 +480,7 @@ package nvim.type.vim.lsp;
 		
 		                        If it is false, then the client has shutdown.
 	**/
-	extern function notify(method:String, ?params:Null<lua.Table.AnyTable>):Bool;
+	extern public function notify(method:String, ?params:Null<lua.Table.AnyTable>):Bool;
 	/**
 		```lua
 		(method) vim.lsp.Client:on_attach(bufnr: integer)
@@ -493,7 +493,7 @@ package nvim.type.vim.lsp;
 		
 		@*param* `bufnr` — Buffer number
 	**/
-	extern function on_attach(bufnr:Int):Dynamic;
+	extern public function on_attach(bufnr:Int):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:request(method: string, params?: table, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, bufnr?: integer)
@@ -560,7 +560,7 @@ package nvim.type.vim.lsp;
 		 to cancel the-request.
 		 @see |vim.lsp.buf_request_all()|
 	**/
-	inline function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
+	inline public function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
 		params = nvim.helper.Arg.pure(params);
 		handler = nvim.helper.Arg.pure(handler);
 		final result = __request(method, params, handler, bufnr);
@@ -633,7 +633,7 @@ package nvim.type.vim.lsp;
 		                 string describing the failure reason.
 		 @see |vim.lsp.buf_request_sync()|
 	**/
-	inline function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn.Return2<Null<{ @:optional
+	inline public function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn.Return2<Null<{ @:optional
 	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>> {
 		params = nvim.helper.Arg.pure(params);
 		final result = __request_sync(method, params, timeout_ms, bufnr);
@@ -652,7 +652,7 @@ package nvim.type.vim.lsp;
 		 you request to stop a client which has previously been requested to
 		 shutdown, it will automatically escalate and force shutdown.
 	**/
-	extern function stop(?force:Bool):Dynamic;
+	extern public function stop(?force:Bool):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:supports_method(method: string, bufnr?: integer)
@@ -666,5 +666,5 @@ package nvim.type.vim.lsp;
 		
 		 Note: Some language server capabilities can be file specific.
 	**/
-	extern function supports_method(method:String, ?bufnr:Int):Dynamic;
+	extern public function supports_method(method:String, ?bufnr:Int):Dynamic;
 }

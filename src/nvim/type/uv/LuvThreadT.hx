@@ -35,7 +35,7 @@ package nvim.type.uv;
 		 Returns a boolean indicating whether two threads are the same. This function is
 		 equivalent to the `__eq` metamethod.
 	**/
-	inline function equal(other_thread:nvim.type.uv.LuvThreadT):Bool {
+	inline public function equal(other_thread:nvim.type.uv.LuvThreadT):Bool {
 		other_thread = nvim.helper.Arg.pure(other_thread);
 		final result = __equal(other_thread);
 		return result;
@@ -240,7 +240,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	inline function join():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function join():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __join();
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}

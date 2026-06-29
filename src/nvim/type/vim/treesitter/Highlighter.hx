@@ -92,7 +92,7 @@ package nvim.type.vim.treesitter;
 		@*return* `Created` — highlighter object
 	**/
 	@:luaDotMethod
-	inline function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter {
+	inline public function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter {
 		tree = nvim.helper.Arg.pure(tree);
 		final result = __new_(tree, opts);
 		return result;
@@ -113,7 +113,7 @@ package nvim.type.vim.treesitter;
 		 @nodoc
 		 Removes all internal references to the highlighter
 	**/
-	extern function destroy():Dynamic;
+	extern public function destroy():Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.highlighter:get_query(lang: string)
@@ -126,5 +126,5 @@ package nvim.type.vim.treesitter;
 		
 		@*param* `lang` — Language used by the highlighter.
 	**/
-	extern function get_query(lang:String):nvim.type.vim.treesitter.highlighter.Query;
+	extern public function get_query(lang:String):nvim.type.vim.treesitter.highlighter.Query;
 }
