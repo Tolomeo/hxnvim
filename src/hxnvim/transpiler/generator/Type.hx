@@ -41,7 +41,7 @@ class LiteralTypeGenerator {
 	}
 
 	function generateArrayType(itemsType:LiteralType) {
-		return 'Array<${this.generateType(itemsType)}>';
+		return 'lua.Table<Int, ${this.generateType(itemsType)}>';
 	}
 
 	function generateFunctionType(signature:Signature) {
