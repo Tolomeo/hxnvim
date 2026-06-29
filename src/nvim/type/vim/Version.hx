@@ -12,32 +12,32 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var build : Null<String>;
+	extern public var build : Null<String>;
 	/**
 		```lua
 		(field) vim.Version.major: number
 		```
 	**/
-	extern var major : Float;
+	extern public var major : Float;
 	/**
 		```lua
 		(field) vim.Version.minor: number
 		```
 	**/
-	extern var minor : Float;
+	extern public var minor : Float;
 	/**
 		```lua
 		(field) vim.Version.patch: number
 		```
 	**/
-	extern var patch : Float;
+	extern public var patch : Float;
 	/**
 		```lua
 		(field) vim.Version.prerelease: string?
 		```
 	**/
 	@:optional
-	extern var prerelease : Null<String>;
+	extern public var prerelease : Null<String>;
 	/**
 		```lua
 		(method) vim.Version:__tostring()

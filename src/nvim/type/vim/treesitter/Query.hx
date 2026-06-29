@@ -20,7 +20,7 @@ package nvim.type.vim.treesitter;
 		
 		list of (unique) capture names defined in query
 	**/
-	extern var captures : lua.Table<Int, String>;
+	extern public var captures : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) vim.treesitter.Query.has_combined_injections: boolean
@@ -30,7 +30,7 @@ package nvim.type.vim.treesitter;
 		
 		whether the query contains combined injections
 	**/
-	extern var has_combined_injections : Bool;
+	extern public var has_combined_injections : Bool;
 	/**
 		```lua
 		(field) vim.treesitter.Query.has_conceal_line: boolean
@@ -40,7 +40,7 @@ package nvim.type.vim.treesitter;
 		
 		whether the query sets conceal_lines metadata
 	**/
-	extern var has_conceal_line : Bool;
+	extern public var has_conceal_line : Bool;
 	/**
 		```lua
 		(field) vim.treesitter.Query.info: vim.treesitter.QueryInfo
@@ -54,7 +54,7 @@ package nvim.type.vim.treesitter;
 		
 		query context (e.g. captures, predicates, directives)
 	**/
-	extern var info : nvim.type.vim.treesitter.QueryInfo;
+	extern public var info : nvim.type.vim.treesitter.QueryInfo;
 	/**
 		```lua
 		(field) vim.treesitter.Query.lang: string
@@ -64,7 +64,7 @@ package nvim.type.vim.treesitter;
 		
 		parser language name
 	**/
-	extern var lang : String;
+	extern public var lang : String;
 	/**
 		```lua
 		(field) vim.treesitter.Query.query: TSQuery
@@ -82,7 +82,7 @@ package nvim.type.vim.treesitter;
 		
 		userdata query object
 	**/
-	extern var query : nvim.type.TSQuery;
+	extern public var query : nvim.type.TSQuery;
 	/**
 		```lua
 		(method) vim.treesitter.Query:_process_patterns()

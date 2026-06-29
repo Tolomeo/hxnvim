@@ -43,13 +43,13 @@ package nvim.type.vim.treesitter;
 		```
 	**/
 	@:optional
-	extern var _conceal_line : Null<Bool>;
+	extern public var _conceal_line : Null<Bool>;
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.bufnr: integer
 		```
 	**/
-	extern var bufnr : Int;
+	extern public var bufnr : Int;
 	/**
 		```lua
 		function vim.treesitter.highlighter.new(tree: vim.treesitter.LanguageTree, opts: table|nil)
@@ -102,7 +102,7 @@ package nvim.type.vim.treesitter;
 		(field) vim.treesitter.highlighter.tree: vim.treesitter.LanguageTree
 		```
 	**/
-	extern var tree : nvim.type.vim.treesitter.LanguageTree;
+	extern public var tree : nvim.type.vim.treesitter.LanguageTree;
 	/**
 		```lua
 		(method) vim.treesitter.highlighter:destroy()

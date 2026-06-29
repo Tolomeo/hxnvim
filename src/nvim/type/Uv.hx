@@ -2087,7 +2087,7 @@ package nvim.type;
 		 A table value which exposes error constants as a map, where the key is the error name (without the UV_ prefix) and its value is a negative number.
 		
 	**/
-	extern var errno : nvim.type.uv.Errno;
+	extern public var errno : nvim.type.uv.Errno;
 	/**
 		```lua
 		function uv.exepath()

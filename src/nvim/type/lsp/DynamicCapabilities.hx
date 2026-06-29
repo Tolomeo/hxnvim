@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		(field) lsp.DynamicCapabilities.client_id: integer
 		```
 	**/
-	extern var client_id : Float;
+	extern public var client_id : Float;
 	/**
 		```lua
 		function get(_: any, method: any, opts: any)

@@ -12,54 +12,54 @@ package nvim.type.vim.fn.winrestview;
 		```
 	**/
 	@:optional
-	extern var col : Null<Int>;
+	extern public var col : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.coladd: integer?
 		```
 	**/
 	@:optional
-	extern var coladd : Null<Int>;
+	extern public var coladd : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.curswant: integer?
 		```
 	**/
 	@:optional
-	extern var curswant : Null<Int>;
+	extern public var curswant : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.leftcol: integer?
 		```
 	**/
 	@:optional
-	extern var leftcol : Null<Int>;
+	extern public var leftcol : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.lnum: integer?
 		```
 	**/
 	@:optional
-	extern var lnum : Null<Int>;
+	extern public var lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.skipcol: integer?
 		```
 	**/
 	@:optional
-	extern var skipcol : Null<Int>;
+	extern public var skipcol : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.topfill: integer?
 		```
 	**/
 	@:optional
-	extern var topfill : Null<Int>;
+	extern public var topfill : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.topline: integer?
 		```
 	**/
 	@:optional
-	extern var topline : Null<Int>;
+	extern public var topline : Null<Int>;
 }

@@ -67,7 +67,7 @@ package nvim.type.vim.lsp;
 		(field) vim.lsp.Client._is_stopping: boolean = false
 		```
 	**/
-	extern var _is_stopping : Bool;
+	extern public var _is_stopping : Bool;
 	/**
 		```lua
 		(field) vim.lsp.Client.capabilities: lsp.ClientCapabilities
@@ -82,7 +82,7 @@ package nvim.type.vim.lsp;
 		
 		 Capabilities provided by the client (editor or tool), at startup.
 	**/
-	extern var capabilities : nvim.type.lsp.ClientCapabilities;
+	extern public var capabilities : nvim.type.lsp.ClientCapabilities;
 	/**
 		```lua
 		(field) vim.lsp.Client.config: vim.lsp.ClientConfig
@@ -93,7 +93,7 @@ package nvim.type.vim.lsp;
 		
 		 Copy of the config passed to |vim.lsp.start()|.
 	**/
-	extern var config : nvim.type.vim.lsp.ClientConfig;
+	extern public var config : nvim.type.vim.lsp.ClientConfig;
 	/**
 		```lua
 		function vim.lsp.Client.create(config: vim.lsp.ClientConfig)
@@ -133,7 +133,7 @@ package nvim.type.vim.lsp;
 		
 		 Capabilities provided at runtime (after startup).
 	**/
-	extern var dynamic_capabilities : nvim.type.lsp.DynamicCapabilities;
+	extern public var dynamic_capabilities : nvim.type.lsp.DynamicCapabilities;
 	/**
 		```lua
 		(field) vim.lsp.Client.flags: vim.lsp.Client.Flags
@@ -144,7 +144,7 @@ package nvim.type.vim.lsp;
 		
 		 A table with flags for the client. The current (experimental) flags are:
 	**/
-	extern var flags : nvim.type.vim.lsp.client.Flags;
+	extern public var flags : nvim.type.vim.lsp.client.Flags;
 	/**
 		```lua
 		(field) vim.lsp.Client.get_language_id: fun(bufnr: integer, filetype: string):string
@@ -174,21 +174,21 @@ package nvim.type.vim.lsp;
 		
 		 The id allocated to the client.
 	**/
-	extern var id : Int;
+	extern public var id : Int;
 	/**
 		```lua
 		(field) vim.lsp.Client.initialized: true?
 		```
 	**/
 	@:optional
-	extern var initialized : Null<Bool>;
+	extern public var initialized : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.Client.messages: table
 		```
 	**/
 	@:deprecated
-	extern var messages : String;
+	extern public var messages : String;
 	/**
 		```lua
 		(field) vim.lsp.Client.name: string
@@ -199,7 +199,7 @@ package nvim.type.vim.lsp;
 		
 		 See [vim.lsp.ClientConfig].
 	**/
-	extern var name : String;
+	extern public var name : String;
 	/**
 		```lua
 		(field) vim.lsp.Client.offset_encoding: string
@@ -210,7 +210,7 @@ package nvim.type.vim.lsp;
 		
 		 See [vim.lsp.ClientConfig].
 	**/
-	extern var offset_encoding : String;
+	extern public var offset_encoding : String;
 	/**
 		```lua
 		(field) vim.lsp.Client.progress: vim.lsp.Client.Progress
@@ -222,7 +222,7 @@ package nvim.type.vim.lsp;
 		 A ring buffer (|vim.ringbuf()|) containing progress messages
 		 sent by the server.
 	**/
-	extern var progress : nvim.type.vim.lsp.client.Progress;
+	extern public var progress : nvim.type.vim.lsp.client.Progress;
 	/**
 		```lua
 		(field) vim.lsp.Client.root_dir: string?
@@ -234,7 +234,7 @@ package nvim.type.vim.lsp;
 		 See [vim.lsp.ClientConfig].
 	**/
 	@:optional
-	extern var root_dir : Null<String>;
+	extern public var root_dir : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.Client.rpc: vim.lsp.rpc.PublicClient
@@ -250,7 +250,7 @@ package nvim.type.vim.lsp;
 		 RPC client object, for low level interaction with the client.
 		 See |vim.lsp.rpc.start()|.
 	**/
-	extern var rpc : nvim.type.vim.lsp.rpc.PublicClient;
+	extern public var rpc : nvim.type.vim.lsp.rpc.PublicClient;
 	/**
 		```lua
 		(field) vim.lsp.Client.server_capabilities: (lsp.ServerCapabilities)?
@@ -267,7 +267,7 @@ package nvim.type.vim.lsp;
 		 Response from the server sent on `initialize` describing the server's capabilities.
 	**/
 	@:optional
-	extern var server_capabilities : Null<nvim.type.lsp.ServerCapabilities>;
+	extern public var server_capabilities : Null<nvim.type.lsp.ServerCapabilities>;
 	/**
 		```lua
 		(field) vim.lsp.Client.server_info: (lsp.ServerInfo)?
@@ -284,7 +284,7 @@ package nvim.type.vim.lsp;
 		 Response from the server sent on `initialize` describing server information (e.g. version).
 	**/
 	@:optional
-	extern var server_info : Null<nvim.type.lsp.ServerInfo>;
+	extern public var server_info : Null<nvim.type.lsp.ServerInfo>;
 	/**
 		```lua
 		(field) vim.lsp.Client.settings: table<string, boolean|string|number|unknown[]|nil>
@@ -299,7 +299,7 @@ package nvim.type.vim.lsp;
 		
 		 See [vim.lsp.ClientConfig].
 	**/
-	extern var settings : nvim.type.lsp.LSPObject;
+	extern public var settings : nvim.type.lsp.LSPObject;
 	/**
 		```lua
 		(field) vim.lsp.Client.workspace_folders: lsp.WorkspaceFolder[]?
@@ -311,7 +311,7 @@ package nvim.type.vim.lsp;
 		 See [vim.lsp.ClientConfig].
 	**/
 	@:optional
-	extern var workspace_folders : Null<lua.Table<Int, nvim.type.lsp.WorkspaceFolder>>;
+	extern public var workspace_folders : Null<lua.Table<Int, nvim.type.lsp.WorkspaceFolder>>;
 	/**
 		```lua
 		(method) vim.lsp.Client:_add_workspace_folder(dir?: string)

@@ -11,7 +11,7 @@ package nvim.type.vim;
 		(field) vim.SystemObj.cmd: string[]
 		```
 	**/
-	extern var cmd : lua.Table<Int, String>;
+	extern public var cmd : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) vim.SystemObj.is_closing: fun(self: vim.SystemObj):boolean
@@ -44,7 +44,7 @@ package nvim.type.vim;
 		(field) vim.SystemObj.pid: integer
 		```
 	**/
-	extern var pid : Int;
+	extern public var pid : Int;
 	/**
 		```lua
 		(field) vim.SystemObj.wait: fun(self: vim.SystemObj, timeout?: integer):vim.SystemCompleted

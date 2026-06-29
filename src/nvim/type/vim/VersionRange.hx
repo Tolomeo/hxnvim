@@ -11,14 +11,14 @@ package nvim.type.vim;
 		(field) vim.VersionRange.from: vim.Version
 		```
 	**/
-	extern var from : nvim.type.vim.Version;
+	extern public var from : nvim.type.vim.Version;
 	/**
 		```lua
 		(field) vim.VersionRange.to: (vim.Version)?
 		```
 	**/
 	@:optional
-	extern var to : Null<nvim.type.vim.Version>;
+	extern public var to : Null<nvim.type.vim.Version>;
 	/**
 		```lua
 		(method) vim.VersionRange:has(version: string|vim.Version)
