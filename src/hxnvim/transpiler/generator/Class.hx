@@ -412,7 +412,16 @@ private abstract class ClassGenerator {
 
 class DataMethodGenerator extends MethodGenerator {
 	override function generateAccess(methodAccess:Array<SymbolAccess>) {
-		return [AExtern].concat(super.generateAccess(methodAccess));
+		final dataMethodAccess = super.generateAccess(methodAccess);
+
+		if (dataMethodAccess.exists(access -> switch (access) {
+			case Access.APrivate: true;
+			case _: false;
+		})) {
+			return [Access.AExtern].concat(dataMethodAccess);
+		}
+
+		return [Access.AExtern, Access.APublic].concat(dataMethodAccess);
 	}
 
 	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
