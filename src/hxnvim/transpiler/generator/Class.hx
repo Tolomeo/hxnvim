@@ -25,7 +25,7 @@ class PropertyGenerator {
 		this.opt = opt;
 	}
 
-	function generateFieldDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
+	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
 		return {
 			meta: meta,
 			access: access,
@@ -36,14 +36,14 @@ class PropertyGenerator {
 		};
 	}
 
-	function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
+	function generateAccess(propertyAccess:Array<SymbolAccess>) {
 		return propertyAccess.map(a -> switch (a) {
 			case SymbolAccess.Private: APrivate;
 			case symbolAccess: throw 'Unexpected method access for property ${symbolAccess}';
 		});
 	}
 
-	function generatePropertyMeta(propertyMeta:Array<SymbolMeta>) {
+	function generateMeta(propertyMeta:Array<SymbolMeta>) {
 		return propertyMeta.map(m -> switch (m) {
 			case SymbolMeta.Deprecated:
 				new MetaGenerator("deprecated").generate();
@@ -69,13 +69,13 @@ class PropertyGenerator {
 			propertyMeta.unshift(SymbolMeta.Optional);
 		}
 
-		final meta = this.generatePropertyMeta(propertyMeta);
+		final meta = this.generateMeta(propertyMeta);
 
-		final access = this.generatePropertyAccess(this.property.access);
+		final access = this.generateAccess(this.property.access);
 
 		final kind = FieldType.FVar(new LiteralTypeGenerator().generate(this.property.type));
 
-		return this.generateFieldDefinition(name, doc, meta, access, kind);
+		return this.generateDefinition(name, doc, meta, access, kind);
 	}
 }
 
@@ -347,8 +347,17 @@ private abstract class ClassGenerator {
 }
 
 class DataPropertyGenerator extends PropertyGenerator {
-	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
-		return [AExtern].concat(super.generatePropertyAccess(propertyAccess));
+	override function generateAccess(propertyAccess:Array<SymbolAccess>) {
+		final dataPropertyAccess = super.generateAccess(propertyAccess);
+
+		if (dataPropertyAccess.exists(access -> switch (access) {
+			case Access.APrivate: true;
+			case _: false;
+		})) {
+			return [Access.AExtern].concat(dataPropertyAccess);
+		}
+
+		return [Access.AExtern, Access.APublic].concat(dataPropertyAccess);
 	}
 }
 
@@ -414,8 +423,8 @@ class InstanceClassGenerator extends ClassGenerator {
 }
 
 class SingletonPropertyGenerator extends PropertyGenerator {
-	override function generatePropertyAccess(propertyAccess:Array<SymbolAccess>) {
-		return [AStatic].concat(super.generatePropertyAccess(propertyAccess));
+	override function generateAccess(propertyAccess:Array<SymbolAccess>) {
+		return [AStatic].concat(super.generateAccess(propertyAccess));
 	}
 }
 
