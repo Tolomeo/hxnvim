@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var allowedTags : Null<Array<String>>;
+	extern var allowedTags : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) lsp.MarkdownClientCapabilities.parser: string

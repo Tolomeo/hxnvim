@@ -1734,7 +1734,7 @@ package nvim.type;
 	**/
 	@:native("cpu_info")
 	@:luaDotMethod
-	private extern function __cpu_info():nvim.helper.Multireturn<Null<Array<nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __cpu_info():nvim.helper.Multireturn<Null<lua.Table<Int, nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.cpu_info()
@@ -1847,9 +1847,9 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function cpu_info():nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function cpu_info():nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __cpu_info();
-		return new nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -9266,7 +9266,7 @@ package nvim.type;
 	@:native("fs_readdir")
 	@:luaDotMethod
 	@:overload(function (dir:nvim.type.uv.LuvDirT, callback:nvim.type.uv.fs_readdir.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_readdir(dir: uv.luv_dir_t)
@@ -9380,10 +9380,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		dir = nvim.helper.Arg.pure(dir);
 		final result = __fs_readdir(dir);
-		return new nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -12579,7 +12579,7 @@ package nvim.type;
 	@:native("getaddrinfo")
 	@:luaDotMethod
 	@:overload(function (host:String, service:String, hints:nvim.type.uv.getaddrinfo.Hints, callback:nvim.type.uv.getaddrinfo.Callback) : nvim.type.uv.UvGetaddrinfoT {})
-	private extern function __getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn<Null<Array<nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.getaddrinfo(host: string, service: string, hints?: uv.getaddrinfo.hints)
@@ -12709,10 +12709,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		hints = nvim.helper.Arg.pure(hints);
 		final result = __getaddrinfo(host, service, hints);
-		return new nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua

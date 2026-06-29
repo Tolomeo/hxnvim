@@ -41,7 +41,7 @@ package nvim.type;
 		(field) TSLangInfo.fields: string[]
 		```
 	**/
-	extern var fields : Array<String>;
+	extern var fields : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) TSLangInfo.metadata: TSLangMetadata?

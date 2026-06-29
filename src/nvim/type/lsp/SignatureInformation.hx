@@ -94,5 +94,5 @@ package nvim.type.lsp;
 		The parameters of this signature.
 	**/
 	@:optional
-	extern var parameters : Null<Array<nvim.type.lsp.ParameterInformation>>;
+	extern var parameters : Null<lua.Table<Int, nvim.type.lsp.ParameterInformation>>;
 }

@@ -55,7 +55,7 @@ package nvim.type;
 		    | false
 		```
 	**/
-	extern public function included_ranges(include_bytes:Bool):Array<nvim.type.Range6>;
+	extern public function included_ranges(include_bytes:Bool):lua.Table<Int, nvim.type.Range6>;
 	/**
 		```lua
 		(method) TSTree:root()

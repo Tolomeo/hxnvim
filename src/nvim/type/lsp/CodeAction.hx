@@ -75,7 +75,7 @@ package nvim.type.lsp;
 		The diagnostics that this code action resolves.
 	**/
 	@:optional
-	extern var diagnostics : Null<Array<nvim.type.lsp.Diagnostic>>;
+	extern var diagnostics : Null<lua.Table<Int, nvim.type.lsp.Diagnostic>>;
 	/**
 		```lua
 		(field) lsp.CodeAction.disabled: (lsp.CodeActionDisabled)?
@@ -198,7 +198,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.CodeActionTag>>;
+	extern var tags : Null<lua.Table<Int, nvim.type.lsp.CodeActionTag>>;
 	/**
 		```lua
 		(field) lsp.CodeAction.title: string

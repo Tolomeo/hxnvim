@@ -32,5 +32,5 @@ package nvim.type.lsp;
 		More trigger characters.
 	**/
 	@:optional
-	extern var moreTriggerCharacter : Null<Array<String>>;
+	extern var moreTriggerCharacter : Null<lua.Table<Int, String>>;
 }

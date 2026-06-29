@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		The actual items.
 	**/
-	extern var items : Array<nvim.type.lsp.Diagnostic>;
+	extern var items : lua.Table<Int, nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		(field) lsp.FullDocumentDiagnosticReport.kind: "full"

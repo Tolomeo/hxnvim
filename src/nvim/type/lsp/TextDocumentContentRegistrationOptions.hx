@@ -34,5 +34,5 @@ package nvim.type.lsp;
 		
 		The schemes for which the server provides content.
 	**/
-	extern var schemes : Array<String>;
+	extern var schemes : lua.Table<Int, String>;
 }

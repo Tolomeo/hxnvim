@@ -71,7 +71,7 @@ package nvim.type.vim.fn.setqflist;
 		 argument.
 	**/
 	@:optional
-	extern var items : Null<Array<nvim.type.vim.quickfix.Entry>>;
+	extern var items : Null<lua.Table<Int, nvim.type.vim.quickfix.Entry>>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.lines: string[]?
@@ -86,7 +86,7 @@ package nvim.type.vim.fn.setqflist;
 		 See |quickfix-parse|
 	**/
 	@:optional
-	extern var lines : Null<Array<String>>;
+	extern var lines : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.nr: integer?

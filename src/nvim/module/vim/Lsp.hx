@@ -441,7 +441,7 @@ extern class Lsp {
 		 clients as needed)
 	**/
 	@:luaDotMethod
-	function enable(name:haxe.extern.EitherType<String, Array<String>>, ?enable:Bool):Dynamic;
+	function enable(name:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?enable:Bool):Dynamic;
 	/**
 		```lua
 		function lsp.foldclose(kind: "comment"|"imports"|"region", winid?: integer)
@@ -650,7 +650,7 @@ extern class Lsp {
 		@*return* `buffers` — list of buffer ids
 	**/
 	@:luaDotMethod
-	function get_buffers_by_client_id(client_id:Int):Array<Int>;
+	function get_buffers_by_client_id(client_id:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function lsp.get_client_by_id(client_id: integer)
@@ -683,7 +683,7 @@ extern class Lsp {
 	**/
 	@:native("get_clients")
 	@:luaDotMethod
-	private function __get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):Array<nvim.type.vim.lsp.Client>;
+	private function __get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):lua.Table<Int, nvim.type.vim.lsp.Client>;
 	/**
 		```lua
 		function lsp.get_clients(filter?: vim.lsp.get_clients.Filter)
@@ -697,7 +697,7 @@ extern class Lsp {
 		@*return* — : List of |vim.lsp.Client| objects
 	**/
 	@:luaDotMethod
-	inline function get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):Array<nvim.type.vim.lsp.Client> {
+	inline function get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):lua.Table<Int, nvim.type.vim.lsp.Client> {
 		filter = nvim.helper.Arg.pure(filter);
 		final result = __get_clients(filter);
 		return result;
@@ -1044,7 +1044,7 @@ extern class Lsp {
 		@*param* `force` — shutdown forcefully
 	**/
 	@:luaDotMethod
-	function stop_client(client_id:haxe.extern.EitherType<Int, haxe.extern.EitherType<Array<Int>, Array<nvim.type.vim.lsp.Client>>>, ?force:Bool):Dynamic;
+	function stop_client(client_id:haxe.extern.EitherType<Int, haxe.extern.EitherType<lua.Table<Int, Int>, lua.Table<Int, nvim.type.vim.lsp.Client>>>, ?force:Bool):Dynamic;
 	/**
 		```lua
 		function lsp.tagfunc(pattern: string, flags: string)
@@ -1068,7 +1068,7 @@ extern class Lsp {
 		@*return* `tags` — A list of matching tags
 	**/
 	@:luaDotMethod
-	function tagfunc(pattern:String, flags:String):Array<lua.Table.AnyTable>;
+	function tagfunc(pattern:String, flags:String):lua.Table<Int, lua.Table.AnyTable>;
 	/**
 		```lua
 		(global) vim.lsp.util: table

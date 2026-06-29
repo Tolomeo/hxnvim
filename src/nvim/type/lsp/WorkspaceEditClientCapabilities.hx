@@ -99,7 +99,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var resourceOperations : Null<Array<nvim.type.lsp.ResourceOperationKind>>;
+	extern var resourceOperations : Null<lua.Table<Int, nvim.type.lsp.ResourceOperationKind>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.snippetEditSupport: boolean?

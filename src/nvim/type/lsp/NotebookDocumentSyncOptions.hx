@@ -31,7 +31,7 @@ package nvim.type.lsp;
 		
 		The notebooks to be synced
 	**/
-	extern var notebookSelector : Array<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
+	extern var notebookSelector : lua.Table<Int, haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncOptions.save: boolean?

@@ -41,7 +41,7 @@ package nvim.type.vim.lsp.buf.hover;
 		override `border`
 	**/
 	@:optional
-	extern var border : Null<haxe.extern.EitherType<String, Array<Dynamic>>>;
+	extern var border : Null<haxe.extern.EitherType<String, lua.Table<Int, Dynamic>>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.close_events: table?

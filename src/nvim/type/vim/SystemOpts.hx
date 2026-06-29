@@ -53,7 +53,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var stdin : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, Bool>>>;
+	extern var stdin : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Bool>>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.stdout: (fun(err?: string, data?: string)|false)?

@@ -29,5 +29,5 @@ package nvim.type.lsp;
 		will retry the request if it receives a
 		response with error code `ContentModified`
 	**/
-	extern var retryOnContentModified : Array<String>;
+	extern var retryOnContentModified : lua.Table<Int, String>;
 }

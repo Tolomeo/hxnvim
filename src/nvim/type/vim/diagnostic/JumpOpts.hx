@@ -84,7 +84,7 @@ package nvim.type.vim.diagnostic;
 		 Limit diagnostics to one or more namespaces.
 	**/
 	@:optional
-	extern var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
+	extern var namespace : Null<haxe.extern.EitherType<lua.Table<Int, Int>, Int>>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.pos: [integer, integer]?

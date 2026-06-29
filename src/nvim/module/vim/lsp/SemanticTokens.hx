@@ -48,7 +48,7 @@ extern class SemanticTokens {
 		        - client_id (integer)
 	**/
 	@:luaDotMethod
-	function get_at_pos(?bufnr:Null<Int>, ?row:Null<Int>, ?col:Null<Int>):Null<Array<nvim.type.STTokenRangeInspect>>;
+	function get_at_pos(?bufnr:Null<Int>, ?row:Null<Int>, ?col:Null<Int>):Null<lua.Table<Int, nvim.type.STTokenRangeInspect>>;
 	/**
 		```lua
 		function M.highlight_token(token: table, bufnr: integer, client_id: integer, hl_group: string, opts?: vim.lsp.semantic_tokens.highlight_token.Opts)

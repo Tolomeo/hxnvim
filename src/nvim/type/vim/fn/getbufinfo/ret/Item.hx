@@ -80,11 +80,11 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.signs: vim.fn.sign[]
 		```
 	**/
-	extern var signs : Array<nvim.type.vim.fn.Sign>;
+	extern var signs : lua.Table<Int, nvim.type.vim.fn.Sign>;
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.windows: integer[]
 		```
 	**/
-	extern var windows : Array<Int>;
+	extern var windows : lua.Table<Int, Int>;
 }

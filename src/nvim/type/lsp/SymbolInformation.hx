@@ -134,5 +134,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
+	extern var tags : Null<lua.Table<Int, nvim.type.lsp.SymbolTag>>;
 }

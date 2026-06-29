@@ -27,7 +27,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var allCommitCharacters : Null<Array<String>>;
+	extern var allCommitCharacters : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.completionItem: (lsp.ServerCompletionItemOptions)?
@@ -73,7 +73,7 @@ package nvim.type.lsp;
 		an identifier (for example `.` in JavaScript) list them in `triggerCharacters`.
 	**/
 	@:optional
-	extern var triggerCharacters : Null<Array<String>>;
+	extern var triggerCharacters : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.workDoneProgress: boolean?

@@ -40,5 +40,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
+	extern var pattern : Null<haxe.extern.EitherType<String, lua.Table<Int, String>>>;
 }

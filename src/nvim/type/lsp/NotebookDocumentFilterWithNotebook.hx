@@ -17,7 +17,7 @@ package nvim.type.lsp;
 		The cells of the matching notebook to be synced.
 	**/
 	@:optional
-	extern var cells : Null<Array<nvim.type.lsp.NotebookCellLanguage>>;
+	extern var cells : Null<lua.Table<Int, nvim.type.lsp.NotebookCellLanguage>>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterWithNotebook.notebook: string|lsp.NotebookDocumentFilterNotebookType|lsp.NotebookDocumentFilterPattern|lsp.NotebookDocumentFilterScheme

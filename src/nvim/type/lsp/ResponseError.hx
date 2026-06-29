@@ -18,7 +18,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var data : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<Array<lua.Table.AnyTable>, lua.Table.AnyTable>>>>>;
+	extern var data : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table<Int, lua.Table.AnyTable>, lua.Table.AnyTable>>>>>;
 	/**
 		```lua
 		(field) lsp.ResponseError.message: string

@@ -187,7 +187,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var virt_lines : Null<Array<Any>>;
+	extern var virt_lines : Null<lua.Table<Int, Any>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.virt_lines_above: boolean?
@@ -215,7 +215,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var virt_text : Null<Array<Any>>;
+	extern var virt_text : Null<lua.Table<Int, Any>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.virt_text_hide: boolean?

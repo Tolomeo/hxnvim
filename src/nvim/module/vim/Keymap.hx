@@ -19,7 +19,7 @@ extern class Keymap {
 	**/
 	@:native("del")
 	@:luaDotMethod
-	private function __del(modes:haxe.extern.EitherType<String, Array<String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic;
+	private function __del(modes:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic;
 	/**
 		```lua
 		function keymap.del(modes: string|string[], lhs: string, opts?: vim.keymap.del.Opts)
@@ -37,7 +37,7 @@ extern class Keymap {
 		 ```
 	**/
 	@:luaDotMethod
-	inline function del(modes:haxe.extern.EitherType<String, Array<String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic {
+	inline function del(modes:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __del(modes, lhs, opts);
 		return result;
@@ -74,7 +74,7 @@ extern class Keymap {
 	**/
 	@:native("set")
 	@:luaDotMethod
-	private function __set(mode:haxe.extern.EitherType<String, Array<String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic;
+	private function __set(mode:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic;
 	/**
 		```lua
 		function keymap.set(mode: string|string[], lhs: string, rhs: string|function, opts?: vim.keymap.set.Opts)
@@ -106,7 +106,7 @@ extern class Keymap {
 		@*param* `rhs` — Right-hand side |{rhs}| of the mapping, can be a Lua function.
 	**/
 	@:luaDotMethod
-	inline function set(mode:haxe.extern.EitherType<String, Array<String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic {
+	inline function set(mode:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __set(mode, lhs, rhs, opts);
 		return result;

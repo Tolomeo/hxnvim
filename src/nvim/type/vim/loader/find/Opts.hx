@@ -31,7 +31,7 @@ package nvim.type.vim.loader.find;
 		 (default: `{}`)
 	**/
 	@:optional
-	extern var paths : Null<Array<String>>;
+	extern var paths : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) vim.loader.find.Opts.patterns: string[]?
@@ -45,7 +45,7 @@ package nvim.type.vim.loader.find;
 		 (default: `{"/init.lua", ".lua"}`)
 	**/
 	@:optional
-	extern var patterns : Null<Array<String>>;
+	extern var patterns : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) vim.loader.find.Opts.rtp: boolean?

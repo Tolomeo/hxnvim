@@ -17,5 +17,5 @@ package nvim.type.vim.fn.sign_getplaced.ret;
 		(field) vim.fn.sign_getplaced.ret.item.signs: vim.fn.sign[]
 		```
 	**/
-	extern var signs : Array<nvim.type.vim.fn.Sign>;
+	extern var signs : lua.Table<Int, nvim.type.vim.fn.Sign>;
 }

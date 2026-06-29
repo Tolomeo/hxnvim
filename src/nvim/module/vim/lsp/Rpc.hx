@@ -116,7 +116,7 @@ extern class Rpc {
 	**/
 	@:native("start")
 	@:luaDotMethod
-	private function __start(cmd:Array<String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient;
+	private function __start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient;
 	/**
 		```lua
 		function M.start(cmd: string[], dispatchers?: vim.lsp.rpc.Dispatchers, extra_spawn_params?: vim.lsp.rpc.ExtraSpawnParams)
@@ -132,7 +132,7 @@ extern class Rpc {
 		@*param* `cmd` — Command to start the LSP server.
 	**/
 	@:luaDotMethod
-	inline function start(cmd:Array<String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient {
+	inline function start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient {
 		dispatchers = nvim.helper.Arg.pure(dispatchers);
 		extra_spawn_params = nvim.helper.Arg.pure(extra_spawn_params);
 		final result = __start(cmd, dispatchers, extra_spawn_params);

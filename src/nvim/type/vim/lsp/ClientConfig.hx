@@ -67,7 +67,7 @@ package nvim.type.vim.lsp;
 		  -> vim.lsp.rpc.PublicClient
 		```
 	**/
-	extern var cmd : haxe.extern.EitherType<Array<String>, (dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, config:nvim.type.vim.lsp.ClientConfig) -> nvim.type.vim.lsp.rpc.PublicClient>;
+	extern var cmd : haxe.extern.EitherType<lua.Table<Int, String>, (dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, config:nvim.type.vim.lsp.ClientConfig) -> nvim.type.vim.lsp.rpc.PublicClient>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.cmd_cwd: string?
@@ -348,7 +348,7 @@ package nvim.type.vim.lsp;
 		 supports workspace folders but none are configured. See `workspaceFolders` in LSP spec.
 	**/
 	@:optional
-	extern var workspace_folders : Null<Array<nvim.type.lsp.WorkspaceFolder>>;
+	extern var workspace_folders : Null<lua.Table<Int, nvim.type.lsp.WorkspaceFolder>>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.workspace_required: boolean?

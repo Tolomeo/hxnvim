@@ -38,5 +38,5 @@ package nvim.type.vim.treesitter;
 		
 		List of (unique) capture names defined in query.
 	**/
-	extern var captures : Array<String>;
+	extern var captures : lua.Table<Int, String>;
 }

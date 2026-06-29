@@ -18,7 +18,7 @@ package nvim.type.lsp;
 		property. The order describes the preferred format of the client.
 	**/
 	@:optional
-	extern var contentFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	extern var contentFormat : Null<lua.Table<Int, nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.dynamicRegistration: boolean?

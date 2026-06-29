@@ -17,7 +17,7 @@ package nvim.type.vim.fn.undotree;
 		 A list of dictionaries with information about
 		 undo blocks.
 	**/
-	extern var entries : Array<nvim.type.vim.fn.undotree.Entry>;
+	extern var entries : lua.Table<Int, nvim.type.vim.fn.undotree.Entry>;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.save_cur: integer

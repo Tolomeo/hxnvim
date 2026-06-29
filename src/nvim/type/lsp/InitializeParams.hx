@@ -177,5 +177,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var workspaceFolders : Null<haxe.extern.EitherType<Array<nvim.type.lsp.WorkspaceFolder>, nvim.type.lsp.Null>>;
+	extern var workspaceFolders : Null<haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.WorkspaceFolder>, nvim.type.lsp.Null>>;
 }

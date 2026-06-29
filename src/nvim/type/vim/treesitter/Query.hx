@@ -20,7 +20,7 @@ package nvim.type.vim.treesitter;
 		
 		list of (unique) capture names defined in query
 	**/
-	extern var captures : Array<String>;
+	extern var captures : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) vim.treesitter.Query.has_combined_injections: boolean
@@ -257,7 +257,7 @@ package nvim.type.vim.treesitter;
 		@*return* — : pattern id, match, metadata, tree
 	**/
 	@:native("iter_matches")
-	private extern function __iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, Array<nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_matches(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -309,7 +309,7 @@ package nvim.type.vim.treesitter;
 		
 		@*return* — : pattern id, match, metadata, tree
 	**/
-	inline public function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, Array<nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing> {
+	inline public function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing> {
 		node = nvim.helper.Arg.pure(node);
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __iter_matches(node, source, start, stop, opts);

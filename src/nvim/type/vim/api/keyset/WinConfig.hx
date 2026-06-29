@@ -19,14 +19,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var border : Null<haxe.extern.EitherType<String, Array<String>>>;
+	extern var border : Null<haxe.extern.EitherType<String, lua.Table<Int, String>>>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.bufpos: integer[]?
 		```
 	**/
 	@:optional
-	extern var bufpos : Null<Array<Int>>;
+	extern var bufpos : Null<lua.Table<Int, Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.col: number?

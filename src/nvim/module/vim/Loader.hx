@@ -58,7 +58,7 @@ extern class Loader {
 	**/
 	@:native("find")
 	@:luaDotMethod
-	private function __find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):Array<nvim.type.vim.loader.ModuleInfo>;
+	private function __find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):lua.Table<Int, nvim.type.vim.loader.ModuleInfo>;
 	/**
 		```lua
 		function M.find(modname: string, opts?: vim.loader.find.Opts)
@@ -76,7 +76,7 @@ extern class Loader {
 		@*param* `opts` — Options for finding a module:
 	**/
 	@:luaDotMethod
-	inline function find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):Array<nvim.type.vim.loader.ModuleInfo> {
+	inline function find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):lua.Table<Int, nvim.type.vim.loader.ModuleInfo> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __find(modname, opts);
 		return result;

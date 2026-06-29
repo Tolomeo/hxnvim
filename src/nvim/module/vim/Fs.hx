@@ -155,7 +155,7 @@ extern class Fs {
 	**/
 	@:native("find")
 	@:luaDotMethod
-	private function __find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):Array<String>;
+	private function __find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.find(names: string|fun(name: string, path: string):boolean|string[], opts?: vim.fs.find.Opts)
@@ -205,7 +205,7 @@ extern class Fs {
 		@*return* — Normalized paths |vim.fs.normalize()| of all matching items
 	**/
 	@:luaDotMethod
-	inline function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):Array<String> {
+	inline function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):lua.Table<Int, String> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __find(names, opts);
 		return result;
@@ -502,5 +502,5 @@ extern class Fs {
 		                   found.
 	**/
 	@:luaDotMethod
-	function root(source:haxe.extern.EitherType<Int, String>, marker:haxe.extern.EitherType<Array<haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
+	function root(source:haxe.extern.EitherType<Int, String>, marker:haxe.extern.EitherType<lua.Table<Int, haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
 }

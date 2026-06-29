@@ -88,7 +88,7 @@ extern class Ui {
 	@:native("open")
 	@:luaDotMethod
 	private function __open(path:String, ?opt:{ @:optional
-	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	var cmd : Null<lua.Table<Int, String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.open(path: string, opt?: { cmd: string[] })
@@ -132,7 +132,7 @@ extern class Ui {
 	**/
 	@:luaDotMethod
 	inline function open(path:String, ?opt:{ @:optional
-	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
+	var cmd : Null<lua.Table<Int, String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
 		opt = nvim.helper.Arg.pure(opt);
 		final result = __open(path, opt);
 		return new nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>>(result._0, result._1);
@@ -183,7 +183,7 @@ extern class Ui {
 	**/
 	@:native("select")
 	@:luaDotMethod
-	private function __select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
+	private function __select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))
@@ -229,7 +229,7 @@ extern class Ui {
 		               `nil` if the user aborted the dialog.
 	**/
 	@:luaDotMethod
-	inline function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
+	inline function select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __select(items, opts, on_choice);
 		return result;

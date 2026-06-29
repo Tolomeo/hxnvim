@@ -311,7 +311,7 @@ package nvim.type.vim.lsp;
 		 See [vim.lsp.ClientConfig].
 	**/
 	@:optional
-	extern var workspace_folders : Null<Array<nvim.type.lsp.WorkspaceFolder>>;
+	extern var workspace_folders : Null<lua.Table<Int, nvim.type.lsp.WorkspaceFolder>>;
 	/**
 		```lua
 		(method) vim.lsp.Client:_add_workspace_folder(dir?: string)
@@ -345,7 +345,7 @@ package nvim.type.vim.lsp;
 		(method) vim.lsp.Client:_register(registrations: lsp.Registration[])
 		```
 	**/
-	extern public function _register(registrations:Array<nvim.type.lsp.Registration>):Dynamic;
+	extern public function _register(registrations:lua.Table<Int, nvim.type.lsp.Registration>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_remove_workspace_folder(dir?: string)
@@ -384,7 +384,7 @@ package nvim.type.vim.lsp;
 		(method) vim.lsp.Client:_unregister(unregistrations: lsp.Unregistration[])
 		```
 	**/
-	extern public function _unregister(unregistrations:Array<nvim.type.lsp.Unregistration>):Dynamic;
+	extern public function _unregister(unregistrations:lua.Table<Int, nvim.type.lsp.Unregistration>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:cancel_request(id: integer)

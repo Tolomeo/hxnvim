@@ -19,7 +19,7 @@ package nvim.type.vim.fn.undotree;
 		 item.
 	**/
 	@:optional
-	extern var alt : Null<Array<nvim.type.vim.fn.undotree.Entry>>;
+	extern var alt : Null<lua.Table<Int, nvim.type.vim.fn.undotree.Entry>>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.curhead: integer?

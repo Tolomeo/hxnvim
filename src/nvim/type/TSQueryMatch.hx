@@ -19,7 +19,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	extern public function captures():lua.Table<Int, Array<nvim.type.TSNode>>;
+	extern public function captures():lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>;
 	/**
 		```lua
 		(method) TSQueryMatch:info()

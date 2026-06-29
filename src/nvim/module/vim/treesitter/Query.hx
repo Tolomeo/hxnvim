@@ -23,7 +23,7 @@ extern class Query {
 	**/
 	@:native("add_directive")
 	@:luaDotMethod
-	private function __add_directive(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	private function __add_directive(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
 	/**
 		```lua
 		function M.add_directive(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata), opts: vim.treesitter.query.add_predicate.Opts)
@@ -45,7 +45,7 @@ extern class Query {
 		     `(node (#set! conceal "-"))` would get the predicate `{ "#set!", "conceal", "-" }`
 	**/
 	@:luaDotMethod
-	inline function add_directive(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
+	inline function add_directive(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __add_directive(name, handler, opts);
 		return result;
@@ -65,7 +65,7 @@ extern class Query {
 	**/
 	@:native("add_predicate")
 	@:luaDotMethod
-	private function __add_predicate(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	private function __add_predicate(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
 	/**
 		```lua
 		function M.add_predicate(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata):boolean?, opts?: vim.treesitter.query.add_predicate.Opts)
@@ -80,7 +80,7 @@ extern class Query {
 		   - see |vim.treesitter.query.add_directive()| for argument meanings
 	**/
 	@:luaDotMethod
-	inline function add_predicate(name:String, handler:(match:lua.Table<Int, Array<nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:Array<Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
+	inline function add_predicate(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __add_predicate(name, handler, opts);
 		return result;
@@ -139,7 +139,7 @@ extern class Query {
 		@*return* `query_files` — List of files to load for given query and language
 	**/
 	@:luaDotMethod
-	function get_files(lang:String, query_name:String, ?is_included:Bool):Array<String>;
+	function get_files(lang:String, query_name:String, ?is_included:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.lint(buf: integer, opts?: vim.treesitter.query.lint.Opts)
@@ -206,7 +206,7 @@ extern class Query {
 		@*return* — : Supported directives.
 	**/
 	@:luaDotMethod
-	function list_directives():Array<String>;
+	function list_directives():lua.Table<Int, String>;
 	/**
 		```lua
 		function M.list_predicates()
@@ -220,7 +220,7 @@ extern class Query {
 		@*return* — : Supported predicates.
 	**/
 	@:luaDotMethod
-	function list_predicates():Array<String>;
+	function list_predicates():lua.Table<Int, String>;
 	/**
 		```lua
 		function M.omnifunc(findstart: 0|1, base: string)

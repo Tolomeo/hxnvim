@@ -82,7 +82,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textEdit
 	**/
 	@:luaDotMethod
-	function apply_text_edits(text_edits:Array<nvim.type.lsp.TextEdit>, bufnr:Int, position_encoding:String):Dynamic;
+	function apply_text_edits(text_edits:lua.Table<Int, nvim.type.lsp.TextEdit>, bufnr:Int, position_encoding:String):Dynamic;
 	/**
 		```lua
 		function M.apply_workspace_edit(workspace_edit: lsp.WorkspaceEdit, position_encoding: 'utf-16'|'utf-32'|'utf-8')
@@ -168,7 +168,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specification/#textDocumentContentChangeEvent
 	**/
 	@:luaDotMethod
-	function buf_highlight_references(bufnr:Int, references:Array<nvim.type.lsp.DocumentHighlight>, position_encoding:String):Dynamic;
+	function buf_highlight_references(bufnr:Int, references:lua.Table<Int, nvim.type.lsp.DocumentHighlight>, position_encoding:String):Dynamic;
 	/**
 		```lua
 		function M.character_offset(buf: integer, row: integer, col: integer, offset_encoding?: 'utf-16'|'utf-32'|'utf-8')
@@ -221,7 +221,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_hover
 	**/
 	@:luaDotMethod
-	function convert_input_to_markdown_lines(input:haxe.extern.EitherType<nvim.type.lsp.MarkedString, haxe.extern.EitherType<Array<nvim.type.lsp.MarkedString>, nvim.type.lsp.MarkupContent>>, ?contents:Null<Array<String>>):Array<String>;
+	function convert_input_to_markdown_lines(input:haxe.extern.EitherType<nvim.type.lsp.MarkedString, haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.MarkedString>, nvim.type.lsp.MarkupContent>>, ?contents:Null<lua.Table<Int, String>>):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.convert_signature_help_to_markdown_lines(signature_help: lsp.SignatureHelp, ft?: string, triggers?: string[])
@@ -247,7 +247,7 @@ extern class Util {
 	**/
 	@:native("convert_signature_help_to_markdown_lines")
 	@:luaDotMethod
-	private function __convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn<Null<Array<String>>, Null<nvim.type.Range4>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<lua.Table<Int, String>>):nvim.helper.Multireturn<Null<lua.Table<Int, String>>, Null<nvim.type.Range4>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.convert_signature_help_to_markdown_lines(signature_help: lsp.SignatureHelp, ft?: string, triggers?: string[])
@@ -272,10 +272,10 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_signatureHelp
 	**/
 	@:luaDotMethod
-	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<Array<String>>):nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>> {
+	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<lua.Table<Int, String>>):nvim.helper.Multireturn.Return2<Null<lua.Table<Int, String>>, Null<nvim.type.Range4>> {
 		signature_help = nvim.helper.Arg.pure(signature_help);
 		final result = __convert_signature_help_to_markdown_lines(signature_help, ft, triggers);
-		return new nvim.helper.Multireturn.Return2<Null<Array<String>>, Null<nvim.type.Range4>>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<Null<lua.Table<Int, String>>, Null<nvim.type.Range4>>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -346,7 +346,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function locations_to_items(locations:haxe.extern.EitherType<Array<nvim.type.lsp.Location>, Array<nvim.type.lsp.LocationLink>>, ?position_encoding:String):Array<nvim.type.vim.quickfix.Entry>;
+	function locations_to_items(locations:haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.Location>, lua.Table<Int, nvim.type.lsp.LocationLink>>, ?position_encoding:String):lua.Table<Int, nvim.type.vim.quickfix.Entry>;
 	/**
 		```lua
 		function M.lookup_section(settings: table, section: string)
@@ -548,7 +548,7 @@ extern class Util {
 		 Create the workspace params
 	**/
 	@:luaDotMethod
-	function make_workspace_params(added:Array<nvim.type.lsp.WorkspaceFolder>, removed:Array<nvim.type.lsp.WorkspaceFolder>):nvim.type.lsp.WorkspaceFoldersChangeEvent;
+	function make_workspace_params(added:lua.Table<Int, nvim.type.lsp.WorkspaceFolder>, removed:lua.Table<Int, nvim.type.lsp.WorkspaceFolder>):nvim.type.lsp.WorkspaceFoldersChangeEvent;
 	/**
 		```lua
 		function M.open_floating_preview(contents: table, syntax: string, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -721,7 +721,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function set_lines(lines:Array<String>, A:Dynamic, B:Dynamic, new_lines:Array<String>):Array<String>;
+	function set_lines(lines:lua.Table<Int, String>, A:Dynamic, B:Dynamic, new_lines:lua.Table<Int, String>):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.show_document(location: lsp.Location|lsp.LocationLink, position_encoding?: 'utf-16'|'utf-32'|'utf-8', opts?: vim.lsp.util.show_document.Opts)
@@ -801,7 +801,7 @@ extern class Util {
 	**/
 	@:native("stylize_markdown")
 	@:luaDotMethod
-	private function __stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
+	private function __stylize_markdown(bufnr:Int, contents:lua.Table<Int, String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.stylize_markdown(bufnr: integer, contents: string[], opts?: table)
@@ -833,7 +833,7 @@ extern class Util {
 		@*return* `stripped` — content
 	**/
 	@:luaDotMethod
-	inline function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
+	inline function stylize_markdown(bufnr:Int, contents:lua.Table<Int, String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __stylize_markdown(bufnr, contents, opts);
 		return result;
@@ -864,7 +864,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function symbols_to_items(symbols:haxe.extern.EitherType<Array<nvim.type.lsp.DocumentSymbol>, Array<nvim.type.lsp.SymbolInformation>>, ?bufnr:Int, ?position_encoding:String):Array<nvim.type.vim.quickfix.Entry>;
+	function symbols_to_items(symbols:haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.DocumentSymbol>, lua.Table<Int, nvim.type.lsp.SymbolInformation>>, ?bufnr:Int, ?position_encoding:String):lua.Table<Int, nvim.type.vim.quickfix.Entry>;
 	/**
 		```lua
 		function M.trim_empty_lines(lines: table)
@@ -922,5 +922,5 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function try_trim_markdown_code_blocks(lines:Array<String>):String;
+	function try_trim_markdown_code_blocks(lines:lua.Table<Int, String>):String;
 }

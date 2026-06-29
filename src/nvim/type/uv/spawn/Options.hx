@@ -44,7 +44,7 @@ package nvim.type.uv.spawn;
 		
 		 Command line arguments as a list of strings. The first string should be the path to the program. On Windows, this uses CreateProcess which concatenates the arguments into a string. This can cause some strange errors. (See `options.verbatim` below for Windows.)
 	**/
-	extern var args : Array<String>;
+	extern var args : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) uv.spawn.options.cwd: string

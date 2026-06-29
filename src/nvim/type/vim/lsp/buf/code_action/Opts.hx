@@ -76,5 +76,5 @@ package nvim.type.vim.lsp.buf.code_action;
 		 using mark-like indexing. See |api-indexing|
 	**/
 	@:optional
-	extern var range : Null<{ var start : Array<Int>; var end : Array<Int>; }>;
+	extern var range : Null<{ var start : lua.Table<Int, Int>; var end : lua.Table<Int, Int>; }>;
 }

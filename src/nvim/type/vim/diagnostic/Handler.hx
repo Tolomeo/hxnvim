@@ -31,5 +31,5 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern var show : Null<(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
+	extern var show : Null<(namespace:Int, bufnr:Int, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
 }

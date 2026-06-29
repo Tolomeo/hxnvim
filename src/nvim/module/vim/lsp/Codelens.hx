@@ -28,7 +28,7 @@ extern class Codelens {
 		@*param* `lenses` — lenses to display
 	**/
 	@:luaDotMethod
-	function display(?lenses:Array<nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
+	function display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
 	/**
 		```lua
 		function M.get(bufnr: integer)
@@ -42,7 +42,7 @@ extern class Codelens {
 		@*param* `bufnr` — Buffer number. 0 can be used for the current buffer.
 	**/
 	@:luaDotMethod
-	function get(bufnr:Int):Array<nvim.type.lsp.CodeLens>;
+	function get(bufnr:Int):lua.Table<Int, nvim.type.lsp.CodeLens>;
 	/**
 		```lua
 		function M.on_codelens(err?: lsp.ResponseError, result: lsp.CodeLens[], ctx: lsp.HandlerContext)
@@ -54,7 +54,7 @@ extern class Codelens {
 	**/
 	@:native("on_codelens")
 	@:luaDotMethod
-	private function __on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:Array<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	private function __on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
 	/**
 		```lua
 		function M.on_codelens(err?: lsp.ResponseError, result: lsp.CodeLens[], ctx: lsp.HandlerContext)
@@ -65,7 +65,7 @@ extern class Codelens {
 		 |lsp-handler| for the method `textDocument/codeLens`
 	**/
 	@:luaDotMethod
-	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:Array<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
 		final result = __on_codelens(err, result, ctx);
 		return result;
@@ -140,5 +140,5 @@ extern class Codelens {
 		@*param* `lenses` — lenses to store
 	**/
 	@:luaDotMethod
-	function save(?lenses:Array<nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
+	function save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
 }

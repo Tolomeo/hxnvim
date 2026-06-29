@@ -32,7 +32,7 @@ package nvim.type.vim.filetype.match;
 		 with {buf}.
 	**/
 	@:optional
-	extern var contents : Null<Array<String>>;
+	extern var contents : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) vim.filetype.match.args.filename: string?

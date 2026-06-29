@@ -50,7 +50,7 @@ package nvim.type.lsp;
 		
 		The token formats the clients supports.
 	**/
-	extern var formats : Array<nvim.type.lsp.TokenFormat>;
+	extern var formats : lua.Table<Int, nvim.type.lsp.TokenFormat>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.multilineTokenSupport: boolean?
@@ -119,7 +119,7 @@ package nvim.type.lsp;
 		
 		The token modifiers that the client supports.
 	**/
-	extern var tokenModifiers : Array<String>;
+	extern var tokenModifiers : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.tokenTypes: string[]
@@ -130,5 +130,5 @@ package nvim.type.lsp;
 		
 		The token types that the client supports.
 	**/
-	extern var tokenTypes : Array<String>;
+	extern var tokenTypes : lua.Table<Int, String>;
 }

@@ -81,7 +81,7 @@ package nvim.type.lsp;
 		
 		*Note* that neither the string nor the label part can be empty.
 	**/
-	extern var label : haxe.extern.EitherType<String, Array<nvim.type.lsp.InlayHintLabelPart>>;
+	extern var label : haxe.extern.EitherType<String, lua.Table<Int, nvim.type.lsp.InlayHintLabelPart>>;
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingLeft: boolean?
@@ -172,7 +172,7 @@ package nvim.type.lsp;
 		hint itself is now obsolete.
 	**/
 	@:optional
-	extern var textEdits : Null<Array<nvim.type.lsp.TextEdit>>;
+	extern var textEdits : Null<lua.Table<Int, nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
 		(field) lsp.InlayHint.tooltip: (string|lsp.MarkupContent)?

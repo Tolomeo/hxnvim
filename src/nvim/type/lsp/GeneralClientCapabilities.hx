@@ -56,7 +56,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var positionEncodings : Null<Array<nvim.type.lsp.PositionEncodingKind>>;
+	extern var positionEncodings : Null<lua.Table<Int, nvim.type.lsp.PositionEncodingKind>>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.regularExpressions: (lsp.RegularExpressionsClientCapabilities)?

@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		property. The order describes the preferred format of the client.
 	**/
 	@:optional
-	extern var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	extern var documentationFormat : Null<lua.Table<Int, nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.noActiveParameterSupport: boolean?

@@ -52,7 +52,7 @@ extern class InlayHint {
 		 @since 12
 	**/
 	@:luaDotMethod
-	function get(?filter:Null<nvim.type.vim.lsp.inlay_hint.get.Filter>):Array<nvim.type.vim.lsp.inlay_hint.get.Ret>;
+	function get(?filter:Null<nvim.type.vim.lsp.inlay_hint.get.Filter>):lua.Table<Int, nvim.type.vim.lsp.inlay_hint.get.Ret>;
 	/**
 		```lua
 		function M.is_enabled(filter?: vim.lsp.inlay_hint.enable.Filter)
@@ -96,7 +96,7 @@ extern class InlayHint {
 	**/
 	@:native("on_inlayhint")
 	@:luaDotMethod
-	private function __on_inlayhint(err:Dynamic, result:Null<Array<nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+	private function __on_inlayhint(err:Dynamic, result:Null<lua.Table<Int, nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
 	/**
 		```lua
 		function M.on_inlayhint(err: any, result?: lsp.InlayHint[], ctx: lsp.HandlerContext)
@@ -108,7 +108,7 @@ extern class InlayHint {
 		 Store hints for a specific buffer and client
 	**/
 	@:luaDotMethod
-	inline private function on_inlayhint(err:Dynamic, result:Null<Array<nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+	inline private function on_inlayhint(err:Dynamic, result:Null<lua.Table<Int, nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
 		final result = __on_inlayhint(err, result, ctx);
 		return result;

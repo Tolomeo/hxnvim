@@ -18,7 +18,7 @@ package nvim.type.vim.fn.getscriptinfo;
 		```
 	**/
 	@:optional
-	extern var functions : Null<Array<String>>;
+	extern var functions : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.name: string

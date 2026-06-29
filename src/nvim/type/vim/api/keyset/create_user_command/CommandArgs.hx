@@ -50,7 +50,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 The args split by unescaped whitespace
 		 (when more than one argument is allowed), if any <f-args>
 	**/
-	extern var fargs : Array<String>;
+	extern var fargs : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.line1: integer

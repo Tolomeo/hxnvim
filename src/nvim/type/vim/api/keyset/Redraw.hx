@@ -33,7 +33,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var range : Null<Array<Any>>;
+	extern var range : Null<lua.Table<Int, Any>>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statuscolumn: boolean?

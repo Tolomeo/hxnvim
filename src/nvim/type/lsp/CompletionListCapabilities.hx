@@ -50,5 +50,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var itemDefaults : Null<Array<String>>;
+	extern var itemDefaults : Null<lua.Table<Int, String>>;
 }

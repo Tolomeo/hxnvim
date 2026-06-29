@@ -357,7 +357,7 @@ package nvim.type.uv;
 	**/
 	@:native("readdir")
 	@:overload(function (callback:nvim.type.uv.fs_readdir.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __readdir():nvim.helper.Multireturn<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __readdir():nvim.helper.Multireturn<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) uv.luv_dir_t:readdir()
@@ -477,8 +477,8 @@ package nvim.type.uv;
 		  -> uv.uv_fs_t
 		```
 	**/
-	inline public function readdir():nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function readdir():nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __readdir();
-		return new nvim.helper.Multireturn.Return3<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 }

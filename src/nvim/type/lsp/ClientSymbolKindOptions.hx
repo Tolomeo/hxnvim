@@ -24,5 +24,5 @@ package nvim.type.lsp;
 		the initial version of the protocol.
 	**/
 	@:optional
-	extern var valueSet : Null<Array<nvim.type.lsp.SymbolKind>>;
+	extern var valueSet : Null<lua.Table<Int, nvim.type.lsp.SymbolKind>>;
 }

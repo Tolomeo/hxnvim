@@ -120,7 +120,7 @@ package nvim.type.lsp;
 		a scope collide all definitions can be marked via this property.
 	**/
 	@:optional
-	extern var relatedInformation : Null<Array<nvim.type.lsp.DiagnosticRelatedInformation>>;
+	extern var relatedInformation : Null<lua.Table<Int, nvim.type.lsp.DiagnosticRelatedInformation>>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.severity: (1|2|3|4)?
@@ -176,5 +176,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.DiagnosticTag>>;
+	extern var tags : Null<lua.Table<Int, nvim.type.lsp.DiagnosticTag>>;
 }

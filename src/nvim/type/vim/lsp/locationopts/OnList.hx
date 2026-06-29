@@ -26,7 +26,7 @@ package nvim.type.vim.lsp.locationopts;
 		
 		Structured like |setqflist-what|
 	**/
-	extern var items : Array<lua.Table.AnyTable>;
+	extern var items : lua.Table<Int, lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.title: string?

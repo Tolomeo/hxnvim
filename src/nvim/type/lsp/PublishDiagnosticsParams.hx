@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		An array of diagnostic information items.
 	**/
-	extern var diagnostics : Array<nvim.type.lsp.Diagnostic>;
+	extern var diagnostics : lua.Table<Int, nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.uri: string

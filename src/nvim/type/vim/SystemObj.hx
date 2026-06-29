@@ -11,7 +11,7 @@ package nvim.type.vim;
 		(field) vim.SystemObj.cmd: string[]
 		```
 	**/
-	extern var cmd : Array<String>;
+	extern var cmd : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) vim.SystemObj.is_closing: fun(self: vim.SystemObj):boolean
@@ -71,5 +71,5 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	extern public function write(data:haxe.extern.EitherType<String, Array<String>>):Dynamic;
+	extern public function write(data:haxe.extern.EitherType<String, lua.Table<Int, String>>):Dynamic;
 }

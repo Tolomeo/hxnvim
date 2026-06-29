@@ -27,7 +27,7 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.parse_cmd.args: string[]
 		```
 	**/
-	extern var args : Array<String>;
+	extern var args : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.bang: boolean
@@ -71,7 +71,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var range : Null<Array<Int>>;
+	extern var range : Null<lua.Table<Int, Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.reg: string?

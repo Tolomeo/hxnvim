@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		Children of this symbol, e.g. properties of a class.
 	**/
 	@:optional
-	extern var children : Null<Array<nvim.type.lsp.DocumentSymbol>>;
+	extern var children : Null<lua.Table<Int, nvim.type.lsp.DocumentSymbol>>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.deprecated: boolean?
@@ -175,5 +175,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
+	extern var tags : Null<lua.Table<Int, nvim.type.lsp.SymbolTag>>;
 }

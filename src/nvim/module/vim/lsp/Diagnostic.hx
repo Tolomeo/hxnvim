@@ -12,7 +12,7 @@ extern class Diagnostic {
 		 Converts the input `vim.Diagnostic`s to LSP diagnostics.
 	**/
 	@:luaDotMethod
-	function from(diagnostics:Array<nvim.type.vim.Diagnostic>):Array<nvim.type.lsp.Diagnostic>;
+	function from(diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>):lua.Table<Int, nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		function M.get_line_diagnostics(bufnr: integer|nil, line_nr: integer|nil, opts?: { severity: 1|2|3|4 }, client_id: integer|nil)

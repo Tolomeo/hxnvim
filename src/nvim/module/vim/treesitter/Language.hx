@@ -80,7 +80,7 @@ extern class Language {
 		@*param* `lang` — Name of parser
 	**/
 	@:luaDotMethod
-	function get_filetypes(lang:String):Array<String>;
+	function get_filetypes(lang:String):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.get_lang(filetype: string)
@@ -139,7 +139,7 @@ extern class Language {
 		@*param* `filetype` — Filetype(s) to associate with lang
 	**/
 	@:luaDotMethod
-	function register(lang:String, filetype:haxe.extern.EitherType<String, Array<String>>):Dynamic;
+	function register(lang:String, filetype:haxe.extern.EitherType<String, lua.Table<Int, String>>):Dynamic;
 	/**
 		```lua
 		function M.require_language(lang: any, path: any, silent: any, symbol_name: any)

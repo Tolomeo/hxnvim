@@ -28,7 +28,7 @@ package nvim.type.lsp;
 		insert an unqualified type).
 	**/
 	@:optional
-	extern var additionalTextEdits : Null<Array<nvim.type.lsp.TextEdit>>;
+	extern var additionalTextEdits : Null<lua.Table<Int, nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.command: (lsp.Command)?
@@ -63,7 +63,7 @@ package nvim.type.lsp;
 		characters will be ignored.
 	**/
 	@:optional
-	extern var commitCharacters : Null<Array<String>>;
+	extern var commitCharacters : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -381,7 +381,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.CompletionItemTag>>;
+	extern var tags : Null<lua.Table<Int, nvim.type.lsp.CompletionItemTag>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.textEdit: (lsp.InsertReplaceEdit|lsp.TextEdit)?

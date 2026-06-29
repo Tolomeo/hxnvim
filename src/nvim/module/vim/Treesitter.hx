@@ -41,7 +41,7 @@ extern class Treesitter {
 		@*return* `List` — of capture names
 	**/
 	@:luaDotMethod
-	function get_captures_at_cursor(?winnr:Null<Int>):Array<String>;
+	function get_captures_at_cursor(?winnr:Null<Int>):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.get_captures_at_pos(bufnr: integer, row: integer, col: integer)
@@ -63,7 +63,7 @@ extern class Treesitter {
 		@*param* `col` — Position column
 	**/
 	@:luaDotMethod
-	function get_captures_at_pos(bufnr:Int, row:Int, col:Int):Array<{ var capture : String; var lang : String; var metadata : nvim.type.vim.treesitter.query.TSMetadata; var id : Int; }>;
+	function get_captures_at_pos(bufnr:Int, row:Int, col:Int):lua.Table<Int, { var capture : String; var lang : String; var metadata : nvim.type.vim.treesitter.query.TSMetadata; var id : Int; }>;
 	/**
 		```lua
 		function M.get_node(opts?: vim.treesitter.get_node.Opts)

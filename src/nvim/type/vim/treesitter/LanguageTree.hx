@@ -142,7 +142,7 @@ package nvim.type.vim.treesitter;
 		Each list represents a range in the form of
 		{ {start_row}, {start_col}, {start_bytes}, {end_row}, {end_col}, {end_bytes} }.
 	**/
-	extern public function included_regions():lua.Table<Int, Array<nvim.type.Range6>>;
+	extern public function included_regions():lua.Table<Int, lua.Table<Int, nvim.type.Range6>>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:invalidate(reload: boolean|nil)

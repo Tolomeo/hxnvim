@@ -69,5 +69,5 @@ package nvim.type.lsp;
 		
 		One or more signatures.
 	**/
-	extern var signatures : Array<nvim.type.lsp.SignatureInformation>;
+	extern var signatures : lua.Table<Int, nvim.type.lsp.SignatureInformation>;
 }

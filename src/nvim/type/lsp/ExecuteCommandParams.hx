@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Arguments that the command should be invoked with.
 	**/
 	@:optional
-	extern var arguments : Null<Array<nvim.type.lsp.LSPAny>>;
+	extern var arguments : Null<lua.Table<Int, nvim.type.lsp.LSPAny>>;
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.command: string

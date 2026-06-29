@@ -37,5 +37,5 @@ package nvim.type.vim.inspect;
 		```
 	**/
 	@:optional
-	extern var process : Null<(item:Any, path:Array<String>) -> Any>;
+	extern var process : Null<(item:Any, path:lua.Table<Int, String>) -> Any>;
 }

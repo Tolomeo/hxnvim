@@ -16,7 +16,7 @@ package nvim.type;
 		
 		 Check if the node has any of the given node types as its ancestor.
 	**/
-	extern public function __has_ancestor(node_types:Array<String>):Bool;
+	extern public function __has_ancestor(node_types:lua.Table<Int, String>):Bool;
 	/**
 		```lua
 		(method) TSNode:byte_length()
@@ -173,7 +173,7 @@ package nvim.type;
 		
 		 Returns a list of all the node's children that have the given field name.
 	**/
-	extern public function field(name:String):Array<nvim.type.TSNode>;
+	extern public function field(name:String):lua.Table<Int, nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:has_changes()
@@ -286,7 +286,7 @@ package nvim.type;
 		
 		 Returns a list of the node's named children.
 	**/
-	extern public function named_children():Array<nvim.type.TSNode>;
+	extern public function named_children():lua.Table<Int, nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:named_descendant_for_range(start_row: integer, start_col: integer, end_row: integer, end_col: integer)

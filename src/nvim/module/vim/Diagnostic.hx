@@ -157,7 +157,7 @@ extern class Diagnostic {
 		@*param* `list` — List of quickfix items from |getqflist()| or |getloclist()|.
 	**/
 	@:luaDotMethod
-	function fromqflist(list:Array<lua.Table.AnyTable>):Array<nvim.type.vim.Diagnostic>;
+	function fromqflist(list:lua.Table<Int, lua.Table.AnyTable>):lua.Table<Int, nvim.type.vim.Diagnostic>;
 	/**
 		```lua
 		function M.get(bufnr?: integer, opts?: vim.diagnostic.GetOpts)
@@ -181,7 +181,7 @@ extern class Diagnostic {
 	**/
 	@:native("get")
 	@:luaDotMethod
-	private function __get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):Array<nvim.type.vim.Diagnostic>;
+	private function __get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic>;
 	/**
 		```lua
 		function M.get(bufnr?: integer, opts?: vim.diagnostic.GetOpts)
@@ -204,7 +204,7 @@ extern class Diagnostic {
 		                           are guaranteed to be present.
 	**/
 	@:luaDotMethod
-	inline function get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):Array<nvim.type.vim.Diagnostic> {
+	inline function get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __get(bufnr, opts);
 		return result;
@@ -585,7 +585,7 @@ extern class Diagnostic {
 	**/
 	@:native("match")
 	@:luaDotMethod
-	private function __match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic>;
+	private function __match(str:String, pat:String, groups:lua.Table<Int, String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic>;
 	/**
 		```lua
 		function M.match(str: string, pat: string, groups: string[], severity_map: table, defaults?: table)
@@ -631,7 +631,7 @@ extern class Diagnostic {
 		@*return* — : |vim.Diagnostic| structure or `nil` if {pat} fails to match {str}.
 	**/
 	@:luaDotMethod
-	inline function match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
+	inline function match(str:String, pat:String, groups:lua.Table<Int, String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
 		severity_map = nvim.helper.Arg.pure(severity_map);
 		final result = __match(str, pat, groups, severity_map, defaults);
 		return result;
@@ -707,7 +707,7 @@ extern class Diagnostic {
 	**/
 	@:native("set")
 	@:luaDotMethod
-	private function __set(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
+	private function __set(namespace:Int, bufnr:Int, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
 	/**
 		```lua
 		function M.set(namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.Opts)
@@ -724,7 +724,7 @@ extern class Diagnostic {
 		@*param* `opts` — Display options to pass to |vim.diagnostic.show()|
 	**/
 	@:luaDotMethod
-	inline function set(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
+	inline function set(namespace:Int, bufnr:Int, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __set(namespace, bufnr, diagnostics, opts);
 		return result;
@@ -812,7 +812,7 @@ extern class Diagnostic {
 	**/
 	@:native("show")
 	@:luaDotMethod
-	private function __show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<Array<nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
+	private function __show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
 	/**
 		```lua
 		function M.show(namespace?: integer, bufnr?: integer, diagnostics?: vim.Diagnostic[], opts?: vim.diagnostic.Opts)
@@ -841,7 +841,7 @@ extern class Diagnostic {
 		@*param* `opts` — Display options.
 	**/
 	@:luaDotMethod
-	inline function show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<Array<nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
+	inline function show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __show(namespace, bufnr, diagnostics, opts);
 		return result;
@@ -860,5 +860,5 @@ extern class Diagnostic {
 		@*return* — : Quickfix list items |setqflist-what|
 	**/
 	@:luaDotMethod
-	function toqflist(diagnostics:Array<nvim.type.vim.Diagnostic>):Array<lua.Table.AnyTable>;
+	function toqflist(diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>):lua.Table<Int, lua.Table.AnyTable>;
 }
