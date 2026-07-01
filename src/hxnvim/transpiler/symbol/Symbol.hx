@@ -70,7 +70,6 @@ typedef Signature = {
 	params:Array<Param>,
 	args:Array<Arg>,
 	ret:LiteralType,
-	overloads:Array<LiteralType>
 }
 
 typedef Function = {
@@ -78,7 +77,8 @@ typedef Function = {
 	doc:String,
 	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
-	type:Signature
+	type:Signature,
+	overloads:Array<LiteralType>
 }
 
 enum TableField {

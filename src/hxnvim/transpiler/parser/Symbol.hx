@@ -74,8 +74,8 @@ class FunctionSymbolParser extends SymbolParser {
 				params: params,
 				args: functionType.args,
 				ret: functionType.ret,
-				overloads: overloads
-			}
+			},
+			overloads: overloads
 		};
 	}
 }

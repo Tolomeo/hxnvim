@@ -244,9 +244,8 @@ class MethodGenerator {
 		if (this.opt) {
 			methodMeta.unshift(SymbolMeta.Optional);
 		}
-		final meta = this.generateMeta(methodMeta, this.method.type.overloads);
+		final meta = this.generateMeta(methodMeta, this.method.overloads);
 		final access = this.generateAccess(this.method.access);
-		// final signature = this.method.type;
 
 		final field = this.generateDefinition(name, doc, meta, access,
 			this.generateFunctionKind(this.method.type.params, this.method.type.args, this.method.type.ret));

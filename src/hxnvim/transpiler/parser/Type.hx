@@ -152,8 +152,7 @@ class LiteralTypeParser {
 				LiteralType.Function({
 					params: [],
 					args: functionType.args,
-					ret: functionType.ret,
-					overloads: []
+					ret: functionType.ret
 				});
 			case "table": new TableTypeParser(this.type, this.params).parse();
 			case "numericliteral": LiteralType.NumericLiteral(this.type.select('value').string());
