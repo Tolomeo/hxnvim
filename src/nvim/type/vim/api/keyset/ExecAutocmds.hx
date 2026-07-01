@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var buffer : Null<Int>;
+	extern public var buffer : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.data: any
@@ -26,7 +26,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.modeline: boolean?

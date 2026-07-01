@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 		```
 	**/
 	@:optional
-	extern public var buffer : Null<Int>;
+	extern public var buffer : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.buflocal: boolean?
@@ -54,21 +54,21 @@ package nvim.type.vim.api.keyset.get_autocmds;
 		```
 	**/
 	@:optional
-	extern public var group : Null<Int>;
+	extern public var group : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.group_name: integer?
 		```
 	**/
 	@:optional
-	extern public var group_name : Null<Int>;
+	extern public var group_name : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.id: integer?
 		```
 	**/
 	@:optional
-	extern public var id : Null<Int>;
+	extern public var id : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.once: boolean?

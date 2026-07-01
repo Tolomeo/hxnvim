@@ -11,7 +11,7 @@ package nvim.type.lsp;
 		(field) lsp.ResponseError.code: integer
 		```
 	**/
-	extern public var code : Int;
+	extern public var code : Float;
 	/**
 		```lua
 		(field) lsp.ResponseError.data: boolean|string|number|table|table[]|nil

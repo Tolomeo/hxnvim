@@ -23,13 +23,13 @@ package nvim.type.uv.fs_stat;
 		(field) uv.fs_stat.result.blksize: integer
 		```
 	**/
-	extern public var blksize : Int;
+	extern public var blksize : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.blocks: integer
 		```
 	**/
-	extern public var blocks : Int;
+	extern public var blocks : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.ctime: uv.fs_stat.result.time
@@ -41,37 +41,37 @@ package nvim.type.uv.fs_stat;
 		(field) uv.fs_stat.result.dev: integer
 		```
 	**/
-	extern public var dev : Int;
+	extern public var dev : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.flags: integer
 		```
 	**/
-	extern public var flags : Int;
+	extern public var flags : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.gen: integer
 		```
 	**/
-	extern public var gen : Int;
+	extern public var gen : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.gid: integer
 		```
 	**/
-	extern public var gid : Int;
+	extern public var gid : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.ino: integer
 		```
 	**/
-	extern public var ino : Int;
+	extern public var ino : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.mode: integer
 		```
 	**/
-	extern public var mode : Int;
+	extern public var mode : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.mtime: uv.fs_stat.result.time
@@ -83,19 +83,19 @@ package nvim.type.uv.fs_stat;
 		(field) uv.fs_stat.result.nlink: integer
 		```
 	**/
-	extern public var nlink : Int;
+	extern public var nlink : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.rdev: integer
 		```
 	**/
-	extern public var rdev : Int;
+	extern public var rdev : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.size: integer
 		```
 	**/
-	extern public var size : Int;
+	extern public var size : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.type: string
@@ -107,5 +107,5 @@ package nvim.type.uv.fs_stat;
 		(field) uv.fs_stat.result.uid: integer
 		```
 	**/
-	extern public var uid : Int;
+	extern public var uid : Float;
 }

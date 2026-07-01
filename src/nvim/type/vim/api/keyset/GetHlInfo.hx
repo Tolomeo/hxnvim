@@ -19,14 +19,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var bg : Null<Int>;
+	extern public var bg : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.blend: integer?
 		```
 	**/
 	@:optional
-	extern public var blend : Null<Int>;
+	extern public var blend : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.bold: true?
@@ -47,14 +47,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var ctermbg : Null<Int>;
+	extern public var ctermbg : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.ctermfg: integer?
 		```
 	**/
 	@:optional
-	extern public var ctermfg : Null<Int>;
+	extern public var ctermfg : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.default: true?
@@ -69,7 +69,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var fg : Null<Int>;
+	extern public var fg : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.italic: true?
@@ -104,7 +104,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var sp : Null<Int>;
+	extern public var sp : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_hl_info.standout: true?

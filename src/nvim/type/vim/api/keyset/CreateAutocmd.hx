@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var buffer : Null<Int>;
+	extern public var buffer : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback: (string|fun(args: vim.api.keyset.create_autocmd.callback_args):boolean?)?
@@ -47,7 +47,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.nested: boolean?

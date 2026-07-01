@@ -33,7 +33,7 @@ package nvim.type.vim.lsp.buf.format;
 		 (default: current buffer)
 	**/
 	@:optional
-	extern public var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.filter: fun(client: vim.lsp.Client):boolean??
@@ -86,7 +86,7 @@ package nvim.type.vim.lsp.buf.format;
 		 Restrict formatting to the client with ID (client.id) matching this field.
 	**/
 	@:optional
-	extern public var id : Null<Int>;
+	extern public var id : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.name: string?
@@ -129,5 +129,5 @@ package nvim.type.vim.lsp.buf.format;
 		 (default: `1000`)
 	**/
 	@:optional
-	extern public var timeout_ms : Null<Int>;
+	extern public var timeout_ms : Null<Float>;
 }

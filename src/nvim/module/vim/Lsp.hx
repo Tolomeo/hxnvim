@@ -58,7 +58,7 @@ extern class Lsp {
 		@*return* `success` — `true` if client was attached successfully; `false` otherwise
 	**/
 	@:luaDotMethod
-	function buf_attach_client(bufnr:Int, client_id:Int):Bool;
+	function buf_attach_client(bufnr:Float, client_id:Float):Bool;
 	/**
 		```lua
 		function lsp.buf_detach_client(bufnr: integer, client_id: integer)
@@ -75,7 +75,7 @@ extern class Lsp {
 		@*param* `client_id` — Client id
 	**/
 	@:luaDotMethod
-	function buf_detach_client(bufnr:Int, client_id:Int):Dynamic;
+	function buf_detach_client(bufnr:Float, client_id:Float):Dynamic;
 	/**
 		```lua
 		function lsp.buf_get_clients(bufnr: integer|nil)
@@ -93,7 +93,7 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function buf_get_clients(?bufnr:Null<Int>):lua.Table.AnyTable;
+	function buf_get_clients(?bufnr:Null<Float>):lua.Table.AnyTable;
 	/**
 		```lua
 		function lsp.buf_is_attached(bufnr: integer, client_id: integer)
@@ -109,7 +109,7 @@ extern class Lsp {
 		@*param* `client_id` — the client id
 	**/
 	@:luaDotMethod
-	function buf_is_attached(bufnr:Int, client_id:Int):Dynamic;
+	function buf_is_attached(bufnr:Float, client_id:Float):Dynamic;
 	/**
 		```lua
 		function lsp.buf_notify(bufnr: integer|nil, method: string, params: any)
@@ -130,7 +130,7 @@ extern class Lsp {
 		@*return* `success` — true if any client returns true; false otherwise
 	**/
 	@:luaDotMethod
-	function buf_notify(bufnr:Null<Int>, method:String, params:Any):Bool;
+	function buf_notify(bufnr:Null<Float>, method:String, params:Any):Bool;
 	/**
 		```lua
 		function lsp.buf_request(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, on_unsupported?: fun())
@@ -165,7 +165,7 @@ extern class Lsp {
 	**/
 	@:native("buf_request")
 	@:luaDotMethod
-	private function __buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Int, Int>, haxe.Constraints.Function, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __buf_request(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Float, Float>, haxe.Constraints.Function, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function lsp.buf_request(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, on_unsupported?: fun())
@@ -199,10 +199,10 @@ extern class Lsp {
 		iterate all clients and call their `cancel_request()` methods.
 	**/
 	@:luaDotMethod
-	inline private function buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn.Return2<lua.Table<Int, Int>, haxe.Constraints.Function> {
+	inline private function buf_request(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn.Return2<lua.Table<Float, Float>, haxe.Constraints.Function> {
 		handler = nvim.helper.Arg.pure(handler);
 		final result = __buf_request(bufnr, method, params, handler, on_unsupported);
-		return new nvim.helper.Multireturn.Return2<lua.Table<Int, Int>, haxe.Constraints.Function>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<lua.Table<Float, Float>, haxe.Constraints.Function>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -233,7 +233,7 @@ extern class Lsp {
 	**/
 	@:native("buf_request_all")
 	@:luaDotMethod
-	private function __buf_request_all(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function;
+	private function __buf_request_all(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function;
 	/**
 		```lua
 		function lsp.buf_request_all(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler: fun(results: table<integer, { err: (lsp.ResponseError)?, result: any }>, context: lsp.HandlerContext, config?: table):...unknown)
@@ -262,7 +262,7 @@ extern class Lsp {
 		@*return* `cancel` — Function that cancels all requests.
 	**/
 	@:luaDotMethod
-	inline function buf_request_all(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function {
+	inline function buf_request_all(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function {
 		handler = nvim.helper.Arg.pure(handler);
 		final result = __buf_request_all(bufnr, method, params, handler);
 		return result;
@@ -298,7 +298,7 @@ extern class Lsp {
 	**/
 	@:native("buf_request_sync")
 	@:luaDotMethod
-	private function __buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { @:optional
+	private function __buf_request_sync(bufnr:Float, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Float>):nvim.helper.Multireturn<Null<lua.Table<Float, { @:optional
 	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
@@ -330,10 +330,10 @@ extern class Lsp {
 		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
 	**/
 	@:luaDotMethod
-	inline function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn.Return2<Null<lua.Table<Int, { @:optional
+	inline function buf_request_sync(bufnr:Float, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Float>):nvim.helper.Multireturn.Return2<Null<lua.Table<Float, { @:optional
 	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>> {
 		final result = __buf_request_sync(bufnr, method, params, timeout_ms);
-		return new nvim.helper.Multireturn.Return2<Null<lua.Table<Int, { ?error:Null<nvim.type.lsp.ResponseError>, result:Any }>>, Null<String>>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<Null<lua.Table<Float, { ?error:Null<nvim.type.lsp.ResponseError>, result:Any }>>, Null<String>>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -367,7 +367,7 @@ extern class Lsp {
 		@*return* `stopped` — true if client is stopped, false otherwise.
 	**/
 	@:luaDotMethod
-	function client_is_stopped(client_id:Int):Bool;
+	function client_is_stopped(client_id:Float):Bool;
 	/**
 		```lua
 		(global) vim.lsp.codelens: table
@@ -477,7 +477,7 @@ extern class Lsp {
 	**/
 	@:native("foldclose")
 	@:luaDotMethod
-	private function __foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Int):Dynamic;
+	private function __foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Float):Dynamic;
 	/**
 		```lua
 		function lsp.foldclose(kind: "comment"|"imports"|"region", winid?: integer)
@@ -512,7 +512,7 @@ extern class Lsp {
 		```
 	**/
 	@:luaDotMethod
-	inline function foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Int):Dynamic {
+	inline function foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Float):Dynamic {
 		kind = nvim.helper.Arg.pure(kind);
 		final result = __foldclose(kind, winid);
 		return result;
@@ -556,7 +556,7 @@ extern class Lsp {
 		@*param* `lnum` — line number
 	**/
 	@:luaDotMethod
-	function foldexpr(lnum:Int):Dynamic;
+	function foldexpr(lnum:Float):Dynamic;
 	/**
 		```lua
 		function lsp.foldtext()
@@ -588,7 +588,7 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	private function for_each_buffer_client(bufnr:Int, fn:haxe.Constraints.Function):Dynamic;
+	private function for_each_buffer_client(bufnr:Float, fn:haxe.Constraints.Function):Dynamic;
 	/**
 		```lua
 		function lsp.formatexpr(opts?: vim.lsp.formatexpr.Opts)
@@ -650,7 +650,7 @@ extern class Lsp {
 		@*return* `buffers` — list of buffer ids
 	**/
 	@:luaDotMethod
-	function get_buffers_by_client_id(client_id:Int):lua.Table<Int, Int>;
+	function get_buffers_by_client_id(client_id:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function lsp.get_client_by_id(client_id: integer)
@@ -668,7 +668,7 @@ extern class Lsp {
 		@*return* `client` — rpc object
 	**/
 	@:luaDotMethod
-	function get_client_by_id(client_id:Int):Null<nvim.type.vim.lsp.Client>;
+	function get_client_by_id(client_id:Float):Null<nvim.type.vim.lsp.Client>;
 	/**
 		```lua
 		function lsp.get_clients(filter?: vim.lsp.get_clients.Filter)
@@ -765,7 +765,7 @@ extern class Lsp {
 		 Level numbers begin with "TRACE" at 0
 		 @nodoc
 	**/
-	var log_levels : haxe.extern.EitherType<lua.Table<String, Int>, lua.Table<Int, String>>;
+	var log_levels : haxe.extern.EitherType<lua.Table<String, Float>, lua.Table<Float, String>>;
 	/**
 		```lua
 		function lsp.omnifunc(findstart: integer, base: integer)
@@ -788,7 +788,7 @@ extern class Lsp {
 		 - findstart=1: list of matches (actually just calls |complete()|)
 	**/
 	@:luaDotMethod
-	function omnifunc(findstart:Int, base:Int):haxe.extern.EitherType<Int, lua.Table.AnyTable>;
+	function omnifunc(findstart:Float, base:Float):haxe.extern.EitherType<Float, lua.Table.AnyTable>;
 	/**
 		```lua
 		(global) vim.lsp.protocol: vim.lsp.protocol
@@ -825,7 +825,7 @@ extern class Lsp {
 		See: [lsp.ErrorCodes](file:///usr/local/share/nvim/runtime/lua/vim/lsp/_meta/protocol.lua#5231#10) See `vim.lsp.protocol.ErrorCodes`
 	**/
 	@:luaDotMethod
-	function rpc_response_error(code:Int, ?message:String, ?data:Any):nvim.type.lsp.ResponseError;
+	function rpc_response_error(code:Float, ?message:String, ?data:Any):nvim.type.lsp.ResponseError;
 	/**
 		```lua
 		(global) vim.lsp.semantic_tokens: table
@@ -851,7 +851,7 @@ extern class Lsp {
 		@*param* `level` — the case insensitive level name or number
 	**/
 	@:luaDotMethod
-	function set_log_level(level:haxe.extern.EitherType<Int, String>):Dynamic;
+	function set_log_level(level:haxe.extern.EitherType<Float, String>):Dynamic;
 	/**
 		```lua
 		function lsp.start(config: vim.lsp.ClientConfig, opts?: vim.lsp.start.Opts)
@@ -902,7 +902,7 @@ extern class Lsp {
 	**/
 	@:native("start")
 	@:luaDotMethod
-	private function __start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Int>;
+	private function __start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Float>;
 	/**
 		```lua
 		function lsp.start(config: vim.lsp.ClientConfig, opts?: vim.lsp.start.Opts)
@@ -952,7 +952,7 @@ extern class Lsp {
 		@*param* `opts` — Optional keyword arguments.
 	**/
 	@:luaDotMethod
-	inline function start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Int> {
+	inline function start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Float> {
 		config = nvim.helper.Arg.pure(config);
 		final result = __start(config, opts);
 		return result;
@@ -979,7 +979,7 @@ extern class Lsp {
 	**/
 	@:native("start_client")
 	@:luaDotMethod
-	private function __start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Int>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Float>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function lsp.start_client(config: vim.lsp.ClientConfig)
@@ -1002,10 +1002,10 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	inline function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn.Return2<Null<Int>, Null<String>> {
+	inline function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn.Return2<Null<Float>, Null<String>> {
 		config = nvim.helper.Arg.pure(config);
 		final result = __start_client(config);
-		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<String>>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<Null<Float>, Null<String>>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -1044,7 +1044,7 @@ extern class Lsp {
 		@*param* `force` — shutdown forcefully
 	**/
 	@:luaDotMethod
-	function stop_client(client_id:haxe.extern.EitherType<Int, haxe.extern.EitherType<lua.Table<Int, Int>, lua.Table<Int, nvim.type.vim.lsp.Client>>>, ?force:Bool):Dynamic;
+	function stop_client(client_id:haxe.extern.EitherType<Float, haxe.extern.EitherType<lua.Table<Int, Float>, lua.Table<Int, nvim.type.vim.lsp.Client>>>, ?force:Bool):Dynamic;
 	/**
 		```lua
 		function lsp.tagfunc(pattern: string, flags: string)

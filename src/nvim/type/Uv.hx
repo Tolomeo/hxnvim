@@ -692,7 +692,7 @@ package nvim.type;
 		 On other platforms, reports the number of CPUs that the operating system considers to be online.
 	**/
 	@:luaDotMethod
-	extern public function available_parallelism():Int;
+	extern public function available_parallelism():Float;
 	/**
 		```lua
 		function uv.backend_fd()
@@ -710,7 +710,7 @@ package nvim.type;
 		 platforms. It's not an error to add the fd but it never generates events.
 	**/
 	@:luaDotMethod
-	extern public function backend_fd():Null<Int>;
+	extern public function backend_fd():Null<Float>;
 	/**
 		```lua
 		function uv.backend_timeout()
@@ -722,7 +722,7 @@ package nvim.type;
 		 Get the poll timeout. The return value is in milliseconds, or -1 for no timeout.
 	**/
 	@:luaDotMethod
-	extern public function backend_timeout():Int;
+	extern public function backend_timeout():Float;
 	/**
 		```lua
 		function uv.cancel(req: uv.uv_req_t)
@@ -2404,7 +2404,7 @@ package nvim.type;
 	**/
 	@:native("fileno")
 	@:luaDotMethod
-	private extern function __fileno(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __fileno(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fileno(handle: uv.uv_handle_t)
@@ -2514,10 +2514,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fileno(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fileno(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		final result = __fileno(handle);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -2632,8 +2632,8 @@ package nvim.type;
 	**/
 	@:native("fs_access")
 	@:luaDotMethod
-	@:overload(function (path:String, mode:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.fs_access.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_access(path:String, mode:haxe.extern.EitherType<Int, String>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (path:String, mode:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.fs_access.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_access(path:String, mode:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_access(path: string, mode: string|integer)
@@ -2746,7 +2746,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_access(path:String, mode:haxe.extern.EitherType<Int, String>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_access(path:String, mode:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_access(path, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -2861,8 +2861,8 @@ package nvim.type;
 	**/
 	@:native("fs_chmod")
 	@:luaDotMethod
-	@:overload(function (path:String, mode:Int, callback:nvim.type.uv.fs_chmod.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_chmod(path:String, mode:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (path:String, mode:Float, callback:nvim.type.uv.fs_chmod.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_chmod(path:String, mode:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_chmod(path: string, mode: integer)
@@ -2973,7 +2973,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_chmod(path:String, mode:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_chmod(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_chmod(path, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -3088,8 +3088,8 @@ package nvim.type;
 	**/
 	@:native("fs_chown")
 	@:luaDotMethod
-	@:overload(function (path:String, uid:Int, gid:Int, callback:nvim.type.uv.fs_chown.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_chown(path:String, uid:Int, gid:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (path:String, uid:Float, gid:Float, callback:nvim.type.uv.fs_chown.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_chown(path:String, uid:Float, gid:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_chown(path: string, uid: integer, gid: integer)
@@ -3200,7 +3200,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_chown(path:String, uid:Int, gid:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_chown(path:String, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_chown(path, uid, gid);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -3315,8 +3315,8 @@ package nvim.type;
 	**/
 	@:native("fs_close")
 	@:luaDotMethod
-	@:overload(function (fd:Int, callback:nvim.type.uv.fs_close.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_close(fd:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, callback:nvim.type.uv.fs_close.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_close(fd:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_close(fd: integer)
@@ -3427,7 +3427,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_close(fd:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_close(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_close(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -4658,8 +4658,8 @@ package nvim.type;
 	**/
 	@:native("fs_fchmod")
 	@:luaDotMethod
-	@:overload(function (fd:Int, mode:Int, callback:nvim.type.uv.fs_fchmod.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_fchmod(fd:Int, mode:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, mode:Float, callback:nvim.type.uv.fs_fchmod.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_fchmod(fd:Float, mode:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_fchmod(fd: integer, mode: integer)
@@ -4770,7 +4770,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fchmod(fd:Int, mode:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_fchmod(fd:Float, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fchmod(fd, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -4885,8 +4885,8 @@ package nvim.type;
 	**/
 	@:native("fs_fchown")
 	@:luaDotMethod
-	@:overload(function (fd:Int, uid:Int, gid:Int, callback:nvim.type.uv.fs_fchown.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_fchown(fd:Int, uid:Int, gid:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, uid:Float, gid:Float, callback:nvim.type.uv.fs_fchown.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_fchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_fchown(fd: integer, uid: integer, gid: integer)
@@ -4997,7 +4997,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fchown(fd:Int, uid:Int, gid:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_fchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fchown(fd, uid, gid);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -5112,8 +5112,8 @@ package nvim.type;
 	**/
 	@:native("fs_fdatasync")
 	@:luaDotMethod
-	@:overload(function (fd:Int, callback:nvim.type.uv.fs_fdatasync.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_fdatasync(fd:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, callback:nvim.type.uv.fs_fdatasync.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_fdatasync(fd:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_fdatasync(fd: integer)
@@ -5224,7 +5224,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fdatasync(fd:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_fdatasync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fdatasync(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -5343,8 +5343,8 @@ package nvim.type;
 	**/
 	@:native("fs_fstat")
 	@:luaDotMethod
-	@:overload(function (fd:Int, callback:nvim.type.uv.fs_fstat.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_fstat(fd:Int):nvim.helper.Multireturn<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, callback:nvim.type.uv.fs_fstat.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_fstat(fd:Float):nvim.helper.Multireturn<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_fstat(fd: integer)
@@ -5459,7 +5459,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fstat(fd:Int):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_fstat(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fstat(fd);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -5574,8 +5574,8 @@ package nvim.type;
 	**/
 	@:native("fs_fsync")
 	@:luaDotMethod
-	@:overload(function (fd:Int, callback:nvim.type.uv.fs_fsync.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_fsync(fd:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, callback:nvim.type.uv.fs_fsync.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_fsync(fd:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_fsync(fd: integer)
@@ -5686,7 +5686,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fsync(fd:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_fsync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fsync(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -5801,8 +5801,8 @@ package nvim.type;
 	**/
 	@:native("fs_ftruncate")
 	@:luaDotMethod
-	@:overload(function (fd:Int, offset:Int, callback:nvim.type.uv.fs_ftruncate.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_ftruncate(fd:Int, offset:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, offset:Float, callback:nvim.type.uv.fs_ftruncate.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_ftruncate(fd:Float, offset:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_ftruncate(fd: integer, offset: integer)
@@ -5913,7 +5913,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_ftruncate(fd:Int, offset:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_ftruncate(fd:Float, offset:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_ftruncate(fd, offset);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -6028,8 +6028,8 @@ package nvim.type;
 	**/
 	@:native("fs_futime")
 	@:luaDotMethod
-	@:overload(function (fd:Int, atime:Float, mtime:Float, callback:nvim.type.uv.fs_futime.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_futime(fd:Int, atime:Float, mtime:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, atime:Float, mtime:Float, callback:nvim.type.uv.fs_futime.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_futime(fd:Float, atime:Float, mtime:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_futime(fd: integer, atime: number, mtime: number)
@@ -6140,7 +6140,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_futime(fd:Int, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_futime(fd:Float, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_futime(fd, atime, mtime);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -6255,8 +6255,8 @@ package nvim.type;
 	**/
 	@:native("fs_lchown")
 	@:luaDotMethod
-	@:overload(function (fd:Int, uid:Int, gid:Int, callback:nvim.type.uv.fs_lchown.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_lchown(fd:Int, uid:Int, gid:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, uid:Float, gid:Float, callback:nvim.type.uv.fs_lchown.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_lchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_lchown(fd: integer, uid: integer, gid: integer)
@@ -6367,7 +6367,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_lchown(fd:Int, uid:Int, gid:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_lchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_lchown(fd, uid, gid);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -6721,8 +6721,8 @@ package nvim.type;
 	**/
 	@:native("fs_lstat")
 	@:luaDotMethod
-	@:overload(function (path:Int, callback:nvim.type.uv.fs_lstat.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_lstat(path:Int):nvim.helper.Multireturn<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (path:Float, callback:nvim.type.uv.fs_lstat.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_lstat(path:Float):nvim.helper.Multireturn<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_lstat(path: integer)
@@ -6837,7 +6837,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_lstat(path:Int):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_lstat(path:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_lstat(path);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -7179,8 +7179,8 @@ package nvim.type;
 	**/
 	@:native("fs_mkdir")
 	@:luaDotMethod
-	@:overload(function (path:String, mode:Int, callback:nvim.type.uv.fs_mkdir.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_mkdir(path:String, mode:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (path:String, mode:Float, callback:nvim.type.uv.fs_mkdir.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_mkdir(path:String, mode:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_mkdir(path: string, mode: integer)
@@ -7291,7 +7291,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_mkdir(path:String, mode:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_mkdir(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_mkdir(path, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -7634,7 +7634,7 @@ package nvim.type;
 	@:native("fs_mkstemp")
 	@:luaDotMethod
 	@:overload(function (template:String, callback:nvim.type.uv.fs_mkstemp.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_mkstemp(template:String):nvim.helper.Multireturn<Null<Int>, String, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __fs_mkstemp(template:String):nvim.helper.Multireturn<Null<Float>, String, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_mkstemp(template: string)
@@ -7745,9 +7745,9 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_mkstemp(template:String):nvim.helper.Multireturn.Return3<Null<Int>, String, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_mkstemp(template:String):nvim.helper.Multireturn.Return3<Null<Float>, String, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_mkstemp(template);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, String, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, String, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -7890,8 +7890,8 @@ package nvim.type;
 	**/
 	@:native("fs_open")
 	@:luaDotMethod
-	@:overload(function (path:String, flags:nvim.type.uv.fs_open.Flags, mode:Int, callback:nvim.type.uv.fs_open.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float, callback:nvim.type.uv.fs_open.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_open(path: string, flags: string|integer|"a"|"a+"|"ax"|"ax+"|"r"|"r+"|"rs"|"rs+"|"sr"|"sr+"|"w"|"w+"|"wx"|"wx+"|"xa"|"xa+"|"xw"|"xw+", mode: integer)
@@ -8032,10 +8032,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		final result = __fs_open(path, flags, mode);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -8154,7 +8154,7 @@ package nvim.type;
 	**/
 	@:native("fs_opendir")
 	@:luaDotMethod
-	@:overload(function (path:String, callback:nvim.type.uv.fs_opendir.Callback, entries:Int) : nvim.type.uv.UvFsT {})
+	@:overload(function (path:String, callback:nvim.type.uv.fs_opendir.Callback, entries:Float) : nvim.type.uv.UvFsT {})
 	private extern function __fs_opendir(path:String):nvim.helper.Multireturn<Null<nvim.type.uv.LuvDirT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
@@ -8590,7 +8590,7 @@ package nvim.type;
 	**/
 	@:native("fs_poll_start")
 	@:luaDotMethod
-	private extern function __fs_poll_start(fs_poll:nvim.type.uv.UvFsPollT, path:String, interval:Int, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __fs_poll_start(fs_poll:nvim.type.uv.UvFsPollT, path:String, interval:Float, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_poll_start(fs_poll: uv.uv_fs_poll_t, path: string, interval: integer, callback: fun(err: string|nil, prev: uv.fs_stat.result|nil, curr: uv.fs_stat.result|nil))
@@ -8697,7 +8697,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_poll_start(fs_poll:nvim.type.uv.UvFsPollT, path:String, interval:Int, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_poll_start(fs_poll:nvim.type.uv.UvFsPollT, path:String, interval:Float, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_poll = nvim.helper.Arg.pure(fs_poll);
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __fs_poll_start(fs_poll, path, interval, callback);
@@ -9031,8 +9031,8 @@ package nvim.type;
 	**/
 	@:native("fs_read")
 	@:luaDotMethod
-	@:overload(function (fd:Int, size:Int, offset:Int, callback:nvim.type.uv.fs_read.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_read(fd:Int, size:Int, ?offset:Int):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, size:Float, offset:Float, callback:nvim.type.uv.fs_read.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_read(fd:Float, size:Float, ?offset:Float):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_read(fd: integer, size: integer, offset?: integer)
@@ -9147,7 +9147,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_read(fd:Int, size:Int, ?offset:Int):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_read(fd:Float, size:Float, ?offset:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_read(fd, size, offset);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -10838,8 +10838,8 @@ package nvim.type;
 	**/
 	@:native("fs_sendfile")
 	@:luaDotMethod
-	@:overload(function (out_fd:Int, in_fd:Int, in_offset:Int, size:Int, callback:nvim.type.uv.fs_sendfile.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_sendfile(out_fd:Int, in_fd:Int, in_offset:Int, size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (out_fd:Float, in_fd:Float, in_offset:Float, size:Float, callback:nvim.type.uv.fs_sendfile.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_sendfile(out_fd:Float, in_fd:Float, in_offset:Float, size:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_sendfile(out_fd: integer, in_fd: integer, in_offset: integer, size: integer)
@@ -10950,9 +10950,9 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_sendfile(out_fd:Int, in_fd:Int, in_offset:Int, size:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_sendfile(out_fd:Float, in_fd:Float, in_offset:Float, size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_sendfile(out_fd, in_fd, in_offset, size);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -11386,9 +11386,9 @@ package nvim.type;
 	**/
 	@:native("fs_symlink")
 	@:luaDotMethod
-	@:overload(function (path:String, new_path:String, flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Int>, callback:nvim.type.uv.fs_symlink.Callback) : nvim.type.uv.UvFsT {})
+	@:overload(function (path:String, new_path:String, flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>, callback:nvim.type.uv.fs_symlink.Callback) : nvim.type.uv.UvFsT {})
 	@:overload(function (path:String, new_path:String, callback:nvim.type.uv.fs_symlink.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Int>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_symlink(path: string, new_path: string, flags?: integer|uv.fs_symlink.flags)
@@ -11507,7 +11507,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Int>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_symlink(path, new_path, flags);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -12080,8 +12080,8 @@ package nvim.type;
 	**/
 	@:native("fs_write")
 	@:luaDotMethod
-	@:overload(function (fd:Int, data:nvim.type.uv.Buffer, offset:Int, callback:nvim.type.uv.fs_write.Callback) : nvim.type.uv.UvFsT {})
-	private extern function __fs_write(fd:Int, data:nvim.type.uv.Buffer, ?offset:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (fd:Float, data:nvim.type.uv.Buffer, offset:Float, callback:nvim.type.uv.fs_write.Callback) : nvim.type.uv.UvFsT {})
+	private extern function __fs_write(fd:Float, data:nvim.type.uv.Buffer, ?offset:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.fs_write(fd: integer, data: string|string[], offset?: integer)
@@ -12196,10 +12196,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_write(fd:Int, data:nvim.type.uv.Buffer, ?offset:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function fs_write(fd:Float, data:nvim.type.uv.Buffer, ?offset:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		final result = __fs_write(fd, data, offset);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -12727,7 +12727,7 @@ package nvim.type;
 		 **Note:** This is not a libuv function and is not supported on Windows.
 	**/
 	@:luaDotMethod
-	extern public function getgid():Int;
+	extern public function getgid():Float;
 	/**
 		```lua
 		function uv.getnameinfo(address: uv.getnameinfo.address)
@@ -13337,7 +13337,7 @@ package nvim.type;
 	**/
 	@:native("gettimeofday")
 	@:luaDotMethod
-	private extern function __gettimeofday():nvim.helper.Multireturn<Null<Int>, haxe.extern.EitherType<Int, String>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __gettimeofday():nvim.helper.Multireturn<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.gettimeofday()
@@ -13439,9 +13439,9 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function gettimeofday():nvim.helper.Multireturn.Return3<Null<Int>, haxe.extern.EitherType<Int, String>, Null<nvim.type.uv.error.Name>> {
+	inline public function gettimeofday():nvim.helper.Multireturn.Return3<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>> {
 		final result = __gettimeofday();
-		return new nvim.helper.Multireturn.Return3<Null<Int>, haxe.extern.EitherType<Int, String>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -13456,7 +13456,7 @@ package nvim.type;
 		 **Note:** This is not a libuv function and is not supported on Windows.
 	**/
 	@:luaDotMethod
-	extern public function getuid():Int;
+	extern public function getuid():Float;
 	/**
 		```lua
 		function uv.guess_handle(fd: integer)
@@ -13470,7 +13470,7 @@ package nvim.type;
 		 type of the stdio streams.
 	**/
 	@:luaDotMethod
-	extern public function guess_handle(fd:Int):String;
+	extern public function guess_handle(fd:Float):String;
 	/**
 		```lua
 		function uv.handle_get_type(handle: uv.uv_handle_t)
@@ -13485,7 +13485,7 @@ package nvim.type;
 	**/
 	@:native("handle_get_type")
 	@:luaDotMethod
-	private extern function __handle_get_type(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __handle_get_type(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn<String, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.handle_get_type(handle: uv.uv_handle_t)
@@ -13499,10 +13499,10 @@ package nvim.type;
 		 and the libuv enum integer for the handle's type (`uv_handle_type`).
 	**/
 	@:luaDotMethod
-	inline public function handle_get_type(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return2<String, Int> {
+	inline public function handle_get_type(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return2<String, Float> {
 		handle = nvim.helper.Arg.pure(handle);
 		final result = __handle_get_type(handle);
-		return new nvim.helper.Multireturn.Return2<String, Int>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<String, Float>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -14261,7 +14261,7 @@ package nvim.type;
 	**/
 	@:native("if_indextoiid")
 	@:luaDotMethod
-	private extern function __if_indextoiid(ifindex:Int):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __if_indextoiid(ifindex:Float):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.if_indextoiid(ifindex: integer)
@@ -14364,7 +14364,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function if_indextoiid(ifindex:Int):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function if_indextoiid(ifindex:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __if_indextoiid(ifindex);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -14469,7 +14469,7 @@ package nvim.type;
 	**/
 	@:native("if_indextoname")
 	@:luaDotMethod
-	private extern function __if_indextoname(ifindex:Int):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __if_indextoname(ifindex:Float):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.if_indextoname(ifindex: integer)
@@ -14570,7 +14570,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function if_indextoname(ifindex:Int):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function if_indextoname(ifindex:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __if_indextoname(ifindex);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -15200,7 +15200,7 @@ package nvim.type;
 	**/
 	@:native("kill")
 	@:luaDotMethod
-	private extern function __kill(pid:Int, signum:haxe.extern.EitherType<Int, String>):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __kill(pid:Float, signum:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.kill(pid: integer, signum: string|integer)
@@ -15305,7 +15305,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function kill(pid:Int, signum:haxe.extern.EitherType<Int, String>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function kill(pid:Float, signum:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __kill(pid, signum);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -15417,7 +15417,7 @@ package nvim.type;
 	**/
 	@:native("listen")
 	@:luaDotMethod
-	private extern function __listen(stream:nvim.type.uv.UvStreamT, backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __listen(stream:nvim.type.uv.UvStreamT, backlog:Float, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.listen(stream: uv.uv_stream_t, backlog: integer, callback: fun(err: string|nil))
@@ -15525,7 +15525,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function listen(stream:nvim.type.uv.UvStreamT, backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function listen(stream:nvim.type.uv.UvStreamT, backlog:Float, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __listen(stream, backlog, callback);
@@ -17687,7 +17687,7 @@ package nvim.type;
 	**/
 	@:native("new_poll")
 	@:luaDotMethod
-	private extern function __new_poll(fd:Int):nvim.helper.Multireturn<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __new_poll(fd:Float):nvim.helper.Multireturn<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.new_poll(fd: integer)
@@ -17790,7 +17790,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function new_poll(fd:Int):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function new_poll(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __new_poll(fd);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -18314,7 +18314,7 @@ package nvim.type;
 	**/
 	@:native("new_socket_poll")
 	@:luaDotMethod
-	private extern function __new_socket_poll(fd:Int):nvim.helper.Multireturn<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __new_socket_poll(fd:Float):nvim.helper.Multireturn<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.new_socket_poll(fd: integer)
@@ -18418,7 +18418,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function new_socket_poll(fd:Int):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function new_socket_poll(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __new_socket_poll(fd);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -19251,7 +19251,7 @@ package nvim.type;
 	**/
 	@:native("new_tty")
 	@:luaDotMethod
-	private extern function __new_tty(fd:Int, readable:Bool):nvim.helper.Multireturn<Null<nvim.type.uv.UvTtyT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __new_tty(fd:Float, readable:Bool):nvim.helper.Multireturn<Null<nvim.type.uv.UvTtyT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.new_tty(fd: integer, readable: boolean)
@@ -19366,7 +19366,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function new_tty(fd:Int, readable:Bool):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvTtyT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function new_tty(fd:Float, readable:Bool):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvTtyT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __new_tty(fd, readable);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvTtyT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -19500,7 +19500,7 @@ package nvim.type;
 	**/
 	@:native("new_udp")
 	@:luaDotMethod
-	private extern function __new_udp(?flags:haxe.extern.EitherType<nvim.type.uv.new_udp.Flags, haxe.extern.EitherType<nvim.type.uv.new_udp.flags.Family, Int>>):nvim.helper.Multireturn<Null<nvim.type.uv.UvUdpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __new_udp(?flags:haxe.extern.EitherType<nvim.type.uv.new_udp.Flags, haxe.extern.EitherType<nvim.type.uv.new_udp.flags.Family, Float>>):nvim.helper.Multireturn<Null<nvim.type.uv.UvUdpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.new_udp(flags?: integer|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"|uv.new_udp.flags)
@@ -19630,7 +19630,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function new_udp(?flags:haxe.extern.EitherType<nvim.type.uv.new_udp.Flags, haxe.extern.EitherType<nvim.type.uv.new_udp.flags.Family, Int>>):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function new_udp(?flags:haxe.extern.EitherType<nvim.type.uv.new_udp.Flags, haxe.extern.EitherType<nvim.type.uv.new_udp.flags.Family, Float>>):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __new_udp(flags);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -19695,7 +19695,7 @@ package nvim.type;
 		 **Note**: Use `uv.hrtime()` if you need sub-millisecond granularity.
 	**/
 	@:luaDotMethod
-	extern public function now():Int;
+	extern public function now():Float;
 	/**
 		```lua
 		function uv.os_environ()
@@ -19831,7 +19831,7 @@ package nvim.type;
 	**/
 	@:native("os_getenv")
 	@:luaDotMethod
-	private extern function __os_getenv(name:String, ?size:Int):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __os_getenv(name:String, ?size:Float):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.os_getenv(name: string, size?: integer)
@@ -19939,7 +19939,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function os_getenv(name:String, ?size:Int):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function os_getenv(name:String, ?size:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __os_getenv(name, size);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -20080,7 +20080,7 @@ package nvim.type;
 	**/
 	@:native("os_getpriority")
 	@:luaDotMethod
-	private extern function __os_getpriority(pid:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __os_getpriority(pid:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.os_getpriority(pid: integer)
@@ -20181,7 +20181,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function os_getpriority(pid:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function os_getpriority(pid:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __os_getpriority(pid);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -20703,7 +20703,7 @@ package nvim.type;
 	**/
 	@:native("os_setpriority")
 	@:luaDotMethod
-	private extern function __os_setpriority(pid:Int, priority:Int):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __os_setpriority(pid:Float, priority:Float):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.os_setpriority(pid: integer, priority: integer)
@@ -20805,7 +20805,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function os_setpriority(pid:Int, priority:Int):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function os_setpriority(pid:Float, priority:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __os_setpriority(pid, priority);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -22678,7 +22678,7 @@ package nvim.type;
 	**/
 	@:native("pipe_open")
 	@:luaDotMethod
-	private extern function __pipe_open(pipe:nvim.type.uv.UvPipeT, fd:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __pipe_open(pipe:nvim.type.uv.UvPipeT, fd:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.pipe_open(pipe: uv.uv_pipe_t, fd: integer)
@@ -22784,7 +22784,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function pipe_open(pipe:nvim.type.uv.UvPipeT, fd:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function pipe_open(pipe:nvim.type.uv.UvPipeT, fd:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		final result = __pipe_open(pipe, fd);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -22801,7 +22801,7 @@ package nvim.type;
 	**/
 	@:native("pipe_pending_count")
 	@:luaDotMethod
-	private extern function __pipe_pending_count(pipe:nvim.type.uv.UvPipeT):Int;
+	private extern function __pipe_pending_count(pipe:nvim.type.uv.UvPipeT):Float;
 	/**
 		```lua
 		function uv.pipe_pending_count(pipe: uv.uv_pipe_t)
@@ -22813,7 +22813,7 @@ package nvim.type;
 		 Returns the pending pipe count for the named pipe.
 	**/
 	@:luaDotMethod
-	inline public function pipe_pending_count(pipe:nvim.type.uv.UvPipeT):Int {
+	inline public function pipe_pending_count(pipe:nvim.type.uv.UvPipeT):Float {
 		pipe = nvim.helper.Arg.pure(pipe);
 		final result = __pipe_pending_count(pipe);
 		return result;
@@ -22832,7 +22832,7 @@ package nvim.type;
 	**/
 	@:native("pipe_pending_instances")
 	@:luaDotMethod
-	private extern function __pipe_pending_instances(pipe:nvim.type.uv.UvPipeT, count:Int):Dynamic;
+	private extern function __pipe_pending_instances(pipe:nvim.type.uv.UvPipeT, count:Float):Dynamic;
 	/**
 		```lua
 		function uv.pipe_pending_instances(pipe: uv.uv_pipe_t, count: integer)
@@ -22846,7 +22846,7 @@ package nvim.type;
 		 **Note**: This setting applies to Windows only.
 	**/
 	@:luaDotMethod
-	inline public function pipe_pending_instances(pipe:nvim.type.uv.UvPipeT, count:Int):Dynamic {
+	inline public function pipe_pending_instances(pipe:nvim.type.uv.UvPipeT, count:Float):Dynamic {
 		pipe = nvim.helper.Arg.pure(pipe);
 		final result = __pipe_pending_instances(pipe, count);
 		return result;
@@ -23860,7 +23860,7 @@ package nvim.type;
 	**/
 	@:native("process_get_pid")
 	@:luaDotMethod
-	private extern function __process_get_pid(process:nvim.type.uv.UvProcessT):Int;
+	private extern function __process_get_pid(process:nvim.type.uv.UvProcessT):Float;
 	/**
 		```lua
 		function uv.process_get_pid(process: uv.uv_process_t)
@@ -23872,7 +23872,7 @@ package nvim.type;
 		 Returns the handle's pid.
 	**/
 	@:luaDotMethod
-	inline public function process_get_pid(process:nvim.type.uv.UvProcessT):Int {
+	inline public function process_get_pid(process:nvim.type.uv.UvProcessT):Float {
 		process = nvim.helper.Arg.pure(process);
 		final result = __process_get_pid(process);
 		return result;
@@ -23982,7 +23982,7 @@ package nvim.type;
 	**/
 	@:native("process_kill")
 	@:luaDotMethod
-	private extern function __process_kill(process:nvim.type.uv.UvProcessT, signum:haxe.extern.EitherType<Int, String>):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __process_kill(process:nvim.type.uv.UvProcessT, signum:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.process_kill(process: uv.uv_process_t, signum: string|integer)
@@ -24087,7 +24087,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function process_kill(process:nvim.type.uv.UvProcessT, signum:haxe.extern.EitherType<Int, String>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function process_kill(process:nvim.type.uv.UvProcessT, signum:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		process = nvim.helper.Arg.pure(process);
 		final result = __process_kill(process, signum);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -24435,8 +24435,8 @@ package nvim.type;
 	**/
 	@:native("random")
 	@:luaDotMethod
-	@:overload(function (len:Int, flags:Void, callback:nvim.type.uv.random.Callback) : nvim.helper.Multireturn<Null<Float>, Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing> {})
-	private extern function __random(len:Int, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	@:overload(function (len:Float, flags:Void, callback:nvim.type.uv.random.Callback) : nvim.helper.Multireturn<Null<Float>, Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing> {})
+	private extern function __random(len:Float, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.random(len: integer, flags?: table|0)
@@ -24566,7 +24566,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function random(len:Int, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function random(len:Float, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __random(len, flags);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
@@ -25140,7 +25140,7 @@ package nvim.type;
 	**/
 	@:native("recv_buffer_size")
 	@:luaDotMethod
-	private extern function __recv_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __recv_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.recv_buffer_size(handle: uv.uv_handle_t, size?: integer)
@@ -25251,10 +25251,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function recv_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function recv_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		final result = __recv_buffer_size(handle, size);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -25471,7 +25471,7 @@ package nvim.type;
 	**/
 	@:native("resident_set_memory")
 	@:luaDotMethod
-	private extern function __resident_set_memory():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __resident_set_memory():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.resident_set_memory()
@@ -25572,9 +25572,9 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function resident_set_memory():nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function resident_set_memory():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __resident_set_memory();
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -25833,7 +25833,7 @@ package nvim.type;
 	**/
 	@:native("send_buffer_size")
 	@:luaDotMethod
-	private extern function __send_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:haxe.extern.EitherType<Int, Float>):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __send_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.send_buffer_size(handle: uv.uv_handle_t, size?: integer|0)
@@ -25971,10 +25971,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function send_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:haxe.extern.EitherType<Int, Float>):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function send_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		final result = __send_buffer_size(handle, size);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -26200,7 +26200,7 @@ package nvim.type;
 		 **Note:** This is not a libuv function and is not supported on Windows.
 	**/
 	@:luaDotMethod
-	extern public function setgid(id:Int):Dynamic;
+	extern public function setgid(id:Float):Dynamic;
 	/**
 		```lua
 		function uv.setuid(id: integer)
@@ -26213,7 +26213,7 @@ package nvim.type;
 		 **Note:** This is not a libuv function and is not supported on Windows.
 	**/
 	@:luaDotMethod
-	extern public function setuid(id:Int):Dynamic;
+	extern public function setuid(id:Float):Dynamic;
 	/**
 		```lua
 		function uv.shutdown(stream: uv.uv_stream_t, callback?: fun(err: string|nil))
@@ -26528,7 +26528,7 @@ package nvim.type;
 	**/
 	@:native("signal_start")
 	@:luaDotMethod
-	private extern function __signal_start(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.signal_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __signal_start(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.signal_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.signal_start(signal: uv.uv_signal_t, signum: string|integer, callback: fun(signum: string))
@@ -26632,7 +26632,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function signal_start(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.signal_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function signal_start(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.signal_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		signal = nvim.helper.Arg.pure(signal);
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __signal_start(signal, signum, callback);
@@ -26742,7 +26742,7 @@ package nvim.type;
 	**/
 	@:native("signal_start_oneshot")
 	@:luaDotMethod
-	private extern function __signal_start_oneshot(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.signal_start_oneshot.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __signal_start_oneshot(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.signal_start_oneshot.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.signal_start_oneshot(signal: uv.uv_signal_t, signum: string|integer, callback: fun(signum: string))
@@ -26846,7 +26846,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function signal_start_oneshot(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.signal_start_oneshot.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function signal_start_oneshot(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.signal_start_oneshot.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		signal = nvim.helper.Arg.pure(signal);
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __signal_start_oneshot(signal, signum, callback);
@@ -27073,7 +27073,7 @@ package nvim.type;
 		 Pauses the thread in which this is called for a number of milliseconds.
 	**/
 	@:luaDotMethod
-	extern public function sleep(msec:Int):Dynamic;
+	extern public function sleep(msec:Float):Dynamic;
 	/**
 		```lua
 		function uv.socketpair(socktype?: integer|"dgram"|"raw"|"rdm"|"seqpacket"|"stream", protocol?: string|"icmp"|"ip"|"tcp"|"udp"|0, flags1?: uv.socketpair.flags, flags2?: uv.socketpair.flags)
@@ -27483,7 +27483,7 @@ package nvim.type;
 	**/
 	@:native("spawn")
 	@:luaDotMethod
-	private extern function __spawn(path:String, options:nvim.type.uv.spawn.Options, on_exit:nvim.type.uv.spawn.OnExit):nvim.helper.Multireturn<nvim.type.uv.UvProcessT, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __spawn(path:String, options:nvim.type.uv.spawn.Options, on_exit:nvim.type.uv.spawn.OnExit):nvim.helper.Multireturn<nvim.type.uv.UvProcessT, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.spawn(path: string, options: uv.spawn.options, on_exit: fun(code: integer, signal: integer))
@@ -27586,11 +27586,11 @@ package nvim.type;
 		 When the child process exits, `on_exit` is called with an exit code and signal.
 	**/
 	@:luaDotMethod
-	inline public function spawn(path:String, options:nvim.type.uv.spawn.Options, on_exit:nvim.type.uv.spawn.OnExit):nvim.helper.Multireturn.Return2<nvim.type.uv.UvProcessT, Int> {
+	inline public function spawn(path:String, options:nvim.type.uv.spawn.Options, on_exit:nvim.type.uv.spawn.OnExit):nvim.helper.Multireturn.Return2<nvim.type.uv.UvProcessT, Float> {
 		options = nvim.helper.Arg.pure(options);
 		on_exit = nvim.helper.Arg.pure(on_exit);
 		final result = __spawn(path, options, on_exit);
-		return new nvim.helper.Multireturn.Return2<nvim.type.uv.UvProcessT, Int>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<nvim.type.uv.UvProcessT, Float>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -27617,7 +27617,7 @@ package nvim.type;
 	**/
 	@:native("stream_get_write_queue_size")
 	@:luaDotMethod
-	private extern function __stream_get_write_queue_size(stream:nvim.type.uv.UvStreamT):Int;
+	private extern function __stream_get_write_queue_size(stream:nvim.type.uv.UvStreamT):Float;
 	/**
 		```lua
 		function uv.stream_get_write_queue_size(stream: uv.uv_stream_t)
@@ -27629,7 +27629,7 @@ package nvim.type;
 		 Returns the stream's write queue size.
 	**/
 	@:luaDotMethod
-	inline public function stream_get_write_queue_size(stream:nvim.type.uv.UvStreamT):Int {
+	inline public function stream_get_write_queue_size(stream:nvim.type.uv.UvStreamT):Float {
 		stream = nvim.helper.Arg.pure(stream);
 		final result = __stream_get_write_queue_size(stream);
 		return result;
@@ -27983,7 +27983,7 @@ package nvim.type;
 	**/
 	@:native("tcp_bind")
 	@:luaDotMethod
-	private extern function __tcp_bind(tcp:nvim.type.uv.UvTcpT, host:String, port:Int, ?flags:nvim.type.uv.tcp_bind.Flags):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __tcp_bind(tcp:nvim.type.uv.UvTcpT, host:String, port:Float, ?flags:nvim.type.uv.tcp_bind.Flags):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.tcp_bind(tcp: uv.uv_tcp_t, host: string, port: integer, flags?: uv.tcp_bind.flags)
@@ -28097,7 +28097,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function tcp_bind(tcp:nvim.type.uv.UvTcpT, host:String, port:Int, ?flags:nvim.type.uv.tcp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function tcp_bind(tcp:nvim.type.uv.UvTcpT, host:String, port:Float, ?flags:nvim.type.uv.tcp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		flags = nvim.helper.Arg.pure(flags);
 		final result = __tcp_bind(tcp, host, port, flags);
@@ -28430,7 +28430,7 @@ package nvim.type;
 	**/
 	@:native("tcp_connect")
 	@:luaDotMethod
-	private extern function __tcp_connect(tcp:nvim.type.uv.UvTcpT, host:String, port:Int, callback:nvim.type.uv.tcp_connect.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __tcp_connect(tcp:nvim.type.uv.UvTcpT, host:String, port:Float, callback:nvim.type.uv.tcp_connect.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.tcp_connect(tcp: uv.uv_tcp_t, host: string, port: integer, callback: fun(err: string|nil))
@@ -28538,7 +28538,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function tcp_connect(tcp:nvim.type.uv.UvTcpT, host:String, port:Int, callback:nvim.type.uv.tcp_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function tcp_connect(tcp:nvim.type.uv.UvTcpT, host:String, port:Float, callback:nvim.type.uv.tcp_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		callback = nvim.helper.Arg.pure(callback);
 		final result = __tcp_connect(tcp, host, port, callback);
@@ -29063,7 +29063,7 @@ package nvim.type;
 	**/
 	@:native("tcp_keepalive")
 	@:luaDotMethod
-	private extern function __tcp_keepalive(tcp:nvim.type.uv.UvTcpT, enable:Bool, ?delay:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __tcp_keepalive(tcp:nvim.type.uv.UvTcpT, enable:Bool, ?delay:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.tcp_keepalive(tcp: uv.uv_tcp_t, enable: boolean, delay?: integer)
@@ -29168,7 +29168,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function tcp_keepalive(tcp:nvim.type.uv.UvTcpT, enable:Bool, ?delay:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function tcp_keepalive(tcp:nvim.type.uv.UvTcpT, enable:Bool, ?delay:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		final result = __tcp_keepalive(tcp, enable, delay);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -29492,7 +29492,7 @@ package nvim.type;
 	**/
 	@:native("tcp_open")
 	@:luaDotMethod
-	private extern function __tcp_open(tcp:nvim.type.uv.UvTcpT, sock:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __tcp_open(tcp:nvim.type.uv.UvTcpT, sock:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.tcp_open(tcp: uv.uv_tcp_t, sock: integer)
@@ -29598,7 +29598,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function tcp_open(tcp:nvim.type.uv.UvTcpT, sock:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function tcp_open(tcp:nvim.type.uv.UvTcpT, sock:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		final result = __tcp_open(tcp, sock);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -30335,7 +30335,7 @@ package nvim.type;
 	**/
 	@:native("timer_get_due_in")
 	@:luaDotMethod
-	private extern function __timer_get_due_in(timer:nvim.type.uv.UvTimerT):Int;
+	private extern function __timer_get_due_in(timer:nvim.type.uv.UvTimerT):Float;
 	/**
 		```lua
 		function uv.timer_get_due_in(timer: uv.uv_timer_t)
@@ -30349,7 +30349,7 @@ package nvim.type;
 		 **Note**: New in libuv version 1.40.0.
 	**/
 	@:luaDotMethod
-	inline public function timer_get_due_in(timer:nvim.type.uv.UvTimerT):Int {
+	inline public function timer_get_due_in(timer:nvim.type.uv.UvTimerT):Float {
 		timer = nvim.helper.Arg.pure(timer);
 		final result = __timer_get_due_in(timer);
 		return result;
@@ -30366,7 +30366,7 @@ package nvim.type;
 	**/
 	@:native("timer_get_repeat")
 	@:luaDotMethod
-	private extern function __timer_get_repeat(timer:nvim.type.uv.UvTimerT):Int;
+	private extern function __timer_get_repeat(timer:nvim.type.uv.UvTimerT):Float;
 	/**
 		```lua
 		function uv.timer_get_repeat(timer: uv.uv_timer_t)
@@ -30378,7 +30378,7 @@ package nvim.type;
 		 Get the timer repeat value.
 	**/
 	@:luaDotMethod
-	inline public function timer_get_repeat(timer:nvim.type.uv.UvTimerT):Int {
+	inline public function timer_get_repeat(timer:nvim.type.uv.UvTimerT):Float {
 		timer = nvim.helper.Arg.pure(timer);
 		final result = __timer_get_repeat(timer);
 		return result;
@@ -30401,7 +30401,7 @@ package nvim.type;
 	**/
 	@:native("timer_set_repeat")
 	@:luaDotMethod
-	private extern function __timer_set_repeat(timer:nvim.type.uv.UvTimerT, repeat_:Int):Dynamic;
+	private extern function __timer_set_repeat(timer:nvim.type.uv.UvTimerT, repeat_:Float):Dynamic;
 	/**
 		```lua
 		function uv.timer_set_repeat(timer: uv.uv_timer_t, repeat_: integer)
@@ -30419,7 +30419,7 @@ package nvim.type;
 		 possible.
 	**/
 	@:luaDotMethod
-	inline public function timer_set_repeat(timer:nvim.type.uv.UvTimerT, repeat_:Int):Dynamic {
+	inline public function timer_set_repeat(timer:nvim.type.uv.UvTimerT, repeat_:Float):Dynamic {
 		timer = nvim.helper.Arg.pure(timer);
 		final result = __timer_set_repeat(timer, repeat_);
 		return result;
@@ -30532,7 +30532,7 @@ package nvim.type;
 	**/
 	@:native("timer_start")
 	@:luaDotMethod
-	private extern function __timer_start(timer:nvim.type.uv.UvTimerT, timeout:Int, repeat_:Int, callback:haxe.Constraints.Function):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __timer_start(timer:nvim.type.uv.UvTimerT, timeout:Float, repeat_:Float, callback:haxe.Constraints.Function):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.timer_start(timer: uv.uv_timer_t, timeout: integer, repeat_: integer, callback: function)
@@ -30640,7 +30640,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function timer_start(timer:nvim.type.uv.UvTimerT, timeout:Int, repeat_:Int, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function timer_start(timer:nvim.type.uv.UvTimerT, timeout:Float, repeat_:Float, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		timer = nvim.helper.Arg.pure(timer);
 		final result = __timer_start(timer, timeout, repeat_, callback);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -30958,7 +30958,7 @@ package nvim.type;
 	**/
 	@:native("translate_sys_error")
 	@:luaDotMethod
-	private extern function __translate_sys_error(errcode:Int):nvim.helper.Multireturn<Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __translate_sys_error(errcode:Float):nvim.helper.Multireturn<Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.translate_sys_error(errcode: integer)
@@ -31058,7 +31058,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function translate_sys_error(errcode:Int):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function translate_sys_error(errcode:Float):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __translate_sys_error(errcode);
 		return new nvim.helper.Multireturn.Return2<Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1);
 	}
@@ -31166,7 +31166,7 @@ package nvim.type;
 	**/
 	@:native("try_write")
 	@:luaDotMethod
-	private extern function __try_write(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __try_write(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.try_write(stream: uv.uv_stream_t, data: string|string[])
@@ -31270,11 +31270,11 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function try_write(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function try_write(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		data = nvim.helper.Arg.pure(data);
 		final result = __try_write(stream, data);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -31381,7 +31381,7 @@ package nvim.type;
 	**/
 	@:native("try_write2")
 	@:luaDotMethod
-	private extern function __try_write2(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __try_write2(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.try_write2(stream: uv.uv_stream_t, data: string|string[], send_handle: uv.uv_stream_t)
@@ -31486,12 +31486,12 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function try_write2(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function try_write2(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		data = nvim.helper.Arg.pure(data);
 		send_handle = nvim.helper.Arg.pure(send_handle);
 		final result = __try_write2(stream, data, send_handle);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -31816,7 +31816,7 @@ package nvim.type;
 	**/
 	@:native("tty_get_winsize")
 	@:luaDotMethod
-	private extern function __tty_get_winsize(tty:nvim.type.uv.UvTtyT):nvim.helper.Multireturn<Null<Int>, haxe.extern.EitherType<Int, String>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __tty_get_winsize(tty:nvim.type.uv.UvTtyT):nvim.helper.Multireturn<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.tty_get_winsize(tty: uv.uv_tty_t)
@@ -31919,10 +31919,10 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function tty_get_winsize(tty:nvim.type.uv.UvTtyT):nvim.helper.Multireturn.Return3<Null<Int>, haxe.extern.EitherType<Int, String>, Null<nvim.type.uv.error.Name>> {
+	inline public function tty_get_winsize(tty:nvim.type.uv.UvTtyT):nvim.helper.Multireturn.Return3<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>> {
 		tty = nvim.helper.Arg.pure(tty);
 		final result = __tty_get_winsize(tty);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, haxe.extern.EitherType<Int, String>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -32515,7 +32515,7 @@ package nvim.type;
 	**/
 	@:native("udp_bind")
 	@:luaDotMethod
-	private extern function __udp_bind(udp:nvim.type.uv.UvUdpT, host:String, port:Int, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_bind(udp:nvim.type.uv.UvUdpT, host:String, port:Float, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_bind(udp: uv.uv_udp_t, host: string, port: integer, flags?: uv.udp_bind.flags)
@@ -32620,7 +32620,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_bind(udp:nvim.type.uv.UvUdpT, host:String, port:Int, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_bind(udp:nvim.type.uv.UvUdpT, host:String, port:Float, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		flags = nvim.helper.Arg.pure(flags);
 		final result = __udp_bind(udp, host, port, flags);
@@ -32734,7 +32734,7 @@ package nvim.type;
 	**/
 	@:native("udp_connect")
 	@:luaDotMethod
-	private extern function __udp_connect(udp:nvim.type.uv.UvUdpT, host:String, port:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_connect(udp:nvim.type.uv.UvUdpT, host:String, port:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_connect(udp: uv.uv_udp_t, host: string, port: integer)
@@ -32842,7 +32842,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_connect(udp:nvim.type.uv.UvUdpT, host:String, port:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_connect(udp:nvim.type.uv.UvUdpT, host:String, port:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		final result = __udp_connect(udp, host, port);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -32859,7 +32859,7 @@ package nvim.type;
 	**/
 	@:native("udp_get_send_queue_count")
 	@:luaDotMethod
-	private extern function __udp_get_send_queue_count(udp:nvim.type.uv.UvUdpT):Int;
+	private extern function __udp_get_send_queue_count(udp:nvim.type.uv.UvUdpT):Float;
 	/**
 		```lua
 		function uv.udp_get_send_queue_count(udp: uv.uv_udp_t)
@@ -32871,7 +32871,7 @@ package nvim.type;
 		 Returns the handle's send queue count.
 	**/
 	@:luaDotMethod
-	inline public function udp_get_send_queue_count(udp:nvim.type.uv.UvUdpT):Int {
+	inline public function udp_get_send_queue_count(udp:nvim.type.uv.UvUdpT):Float {
 		udp = nvim.helper.Arg.pure(udp);
 		final result = __udp_get_send_queue_count(udp);
 		return result;
@@ -32888,7 +32888,7 @@ package nvim.type;
 	**/
 	@:native("udp_get_send_queue_size")
 	@:luaDotMethod
-	private extern function __udp_get_send_queue_size(udp:nvim.type.uv.UvUdpT):Int;
+	private extern function __udp_get_send_queue_size(udp:nvim.type.uv.UvUdpT):Float;
 	/**
 		```lua
 		function uv.udp_get_send_queue_size(udp: uv.uv_udp_t)
@@ -32900,7 +32900,7 @@ package nvim.type;
 		 Returns the handle's send queue size.
 	**/
 	@:luaDotMethod
-	inline public function udp_get_send_queue_size(udp:nvim.type.uv.UvUdpT):Int {
+	inline public function udp_get_send_queue_size(udp:nvim.type.uv.UvUdpT):Float {
 		udp = nvim.helper.Arg.pure(udp);
 		final result = __udp_get_send_queue_size(udp);
 		return result;
@@ -33433,7 +33433,7 @@ package nvim.type;
 	**/
 	@:native("udp_open")
 	@:luaDotMethod
-	private extern function __udp_open(udp:nvim.type.uv.UvUdpT, fd:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_open(udp:nvim.type.uv.UvUdpT, fd:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_open(udp: uv.uv_udp_t, fd: integer)
@@ -33547,7 +33547,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_open(udp:nvim.type.uv.UvUdpT, fd:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_open(udp:nvim.type.uv.UvUdpT, fd:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		final result = __udp_open(udp, fd);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -34086,7 +34086,7 @@ package nvim.type;
 	**/
 	@:native("udp_send")
 	@:luaDotMethod
-	private extern function __udp_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Int, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Float, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_send(udp: uv.uv_udp_t, data: string|string[], host: string, port: integer, callback: fun(err: string|nil))
@@ -34189,7 +34189,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Int, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Float, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		data = nvim.helper.Arg.pure(data);
 		callback = nvim.helper.Arg.pure(callback);
@@ -35168,7 +35168,7 @@ package nvim.type;
 	**/
 	@:native("udp_set_multicast_ttl")
 	@:luaDotMethod
-	private extern function __udp_set_multicast_ttl(udp:nvim.type.uv.UvUdpT, ttl:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_set_multicast_ttl(udp:nvim.type.uv.UvUdpT, ttl:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_set_multicast_ttl(udp: uv.uv_udp_t, ttl: integer)
@@ -35274,7 +35274,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_set_multicast_ttl(udp:nvim.type.uv.UvUdpT, ttl:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_set_multicast_ttl(udp:nvim.type.uv.UvUdpT, ttl:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		final result = __udp_set_multicast_ttl(udp, ttl);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -35610,7 +35610,7 @@ package nvim.type;
 	**/
 	@:native("udp_set_ttl")
 	@:luaDotMethod
-	private extern function __udp_set_ttl(udp:nvim.type.uv.UvUdpT, ttl:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_set_ttl(udp:nvim.type.uv.UvUdpT, ttl:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_set_ttl(udp: uv.uv_udp_t, ttl: integer)
@@ -35716,7 +35716,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_set_ttl(udp:nvim.type.uv.UvUdpT, ttl:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_set_ttl(udp:nvim.type.uv.UvUdpT, ttl:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		final result = __udp_set_ttl(udp, ttl);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
@@ -35823,7 +35823,7 @@ package nvim.type;
 	**/
 	@:native("udp_try_send")
 	@:luaDotMethod
-	private extern function __udp_try_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __udp_try_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function uv.udp_try_send(udp: uv.uv_udp_t, data: string|string[], host: string, port: integer)
@@ -35925,11 +35925,11 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function udp_try_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	inline public function udp_try_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		data = nvim.helper.Arg.pure(data);
 		final result = __udp_try_send(udp, data, host, port);
-		return new nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -36200,7 +36200,7 @@ package nvim.type;
 		 example, this would be 0x010203 in libuv 1.2.3.
 	**/
 	@:luaDotMethod
-	extern public function version():Int;
+	extern public function version():Float;
 	/**
 		```lua
 		function uv.version_string()

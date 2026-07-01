@@ -26,21 +26,21 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var cursorline_hl_group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var cursorline_hl_group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.end_col: integer?
 		```
 	**/
 	@:optional
-	extern public var end_col : Null<Int>;
+	extern public var end_col : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.end_line: integer?
 		```
 	**/
 	@:optional
-	extern public var end_line : Null<Int>;
+	extern public var end_line : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.end_right_gravity: boolean?
@@ -54,7 +54,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var end_row : Null<Int>;
+	extern public var end_row : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.ephemeral: boolean?
@@ -89,7 +89,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var id : Null<Int>;
+	extern public var id : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.invalidate: boolean?
@@ -103,21 +103,21 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var line_hl_group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var line_hl_group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.number_hl_group: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var number_hl_group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var number_hl_group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.priority: integer?
 		```
 	**/
 	@:optional
-	extern public var priority : Null<Int>;
+	extern public var priority : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.right_gravity: boolean?
@@ -138,7 +138,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var sign_hl_group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var sign_hl_group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_extmark.sign_text: string?
@@ -243,5 +243,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var virt_text_win_col : Null<Int>;
+	extern public var virt_text_win_col : Null<Float>;
 }

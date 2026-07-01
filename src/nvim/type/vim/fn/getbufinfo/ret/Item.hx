@@ -20,7 +20,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.bufnr: integer
 		```
 	**/
-	extern public var bufnr : Int;
+	extern public var bufnr : Float;
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.changed: 0|1
@@ -32,7 +32,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.changedtick: integer
 		```
 	**/
-	extern public var changedtick : Int;
+	extern public var changedtick : Float;
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.hidden: 0|1
@@ -44,13 +44,13 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.lastused: integer
 		```
 	**/
-	extern public var lastused : Int;
+	extern public var lastused : Float;
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.linecount: integer
 		```
 	**/
-	extern public var linecount : Int;
+	extern public var linecount : Float;
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.listed: 0|1
@@ -62,7 +62,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.lnum: integer
 		```
 	**/
-	extern public var lnum : Int;
+	extern public var lnum : Float;
 	/**
 		```lua
 		(field) vim.fn.getbufinfo.ret.item.loaded: 0|1
@@ -86,5 +86,5 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.windows: integer[]
 		```
 	**/
-	extern public var windows : lua.Table<Int, Int>;
+	extern public var windows : lua.Table<Int, Float>;
 }

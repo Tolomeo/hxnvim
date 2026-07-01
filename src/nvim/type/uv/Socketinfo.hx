@@ -44,5 +44,5 @@ package nvim.type.uv;
 		(field) uv.socketinfo.port: integer
 		```
 	**/
-	extern public var port : Int;
+	extern public var port : Float;
 }

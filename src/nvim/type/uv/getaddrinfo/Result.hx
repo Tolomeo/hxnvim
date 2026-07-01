@@ -47,7 +47,7 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	@:optional
-	extern public var port : Null<Int>;
+	extern public var port : Null<Float>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.protocol: string

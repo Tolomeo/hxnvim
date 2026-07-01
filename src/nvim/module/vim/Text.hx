@@ -105,8 +105,8 @@ extern class Text {
 	**/
 	@:native("indent")
 	@:luaDotMethod
-	private function __indent(size:Int, text:String, ?opts:{ @:optional
-	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __indent(size:Float, text:String, ?opts:{ @:optional
+	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.indent(size: integer, text: string, opts?: { expandtab: number })
@@ -152,10 +152,10 @@ extern class Text {
 		@*return* — Indent size _before_ modification.
 	**/
 	@:luaDotMethod
-	inline function indent(size:Int, text:String, ?opts:{ @:optional
-	var expandtab : Null<Float>; }):nvim.helper.Multireturn.Return2<String, Int> {
+	inline function indent(size:Float, text:String, ?opts:{ @:optional
+	var expandtab : Null<Float>; }):nvim.helper.Multireturn.Return2<String, Float> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __indent(size, text, opts);
-		return new nvim.helper.Multireturn.Return2<String, Int>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<String, Float>(result._0, result._1);
 	}
 }

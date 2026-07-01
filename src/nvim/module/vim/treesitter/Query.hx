@@ -23,7 +23,7 @@ extern class Query {
 	**/
 	@:native("add_directive")
 	@:luaDotMethod
-	private function __add_directive(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	private function __add_directive(name:String, handler:(match:lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>, pattern:Float, source:haxe.extern.EitherType<Float, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
 	/**
 		```lua
 		function M.add_directive(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata), opts: vim.treesitter.query.add_predicate.Opts)
@@ -45,7 +45,7 @@ extern class Query {
 		     `(node (#set! conceal "-"))` would get the predicate `{ "#set!", "conceal", "-" }`
 	**/
 	@:luaDotMethod
-	inline function add_directive(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
+	inline function add_directive(name:String, handler:(match:lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>, pattern:Float, source:haxe.extern.EitherType<Float, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __add_directive(name, handler, opts);
 		return result;
@@ -65,7 +65,7 @@ extern class Query {
 	**/
 	@:native("add_predicate")
 	@:luaDotMethod
-	private function __add_predicate(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
+	private function __add_predicate(name:String, handler:(match:lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>, pattern:Float, source:haxe.extern.EitherType<Float, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic;
 	/**
 		```lua
 		function M.add_predicate(name: string, handler: fun(match: table<integer, TSNode[]>, pattern: integer, source: string|integer, predicate: any[], metadata: vim.treesitter.query.TSMetadata):boolean?, opts?: vim.treesitter.query.add_predicate.Opts)
@@ -80,7 +80,7 @@ extern class Query {
 		   - see |vim.treesitter.query.add_directive()| for argument meanings
 	**/
 	@:luaDotMethod
-	inline function add_predicate(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
+	inline function add_predicate(name:String, handler:(match:lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>, pattern:Float, source:haxe.extern.EitherType<Float, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __add_predicate(name, handler, opts);
 		return result;
@@ -164,7 +164,7 @@ extern class Query {
 	**/
 	@:native("lint")
 	@:luaDotMethod
-	private function __lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic;
+	private function __lint(buf:Float, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic;
 	/**
 		```lua
 		function M.lint(buf: integer, opts?: vim.treesitter.query.lint.Opts)
@@ -188,7 +188,7 @@ extern class Query {
 		@*param* `buf` — Buffer handle
 	**/
 	@:luaDotMethod
-	inline function lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic {
+	inline function lint(buf:Float, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __lint(buf, opts);
 		return result;

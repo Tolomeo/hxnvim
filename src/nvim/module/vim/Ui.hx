@@ -183,7 +183,7 @@ extern class Ui {
 	**/
 	@:native("select")
 	@:luaDotMethod
-	private function __select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
+	private function __select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Float>) -> Dynamic):Dynamic;
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))
@@ -229,7 +229,7 @@ extern class Ui {
 		               `nil` if the user aborted the dialog.
 	**/
 	@:luaDotMethod
-	inline function select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
+	inline function select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Float>) -> Dynamic):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __select(items, opts, on_choice);
 		return result;

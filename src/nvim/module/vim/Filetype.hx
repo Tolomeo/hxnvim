@@ -227,7 +227,7 @@ extern class Filetype {
 		@*return* — : Option value
 	**/
 	@:luaDotMethod
-	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
+	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Float>>;
 	/**
 		```lua
 		function M.match(args: vim.filetype.match.args)

@@ -46,7 +46,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var count : Null<Int>;
+	extern public var count : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods: vim.api.keyset.parse_cmd.mods
@@ -71,7 +71,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var range : Null<lua.Table<Int, Int>>;
+	extern public var range : Null<lua.Table<Int, Float>>;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.reg: string?

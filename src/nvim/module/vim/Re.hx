@@ -77,7 +77,7 @@ extern class Re {
 	**/
 	@:native("find")
 	@:luaDotMethod
-	private function __find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Float):nvim.helper.Multireturn<Null<Float>, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function vim.re.find(subject: string, pattern: string|vim.lpeg.Pattern, init?: integer)
@@ -106,9 +106,9 @@ extern class Re {
 		```
 	**/
 	@:luaDotMethod
-	inline function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+	inline function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Float):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
 		final result = __find(subject, pattern, init);
-		return new nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>>(result._0, result._1);
+		return new nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>>(result._0, result._1);
 	}
 	/**
 		```lua
@@ -147,7 +147,7 @@ extern class Re {
 		```
 	**/
 	@:luaDotMethod
-	function match(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):Null<haxe.extern.EitherType<Int, nvim.type.vim.lpeg.Capture>>;
+	function match(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Float):Null<haxe.extern.EitherType<Float, nvim.type.vim.lpeg.Capture>>;
 	/**
 		```lua
 		function vim.re.updatelocale()

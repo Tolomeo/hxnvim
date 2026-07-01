@@ -32,7 +32,7 @@ extern class Completion {
 	**/
 	@:native("enable")
 	@:luaDotMethod
-	private function __enable(enable:Bool, client_id:Int, bufnr:Int, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic;
+	private function __enable(enable:Bool, client_id:Float, bufnr:Float, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic;
 	/**
 		```lua
 		function M.enable(enable: boolean, client_id: integer, bufnr: integer, opts?: vim.lsp.completion.BufferOpts)
@@ -63,7 +63,7 @@ extern class Completion {
 		@*param* `bufnr` — Buffer handle, or 0 for the current buffer
 	**/
 	@:luaDotMethod
-	inline function enable(enable:Bool, client_id:Int, bufnr:Int, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic {
+	inline function enable(enable:Bool, client_id:Float, bufnr:Float, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __enable(enable, client_id, bufnr, opts);
 		return result;

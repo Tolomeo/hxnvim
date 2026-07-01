@@ -559,7 +559,7 @@ package nvim.type.vim;
 		 Read-only.
 		
 	**/
-	extern public var channel : Int;
+	extern public var channel : Float;
 	/**
 		```lua
 		(field) vim.bo.ci: boolean
@@ -2098,7 +2098,7 @@ package nvim.type.vim;
 		 It is also used for the argument of commands like "r" and "f".
 		
 	**/
-	extern public var imi : Int;
+	extern public var imi : Float;
 	/**
 		```lua
 		(field) vim.bo.iminsert: integer
@@ -2125,7 +2125,7 @@ package nvim.type.vim;
 		 It is also used for the argument of commands like "r" and "f".
 		
 	**/
-	extern public var iminsert : Int;
+	extern public var iminsert : Float;
 	/**
 		```lua
 		(field) vim.bo.ims: integer
@@ -2146,7 +2146,7 @@ package nvim.type.vim;
 		 option to a valid keymap name.
 		
 	**/
-	extern public var ims : Int;
+	extern public var ims : Float;
 	/**
 		```lua
 		(field) vim.bo.imsearch: integer
@@ -2167,7 +2167,7 @@ package nvim.type.vim;
 		 option to a valid keymap name.
 		
 	**/
-	extern public var imsearch : Int;
+	extern public var imsearch : Float;
 	/**
 		```lua
 		(field) vim.bo.inc: string = '^\s*#\s*include'
@@ -3432,7 +3432,7 @@ package nvim.type.vim;
 		 reflown when the terminal buffer is resized horizontally.
 		
 	**/
-	extern public var scbk : Int;
+	extern public var scbk : Float;
 	/**
 		```lua
 		(field) vim.bo.scrollback: integer
@@ -3449,7 +3449,7 @@ package nvim.type.vim;
 		 reflown when the terminal buffer is resized horizontally.
 		
 	**/
-	extern public var scrollback : Int;
+	extern public var scrollback : Float;
 	/**
 		```lua
 		(field) vim.bo.shiftwidth: integer
@@ -3463,7 +3463,7 @@ package nvim.type.vim;
 		 function to get the effective shiftwidth value.
 		
 	**/
-	extern public var shiftwidth : Int;
+	extern public var shiftwidth : Float;
 	/**
 		```lua
 		(field) vim.bo.si: boolean
@@ -3537,7 +3537,7 @@ package nvim.type.vim;
 		 Set to zero to remove the limit.
 		
 	**/
-	extern public var smc : Int;
+	extern public var smc : Float;
 	/**
 		```lua
 		(field) vim.bo.softtabstop: integer
@@ -3562,7 +3562,7 @@ package nvim.type.vim;
 		 to anything other than an empty string.
 		
 	**/
-	extern public var softtabstop : Int;
+	extern public var softtabstop : Float;
 	/**
 		```lua
 		(field) vim.bo.spc: string
@@ -3823,7 +3823,7 @@ package nvim.type.vim;
 		 to anything other than an empty string.
 		
 	**/
-	extern public var sts : Int;
+	extern public var sts : Float;
 	/**
 		```lua
 		(field) vim.bo.sua: string
@@ -3871,7 +3871,7 @@ package nvim.type.vim;
 		 function to get the effective shiftwidth value.
 		
 	**/
-	extern public var sw : Int;
+	extern public var sw : Float;
 	/**
 		```lua
 		(field) vim.bo.swapfile: boolean = false
@@ -3984,7 +3984,7 @@ package nvim.type.vim;
 		 Set to zero to remove the limit.
 		
 	**/
-	extern public var synmaxcol : Int;
+	extern public var synmaxcol : Float;
 	/**
 		```lua
 		(field) vim.bo.syntax: string
@@ -4074,7 +4074,7 @@ package nvim.type.vim;
 		 anything other than an empty string.
 		
 	**/
-	extern public var tabstop : Int;
+	extern public var tabstop : Float;
 	/**
 		```lua
 		(field) vim.bo.tag: string
@@ -4196,7 +4196,7 @@ package nvim.type.vim;
 		 When 'formatexpr' is set it will be used to break the line.
 		
 	**/
-	extern public var textwidth : Int;
+	extern public var textwidth : Float;
 	/**
 		```lua
 		(field) vim.bo.tfu: string
@@ -4304,7 +4304,7 @@ package nvim.type.vim;
 		 anything other than an empty string.
 		
 	**/
-	extern public var ts : Int;
+	extern public var ts : Float;
 	/**
 		```lua
 		(field) vim.bo.tsr: string
@@ -4361,7 +4361,7 @@ package nvim.type.vim;
 		 When 'formatexpr' is set it will be used to break the line.
 		
 	**/
-	extern public var tw : Int;
+	extern public var tw : Float;
 	/**
 		```lua
 		(field) vim.bo.udf: boolean
@@ -4412,7 +4412,7 @@ package nvim.type.vim;
 		 Also see `clear-undo`.
 		
 	**/
-	extern public var ul : Int;
+	extern public var ul : Float;
 	/**
 		```lua
 		(field) vim.bo.undofile: boolean
@@ -4463,7 +4463,7 @@ package nvim.type.vim;
 		 Also see `clear-undo`.
 		
 	**/
-	extern public var undolevels : Int;
+	extern public var undolevels : Float;
 	/**
 		```lua
 		(field) vim.bo.varsofttabstop: string
@@ -4580,7 +4580,7 @@ package nvim.type.vim;
 		 See also 'formatoptions' and `ins-textwidth`.
 		
 	**/
-	extern public var wm : Int;
+	extern public var wm : Float;
 	/**
 		```lua
 		(field) vim.bo.wrapmargin: integer
@@ -4597,5 +4597,5 @@ package nvim.type.vim;
 		 See also 'formatoptions' and `ins-textwidth`.
 		
 	**/
-	extern public var wrapmargin : Int;
+	extern public var wrapmargin : Float;
 }

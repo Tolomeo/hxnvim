@@ -19,7 +19,7 @@ package nvim.type.vim.fs.dir;
 		 (default: `1`)
 	**/
 	@:optional
-	extern public var depth : Null<Int>;
+	extern public var depth : Null<Float>;
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.follow: boolean?

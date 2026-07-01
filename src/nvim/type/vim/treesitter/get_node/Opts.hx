@@ -22,7 +22,7 @@ package nvim.type.vim.treesitter.get_node;
 		 Buffer number (nil or 0 for current buffer)
 	**/
 	@:optional
-	extern public var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.ignore_injections: boolean?

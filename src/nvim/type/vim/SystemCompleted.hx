@@ -11,13 +11,13 @@ package nvim.type.vim;
 		(field) vim.SystemCompleted.code: integer
 		```
 	**/
-	extern public var code : Int;
+	extern public var code : Float;
 	/**
 		```lua
 		(field) vim.SystemCompleted.signal: integer
 		```
 	**/
-	extern public var signal : Int;
+	extern public var signal : Float;
 	/**
 		```lua
 		(field) vim.SystemCompleted.stderr: string?

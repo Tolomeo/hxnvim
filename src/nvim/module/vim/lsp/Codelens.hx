@@ -15,7 +15,7 @@ extern class Codelens {
 		@*param* `bufnr` — filter by buffer. All buffers if nil, 0 for current buffer
 	**/
 	@:luaDotMethod
-	function clear(?client_id:Null<Int>, ?bufnr:Null<Int>):Dynamic;
+	function clear(?client_id:Null<Float>, ?bufnr:Null<Float>):Dynamic;
 	/**
 		```lua
 		function M.display(lenses?: lsp.CodeLens[], bufnr: integer, client_id: integer)
@@ -28,7 +28,7 @@ extern class Codelens {
 		@*param* `lenses` — lenses to display
 	**/
 	@:luaDotMethod
-	function display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
+	function display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Float, client_id:Float):Dynamic;
 	/**
 		```lua
 		function M.get(bufnr: integer)
@@ -42,7 +42,7 @@ extern class Codelens {
 		@*param* `bufnr` — Buffer number. 0 can be used for the current buffer.
 	**/
 	@:luaDotMethod
-	function get(bufnr:Int):lua.Table<Int, nvim.type.lsp.CodeLens>;
+	function get(bufnr:Float):lua.Table<Int, nvim.type.lsp.CodeLens>;
 	/**
 		```lua
 		function M.on_codelens(err?: lsp.ResponseError, result: lsp.CodeLens[], ctx: lsp.HandlerContext)
@@ -140,5 +140,5 @@ extern class Codelens {
 		@*param* `lenses` — lenses to store
 	**/
 	@:luaDotMethod
-	function save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
+	function save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Float, client_id:Float):Dynamic;
 }

@@ -27,7 +27,7 @@ package nvim.type;
 		
 		 Return the number of bytes spanned by this node.
 	**/
-	extern public function byte_length():Int;
+	extern public function byte_length():Float;
 	/**
 		```lua
 		(method) TSNode:child(index: integer)
@@ -39,7 +39,7 @@ package nvim.type;
 		 Get the node's child at the given {index}, where zero represents the first
 		 child.
 	**/
-	extern public function child(index:Int):Null<nvim.type.TSNode>;
+	extern public function child(index:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:child_count()
@@ -50,7 +50,7 @@ package nvim.type;
 		
 		 Get the node's number of children.
 	**/
-	extern public function child_count():Int;
+	extern public function child_count():Float;
 	/**
 		```lua
 		(method) TSNode:child_with_descendant(descendant: TSNode)
@@ -109,7 +109,7 @@ package nvim.type;
 		 Get the smallest node within this node that spans the given range of (row,
 		 column) positions
 	**/
-	extern public function descendant_for_range(start_row:Int, start_col:Int, end_row:Int, end_col:Int):Null<nvim.type.TSNode>;
+	extern public function descendant_for_range(start_row:Float, start_col:Float, end_row:Float, end_col:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:end_()
@@ -123,7 +123,7 @@ package nvim.type;
 		 Get the node's end position. Return three values: the row, column and
 		 total byte count (all zero-based).
 	**/
-	extern public function end_():Int;
+	extern public function end_():Float;
 	/**
 		```lua
 		(method) TSNode:equal(node: TSNode)
@@ -264,7 +264,7 @@ package nvim.type;
 		 Get the node's named child at the given {index}, where zero represents the
 		 first named child.
 	**/
-	extern public function named_child(index:Int):Null<nvim.type.TSNode>;
+	extern public function named_child(index:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:named_child_count()
@@ -275,7 +275,7 @@ package nvim.type;
 		
 		 Get the node's number of named children.
 	**/
-	extern public function named_child_count():Int;
+	extern public function named_child_count():Float;
 	/**
 		```lua
 		(method) TSNode:named_children()
@@ -298,7 +298,7 @@ package nvim.type;
 		 Get the smallest named node within this node that spans the given range of
 		 (row, column) positions
 	**/
-	extern public function named_descendant_for_range(start_row:Int, start_col:Int, end_row:Int, end_col:Int):Null<nvim.type.TSNode>;
+	extern public function named_descendant_for_range(start_row:Float, start_col:Float, end_row:Float, end_col:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:next_named_sibling()
@@ -397,8 +397,8 @@ package nvim.type;
 		  6. integer
 		```
 	**/
-	@:overload(function (include_bytes:Bool) : nvim.helper.Multireturn<Int, Int, Int, Int, Int, Int> {})
-	extern public function range(?include_bytes:Null<Bool>):Int;
+	@:overload(function (include_bytes:Bool) : nvim.helper.Multireturn<Float, Float, Float, Float, Float, Float> {})
+	extern public function range(?include_bytes:Null<Bool>):Float;
 	/**
 		```lua
 		(method) TSNode:sexpr()
@@ -423,7 +423,7 @@ package nvim.type;
 		 Get the node's start position. Return three values: the row, column and
 		 total byte count (all zero-based).
 	**/
-	extern public function start():Int;
+	extern public function start():Float;
 	/**
 		```lua
 		(method) TSNode:symbol()
@@ -434,7 +434,7 @@ package nvim.type;
 		
 		 Get the node's type as a numerical id.
 	**/
-	extern public function symbol():Int;
+	extern public function symbol():Float;
 	/**
 		```lua
 		(method) TSNode:tree()

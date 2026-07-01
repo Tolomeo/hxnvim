@@ -15,7 +15,7 @@ package nvim.type.uv.getrusage;
 		
 		integral unshared data size
 	**/
-	extern public var idrss : Int;
+	extern public var idrss : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.inblock: integer
@@ -25,7 +25,7 @@ package nvim.type.uv.getrusage;
 		
 		block input operations
 	**/
-	extern public var inblock : Int;
+	extern public var inblock : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.isrss: integer
@@ -35,7 +35,7 @@ package nvim.type.uv.getrusage;
 		
 		integral unshared stack size
 	**/
-	extern public var isrss : Int;
+	extern public var isrss : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.ixrss: integer
@@ -45,7 +45,7 @@ package nvim.type.uv.getrusage;
 		
 		integral shared memory size
 	**/
-	extern public var ixrss : Int;
+	extern public var ixrss : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.majflt: integer
@@ -55,7 +55,7 @@ package nvim.type.uv.getrusage;
 		
 		page faults (hard page faults)
 	**/
-	extern public var majflt : Int;
+	extern public var majflt : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.maxrss: integer
@@ -65,7 +65,7 @@ package nvim.type.uv.getrusage;
 		
 		maximum resident set size
 	**/
-	extern public var maxrss : Int;
+	extern public var maxrss : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.minflt: integer
@@ -75,7 +75,7 @@ package nvim.type.uv.getrusage;
 		
 		page reclaims (soft page faults)
 	**/
-	extern public var minflt : Int;
+	extern public var minflt : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.msgrcv: integer
@@ -85,7 +85,7 @@ package nvim.type.uv.getrusage;
 		
 		IPC messages received
 	**/
-	extern public var msgrcv : Int;
+	extern public var msgrcv : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.msgsnd: integer
@@ -95,7 +95,7 @@ package nvim.type.uv.getrusage;
 		
 		IPC messages sent
 	**/
-	extern public var msgsnd : Int;
+	extern public var msgsnd : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.nivcsw: integer
@@ -105,7 +105,7 @@ package nvim.type.uv.getrusage;
 		
 		involuntary context switches
 	**/
-	extern public var nivcsw : Int;
+	extern public var nivcsw : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.nsignals: integer
@@ -115,7 +115,7 @@ package nvim.type.uv.getrusage;
 		
 		signals received
 	**/
-	extern public var nsignals : Int;
+	extern public var nsignals : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.nswap: integer
@@ -125,7 +125,7 @@ package nvim.type.uv.getrusage;
 		
 		swaps
 	**/
-	extern public var nswap : Int;
+	extern public var nswap : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.nvcsw: integer
@@ -135,7 +135,7 @@ package nvim.type.uv.getrusage;
 		
 		voluntary context switches
 	**/
-	extern public var nvcsw : Int;
+	extern public var nvcsw : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.oublock: integer
@@ -145,7 +145,7 @@ package nvim.type.uv.getrusage;
 		
 		block output operations
 	**/
-	extern public var oublock : Int;
+	extern public var oublock : Float;
 	/**
 		```lua
 		(field) uv.getrusage.result.stime: uv.getrusage.result.time_t

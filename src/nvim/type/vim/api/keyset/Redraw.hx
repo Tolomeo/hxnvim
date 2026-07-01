@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var buf : Null<Int>;
+	extern public var buf : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.cursor: boolean?
@@ -68,7 +68,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var win : Null<Int>;
+	extern public var win : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.winbar: boolean?

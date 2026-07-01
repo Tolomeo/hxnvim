@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var buffer : Null<haxe.extern.EitherType<Int, lua.Table<Int, Int>>>;
+	extern public var buffer : Null<haxe.extern.EitherType<Float, lua.Table<Int, Float>>>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.event: (string|string[])?
@@ -26,14 +26,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var group : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var group : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.id: integer?
 		```
 	**/
 	@:optional
-	extern public var id : Null<Int>;
+	extern public var id : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.pattern: (string|string[])?

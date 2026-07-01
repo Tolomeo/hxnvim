@@ -49,7 +49,7 @@ package nvim.type.vim.treesitter;
 		(field) vim.treesitter.highlighter.bufnr: integer
 		```
 	**/
-	extern public var bufnr : Int;
+	extern public var bufnr : Float;
 	/**
 		```lua
 		function vim.treesitter.highlighter.new(tree: vim.treesitter.LanguageTree, opts: table|nil)

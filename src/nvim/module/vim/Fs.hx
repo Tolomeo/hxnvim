@@ -502,5 +502,5 @@ extern class Fs {
 		                   found.
 	**/
 	@:luaDotMethod
-	function root(source:haxe.extern.EitherType<Int, String>, marker:haxe.extern.EitherType<lua.Table<Int, haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
+	function root(source:haxe.extern.EitherType<Float, String>, marker:haxe.extern.EitherType<lua.Table<Int, haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
 }

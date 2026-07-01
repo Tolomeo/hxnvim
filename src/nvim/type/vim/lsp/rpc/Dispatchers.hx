@@ -61,7 +61,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern public function on_error(code:Int, err:Any):Dynamic;
+	extern public function on_error(code:Float, err:Any):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.on_exit: fun(code: integer, signal: integer)
@@ -74,7 +74,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern public function on_exit(code:Int, signal:Int):Dynamic;
+	extern public function on_exit(code:Float, signal:Float):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.server_request: fun(method: string, params: table):any, (lsp.ResponseError)?

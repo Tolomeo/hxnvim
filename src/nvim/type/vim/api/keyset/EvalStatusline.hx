@@ -26,14 +26,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var maxwidth : Null<Int>;
+	extern public var maxwidth : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.eval_statusline.use_statuscol_lnum: integer?
 		```
 	**/
 	@:optional
-	extern public var use_statuscol_lnum : Null<Int>;
+	extern public var use_statuscol_lnum : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.eval_statusline.use_tabline: boolean?
@@ -54,5 +54,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var winid : Null<Int>;
+	extern public var winid : Null<Float>;
 }

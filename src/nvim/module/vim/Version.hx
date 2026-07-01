@@ -35,7 +35,7 @@ extern class Version {
 		@*return* — -1 if `v1 < v2`, 0 if `v1 == v2`, 1 if `v1 > v2`.
 	**/
 	@:luaDotMethod
-	function cmp(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Int;
+	function cmp(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Float;
 	/**
 		```lua
 		function M.eq(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
