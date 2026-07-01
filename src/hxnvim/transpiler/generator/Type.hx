@@ -107,7 +107,7 @@ class LiteralTypeGenerator {
 			case LiteralType.Any: "Any";
 			case LiteralType.Boolean: "Bool";
 			case LiteralType.AnyFunction: "haxe.Constraints.Function";
-			case LiteralType.Integer: "Int";
+			case LiteralType.Integer: "Float";
 			case LiteralType.UserData: "lua.UserData";
 			case LiteralType.Nil: "Void";
 			case LiteralType.Void: "Void";
