@@ -20,30 +20,6 @@ package nvim;
 		```
 	**/
 	static function nvim__buf_stats(buffer:Float):lua.Table<String, Any>;
-	/**
-		```lua
-		function vim.api.nvim__complete_set(index: integer, opts: vim.api.keyset.complete_set)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 EXPERIMENTAL: this API may change in the future.
-		
-		 Sets info for the completion item at the given index. If the info text was shown in a window,
-		 returns the window and buffer ids, or empty dict if not shown.
-		
-		@*param* `index` — Completion candidate index
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - info: (string) info text.
-		
-		@*return* — Dict containing these keys:
-		
-		 - winid: (number) floating window id
-		 - bufnr: (number) buffer id in floating window
-	**/
 	@:native("nvim__complete_set")
 	private static function __nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any>;
 	/**
@@ -82,24 +58,6 @@ package nvim;
 		```
 	**/
 	static function nvim__get_lib_dir():String;
-	/**
-		```lua
-		function vim.api.nvim__get_runtime(pat: any[], all: boolean, opts: vim.api.keyset.runtime)
-		  -> string[]
-		```
-		
-		---
-		
-		 Find files in runtime directories
-		
-		@*param* `pat` — pattern of files to search for
-		
-		@*param* `all` — whether to return all matches or only the first
-		
-		@*param* `opts` — is_lua: only search Lua subdirs
-		
-		@*return* — list of absolute paths to the found files
-	**/
 	@:native("nvim__get_runtime")
 	private static function __nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String>;
 	/**
@@ -161,23 +119,6 @@ package nvim;
 		@*return* — its argument.
 	**/
 	static function nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
-	/**
-		```lua
-		function vim.api.nvim__id_dict(dct: table<string, any>)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Returns dict given as argument.
-		
-		 This API function is used for testing. One should not rely on its presence
-		 in plugins.
-		
-		@*param* `dct` — Dict to return.
-		
-		@*return* — its argument.
-	**/
 	@:native("nvim__id_dict")
 	private static function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
 	/**
@@ -259,23 +200,6 @@ package nvim;
 		@*return* — Map defining the namespace properties, see |nvim__ns_set()|
 	**/
 	static function nvim__ns_get(ns_id:Float):nvim.type.vim.api.keyset.NsOpts;
-	/**
-		```lua
-		function vim.api.nvim__ns_set(ns_id: integer, opts: vim.api.keyset.ns_opts)
-		```
-		
-		---
-		
-		 EXPERIMENTAL: this API will change in the future.
-		
-		 Set some properties for namespace
-		
-		@*param* `ns_id` — Namespace
-		
-		@*param* `opts` — Optional parameters to set:
-		
-		 - wins: a list of windows to be scoped in
-	**/
 	@:native("nvim__ns_set")
 	private static function __nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic;
 	/**
@@ -300,41 +224,6 @@ package nvim;
 		final result = __nvim__ns_set(ns_id, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim__redraw(opts: vim.api.keyset.redraw)
-		```
-		
-		---
-		
-		 EXPERIMENTAL: this API may change in the future.
-		
-		 Instruct Nvim to redraw various components.
-		
-		
-		 @see `:help :redraw`
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - win: Target a specific `window-ID` as described below.
-		 - buf: Target a specific buffer number as described below.
-		 - flush: Update the screen with pending updates.
-		 - valid: When present mark `win`, `buf`, or all windows for
-		   redraw. When `true`, only redraw changed lines (useful for
-		   decoration providers). When `false`, forcefully redraw.
-		 - range: Redraw a range in `buf`, the buffer in `win` or the
-		   current buffer (useful for decoration providers). Expects a
-		   tuple `[first, last]` with the first and last line number
-		   of the range, 0-based end-exclusive `api-indexing`.
-		 - cursor: Immediately update cursor position on the screen in
-		   `win` or the current window.
-		 - statuscolumn: Redraw the 'statuscolumn' in `buf`, `win` or
-		   all windows.
-		 - statusline: Redraw the 'statusline' in `buf`, `win` or all
-		   windows.
-		 - winbar: Redraw the 'winbar' in `buf`, `win` or all windows.
-		 - tabline: Redraw the 'tabline'.
-	**/
 	@:native("nvim__redraw")
 	private static function __nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic;
 	/**
@@ -418,93 +307,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_buf_add_highlight(buffer:Float, ns_id:Float, hl_group:String, line:Float, col_start:Float, col_end:Float):Float;
-	/**
-		```lua
-		function vim.api.nvim_buf_attach(buffer: integer, send_buffer: boolean, opts: vim.api.keyset.buf_attach)
-		  -> boolean
-		```
-		
-		---
-		
-		 Activates buffer-update events on a channel, or as Lua callbacks.
-		
-		 Example (Lua): capture buffer updates in a global `events` variable
-		 (use "vim.print(events)" to see its contents):
-		
-		 ```lua
-		 events = {}
-		 vim.api.nvim_buf_attach(0, false, {
-		   on_lines = function(...)
-		     table.insert(events, {...})
-		   end,
-		 })
-		 ```
-		
-		
-		 @see `:help api-buffer-updates-lua`
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `send_buffer` — True if the initial notification should contain the
-		
-		 whole buffer: first notification will be `nvim_buf_lines_event`.
-		 Else the first notification will be `nvim_buf_changedtick_event`.
-		 Not for Lua callbacks.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - on_lines: Lua callback invoked on change.
-		   Return a truthy value (not `false` or `nil`) to detach. Args:
-		   - the string "lines"
-		   - buffer id
-		   - b:changedtick
-		   - first line that changed (zero-indexed)
-		   - last line that was changed
-		   - last line in the updated range
-		   - byte count of previous contents
-		   - deleted_codepoints (if `utf_sizes` is true)
-		   - deleted_codeunits (if `utf_sizes` is true)
-		 - on_bytes: Lua callback invoked on change.
-		   This callback receives more granular information about the
-		   change compared to on_lines.
-		   Return a truthy value (not `false` or `nil`) to detach. Args:
-		   - the string "bytes"
-		   - buffer id
-		   - b:changedtick
-		   - start row of the changed text (zero-indexed)
-		   - start column of the changed text
-		   - byte offset of the changed text (from the start of
-		       the buffer)
-		   - old end row of the changed text (offset from start row)
-		   - old end column of the changed text
-		     (if old end row = 0, offset from start column)
-		   - old end byte length of the changed text
-		   - new end row of the changed text (offset from start row)
-		   - new end column of the changed text
-		     (if new end row = 0, offset from start column)
-		   - new end byte length of the changed text
-		 - on_changedtick: Lua callback invoked on changedtick
-		   increment without text change. Args:
-		   - the string "changedtick"
-		   - buffer id
-		   - b:changedtick
-		 - on_detach: Lua callback invoked on detach. Args:
-		   - the string "detach"
-		   - buffer id
-		 - on_reload: Lua callback invoked on reload. The entire buffer
-		              content should be considered changed. Args:
-		   - the string "reload"
-		   - buffer id
-		 - utf_sizes: include UTF-32 and UTF-16 size of the replaced
-		   region, as args to `on_lines`.
-		 - preview: also attach to command preview (i.e. 'inccommand')
-		   events.
-		
-		@*return* — False if attach failed (invalid parameter, or buffer isn't loaded);
-		
-		 otherwise True. TODO: LUA_API_NO_EVAL
-		See: ~vim.api.nvim_buf_detach~
-	**/
 	@:native("nvim_buf_attach")
 	private static function __nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool;
 	/**
@@ -659,19 +461,6 @@ package nvim;
 		 to end of buffer.
 	**/
 	static function nvim_buf_clear_namespace(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_create_user_command(buffer: integer, name: string, command: any, opts: vim.api.keyset.user_command)
-		```
-		
-		---
-		
-		 Creates a buffer-local command `user-commands`.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer.
-		
-		See: [vim.api.nvim_create_user_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1026#9)
-	**/
 	@:native("nvim_buf_create_user_command")
 	private static function __nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
 	/**
@@ -782,22 +571,6 @@ package nvim;
 		@*param* `name` — Variable name
 	**/
 	static function nvim_buf_del_var(buffer:Float, name:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_delete(buffer: integer, opts: vim.api.keyset.buf_delete)
-		```
-		
-		---
-		
-		 Deletes the buffer. See `:bwipeout`
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `opts` — Optional parameters. Keys:
-		
-		 - force:  Force deletion and ignore unsaved changes.
-		 - unload: Unloaded only, do not delete. See `:bunload`
-	**/
 	@:native("nvim_buf_delete")
 	private static function __nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic;
 	/**
@@ -836,22 +609,6 @@ package nvim;
 		@*return* — `b:changedtick` value.
 	**/
 	static function nvim_buf_get_changedtick(buffer:Float):Float;
-	/**
-		```lua
-		function vim.api.nvim_buf_get_commands(buffer: integer, opts: vim.api.keyset.get_commands)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Gets a map of buffer-local `user-commands`.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `opts` — Optional parameters. Currently not used.
-		
-		@*return* — Map of maps describing commands.
-	**/
 	@:native("nvim_buf_get_commands")
 	private static function __nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
 	/**
@@ -875,31 +632,6 @@ package nvim;
 		final result = __nvim_buf_get_commands(buffer, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_buf_get_extmark_by_id(buffer: integer, ns_id: integer, id: integer, opts: vim.api.keyset.get_extmark)
-		  -> vim.api.keyset.get_extmark_item_by_id
-		```
-		
-		---
-		
-		 Gets the position (0-indexed) of an `extmark`.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()`
-		
-		@*param* `id` — Extmark id
-		
-		@*param* `opts` — Optional parameters. Keys:
-		
-		 - details: Whether to include the details dict
-		 - hl_name: Whether to include highlight group name instead of id, true if omitted
-		
-		@*return* — 0-indexed (row, col) tuple or empty list () if extmark id was
-		
-		 absent
-	**/
 	@:native("nvim_buf_get_extmark_by_id")
 	private static function __nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById;
 	/**
@@ -932,80 +664,6 @@ package nvim;
 		final result = __nvim_buf_get_extmark_by_id(buffer, ns_id, id, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_buf_get_extmarks(buffer: integer, ns_id: integer, start: any, end_: any, opts: vim.api.keyset.get_extmarks)
-		  -> vim.api.keyset.get_extmark_item[]
-		```
-		
-		---
-		
-		 Gets `extmarks` in "traversal order" from a `charwise` region defined by
-		 buffer positions (inclusive, 0-indexed `api-indexing`).
-		
-		 Region can be given as (row,col) tuples, or valid extmark ids (whose
-		 positions define the bounds). 0 and -1 are understood as (0,0) and (-1,-1)
-		 respectively, thus the following are equivalent:
-		
-		 ```lua
-		 vim.api.nvim_buf_get_extmarks(0, my_ns, 0, -1, {})
-		 vim.api.nvim_buf_get_extmarks(0, my_ns, {0,0}, {-1,-1}, {})
-		 ```
-		
-		 If `end` is less than `start`, marks are returned in reverse order.
-		 (Useful with `limit`, to get the first marks prior to a given position.)
-		
-		 Note: For a reverse range, `limit` does not actually affect the traversed
-		 range, just how many marks are returned
-		
-		 Note: when using extmark ranges (marks with a end_row/end_col position)
-		 the `overlap` option might be useful. Otherwise only the start position
-		 of an extmark will be considered.
-		
-		 Note: legacy signs placed through the `:sign` commands are implemented
-		 as extmarks and will show up here. Their details array will contain a
-		 `sign_name` field.
-		
-		 Example:
-		
-		 ```lua
-		 local api = vim.api
-		 local pos = api.nvim_win_get_cursor(0)
-		 local ns  = api.nvim_create_namespace('my-plugin')
-		 -- Create new extmark at line 1, column 1.
-		 local m1  = api.nvim_buf_set_extmark(0, ns, 0, 0, {})
-		 -- Create new extmark at line 3, column 1.
-		 local m2  = api.nvim_buf_set_extmark(0, ns, 2, 0, {})
-		 -- Get extmarks only from line 3.
-		 local ms  = api.nvim_buf_get_extmarks(0, ns, {2,0}, {2,0}, {})
-		 -- Get all marks in this buffer + namespace.
-		 local all = api.nvim_buf_get_extmarks(0, ns, 0, -1, {})
-		 vim.print(ms)
-		 ```
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()` or -1 for all namespaces
-		
-		@*param* `start` — Start of range: a 0-indexed (row, col) or valid extmark id
-		
-		 (whose position defines the bound). `api-indexing`
-		
-		@*param* `end_` — End of range (inclusive): a 0-indexed (row, col) or valid
-		
-		 extmark id (whose position defines the bound). `api-indexing`
-		
-		@*param* `opts` — Optional parameters. Keys:
-		
-		 - limit:  Maximum number of marks to return
-		 - details: Whether to include the details dict
-		 - hl_name: Whether to include highlight group name instead of id, true if omitted
-		 - overlap: Also include marks which overlap the range, even if
-		            their start position is less than `start`
-		 - type: Filter marks by type: "highlight", "sign", "virt_text" and "virt_lines"
-		
-		@*return* — List of `[extmark_id, row, col]` tuples in "traversal order".
-	**/
 	@:native("nvim_buf_get_extmarks")
 	private static function __nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem>;
 	/**
@@ -1219,35 +877,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_buf_get_option(buffer:Float, name:String):Any;
-	/**
-		```lua
-		function vim.api.nvim_buf_get_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, opts: vim.api.keyset.empty)
-		  -> string[]
-		```
-		
-		---
-		
-		 Gets a range from the buffer (may be partial lines, unlike `nvim_buf_get_lines()`).
-		
-		 Indexing is zero-based. Row indices are end-inclusive, and column indices
-		 are end-exclusive.
-		
-		 Prefer `nvim_buf_get_lines()` when retrieving entire lines.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `start_row` — First line index
-		
-		@*param* `start_col` — Starting column (byte offset) on first line
-		
-		@*param* `end_row` — Last line index, inclusive
-		
-		@*param* `end_col` — Ending column (byte offset) on last line, exclusive
-		
-		@*param* `opts` — Optional parameters. Currently unused.
-		
-		@*return* — Array of lines, or empty array for unloaded buffer.
-	**/
 	@:native("nvim_buf_get_text")
 	private static function __nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String>;
 	/**
@@ -1352,167 +981,6 @@ package nvim;
 		@*return* — Line count, or 0 for unloaded buffer. |api-buffer|
 	**/
 	static function nvim_buf_line_count(buffer:Float):Float;
-	/**
-		```lua
-		function vim.api.nvim_buf_set_extmark(buffer: integer, ns_id: integer, line: integer, col: integer, opts: vim.api.keyset.set_extmark)
-		  -> integer
-		```
-		
-		---
-		
-		 Creates or updates an `extmark`.
-		
-		 By default a new extmark is created when no id is passed in, but it is also
-		 possible to create a new mark by passing in a previously unused id or move
-		 an existing mark by passing in its id. The caller must then keep track of
-		 existing and unused ids itself. (Useful over RPC, to avoid waiting for the
-		 return value.)
-		
-		 Using the optional arguments, it is possible to use this to highlight
-		 a range of text, and also to associate virtual text to the mark.
-		
-		 If present, the position defined by `end_col` and `end_row` should be after
-		 the start position in order for the extmark to cover a range.
-		 An earlier end position is not an error, but then it behaves like an empty
-		 range (no highlighting).
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()`
-		
-		@*param* `line` — Line where to place the mark, 0-based. `api-indexing`
-		
-		@*param* `col` — Column where to place the mark, 0-based. `api-indexing`
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - id : id of the extmark to edit.
-		 - end_row : ending line of the mark, 0-based inclusive.
-		 - end_col : ending col of the mark, 0-based exclusive.
-		 - hl_group : highlight group used for the text range. This and below
-		     highlight groups can be supplied either as a string or as an integer,
-		     the latter of which can be obtained using `nvim_get_hl_id_by_name()`.
-		
-		     Multiple highlight groups can be stacked by passing an array (highest
-		     priority last).
-		 - hl_eol : when true, for a multiline highlight covering the
-		            EOL of a line, continue the highlight for the rest
-		            of the screen line (just like for diff and
-		            cursorline highlight).
-		 - virt_text : virtual text to link to this mark.
-		     A list of `[text, highlight]` tuples, each representing a
-		     text chunk with specified highlight. `highlight` element
-		     can either be a single highlight group, or an array of
-		     multiple highlight groups that will be stacked
-		     (highest priority last).
-		 - virt_text_pos : position of virtual text. Possible values:
-		   - "eol": right after eol character (default).
-		   - "eol_right_align": display right aligned in the window
-		                        unless the virtual text is longer than
-		                        the space available. If the virtual
-		                        text is too long, it is truncated to
-		                        fit in the window after the EOL
-		                        character. If the line is wrapped, the
-		                        virtual text is shown after the end of
-		                        the line rather than the previous
-		                        screen line.
-		   - "overlay": display over the specified column, without
-		                shifting the underlying text.
-		   - "right_align": display right aligned in the window.
-		   - "inline": display at the specified column, and
-		               shift the buffer text to the right as needed.
-		 - virt_text_win_col : position the virtual text at a fixed
-		                       window column (starting from the first
-		                       text column of the screen line) instead
-		                       of "virt_text_pos".
-		 - virt_text_hide : hide the virtual text when the background
-		                    text is selected or hidden because of
-		                    scrolling with 'nowrap' or 'smoothscroll'.
-		                    Currently only affects "overlay" virt_text.
-		 - virt_text_repeat_linebreak : repeat the virtual text on
-		                                wrapped lines.
-		 - hl_mode : control how highlights are combined with the
-		             highlights of the text. Currently only affects
-		             virt_text highlights, but might affect `hl_group`
-		             in later versions.
-		   - "replace": only show the virt_text color. This is the default.
-		   - "combine": combine with background text color.
-		   - "blend": blend with background text color.
-		              Not supported for "inline" virt_text.
-		
-		 - virt_lines : virtual lines to add next to this mark
-		     This should be an array over lines, where each line in
-		     turn is an array over `[text, highlight]` tuples. In
-		     general, buffer and window options do not affect the
-		     display of the text. In particular 'wrap'
-		     and 'linebreak' options do not take effect, so
-		     the number of extra screen lines will always match
-		     the size of the array. However the 'tabstop' buffer
-		     option is still used for hard tabs. By default lines are
-		     placed below the buffer line containing the mark.
-		
-		 - virt_lines_above: place virtual lines above instead.
-		 - virt_lines_leftcol: Place virtual lines in the leftmost
-		                       column of the window, bypassing
-		                       sign and number columns.
-		 - virt_lines_overflow: controls how to handle virtual lines wider
-		     than the window. Currently takes the one of the following values:
-		   - "trunc": truncate virtual lines on the right (default).
-		   - "scroll": virtual lines can scroll horizontally with 'nowrap',
-		      otherwise the same as "trunc".
-		 - ephemeral : for use with `nvim_set_decoration_provider()`
-		     callbacks. The mark will only be used for the current
-		     redraw cycle, and not be permanently stored in the buffer.
-		 - right_gravity : boolean that indicates the direction
-		     the extmark will be shifted in when new text is inserted
-		     (true for right, false for left). Defaults to true.
-		 - end_right_gravity : boolean that indicates the direction
-		     the extmark end position (if it exists) will be shifted
-		     in when new text is inserted (true for right, false
-		     for left). Defaults to false.
-		 - undo_restore : Restore the exact position of the mark
-		     if text around the mark was deleted and then restored by undo.
-		     Defaults to true.
-		 - invalidate : boolean that indicates whether to hide the
-		     extmark if the entirety of its range is deleted. For
-		     hidden marks, an "invalid" key is added to the "details"
-		     array of `nvim_buf_get_extmarks()` and family. If
-		     "undo_restore" is false, the extmark is deleted instead.
-		 - priority: a priority value for the highlight group, sign
-		     attribute or virtual text. For virtual text, item with
-		     highest priority is drawn last. For example treesitter
-		     highlighting uses a value of 100.
-		 - strict: boolean that indicates extmark should not be placed
-		     if the line or column value is past the end of the
-		     buffer or end of the line respectively. Defaults to true.
-		 - sign_text: string of length 1-2 used to display in the
-		     sign column.
-		 - sign_hl_group: highlight group used for the sign column text.
-		 - number_hl_group: highlight group used for the number column.
-		 - line_hl_group: highlight group used for the whole line.
-		 - cursorline_hl_group: highlight group used for the sign
-		     column text when the cursor is on the same line as the
-		     mark and 'cursorline' is enabled.
-		 - conceal: string which should be either empty or a single
-		     character. Enable concealing similar to `:syn-conceal`.
-		     When a character is supplied it is used as `:syn-cchar`.
-		     "hl_group" is used as highlight for the cchar if provided,
-		     otherwise it defaults to `hl-Conceal`.
-		 - conceal_lines: string which should be empty. When
-		     provided, lines in the range are not drawn at all
-		     (according to 'conceallevel'); the next unconcealed line
-		     is drawn instead.
-		 - spell: boolean indicating that spell checking should be
-		     performed within this extmark
-		 - ui_watched: boolean that indicates the mark should be drawn
-		     by a UI. When set, the UI will receive win_extmark events.
-		     Note: the mark is positioned by virt_text attributes. Can be
-		     used together with virt_text.
-		 - url: A URL to associate with this extmark. In the TUI, the OSC 8 control
-		     sequence is used to generate a clickable hyperlink to this URL.
-		
-		@*return* — Id of the created/updated extmark
-	**/
 	@:native("nvim_buf_set_extmark")
 	private static function __nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float;
 	/**
@@ -1681,20 +1149,6 @@ package nvim;
 		final result = __nvim_buf_set_extmark(buffer, ns_id, line, col, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_buf_set_keymap(buffer: integer, mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
-		```
-		
-		---
-		
-		 Sets a buffer-local `mapping` for the given mode.
-		
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
-	**/
 	@:native("nvim_buf_set_keymap")
 	private static function __nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
 	/**
@@ -1749,39 +1203,6 @@ package nvim;
 		See: [vim.api.nvim_buf_set_text](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#773#9)
 	**/
 	static function nvim_buf_set_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_set_mark(buffer: integer, name: string, line: integer, col: integer, opts: vim.api.keyset.empty)
-		  -> boolean
-		```
-		
-		---
-		
-		 Sets a named mark in the given buffer, all marks are allowed
-		 file/uppercase, visual, last change, etc. See `mark-motions`.
-		
-		 Marks are (1,0)-indexed. `api-indexing`
-		
-		 Note:
-		 Passing 0 as line deletes the mark
-		
-		
-		@*param* `buffer` — Buffer to set the mark on
-		
-		@*param* `name` — Mark name
-		
-		@*param* `line` — Line number
-		
-		@*param* `col` — Column/row number
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-		
-		@*return* — true if the mark was set, else false.
-		
-		See:
-		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
-		  * [vim.api.nvim_buf_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#457#9)
-	**/
 	@:native("nvim_buf_set_mark")
 	private static function __nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool;
 	/**
@@ -1897,12 +1318,6 @@ package nvim;
 		@*param* `value` — Variable value
 	**/
 	static function nvim_buf_set_var(buffer:Float, name:String, value:Any):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_set_virtual_text(buffer: integer, src_id: integer, line: integer, chunks: any[], opts: vim.api.keyset.empty)
-		  -> integer
-		```
-	**/
 	@:native("nvim_buf_set_virtual_text")
 	private static function __nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float;
 	/**
@@ -1979,35 +1394,6 @@ package nvim;
 		@*param* `data` — data to write. 8-bit clean: can contain NUL bytes.
 	**/
 	static function nvim_chan_send(chan:Float, data:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_clear_autocmds(opts: vim.api.keyset.clear_autocmds)
-		```
-		
-		---
-		
-		 Clears all autocommands selected by {opts}. To delete autocmds see `nvim_del_autocmd()`.
-		
-		@*param* `opts` — Parameters
-		
-		 - event: (string|table)
-		      Examples:
-		      - event: "pat1"
-		      - event: { "pat1" }
-		      - event: { "pat1", "pat2", "pat3" }
-		 - pattern: (string|table)
-		     - pattern or patterns to match exactly.
-		         - For example, if you have `*.py` as that pattern for the autocmd,
-		           you must pass `*.py` exactly to clear it. `test.py` will not
-		           match the pattern.
-		     - defaults to clearing all patterns.
-		     - NOTE: Cannot be used with {buffer}
-		 - buffer: (bufnr)
-		     - clear only `autocmd-buflocal` autocommands.
-		     - NOTE: Cannot be used with {pattern}
-		 - group: (string|int) The augroup name or id.
-		     - NOTE: If not passed, will only delete autocmds *not* in any group.
-	**/
 	@:native("nvim_clear_autocmds")
 	private static function __nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic;
 	/**
@@ -2044,43 +1430,6 @@ package nvim;
 		final result = __nvim_clear_autocmds(opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_cmd(cmd: vim.api.keyset.cmd, opts: vim.api.keyset.cmd_opts)
-		  -> string
-		```
-		
-		---
-		
-		 Executes an Ex command.
-		
-		 Unlike `nvim_command()` this command takes a structured Dict instead of a String. This
-		 allows for easier construction and manipulation of an Ex command. This also allows for things
-		 such as having spaces inside a command argument, expanding filenames in a command that otherwise
-		 doesn't expand filenames, etc. Command arguments may also be Number, Boolean or String.
-		
-		 The first argument may also be used instead of count for commands that support it in order to
-		 make their usage simpler with `vim.cmd()`. For example, instead of
-		 `vim.cmd.bdelete{ count = 2 }`, you may do `vim.cmd.bdelete(2)`.
-		
-		 On execution error: fails with Vimscript error, updates v:errmsg.
-		
-		
-		@*param* `cmd` — Command to execute. Must be a Dict that can contain the same values as
-		
-		 the return value of `nvim_parse_cmd()` except "addr", "nargs" and "nextcmd"
-		 which are ignored if provided. All values except for "cmd" are optional.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - output: (boolean, default false) Whether to return command output.
-		
-		@*return* — Command output (non-error, non-shell |:!|) if `output` is true, else empty string.
-		
-		See:
-		  * [vim.api.nvim_exec2](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1167#9)
-		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
-	**/
 	@:native("nvim_cmd")
 	private static function __nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String;
 	/**
@@ -2155,35 +1504,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_command_output(command:String):String;
-	/**
-		```lua
-		function vim.api.nvim_create_augroup(name: string, opts: vim.api.keyset.create_augroup)
-		  -> integer
-		```
-		
-		---
-		
-		 Create or get an autocommand group `autocmd-groups`.
-		
-		 To get an existing group id, do:
-		
-		 ```lua
-		 local id = vim.api.nvim_create_augroup('my.lsp.config', {
-		     clear = false
-		 })
-		 ```
-		
-		 @see `:help autocmd-groups`
-		
-		@*param* `name` — String: The name of the group
-		
-		@*param* `opts` — Dict Parameters
-		
-		 - clear (bool) optional: defaults to true. Clear existing
-		 commands if the group already exists `autocmd-groups`.
-		
-		@*return* — Integer id of the created group.
-	**/
 	@:native("nvim_create_augroup")
 	private static function __nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float;
 	/**
@@ -2220,77 +1540,6 @@ package nvim;
 		final result = __nvim_create_augroup(name, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_create_autocmd(event: any, opts: vim.api.keyset.create_autocmd)
-		  -> integer
-		```
-		
-		---
-		
-		 Creates an `autocommand` event handler, defined by `callback` (Lua function or Vimscript
-		 function _name_ string) or `command` (Ex command string).
-		
-		 Example using Lua callback:
-		
-		 ```lua
-		 vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-		   pattern = {'*.c', '*.h'},
-		   callback = function(ev)
-		     print(string.format('event fired: %s', vim.inspect(ev)))
-		   end
-		 })
-		 ```
-		
-		 Example using an Ex command as the handler:
-		
-		 ```lua
-		 vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-		   pattern = {'*.c', '*.h'},
-		   command = "echo 'Entering a C or C++ file'",
-		 })
-		 ```
-		
-		 Note: `pattern` is NOT automatically expanded (unlike with `:autocmd`), thus names like "$HOME"
-		 and "~" must be expanded explicitly:
-		
-		 ```lua
-		 pattern = vim.fn.expand('~') .. '/some/path/*.py'
-		 ```
-		
-		 @see `:help autocommand`
-		
-		@*param* `event` — (string|array) Event(s) that will trigger the handler (`callback` or `command`).
-		
-		@*param* `opts` — Options dict:
-		
-		 - group (string|integer) optional: autocommand group name or id to match against.
-		 - pattern (string|array) optional: pattern(s) to match literally `autocmd-pattern`.
-		 - buffer (integer) optional: buffer number for buffer-local autocommands
-		 `autocmd-buflocal`. Cannot be used with {pattern}.
-		 - desc (string) optional: description (for documentation and troubleshooting).
-		 - callback (function|string) optional: Lua function (or Vimscript function name, if
-		 string) called when the event(s) is triggered. Lua callback can return a truthy
-		 value (not `false` or `nil`) to delete the autocommand, and receives one argument, a
-		 table with these keys: [event-args](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		     - id: (number) autocommand id
-		     - event: (string) name of the triggered event `autocmd-events`
-		     - group: (number|nil) autocommand group id, if any
-		     - file: (string) [<afile>] (not expanded to a full path)
-		     - match: (string) [<amatch>] (expanded to a full path)
-		     - buf: (number) [<abuf>]
-		     - data: (any) arbitrary data passed from [nvim_exec_autocmds()] [event-data](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		 - command (string) optional: Vim command to execute on event. Cannot be used with
-		 {callback}
-		 - once (boolean) optional: defaults to false. Run the autocommand
-		 only once `autocmd-once`.
-		 - nested (boolean) optional: defaults to false. Run nested
-		 autocommands `autocmd-nested`.
-		
-		@*return* — Autocommand id (number)
-		
-		See: [vim.api.nvim_del_autocmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1050#9)
-	**/
 	@:native("nvim_create_autocmd")
 	private static function __nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float;
 	/**
@@ -2413,58 +1662,6 @@ package nvim;
 		@*return* — Namespace id
 	**/
 	static function nvim_create_namespace(name:String):Float;
-	/**
-		```lua
-		function vim.api.nvim_create_user_command(name: string, command: string|fun(args: vim.api.keyset.create_user_command.command_args), opts: vim.api.keyset.user_command)
-		```
-		
-		---
-		
-		 Creates a global `user-commands` command.
-		
-		 For Lua usage see `lua-guide-commands-create`.
-		
-		 Example:
-		
-		 ```vim
-		 :call nvim_create_user_command('SayHello', 'echo "Hello world!"', {'bang': v:true})
-		 :SayHello
-		 Hello world!
-		 ```
-		
-		@*param* `name` — Name of the new user command. Must begin with an uppercase letter.
-		
-		@*param* `command` — Replacement command to execute when this user command is executed. When called
-		
-		 from Lua, the command can also be a Lua function. The function is called with a
-		 single table argument that contains the following keys:
-		 - name: (string) Command name
-		 - args: (string) The args passed to the command, if any [<args>]
-		 - fargs: (table) The args split by unescaped whitespace (when more than one
-		 argument is allowed), if any [<f-args>]
-		 - nargs: (string) Number of arguments `:command-nargs`
-		 - bang: (boolean) "true" if the command was executed with a ! modifier [<bang>]
-		 - line1: (number) The starting line of the command range [<line1>]
-		 - line2: (number) The final line of the command range [<line2>]
-		 - range: (number) The number of items in the command range: 0, 1, or 2 [<range>]
-		 - count: (number) Any count supplied [<count>]
-		 - reg: (string) The optional register, if specified [<reg>]
-		 - mods: (string) Command modifiers, if any [<mods>]
-		 - smods: (table) Command modifiers in a structured format. Has the same
-		 structure as the "mods" key of `nvim_parse_cmd()`.
-		
-		@*param* `opts` — Optional `command-attributes`.
-		
-		 - Set boolean attributes such as `:command-bang` or `:command-bar` to true (but
-		   not `:command-buffer`, use `nvim_buf_create_user_command()` instead).
-		 - "complete" `:command-complete` also accepts a Lua function which works like
-		   `:command-completion-customlist`.
-		 - Other parameters:
-		   - desc: (string) Used for listing the command when a Lua function is used for
-		                    {command}.
-		   - force: (boolean, default true) Override any previous definition.
-		   - preview: (function) Preview callback for 'inccommand' `:command-preview`
-	**/
 	@:native("nvim_create_user_command")
 	private static function __nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
 	/**
@@ -2643,32 +1840,6 @@ package nvim;
 		@*param* `name` — Variable name
 	**/
 	static function nvim_del_var(name:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_echo(chunks: any[], history: boolean, opts: vim.api.keyset.echo_opts)
-		```
-		
-		---
-		
-		 Prints a message given by a list of `[text, hl_group]` "chunks".
-		
-		 Example:
-		 ```lua
-		 vim.api.nvim_echo({ { 'chunk1-line1\nchunk1-line2\n' }, { 'chunk2-line1' } }, true, {})
-		 ```
-		
-		@*param* `chunks` — List of `[text, hl_group]` pairs, where each is a `text` string highlighted by
-		
-		 the (optional) name or ID `hl_group`.
-		
-		@*param* `history` — if true, add to `message-history`.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - err: Treat the message like `:echoerr`. Sets `hl_group` to `hl-ErrorMsg` by default.
-		 - verbose: Message is controlled by the 'verbose' option. Nvim invoked with `-V3log`
-		   will write the message to the "log" file instead of standard output.
-	**/
 	@:native("nvim_echo")
 	private static function __nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic;
 	/**
@@ -2733,33 +1904,6 @@ package nvim;
 		@*return* — Evaluation result or expanded object
 	**/
 	static function nvim_eval(expr:String):Any;
-	/**
-		```lua
-		function vim.api.nvim_eval_statusline(str: string, opts: vim.api.keyset.eval_statusline)
-		  -> these: table<string|Dict>|with
-		```
-		
-		---
-		
-		 Evaluates statusline string.
-		
-		@*param* `str` — Statusline string (see 'statusline').
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - winid: (number) `window-ID` of the window to use as context for statusline.
-		 - maxwidth: (number) Maximum width of statusline.
-		 - fillchar: (string) Character to fill blank spaces in the statusline (see
-		                      'fillchars'). Treated as single-width even if it isn't.
-		 - highlights: (boolean) Return highlight information.
-		 - use_winbar: (boolean) Evaluate winbar instead of statusline.
-		 - use_tabline: (boolean) Evaluate tabline instead of statusline. When true, {winid}
-		                          is ignored. Mutually exclusive with {use_winbar}.
-		 - use_statuscol_lnum: (number) Evaluate statuscolumn for this line number instead of statusline.
-		     - start: (number) Byte index (0-based) of first character that uses the highlight.
-		     - group: (string) Deprecated. Use `groups` instead.
-		     - groups: (array) Names of stacked highlight groups (highest priority last).
-	**/
 	@:native("nvim_eval_statusline")
 	private static function __nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any>;
 	/**
@@ -2806,39 +1950,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_exec(src:String, output:Bool):String;
-	/**
-		```lua
-		function vim.api.nvim_exec2(src: string, opts: vim.api.keyset.exec_opts)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Executes Vimscript (multiline block of Ex commands), like anonymous
-		 `:source`.
-		
-		 Unlike `nvim_command()` this function supports heredocs, script-scope (s:),
-		 etc.
-		
-		 On execution error: fails with Vimscript error, updates v:errmsg.
-		
-		
-		 @see `:help execute()`
-		
-		@*param* `src` — Vimscript code
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - output: (boolean, default false) Whether to capture and return
-		           all (non-error, non-shell `:!`) output.
-		
-		@*return* — Dict containing information about execution, with these keys:
-		
-		 - output: (string|nil) Output if `opts.output` is true.
-		See:
-		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
-		  * [vim.api.nvim_cmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#868#9)
-	**/
 	@:native("nvim_exec2")
 	private static function __nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any>;
 	/**
@@ -2879,32 +1990,6 @@ package nvim;
 		final result = __nvim_exec2(src, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_exec_autocmds(event: any, opts: vim.api.keyset.exec_autocmds)
-		```
-		
-		---
-		
-		 Execute all autocommands for {event} that match the corresponding
-		  {opts} `autocmd-execute`.
-		 @see `:help :doautocmd`
-		
-		@*param* `event` — (String|Array) The event or events to execute
-		
-		@*param* `opts` — Dict of autocommand options:
-		
-		 - group (string|integer) optional: the autocommand group name or
-		 id to match against. `autocmd-groups`.
-		 - pattern (string|array) optional: defaults to "*" `autocmd-pattern`. Cannot be used
-		 with {buffer}.
-		 - buffer (integer) optional: buffer number `autocmd-buflocal`. Cannot be used with
-		 {pattern}.
-		 - modeline (bool) optional: defaults to true. Process the
-		 modeline after the autocommands [<nomodeline>].
-		 - data (any): arbitrary data to send to the autocommand callback. See
-		 `nvim_create_autocmd()` for details.
-	**/
 	@:native("nvim_exec_autocmds")
 	private static function __nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic;
 	/**
@@ -2993,62 +2078,6 @@ package nvim;
 		See: [vim.api.nvim_get_commands](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1324#9)
 	**/
 	static function nvim_get_all_options_info():lua.Table<String, Any>;
-	/**
-		```lua
-		function vim.api.nvim_get_autocmds(opts: vim.api.keyset.get_autocmds)
-		  -> vim.api.keyset.get_autocmds.ret[]
-		```
-		
-		---
-		
-		 Get all autocommands that match the corresponding {opts}.
-		
-		 These examples will get autocommands matching ALL the given criteria:
-		
-		 ```lua
-		 -- Matches all criteria
-		 autocommands = vim.api.nvim_get_autocmds({
-		   group = 'MyGroup',
-		   event = {'BufEnter', 'BufWinEnter'},
-		   pattern = {'*.c', '*.h'}
-		 })
-		
-		 -- All commands from one group
-		 autocommands = vim.api.nvim_get_autocmds({
-		   group = 'MyGroup',
-		 })
-		 ```
-		
-		 NOTE: When multiple patterns or events are provided, it will find all the autocommands that
-		 match any combination of them.
-		
-		@*param* `opts` — Dict with at least one of the following:
-		
-		 - buffer: (integer) Buffer number or list of buffer numbers for buffer local autocommands
-		 `autocmd-buflocal`. Cannot be used with {pattern}
-		 - event: (string|table) event or events to match against `autocmd-events`.
-		 - id: (integer) Autocommand ID to match.
-		 - group: (string|table) the autocommand group name or id to match against.
-		 - pattern: (string|table) pattern or patterns to match against `autocmd-pattern`.
-		 Cannot be used with {buffer}
-		
-		@*return* — Array of autocommands matching the criteria, with each item
-		
-		 containing the following fields:
-		 - buffer: (integer) the buffer number.
-		 - buflocal: (boolean) true if the autocommand is buffer local.
-		 - command: (string) the autocommand command. Note: this will be empty if a callback is set.
-		 - callback: (function|string|nil): Lua function or name of a Vim script function
-		   which is executed when this autocommand is triggered.
-		 - desc: (string) the autocommand description.
-		 - event: (string) the autocommand event.
-		 - id: (integer) the autocommand id (only when defined with the API).
-		 - group: (integer) the autocommand group id.
-		 - group_name: (string) the autocommand group name.
-		 - once: (boolean) whether the autocommand is only run once.
-		 - pattern: (string) the autocommand pattern.
-		   If the autocommand is buffer local |autocmd-buffer-local|:
-	**/
 	@:native("nvim_get_autocmds")
 	private static function __nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret>;
 	/**
@@ -3186,27 +2215,6 @@ package nvim;
 		@*return* — Map of color names and RGB values.
 	**/
 	static function nvim_get_color_map():lua.Table<String, Float>;
-	/**
-		```lua
-		function vim.api.nvim_get_commands(opts: vim.api.keyset.get_commands)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Gets a map of global (non-buffer-local) Ex commands.
-		
-		 Currently only `user-commands` are supported, not builtin Ex commands.
-		
-		
-		@*param* `opts` — Optional parameters. Currently only supports
-		
-		 {"builtin":false}
-		
-		@*return* — Map of maps describing commands.
-		
-		See: [vim.api.nvim_get_all_options_info](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1219#9)
-	**/
 	@:native("nvim_get_commands")
 	private static function __nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
 	/**
@@ -3235,23 +2243,6 @@ package nvim;
 		final result = __nvim_get_commands(opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_get_context(opts: vim.api.keyset.context)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Gets a map of the current editor state.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - types:  List of `context-types` ("regs", "jumps", "bufs",
-		   "gvars", …) to gather, or empty for "all".
-		
-		@*return* — map of global |context|.
-	**/
 	@:native("nvim_get_context")
 	private static function __nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any>;
 	/**
@@ -3328,36 +2319,6 @@ package nvim;
 		@*return* — |window-ID|
 	**/
 	static function nvim_get_current_win():Float;
-	/**
-		```lua
-		function vim.api.nvim_get_hl(ns_id: integer, opts: vim.api.keyset.get_highlight)
-		  -> vim.api.keyset.get_hl_info
-		```
-		
-		---
-		
-		 Gets all or specific highlight groups in a namespace.
-		
-		 Note:
-		 When the `link` attribute is defined in the highlight definition
-		 map, other attributes will not be taking effect (see |:hi-link|).
-		
-		
-		@*param* `ns_id` — Get highlight groups for namespace ns_id `nvim_get_namespaces()`.
-		
-		 Use 0 to get global highlight groups `:highlight`.
-		
-		@*param* `opts` — Options dict:
-		
-		 - name: (string) Get a highlight definition by name.
-		 - id: (integer) Get a highlight definition by id.
-		 - link: (boolean, default true) Show linked group name instead of effective definition `:hi-link`.
-		 - create: (boolean, default true) When highlight group doesn't exist create it.
-		
-		@*return* — Highlight groups as a map from group name to a highlight definition map as in |nvim_set_hl()|,
-		
-		 or only a single highlight definition map if requested by name or id.
-	**/
 	@:native("nvim_get_hl")
 	private static function __nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo;
 	/**
@@ -3432,25 +2393,6 @@ package nvim;
 		 similar to `hlID()`, but allocates a new ID if not present.
 	**/
 	static function nvim_get_hl_id_by_name(name:String):Float;
-	/**
-		```lua
-		function vim.api.nvim_get_hl_ns(opts: vim.api.keyset.get_ns)
-		  -> integer
-		```
-		
-		---
-		
-		 Gets the active highlight namespace.
-		
-		@*param* `opts` — Optional parameters
-		
-		 - winid: (number) `window-ID` for retrieving a window's highlight
-		   namespace. A value of -1 is returned when `nvim_win_set_hl_ns()`
-		   has not been called for the window (or was called with a namespace
-		   of -1).
-		
-		@*return* — Namespace id, or -1
-	**/
 	@:native("nvim_get_hl_ns")
 	private static function __nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float;
 	/**
@@ -3494,34 +2436,6 @@ package nvim;
 		 The "buffer" key is always zero.
 	**/
 	static function nvim_get_keymap(mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
-	/**
-		```lua
-		function vim.api.nvim_get_mark(name: string, opts: vim.api.keyset.empty)
-		  -> vim.api.keyset.get_mark
-		```
-		
-		---
-		
-		 Returns a `(row, col, buffer, buffername)` tuple representing the position
-		 of the uppercase/file named mark. "End of line" column position is returned
-		 as `v:maxcol` (big number). See `mark-motions`.
-		
-		 Marks are (1,0)-indexed. `api-indexing`
-		
-		 Note:
-		 Lowercase name (or other buffer-local mark) is an error.
-		
-		@*param* `name` — Mark name
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-		
-		@*return* — 4-tuple (row, col, buffer, buffername), (0, 0, 0, '') if the mark is
-		
-		 not set.
-		See:
-		  * [vim.api.nvim_buf_set_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#735#9)
-		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
-	**/
 	@:native("nvim_get_mark")
 	private static function __nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark;
 	/**
@@ -3600,50 +2514,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_get_option_info(name:String):nvim.type.vim.api.keyset.GetOptionInfo;
-	/**
-		```lua
-		function vim.api.nvim_get_option_info2(name: string, opts: vim.api.keyset.option)
-		  -> vim.api.keyset.get_option_info
-		```
-		
-		---
-		
-		 Gets the option information for one option from arbitrary buffer or window
-		
-		 Resulting dict has keys:
-		 - name: Name of the option (like 'filetype')
-		 - shortname: Shortened name of the option (like 'ft')
-		 - type: type of option ("string", "number" or "boolean")
-		 - default: The default value for the option
-		 - was_set: Whether the option was set.
-		
-		 - last_set_sid: Last set script id (if any)
-		 - last_set_linenr: line number where option was set
-		 - last_set_chan: Channel where option was set (0 for local)
-		
-		 - scope: one of "global", "win", or "buf"
-		 - global_local: whether win or buf option has a global value
-		
-		 - commalist: List of comma separated values
-		 - flaglist: List of single char flags
-		
-		 When {scope} is not provided, the last set information applies to the local
-		 value in the current buffer or window if it is available, otherwise the
-		 global value information is returned. This behavior can be disabled by
-		 explicitly specifying {scope} in the {opts} table.
-		
-		@*param* `name` — Option name
-		
-		@*param* `opts` — Optional parameters
-		
-		 - scope: One of "global" or "local". Analogous to
-		 `:setglobal` and `:setlocal`, respectively.
-		 - win: `window-ID`. Used for getting window local options.
-		 - buf: Buffer number. Used for getting buffer local options.
-		        Implies {scope} is "local".
-		
-		@*return* — Option Information
-	**/
 	@:native("nvim_get_option_info2")
 	private static function __nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo;
 	/**
@@ -3695,35 +2565,6 @@ package nvim;
 		final result = __nvim_get_option_info2(name, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_get_option_value(name: string, opts: vim.api.keyset.option)
-		  -> any
-		```
-		
-		---
-		
-		 Gets the value of an option. The behavior of this function matches that of
-		 `:set`: the local value of an option is returned if it exists; otherwise,
-		 the global value is returned. Local values always correspond to the current
-		 buffer or window, unless "buf" or "win" is set in {opts}.
-		
-		@*param* `name` — Option name
-		
-		@*param* `opts` — Optional parameters
-		
-		 - scope: One of "global" or "local". Analogous to
-		 `:setglobal` and `:setlocal`, respectively.
-		 - win: `window-ID`. Used for getting window local options.
-		 - buf: Buffer number. Used for getting buffer local options.
-		        Implies {scope} is "local".
-		 - filetype: `filetype`. Used to get the default option for a
-		   specific filetype. Cannot be used with any other option.
-		   Note: this will trigger `ftplugin` and all `FileType`
-		   autocommands for the corresponding filetype.
-		
-		@*return* — Option value
-	**/
 	@:native("nvim_get_option_value")
 	private static function __nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any;
 	/**
@@ -4008,18 +2849,6 @@ package nvim;
 		@*return* — List of |window-ID|s
 	**/
 	static function nvim_list_wins():lua.Table<Int, Float>;
-	/**
-		```lua
-		function vim.api.nvim_load_context(dict: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		 Sets the current editor state from the given `context` map.
-		
-		@*param* `dict` — `Context` map.
-	**/
 	@:native("nvim_load_context")
 	private static function __nvim_load_context(dict:lua.Table<String, Any>):Any;
 	/**
@@ -4039,12 +2868,6 @@ package nvim;
 		final result = __nvim_load_context(dict);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_notify(msg: string, log_level: integer, opts: table<string, any>)
-		  -> any
-		```
-	**/
 	@:native("nvim_notify")
 	private static function __nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any;
 	/**
@@ -4059,52 +2882,6 @@ package nvim;
 		final result = __nvim_notify(msg, log_level, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_open_term(buffer: integer, opts: vim.api.keyset.open_term)
-		  -> integer
-		```
-		
-		---
-		
-		 Open a terminal instance in a buffer
-		
-		 By default (and currently the only option) the terminal will not be
-		 connected to an external process. Instead, input sent on the channel
-		 will be echoed directly by the terminal. This is useful to display
-		 ANSI terminal sequences returned as part of a rpc message, or similar.
-		
-		 Note: to directly initiate the terminal using the right size, display the
-		 buffer in a configured window before calling this. For instance, for a
-		 floating display, first create an empty buffer using `nvim_create_buf()`,
-		 then display it using `nvim_open_win()`, and then  call this function.
-		 Then `nvim_chan_send()` can be called immediately to process sequences
-		 in a virtual terminal having the intended size.
-		
-		 Example: this `TermHl` command can be used to display and highlight raw ANSI termcodes, so you
-		 can use Nvim as a "scrollback pager" (for terminals like kitty): [ansi-colorize](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		 [terminal-scrollback-pager](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		
-		 ```lua
-		 vim.api.nvim_create_user_command('TermHl', function()
-		   vim.api.nvim_open_term(0, {})
-		 end, { desc = 'Highlights ANSI termcodes in curbuf' })
-		 ```
-		
-		@*param* `buffer` — the buffer to use (expected to be empty)
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - on_input: Lua callback for input sent, i e keypresses in terminal
-		   mode. Note: keypresses are sent raw as they would be to the pty
-		   master end. For instance, a carriage return is sent
-		   as a "\r", not as a "\n". `textlock` applies. It is possible
-		   to call `nvim_chan_send()` directly in the callback however.
-		        `["input", term, bufnr, data]`
-		 - force_crlf: (boolean, default true) Convert "\n" to "\r\n".
-		
-		@*return* — Channel id, or 0 on error
-	**/
 	@:native("nvim_open_term")
 	private static function __nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float;
 	/**
@@ -4158,186 +2935,6 @@ package nvim;
 		final result = __nvim_open_term(buffer, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_open_win(buffer: integer, enter: boolean, config: vim.api.keyset.win_config)
-		  -> integer
-		```
-		
-		---
-		
-		 Opens a new split window, or a floating window if `relative` is specified,
-		 or an external window (managed by the UI) if `external` is specified.
-		
-		 Floats are windows that are drawn above the split layout, at some anchor
-		 position in some other window. Floats can be drawn internally or by external
-		 GUI with the `ui-multigrid` extension. External windows are only supported
-		 with multigrid GUIs, and are displayed as separate top-level windows.
-		
-		 For a general overview of floats, see `api-floatwin`.
-		
-		 The `width` and `height` of the new window must be specified when opening
-		 a floating window, but are optional for normal windows.
-		
-		 If `relative` and `external` are omitted, a normal "split" window is created.
-		 The `win` property determines which window will be split. If no `win` is
-		 provided or `win == 0`, a window will be created adjacent to the current window.
-		 If -1 is provided, a top-level split will be created. `vertical` and `split` are
-		 only valid for normal windows, and are used to control split direction. For `vertical`,
-		 the exact direction is determined by `'splitright'` and `'splitbelow'`.
-		 Split windows cannot have `bufpos`/`row`/`col`/`border`/`title`/`footer`
-		 properties.
-		
-		 With relative=editor (row=0,col=0) refers to the top-left corner of the
-		 screen-grid and (row=Lines-1,col=Columns-1) refers to the bottom-right
-		 corner. Fractional values are allowed, but the builtin implementation
-		 (used by non-multigrid UIs) will always round down to nearest integer.
-		
-		 Out-of-bounds values, and configurations that make the float not fit inside
-		 the main editor, are allowed. The builtin implementation truncates values
-		 so floats are fully within the main screen grid. External GUIs
-		 could let floats hover outside of the main window like a tooltip, but
-		 this should not be used to specify arbitrary WM screen positions.
-		
-		 Example (Lua): window-relative float
-		
-		 ```lua
-		 vim.api.nvim_open_win(0, false,
-		   {relative='win', row=3, col=3, width=12, height=3})
-		 ```
-		
-		 Example (Lua): buffer-relative float (travels as buffer is scrolled)
-		
-		 ```lua
-		 vim.api.nvim_open_win(0, false,
-		   {relative='win', width=12, height=3, bufpos={100,10}})
-		 ```
-		
-		 Example (Lua): vertical split left of the current window
-		
-		 ```lua
-		 vim.api.nvim_open_win(0, false, {
-		   split = 'left',
-		   win = 0
-		 })
-		 ```
-		
-		@*param* `buffer` — Buffer to display, or 0 for current buffer
-		
-		@*param* `enter` — Enter the window (make it the current window)
-		
-		@*param* `config` — Map defining the window configuration. Keys:
-		
-		 - relative: Sets the window layout to "floating", placed at (row,col)
-		               coordinates relative to:
-		    - "cursor"     Cursor position in current window.
-		    - "editor"     The global editor grid.
-		    - "laststatus" 'laststatus' if present, or last row.
-		    - "mouse"      Mouse position.
-		    - "tabline"    Tabline if present, or first row.
-		    - "win"        Window given by the `win` field, or current window.
-		 - win: `window-ID` window to split, or relative window when creating a
-		    float (relative="win").
-		 - anchor: Decides which corner of the float to place at (row,col):
-		    - "NW" northwest (default)
-		    - "NE" northeast
-		    - "SW" southwest
-		    - "SE" southeast
-		 - width: Window width (in character cells). Minimum of 1.
-		 - height: Window height (in character cells). Minimum of 1.
-		 - bufpos: Places float relative to buffer text (only when
-		     relative="win"). Takes a tuple of zero-indexed `[line, column]`.
-		     `row` and `col` if given are applied relative to this
-		     position, else they default to:
-		     - `row=1` and `col=0` if `anchor` is "NW" or "NE"
-		     - `row=0` and `col=0` if `anchor` is "SW" or "SE"
-		       (thus like a tooltip near the buffer text).
-		 - row: Row position in units of "screen cell height", may be fractional.
-		 - col: Column position in units of "screen cell width", may be
-		          fractional.
-		 - focusable: Enable focus by user actions (wincmds, mouse events).
-		     Defaults to true. Non-focusable windows can be entered by
-		     `nvim_set_current_win()`, or, when the `mouse` field is set to true,
-		     by mouse events. See `focusable`.
-		 - mouse: Specify how this window interacts with mouse events.
-		     Defaults to `focusable` value.
-		     - If false, mouse events pass through this window.
-		     - If true, mouse events interact with this window normally.
-		 - external: GUI should display the window as an external
-		     top-level window. Currently accepts no other positioning
-		     configuration together with this.
-		 - zindex: Stacking order. floats with higher `zindex` go on top on
-		             floats with lower indices. Must be larger than zero. The
-		             following screen elements have hard-coded z-indices:
-		     - 100: insert completion popupmenu
-		     - 200: message scrollback
-		     - 250: cmdline completion popupmenu (when wildoptions+=pum)
-		   The default value for floats are 50.  In general, values below 100 are
-		   recommended, unless there is a good reason to overshadow builtin
-		   elements.
-		 - style: (optional) Configure the appearance of the window. Currently
-		     only supports one value:
-		     - "minimal"  Nvim will display the window with many UI options
-		                  disabled. This is useful when displaying a temporary
-		                  float where the text should not be edited. Disables
-		                  'number', 'relativenumber', 'cursorline', 'cursorcolumn',
-		                  'foldcolumn', 'spell' and 'list' options. 'signcolumn'
-		                  is changed to `auto` and 'colorcolumn' is cleared.
-		                  'statuscolumn' is changed to empty. The end-of-buffer
-		                   region is hidden by setting `eob` flag of
-		                  'fillchars' to a space char, and clearing the
-		                  `hl-EndOfBuffer` region in 'winhighlight'.
-		 - border: Style of (optional) window border. This can either be a string
-		   or an array. The string values are the same as those described in 'winborder'.
-		   If it is an array, it should have a length of eight or any divisor of
-		   eight. The array will specify the eight chars building up the border
-		   in a clockwise fashion starting with the top-left corner. As an
-		   example, the double box style could be specified as:
-		     ```
-		     [ "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" ].
-		     ```
-		     If the number of chars are less than eight, they will be repeated. Thus
-		     an ASCII border could be specified as
-		     ```
-		     [ "/", "-", \"\\\\\", "|" ],
-		     ```
-		     or all chars the same as
-		     ```
-		     [ "x" ].
-		     ```
-		   An empty string can be used to turn off a specific border, for instance,
-		   ```
-		     [ "", "", "", ">", "", "", "", "<" ]
-		   ```
-		   will only make vertical borders but not horizontal ones.
-		   By default, `FloatBorder` highlight is used, which links to `WinSeparator`
-		   when not defined.  It could also be specified by character:
-		   ```
-		     [ ["+", "MyCorner"], ["x", "MyBorder"] ].
-		   ```
-		 - title: Title (optional) in window border, string or list.
-		   List should consist of `[text, highlight]` tuples.
-		   If string, or a tuple lacks a highlight, the default highlight group is `FloatTitle`.
-		 - title_pos: Title position. Must be set with `title` option.
-		   Value can be one of "left", "center", or "right".
-		   Default is `"left"`.
-		 - footer: Footer (optional) in window border, string or list.
-		   List should consist of `[text, highlight]` tuples.
-		   If string, or a tuple lacks a highlight, the default highlight group is `FloatFooter`.
-		 - footer_pos: Footer position. Must be set with `footer` option.
-		   Value can be one of "left", "center", or "right".
-		   Default is `"left"`.
-		 - noautocmd: If true then all autocommands are blocked for the duration of
-		   the call.
-		 - fixed: If true when anchor is NW or SW, the float window
-		          would be kept fixed even if the window would be truncated.
-		 - hide: If true the floating window will be hidden and the cursor will be invisible when
-		         focused on it.
-		 - vertical: Split vertically `:vertical`.
-		 - split: Split direction: "left", "right", "above", "below".
-		
-		@*return* — |window-ID|, or 0 on error
-	**/
 	@:native("nvim_open_win")
 	private static function __nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float;
 	/**
@@ -4532,74 +3129,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_out_write(str:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_parse_cmd(str: string, opts: vim.api.keyset.empty)
-		  -> vim.api.keyset.parse_cmd
-		```
-		
-		---
-		
-		 Parse command line.
-		
-		 Doesn't check the validity of command arguments.
-		
-		@*param* `str` — Command line string to parse. Cannot contain "\n".
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-		
-		@*return* — Dict containing command information, with these keys:
-		
-		 - cmd: (string) Command name.
-		 - range: (array) (optional) Command range ([<line1>] [<line2>]).
-		                  Omitted if command doesn't accept a range.
-		                  Otherwise, has no elements if no range was specified, one element if
-		                  only a single range item was specified, or two elements if both range
-		                  items were specified.
-		 - count: (number) (optional) Command [<count>].
-		                   Omitted if command cannot take a count.
-		 - reg: (string) (optional) Command [<register>].
-		                 Omitted if command cannot take a register.
-		 - bang: (boolean) Whether command contains a [<bang>] (!) modifier.
-		 - args: (array) Command arguments.
-		 - addr: (string) Value of |:command-addr|. Uses short name or "line" for -addr=lines.
-		 - nargs: (string) Value of |:command-nargs|.
-		 - nextcmd: (string) Next command if there are multiple commands separated by a |:bar|.
-		                     Empty if there isn't a next command.
-		 - magic: (dict) Which characters have special meaning in the command arguments.
-		     - file: (boolean) The command expands filenames. Which means characters such as "%",
-		                       "#" and wildcards are expanded.
-		     - bar: (boolean) The "|" character is treated as a command separator and the double
-		                      quote character (") is treated as the start of a comment.
-		 - mods: (dict) |:command-modifiers|.
-		     - filter: (dict) |:filter|.
-		         - pattern: (string) Filter pattern. Empty string if there is no filter.
-		         - force: (boolean) Whether filter is inverted or not.
-		     - silent: (boolean) |:silent|.
-		     - emsg_silent: (boolean) |:silent!|.
-		     - unsilent: (boolean) |:unsilent|.
-		     - sandbox: (boolean) |:sandbox|.
-		     - noautocmd: (boolean) |:noautocmd|.
-		     - browse: (boolean) |:browse|.
-		     - confirm: (boolean) |:confirm|.
-		     - hide: (boolean) |:hide|.
-		     - horizontal: (boolean) |:horizontal|.
-		     - keepalt: (boolean) |:keepalt|.
-		     - keepjumps: (boolean) |:keepjumps|.
-		     - keepmarks: (boolean) |:keepmarks|.
-		     - keeppatterns: (boolean) |:keeppatterns|.
-		     - lockmarks: (boolean) |:lockmarks|.
-		     - noswapfile: (boolean) |:noswapfile|.
-		     - tab: (integer) |:tab|. -1 when omitted.
-		     - verbose: (integer) |:verbose|. -1 when omitted.
-		     - vertical: (boolean) |:vertical|.
-		     - split: (string) Split modifier string, is an empty string when there's no split
-		                       modifier. If there is a split modifier it can be one of:
-		       - "aboveleft": |:aboveleft|.
-		       - "belowright": |:belowright|.
-		       - "topleft": |:topleft|.
-		       - "botright": |:botright|.
-	**/
 	@:native("nvim_parse_cmd")
 	private static function __nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd;
 	/**
@@ -4861,33 +3390,6 @@ package nvim;
 		  * ~cpoptions~
 	**/
 	static function nvim_replace_termcodes(str:String, from_part:Bool, do_lt:Bool, special:Bool):String;
-	/**
-		```lua
-		function vim.api.nvim_select_popupmenu_item(item: integer, insert: boolean, finish: boolean, opts: vim.api.keyset.empty)
-		```
-		
-		---
-		
-		 Selects an item in the completion popup menu.
-		
-		 If neither `ins-completion` nor `cmdline-completion` popup menu is active
-		 this API call is silently ignored.
-		 Useful for an external UI using `ui-popupmenu` to control the popup menu with the mouse.
-		 Can also be used in a mapping; use [<Cmd>] `:map-cmd` or a Lua mapping to ensure the mapping
-		 doesn't end completion mode.
-		
-		@*param* `item` — Index (zero-based) of the item to select. Value of -1 selects nothing
-		
-		 and restores the original text.
-		
-		@*param* `insert` — For `ins-completion`, whether the selection should be inserted in the buffer.
-		
-		 Ignored for `cmdline-completion`.
-		
-		@*param* `finish` — Finish the completion and dismiss the popup menu. Implies {insert}.
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-	**/
 	@:native("nvim_select_popupmenu_item")
 	private static function __nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic;
 	/**
@@ -4982,68 +3484,6 @@ package nvim;
 		@*param* `window` — `window-ID` to focus
 	**/
 	static function nvim_set_current_win(window:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_set_decoration_provider(ns_id: integer, opts: vim.api.keyset.set_decoration_provider)
-		```
-		
-		---
-		
-		 Set or change decoration provider for a `namespace`
-		
-		 This is a very general purpose interface for having Lua callbacks
-		 being triggered during the redraw code.
-		
-		 The expected usage is to set `extmarks` for the currently
-		 redrawn buffer. `nvim_buf_set_extmark()` can be called to add marks
-		 on a per-window or per-lines basis. Use the `ephemeral` key to only
-		 use the mark for the current screen redraw (the callback will be called
-		 again for the next redraw).
-		
-		 Note: this function should not be called often. Rather, the callbacks
-		 themselves can be used to throttle unneeded callbacks. the `on_start`
-		 callback can return `false` to disable the provider until the next redraw.
-		 Similarly, return `false` in `on_win` will skip the `on_line` calls
-		 for that window (but any extmarks set in `on_win` will still be used).
-		 A plugin managing multiple sources of decoration should ideally only set
-		 one provider, and merge the sources internally. You can use multiple `ns_id`
-		 for the extmarks set/modified inside the callback anyway.
-		
-		 Note: doing anything other than setting extmarks is considered experimental.
-		 Doing things like changing options are not explicitly forbidden, but is
-		 likely to have unexpected consequences (such as 100% CPU consumption).
-		 Doing `vim.rpcnotify` should be OK, but `vim.rpcrequest` is quite dubious
-		 for the moment.
-		
-		 Note: It is not allowed to remove or update extmarks in `on_line` callbacks.
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()`
-		
-		@*param* `opts` — Table of callbacks:
-		
-		 - on_start: called first on each screen redraw
-		   ```
-		     ["start", tick]
-		   ```
-		 - on_buf: called for each buffer being redrawn (once per edit,
-		   before window callbacks)
-		   ```
-		     ["buf", bufnr, tick]
-		   ```
-		 - on_win: called when starting to redraw a specific window.
-		   ```
-		     ["win", winid, bufnr, toprow, botrow]
-		   ```
-		 - on_line: called for each buffer line being redrawn.
-		     (The interaction with fold lines is subject to change)
-		   ```
-		     ["line", winid, bufnr, row]
-		   ```
-		 - on_end: called at the end of a redraw cycle
-		   ```
-		     ["end", tick]
-		   ```
-	**/
 	@:native("nvim_set_decoration_provider")
 	private static function __nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic;
 	/**
@@ -5113,65 +3553,6 @@ package nvim;
 		final result = __nvim_set_decoration_provider(ns_id, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_set_hl(ns_id: integer, name: string, val: vim.api.keyset.highlight)
-		```
-		
-		---
-		
-		 Sets a highlight group.
-		
-		 Note:
-		 Unlike the `:highlight` command which can update a highlight group,
-		 this function completely replaces the definition. For example:
-		 `nvim_set_hl(0, 'Visual', {})` will clear the highlight group
-		 'Visual'.
-		
-		 The fg and bg keys also accept the string values `"fg"` or `"bg"`
-		 which act as aliases to the corresponding foreground and background
-		 values of the Normal group. If the Normal group has not been defined,
-		 using these values results in an error.
-		
-		
-		 If `link` is used in combination with other attributes; only the
-		 `link` will take effect (see |:hi-link|).
-		
-		
-		@*param* `ns_id` — Namespace id for this highlight `nvim_create_namespace()`.
-		
-		 Use 0 to set a highlight group globally `:highlight`.
-		 Highlights from non-global namespaces are not active by default, use
-		 `nvim_set_hl_ns()` or `nvim_win_set_hl_ns()` to activate them.
-		
-		@*param* `name` — Highlight group name, e.g. "ErrorMsg"
-		
-		@*param* `val` — Highlight definition map, accepts the following keys:
-		
-		 - fg: color name or "#RRGGBB", see note.
-		 - bg: color name or "#RRGGBB", see note.
-		 - sp: color name or "#RRGGBB"
-		 - blend: integer between 0 and 100
-		 - bold: boolean
-		 - standout: boolean
-		 - underline: boolean
-		 - undercurl: boolean
-		 - underdouble: boolean
-		 - underdotted: boolean
-		 - underdashed: boolean
-		 - strikethrough: boolean
-		 - italic: boolean
-		 - reverse: boolean
-		 - nocombine: boolean
-		 - link: name of another highlight group to link to, see `:hi-link`.
-		 - default: Don't override existing definition `:hi-default`
-		 - ctermfg: Sets foreground of cterm color `ctermfg`
-		 - ctermbg: Sets background of cterm color `ctermbg`
-		 - cterm: cterm attribute map, like `highlight-args`. If not set,
-		          cterm attributes will match those from the attribute map
-		          documented above.
-		 - force: if true force update the highlight group when it exists.
-	**/
 	@:native("nvim_set_hl")
 	private static function __nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic;
 	/**
@@ -5267,51 +3648,6 @@ package nvim;
 		@*param* `ns_id` — the namespace to activate
 	**/
 	static function nvim_set_hl_ns_fast(ns_id:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_set_keymap(mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
-		```
-		
-		---
-		
-		 Sets a global `mapping` for the given mode.
-		
-		 To set a buffer-local mapping, use `nvim_buf_set_keymap()`.
-		
-		 Unlike `:map`, leading/trailing whitespace is accepted as part of the {lhs} or {rhs}.
-		 Empty {rhs} is [<Nop>]. `keycodes` are replaced as usual.
-		
-		 Example:
-		
-		 ```vim
-		 call nvim_set_keymap('n', ' <NL>', '', {'nowait': v:true})
-		 ```
-		
-		 is equivalent to:
-		
-		 ```vim
-		 nmap <nowait> <Space><NL> <Nop>
-		 ```
-		
-		@*param* `mode` — Mode short-name (map command prefix: "n", "i", "v", "x", …)
-		
-		 or "!" for `:map!`, or empty string for `:map`.
-		 "ia", "ca" or "!a" for abbreviation in Insert mode, Cmdline mode, or both, respectively
-		
-		@*param* `lhs` — Left-hand-side `{lhs}` of the mapping.
-		
-		@*param* `rhs` — Right-hand-side `{rhs}` of the mapping.
-		
-		@*param* `opts` — Optional parameters map: Accepts all `:map-arguments` as keys except [<buffer>],
-		
-		 values are booleans (default false). Also:
-		 - "noremap" disables `recursive_mapping`, like `:noremap`
-		 - "desc" human-readable description.
-		 - "callback" Lua function called in place of {rhs}.
-		 - "replace_keycodes" (boolean) When "expr" is true, replace keycodes in the
-		   resulting string (see `nvim_replace_termcodes()`). Returning nil from the Lua
-		   "callback" is equivalent to returning an empty string.
-	**/
 	@:native("nvim_set_keymap")
 	private static function __nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
 	/**
@@ -5371,30 +3707,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function nvim_set_option(name:String, value:Any):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_set_option_value(name: string, value: any, opts: vim.api.keyset.option)
-		```
-		
-		---
-		
-		 Sets the value of an option. The behavior of this function matches that of
-		 `:set`: for global-local options, both the global and local value are set
-		 unless otherwise specified with {scope}.
-		
-		 Note the options {win} and {buf} cannot be used together.
-		
-		@*param* `name` — Option name
-		
-		@*param* `value` — New option value
-		
-		@*param* `opts` — Optional parameters
-		
-		 - scope: One of "global" or "local". Analogous to
-		 `:setglobal` and `:setlocal`, respectively.
-		 - win: `window-ID`. Used for setting window local option.
-		 - buf: Buffer number. Used for setting buffer local option.
-	**/
 	@:native("nvim_set_option_value")
 	private static function __nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic;
 	/**
@@ -5846,27 +4158,6 @@ package nvim;
 		@*param* `buffer` — Buffer id
 	**/
 	static function nvim_win_set_buf(window:Float, buffer:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_win_set_config(window: integer, config: vim.api.keyset.win_config)
-		```
-		
-		---
-		
-		 Configures window layout. Cannot be used to move the last window in a
-		 tabpage to a different one.
-		
-		 When reconfiguring a window, absent option keys will not be changed.
-		 `row`/`col` and `relative` must be reconfigured together.
-		
-		
-		@*param* `window` — `window-ID`, or 0 for current window
-		
-		@*param* `config` — Map defining the window configuration,
-		
-		 see `nvim_open_win()`
-		See: [vim.api.nvim_open_win](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1848#9)
-	**/
 	@:native("nvim_win_set_config")
 	private static function __nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic;
 	/**
@@ -5978,47 +4269,6 @@ package nvim;
 		@*param* `width` — Width as a count of columns
 	**/
 	static function nvim_win_set_width(window:Float, width:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_win_text_height(window: integer, opts: vim.api.keyset.win_text_height)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Computes the number of screen lines occupied by a range of text in a given window.
-		 Works for off-screen text and takes folds into account.
-		
-		 Diff filler or virtual lines above a line are counted as a part of that line,
-		 unless the line is on "start_row" and "start_vcol" is specified.
-		
-		 Diff filler or virtual lines below the last buffer line are counted in the result
-		 when "end_row" is omitted.
-		
-		 Line indexing is similar to `nvim_buf_get_text()`.
-		
-		 @see `:help virtcol()` for text width.
-		
-		@*param* `window` — `window-ID`, or 0 for current window.
-		
-		@*param* `opts` — Optional parameters:
-		
-		 - start_row: Starting line index, 0-based inclusive.
-		              When omitted start at the very top.
-		 - end_row: Ending line index, 0-based inclusive.
-		            When omitted end at the very bottom.
-		 - start_vcol: Starting virtual column index on "start_row",
-		               0-based inclusive, rounded down to full screen lines.
-		               When omitted include the whole line.
-		 - end_vcol: Ending virtual column index on "end_row",
-		             0-based exclusive, rounded up to full screen lines.
-		             When omitted include the whole line.
-		
-		@*return* — Dict containing text height information, with these keys:
-		
-		 - all: The total number of screen lines occupied by the range.
-		 - fill: The number of diff filler or virtual lines among them.
-	**/
 	@:native("nvim_win_text_height")
 	private static function __nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any>;
 	/**
@@ -7898,19 +6148,6 @@ package nvim;
 		 Otherwise, all context types are included.
 	**/
 	static function ctxpush(?types:lua.Table<Int, String>):Any;
-	/**
-		```lua
-		function table.ctxset(context: table, index?: integer)
-		  -> integer
-		```
-		
-		---
-		
-		 Sets the |context| at {index} from the top of the
-		 |context-stack| to that represented by {context}.
-		 {context} is a Dictionary with context data (|context-dict|).
-		 If {index} is not given, it is assumed to be 0 (i.e.: top).
-	**/
 	@:native("ctxset")
 	private static function __ctxset(context:lua.Table.AnyTable, ?index:Float):Float;
 	/**
@@ -8083,53 +6320,6 @@ package nvim;
 		 to refer to the last line in buffer {buf}.
 	**/
 	static function deletebufline(buf:haxe.extern.EitherType<Float, String>, first:haxe.extern.EitherType<Float, String>, ?last:haxe.extern.EitherType<Float, String>):Any;
-	/**
-		```lua
-		function table.dictwatcheradd(dict: table, pattern: string, callback: function)
-		  -> any
-		```
-		
-		---
-		
-		 Adds a watcher to a dictionary. A dictionary watcher is
-		 identified by three components:
-		
-		 - A dictionary({dict});
-		 - A key pattern({pattern}).
-		 - A function({callback}).
-		
-		 After this is called, every change on {dict} and on keys
-		 matching {pattern} will result in {callback} being invoked.
-		
-		 For example, to watch all global variables: >vim
-		   silent! call dictwatcherdel(g:, '*', 'OnDictChanged')
-		   function! OnDictChanged(d,k,z)
-		     echomsg string(a:k) string(a:z)
-		   endfunction
-		   call dictwatcheradd(g:, '*', 'OnDictChanged')
-		 <
-		 For now {pattern} only accepts very simple patterns that can
-		 contain a "*" at the end of the string, in which case it will
-		 match every key that begins with the substring before the "*".
-		 That means if "*" is not the last character of {pattern}, only
-		 keys that are exactly equal as {pattern} will be matched.
-		
-		 The {callback} receives three arguments:
-		
-		 - The dictionary being watched.
-		 - The key which changed.
-		 - A dictionary containing the new and old values for the key.
-		
-		 The type of change can be determined by examining the keys
-		 present on the third argument:
-		
-		 - If contains both `old` and `new`, the key was updated.
-		 - If it contains only `new`, the key was added.
-		 - If it contains only `old`, the key was deleted.
-		
-		 This function can be used by plugins to implement options with
-		 validation and parsing logic.
-	**/
 	@:native("dictwatcheradd")
 	private static function __dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
 	/**
@@ -8327,28 +6517,6 @@ package nvim;
 		 <
 	**/
 	static function digraph_set(chars:String, digraph:String):Any;
-	/**
-		```lua
-		function table.digraph_setlist(digraphlist: table<integer, string[]>)
-		  -> any
-		```
-		
-		---
-		
-		 Similar to |digraph_set()| but this function can add multiple
-		 digraphs at once.  {digraphlist} is a list composed of lists,
-		 where each list contains two strings with {chars} and
-		 {digraph} as in |digraph_set()|. *E1216*
-		 Example: >vim
-		     call digraph_setlist([['aa', 'あ'], ['ii', 'い']])
-		 <
-		 It is similar to the following: >vim
-		     for [chars, digraph] in [['aa', 'あ'], ['ii', 'い']]
-		     call digraph_set(chars, digraph)
-		     endfor
-		 <Except that the function returns after the first error,
-		 following digraphs will not be added.
-	**/
 	@:native("digraph_setlist")
 	private static function __digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any;
 	/**
@@ -8802,37 +6970,6 @@ package nvim;
 		```
 	**/
 	static function expand(string:String, ?nosuf:Bool, ?list:Null<Bool>):String;
-	/**
-		```lua
-		function table.expandcmd(string: string, options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Expand special items in String {string} like what is done for
-		 an Ex command such as `:edit`.  This expands special keywords,
-		 like with |expand()|, and environment variables, anywhere in
-		 {string}.  "~user" and "~/path" are only expanded at the
-		 start.
-		
-		 The following items are supported in the {options} Dict
-		 argument:
-		     errmsg  If set to TRUE, error messages are displayed
-		     if an error is encountered during expansion.
-		     By default, error messages are not displayed.
-		
-		 Returns the expanded string.  If an error is encountered
-		 during expansion, the unmodified {string} is returned.
-		
-		 Example: >vim
-		   echo expandcmd('make %<.o')
-		 < >
-		   make /path/runtime/doc/builtin.o
-		 < >vim
-		   echo expandcmd('make %<.o', {'errmsg': v:true})
-		 <
-	**/
 	@:native("expandcmd")
 	private static function __expandcmd(string:String, ?options:lua.Table.AnyTable):Any;
 	/**
@@ -8871,50 +7008,6 @@ package nvim;
 		final result = __expandcmd(string, options);
 		return result;
 	}
-	/**
-		```lua
-		function table.extend(expr1: table, expr2: table, expr3?: table)
-		  -> any
-		```
-		
-		---
-		
-		 {expr1} and {expr2} must be both |Lists| or both
-		 |Dictionaries|.
-		
-		 If they are |Lists|: Append {expr2} to {expr1}.
-		 If {expr3} is given insert the items of {expr2} before the
-		 item with index {expr3} in {expr1}.  When {expr3} is zero
-		 insert before the first item.  When {expr3} is equal to
-		 len({expr1}) then {expr2} is appended.
-		 Examples: >vim
-		   echo sort(extend(mylist, [7, 5]))
-		   call extend(mylist, [2, 3], 1)
-		 <When {expr1} is the same List as {expr2} then the number of
-		 items copied is equal to the original length of the List.
-		 E.g., when {expr3} is 1 you get N new copies of the first item
-		 (where N is the original length of the List).
-		 Use |add()| to concatenate one item to a list.  To concatenate
-		 two lists into a new list use the + operator: >vim
-		   let newlist = [1, 2, 3] + [4, 5]
-		 <
-		 If they are |Dictionaries|:
-		 Add all entries from {expr2} to {expr1}.
-		 If a key exists in both {expr1} and {expr2} then {expr3} is
-		 used to decide what to do:
-		 {expr3} = "keep": keep the value of {expr1}
-		 {expr3} = "force": use the value of {expr2}
-		 {expr3} = "error": give an error message    *E737*
-		 When {expr3} is omitted then "force" is assumed.
-		
-		 {expr1} is changed when {expr2} is not empty.  If necessary
-		 make a copy of {expr1} first or use |extendnew()| to return a
-		 new List/Dictionary.
-		 {expr2} remains unchanged.
-		 When {expr1} is locked and {expr2} is not empty the operation
-		 fails.
-		 Returns {expr1}.  Returns 0 on error.
-	**/
 	@:native("extend")
 	private static function __extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
 	/**
@@ -8968,18 +7061,6 @@ package nvim;
 		final result = __extend(expr1, expr2, expr3);
 		return result;
 	}
-	/**
-		```lua
-		function table.extendnew(expr1: table, expr2: table, expr3?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Like |extend()| but instead of adding items to {expr1} a new
-		 List or Dictionary is created and returned.  {expr1} remains
-		 unchanged.
-	**/
 	@:native("extendnew")
 	private static function __extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
 	/**
@@ -9991,115 +8072,6 @@ package nvim;
 		 buffers, it is set to the length of the list.
 	**/
 	static function getchangelist(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, lua.Table.AnyTable>;
-	/**
-		```lua
-		function table.getchar(expr?: -1|0|1, opts?: table)
-		  -> string|integer
-		```
-		
-		---
-		
-		 Get a single character from the user or input stream.
-		 If {expr} is omitted or is -1, wait until a character is
-		   available.
-		 If {expr} is 0, only get a character when one is available.
-		   Return zero otherwise.
-		 If {expr} is 1, only check if a character is available, it is
-		   not consumed.  Return zero if no character available.
-		 If you prefer always getting a string use |getcharstr()|, or
-		 specify |FALSE| as "number" in {opts}.
-		
-		 Without {expr} and when {expr} is 0 a whole character or
-		 special key is returned.  If it is a single character, the
-		 result is a Number.  Use |nr2char()| to convert it to a String.
-		 Otherwise a String is returned with the encoded character.
-		 For a special key it's a String with a sequence of bytes
-		 starting with 0x80 (decimal: 128).  This is the same value as
-		 the String "\<Key>", e.g., "\<Left>".  The returned value is
-		 also a String when a modifier (shift, control, alt) was used
-		 that is not included in the character.  |keytrans()| can also
-		 be used to convert a returned String into a readable form.
-		
-		 When {expr} is 0 and Esc is typed, there will be a short delay
-		 while Vim waits to see if this is the start of an escape
-		 sequence.
-		
-		 When {expr} is 1 only the first byte is returned.  For a
-		 one-byte character it is the character itself as a number.
-		 Use nr2char() to convert it to a String.
-		
-		 Use getcharmod() to obtain any additional modifiers.
-		
-		 The optional argument {opts} is a Dict and supports the
-		 following items:
-		
-		   cursor    A String specifying cursor behavior
-		       when waiting for a character.
-		       "hide": hide the cursor.
-		       "keep": keep current cursor unchanged.
-		       "msg": move cursor to message area.
-		       (default: automagically decide
-		       between "keep" and "msg")
-		
-		   number    If |TRUE|, return a Number when getting
-		       a single character.
-		       If |FALSE|, the return value is always
-		       converted to a String, and an empty
-		       String (instead of 0) is returned when
-		       no character is available.
-		       (default: |TRUE|)
-		
-		   simplify  If |TRUE|, include modifiers in the
-		       character if possible.  E.g., return
-		       the same value for CTRL-I and <Tab>.
-		       If |FALSE|, don't include modifiers in
-		       the character.
-		       (default: |TRUE|)
-		
-		 When the user clicks a mouse button, the mouse event will be
-		 returned.  The position can then be found in |v:mouse_col|,
-		 |v:mouse_lnum|, |v:mouse_winid| and |v:mouse_win|.
-		 |getmousepos()| can also be used.  Mouse move events will be
-		 ignored.
-		 This example positions the mouse as it would normally happen: >vim
-		   let c = getchar()
-		   if c == "\<LeftMouse>" && v:mouse_win > 0
-		     exe v:mouse_win .. "wincmd w"
-		     exe v:mouse_lnum
-		     exe "normal " .. v:mouse_col .. "|"
-		   endif
-		 <
-		 There is no prompt, you will somehow have to make clear to the
-		 user that a character has to be typed.  The screen is not
-		 redrawn, e.g. when resizing the window.
-		
-		 There is no mapping for the character.
-		 Key codes are replaced, thus when the user presses the <Del>
-		 key you get the code for the <Del> key, not the raw character
-		 sequence.  Examples: >vim
-		   getchar() == "\<Del>"
-		   getchar() == "\<S-Left>"
-		 <This example redefines "f" to ignore case: >vim
-		   nmap f :call FindChar()<CR>
-		   function FindChar()
-		     let c = nr2char(getchar())
-		     while col('.') < col('$') - 1
-		       normal l
-		       if getline('.')[col('.') - 1] ==? c
-		         break
-		       endif
-		     endwhile
-		   endfunction
-		 <
-		
-		
-		```lua
-		expr:
-		    | -1
-		    | 0
-		    | 1
-		```
-	**/
 	@:native("getchar")
 	private static function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String>;
 	/**
@@ -10290,25 +8262,6 @@ package nvim;
 		 <Also see |setcharsearch()|.
 	**/
 	static function getcharsearch():lua.Table.AnyTable;
-	/**
-		```lua
-		function table.getcharstr(expr?: -1|0|1, opts?: table)
-		  -> string
-		```
-		
-		---
-		
-		 The same as |getchar()|, except that this always returns a
-		 String, and "number" isn't allowed in {opts}.
-		
-		
-		```lua
-		expr:
-		    | -1
-		    | 0
-		    | 1
-		```
-	**/
 	@:native("getcharstr")
 	private static function __getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
 	/**
@@ -10867,45 +8820,6 @@ package nvim;
 		```
 	**/
 	static function getline(lnum:haxe.extern.EitherType<Float, String>, ?end_:Null<Bool>):String;
-	/**
-		```lua
-		function table.getloclist(nr: integer, what?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns a |List| with all the entries in the location list for
-		 window {nr}.  {nr} can be the window number or the |window-ID|.
-		 When {nr} is zero the current window is used.
-		
-		 For a location list window, the displayed location list is
-		 returned.  For an invalid window number {nr}, an empty list is
-		 returned. Otherwise, same as |getqflist()|.
-		
-		 If the optional {what} dictionary argument is supplied, then
-		 returns the items listed in {what} as a dictionary. Refer to
-		 |getqflist()| for the supported items in {what}.
-		
-		 In addition to the items supported by |getqflist()| in {what},
-		 the following item is supported by |getloclist()|:
-		
-		   filewinid  id of the window used to display files
-		       from the location list. This field is
-		       applicable only when called from a
-		       location list window. See
-		       |location-list-file-window| for more
-		       details.
-		
-		 Returns a |Dictionary| with default values if there is no
-		 location list for the window {nr}.
-		 Returns an empty Dictionary if window {nr} does not exist.
-		
-		 Examples (See also |getqflist-examples|): >vim
-		   echo getloclist(3, {'all': 0})
-		   echo getloclist(5, {'filewinid': 0})
-		 <
-	**/
 	@:native("getloclist")
 	private static function __getloclist(nr:Float, ?what:lua.Table.AnyTable):Any;
 	/**
@@ -11137,117 +9051,6 @@ package nvim;
 		 Also see |getcharpos()|, |getcurpos()| and |setpos()|.
 	**/
 	static function getpos(expr:String):lua.Table<Int, Float>;
-	/**
-		```lua
-		function table.getqflist(what?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns a |List| with all the current quickfix errors.  Each
-		 list item is a dictionary with these entries:
-		   bufnr  number of buffer that has the file name, use
-		     bufname() to get the name
-		   module  module name
-		   lnum  line number in the buffer (first line is 1)
-		   end_lnum
-		     end of line number if the item is multiline
-		   col  column number (first column is 1)
-		   end_col  end of column number if the item has range
-		   vcol  |TRUE|: "col" is visual column
-		     |FALSE|: "col" is byte index
-		   nr  error number
-		   pattern  search pattern used to locate the error
-		   text  description of the error
-		   type  type of the error, 'E', '1', etc.
-		   valid  |TRUE|: recognized error message
-		   user_data
-		     custom data associated with the item, can be
-		     any type.
-		
-		 When there is no error list or it's empty, an empty list is
-		 returned. Quickfix list entries with a non-existing buffer
-		 number are returned with "bufnr" set to zero (Note: some
-		 functions accept buffer number zero for the alternate buffer,
-		 you may need to explicitly check for zero).
-		
-		 Useful application: Find pattern matches in multiple files and
-		 do something with them: >vim
-		   vimgrep /theword/jg *.c
-		   for d in getqflist()
-		      echo bufname(d.bufnr) ':' d.lnum '=' d.text
-		   endfor
-		 <
-		 If the optional {what} dictionary argument is supplied, then
-		 returns only the items listed in {what} as a dictionary. The
-		 following string items are supported in {what}:
-		   changedtick  get the total number of changes made
-		       to the list |quickfix-changedtick|
-		   context  get the |quickfix-context|
-		   efm  errorformat to use when parsing "lines". If
-		     not present, then the 'errorformat' option
-		     value is used.
-		   id  get information for the quickfix list with
-		     |quickfix-ID|; zero means the id for the
-		     current list or the list specified by "nr"
-		   idx  get information for the quickfix entry at this
-		     index in the list specified by "id" or "nr".
-		     If set to zero, then uses the current entry.
-		     See |quickfix-index|
-		   items  quickfix list entries
-		   lines  parse a list of lines using 'efm' and return
-		     the resulting entries.  Only a |List| type is
-		     accepted.  The current quickfix list is not
-		     modified. See |quickfix-parse|.
-		   nr  get information for this quickfix list; zero
-		     means the current quickfix list and "$" means
-		     the last quickfix list
-		   qfbufnr number of the buffer displayed in the quickfix
-		     window. Returns 0 if the quickfix buffer is
-		     not present. See |quickfix-buffer|.
-		   size  number of entries in the quickfix list
-		   title  get the list title |quickfix-title|
-		   winid  get the quickfix |window-ID|
-		   all  all of the above quickfix properties
-		 Non-string items in {what} are ignored. To get the value of a
-		 particular item, set it to zero.
-		 If "nr" is not present then the current quickfix list is used.
-		 If both "nr" and a non-zero "id" are specified, then the list
-		 specified by "id" is used.
-		 To get the number of lists in the quickfix stack, set "nr" to
-		 "$" in {what}. The "nr" value in the returned dictionary
-		 contains the quickfix stack size.
-		 When "lines" is specified, all the other items except "efm"
-		 are ignored.  The returned dictionary contains the entry
-		 "items" with the list of entries.
-		
-		 The returned dictionary contains the following entries:
-		   changedtick  total number of changes made to the
-		       list |quickfix-changedtick|
-		   context  quickfix list context. See |quickfix-context|
-		     If not present, set to "".
-		   id  quickfix list ID |quickfix-ID|. If not
-		     present, set to 0.
-		   idx  index of the quickfix entry in the list. If not
-		     present, set to 0.
-		   items  quickfix list entries. If not present, set to
-		     an empty list.
-		   nr  quickfix list number. If not present, set to 0
-		   qfbufnr  number of the buffer displayed in the quickfix
-		     window. If not present, set to 0.
-		   size  number of entries in the quickfix list. If not
-		     present, set to 0.
-		   title  quickfix list title text. If not present, set
-		     to "".
-		   winid  quickfix |window-ID|. If not present, set to 0
-		
-		 Examples (See also |getqflist-examples|): >vim
-		   echo getqflist({'all': 1})
-		   echo getqflist({'nr': 2, 'title': 1})
-		   echo getqflist({'lines' : ["F1:10:L10"]})
-		 <
-	**/
 	@:native("getqflist")
 	private static function __getqflist(?what:lua.Table.AnyTable):Any;
 	/**
@@ -11449,68 +9252,6 @@ package nvim;
 		 The returned Dictionary can be passed to |setreg()|.
 	**/
 	static function getreginfo(?regname:String):lua.Table.AnyTable;
-	/**
-		```lua
-		function table.getregion(pos1: table, pos2: table, opts?: table)
-		  -> string[]
-		```
-		
-		---
-		
-		 Returns the list of strings from {pos1} to {pos2} from a
-		 buffer.
-		
-		 {pos1} and {pos2} must both be |List|s with four numbers.
-		 See |getpos()| for the format of the list.  It's possible
-		 to specify positions from a different buffer, but please
-		 note the limitations at |getregion-notes|.
-		
-		 The optional argument {opts} is a Dict and supports the
-		 following items:
-		
-		   type    Specify the region's selection type.
-		       See |getregtype()| for possible values,
-		       except that the width can be omitted
-		       and an empty string cannot be used.
-		       (default: "v")
-		
-		   exclusive  If |TRUE|, use exclusive selection
-		       for the end position.
-		       (default: follow 'selection')
-		
-		 You can get the last selection type by |visualmode()|.
-		 If Visual mode is active, use |mode()| to get the Visual mode
-		 (e.g., in a |:vmap|).
-		 This function is useful to get text starting and ending in
-		 different columns, such as a |charwise-visual| selection.
-		
-		           *getregion-notes*
-		 Note that:
-		 - Order of {pos1} and {pos2} doesn't matter, it will always
-		   return content from the upper left position to the lower
-		   right position.
-		 - If 'virtualedit' is enabled and the region is past the end
-		   of the lines, resulting lines are padded with spaces.
-		 - If the region is blockwise and it starts or ends in the
-		   middle of a multi-cell character, it is not included but
-		   its selected part is substituted with spaces.
-		 - If {pos1} and {pos2} are not in the same buffer, an empty
-		   list is returned.
-		 - {pos1} and {pos2} must belong to a |bufloaded()| buffer.
-		 - It is evaluated in current window context, which makes a
-		   difference if the buffer is displayed in a window with
-		   different 'virtualedit' or 'list' values.
-		 - When specifying an exclusive selection and {pos1} and {pos2}
-		   are equal, the returned list contains a single character as
-		   if selection is inclusive, to match the behavior of an empty
-		   exclusive selection in Visual mode.
-		
-		 Examples: >vim
-		   xnoremap <CR>
-		   \ <Cmd>echom getregion(
-		   \ getpos('v'), getpos('.'), #{ type: mode() })<CR>
-		 <
-	**/
 	@:native("getregion")
 	private static function __getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String>;
 	/**
@@ -11582,45 +9323,6 @@ package nvim;
 		final result = __getregion(pos1, pos2, opts);
 		return result;
 	}
-	/**
-		```lua
-		function table.getregionpos(pos1: table, pos2: table, opts?: table)
-		  -> integer[][][]
-		```
-		
-		---
-		
-		 Same as |getregion()|, but returns a list of positions
-		 describing the buffer text segments bound by {pos1} and
-		 {pos2}.
-		 The segments are a pair of positions for every line: >
-		   [[{start_pos}, {end_pos}], ...]
-		 <
-		 The position is a |List| with four numbers:
-		     [bufnum, lnum, col, off]
-		 "bufnum" is the buffer number.
-		 "lnum" and "col" are the position in the buffer.  The first
-		 column is 1.
-		 If the "off" number of a starting position is non-zero, it is
-		 the offset in screen columns from the start of the character.
-		 E.g., a position within a <Tab> or after the last character.
-		 If the "off" number of an ending position is non-zero, it is
-		 the offset of the character's first cell not included in the
-		 selection, otherwise all its cells are included.
-		
-		 Apart from the options supported by |getregion()|, {opts} also
-		 supports the following:
-		
-		   eol    If |TRUE|, indicate positions beyond
-		       the end of a line with "col" values
-		       one more than the length of the line.
-		       If |FALSE|, positions are limited
-		       within their lines, and if a line is
-		       empty or the selection is entirely
-		       beyond the end of a line, a "col"
-		       value of 0 is used for both positions.
-		       (default: |FALSE|)
-	**/
 	@:native("getregionpos")
 	private static function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>>;
 	/**
@@ -11688,50 +9390,6 @@ package nvim;
 		 specified, |v:register| is used.
 	**/
 	static function getregtype(?regname:String):String;
-	/**
-		```lua
-		function table.getscriptinfo(opts?: table)
-		  -> vim.fn.getscriptinfo.ret[]
-		```
-		
-		---
-		
-		 Returns a |List| with information about all the sourced Vim
-		 scripts in the order they were sourced, like what
-		 `:scriptnames` shows.
-		
-		 The optional Dict argument {opts} supports the following
-		 optional items:
-		     name  Script name match pattern. If specified,
-		     and "sid" is not specified, information about
-		     scripts with a name that match the pattern
-		     "name" are returned.
-		     sid    Script ID |<SID>|.  If specified, only
-		     information about the script with ID "sid" is
-		     returned and "name" is ignored.
-		
-		 Each item in the returned List is a |Dict| with the following
-		 items:
-		     autoload  Always set to FALSE.
-		     functions   List of script-local function names defined in
-		     the script.  Present only when a particular
-		     script is specified using the "sid" item in
-		     {opts}.
-		     name  Vim script file name.
-		     sid    Script ID |<SID>|.
-		     variables   A dictionary with the script-local variables.
-		     Present only when a particular script is
-		     specified using the "sid" item in {opts}.
-		     Note that this is a copy, the value of
-		     script-local variables cannot be changed using
-		     this dictionary.
-		     version  Vim script version, always 1
-		
-		 Examples: >vim
-		   echo getscriptinfo({'name': 'myscript'})
-		   echo getscriptinfo({'sid': 15})[0].variables
-		 <
-	**/
 	@:native("getscriptinfo")
 	private static function __getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret>;
 	/**
@@ -12242,25 +9900,6 @@ package nvim;
 		```
 	**/
 	static function has(feature:String):Float;
-	/**
-		```lua
-		function table.has_key(dict: table, key: string)
-		  -> 0|1
-		```
-		
-		---
-		
-		 The result is a Number, which is TRUE if |Dictionary| {dict}
-		 has an entry with key {key}.  FALSE otherwise. The {key}
-		 argument is a string.
-		
-		
-		```lua
-		return #1:
-		    | 0
-		    | 1
-		```
-	**/
 	@:native("has_key")
 	private static function __has_key(dict:lua.Table.AnyTable, key:String):Float;
 	/**
@@ -12665,52 +10304,6 @@ package nvim;
 		 <
 	**/
 	static function index(object:Any, expr:Any, ?start:Float, ?ic:Bool):Float;
-	/**
-		```lua
-		function table.indexof(object: any, expr: any, opts?: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Returns the index of an item in {object} where {expr} is
-		 v:true.  {object} must be a |List| or a |Blob|.
-		
-		 If {object} is a |List|, evaluate {expr} for each item in the
-		 List until the expression is v:true and return the index of
-		 this item.
-		
-		 If {object} is a |Blob| evaluate {expr} for each byte in the
-		 Blob until the expression is v:true and return the index of
-		 this byte.
-		
-		 {expr} must be a |string| or |Funcref|.
-		
-		 If {expr} is a |string|: If {object} is a |List|, inside
-		 {expr} |v:key| has the index of the current List item and
-		 |v:val| has the value of the item.  If {object} is a |Blob|,
-		 inside {expr} |v:key| has the index of the current byte and
-		 |v:val| has the byte value.
-		
-		 If {expr} is a |Funcref| it must take two arguments:
-		   1. the key or the index of the current item.
-		   2. the value of the current item.
-		 The function must return |TRUE| if the item is found and the
-		 search should stop.
-		
-		 The optional argument {opts} is a Dict and supports the
-		 following items:
-		     startidx  start evaluating {expr} at the item with this
-		     index; may be negative for an item relative to
-		     the end
-		 Returns -1 when {expr} evaluates to v:false for all the items.
-		 Example: >vim
-		   let l = [#{n: 10}, #{n: 20}, #{n: 30}]
-		   echo indexof(l, "v:val.n == 20")
-		   echo indexof(l, {i, v -> v.n == 30})
-		   echo indexof(l, "v:val.n == 20", #{startidx: 1})
-		 <
-	**/
 	@:native("indexof")
 	private static function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float;
 	/**
@@ -13161,27 +10754,6 @@ package nvim;
 		```
 	**/
 	static function isnan(expr:Float):Float;
-	/**
-		```lua
-		function table.items(dict: table)
-		  -> any
-		```
-		
-		---
-		
-		 Return a |List| with all the key-value pairs of {dict}.  Each
-		 |List| item is a list with two items: the key of a {dict}
-		 entry and the value of this entry.  The |List| is in arbitrary
-		 order.  Also see |keys()| and |values()|.
-		 Example: >vim
-		   for [key, value] in items(mydict)
-		      echo key .. ': ' .. value
-		   endfor
-		 <
-		 A List or a String argument is also supported.  In these
-		 cases, items() returns a List with the index and the value at
-		 the index.
-	**/
 	@:native("items")
 	private static function __items(dict:lua.Table.AnyTable):Any;
 	/**
@@ -13258,106 +10830,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function jobsend(___:haxe.Rest<Any>):Any;
-	/**
-		```lua
-		function table.jobstart(cmd: string|string[], opts?: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Note: Prefer |vim.system()| in Lua (unless using `rpc`, `pty`, or `term`).
-		
-		 Spawns {cmd} as a job.
-		 If {cmd} is a List it runs directly (no 'shell').
-		 If {cmd} is a String it runs in the 'shell', like this: >vim
-		   call jobstart(split(&shell) + split(&shellcmdflag) + ['{cmd}'])
-		 <(See |shell-unquoting| for details.)
-		
-		 Example: start a job and handle its output: >vim
-		   call jobstart(['nvim', '-h'], {'on_stdout':{j,d,e->append(line('.'),d)}})
-		 <
-		 Example: start a job in a |terminal| connected to the current buffer: >vim
-		   call jobstart(['nvim', '-h'], {'term':v:true})
-		 <
-		 Returns |job-id| on success, 0 on invalid arguments (or job
-		 table is full), -1 if {cmd}[0] or 'shell' is not executable.
-		 The returned job-id is a valid |channel-id| representing the
-		 job's stdio streams. Use |chansend()| (or |rpcnotify()| and
-		 |rpcrequest()| if "rpc" was enabled) to send data to stdin and
-		 |chanclose()| to close the streams without stopping the job.
-		
-		 See |job-control| and |RPC|.
-		
-		 NOTE: on Windows if {cmd} is a List:
-		   - cmd[0] must be an executable (not a "built-in"). If it is
-		     in $PATH it can be called by name, without an extension: >vim
-		       call jobstart(['ping', 'neovim.io'])
-		 <    If it is a full or partial path, extension is required: >vim
-		       call jobstart(['System32\ping.exe', 'neovim.io'])
-		 <  - {cmd} is collapsed to a string of quoted args as expected
-		     by CommandLineToArgvW https://msdn.microsoft.com/bb776391
-		     unless cmd[0] is some form of "cmd.exe".
-		
-		           *jobstart-env*
-		 The job environment is initialized as follows:
-		   $NVIM                is set to |v:servername| of the parent Nvim
-		   $NVIM_LISTEN_ADDRESS is unset
-		   $NVIM_LOG_FILE       is unset
-		   $VIM                 is unset
-		   $VIMRUNTIME          is unset
-		 You can set these with the `env` option.
-		
-		           *jobstart-options*
-		 {opts} is a dictionary with these keys:
-		   clear_env:  (boolean) `env` defines the job environment
-		         exactly, instead of merging current environment.
-		   cwd:        (string, default=|current-directory|) Working
-		         directory of the job.
-		   detach:     (boolean) Detach the job process: it will not be
-		         killed when Nvim exits. If the process exits
-		         before Nvim, `on_exit` will be invoked.
-		   env:        (dict) Map of environment variable name:value
-		         pairs extending (or replace with "clear_env")
-		         the current environment. |jobstart-env|
-		   height:     (number) Height of the `pty` terminal.
-		   |on_exit|:    (function) Callback invoked when the job exits.
-		   |on_stdout|:  (function) Callback invoked when the job emits
-		         stdout data.
-		   |on_stderr|:  (function) Callback invoked when the job emits
-		         stderr data.
-		   overlapped: (boolean) Sets FILE_FLAG_OVERLAPPED for the
-		         stdio passed to the child process. Only on
-		         MS-Windows; ignored on other platforms.
-		   pty:        (boolean) Connect the job to a new pseudo
-		         terminal, and its streams to the master file
-		         descriptor. `on_stdout` receives all output,
-		         `on_stderr` is ignored. |terminal-start|
-		   rpc:        (boolean) Use |msgpack-rpc| to communicate with
-		         the job over stdio. Then `on_stdout` is ignored,
-		         but `on_stderr` can still be used.
-		   stderr_buffered: (boolean) Collect data until EOF (stream closed)
-		         before invoking `on_stderr`. |channel-buffered|
-		   stdout_buffered: (boolean) Collect data until EOF (stream
-		         closed) before invoking `on_stdout`. |channel-buffered|
-		   stdin:      (string) Either "pipe" (default) to connect the
-		         job's stdin to a channel or "null" to disconnect
-		         stdin.
-		   term:      (boolean) Spawns {cmd} in a new pseudo-terminal session
-		           connected to the current (unmodified) buffer. Implies "pty".
-		           Default "height" and "width" are set to the current window
-		           dimensions. |jobstart()|. Defaults $TERM to "xterm-256color".
-		   width:      (number) Width of the `pty` terminal.
-		
-		 {opts} is passed as |self| dictionary to the callback; the
-		 caller may set other keys to pass application-specific data.
-		
-		 Returns:
-		   - |channel-id| on success
-		   - 0 on invalid arguments
-		   - -1 if {cmd}[0] is not executable.
-		 See also |job-control|, |channel|, |msgpack-rpc|.
-	**/
 	@:native("jobstart")
 	private static function __jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
 	/**
@@ -13574,17 +11046,6 @@ package nvim;
 		 |Blob|s are converted to arrays of the individual bytes.
 	**/
 	static function json_encode(expr:Any):String;
-	/**
-		```lua
-		function table.keys(dict: table)
-		  -> string[]
-		```
-		
-		---
-		
-		 Return a |List| with all the keys of {dict}.  The |List| is in
-		 arbitrary order.  Also see |items()| and |values()|.
-	**/
 	@:native("keys")
 	private static function __keys(dict:lua.Table.AnyTable):lua.Table<Int, String>;
 	/**
@@ -14142,57 +11603,6 @@ package nvim;
 		 don't want that use |deepcopy()| first.
 	**/
 	static function mapnew(expr1:Any, expr2:Any):Any;
-	/**
-		```lua
-		function table.mapset(mode: string, abbr?: boolean, dict?: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		```lua
-		function table.mapset(dict: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		 Restore a mapping from a dictionary, possibly returned by
-		 |maparg()| or |maplist()|.  A buffer mapping, when dict.buffer
-		 is true, is set on the current buffer; it is up to the caller
-		 to ensure that the intended buffer is the current buffer. This
-		 feature allows copying mappings from one buffer to another.
-		 The dict.mode value may restore a single mapping that covers
-		 more than one mode, like with mode values of '!', ' ', "nox",
-		 or 'v'. *E1276*
-		
-		 In the first form, {mode} and {abbr} should be the same as
-		 for the call to |maparg()|. *E460*
-		 {mode} is used to define the mode in which the mapping is set,
-		 not the "mode" entry in {dict}.
-		 Example for saving and restoring a mapping: >vim
-		   let save_map = maparg('K', 'n', 0, 1)
-		   nnoremap K somethingelse
-		   " ...
-		   call mapset('n', 0, save_map)
-		 <Note that if you are going to replace a map in several modes,
-		 e.g. with `:map!`, you need to save/restore the mapping for
-		 all of them, when they might differ.
-		
-		 In the second form, with {dict} as the only argument, mode
-		 and abbr are taken from the dict.
-		 Example: >vim
-		   let save_maps = maplist()->filter(
-		         \ {_, m -> m.lhs == 'K'})
-		   nnoremap K somethingelse
-		   cnoremap K somethingelse2
-		   " ...
-		   unmap K
-		   for d in save_maps
-		       call mapset(d)
-		   endfor
-		 <
-	**/
 	@:native("mapset")
 	private static function __mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any;
 	/**
@@ -14453,57 +11863,6 @@ package nvim;
 		 to three matches. |matchadd()| does not have this limitation.
 	**/
 	static function matcharg(nr:Float):Any;
-	/**
-		```lua
-		function table.matchbufline(buf: string|integer, pat: string, lnum: string|integer, end_: string|integer, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns the |List| of matches in lines from {lnum} to {end} in
-		 buffer {buf} where {pat} matches.
-		
-		 {lnum} and {end} can either be a line number or the string "$"
-		 to refer to the last line in {buf}.
-		
-		 The {dict} argument supports following items:
-		     submatches  include submatch information (|/\(|)
-		
-		 For each match, a |Dict| with the following items is returned:
-		     byteidx  starting byte index of the match
-		     lnum  line number where there is a match
-		     text  matched string
-		 Note that there can be multiple matches in a single line.
-		
-		 This function works only for loaded buffers. First call
-		 |bufload()| if needed.
-		
-		 See |match-pattern| for information about the effect of some
-		 option settings on the pattern.
-		
-		 When {buf} is not a valid buffer, the buffer is not loaded or
-		 {lnum} or {end} is not valid then an error is given and an
-		 empty |List| is returned.
-		
-		 Examples: >vim
-		     " Assuming line 3 in buffer 5 contains "a"
-		     echo matchbufline(5, '\<\k\+\>', 3, 3)
-		 <    `[{'lnum': 3, 'byteidx': 0, 'text': 'a'}]` >vim
-		     " Assuming line 4 in buffer 10 contains "tik tok"
-		     echo matchbufline(10, '\<\k\+\>', 1, 4)
-		 <    `[{'lnum': 4, 'byteidx': 0, 'text': 'tik'}, {'lnum': 4, 'byteidx': 4, 'text': 'tok'}]`
-		
-		 If {submatch} is present and is v:true, then submatches like
-		 "\1", "\2", etc. are also returned.  Example: >vim
-		     " Assuming line 2 in buffer 2 contains "acd"
-		     echo matchbufline(2, '\(a\)\?\(b\)\?\(c\)\?\(.*\)', 2, 2
-		         \ {'submatches': v:true})
-		 <    `[{'lnum': 2, 'byteidx': 0, 'text': 'acd', 'submatches': ['a', '', 'c', 'd', '', '', '', '', '']}]`
-		 The "submatches" List always contains 9 items.  If a submatch
-		 is not found, then an empty string is returned for that
-		 submatch.
-	**/
 	@:native("matchbufline")
 	private static function __matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any;
 	/**
@@ -14605,76 +11964,6 @@ package nvim;
 		 When {expr} is a |List| the result is equal to |match()|.
 	**/
 	static function matchend(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
-	/**
-		```lua
-		function table.matchfuzzy(list: any[], str: string, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 If {list} is a list of strings, then returns a |List| with all
-		 the strings in {list} that fuzzy match {str}. The strings in
-		 the returned list are sorted based on the matching score.
-		
-		 The optional {dict} argument always supports the following
-		 items:
-		     matchseq  When this item is present return only matches
-		     that contain the characters in {str} in the
-		     given sequence.
-		     limit  Maximum number of matches in {list} to be
-		     returned.  Zero means no limit.
-		
-		 If {list} is a list of dictionaries, then the optional {dict}
-		 argument supports the following additional items:
-		     key    Key of the item which is fuzzy matched against
-		     {str}. The value of this item should be a
-		     string.
-		     text_cb  |Funcref| that will be called for every item
-		     in {list} to get the text for fuzzy matching.
-		     This should accept a dictionary item as the
-		     argument and return the text for that item to
-		     use for fuzzy matching.
-		
-		 {str} is treated as a literal string and regular expression
-		 matching is NOT supported.  The maximum supported {str} length
-		 is 256.
-		
-		 When {str} has multiple words each separated by white space,
-		 then the list of strings that have all the words is returned.
-		
-		 If there are no matching strings or there is an error, then an
-		 empty list is returned. If length of {str} is greater than
-		 256, then returns an empty list.
-		
-		 When {limit} is given, matchfuzzy() will find up to this
-		 number of matches in {list} and return them in sorted order.
-		
-		 Refer to |fuzzy-matching| for more information about fuzzy
-		 matching strings.
-		
-		 Example: >vim
-		    echo matchfuzzy(["clay", "crow"], "cay")
-		 <results in ["clay"]. >vim
-		    echo getbufinfo()->map({_, v -> v.name})->matchfuzzy("ndl")
-		 <results in a list of buffer names fuzzy matching "ndl". >vim
-		    echo getbufinfo()->matchfuzzy("ndl", {'key' : 'name'})
-		 <results in a list of buffer information dicts with buffer
-		 names fuzzy matching "ndl". >vim
-		    echo getbufinfo()->matchfuzzy("spl",
-		         \ {'text_cb' : {v -> v.name}})
-		 <results in a list of buffer information dicts with buffer
-		 names fuzzy matching "spl". >vim
-		    echo v:oldfiles->matchfuzzy("test")
-		 <results in a list of file names fuzzy matching "test". >vim
-		    let l = readfile("buffer.c")->matchfuzzy("str")
-		 <results in a list of lines in "buffer.c" fuzzy matching "str". >vim
-		    echo ['one two', 'two one']->matchfuzzy('two one')
-		 <results in `['two one', 'one two']` . >vim
-		    echo ['one two', 'two one']->matchfuzzy('two one',
-		         \ {'matchseq': 1})
-		 <results in `['two one']`.
-	**/
 	@:native("matchfuzzy")
 	private static function __matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
 	/**
@@ -14752,35 +12041,6 @@ package nvim;
 		final result = __matchfuzzy(list, str, dict);
 		return result;
 	}
-	/**
-		```lua
-		function table.matchfuzzypos(list: any[], str: string, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Same as |matchfuzzy()|, but returns the list of matched
-		 strings, the list of character positions where characters
-		 in {str} matches and a list of matching scores.  You can
-		 use |byteidx()| to convert a character position to a byte
-		 position.
-		
-		 If {str} matches multiple times in a string, then only the
-		 positions for the best match is returned.
-		
-		 If there are no matching strings or there is an error, then a
-		 list with three empty list items is returned.
-		
-		 Example: >vim
-		   echo matchfuzzypos(['testing'], 'tsg')
-		 <results in [["testing"], [[0, 2, 6]], [99]] >vim
-		   echo matchfuzzypos(['clay', 'lacy'], 'la')
-		 <results in [["lacy", "clay"], [[0, 1], [1, 2]], [153, 133]] >vim
-		   echo [{'text': 'hello', 'id' : 10}]
-		     \ ->matchfuzzypos('ll', {'key' : 'text'})
-		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
-	**/
 	@:native("matchfuzzypos")
 	private static function __matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
 	/**
@@ -14858,46 +12118,6 @@ package nvim;
 		 The type isn't changed, it's not necessarily a String.
 	**/
 	static function matchstr(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
-	/**
-		```lua
-		function table.matchstrlist(list: string[], pat: string, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns the |List| of matches in {list} where {pat} matches.
-		 {list} is a |List| of strings.  {pat} is matched against each
-		 string in {list}.
-		
-		 The {dict} argument supports following items:
-		     submatches  include submatch information (|/\(|)
-		
-		 For each match, a |Dict| with the following items is returned:
-		     byteidx  starting byte index of the match.
-		     idx    index in {list} of the match.
-		     text  matched string
-		     submatches  a List of submatches.  Present only if
-		     "submatches" is set to v:true in {dict}.
-		
-		 See |match-pattern| for information about the effect of some
-		 option settings on the pattern.
-		
-		 Example: >vim
-		     echo matchstrlist(['tik tok'], '\<\k\+\>')
-		 <    `[{'idx': 0, 'byteidx': 0, 'text': 'tik'}, {'idx': 0, 'byteidx': 4, 'text': 'tok'}]` >vim
-		     echo matchstrlist(['a', 'b'], '\<\k\+\>')
-		 <    `[{'idx': 0, 'byteidx': 0, 'text': 'a'}, {'idx': 1, 'byteidx': 0, 'text': 'b'}]`
-		
-		 If "submatches" is present and is v:true, then submatches like
-		 "\1", "\2", etc. are also returned.  Example: >vim
-		     echo matchstrlist(['acd'], '\(a\)\?\(b\)\?\(c\)\?\(.*\)',
-		         \ #{submatches: v:true})
-		 <    `[{'idx': 0, 'byteidx': 0, 'text': 'acd', 'submatches': ['a', '', 'c', 'd', '', '', '', '', '']}]`
-		 The "submatches" List always contains 9 items.  If a submatch
-		 is not found, then an empty string is returned for that
-		 submatch.
-	**/
 	@:native("matchstrlist")
 	private static function __matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any;
 	/**
@@ -17855,134 +15075,6 @@ package nvim;
 		 The 'n' flag tells the function not to move the cursor.
 	**/
 	static function search(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Float;
-	/**
-		```lua
-		function table.searchcount(options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Get or update the last search count, like what is displayed
-		 without the "S" flag in 'shortmess'.  This works even if
-		 'shortmess' does contain the "S" flag.
-		
-		 This returns a |Dictionary|. The dictionary is empty if the
-		 previous pattern was not set and "pattern" was not specified.
-		
-		   key    type    meaning ~
-		   current  |Number|  current position of match;
-		         0 if the cursor position is
-		         before the first match
-		   exact_match  |Boolean|  1 if "current" is matched on
-		         "pos", otherwise 0
-		   total    |Number|  total count of matches found
-		   incomplete  |Number|  0: search was fully completed
-		         1: recomputing was timed out
-		         2: max count exceeded
-		
-		 For {options} see further down.
-		
-		 To get the last search count when |n| or |N| was pressed, call
-		 this function with `recompute: 0` . This sometimes returns
-		 wrong information because |n| and |N|'s maximum count is 99.
-		 If it exceeded 99 the result must be max count + 1 (100). If
-		 you want to get correct information, specify `recompute: 1`: >vim
-		
-		   " result == maxcount + 1 (100) when many matches
-		   let result = searchcount(#{recompute: 0})
-		
-		   " Below returns correct result (recompute defaults
-		   " to 1)
-		   let result = searchcount()
-		 <
-		 The function is useful to add the count to 'statusline': >vim
-		   function! LastSearchCount() abort
-		     let result = searchcount(#{recompute: 0})
-		     if empty(result)
-		       return ''
-		     endif
-		     if result.incomplete ==# 1     " timed out
-		       return printf(' /%s [?/??]', \@/)
-		     elseif result.incomplete ==# 2 " max count exceeded
-		       if result.total > result.maxcount &&
-		       \  result.current > result.maxcount
-		         return printf(' /%s [>%d/>%d]', \@/,
-		         \             result.current, result.total)
-		       elseif result.total > result.maxcount
-		         return printf(' /%s [%d/>%d]', \@/,
-		         \             result.current, result.total)
-		       endif
-		     endif
-		     return printf(' /%s [%d/%d]', \@/,
-		     \             result.current, result.total)
-		   endfunction
-		   let &statusline ..= '%{LastSearchCount()}'
-		
-		   " Or if you want to show the count only when
-		   " 'hlsearch' was on
-		   " let &statusline ..=
-		   " \   '%{v:hlsearch ? LastSearchCount() : ""}'
-		 <
-		 You can also update the search count, which can be useful in a
-		 |CursorMoved| or |CursorMovedI| autocommand: >vim
-		
-		   autocmd CursorMoved,CursorMovedI *
-		     \ let s:searchcount_timer = timer_start(
-		     \   200, function('s:update_searchcount'))
-		   function! s:update_searchcount(timer) abort
-		     if a:timer ==# s:searchcount_timer
-		       call searchcount(#{
-		       \ recompute: 1, maxcount: 0, timeout: 100})
-		       redrawstatus
-		     endif
-		   endfunction
-		 <
-		 This can also be used to count matched texts with specified
-		 pattern in the current buffer using "pattern":  >vim
-		
-		   " Count '\<foo\>' in this buffer
-		   " (Note that it also updates search count)
-		   let result = searchcount(#{pattern: '\<foo\>'})
-		
-		   " To restore old search count by old pattern,
-		   " search again
-		   call searchcount()
-		 <
-		 {options} must be a |Dictionary|. It can contain:
-		   key    type    meaning ~
-		   recompute  |Boolean|  if |TRUE|, recompute the count
-		         like |n| or |N| was executed.
-		         otherwise returns the last
-		         computed result (when |n| or
-		         |N| was used when "S" is not
-		         in 'shortmess', or this
-		         function was called).
-		         (default: |TRUE|)
-		   pattern  |String|  recompute if this was given
-		         and different with |\@/|.
-		         this works as same as the
-		         below command is executed
-		         before calling this function >vim
-		           let \@/ = pattern
-		 <        (default: |\@/|)
-		   timeout  |Number|  0 or negative number is no
-		         timeout. timeout milliseconds
-		         for recomputing the result
-		         (default: 0)
-		   maxcount  |Number|  0 or negative number is no
-		         limit. max count of matched
-		         text while recomputing the
-		         result.  if search exceeded
-		         total count, "total" value
-		         becomes `maxcount + 1`
-		         (default: 0)
-		   pos    |List|    `[lnum, col, off]` value
-		         when recomputing the result.
-		         this changes "current" result
-		         value. see |cursor()|, |getpos()|
-		         (default: cursor's position)
-	**/
 	@:native("searchcount")
 	private static function __searchcount(?options:lua.Table.AnyTable):Any;
 	/**
@@ -18635,29 +15727,6 @@ package nvim;
 		 <Note: The '[ and '] marks are not set.
 	**/
 	static function setline(lnum:haxe.extern.EitherType<Float, String>, text:Any):Any;
-	/**
-		```lua
-		function table.setloclist(nr: integer, list: any, action?: string, what?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Create or replace or add to the location list for window {nr}.
-		 {nr} can be the window number or the |window-ID|.
-		 When {nr} is zero the current window is used.
-		
-		 For a location list window, the displayed location list is
-		 modified.  For an invalid window number {nr}, -1 is returned.
-		 Otherwise, same as |setqflist()|.
-		 Also see |location-list|.
-		
-		 For {action} see |setqflist-action|.
-		
-		 If the optional {what} dictionary argument is supplied, then
-		 only the items listed in {what} are set. Refer to |setqflist()|
-		 for the list of supported keys in {what}.
-	**/
 	@:native("setloclist")
 	private static function __setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
 	/**
@@ -18761,129 +15830,6 @@ package nvim;
 		 |winrestview()|.
 	**/
 	static function setpos(expr:String, list:lua.Table<Int, Float>):Any;
-	/**
-		```lua
-		function table.setqflist(list: vim.quickfix.entry[], action?: string, what?: vim.fn.setqflist.what)
-		  -> integer
-		```
-		
-		---
-		
-		 Create or replace or add to the quickfix list.
-		
-		 If the optional {what} dictionary argument is supplied, then
-		 only the items listed in {what} are set. The first {list}
-		 argument is ignored.  See below for the supported items in
-		 {what}.
-		           *setqflist-what*
-		 When {what} is not present, the items in {list} are used.  Each
-		 item must be a dictionary.  Non-dictionary items in {list} are
-		 ignored.  Each dictionary item can contain the following
-		 entries:
-		
-		     bufnr  buffer number; must be the number of a valid
-		     buffer
-		     filename  name of a file; only used when "bufnr" is not
-		     present or it is invalid.
-		     module  name of a module; if given it will be used in
-		     quickfix error window instead of the filename.
-		     lnum  line number in the file
-		     end_lnum  end of lines, if the item spans multiple lines
-		     pattern  search pattern used to locate the error
-		     col    column number
-		     vcol  when non-zero: "col" is visual column
-		     when zero: "col" is byte index
-		     end_col  end column, if the item spans multiple columns
-		     nr    error number
-		     text  description of the error
-		     type  single-character error type, 'E', 'W', etc.
-		     valid  recognized error message
-		     user_data
-		     custom data associated with the item, can be
-		     any type.
-		
-		 The "col", "vcol", "nr", "type" and "text" entries are
-		 optional.  Either "lnum" or "pattern" entry can be used to
-		 locate a matching error line.
-		 If the "filename" and "bufnr" entries are not present or
-		 neither the "lnum" or "pattern" entries are present, then the
-		 item will not be handled as an error line.
-		 If both "pattern" and "lnum" are present then "pattern" will
-		 be used.
-		 If the "valid" entry is not supplied, then the valid flag is
-		 set when "bufnr" is a valid buffer or "filename" exists.
-		 If you supply an empty {list}, the quickfix list will be
-		 cleared.
-		 Note that the list is not exactly the same as what
-		 |getqflist()| returns.
-		
-		 {action} values:    *setqflist-action* *E927*
-		 'a'  The items from {list} are added to the existing
-		   quickfix list. If there is no existing list, then a
-		   new list is created.
-		
-		 'r'  The items from the current quickfix list are replaced
-		   with the items from {list}.  This can also be used to
-		   clear the list: >vim
-		     call setqflist([], 'r')
-		 <
-		 'u'  Like 'r', but tries to preserve the current selection
-		   in the quickfix list.
-		 'f'  All the quickfix lists in the quickfix stack are
-		   freed.
-		
-		 If {action} is not present or is set to ' ', then a new list
-		 is created. The new quickfix list is added after the current
-		 quickfix list in the stack and all the following lists are
-		 freed. To add a new quickfix list at the end of the stack,
-		 set "nr" in {what} to "$".
-		
-		 The following items can be specified in dictionary {what}:
-		     context  quickfix list context. See |quickfix-context|
-		     efm    errorformat to use when parsing text from
-		     "lines". If this is not present, then the
-		     'errorformat' option value is used.
-		     See |quickfix-parse|
-		     id    quickfix list identifier |quickfix-ID|
-		     idx    index of the current entry in the quickfix
-		     list specified by "id" or "nr". If set to '$',
-		     then the last entry in the list is set as the
-		     current entry.  See |quickfix-index|
-		     items  list of quickfix entries. Same as the {list}
-		     argument.
-		     lines  use 'errorformat' to parse a list of lines and
-		     add the resulting entries to the quickfix list
-		     {nr} or {id}.  Only a |List| value is supported.
-		     See |quickfix-parse|
-		     nr    list number in the quickfix stack; zero
-		     means the current quickfix list and "$" means
-		     the last quickfix list.
-		     quickfixtextfunc
-		     function to get the text to display in the
-		     quickfix window.  The value can be the name of
-		     a function or a funcref or a lambda.  Refer to
-		     |quickfix-window-function| for an explanation
-		     of how to write the function and an example.
-		     title  quickfix list title text. See |quickfix-title|
-		 Unsupported keys in {what} are ignored.
-		 If the "nr" item is not present, then the current quickfix list
-		 is modified. When creating a new quickfix list, "nr" can be
-		 set to a value one greater than the quickfix stack size.
-		 When modifying a quickfix list, to guarantee that the correct
-		 list is modified, "id" should be used instead of "nr" to
-		 specify the list.
-		
-		 Examples (See also |setqflist-examples|): >vim
-		    call setqflist([], 'r', {'title': 'My search'})
-		    call setqflist([], 'r', {'nr': 2, 'title': 'Errors'})
-		    call setqflist([], 'a', {'id':qfid, 'lines':["F1:10:L10"]})
-		 <
-		 Returns zero for success, -1 for failure.
-		
-		 This function can be used to create a quickfix list
-		 independent of the 'errorformat' setting.  Use a command like
-		 `:cc 1` to jump to the first position.
-	**/
 	@:native("setqflist")
 	private static function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float;
 	/**
@@ -19255,75 +16201,6 @@ package nvim;
 		 will be assumed.
 	**/
 	static function shiftwidth(?col:Float):Float;
-	/**
-		```lua
-		function table.sign_define(name: string, dict?: vim.fn.sign_define.dict)
-		  -> -1|0
-		```
-		
-		---
-		
-		```lua
-		return #1:
-		    | 0
-		    | -1
-		```
-		
-		---
-		
-		```lua
-		function table.sign_define(list: vim.fn.sign_define.dict[])
-		  -> (-1|0)[]
-		```
-		
-		---
-		
-		 Define a new sign named {name} or modify the attributes of an
-		 existing sign.  This is similar to the |:sign-define| command.
-		
-		 Prefix {name} with a unique text to avoid name collisions.
-		 There is no {group} like with placing signs.
-		
-		 The {name} can be a String or a Number.  The optional {dict}
-		 argument specifies the sign attributes.  The following values
-		 are supported:
-		    icon    full path to the bitmap file for the sign.
-		    linehl  highlight group used for the whole line the
-		     sign is placed in.
-		    priority  default priority value of the sign
-		    numhl  highlight group used for the line number where
-		     the sign is placed.
-		    text    text that is displayed when there is no icon
-		     or the GUI is not being used.
-		    texthl  highlight group used for the text item
-		    culhl  highlight group used for the text item when
-		     the cursor is on the same line as the sign and
-		     'cursorline' is enabled.
-		
-		 If the sign named {name} already exists, then the attributes
-		 of the sign are updated.
-		
-		 The one argument {list} can be used to define a list of signs.
-		 Each list item is a dictionary with the above items in {dict}
-		 and a "name" item for the sign name.
-		
-		 Returns 0 on success and -1 on failure.  When the one argument
-		 {list} is used, then returns a List of values one for each
-		 defined sign.
-		
-		 Examples: >vim
-		   call sign_define("mySign", {
-		     \ "text" : "=>",
-		     \ "texthl" : "Error",
-		     \ "linehl" : "Search"})
-		   call sign_define([
-		     \ {'name' : 'sign1',
-		     \  'text' : '=>'},
-		     \ {'name' : 'sign2',
-		     \  'text' : '!!'}
-		     \ ])
-		 <
-	**/
 	@:native("sign_define")
 	private static function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float;
 	/**
@@ -19445,74 +16322,6 @@ package nvim;
 		 <
 	**/
 	static function sign_getdefined(?name:String):lua.Table<Int, nvim.type.vim.fn.sign_getdefined.ret.Item>;
-	/**
-		```lua
-		function table.sign_getplaced(buf?: string|integer, dict?: vim.fn.sign_getplaced.dict)
-		  -> vim.fn.sign_getplaced.ret.item[]
-		```
-		
-		---
-		
-		 Return a list of signs placed in a buffer or all the buffers.
-		 This is similar to the |:sign-place-list| command.
-		
-		 If the optional buffer name {buf} is specified, then only the
-		 list of signs placed in that buffer is returned.  For the use
-		 of {buf}, see |bufname()|. The optional {dict} can contain
-		 the following entries:
-		    group  select only signs in this group
-		    id    select sign with this identifier
-		    lnum    select signs placed in this line. For the use
-		     of {lnum}, see |line()|.
-		 If {group} is "*", then signs in all the groups including the
-		 global group are returned. If {group} is not supplied or is an
-		 empty string, then only signs in the global group are
-		 returned.  If no arguments are supplied, then signs in the
-		 global group placed in all the buffers are returned.
-		 See |sign-group|.
-		
-		 Each list item in the returned value is a dictionary with the
-		 following entries:
-		   bufnr  number of the buffer with the sign
-		   signs  list of signs placed in {bufnr}. Each list
-		     item is a dictionary with the below listed
-		     entries
-		
-		 The dictionary for each sign contains the following entries:
-		   group   sign group. Set to '' for the global group.
-		   id   identifier of the sign
-		   lnum   line number where the sign is placed
-		   name   name of the defined sign
-		   priority sign priority
-		
-		 The returned signs in a buffer are ordered by their line
-		 number and priority.
-		
-		 Returns an empty list on failure or if there are no placed
-		 signs.
-		
-		 Examples: >vim
-		   " Get a List of signs placed in eval.c in the
-		   " global group
-		   echo sign_getplaced("eval.c")
-		
-		   " Get a List of signs in group 'g1' placed in eval.c
-		   echo sign_getplaced("eval.c", {'group' : 'g1'})
-		
-		   " Get a List of signs placed at line 10 in eval.c
-		   echo sign_getplaced("eval.c", {'lnum' : 10})
-		
-		   " Get sign with identifier 10 placed in a.py
-		   echo sign_getplaced("a.py", {'id' : 10})
-		
-		   " Get sign with id 20 in group 'g1' placed in a.py
-		   echo sign_getplaced("a.py", {'group' : 'g1',
-		           \  'id' : 20})
-		
-		   " Get a List of all the placed signs
-		   echo sign_getplaced()
-		 <
-	**/
 	@:native("sign_getplaced")
 	private static function __sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item>;
 	/**
@@ -19612,62 +16421,6 @@ package nvim;
 		 <
 	**/
 	static function sign_jump(id:Float, group:String, buf:haxe.extern.EitherType<Float, String>):Float;
-	/**
-		```lua
-		function table.sign_place(id: integer, group: string, name: string, buf: string|integer, dict?: vim.fn.sign_place.dict)
-		  -> integer
-		```
-		
-		---
-		
-		 Place the sign defined as {name} at line {lnum} in file or
-		 buffer {buf} and assign {id} and {group} to sign.  This is
-		 similar to the |:sign-place| command.
-		
-		 If the sign identifier {id} is zero, then a new identifier is
-		 allocated.  Otherwise the specified number is used. {group} is
-		 the sign group name. To use the global sign group, use an
-		 empty string.  {group} functions as a namespace for {id}, thus
-		 two groups can use the same IDs. Refer to |sign-identifier|
-		 and |sign-group| for more information.
-		
-		 {name} refers to a defined sign.
-		 {buf} refers to a buffer name or number. For the accepted
-		 values, see |bufname()|.
-		
-		 The optional {dict} argument supports the following entries:
-		   lnum    line number in the file or buffer
-		       {buf} where the sign is to be placed.
-		       For the accepted values, see |line()|.
-		   priority  priority of the sign. See
-		       |sign-priority| for more information.
-		
-		 If the optional {dict} is not specified, then it modifies the
-		 placed sign {id} in group {group} to use the defined sign
-		 {name}.
-		
-		 Returns the sign identifier on success and -1 on failure.
-		
-		 Examples: >vim
-		   " Place a sign named sign1 with id 5 at line 20 in
-		   " buffer json.c
-		   call sign_place(5, '', 'sign1', 'json.c',
-		           \ {'lnum' : 20})
-		
-		   " Updates sign 5 in buffer json.c to use sign2
-		   call sign_place(5, '', 'sign2', 'json.c')
-		
-		   " Place a sign named sign3 at line 30 in
-		   " buffer json.c with a new identifier
-		   let id = sign_place(0, '', 'sign3', 'json.c',
-		           \ {'lnum' : 30})
-		
-		   " Place a sign named sign4 with id 10 in group 'g3'
-		   " at line 40 in buffer json.c with priority 90
-		   call sign_place(10, 'g3', 'sign4', 'json.c',
-		       \ {'lnum' : 40, 'priority' : 90})
-		 <
-	**/
 	@:native("sign_place")
 	private static function __sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float;
 	/**
@@ -19845,62 +16598,6 @@ package nvim;
 		 <
 	**/
 	static function sign_undefine(?name:String):Float;
-	/**
-		```lua
-		function table.sign_unplace(group: string, dict?: vim.fn.sign_unplace.dict)
-		  -> -1|0
-		```
-		
-		---
-		
-		 Remove a previously placed sign in one or more buffers.  This
-		 is similar to the |:sign-unplace| command.
-		
-		 {group} is the sign group name. To use the global sign group,
-		 use an empty string.  If {group} is set to "*", then all the
-		 groups including the global group are used.
-		 The signs in {group} are selected based on the entries in
-		 {dict}.  The following optional entries in {dict} are
-		 supported:
-		   buffer  buffer name or number. See |bufname()|.
-		   id  sign identifier
-		 If {dict} is not supplied, then all the signs in {group} are
-		 removed.
-		
-		 Returns 0 on success and -1 on failure.
-		
-		 Examples: >vim
-		   " Remove sign 10 from buffer a.vim
-		   call sign_unplace('', {'buffer' : "a.vim", 'id' : 10})
-		
-		   " Remove sign 20 in group 'g1' from buffer 3
-		   call sign_unplace('g1', {'buffer' : 3, 'id' : 20})
-		
-		   " Remove all the signs in group 'g2' from buffer 10
-		   call sign_unplace('g2', {'buffer' : 10})
-		
-		   " Remove sign 30 in group 'g3' from all the buffers
-		   call sign_unplace('g3', {'id' : 30})
-		
-		   " Remove all the signs placed in buffer 5
-		   call sign_unplace('*', {'buffer' : 5})
-		
-		   " Remove the signs in group 'g4' from all the buffers
-		   call sign_unplace('g4')
-		
-		   " Remove sign 40 from all the buffers
-		   call sign_unplace('*', {'id' : 40})
-		
-		   " Remove all the placed signs from all the buffers
-		   call sign_unplace('*')
-		
-		
-		```lua
-		return #1:
-		    | 0
-		    | -1
-		```
-	**/
 	@:native("sign_unplace")
 	private static function __sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float;
 	/**
@@ -19964,42 +16661,6 @@ package nvim;
 		final result = __sign_unplace(group, dict);
 		return result;
 	}
-	/**
-		```lua
-		function table.sign_unplacelist(list: vim.fn.sign_unplacelist.list.item)
-		  -> (-1|0)[]
-		```
-		
-		---
-		
-		 Remove previously placed signs from one or more buffers.  This
-		 is similar to the |sign_unplace()| function.
-		
-		 The {list} argument specifies the List of signs to remove.
-		 Each list item is a dict with the following sign attributes:
-		     buffer  buffer name or number. For the accepted
-		     values, see |bufname()|. If not specified,
-		     then the specified sign is removed from all
-		     the buffers.
-		     group  sign group name. If not specified or set to an
-		     empty string, then the global sign group is
-		     used. If set to "*", then all the groups
-		     including the global group are used.
-		     id    sign identifier. If not specified, then all
-		     the signs in the specified group are removed.
-		
-		 Returns a List where an entry is set to 0 if the corresponding
-		 sign was successfully removed or -1 on failure.
-		
-		 Example: >vim
-		   " Remove sign with id 10 from buffer a.vim and sign
-		   " with id 20 from buffer b.vim
-		   call sign_unplacelist([
-		     \ {'id' : 10, 'buffer' : "a.vim"},
-		     \ {'id' : 20, 'buffer' : 'b.vim'},
-		     \ ])
-		 <
-	**/
 	@:native("sign_unplacelist")
 	private static function __sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float>;
 	/**
@@ -20123,38 +16784,6 @@ package nvim;
 		 Returns an empty value if {start} or {end} are invalid.
 	**/
 	static function slice(expr:Any, start:Float, ?end_:Float):Any;
-	/**
-		```lua
-		function table.sockconnect(mode: string, address: string, opts?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Connect a socket to an address. If {mode} is "pipe" then
-		 {address} should be the path of a local domain socket (on
-		 unix) or named pipe (on Windows). If {mode} is "tcp" then
-		 {address} should be of the form "host:port" where the host
-		 should be an ip address or host name, and port the port
-		 number.
-		
-		 For "pipe" mode, see |luv-pipe-handle|. For "tcp" mode, see
-		 |luv-tcp-handle|.
-		
-		 Returns a |channel| ID. Close the socket with |chanclose()|.
-		 Use |chansend()| to send data over a bytes socket, and
-		 |rpcrequest()| and |rpcnotify()| to communicate with a RPC
-		 socket.
-		
-		 {opts} is an optional dictionary with these keys:
-		   |on_data| : callback invoked when data was read from socket
-		   data_buffered : read socket data in |channel-buffered| mode.
-		   rpc     : If set, |msgpack-rpc| will be used to communicate
-		       over the socket.
-		 Returns:
-		   - The channel ID on success (greater than zero)
-		   - 0 on invalid arguments or connection failure.
-	**/
 	@:native("sockconnect")
 	private static function __sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
 	/**
@@ -20467,34 +17096,6 @@ package nvim;
 		     s  screen has scrolled for messages
 	**/
 	static function state(?what:String):Any;
-	/**
-		```lua
-		function table.stdioopen(opts: table)
-		  -> any
-		```
-		
-		---
-		
-		 With |--headless| this opens stdin and stdout as a |channel|.
-		 May be called only once. See |channel-stdio|. stderr is not
-		 handled by this function, see |v:stderr|.
-		
-		 Close the stdio handles with |chanclose()|. Use |chansend()|
-		 to send data to stdout, and |rpcrequest()| and |rpcnotify()|
-		 to communicate over RPC.
-		
-		 {opts} is a dictionary with these keys:
-		   |on_stdin| : callback invoked when stdin is written to.
-		   on_print : callback invoked when Nvim needs to print a
-		        message, with the message (whose type is string)
-		        as sole argument.
-		   stdin_buffered : read stdin in |channel-buffered| mode.
-		   rpc      : If set, |msgpack-rpc| will be used to communicate
-		        over stdio
-		 Returns:
-		   - |channel-id| on success (value is always 1)
-		   - 0 on invalid arguments
-	**/
 	@:native("stdioopen")
 	private static function __stdioopen(opts:lua.Table.AnyTable):Any;
 	/**
@@ -21673,16 +18274,6 @@ package nvim;
 		 <
 	**/
 	static function tempname():String;
-	/**
-		```lua
-		function table.termopen(cmd: string|string[], opts?: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Use |jobstart()| with `{term: v:true}` instead.
-	**/
 	@:native("termopen")
 	private static function __termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
 	/**
@@ -21757,43 +18348,6 @@ package nvim;
 		 See |non-zero-arg|.
 	**/
 	static function timer_pause(timer:Float, paused:Bool):Any;
-	/**
-		```lua
-		function table.timer_start(time: number, callback: string|function, options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Create a timer and return the timer ID.
-		
-		 {time} is the waiting time in milliseconds. This is the
-		 minimum time before invoking the callback.  When the system is
-		 busy or Vim is not waiting for input the time will be longer.
-		 Zero can be used to execute the callback when Vim is back in
-		 the main loop.
-		
-		 {callback} is the function to call.  It can be the name of a
-		 function or a |Funcref|.  It is called with one argument, which
-		 is the timer ID.  The callback is only invoked when Vim is
-		 waiting for input.
-		
-		 {options} is a dictionary.  Supported entries:
-		    "repeat"  Number of times to repeat the callback.
-		     -1 means forever.  Default is 1.
-		     If the timer causes an error three times in a
-		     row the repeat is cancelled.
-		
-		 Returns -1 on error.
-		
-		 Example: >vim
-		   func MyHandler(timer)
-		     echo 'Handler called'
-		   endfunc
-		   let timer = timer_start(500, 'MyHandler',
-		     \ {'repeat': 3})
-		 <This invokes MyHandler() three times at 500 msec intervals.
-	**/
 	@:native("timer_start")
 	private static function __timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
 	/**
@@ -22508,33 +19062,6 @@ package nvim;
 		 Returns [0, 0] if the window cannot be found.
 	**/
 	static function win_screenpos(nr:Float):Any;
-	/**
-		```lua
-		function table.win_splitmove(nr: integer, target: integer, options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Temporarily switch to window {target}, then move window {nr}
-		 to a new split adjacent to {target}.
-		 Unlike commands such as |:split|, no new windows are created
-		 (the |window-ID| of window {nr} is unchanged after the move).
-		
-		 Both {nr} and {target} can be window numbers or |window-ID|s.
-		 Both must be in the current tab page.
-		
-		 Returns zero for success, non-zero for failure.
-		
-		 {options} is a |Dictionary| with the following optional entries:
-		   "vertical"  When TRUE, the split is created vertically,
-		     like with |:vsplit|.
-		   "rightbelow"  When TRUE, the split is made below or to the
-		     right (if vertical).  When FALSE, it is done
-		     above or to the left (if vertical).  When not
-		     present, the values of 'splitbelow' and
-		     'splitright' are used.
-	**/
 	@:native("win_splitmove")
 	private static function __win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any;
 	/**
@@ -22752,29 +19279,6 @@ package nvim;
 		 <
 	**/
 	static function winrestcmd():String;
-	/**
-		```lua
-		function table.winrestview(dict: vim.fn.winrestview.dict)
-		  -> any
-		```
-		
-		---
-		
-		 Uses the |Dictionary| returned by |winsaveview()| to restore
-		 the view of the current window.
-		 Note: The {dict} does not have to contain all values, that are
-		 returned by |winsaveview()|. If values are missing, those
-		 settings won't be restored. So you can use: >vim
-		     call winrestview({'curswant': 4})
-		 <
-		 This will only set the curswant value (the column the cursor
-		 wants to move on vertical movements) of the cursor to column 5
-		 (yes, that is 5), while all other settings will remain the
-		 same. This is useful, if you set the cursor position manually.
-		
-		 If you have changed the values the result is unpredictable.
-		 If the window size changed the result won't be the same.
-	**/
 	@:native("winrestview")
 	private static function __winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any;
 	/**
@@ -30441,37 +26945,6 @@ package nvim;
 	```
 **/
 @:native("vim.json") extern class Json {
-	/**
-		```lua
-		function vim.json.decode(str: string, opts?: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		 Decodes (or "unpacks") the JSON-encoded {str} to a Lua object.
-		
-		 - Decodes JSON "null" as |vim.NIL| (controllable by {opts}, see below).
-		 - Decodes empty object as |vim.empty_dict()|.
-		 - Decodes empty array as `{}` (empty Lua table).
-		
-		 Example:
-		
-		 ```lua
-		 vim.print(vim.json.decode('{"bar":[],"foo":{},"zub":null}'))
-		 -- { bar = {}, foo = vim.empty_dict(), zub = vim.NIL }
-		 ```
-		
-		@*param* `str` — Stringified JSON data.
-		
-		@*param* `opts` — Options table with keys:
-		
-		                               - luanil: (table) Table with keys:
-		                                 - object: (boolean) When true, converts `null` in JSON objects
-		                                   to Lua `nil` instead of |vim.NIL|.
-		                                 - array: (boolean) When true, converts `null` in JSON arrays
-		                                   to Lua `nil` instead of |vim.NIL|.
-	**/
 	@:native("decode")
 	private static function __decode(str:String, ?opts:lua.Table<String, Any>):Any;
 	/**
@@ -30510,21 +26983,6 @@ package nvim;
 		final result = __decode(str, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.json.encode(obj: any, opts?: table<string, any>)
-		  -> string
-		```
-		
-		---
-		
-		 Encodes (or "packs") Lua object {obj} as JSON in a Lua string.
-		
-		@*param* `opts` — Options table with keys:
-		
-		                                 - escape_slash: (boolean) (default false) Escape slash
-		                                   characters "/" in string values.
-	**/
 	@:native("encode")
 	private static function __encode(obj:Any, ?opts:lua.Table<String, Any>):String;
 	/**
@@ -30866,38 +27324,6 @@ package nvim;
 		 ```
 	**/
 	static function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, lua.UserData>>>>>):nvim.type.vim.lpeg.Pattern;
-	/**
-		```lua
-		function vim.lpeg.locale(tab?: table)
-		  -> vim.lpeg.Locale
-		```
-		
-		---
-		
-		 Returns a table with patterns for matching some character classes according to the current locale.
-		 The table has fields named `alnum`, `alpha`, `cntrl`, `digit`, `graph`, `lower`, `print`, `punct`,
-		 `space`, `upper`, and `xdigit`, each one containing a correspondent pattern. Each pattern matches
-		 any single character that belongs to its class.
-		 If called with an argument `table`, then it creates those fields inside the given table and returns
-		 that table.
-		
-		 Example:
-		
-		 ```lua
-		 lpeg.locale(lpeg)
-		 local space = lpeg.space ^ 0
-		 local name = lpeg.C(lpeg.alpha ^ 1) * space
-		 local sep = lpeg.S(',;') * space
-		 local pair = lpeg.Cg(name * '=' * space * name) * sep ^ -1
-		 local list = lpeg.Cf(lpeg.Ct('') * pair ^ 0, rawset)
-		 local t = list:match('a=b, c = hi; next = pi')
-		 assert(t.a == 'b')
-		 assert(t.c == 'hi')
-		 assert(t.next == 'pi')
-		 local locale = lpeg.locale()
-		 assert(type(locale.digit) == 'userdata')
-		 ```
-	**/
 	@:native("locale")
 	private static function __locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale;
 	/**
@@ -47129,40 +43555,6 @@ package nvim;
 		```
 	**/
 	static var diagnostic : nvim.module.vim.Diagnostic;
-	/**
-		```lua
-		function vim.diff(a: string, b: string, opts?: vim.diff.Opts)
-		  -> (string|integer[][])?
-		```
-		
-		---
-		
-		 Run diff on strings {a} and {b}. Any indices returned by this function,
-		 either directly or via callback arguments, are 1-based.
-		
-		 Examples:
-		
-		 ```lua
-		 vim.diff('a\n', 'b\nc\n')
-		 -- =>
-		 -- @@ -1 +1,2 @@
-		 -- -a
-		 -- +b
-		 -- +c
-		
-		 vim.diff('a\n', 'b\nc\n', {result_type = 'indices'})
-		 -- =>
-		 -- {
-		 --   {1, 1, 1, 2}
-		 -- }
-		 ```
-		
-		@*param* `a` — First string to compare
-		
-		@*param* `b` — Second string to compare
-		
-		     See {opts.result_type}. `nil` if {opts.on_hunk} is given.
-	**/
 	@:native("diff")
 	private static function __diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Float>>>>;
 	/**
@@ -47280,50 +43672,6 @@ package nvim;
 		```
 	**/
 	static var glob : nvim.module.vim.Glob;
-	/**
-		```lua
-		function vim.gsplit(s: string, sep: string, opts?: vim.gsplit.Opts)
-		  -> fun():string?
-		```
-		
-		---
-		
-		 Gets an |iterator| that splits a string at each instance of a separator, in "lazy" fashion
-		 (as opposed to |vim.split()| which is "eager").
-		
-		 Example:
-		
-		 ```lua
-		 for s in vim.gsplit(':aa::b:', ':', {plain=true}) do
-		   print(s)
-		 end
-		 ```
-		
-		 If you want to also inspect the separator itself (instead of discarding it), use
-		 |string.gmatch()|. Example:
-		
-		 ```lua
-		 for word, num in ('foo111bar222'):gmatch('([^0-9]*)(%d*)') do
-		   print(('word: %s num: %s'):format(word, num))
-		 end
-		 ```
-		
-		 @see |string.gmatch()|
-		 @see |vim.split()|
-		 @see |lua-pattern|s
-		
-		@*param* `s` — String to split
-		
-		@*param* `sep` — Separator or pattern
-		
-		@*param* `opts` — Keyword arguments |kwargs|:
-		
-		@*return* — : Iterator over the split components
-		
-		See:
-		  * ~https~ ://www.lua.org/pil/20.2.html
-		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
-	**/
 	@:native("gsplit")
 	private static function __gsplit(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):() -> Null<String>;
 	/**
@@ -47436,26 +43784,6 @@ package nvim;
 		 to other restrictions such as |textlock|).
 	**/
 	static function in_fast_event():Dynamic;
-	/**
-		```lua
-		(global) vim.inspect: fun(x: any, opts?: vim.inspect.Opts):string
-		```
-		
-		---
-		
-		 Gets a human-readable representation of the given object.
-		
-		See:
-		  * ~https~ ://github.com/kikito/inspect.lua
-		  * ~https~ ://github.com/mpeterv/vinspect
-		
-		---
-		
-		```lua
-		function (x: any, opts?: vim.inspect.Opts)
-		  -> string
-		```
-	**/
 	@:native("inspect")
 	private static function __inspect(x:Any, opts:nvim.type.vim.inspect.Opts):String;
 	/**
@@ -47483,36 +43811,6 @@ package nvim;
 		final result = __inspect(x, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.inspect_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
-		  -> { treesitter: table, syntax: table, extmarks: table, semantic_tokens: table, buffer: integer, col: integer, row: integer }
-		```
-		
-		---
-		
-		Get all the items at a given buffer position.
-		
-		Can also be pretty-printed with `:Inspect!`. [:Inspect!](file:///usr/local/share/nvim/runtime/lua/vim)
-		
-		@*param* `bufnr` — defaults to the current buffer
-		
-		@*param* `row` — row to inspect, 0-based. Defaults to the row of the current cursor
-		
-		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
-		
-		@*param* `filter` — Table with key-value pairs to filter the items
-		
-		@*return* — (table) a table with the following key-value pairs. Items are in "traversal order":
-		
-		               - treesitter: a list of treesitter captures
-		               - syntax: a list of syntax groups
-		               - semantic_tokens: a list of semantic tokens
-		               - extmarks: a list of extmarks
-		               - buffer: the buffer used to get the items
-		               - row: the row used to get the items
-		               - col: the col used to get the items
-	**/
 	@:native("inspect_pos")
 	private static function __inspect_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Float; var col : Float; var row : Float; };
 	/**
@@ -47571,26 +43869,6 @@ package nvim;
 		```
 	**/
 	static var is_thread : Dynamic;
-	/**
-		```lua
-		function vim.isarray(t?: table)
-		  -> boolean
-		```
-		
-		---
-		
-		 Tests if `t` is an "array": a table indexed _only_ by integers (potentially non-contiguous).
-		
-		 If the indexes start from 1 and are contiguous then the array is also a list. |vim.islist()|
-		
-		 Empty table `{}` is an array, unless it was created by |vim.empty_dict()| or returned as
-		 a dict-like |API| or Vimscript result, for example from |rpcrequest()| or |vim.fn|.
-		
-		
-		@*return* — `true` if array-like table, else `false`.
-		
-		See: ~https~ ://github.com/openresty/luajit2#tableisarray
-	**/
 	@:native("isarray")
 	private static function __isarray(?t:lua.Table.AnyTable):Bool;
 	/**
@@ -47618,23 +43896,6 @@ package nvim;
 		final result = __isarray(t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.islist(t?: table)
-		  -> boolean
-		```
-		
-		---
-		
-		 Tests if `t` is a "list": a table indexed _only_ by contiguous integers starting from 1 (what
-		 |lua-length| calls a "regular array").
-		
-		 Empty table `{}` is a list, unless it was created by |vim.empty_dict()| or returned as
-		 a dict-like |API| or Vimscript result, for example from |rpcrequest()| or |vim.fn|.
-		
-		
-		@*return* — `true` if list-like table, else `false`.
-	**/
 	@:native("islist")
 	private static function __islist(?t:lua.Table.AnyTable):Bool;
 	/**
@@ -47693,23 +43954,6 @@ package nvim;
 		```
 	**/
 	static var keymap : nvim.module.vim.Keymap;
-	/**
-		```lua
-		function vim.list_contains(t: table, value: any)
-		  -> boolean
-		```
-		
-		---
-		
-		 Checks if a list-like table (integer keys without gaps) contains `value`.
-		
-		
-		@*param* `t` — Table to check (must be list-like, not validated)
-		
-		@*param* `value` — Value to compare
-		
-		@*return* — `true` if `t` contains `value`
-	**/
 	@:native("list_contains")
 	private static function __list_contains(t:lua.Table.AnyTable, value:Any):Bool;
 	/**
@@ -47734,27 +43978,6 @@ package nvim;
 		final result = __list_contains(t, value);
 		return result;
 	}
-	/**
-		```lua
-		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
-		  -> dst: <T:table>
-		```
-		
-		---
-		
-		 Extends a list-like table with the values of another list-like table.
-		
-		 NOTE: This mutates dst!
-		
-		
-		@*param* `dst` — List which will be modified and appended to
-		
-		@*param* `src` — List from which values will be inserted
-		
-		@*param* `start` — Start index on src. Defaults to 1
-		
-		@*param* `finish` — Final index on src. Defaults to `#src`
-	**/
 	@:native("list_extend")
 	private static function __list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Float>, ?finish:Null<Float>):T;
 	/**
@@ -48372,30 +44595,6 @@ package nvim;
 		```
 	**/
 	static var secure : nvim.module.vim.Secure;
-	/**
-		```lua
-		function vim.show_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
-		```
-		
-		---
-		
-		Show all the items at a given buffer position.
-		
-		Can also be shown with `:Inspect`. [:Inspect](file:///usr/local/share/nvim/runtime/lua/vim)
-		
-		Example: To bind this function to the vim-scriptease
-		inspired `zS` in Normal mode:
-		
-		```lua
-		vim.keymap.set('n', 'zS', vim.show_pos)
-		```
-		
-		@*param* `bufnr` — defaults to the current buffer
-		
-		@*param* `row` — row to inspect, 0-based. Defaults to the row of the current cursor
-		
-		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
-	**/
 	@:native("show_pos")
 	private static function __show_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):Dynamic;
 	/**
@@ -48433,26 +44632,6 @@ package nvim;
 		```
 	**/
 	static var snippet : nvim.module.vim.Snippet;
-	/**
-		```lua
-		function vim.spairs(t: <T:table>)
-		  -> fun(table: table<<K>, <V>>, index?: <K>):<K>, <V>
-		  2. <T:table>
-		```
-		
-		---
-		
-		 Enumerates key-value pairs of a table, ordered by key.
-		
-		
-		@*param* `t` — Dict-like table
-		
-		@*return* — |for-in| iterator over sorted keys and their values
-		
-		@*return*
-		
-		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("spairs")
 	private static function __spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
@@ -48485,35 +44664,6 @@ package nvim;
 		```
 	**/
 	static var spell : Dynamic;
-	/**
-		```lua
-		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
-		  -> string[]
-		```
-		
-		---
-		
-		 Splits a string at each instance of a separator and returns the result as a table (unlike
-		 |vim.gsplit()|).
-		
-		 Examples:
-		
-		 ```lua
-		 split(":aa::b:", ":")                   --> {'','aa','','b',''}
-		 split("axaby", "ab?")                   --> {'','x','y'}
-		 split("x*yz*o", "*", {plain=true})      --> {'x','yz','o'}
-		 split("|x|y|z|", "|", {trimempty=true}) --> {'x', 'y', 'z'}
-		 ```
-		
-		
-		@*param* `s` — String to split
-		
-		@*param* `sep` — Separator or pattern
-		
-		@*param* `opts` — Keyword arguments |kwargs|:
-		
-		@*return* — : List of split components
-	**/
 	@:native("split")
 	private static function __split(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):lua.Table<Int, String>;
 	/**
@@ -48790,22 +44940,6 @@ package nvim;
 		```
 	**/
 	static var t : nvim.type.vim.VarAccessor;
-	/**
-		```lua
-		function vim.tbl_add_reverse_lookup(o: table)
-		  -> o: table
-		```
-		
-		---
-		
-		 Add the reverse lookup values to an existing table.
-		 For example:
-		 `tbl_add_reverse_lookup { A = 1 } == { [1] = 'A', A = 1 }`
-		
-		 Note that this *modifies* the input.
-		
-		@*param* `o` — Table to add the reverse to
-	**/
 	@:native("tbl_add_reverse_lookup")
 	private static function __tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
@@ -48830,35 +44964,6 @@ package nvim;
 		final result = __tbl_add_reverse_lookup(o);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_contains(t: table, value: any, opts?: vim.tbl_contains.Opts)
-		  -> boolean
-		```
-		
-		---
-		
-		 Checks if a table contains a given value, specified either directly or via
-		 a predicate that is checked for each value.
-		
-		 Example:
-		
-		 ```lua
-		 vim.tbl_contains({ 'a', { 'b', 'c' } }, function(v)
-		   return vim.deep_equal(v, { 'b', 'c' })
-		 end, { predicate = true })
-		 -- true
-		 ```
-		
-		
-		@*param* `t` — Table to check
-		
-		@*param* `value` — Value to compare or predicate function reference
-		
-		@*param* `opts` — Keyword arguments |kwargs|:
-		
-		@*return* — `true` if `t` contains `value`
-	**/
 	@:native("tbl_contains")
 	private static function __tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool;
 	/**
@@ -48896,27 +45001,6 @@ package nvim;
 		final result = __tbl_contains(t, value, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_count(t: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Counts the number of non-nil values in table `t`.
-		
-		 ```lua
-		 vim.tbl_count({ a=1, b=2 })  --> 2
-		 vim.tbl_count({ 1, 2 })      --> 2
-		 ```
-		
-		@*param* `t` — Table
-		
-		@*return* — : Number of non-nil values in table
-		
-		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
-	**/
 	@:native("tbl_count")
 	private static function __tbl_count(t:lua.Table.AnyTable):Float;
 	/**
@@ -49008,22 +45092,6 @@ package nvim;
 		```
 	**/
 	static function tbl_extend(behavior:String, ___:haxe.Rest<lua.Table.AnyTable>):lua.Table.AnyTable;
-	/**
-		```lua
-		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
-		  -> <T>[]
-		```
-		
-		---
-		
-		 Filter a table using a predicate function
-		
-		@*param* `func` — (function) Function
-		
-		@*param* `t` — (table) Table
-		
-		@*return* — : Table of filtered values
-	**/
 	@:native("tbl_filter")
 	private static function __tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):lua.Table<Int, T>;
 	/**
@@ -49047,24 +45115,6 @@ package nvim;
 		final result = __tbl_filter(func, t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_flatten(t: table)
-		  -> Flattened: table
-		```
-		
-		---
-		
-		 Creates a copy of a list-like table such that any nested tables are
-		 "unrolled" and appended to the result.
-		
-		
-		@*param* `t` — List-like table
-		
-		@*return* `Flattened` — copy of the given list-like table
-		
-		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("tbl_flatten")
 	private static function __tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
@@ -49091,30 +45141,6 @@ package nvim;
 		final result = __tbl_flatten(t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_get(o: table, ...any)
-		  -> any
-		```
-		
-		---
-		
-		 Index into a table (first argument) via string keys passed as subsequent arguments.
-		 Return `nil` if the key does not exist.
-		
-		 Examples:
-		
-		 ```lua
-		 vim.tbl_get({ key = { nested_key = true }}, 'key', 'nested_key') == true
-		 vim.tbl_get({ key = {}}, 'key', 'nested_key') == nil
-		 ```
-		
-		@*param* `o` — Table to index
-		
-		@*param* `...` — Optional keys (0 or more, variadic) via which to index the table
-		
-		@*return* — Nested value indexed by key (if it exists), else nil
-	**/
 	@:native("tbl_get")
 	private static function __tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any;
 	/**
@@ -49146,23 +45172,6 @@ package nvim;
 		final result = __tbl_get(o, ...___);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_isempty(t: table)
-		  -> boolean
-		```
-		
-		---
-		
-		 Checks if a table is empty.
-		
-		
-		@*param* `t` — Table to check
-		
-		@*return* — `true` if `t` is empty
-		
-		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("tbl_isempty")
 	private static function __tbl_isempty(t:lua.Table.AnyTable):Bool;
 	/**
@@ -49195,24 +45204,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function tbl_islist(t:Dynamic):Dynamic;
-	/**
-		```lua
-		function vim.tbl_keys(t: table<<T>, any>)
-		  -> <T>[]
-		```
-		
-		---
-		
-		 Return a list of all keys used in a table.
-		 However, the order of the return table of keys is not guaranteed.
-		
-		
-		@*param* `t` — (table) Table
-		
-		@*return* — : List of keys
-		
-		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("tbl_keys")
 	private static function __tbl_keys<T>(t:lua.Table<T, Any>):lua.Table<Int, T>;
 	/**
@@ -49238,22 +45229,6 @@ package nvim;
 		final result = __tbl_keys(t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_map(func: fun(value: <T>):any, t: table<any, <T>>)
-		  -> table
-		```
-		
-		---
-		
-		 Apply a function to all values of a table.
-		
-		@*param* `func` — Function
-		
-		@*param* `t` — Table
-		
-		@*return* — : Table of transformed values
-	**/
 	@:native("tbl_map")
 	private static function __tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable;
 	/**
@@ -49277,21 +45252,6 @@ package nvim;
 		final result = __tbl_map(func, t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_values(t: table<any, <T>>)
-		  -> <T>[]
-		```
-		
-		---
-		
-		 Return a list of all values used in a table.
-		 However, the order of the return table of values is not guaranteed.
-		
-		@*param* `t` — (table) Table
-		
-		@*return* — : List of values
-	**/
 	@:native("tbl_values")
 	private static function __tbl_values<T>(t:lua.Table<Any, T>):lua.Table<Int, T>;
 	/**
@@ -49361,53 +45321,6 @@ package nvim;
 		```
 	**/
 	static var ui : nvim.module.vim.Ui;
-	/**
-		```lua
-		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
-		```
-		
-		---
-		
-		 Subscribe to |ui-events|, similar to |nvim_ui_attach()| but receive events in a Lua callback.
-		 Used to implement screen elements like popupmenu or message handling in Lua.
-		
-		 {options} is a dict with one or more `ext_…` |ui-option|s set to true to enable events for
-		 the respective UI element.
-		
-		 {callback} receives event name plus additional parameters. See |ui-popupmenu|
-		 and the sections below for event format for respective events.
-		
-		 Callbacks for `msg_show` events are executed in |api-fast| context; showing
-		 the message should be scheduled.
-		
-		 Excessive errors inside the callback will result in forced detachment.
-		
-		 WARNING: This api is considered experimental.  Usability will vary for
-		 different screen elements. In particular `ext_messages` behavior is subject
-		 to further changes and usability improvements.  This is expected to be
-		 used to handle messages when setting 'cmdheight' to zero (which is
-		 likewise experimental).
-		
-		 Example (stub for a |ui-popupmenu| implementation):
-		
-		 ```lua
-		 ns = vim.api.nvim_create_namespace('my_fancy_pum')
-		
-		 vim.ui_attach(ns, {ext_popupmenu=true}, function(event, ...)
-		   if event == 'popupmenu_show' then
-		     local items, selected, row, col, grid = ...
-		     print('display pum ', #items)
-		   elseif event == 'popupmenu_select' then
-		     local selected = ...
-		     print('selected', selected)
-		   elseif event == 'popupmenu_hide' then
-		     print('FIN')
-		   end
-		 end)
-		 ```
-		
-		 @since 0
-	**/
 	@:native("ui_attach")
 	private static function __ui_attach(ns:Float, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
 	/**
@@ -49736,124 +45649,6 @@ package nvim;
 		```
 	**/
 	static var val_idx : Dynamic;
-	/**
-		```lua
-		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
-		```
-		
-		---
-		
-		 Validate function arguments.
-		
-		 This function has two valid forms:
-		
-		 1. `vim.validate(name, value, validator[, optional][, message])`
-		
-		     Validates that argument {name} with value {value} satisfies
-		     {validator}. If {optional} is given and is `true`, then {value} may be
-		     `nil`. If {message} is given, then it is used as the expected type in the
-		     error message.
-		
-		     Example:
-		
-		     ```lua
-		       function vim.startswith(s, prefix)
-		         vim.validate('s', s, 'string')
-		         vim.validate('prefix', prefix, 'string')
-		         -- ...
-		       end
-		     ```
-		
-		 2. `vim.validate(spec)` (deprecated)
-		     where `spec` is of type
-		    `table<string,[value:any, validator: vim.validate.Validator, optional_or_msg? : boolean|string]>)`
-		
-		     Validates a argument specification.
-		     Specs are evaluated in alphanumeric order, until the first failure.
-		
-		     Example:
-		
-		     ```lua
-		       function user.new(name, age, hobbies)
-		         vim.validate{
-		           name={name, 'string'},
-		           age={age, 'number'},
-		           hobbies={hobbies, 'table'},
-		         }
-		         -- ...
-		       end
-		     ```
-		
-		 Examples with explicit argument values (can be run directly):
-		
-		 ```lua
-		 vim.validate('arg1', {'foo'}, 'table')
-		    --> NOP (success)
-		 vim.validate('arg2', 'foo', 'string')
-		    --> NOP (success)
-		
-		 vim.validate('arg1', 1, 'table')
-		    --> error('arg1: expected table, got number')
-		
-		 vim.validate('arg1', 3, function(a) return (a % 2) == 0 end, 'even number')
-		    --> error('arg1: expected even number, got 3')
-		 ```
-		
-		 If multiple types are valid they can be given as a list.
-		
-		 ```lua
-		 vim.validate('arg1', {'foo'}, {'table', 'string'})
-		 vim.validate('arg2', 'foo', {'table', 'string'})
-		 -- NOP (success)
-		
-		 vim.validate('arg1', 1, {'string', 'table'})
-		 -- error('arg1: expected string|table, got number')
-		 ```
-		
-		 @note `validator` set to a value returned by |lua-type()| provides the
-		 best performance.
-		
-		@*param* `name` — Argument name
-		
-		@*param* `value` — Argument value
-		
-		   - (`string|string[]`): Any value that can be returned from |lua-type()| in addition to
-		     `'callable'`: `'boolean'`, `'callable'`, `'function'`, `'nil'`, `'number'`, `'string'`, `'table'`,
-		     `'thread'`, `'userdata'`.
-		   - (`fun(val:any): boolean, string?`) A function that returns a boolean and an optional
-		     string message.
-		
-		@*param* `optional` — Argument is optional (may be omitted)
-		
-		@*param* `message` — message when validation fails
-		
-		---
-		
-		```lua
-		validator:
-		    | "nil"
-		    | "number"
-		    | "string"
-		    | "boolean"
-		    | "table"
-		    | "function"
-		    | "thread"
-		    | "userdata"
-		    | 'callable'
-		```
-		
-		---
-		
-		```lua
-		function vim.validate(name: string, val: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, message: string)
-		```
-		
-		---
-		
-		```lua
-		function vim.validate(spec: table<string, [any, "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'c...(too long)...|string] })
-		```
-	**/
 	@:native("validate")
 	@:overload(function (name:String, val:Any, validator:nvim.type.vim.validate.Validator, message:String) : Dynamic {})
 	private static function __validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic;

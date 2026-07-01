@@ -50,25 +50,6 @@ package nvim.type.vim.treesitter;
 		```
 	**/
 	extern public var bufnr : Float;
-	/**
-		```lua
-		function vim.treesitter.highlighter.new(tree: vim.treesitter.LanguageTree, opts: table|nil)
-		  -> Created: vim.treesitter.highlighter
-		```
-		
-		---
-		
-		
-		 Creates a highlighter for `tree`.
-		
-		@*param* `tree` — parser object to use for highlighting
-		
-		@*param* `opts` — Configuration of the highlighter:
-		
-		           - queries table overwrite queries used by the highlighter
-		
-		@*return* `Created` — highlighter object
-	**/
 	@:luaDotMethod
 	@:native("new")
 	private extern function __new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter;
