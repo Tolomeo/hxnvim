@@ -18,15 +18,7 @@ import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
 
-class PropertyGenerator {
-	final property:Variable;
-	final opt:Bool;
-
-	public function new(property:Variable, opt:Bool) {
-		this.property = property;
-		this.opt = opt;
-	}
-
+class FieldGenerator {
 	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
 		return {
 			meta: meta,
@@ -36,6 +28,16 @@ class PropertyGenerator {
 			kind: kind,
 			pos: Context.currentPos()
 		};
+	}
+}
+
+class PropertyGenerator extends FieldGenerator {
+	final property:Variable;
+	final opt:Bool;
+
+	public function new(property:Variable, opt:Bool) {
+		this.property = property;
+		this.opt = opt;
 	}
 
 	function generateAccess(propertyAccess:Array<SymbolAccess>) {
@@ -81,7 +83,7 @@ class PropertyGenerator {
 	}
 }
 
-class MethodGenerator {
+class MethodGenerator extends FieldGenerator {
 	final method:Function;
 	final opt:Bool;
 
@@ -139,17 +141,6 @@ class MethodGenerator {
 			ret: ret,
 			expr: expr,
 		});
-	}
-
-	function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, kind:FieldType) {
-		return {
-			meta: meta,
-			access: access,
-			name: name,
-			doc: doc,
-			kind: kind,
-			pos: Context.currentPos()
-		};
 	}
 
 	public var facaded(get, never):Bool;
@@ -393,7 +384,7 @@ class DataMethodGenerator extends MethodGenerator {
 			case [field, facade]: [field, facade];
 			case overloadedFields:
 				Logger.warn('Method facade overloads are currently unsupported in data classes and they will be removed',
-					'${State.consume(t -> t.output.qualifiedName)}.${this.method.name}');
+					'${State.consume(t -> t.output.qualifiedName)}:${this.method.name}');
 				final field = overloadedFields[0];
 				final facade = overloadedFields[1];
 				facade.access = facade.access.filter(a -> switch (a) {
