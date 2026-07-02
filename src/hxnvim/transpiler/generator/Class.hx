@@ -181,54 +181,64 @@ class MethodGenerator {
 		}
 
 		final facadeAccess = [Access.AInline].concat(field.access.filter(a -> switch (a) {
-			case AExtern: false;
+			case Access.AExtern: false;
 			case _: true;
 		}));
+		if (this.method.overloads.length > 0) {
+			facadeAccess.unshift(Access.AOverload);
+		}
+
 		field.access = [Access.APrivate].concat(field.access.filter(a -> switch (a) {
 			case Access.APublic: false;
 			case Access.APrivate: false;
 			case _: true;
 		}));
 
-		final returnTypes = switch (this.method.type.ret) {
-			case LiteralType.Multireturn(rs):
-				rs.map(r -> switch (r) {
-					case LiteralType.Void: Target.toHelperReference("Nothing");
-					case LiteralType.Nil: Target.toHelperReference("Nothing");
-					case _: new LiteralTypeGenerator().generateType(r);
-				});
-			case type: [new LiteralTypeGenerator().generateType(type)];
-		};
-		final returnType = switch (returnTypes) {
-			case [r]: r;
-			case types: Target.toHelperReference('Multireturn.Return${types.length}<${types.join(", ")}>');
-		}
-		final pureArgs = this.method.type.args.fold((arg:Arg, pures:Array<String>) -> {
-			if (arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
-				pures.push('${arg.name} = ${Target.toHelperReference("Arg")}.pure(${arg.name})');
+		final fields = [field];
+
+		[this.method.type].concat(this.method.overloads).iter(signature -> {
+			final returnTypes = switch (signature.ret) {
+				case LiteralType.Multireturn(rs):
+					rs.map(r -> switch (r) {
+						case LiteralType.Void: Target.toHelperReference("Nothing");
+						case LiteralType.Nil: Target.toHelperReference("Nothing");
+						case _: new LiteralTypeGenerator().generateType(r);
+					});
+				case type: [new LiteralTypeGenerator().generateType(type)];
+			};
+			final returnType = switch (returnTypes) {
+				case [r]: r;
+				case types: Target.toHelperReference('Multireturn.Return${types.length}<${types.join(", ")}>');
 			}
-			return pures;
-		}, []);
-		final callArgs = this.method.type.args.map(a -> switch (a.type) {
-			case LiteralType.Rest(_): "..." + a.name;
-			case _: a.name;
+			final pureArgs = signature.args.fold((arg:Arg, pures:Array<String>) -> {
+				if (arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
+					pures.push('${arg.name} = ${Target.toHelperReference("Arg")}.pure(${arg.name})');
+				}
+				return pures;
+			}, []);
+			final callArgs = signature.args.map(a -> switch (a.type) {
+				case LiteralType.Rest(_): "..." + a.name;
+				case _: a.name;
+			});
+			final call = '${field.name}(${callArgs.join(", ")})';
+			final callResultAssignment = 'final result = ${call}';
+			final returnStatement = switch (returnTypes) {
+				case [r]: 'return result';
+				case returns:
+					final returnArgs = returns.mapi((i, _) -> 'result._${i}');
+					'return new ${returnType}(${returnArgs.join(", ")})';
+			}
+			final expr = macro $b{
+				pureArgs.map(arg -> macro $i{arg}).concat([macro $i{callResultAssignment}, macro $i{returnStatement}])
+			}
+
+			final facade = this.generateDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess,
+				this.generateFunctionKind(signature.params, signature.args, LiteralType.Override(returnType), expr));
+
+			fields.push(facade);
 		});
-		final call = '${field.name}(${callArgs.join(", ")})';
-		final callResultAssignment = 'final result = ${call}';
-		final returnStatement = switch (returnTypes) {
-			case [r]: 'return result';
-			case returns:
-				final returnArgs = returns.mapi((i, _) -> 'result._${i}');
-				'return new ${returnType}(${returnArgs.join(", ")})';
-		}
-		final expr = macro $b{
-			pureArgs.map(arg -> macro $i{arg}).concat([macro $i{callResultAssignment}, macro $i{returnStatement}])
-		}
 
-		final facade = this.generateDefinition(facadeName, facadeDoc, facadeMeta, facadeAccess,
-			this.generateFunctionKind(this.method.type.params, this.method.type.args, LiteralType.Override(returnType), expr));
-
-		return [field, facade];
+		return fields;
 	}
 
 	public function generate():Array<Field> {
