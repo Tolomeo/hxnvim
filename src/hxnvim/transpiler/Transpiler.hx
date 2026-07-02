@@ -39,15 +39,17 @@ class Transpiler {
 		Logger.verbose('Transpiling ${currentTarget}');
 
 		final parsed = switch (currentTarget.type) {
+			case TargetType.Annotation: new AnnotationModuleParser(symbol, this.transpileChildSymbol).parse();
+			case TargetType.Module: new ModuleParser(symbol, this.transpileChildSymbol).parse();
 			case TargetType.Namespace: new NamespaceModuleParser(symbol, this.transpileChildSymbol).parse();
-			case _: new Parser(symbol, this.transpileChildSymbol).parse();
+			case _: throw new Exception('Error parsing ${currentTarget.file}: unexpected target type received <${currentTarget.output}>');
 		}
 
 		return switch (currentTarget.type) {
 			case TargetType.Annotation: new TypeModuleGenerator().generate(parsed);
 			case TargetType.Module: new ModuleGenerator().generate(parsed);
 			case TargetType.Namespace: new NamespaceModuleGenerator().generate(parsed);
-			case _: throw new Exception('Error transpiling ${this.target.file}: unexpected target type received <${this.target.output}>');
+			case _: throw new Exception('Error generating ${currentTarget.file}: unexpected target type received <${currentTarget.output}>');
 		}
 	}
 

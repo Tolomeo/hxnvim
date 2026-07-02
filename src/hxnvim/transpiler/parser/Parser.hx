@@ -15,7 +15,7 @@ import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.parser.Symbol;
 import hxnvim.transpiler.parser.Metadata;
 
-class Parser {
+abstract class Parser {
 	final symbol:Json;
 	final transpileChild:TranspileChild;
 
@@ -55,9 +55,9 @@ class Parser {
 
 class NamespaceModuleParser extends Parser {
 	override public function new(symbol:Json, transpileChild:TranspileChild) {
-		final transpileNamespaceChild = (childName:String, child:Json,
-			?childType:TargetType) -> transpileChild(childName, child, childType.or(TargetType.Module));
-
-		super(symbol, transpileNamespaceChild);
+		super(symbol, (childName:String, child:Json, ?childType:TargetType) -> transpileChild(childName, child, childType.or(TargetType.Module)));
 	}
 }
+
+class ModuleParser extends Parser {}
+class AnnotationModuleParser extends Parser {}
