@@ -11,7 +11,9 @@ using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 using hxnvim.transpiler.symbol.SymbolTools;
 
+import hxnvim.Logger;
 import hxnvim.target.Target;
+import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Meta;
 import hxnvim.transpiler.generator.Type;
@@ -381,6 +383,25 @@ class DataMethodGenerator extends MethodGenerator {
 		}
 
 		return dataClassMethodMeta.concat(super.generateMeta(methodMeta, overloads));
+	}
+
+	override function generateFacade(field:Field) {
+		final fields = super.generateFacade(field);
+
+		return switch (fields) {
+			case [field]: [field];
+			case [field, facade]: [field, facade];
+			case overloadedFields:
+				Logger.warn('Method facade overloads are currently unsupported in data classes and they will be removed',
+					'${State.consume(t -> t.output.qualifiedName)}.${this.method.name}');
+				final field = overloadedFields[0];
+				final facade = overloadedFields[1];
+				facade.access = facade.access.filter(a -> switch (a) {
+					case Access.AOverload: false;
+					case _: true;
+				});
+				[field, facade];
+		}
 	}
 }
 
