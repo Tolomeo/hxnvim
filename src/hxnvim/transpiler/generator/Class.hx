@@ -96,7 +96,7 @@ class MethodGenerator {
 		});
 	}
 
-	function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+	function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<Signature>) {
 		final methodMetas = new Array();
 
 		methodMeta.iter(m -> switch (m) {
@@ -112,11 +112,8 @@ class MethodGenerator {
 		});
 
 		overloads.iter(o -> {
-			final overloadType = switch (o) {
-				case LiteralType.Overload(_, _): macro $i{new LiteralTypeGenerator().generateType(o)};
-				case _: throw new Exception('Error generating method overload: unexpected ${o} type received');
-			}
-			methodMetas.push(new MetaGenerator("overload", [overloadType]).generate());
+			final overloadType = 'function ${new LiteralTypeGenerator().generateType(LiteralType.Function(o)).replace("->", ":")} {}';
+			methodMetas.push(new MetaGenerator("overload", [macro $i{overloadType}]).generate());
 		});
 
 		return methodMetas;
@@ -366,7 +363,7 @@ class DataMethodGenerator extends MethodGenerator {
 		return [Access.AExtern, Access.APublic].concat(dataMethodAccess);
 	}
 
-	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<Signature>) {
 		final dataClassMethodMeta = new Array<MetadataEntry>();
 
 		if (!methodMeta.contains(SymbolMeta.Method)) {
@@ -396,7 +393,7 @@ class DataClassGenerator extends ClassGenerator {
 }
 
 class InstanceMethodGenerator extends MethodGenerator {
-	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<LiteralType>) {
+	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<Signature>) {
 		final instanceClassMethodMeta = new Array<MetadataEntry>();
 
 		if (!methodMeta.contains(SymbolMeta.Method)) {

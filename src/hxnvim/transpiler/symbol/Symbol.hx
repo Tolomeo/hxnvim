@@ -27,7 +27,6 @@ enum LiteralType {
 	TypeReference(name:String);
 	ModuleReference(name:String);
 	Rest(type:LiteralType);
-	Overload(args: Array<Arg>, ret:LiteralType);
 	Override(type:String);
 }
 
@@ -78,7 +77,7 @@ typedef Function = {
 	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
 	type:Signature,
-	overloads:Array<LiteralType>
+	overloads:Array<Signature>
 }
 
 enum TableField {

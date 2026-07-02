@@ -56,7 +56,11 @@ class FunctionSymbolParser extends SymbolParser {
 			final overloadJson = Json.fromDynamic(overloadType, overloadFile);
 			final functionType = new FunctionTypeParser(overloadJson, params).parse();
 
-			return LiteralType.Overload(functionType.args, functionType.ret);
+			return {
+				params: [],
+				args: functionType.args,
+				ret: functionType.ret
+			};
 		});
 	}
 
