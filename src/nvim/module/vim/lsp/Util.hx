@@ -130,6 +130,12 @@ extern class Util {
 	function buf_highlight_references(bufnr:Float, references:lua.Table<Int, nvim.type.lsp.DocumentHighlight>, position_encoding:String):Dynamic;
 	/**
 		```lua
+		(global) vim.lsp.util.buf_versions: table<integer, integer>
+		```
+	**/
+	var buf_versions : BufVersions;
+	/**
+		```lua
 		function M.character_offset(buf: integer, row: integer, col: integer, offset_encoding?: 'utf-16'|'utf-32'|'utf-8')
 		  -> integer
 		```

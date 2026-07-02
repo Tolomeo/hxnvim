@@ -340,6 +340,16 @@ extern class Diagnostic {
 	}
 	/**
 		```lua
+		(global) vim.diagnostic.handlers: table<string, vim.diagnostic.Handler>
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	var handlers : Handlers;
+	/**
+		```lua
 		function M.hide(namespace?: integer, bufnr?: integer)
 		```
 		
@@ -564,6 +574,12 @@ extern class Diagnostic {
 		final result = __setqflist(opts);
 		return result;
 	}
+	/**
+		```lua
+		(global) vim.diagnostic.severity: enum vim.diagnostic.Severity
+		```
+	**/
+	var severity : Severity;
 	@:native("show")
 	@:luaDotMethod
 	private function __show(?namespace:Null<Float>, ?bufnr:Null<Float>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;

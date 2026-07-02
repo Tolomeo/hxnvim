@@ -75,6 +75,22 @@ extern class Hl {
 	**/
 	@:luaDotMethod
 	function on_yank(?opts:Null<lua.Table.AnyTable>):Dynamic;
+	/**
+		```lua
+		(global) vim.hl.priorities: table
+		```
+		
+		---
+		
+		 Table with default priorities used for highlighting:
+		 - `syntax`: `50`, used for standard syntax highlighting
+		 - `treesitter`: `100`, used for treesitter-based highlighting
+		 - `semantic_tokens`: `125`, used for LSP semantic token highlighting
+		 - `diagnostics`: `150`, used for code analysis such as diagnostics
+		 - `user`: `200`, used for user-triggered highlights such as LSP document
+		   symbols or `on_yank` autocommands
+	**/
+	var priorities : Priorities;
 	@:native("range")
 	@:luaDotMethod
 	private function __range(bufnr:Float, ns:Float, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Float>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Float>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

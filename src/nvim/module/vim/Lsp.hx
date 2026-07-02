@@ -288,6 +288,34 @@ extern class Lsp {
 	var codelens : nvim.module.vim.lsp.Codelens;
 	/**
 		```lua
+		(global) vim.lsp.commands: table<string, function>
+		```
+		
+		---
+		
+		 Registry for client side commands.
+		 This is an extension point for plugins to handle custom commands which are
+		 not part of the core language server protocol specification.
+		
+		 The registry is a table where the key is a unique command name,
+		 and the value is a function which is called if any LSP action
+		 (code action, code lenses, ...) triggers the command.
+		
+		 If an LSP response contains a command for which no matching entry is
+		 available in this registry, the command will be executed via the LSP server
+		 using `workspace/executeCommand`.
+		
+		 The first argument to the function will be the `Command`:
+		   Command
+		     title: String
+		     command: String
+		     arguments?: any[]
+		
+		 The second argument is the `ctx` of |lsp-handler|
+	**/
+	var commands : Commands;
+	/**
+		```lua
 		(global) vim.lsp.completion: table
 		```
 	**/

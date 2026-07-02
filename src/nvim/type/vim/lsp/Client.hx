@@ -70,6 +70,12 @@ package nvim.type.vim.lsp;
 	extern public var _is_stopping : Bool;
 	/**
 		```lua
+		(field) vim.lsp.Client.attached_buffers: table<integer, true>
+		```
+	**/
+	extern public var attached_buffers : AttachedBuffers;
+	/**
+		```lua
 		(field) vim.lsp.Client.capabilities: lsp.ClientCapabilities
 		```
 		
@@ -83,6 +89,17 @@ package nvim.type.vim.lsp;
 		 Capabilities provided by the client (editor or tool), at startup.
 	**/
 	extern public var capabilities : nvim.type.lsp.ClientCapabilities;
+	/**
+		```lua
+		(field) vim.lsp.Client.commands: table<string, fun(command: lsp.Command, ctx: table)>
+		```
+		
+		---
+		
+		
+		 Client commands. See [vim.lsp.ClientConfig].
+	**/
+	extern public var commands : Commands;
 	/**
 		```lua
 		(field) vim.lsp.Client.config: vim.lsp.ClientConfig
@@ -156,6 +173,17 @@ package nvim.type.vim.lsp;
 	extern public function get_language_id(bufnr:Float, filetype:String):String;
 	/**
 		```lua
+		(field) vim.lsp.Client.handlers: table<string, fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown>
+		```
+		
+		---
+		
+		
+		 See [vim.lsp.ClientConfig].
+	**/
+	extern public var handlers : Handlers;
+	/**
+		```lua
 		(field) vim.lsp.Client.id: integer
 		```
 		
@@ -213,6 +241,22 @@ package nvim.type.vim.lsp;
 		 sent by the server.
 	**/
 	extern public var progress : nvim.type.vim.lsp.client.Progress;
+	/**
+		```lua
+		(field) vim.lsp.Client.requests: table<integer, { type: string, bufnr: integer, method: string }?>
+		```
+		
+		---
+		
+		
+		 The current pending requests in flight to the server. Entries are key-value
+		 pairs with the key being the request id while the value is a table with
+		 `type`, `bufnr`, and `method` key-value pairs. `type` is either "pending"
+		 for an active request, or "cancel" for a cancel request. It will be
+		 "complete" ephemerally while executing |LspRequest| autocmds when replies
+		 are received from the server.
+	**/
+	extern public var requests : Requests;
 	/**
 		```lua
 		(field) vim.lsp.Client.root_dir: string?
