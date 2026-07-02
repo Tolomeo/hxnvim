@@ -133,8 +133,6 @@ class Target {
 	}
 
 	public function createChild(childName:String, type:TargetType, file:String, spec:String) {
-		final type = this.type;
-
 		final input = Reflect.copy(this.input);
 		input.file = file;
 		input.spec = spec;

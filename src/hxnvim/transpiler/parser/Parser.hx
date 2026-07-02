@@ -1,24 +1,27 @@
 package hxnvim.transpiler.parser;
 
+import hxnvim.target.Target.TargetType;
 import haxe.Exception;
 
 using hxnvim.common.ArrayTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.MapTools;
+using hxnvim.common.NullTools;
 
 import hxnvim.common.Json;
 import hxnvim.transpiler.State;
+import hxnvim.transpiler.Transpiler;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.parser.Symbol;
 import hxnvim.transpiler.parser.Metadata;
 
 class Parser {
 	final symbol:Json;
-	final handleChild:(name:String, child:Json) -> Void;
+	final transpileChild:TranspileChild;
 
-	public function new(symbol:Json, handleChild:(name:String, child:Json) -> Void) {
+	public function new(symbol:Json, handleChild:TranspileChild) {
 		this.symbol = symbol;
-		this.handleChild = handleChild;
+		this.transpileChild = handleChild;
 	}
 
 	public function parse() {
@@ -34,7 +37,7 @@ class Parser {
 
 		return switch (type.select('kind').string()) {
 			case "table":
-				final symbol = new TableSymbolParser(name, doc, meta, access, type).parse(this.handleChild);
+				final symbol = new TableSymbolParser(name, doc, meta, access, type, this.transpileChild).parse();
 				return Symbol.TableSymbol(symbol);
 
 			case "typereference", "union", "unknown", "function", "builtin", "stringliteral", "numericliteral", "array":
@@ -47,5 +50,14 @@ class Parser {
 
 			case u: throw new Exception('Error parsing ${name}: ${u} not implemented');
 		}
+	}
+}
+
+class NamespaceModuleParser extends Parser {
+	override public function new(symbol:Json, transpileChild:TranspileChild) {
+		final transpileNamespaceChild = (childName:String, child:Json,
+			?childType:TargetType) -> transpileChild(childName, child, childType.or(TargetType.Module));
+
+		super(symbol, transpileNamespaceChild);
 	}
 }

@@ -9,6 +9,7 @@ using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.common.Json;
 import hxnvim.transpiler.State;
+import hxnvim.transpiler.Transpiler;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.parser.Type;
 import hxnvim.transpiler.parser.Metadata;
@@ -126,6 +127,13 @@ class EnumeratorSymbolParser extends SymbolParser {
 }
 
 class TableSymbolParser extends SymbolParser {
+	final transpileChild:TranspileChild;
+
+	override public function new(name:String, doc:String, meta:Array<SymbolMeta>, access:Array<SymbolAccess>, origin:Json, transpileChild:TranspileChild) {
+		super(name, doc, meta, access, origin);
+		this.transpileChild = transpileChild;
+	}
+
 	function parseField(name:String, doc:String, meta:Array<SymbolMeta>, access:Array<SymbolAccess>, field:Json) {
 		final type = field.select('type');
 
@@ -140,12 +148,26 @@ class TableSymbolParser extends SymbolParser {
 
 				TableField.Property(symbol, opt);
 
+			case "table":
+				this.transpileChild(name, field);
+
+				final symbol = {
+					name: name,
+					doc: doc,
+					meta: meta,
+					access: access,
+					type: LiteralType.Override(name.toTypeName())
+				}
+				final opt = false; // TODO: calculate
+
+				TableField.Property(symbol, opt);
+
 			case k:
 				throw new Exception('Unexpected kind "${k}" received for table "${this.name}" in field "${name}" of type ${type.getValue()}');
 		}
 	}
 
-	public function parse(handleNestedTable:(fieldName:String, origin:Json) -> Void) {
+	public function parse() {
 		final parsedTable = {
 			name: this.name,
 			doc: this.doc,
@@ -168,15 +190,12 @@ class TableSymbolParser extends SymbolParser {
 
 			final fieldName = field.select('name').string();
 
-			if (field.select('type', 'kind').string() == 'table') {
-				handleNestedTable(fieldName, field);
-				continue;
-			}
-
 			final fieldDoc = field.select('documentation').array().map(line -> line.string()).toDoc();
 
 			final metaParser = new MetaParser(field.select('meta'));
+
 			final fieldAccess = metaParser.parseAccess();
+
 			final fieldMeta = metaParser.parseMeta();
 
 			parsedTable.fields.push(this.parseField(fieldName, fieldDoc, fieldMeta, fieldAccess, field));
