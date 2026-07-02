@@ -1564,9 +1564,126 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_access(path:String, mode:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_access(path:String, mode:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_access(path, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_access(path: string, mode: string|integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `access(2)` on Unix. Windows uses `GetFileAttributesW()`. Access
+		 `mode` can be an integer or a string containing `"R"` or `"W"` or `"X"`.
+		 Returns `true` or `false` indicating access permission.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_access(path: string, mode: string|integer, callback: fun(err: string|nil, permission?: boolean))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_access(path:String, mode:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.fs_access.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_access(path, mode, callback);
+		return result;
 	}
 	@:native("fs_chmod")
 	@:luaDotMethod
@@ -1682,9 +1799,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_chmod(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_chmod(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_chmod(path, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_chmod(path: string, mode: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `chmod(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_chmod(path: string, mode: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_chmod(path:String, mode:Float, callback:nvim.type.uv.fs_chmod.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_chmod(path, mode, callback);
+		return result;
 	}
 	@:native("fs_chown")
 	@:luaDotMethod
@@ -1800,9 +2032,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_chown(path:String, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_chown(path:String, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_chown(path, uid, gid);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_chown(path: string, uid: integer, gid: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `chown(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_chown(path: string, uid: integer, gid: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_chown(path:String, uid:Float, gid:Float, callback:nvim.type.uv.fs_chown.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_chown(path, uid, gid, callback);
+		return result;
 	}
 	@:native("fs_close")
 	@:luaDotMethod
@@ -1918,9 +2265,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_close(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_close(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_close(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_close(fd: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `close(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_close(fd: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_close(fd:Float, callback:nvim.type.uv.fs_close.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_close(fd, callback);
+		return result;
 	}
 	@:native("fs_closedir")
 	@:luaDotMethod
@@ -2036,10 +2498,126 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_closedir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_closedir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		dir = nvim.helper.Arg.pure(dir);
 		final result = __fs_closedir(dir);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_closedir(dir: uv.luv_dir_t)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Closes a directory stream returned by a successful `uv.fs_opendir()` call.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_closedir(dir: uv.luv_dir_t, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_closedir(dir:nvim.type.uv.LuvDirT, callback:nvim.type.uv.fs_closedir.Callback):nvim.type.uv.UvFsT {
+		dir = nvim.helper.Arg.pure(dir);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_closedir(dir, callback);
+		return result;
 	}
 	@:native("fs_copyfile")
 	@:luaDotMethod
@@ -2167,10 +2745,263 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_copyfile(path:String, new_path:String, ?flags:nvim.type.uv.fs_copyfile.Flags):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_copyfile(path:String, new_path:String, ?flags:nvim.type.uv.fs_copyfile.Flags):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		final result = __fs_copyfile(path, new_path, flags);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_copyfile(path: string, new_path: string, flags?: integer|uv.fs_copyfile.flags_t)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Copies a file from path to new_path. If the `flags` parameter is omitted, then the 3rd parameter will be treated as the `callback`.
+		
+		 **Returns (sync version):** `boolean` or `fail`
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_copyfile(path: string, new_path: string, flags?: integer|uv.fs_copyfile.flags_t, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_copyfile(path: string, new_path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_copyfile(path:String, new_path:String, flags:nvim.type.uv.fs_copyfile.Flags, callback:nvim.type.uv.fs_copyfile.Callback):nvim.type.uv.UvFsT {
+		flags = nvim.helper.Arg.pure(flags);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_copyfile(path, new_path, flags, callback);
+		return result;
+	}
+	/**
+		```lua
+		function uv.fs_copyfile(path: string, new_path: string, flags?: integer|uv.fs_copyfile.flags_t)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Copies a file from path to new_path. If the `flags` parameter is omitted, then the 3rd parameter will be treated as the `callback`.
+		
+		 **Returns (sync version):** `boolean` or `fail`
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_copyfile(path: string, new_path: string, flags?: integer|uv.fs_copyfile.flags_t, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_copyfile(path: string, new_path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_copyfile(path:String, new_path:String, callback:nvim.type.uv.fs_copyfile.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_copyfile(path, new_path, callback);
+		return result;
 	}
 	@:native("fs_event_getpath")
 	@:luaDotMethod
@@ -2619,9 +3450,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fchmod(fd:Float, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_fchmod(fd:Float, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fchmod(fd, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_fchmod(fd: integer, mode: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `fchmod(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_fchmod(fd: integer, mode: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_fchmod(fd:Float, mode:Float, callback:nvim.type.uv.fs_fchmod.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_fchmod(fd, mode, callback);
+		return result;
 	}
 	@:native("fs_fchown")
 	@:luaDotMethod
@@ -2737,9 +3683,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_fchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fchown(fd, uid, gid);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_fchown(fd: integer, uid: integer, gid: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `fchown(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_fchown(fd: integer, uid: integer, gid: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_fchown(fd:Float, uid:Float, gid:Float, callback:nvim.type.uv.fs_fchown.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_fchown(fd, uid, gid, callback);
+		return result;
 	}
 	@:native("fs_fdatasync")
 	@:luaDotMethod
@@ -2855,9 +3916,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fdatasync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_fdatasync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fdatasync(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_fdatasync(fd: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `fdatasync(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_fdatasync(fd: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_fdatasync(fd:Float, callback:nvim.type.uv.fs_fdatasync.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_fdatasync(fd, callback);
+		return result;
 	}
 	@:native("fs_fstat")
 	@:luaDotMethod
@@ -2977,9 +4153,128 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fstat(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_fstat(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fstat(fd);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_fstat(fd: integer)
+		  -> stat: uv.fs_stat.result|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `fstat(2)`.
+		
+		 **Returns (sync version):** `table` or `fail` (see `uv.fs_stat`)
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_fstat(fd: integer, callback: fun(err: string|nil, stat: uv.fs_stat.result|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_fstat(fd:Float, callback:nvim.type.uv.fs_fstat.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_fstat(fd, callback);
+		return result;
 	}
 	@:native("fs_fsync")
 	@:luaDotMethod
@@ -3095,9 +4390,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_fsync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_fsync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_fsync(fd);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_fsync(fd: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `fsync(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_fsync(fd: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_fsync(fd:Float, callback:nvim.type.uv.fs_fsync.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_fsync(fd, callback);
+		return result;
 	}
 	@:native("fs_ftruncate")
 	@:luaDotMethod
@@ -3213,9 +4623,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_ftruncate(fd:Float, offset:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_ftruncate(fd:Float, offset:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_ftruncate(fd, offset);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_ftruncate(fd: integer, offset: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `ftruncate(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_ftruncate(fd: integer, offset: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_ftruncate(fd:Float, offset:Float, callback:nvim.type.uv.fs_ftruncate.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_ftruncate(fd, offset, callback);
+		return result;
 	}
 	@:native("fs_futime")
 	@:luaDotMethod
@@ -3331,9 +4856,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_futime(fd:Float, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_futime(fd:Float, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_futime(fd, atime, mtime);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_futime(fd: integer, atime: number, mtime: number)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `futime(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_futime(fd: integer, atime: number, mtime: number, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_futime(fd:Float, atime:Float, mtime:Float, callback:nvim.type.uv.fs_futime.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_futime(fd, atime, mtime, callback);
+		return result;
 	}
 	@:native("fs_lchown")
 	@:luaDotMethod
@@ -3449,9 +5089,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_lchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_lchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_lchown(fd, uid, gid);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_lchown(fd: integer, uid: integer, gid: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `lchown(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_lchown(fd: integer, uid: integer, gid: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_lchown(fd:Float, uid:Float, gid:Float, callback:nvim.type.uv.fs_lchown.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_lchown(fd, uid, gid, callback);
+		return result;
 	}
 	@:native("fs_link")
 	@:luaDotMethod
@@ -3571,9 +5326,128 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_link(path:String, new_path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_link(path:String, new_path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_link(path, new_path);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_link(path: string, new_path: string)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `link(2)`.
+		
+		 **Returns (sync version):** `boolean` or `fail`
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_link(path: string, new_path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_link(path:String, new_path:String, callback:nvim.type.uv.fs_link.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_link(path, new_path, callback);
+		return result;
 	}
 	@:native("fs_lstat")
 	@:luaDotMethod
@@ -3693,9 +5567,128 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_lstat(path:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_lstat(path:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_lstat(path);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_lstat(path: integer)
+		  -> stat: uv.fs_stat.result|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `lstat(2)`.
+		
+		 **Returns (sync version):** `table` or `fail` (see `uv.fs_stat`)
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_lstat(path: integer, callback: fun(err: string|nil, stat: uv.fs_stat.result|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_lstat(path:Float, callback:nvim.type.uv.fs_lstat.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_lstat(path, callback);
+		return result;
 	}
 	@:native("fs_lutime")
 	@:luaDotMethod
@@ -3811,9 +5804,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_lutime(path:String, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_lutime(path:String, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_lutime(path, atime, mtime);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_lutime(path: string, atime: number, mtime: number)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `lutime(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_lutime(path: string, atime: number, mtime: number, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_lutime(path:String, atime:Float, mtime:Float, callback:nvim.type.uv.fs_lutime.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_lutime(path, atime, mtime, callback);
+		return result;
 	}
 	@:native("fs_mkdir")
 	@:luaDotMethod
@@ -3929,9 +6037,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_mkdir(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_mkdir(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_mkdir(path, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_mkdir(path: string, mode: integer)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `mkdir(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_mkdir(path: string, mode: integer, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_mkdir(path:String, mode:Float, callback:nvim.type.uv.fs_mkdir.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_mkdir(path, mode, callback);
+		return result;
 	}
 	@:native("fs_mkdtemp")
 	@:luaDotMethod
@@ -4047,9 +6270,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_mkdtemp(template:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_mkdtemp(template:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_mkdtemp(template);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_mkdtemp(template: string)
+		  -> path: string|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `mkdtemp(3)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_mkdtemp(template: string, callback: fun(err: string|nil, path?: string))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_mkdtemp(template:String, callback:nvim.type.uv.fs_mkdtemp.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_mkdtemp(template, callback);
+		return result;
 	}
 	@:native("fs_mkstemp")
 	@:luaDotMethod
@@ -4165,9 +6503,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_mkstemp(template:String):nvim.helper.Multireturn.Return3<Null<Float>, String, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_mkstemp(template:String):nvim.helper.Multireturn.Return3<Null<Float>, String, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_mkstemp(template);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, String, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_mkstemp(template: string)
+		  -> fd: integer|nil
+		  2. path_or_errmsg: string
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `mkstemp(3)`. Returns a temporary file handle and filename.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_mkstemp(template: string, callback: fun(err: string|nil, fd?: integer, path?: string))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_mkstemp(template:String, callback:nvim.type.uv.fs_mkstemp.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_mkstemp(template, callback);
+		return result;
 	}
 	@:native("fs_open")
 	@:luaDotMethod
@@ -4313,10 +6766,156 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		final result = __fs_open(path, flags, mode);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_open(path: string, flags: string|integer|"a"|"a+"|"ax"|"ax+"|"r"|"r+"|"rs"|"rs+"|"sr"|"sr+"|"w"|"w+"|"wx"|"wx+"|"xa"|"xa+"|"xw"|"xw+", mode: integer)
+		  -> fd: integer|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `open(2)`. Access `flags` may be an integer or one of: `"r"`,
+		 `"rs"`, `"sr"`, `"r+"`, `"rs+"`, `"sr+"`, `"w"`, `"wx"`, `"xw"`, `"w+"`,
+		 `"wx+"`, `"xw+"`, `"a"`, `"ax"`, `"xa"`, `"a+"`, `"ax+"`, or "`xa+`".
+		
+		 **Returns (sync version):** `integer` or `fail`
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		 **Note:** On Windows, libuv uses `CreateFileW` and thus the file is always
+		 opened in binary mode. Because of this, the `O_BINARY` and `O_TEXT` flags are
+		 not supported.
+		
+		
+		
+		---
+		
+		```lua
+		flags:
+		    | "r"
+		    | "rs"
+		    | "sr"
+		    | "r+"
+		    | "rs+"
+		    | "sr+"
+		    | "w"
+		    | "wx"
+		    | "xw"
+		    | "w+"
+		    | "wx+"
+		    | "xw+"
+		    | "a"
+		    | "ax"
+		    | "xa"
+		    | "a+"
+		    | "ax+"
+		    | "xa+"
+		
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_open(path: string, flags: string|integer|"a"|"a+"|"ax"|"ax+"|"r"|"r+"|"rs"|"rs+"|"sr"|"sr+"|"w"|"w+"|"wx"|"wx+"|"xa"|"xa+"|"xw"|"xw+", mode: integer, callback: fun(err: string|nil, fd?: integer))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float, callback:nvim.type.uv.fs_open.Callback):nvim.type.uv.UvFsT {
+		flags = nvim.helper.Arg.pure(flags);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_open(path, flags, mode, callback);
+		return result;
 	}
 	@:native("fs_opendir")
 	@:luaDotMethod
@@ -4438,9 +7037,130 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_opendir(path:String):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.LuvDirT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_opendir(path:String):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.LuvDirT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_opendir(path);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.LuvDirT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_opendir(path: string)
+		  -> dir: uv.luv_dir_t|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Opens path as a directory stream. Returns a handle that the user can pass to
+		 `uv.fs_readdir()`. The `entries` parameter defines the maximum number of entries
+		 that should be returned by each call to `uv.fs_readdir()`.
+		
+		 **Returns (sync version):** `luv_dir_t userdata` or `fail`
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_opendir(path: string, callback: fun(err: string|nil, dir?: uv.luv_dir_t), entries?: integer)
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_opendir(path:String, callback:nvim.type.uv.fs_opendir.Callback, entries:Float):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_opendir(path, callback, entries);
+		return result;
 	}
 	@:native("fs_poll_getpath")
 	@:luaDotMethod
@@ -4894,9 +7614,128 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_read(fd:Float, size:Float, ?offset:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_read(fd:Float, size:Float, ?offset:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_read(fd, size, offset);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_read(fd: integer, size: integer, offset?: integer)
+		  -> data: string|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `preadv(2)`. Returns any data. An empty string indicates EOF.
+		
+		 If `offset` is nil or omitted, it will default to `-1`, which indicates 'use and update the current file offset.'
+		
+		 **Note:** When `offset` is >= 0, the current file offset will not be updated by the read.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_read(fd: integer, size: integer, offset?: integer, callback: fun(err: string|nil, data?: string))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_read(fd:Float, size:Float, offset:Float, callback:nvim.type.uv.fs_read.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_read(fd, size, offset, callback);
+		return result;
 	}
 	@:native("fs_readdir")
 	@:luaDotMethod
@@ -5015,10 +7854,129 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		dir = nvim.helper.Arg.pure(dir);
 		final result = __fs_readdir(dir);
 		return new nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_readdir(dir: uv.luv_dir_t)
+		  -> entries: uv.fs_readdir.entry[]|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Iterates over the directory stream `luv_dir_t` returned by a successful
+		 `uv.fs_opendir()` call. A table of data tables is returned where the number
+		 of entries `n` is equal to or less than the `entries` parameter used in
+		 the associated `uv.fs_opendir()` call.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_readdir(dir: uv.luv_dir_t, callback: fun(err: string|nil, entries: uv.fs_readdir.entry[]|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_readdir(dir:nvim.type.uv.LuvDirT, callback:nvim.type.uv.fs_readdir.Callback):nvim.type.uv.UvFsT {
+		dir = nvim.helper.Arg.pure(dir);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_readdir(dir, callback);
+		return result;
 	}
 	@:native("fs_readlink")
 	@:luaDotMethod
@@ -5134,9 +8092,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_readlink(path:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_readlink(path:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_readlink(path);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_readlink(path: string)
+		  -> path: string|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `readlink(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_readlink(path: string, callback: fun(err: string|nil, path?: string))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_readlink(path:String, callback:nvim.type.uv.fs_readlink.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_readlink(path, callback);
+		return result;
 	}
 	@:native("fs_realpath")
 	@:luaDotMethod
@@ -5252,9 +8325,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_realpath(path:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_realpath(path:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_realpath(path);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_realpath(path: string)
+		  -> realpath: string|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `realpath(3)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_realpath(path: string, callback: fun(err: string|nil, path?: string))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_realpath(path:String, callback:nvim.type.uv.fs_realpath.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_realpath(path, callback);
+		return result;
 	}
 	@:native("fs_rename")
 	@:luaDotMethod
@@ -5370,9 +8558,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_rename(path:String, new_path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_rename(path:String, new_path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_rename(path, new_path);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_rename(path: string, new_path: string)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `rename(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_rename(path: string, new_path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_rename(path:String, new_path:String, callback:nvim.type.uv.fs_rename.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_rename(path, new_path, callback);
+		return result;
 	}
 	@:native("fs_rmdir")
 	@:luaDotMethod
@@ -5488,9 +8791,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_rmdir(path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_rmdir(path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_rmdir(path);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_rmdir(path: string)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `rmdir(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_rmdir(path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_rmdir(path:String, callback:nvim.type.uv.fs_rmdir.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_rmdir(path, callback);
+		return result;
 	}
 	@:native("fs_scandir")
 	@:luaDotMethod
@@ -5832,9 +9250,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_sendfile(out_fd:Float, in_fd:Float, in_offset:Float, size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_sendfile(out_fd:Float, in_fd:Float, in_offset:Float, size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_sendfile(out_fd, in_fd, in_offset, size);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_sendfile(out_fd: integer, in_fd: integer, in_offset: integer, size: integer)
+		  -> bytes: integer|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Limited equivalent to `sendfile(2)`. Returns the number of bytes written.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_sendfile(out_fd: integer, in_fd: integer, in_offset: integer, size: integer, callback: fun(err: string|nil, bytes?: integer))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_sendfile(out_fd:Float, in_fd:Float, in_offset:Float, size:Float, callback:nvim.type.uv.fs_sendfile.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_sendfile(out_fd, in_fd, in_offset, size, callback);
+		return result;
 	}
 	@:native("fs_stat")
 	@:luaDotMethod
@@ -5979,9 +9512,153 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_stat(path:String):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_stat(path:String):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_stat(path);
 		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_stat(path: string)
+		  -> success: uv.fs_stat.result|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `stat(2)`.
+		
+		 **Returns (sync version):** `table` or `fail`
+		 - `dev` : `integer`
+		 - `mode` : `integer`
+		 - `nlink` : `integer`
+		 - `uid` : `integer`
+		 - `gid` : `integer`
+		 - `rdev` : `integer`
+		 - `ino` : `integer`
+		 - `size` : `integer`
+		 - `blksize` : `integer`
+		 - `blocks` : `integer`
+		 - `flags` : `integer`
+		 - `gen` : `integer`
+		 - `atime` : `table`
+		   - `sec` : `integer`
+		   - `nsec` : `integer`
+		 - `mtime` : `table`
+		   - `sec` : `integer`
+		   - `nsec` : `integer`
+		 - `ctime` : `table`
+		   - `sec` : `integer`
+		   - `nsec` : `integer`
+		 - `birthtime` : `table`
+		   - `sec` : `integer`
+		   - `nsec` : `integer`
+		 - `type` : `string`
+		
+		 **Returns (async version):** `uv_fs_t userdata`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_stat(path: string, callback: fun(err: string|nil, stat: uv.fs_stat.result|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_stat(path:String, callback:nvim.type.uv.fs_stat.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_stat(path, callback);
+		return result;
 	}
 	/**
 		```lua
@@ -6134,9 +9811,255 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_symlink(path, new_path, flags);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_symlink(path: string, new_path: string, flags?: integer|uv.fs_symlink.flags)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `symlink(2)`. If the `flags` parameter is omitted, then the 3rd parameter will be treated as the `callback`.
+		
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_symlink(path: string, new_path: string, flags?: integer|uv.fs_symlink.flags, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_symlink(path: string, new_path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_symlink(path:String, new_path:String, flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>, callback:nvim.type.uv.fs_symlink.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_symlink(path, new_path, flags, callback);
+		return result;
+	}
+	/**
+		```lua
+		function uv.fs_symlink(path: string, new_path: string, flags?: integer|uv.fs_symlink.flags)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `symlink(2)`. If the `flags` parameter is omitted, then the 3rd parameter will be treated as the `callback`.
+		
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_symlink(path: string, new_path: string, flags?: integer|uv.fs_symlink.flags, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_symlink(path: string, new_path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_symlink(path:String, new_path:String, callback:nvim.type.uv.fs_symlink.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_symlink(path, new_path, callback);
+		return result;
 	}
 	@:native("fs_unlink")
 	@:luaDotMethod
@@ -6252,9 +10175,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_unlink(path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_unlink(path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_unlink(path);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_unlink(path: string)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `unlink(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_unlink(path: string, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_unlink(path:String, callback:nvim.type.uv.fs_unlink.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_unlink(path, callback);
+		return result;
 	}
 	@:native("fs_utime")
 	@:luaDotMethod
@@ -6370,9 +10408,124 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_utime(path:String, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_utime(path:String, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __fs_utime(path, atime, mtime);
 		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_utime(path: string, atime: number, mtime: number)
+		  -> success: boolean|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `utime(2)`.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_utime(path: string, atime: number, mtime: number, callback: fun(err: string|nil, success: boolean|nil))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_utime(path:String, atime:Float, mtime:Float, callback:nvim.type.uv.fs_utime.Callback):nvim.type.uv.UvFsT {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_utime(path, atime, mtime, callback);
+		return result;
 	}
 	@:native("fs_write")
 	@:luaDotMethod
@@ -6492,10 +10645,130 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function fs_write(fd:Float, data:nvim.type.uv.Buffer, ?offset:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function fs_write(fd:Float, data:nvim.type.uv.Buffer, ?offset:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		final result = __fs_write(fd, data, offset);
 		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.fs_write(fd: integer, data: string|string[], offset?: integer)
+		  -> bytes: integer|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `pwritev(2)`. Returns the number of bytes written.
+		
+		 If `offset` is nil or omitted, it will default to `-1`, which indicates 'use and update the current file offset.'
+		
+		 **Note:** When `offset` is >= 0, the current file offset will not be updated by the write.
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.fs_write(fd: integer, data: string|string[], offset?: integer, callback: fun(err: string|nil, bytes?: integer))
+		  -> uv.uv_fs_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function fs_write(fd:Float, data:nvim.type.uv.Buffer, offset:Float, callback:nvim.type.uv.fs_write.Callback):nvim.type.uv.UvFsT {
+		data = nvim.helper.Arg.pure(data);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __fs_write(fd, data, offset, callback);
+		return result;
 	}
 	/**
 		```lua
@@ -6778,10 +11051,145 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		hints = nvim.helper.Arg.pure(hints);
 		final result = __getaddrinfo(host, service, hints);
 		return new nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.getaddrinfo(host: string, service: string, hints?: uv.getaddrinfo.hints)
+		  -> info: uv.getaddrinfo.result[]|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `getaddrinfo(3)`. Either `node` or `service` may be `nil` but not
+		 both.
+		
+		 Valid hint strings for the keys that take a string:
+		 - `family`: `"unix"`, `"inet"`, `"inet6"`, `"ipx"`,
+		 `"netlink"`, `"x25"`, `"ax25"`, `"atmpvc"`, `"appletalk"`, or `"packet"`
+		 - `socktype`: `"stream"`, `"dgram"`, `"raw"`,
+		 `"rdm"`, or `"seqpacket"`
+		 - `protocol`: will be looked up using the `getprotobyname(3)` function (examples: `"ip"`, `"icmp"`, `"tcp"`, `"udp"`, etc)
+		
+		 **Returns (sync version):** `table` or `fail`
+		 - `[1, 2, 3, ..., n]` : `table`
+		   - `addr` : `string`
+		   - `family` : `string`
+		   - `port` : `integer` or `nil`
+		   - `socktype` : `string`
+		   - `protocol` : `string`
+		   - `canonname` : `string` or `nil`
+		
+		 **Returns (async version):** `uv_getaddrinfo_t userdata` or `fail`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.getaddrinfo(host: string, service: string, hints?: uv.getaddrinfo.hints, callback: fun(err: string|nil, addresses: uv.getaddrinfo.result[]|nil))
+		  -> uv.uv_getaddrinfo_t
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function getaddrinfo(host:String, service:String, hints:nvim.type.uv.getaddrinfo.Hints, callback:nvim.type.uv.getaddrinfo.Callback):nvim.type.uv.UvGetaddrinfoT {
+		hints = nvim.helper.Arg.pure(hints);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __getaddrinfo(host, service, hints, callback);
+		return result;
 	}
 	/**
 		```lua
@@ -6920,10 +11328,135 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function getnameinfo(address:nvim.type.uv.getnameinfo.Address):nvim.helper.Multireturn.Return3<Null<String>, String, Null<nvim.type.uv.error.Name>> {
+	overload inline public function getnameinfo(address:nvim.type.uv.getnameinfo.Address):nvim.helper.Multireturn.Return3<Null<String>, String, Null<nvim.type.uv.error.Name>> {
 		address = nvim.helper.Arg.pure(address);
 		final result = __getnameinfo(address);
 		return new nvim.helper.Multireturn.Return3<Null<String>, String, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.getnameinfo(address: uv.getnameinfo.address)
+		  -> host: string|nil
+		  2. service_or_errmsg: string
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Equivalent to `getnameinfo(3)`.
+		
+		 When specified, `family` must be one of `"unix"`, `"inet"`, `"inet6"`, `"ipx"`,
+		 `"netlink"`, `"x25"`, `"ax25"`, `"atmpvc"`, `"appletalk"`, or `"packet"`.
+		
+		 **Returns (sync version):** `string, string` or `fail`
+		
+		 **Returns (async version):** `uv_getnameinfo_t userdata` or `fail`
+		
+		
+		
+		---
+		
+		```lua
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.getnameinfo(address: uv.getnameinfo.address, callback: fun(err: string|nil, host?: string, service?: string))
+		  -> uv.uv_getnameinfo_t|nil
+		  2. string|nil
+		  3. string|nil
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function getnameinfo(address:nvim.type.uv.getnameinfo.Address, callback:nvim.type.uv.getnameinfo.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvGetnameinfoT>, Null<String>, Null<String>> {
+		address = nvim.helper.Arg.pure(address);
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __getnameinfo(address, callback);
+		return new nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvGetnameinfoT>, Null<String>, Null<String>>(result._0, result._1, result._2);
 	}
 	/**
 		```lua
@@ -13094,9 +17627,143 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	inline public function random(len:Float, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
+	overload inline public function random(len:Float, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		final result = __random(len, flags);
 		return new nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+	}
+	/**
+		```lua
+		function uv.random(len: integer, flags?: table|0)
+		  -> bytes: string|nil
+		  2. err: string|nil
+		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
+		```
+		
+		---
+		
+		 Fills a string of length `len` with cryptographically strong random bytes
+		 acquired from the system CSPRNG. `flags` is reserved for future extension
+		 and must currently be `nil` or `0` or `{}`.
+		
+		 Short reads are not possible. When less than `len` random bytes are available,
+		 a non-zero error value is returned or passed to the callback. If the callback
+		 is omitted, this function is completed synchronously.
+		
+		 The synchronous version may block indefinitely when not enough entropy is
+		 available. The asynchronous version may not ever finish when the system is
+		 low on entropy.
+		
+		 **Returns (sync version):** `string` or `fail`
+		
+		 **Returns (async version):** `0` or `fail`
+		
+		
+		
+		---
+		
+		```lua
+		flags:
+		    | 0
+		
+		--  An error name string
+		-- 
+		err_name:
+		    | "E2BIG" -- argument list too long
+		    | "EACCES" -- permission denied
+		    | "EADDRINUSE" -- address already in use
+		    | "EADDRNOTAVAIL" -- address not available
+		    | "EAFNOSUPPORT" -- address family not supported
+		    | "EAGAIN" -- resource temporarily unavailable
+		    | "EAI_ADDRFAMILY" -- address family not supported
+		    | "EAI_AGAIN" -- temporary failure
+		    | "EAI_BADFLAGS" -- bad ai_flags value
+		    | "EAI_BADHINTS" -- invalid value for hints
+		    | "EAI_CANCELED" -- request canceled
+		    | "EAI_FAIL" -- permanent failure
+		    | "EAI_FAMILY" -- ai_family not supported
+		    | "EAI_MEMORY" -- out of memory
+		    | "EAI_NODATA" -- no address
+		    | "EAI_NONAME" -- unknown node or service
+		    | "EAI_OVERFLOW" -- argument buffer overflow
+		    | "EAI_PROTOCOL" -- resolved protocol is unknown
+		    | "EAI_SERVICE" -- service not available for socket type
+		    | "EAI_SOCKTYPE" -- socket type not supported
+		    | "EALREADY" -- connection already in progress
+		    | "EBADF" -- bad file descriptor
+		    | "EBUSY" -- resource busy or locked
+		    | "ECANCELED" -- operation canceled
+		    | "ECHARSET" -- invalid Unicode character
+		    | "ECONNABORTED" -- software caused connection abort
+		    | "ECONNREFUSED" -- connection refused
+		    | "ECONNRESET" -- connection reset by peer
+		    | "EDESTADDRREQ" -- destination address required
+		    | "EEXIST" -- file already exists
+		    | "EFAULT" -- bad address in system call argument
+		    | "EFBIG" -- file too large
+		    | "EFTYPE" -- inappropriate file type or format
+		    | "EHOSTUNREACH" -- host is unreachable
+		    | "EILSEQ" -- illegal byte sequence
+		    | "EINTR" -- interrupted system call
+		    | "EINVAL" -- invalid argument
+		    | "EIO" -- i/o error
+		    | "EISCONN" -- socket is already connected
+		    | "EISDIR" -- illegal operation on a directory
+		    | "ELOOP" -- too many symbolic links encountered
+		    | "EMFILE" -- too many open files
+		    | "EMLINK" -- too many links
+		    | "EMSGSIZE" -- message too long
+		    | "ENAMETOOLONG" -- name too long
+		    | "ENETDOWN" -- network is down
+		    | "ENETUNREACH" -- network is unreachable
+		    | "ENFILE" -- file table overflow
+		    | "ENOBUFS" -- no buffer space available
+		    | "ENODEV" -- no such device
+		    | "ENOENT" -- no such file or directory
+		    | "ENOMEM" -- not enough memory
+		    | "ENONET" -- machine is not on the network
+		    | "ENOPROTOOPT" -- protocol not available
+		    | "ENOSPC" -- no space left on device
+		    | "ENOSYS" -- function not implemented
+		    | "ENOTCONN" -- socket is not connected
+		    | "ENOTDIR" -- not a directory
+		    | "ENOTEMPTY" -- directory not empty
+		    | "ENOTSOCK" -- socket operation on non-socket
+		    | "ENOTSUP" -- operation not supported on socket
+		    | "ENOTTY" -- inappropriate ioctl for device
+		    | "ENXIO" -- no such device or address
+		    | "EOF" -- end of file
+		    | "EOVERFLOW" -- value too large for defined data type
+		    | "EPERM" -- operation not permitted
+		    | "EPIPE" -- broken pipe
+		    | "EPROTO" -- protocol error
+		    | "EPROTONOSUPPORT" -- protocol not supported
+		    | "EPROTOTYPE" -- protocol wrong type for socket
+		    | "ERANGE" -- result too large
+		    | "EROFS" -- read-only file system
+		    | "ESHUTDOWN" -- cannot send after transport endpoint shutdown
+		    | "ESOCKTNOSUPPORT" -- socket type not supported
+		    | "ESPIPE" -- invalid seek
+		    | "ESRCH" -- no such process
+		    | "ETIMEDOUT" -- connection timed out
+		    | "ETXTBSY" -- text file is busy
+		    | "EXDEV" -- cross-device link not permitted
+		    | "UNKNOWN" -- unknown error
+		```
+		
+		---
+		
+		```lua
+		function uv.random(len: integer, flags?: nil, callback: fun(err: string|nil, bytes?: string))
+		  -> 0|nil
+		  2. string?
+		  3. string?
+		```
+	**/
+	@:luaDotMethod
+	overload inline public function random(len:Float, flags:Void, callback:nvim.type.uv.random.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<String>, Null<String>> {
+		callback = nvim.helper.Arg.pure(callback);
+		final result = __random(len, flags, callback);
+		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<String>, Null<String>>(result._0, result._1, result._2);
 	}
 	@:native("read_start")
 	@:luaDotMethod
