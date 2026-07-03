@@ -257,7 +257,7 @@ class MethodGenerator extends FieldGenerator {
 	}
 }
 
-class DataPropertyGenerator extends PropertyGenerator {
+class AnnotationPropertyGenerator extends PropertyGenerator {
 	override function generateAccess(propertyAccess:Array<SymbolAccess>) {
 		final dataPropertyAccess = super.generateAccess(propertyAccess);
 
@@ -272,7 +272,7 @@ class DataPropertyGenerator extends PropertyGenerator {
 	}
 }
 
-class DataMethodGenerator extends MethodGenerator {
+class AnnotationMethodGenerator extends MethodGenerator {
 	override function generateAccess(methodAccess:Array<SymbolAccess>) {
 		final dataMethodAccess = super.generateAccess(methodAccess);
 
@@ -316,19 +316,19 @@ class DataMethodGenerator extends MethodGenerator {
 	}
 }
 
-class SingletonPropertyGenerator extends PropertyGenerator {
+class NamespacePropertyGenerator extends PropertyGenerator {
 	override function generateAccess(propertyAccess:Array<SymbolAccess>) {
 		return [AStatic].concat(super.generateAccess(propertyAccess));
 	}
 }
 
-class SingletonMethodGenerator extends MethodGenerator {
+class NamespaceMethodGenerator extends MethodGenerator {
 	override function generateAccess(methodAccess:Array<SymbolAccess>) {
 		return [AStatic].concat(super.generateAccess(methodAccess));
 	}
 }
 
-class InstanceMethodGenerator extends MethodGenerator {
+class ModuleMethodGenerator extends MethodGenerator {
 	override function generateMeta(methodMeta:Array<SymbolMeta>, overloads:Array<Signature>) {
 		final instanceClassMethodMeta = new Array<MetadataEntry>();
 

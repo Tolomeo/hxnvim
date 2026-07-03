@@ -14,7 +14,7 @@ import hxnvim.transpiler.generator.Enumerator;
 
 typedef Module = Array<TypeDefinition>;
 
-private class Generator {
+abstract class Generator {
 	final printer:Printer;
 
 	public function new() {
@@ -22,7 +22,7 @@ private class Generator {
 	}
 
 	function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
-		return new InstanceClassGenerator(table).generate(meta);
+		return new ModuleClassGenerator(table).generate(meta);
 	}
 
 	function generateAliasType(alias:Alias, ?meta:Array<SymbolMeta>) {
@@ -55,7 +55,7 @@ private class Generator {
 
 class NamespaceModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
-		return new SingletonClassGenerator(table).generate(meta);
+		return new NamespaceClassGenerator(table).generate(meta);
 	}
 
 	override function generateType(symbol:Symbol, ?meta:Array<SymbolMeta>) {
@@ -70,11 +70,11 @@ class NamespaceModuleGenerator extends Generator {
 	}
 }
 
-class TypeModuleGenerator extends Generator {
+class AnnotationModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
 		meta = [SymbolMeta.StructInit].concat(meta.or([]));
 
-		return new DataClassGenerator(table).generate(meta);
+		return new AnnotationClassGenerator(table).generate(meta);
 	}
 }
 

@@ -94,13 +94,13 @@ private abstract class ClassGenerator {
 	}
 }
 
-class DataClassGenerator extends ClassGenerator {
+class AnnotationClassGenerator extends ClassGenerator {
 	override function generateMethod(method:Function, opt:Bool) {
-		return new DataMethodGenerator(method, opt).generate();
+		return new AnnotationMethodGenerator(method, opt).generate();
 	}
 
 	override function generateProperty(property:Variable, opt:Bool) {
-		return new DataPropertyGenerator(property, opt).generate();
+		return new AnnotationPropertyGenerator(property, opt).generate();
 	}
 
 	override function generateDefinition(name:String, doc:String, meta:Array<MetadataEntry>, fields:Array<Field>):TypeDefinition {
@@ -112,19 +112,19 @@ class DataClassGenerator extends ClassGenerator {
 	}
 }
 
-class InstanceClassGenerator extends ClassGenerator {
+class ModuleClassGenerator extends ClassGenerator {
 	override function generateMethod(method:Function, opt:Bool) {
-		return new InstanceMethodGenerator(method, opt).generate();
+		return new ModuleMethodGenerator(method, opt).generate();
 	}
 }
 
 // TODO: detect when a function is treated as a method, and automatically add the first self argument
-class SingletonClassGenerator extends ClassGenerator {
+class NamespaceClassGenerator extends ClassGenerator {
 	override function generateMethod(method:Function, opt:Bool) {
-		return new SingletonMethodGenerator(method, opt).generate();
+		return new NamespaceMethodGenerator(method, opt).generate();
 	}
 
 	override function generateProperty(property:Variable, opt:Bool) {
-		return new SingletonPropertyGenerator(property, opt).generate();
+		return new NamespacePropertyGenerator(property, opt).generate();
 	}
 }
