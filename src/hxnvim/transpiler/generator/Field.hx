@@ -150,6 +150,8 @@ class MethodGenerator extends FieldGenerator {
 	}
 
 	function generateFacade(method:Field, name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
+		final params = signature.params.copy();
+		final args = signature.args.copy();
 		final returnTypes = switch (signature.ret) {
 			case LiteralType.Multireturn(rs):
 				rs.map(r -> switch (r) {
@@ -159,34 +161,26 @@ class MethodGenerator extends FieldGenerator {
 				});
 			case type: [new LiteralTypeGenerator().generateType(type)];
 		};
-		final returnType = switch (returnTypes) {
+		final ret = switch (returnTypes) {
 			case [r]: r;
 			case types: Target.toHelperReference('Multireturn.Return${types.length}<${types.join(", ")}>');
 		}
-		final pureArgs = signature.args.fold((arg:Arg, pures:Array<String>) -> {
+		final pureArgs = args.fold((arg:Arg, pures:Array<String>) -> {
 			if (arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
 				pures.push('${arg.name} = ${Target.toHelperReference("Arg")}.pure(${arg.name})');
 			}
 			return pures;
 		}, []);
-		final callArgs = signature.args.map(a -> switch (a.type) {
+		final callArgs = args.map(a -> switch (a.type) {
 			case LiteralType.Rest(_): "..." + a.name;
 			case _: a.name;
 		});
-		final call = '${method.name}(${callArgs.join(", ")})';
-		final callResultAssignment = 'final result = ${call}';
-		final returnStatement = switch (returnTypes) {
-			case [r]: 'return result';
-			case returns:
-				final returnArgs = returns.mapi((i, _) -> 'result._${i}');
-				'return new ${returnType}(${returnArgs.join(", ")})';
-		}
+		final call = 'return ${method.name}(${callArgs.join(", ")})';
 		final expr = macro $b{
-			pureArgs.map(arg -> macro $i{arg}).concat([macro $i{callResultAssignment}, macro $i{returnStatement}])
+			pureArgs.map(arg -> macro $i{arg}).concat([macro $i{call}])
 		}
 
-		final facade = this.generateDefinition(name, doc, meta, access,
-			this.generateFunctionKind(signature.params, signature.args, LiteralType.Override(returnType), expr));
+		final facade = this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(params, args, LiteralType.Override(ret), expr));
 
 		return facade;
 	}
@@ -239,7 +233,9 @@ class MethodGenerator extends FieldGenerator {
 
 	public function generate():Array<Field> {
 		final name = this.method.name.toFieldName();
+
 		final doc = this.method.doc;
+
 		final methodMeta = this.method.meta.copy();
 		if (name != this.method.name) {
 			methodMeta.unshift(SymbolMeta.Native(this.method.name));
@@ -248,6 +244,7 @@ class MethodGenerator extends FieldGenerator {
 			methodMeta.unshift(SymbolMeta.Optional);
 		}
 		final meta = this.generateMeta(methodMeta, this.method.overloads);
+
 		final access = this.generateAccess(this.method.access);
 
 		final field = this.generateDefinition(name, doc, meta, access,
