@@ -27,8 +27,7 @@ extern class Python {
 	**/
 	@:luaDotMethod
 	inline function detect_by_module(module:String):nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
-		final result = __detect_by_module(module);
-		return new nvim.helper.Multireturn.Return2<Null<String>, Null<String>>(result._0, result._1);
+		return __detect_by_module(module);
 	}
 	/**
 		```lua

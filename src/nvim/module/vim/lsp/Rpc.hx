@@ -62,8 +62,7 @@ extern class Rpc {
 	@:luaDotMethod
 	inline function format_rpc_error(err:lua.Table.AnyTable):String {
 		err = nvim.helper.Arg.pure(err);
-		final result = __format_rpc_error(err);
-		return result;
+		return __format_rpc_error(err);
 	}
 	/**
 		```lua
@@ -107,7 +106,6 @@ extern class Rpc {
 	inline function start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient {
 		dispatchers = nvim.helper.Arg.pure(dispatchers);
 		extra_spawn_params = nvim.helper.Arg.pure(extra_spawn_params);
-		final result = __start(cmd, dispatchers, extra_spawn_params);
-		return result;
+		return __start(cmd, dispatchers, extra_spawn_params);
 	}
 }

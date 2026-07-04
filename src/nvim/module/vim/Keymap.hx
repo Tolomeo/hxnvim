@@ -23,8 +23,7 @@ extern class Keymap {
 	@:luaDotMethod
 	inline function del(modes:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __del(modes, lhs, opts);
-		return result;
+		return __del(modes, lhs, opts);
 	}
 	@:native("set")
 	@:luaDotMethod
@@ -62,7 +61,6 @@ extern class Keymap {
 	@:luaDotMethod
 	inline function set(mode:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __set(mode, lhs, rhs, opts);
-		return result;
+		return __set(mode, lhs, rhs, opts);
 	}
 }

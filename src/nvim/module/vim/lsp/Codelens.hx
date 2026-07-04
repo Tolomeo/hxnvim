@@ -58,8 +58,7 @@ extern class Codelens {
 	@:luaDotMethod
 	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
-		final result = __on_codelens(err, result, ctx);
-		return result;
+		return __on_codelens(err, result, ctx);
 	}
 	@:native("refresh")
 	@:luaDotMethod
@@ -86,8 +85,7 @@ extern class Codelens {
 	@:luaDotMethod
 	inline function refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __refresh(opts);
-		return result;
+		return __refresh(opts);
 	}
 	/**
 		```lua

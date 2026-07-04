@@ -27,8 +27,7 @@ extern class Perl {
 	**/
 	@:luaDotMethod
 	inline function detect():nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
-		final result = __detect();
-		return new nvim.helper.Multireturn.Return2<Null<String>, Null<String>>(result._0, result._1);
+		return __detect();
 	}
 	/**
 		```lua

@@ -70,8 +70,7 @@ extern class InlayHint {
 	@:luaDotMethod
 	inline function is_enabled(?filter:nvim.type.vim.lsp.inlay_hint.enable.Filter):Bool {
 		filter = nvim.helper.Arg.pure(filter);
-		final result = __is_enabled(filter);
-		return result;
+		return __is_enabled(filter);
 	}
 	@:native("on_inlayhint")
 	@:luaDotMethod
@@ -89,8 +88,7 @@ extern class InlayHint {
 	@:luaDotMethod
 	inline private function on_inlayhint(err:Dynamic, result:Null<lua.Table<Int, nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
-		final result = __on_inlayhint(err, result, ctx);
-		return result;
+		return __on_inlayhint(err, result, ctx);
 	}
 	@:native("on_refresh")
 	@:luaDotMethod
@@ -108,7 +106,6 @@ extern class InlayHint {
 	@:luaDotMethod
 	inline private function on_refresh(err:Dynamic, _:Dynamic, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
-		final result = __on_refresh(err, _, ctx);
-		return result;
+		return __on_refresh(err, _, ctx);
 	}
 }

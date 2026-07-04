@@ -169,8 +169,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline private function buf_request(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn.Return2<lua.Table<Float, Float>, haxe.Constraints.Function> {
 		handler = nvim.helper.Arg.pure(handler);
-		final result = __buf_request(bufnr, method, params, handler, on_unsupported);
-		return new nvim.helper.Multireturn.Return2<lua.Table<Float, Float>, haxe.Constraints.Function>(result._0, result._1);
+		return __buf_request(bufnr, method, params, handler, on_unsupported);
 	}
 	@:native("buf_request_all")
 	@:luaDotMethod
@@ -205,8 +204,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline function buf_request_all(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function {
 		handler = nvim.helper.Arg.pure(handler);
-		final result = __buf_request_all(bufnr, method, params, handler);
-		return result;
+		return __buf_request_all(bufnr, method, params, handler);
 	}
 	@:native("buf_request_sync")
 	@:luaDotMethod
@@ -244,8 +242,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline function buf_request_sync(bufnr:Float, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Float>):nvim.helper.Multireturn.Return2<Null<lua.Table<Float, { @:optional
 	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>> {
-		final result = __buf_request_sync(bufnr, method, params, timeout_ms);
-		return new nvim.helper.Multireturn.Return2<Null<lua.Table<Float, { ?error:Null<nvim.type.lsp.ResponseError>, result:Any }>>, Null<String>>(result._0, result._1);
+		return __buf_request_sync(bufnr, method, params, timeout_ms);
 	}
 	/**
 		```lua
@@ -421,8 +418,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline function foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Float):Dynamic {
 		kind = nvim.helper.Arg.pure(kind);
-		final result = __foldclose(kind, winid);
-		return result;
+		return __foldclose(kind, winid);
 	}
 	/**
 		```lua
@@ -516,8 +512,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline function formatexpr(?opts:nvim.type.vim.lsp.formatexpr.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __formatexpr(opts);
-		return result;
+		return __formatexpr(opts);
 	}
 	/**
 		```lua
@@ -580,8 +575,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline function get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):lua.Table<Int, nvim.type.vim.lsp.Client> {
 		filter = nvim.helper.Arg.pure(filter);
-		final result = __get_clients(filter);
-		return result;
+		return __get_clients(filter);
 	}
 	/**
 		```lua
@@ -787,8 +781,7 @@ extern class Lsp {
 	@:luaDotMethod
 	inline function start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Float> {
 		config = nvim.helper.Arg.pure(config);
-		final result = __start(config, opts);
-		return result;
+		return __start(config, opts);
 	}
 	@:native("start_client")
 	@:luaDotMethod
@@ -817,8 +810,7 @@ extern class Lsp {
 	@:deprecated
 	inline function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn.Return2<Null<Float>, Null<String>> {
 		config = nvim.helper.Arg.pure(config);
-		final result = __start_client(config);
-		return new nvim.helper.Multireturn.Return2<Null<Float>, Null<String>>(result._0, result._1);
+		return __start_client(config);
 	}
 	/**
 		```lua
@@ -910,7 +902,6 @@ extern class Lsp {
 	inline function with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic {
 		handler = nvim.helper.Arg.pure(handler);
 		override_config = nvim.helper.Arg.pure(override_config);
-		final result = __with(handler, override_config);
-		return result;
+		return __with(handler, override_config);
 	}
 }

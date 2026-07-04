@@ -76,8 +76,7 @@ extern class Diagnostic {
 	inline function on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		result = nvim.helper.Arg.pure(result);
 		ctx = nvim.helper.Arg.pure(ctx);
-		final result = __on_diagnostic(error, result, ctx);
-		return result;
+		return __on_diagnostic(error, result, ctx);
 	}
 	@:native("on_publish_diagnostics")
 	@:luaDotMethod
@@ -97,8 +96,7 @@ extern class Diagnostic {
 	inline function on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		params = nvim.helper.Arg.pure(params);
 		ctx = nvim.helper.Arg.pure(ctx);
-		final result = __on_publish_diagnostics(_, params, ctx);
-		return result;
+		return __on_publish_diagnostics(_, params, ctx);
 	}
 	@:native("reset")
 	@:luaDotMethod
@@ -121,7 +119,6 @@ extern class Diagnostic {
 	@:luaDotMethod
 	inline private function reset(client_id:Float, buffer_client_map:lua.Table<Float, lua.Table<Float, lua.Table.AnyTable>>):Dynamic {
 		buffer_client_map = nvim.helper.Arg.pure(buffer_client_map);
-		final result = __reset(client_id, buffer_client_map);
-		return result;
+		return __reset(client_id, buffer_client_map);
 	}
 }

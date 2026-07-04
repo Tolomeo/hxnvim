@@ -21,8 +21,7 @@ extern class Dev {
 	**/
 	@:luaDotMethod
 	inline private function edit_query(?lang:String):nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>> {
-		final result = __edit_query(lang);
-		return new nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>>(result._0, result._1);
+		return __edit_query(lang);
 	}
 	/**
 		```lua

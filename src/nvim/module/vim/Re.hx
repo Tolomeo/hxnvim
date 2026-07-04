@@ -26,8 +26,7 @@ extern class Re {
 	@:luaDotMethod
 	inline function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern {
 		defs = nvim.helper.Arg.pure(defs);
-		final result = __compile(string, defs);
-		return result;
+		return __compile(string, defs);
 	}
 	@:native("find")
 	@:luaDotMethod
@@ -61,8 +60,7 @@ extern class Re {
 	**/
 	@:luaDotMethod
 	inline function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Float):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
-		final result = __find(subject, pattern, init);
-		return new nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>>(result._0, result._1);
+		return __find(subject, pattern, init);
 	}
 	/**
 		```lua
