@@ -1,5 +1,6 @@
 package hxnvim.transpiler.generator;
 
+import haxe.ds.Option;
 import haxe.Exception;
 import haxe.macro.Expr;
 import haxe.macro.Context;
@@ -150,20 +151,35 @@ class MethodGenerator extends FieldGenerator {
 	}
 
 	function generateFacade(method:Field, name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
-		final params = signature.params.copy();
-		final args = signature.args.map(arg -> switch (arg.type) {
-			case LiteralType.Array(itemsType): {
-					name: arg.name,
-					type: LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')),
-					opt: arg.opt
-				};
-			case LiteralType.Table(LiteralType.Integer, itemsType): {
-					name: arg.name,
-					type: LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')),
-					opt: arg.opt
-				};
-			case _: arg;
-		});
+		final facadeParams = signature.params.copy();
+		final facadeArgs = signature.args.map((arg -> {
+			final name = arg.name;
+			final type = switch (arg.type) {
+				case LiteralType.Array(itemsType): LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>'));
+				case LiteralType.Table(LiteralType.Integer,
+					itemsType): LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>'));
+				case argType: argType;
+			}
+			final pure = if (type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
+				Option.Some(Target.toHelperReference('Arg.pure(${name})'));
+			} else {
+				Option.None;
+			}
+			final call = switch (arg.type) {
+				case LiteralType.Rest(_): '...${name}';
+				case _: name;
+			}
+			final opt = arg.opt;
+
+			return {
+				name: name,
+				type: type,
+				opt: opt,
+				pure: pure,
+				call: call,
+			};
+		}));
+
 		final returnTypes = switch (signature.ret) {
 			case LiteralType.Multireturn(rs):
 				rs.map(r -> switch (r) {
@@ -173,26 +189,26 @@ class MethodGenerator extends FieldGenerator {
 				});
 			case type: [new LiteralTypeGenerator().generateType(type)];
 		};
+
 		final ret = switch (returnTypes) {
 			case [r]: r;
 			case types: Target.toHelperReference('Multireturn.Return${types.length}<${types.join(", ")}>');
 		}
-		final pureArgs = args.fold((arg:Arg, pures:Array<String>) -> {
-			if (arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
-				pures.push('${arg.name} = ${Target.toHelperReference("Arg")}.pure(${arg.name})');
+
+		final pureArgs = facadeArgs.fold((arg:{name:String, pure:Option<String>}, pures:Array<String>) -> {
+			return switch (arg.pure) {
+				case Some(argPure): pures.concat(['${arg.name} = ${argPure}']);
+				case None: pures;
 			}
-			return pures;
 		}, []);
-		final callArgs = args.map(a -> switch (a.type) {
-			case LiteralType.Rest(_): "..." + a.name;
-			case _: a.name;
-		});
-		final call = 'return ${method.name}(${callArgs.join(", ")})';
+
+		final call = 'return ${method.name}(${facadeArgs.map(a -> a.call).join(", ")})';
+
 		final expr = macro $b{
 			pureArgs.map(arg -> macro $i{arg}).concat([macro $i{call}])
 		}
 
-		final facade = this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(params, args, LiteralType.Override(ret), expr));
+		final facade = this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(facadeParams, facadeArgs, LiteralType.Override(ret), expr));
 
 		return facade;
 	}
