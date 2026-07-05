@@ -105,7 +105,6 @@ extern class Treesitter {
 		
 		@*param* `node_or_range` — Node or table of positions
 	**/
-	@:luaDotMethod
 	inline function get_node_range(node_or_range:haxe.extern.EitherType<nvim.type.TSNode, nvim.type.Range4>):nvim.helper.Multireturn.Return4<Float, Float, Float, Float> {
 		return __get_node_range(node_or_range);
 	}
@@ -129,7 +128,6 @@ extern class Treesitter {
 		          - metadata (table) Metadata of a specific capture. This would be
 		            set to `metadata[capture_id]` when using |vim.treesitter.query.add_directive()|.
 	**/
-	@:luaDotMethod
 	inline function get_node_text(node:nvim.type.TSNode, source:haxe.extern.EitherType<Float, String>, ?opts:Null<lua.Table.AnyTable>):String {
 		node = nvim.helper.Arg.pure(node);
 		return __get_node_text(node, source, opts);
@@ -165,7 +163,6 @@ extern class Treesitter {
 		
 		@*return* `error` — message, if applicable
 	**/
-	@:luaDotMethod
 	inline function get_parser(?bufnr:Null<Float>, ?lang:Null<String>, ?opts:Null<lua.Table.AnyTable>):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.treesitter.LanguageTree>, Null<String>> {
 		return __get_parser(bufnr, lang, opts);
 	}
@@ -185,7 +182,6 @@ extern class Treesitter {
 		
 		@*param* `source` — Buffer or string from which the {node} is extracted
 	**/
-	@:luaDotMethod
 	inline function get_range(node:nvim.type.TSNode, ?source:Null<haxe.extern.EitherType<Float, String>>, ?metadata:Null<nvim.type.vim.treesitter.query.TSMetadata>):nvim.type.Range6 {
 		node = nvim.helper.Arg.pure(node);
 		return __get_range(node, source, metadata);
@@ -269,7 +265,6 @@ extern class Treesitter {
 		
 		@*return* `True` — if {dest} is an ancestor of {source}
 	**/
-	@:luaDotMethod
 	inline function is_ancestor(dest:nvim.type.TSNode, source:nvim.type.TSNode):Bool {
 		dest = nvim.helper.Arg.pure(dest);
 		source = nvim.helper.Arg.pure(source);
@@ -297,7 +292,6 @@ extern class Treesitter {
 		
 		@*return* `True` — if the position is in node range
 	**/
-	@:luaDotMethod
 	inline function is_in_node_range(node:nvim.type.TSNode, line:Float, col:Float):Bool {
 		node = nvim.helper.Arg.pure(node);
 		return __is_in_node_range(node, line, col);
@@ -350,7 +344,6 @@ extern class Treesitter {
 		
 		@*return* `True` — if the {node} contains the {range}
 	**/
-	@:luaDotMethod
 	inline function node_contains(node:nvim.type.TSNode, range:lua.Table.AnyTable):Bool {
 		node = nvim.helper.Arg.pure(node);
 		range = nvim.helper.Arg.pure(range);

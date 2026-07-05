@@ -20,7 +20,6 @@ extern class Snippet {
 		 - `direction` (vim.snippet.Direction): Navigation direction. Will return `true` if the snippet
 		 can be jumped in the given direction.
 	**/
-	@:luaDotMethod
 	inline function active(?filter:nvim.type.vim.snippet.ActiveFilter):Bool {
 		filter = nvim.helper.Arg.pure(filter);
 		return __active(filter);
@@ -72,7 +71,6 @@ extern class Snippet {
 		    | 1
 		```
 	**/
-	@:luaDotMethod
 	inline function jump(direction:nvim.type.vim.snippet.Direction):Dynamic {
 		direction = nvim.helper.Arg.pure(direction);
 		return __jump(direction);

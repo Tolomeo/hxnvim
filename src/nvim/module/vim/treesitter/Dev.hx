@@ -19,7 +19,6 @@ extern class Dev {
 		
 		@*return* `error` — message, if applicable
 	**/
-	@:luaDotMethod
 	inline private function edit_query(?lang:String):nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>> {
 		return __edit_query(lang);
 	}

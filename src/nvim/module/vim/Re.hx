@@ -23,7 +23,6 @@ extern class Re {
 		  -> unknown
 		```
 	**/
-	@:luaDotMethod
 	inline function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern {
 		defs = nvim.helper.Arg.pure(defs);
 		return __compile(string, defs);
@@ -58,7 +57,6 @@ extern class Re {
 		  2. unknown|nil
 		```
 	**/
-	@:luaDotMethod
 	inline function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Float):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
 		return __find(subject, pattern, init);
 	}

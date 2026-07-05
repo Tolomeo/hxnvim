@@ -59,7 +59,6 @@ extern class Loader {
 		
 		@*param* `opts` — Options for finding a module:
 	**/
-	@:luaDotMethod
 	inline function find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):lua.Table<Int, nvim.type.vim.loader.ModuleInfo> {
 		opts = nvim.helper.Arg.pure(opts);
 		return __find(modname, opts);

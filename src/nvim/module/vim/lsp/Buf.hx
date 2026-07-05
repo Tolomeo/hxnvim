@@ -40,7 +40,6 @@ extern class Buf {
 		  * ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_codeAction
 		  * [vim.lsp.protocol.CodeActionTriggerKind](file:///usr/local/share/nvim/runtime/lua/vim/lsp/protocol.lua#301#2)
 	**/
-	@:luaDotMethod
 	inline function code_action(?opts:nvim.type.vim.lsp.buf.code_action.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __code_action(opts);
@@ -67,7 +66,6 @@ extern class Buf {
 		
 		See: [vim.lsp.protocol.CompletionTriggerKind](file:///usr/local/share/nvim/runtime/lua/vim/lsp/protocol.lua#89#2)
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function completion(context:lua.Table.AnyTable):Dynamic {
 		context = nvim.helper.Arg.pure(context);
@@ -86,7 +84,6 @@ extern class Buf {
 		 Jumps to the declaration of the symbol under the cursor.
 		 @note Many servers do not implement this method. Generally, see |vim.lsp.buf.definition()| instead.
 	**/
-	@:luaDotMethod
 	inline function declaration(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __declaration(opts);
@@ -103,7 +100,6 @@ extern class Buf {
 		
 		 Jumps to the definition of the symbol under the cursor.
 	**/
-	@:luaDotMethod
 	inline function definition(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __definition(opts);
@@ -145,7 +141,6 @@ extern class Buf {
 		
 		 Lists all symbols in the current buffer in the |location-list|.
 	**/
-	@:luaDotMethod
 	inline function document_symbol(?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __document_symbol(opts);
@@ -163,7 +158,6 @@ extern class Buf {
 		 Executes an LSP server command.
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#workspace_executeCommand
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function execute_command(command_params:nvim.type.lsp.ExecuteCommandParams):Dynamic {
 		command_params = nvim.helper.Arg.pure(command_params);
@@ -182,7 +176,6 @@ extern class Buf {
 		 Formats a buffer using the attached (and optionally filtered) language
 		 server clients.
 	**/
-	@:luaDotMethod
 	inline function format(?opts:nvim.type.vim.lsp.buf.format.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __format(opts);
@@ -215,7 +208,6 @@ extern class Buf {
 		 })
 		 ```
 	**/
-	@:luaDotMethod
 	inline function hover(?config:nvim.type.vim.lsp.buf.hover.Opts):Dynamic {
 		config = nvim.helper.Arg.pure(config);
 		return __hover(config);
@@ -233,7 +225,6 @@ extern class Buf {
 		 Lists all the implementations for the symbol under the cursor in the
 		 quickfix window.
 	**/
-	@:luaDotMethod
 	inline function implementation(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __implementation(opts);
@@ -292,7 +283,6 @@ extern class Buf {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_references
 	**/
-	@:luaDotMethod
 	inline function references(?context:Null<nvim.type.lsp.ReferenceContext>, ?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __references(context, opts);
@@ -328,7 +318,6 @@ extern class Buf {
 		
 		@*param* `opts` — Additional options:
 	**/
-	@:luaDotMethod
 	inline function rename(?new_name:Null<String>, ?opts:nvim.type.vim.lsp.buf.rename.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __rename(new_name, opts);
@@ -346,7 +335,6 @@ extern class Buf {
 		 Displays signature information about the symbol under the cursor in a
 		 floating window.
 	**/
-	@:luaDotMethod
 	inline function signature_help(?config:nvim.type.vim.lsp.buf.signature_help.Opts):Dynamic {
 		config = nvim.helper.Arg.pure(config);
 		return __signature_help(config);
@@ -363,7 +351,6 @@ extern class Buf {
 		
 		 Jumps to the definition of the type of the symbol under the cursor.
 	**/
-	@:luaDotMethod
 	inline function type_definition(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __type_definition(opts);
@@ -405,7 +392,6 @@ extern class Buf {
 		
 		@*param* `query` — optional
 	**/
-	@:luaDotMethod
 	inline function workspace_symbol(?query:Null<String>, ?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __workspace_symbol(query, opts);

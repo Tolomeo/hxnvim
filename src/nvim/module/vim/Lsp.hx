@@ -166,7 +166,6 @@ extern class Lsp {
 		cancel all the requests. You could instead
 		iterate all clients and call their `cancel_request()` methods.
 	**/
-	@:luaDotMethod
 	inline private function buf_request(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn.Return2<lua.Table<Float, Float>, haxe.Constraints.Function> {
 		handler = nvim.helper.Arg.pure(handler);
 		return __buf_request(bufnr, method, params, handler, on_unsupported);
@@ -201,7 +200,6 @@ extern class Lsp {
 		
 		@*return* `cancel` — Function that cancels all requests.
 	**/
-	@:luaDotMethod
 	inline function buf_request_all(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function {
 		handler = nvim.helper.Arg.pure(handler);
 		return __buf_request_all(bufnr, method, params, handler);
@@ -239,7 +237,6 @@ extern class Lsp {
 		
 		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
 	**/
-	@:luaDotMethod
 	inline function buf_request_sync(bufnr:Float, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Float>):nvim.helper.Multireturn.Return2<Null<lua.Table<Float, { @:optional
 	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>> {
 		return __buf_request_sync(bufnr, method, params, timeout_ms);
@@ -415,7 +412,6 @@ extern class Lsp {
 		    | "region" -- Region
 		```
 	**/
-	@:luaDotMethod
 	inline function foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Float):Dynamic {
 		kind = nvim.helper.Arg.pure(kind);
 		return __foldclose(kind, winid);
@@ -509,7 +505,6 @@ extern class Lsp {
 		 `setlocal formatexpr=v:lua.vim.lsp.formatexpr()` or (more typically) in `on_attach`
 		 via `vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'`.
 	**/
-	@:luaDotMethod
 	inline function formatexpr(?opts:nvim.type.vim.lsp.formatexpr.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __formatexpr(opts);
@@ -572,7 +567,6 @@ extern class Lsp {
 		
 		@*return* — : List of |vim.lsp.Client| objects
 	**/
-	@:luaDotMethod
 	inline function get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):lua.Table<Int, nvim.type.vim.lsp.Client> {
 		filter = nvim.helper.Arg.pure(filter);
 		return __get_clients(filter);
@@ -778,7 +772,6 @@ extern class Lsp {
 		
 		@*param* `opts` — Optional keyword arguments.
 	**/
-	@:luaDotMethod
 	inline function start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Float> {
 		config = nvim.helper.Arg.pure(config);
 		return __start(config, opts);
@@ -806,7 +799,6 @@ extern class Lsp {
 		
 		@*return* — Error message, if any
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn.Return2<Null<Float>, Null<String>> {
 		config = nvim.helper.Arg.pure(config);
@@ -897,7 +889,6 @@ extern class Lsp {
 		
 		@*param* `override_config` — Table containing the keys to override behavior of the {handler}
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic {
 		handler = nvim.helper.Arg.pure(handler);

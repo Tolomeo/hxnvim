@@ -37,7 +37,6 @@ extern class Handlers {
 		  -> ...unknown
 		```
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function hover(_:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.Hover, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic {
 		result = nvim.helper.Arg.pure(result);
@@ -85,7 +84,6 @@ extern class Handlers {
 		  -> ...unknown
 		```
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function signature_help(_:Null<nvim.type.lsp.ResponseError>, result:Null<nvim.type.lsp.SignatureHelp>, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);

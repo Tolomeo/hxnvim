@@ -93,7 +93,6 @@ extern class Diagnostic {
 		
 		                (see |diagnostic-severity|) and integer counts as values.
 	**/
-	@:luaDotMethod
 	inline function count(?bufnr:Float, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table.AnyTable {
 		opts = nvim.helper.Arg.pure(opts);
 		return __count(bufnr, opts);
@@ -163,7 +162,6 @@ extern class Diagnostic {
 		
 		                           are guaranteed to be present.
 	**/
-	@:luaDotMethod
 	inline function get(?bufnr:Null<Float>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic> {
 		opts = nvim.helper.Arg.pure(opts);
 		return __get(bufnr, opts);
@@ -213,7 +211,6 @@ extern class Diagnostic {
 		
 		@*return* — : Next diagnostic
 	**/
-	@:luaDotMethod
 	inline function get_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
 		opts = nvim.helper.Arg.pure(opts);
 		return __get_next(opts);
@@ -240,7 +237,6 @@ extern class Diagnostic {
 		    | false
 		```
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function get_next_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool> {
 		opts = nvim.helper.Arg.pure(opts);
@@ -261,7 +257,6 @@ extern class Diagnostic {
 		
 		@*return* — : Previous diagnostic
 	**/
-	@:luaDotMethod
 	inline function get_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
 		opts = nvim.helper.Arg.pure(opts);
 		return __get_prev(opts);
@@ -288,7 +283,6 @@ extern class Diagnostic {
 		    | false
 		```
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function get_prev_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool> {
 		opts = nvim.helper.Arg.pure(opts);
@@ -306,7 +300,6 @@ extern class Diagnostic {
 		
 		 Move to the next diagnostic.
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function goto_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
@@ -324,7 +317,6 @@ extern class Diagnostic {
 		
 		 Move to the previous diagnostic in the current buffer.
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function goto_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
@@ -404,7 +396,6 @@ extern class Diagnostic {
 		
 		@*return* — The diagnostic that was moved to.
 	**/
-	@:luaDotMethod
 	inline function jump(opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
 		opts = nvim.helper.Arg.pure(opts);
 		return __jump(opts);
@@ -456,7 +447,6 @@ extern class Diagnostic {
 		
 		@*return* — : |vim.Diagnostic| structure or `nil` if {pat} fails to match {str}.
 	**/
-	@:luaDotMethod
 	inline function match(str:String, pat:String, groups:lua.Table<Int, String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
 		severity_map = nvim.helper.Arg.pure(severity_map);
 		return __match(str, pat, groups, severity_map, defaults);
@@ -475,7 +465,6 @@ extern class Diagnostic {
 		
 		 Show diagnostics in a floating window.
 	**/
-	@:luaDotMethod
 	inline function open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
 		return __open_float(opts, ...___);
 	}
@@ -521,7 +510,6 @@ extern class Diagnostic {
 		
 		@*param* `opts` — Display options to pass to |vim.diagnostic.show()|
 	**/
-	@:luaDotMethod
 	inline function set(namespace:Float, bufnr:Float, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __set(namespace, bufnr, diagnostics, opts);
@@ -538,7 +526,6 @@ extern class Diagnostic {
 		
 		 Add buffer diagnostics to the location list.
 	**/
-	@:luaDotMethod
 	inline function setloclist(?opts:nvim.type.vim.diagnostic.setloclist.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __setloclist(opts);
@@ -555,7 +542,6 @@ extern class Diagnostic {
 		
 		 Add all diagnostics to the quickfix list.
 	**/
-	@:luaDotMethod
 	inline function setqflist(?opts:nvim.type.vim.diagnostic.setqflist.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __setqflist(opts);
@@ -596,7 +582,6 @@ extern class Diagnostic {
 		
 		@*param* `opts` — Display options.
 	**/
-	@:luaDotMethod
 	inline function show(?namespace:Null<Float>, ?bufnr:Null<Float>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __show(namespace, bufnr, diagnostics, opts);

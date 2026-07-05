@@ -20,7 +20,6 @@ extern class Keymap {
 		 vim.keymap.del({'n', 'i', 'v'}, '<leader>w', { buffer = 5 })
 		 ```
 	**/
-	@:luaDotMethod
 	inline function del(modes:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __del(modes, lhs, opts);
@@ -58,7 +57,6 @@ extern class Keymap {
 		
 		@*param* `rhs` — Right-hand side |{rhs}| of the mapping, can be a Lua function.
 	**/
-	@:luaDotMethod
 	inline function set(mode:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __set(mode, lhs, rhs, opts);

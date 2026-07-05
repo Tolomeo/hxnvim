@@ -321,7 +321,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function accept(stream:nvim.type.uv.UvStreamT, client_stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		client_stream = nvim.helper.Arg.pure(client_stream);
@@ -441,7 +440,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function async_send(async:nvim.type.uv.UvAsyncT, ___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		async = nvim.helper.Arg.pure(async);
 		return __async_send(async, ...___);
@@ -601,7 +599,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function cancel(req:nvim.type.uv.UvReqT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		req = nvim.helper.Arg.pure(req);
 		return __cancel(req);
@@ -711,7 +708,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function chdir(cwd:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __chdir(cwd);
 	}
@@ -820,7 +816,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function check_start(check:nvim.type.uv.UvCheckT, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		check = nvim.helper.Arg.pure(check);
 		return __check_start(check, callback);
@@ -930,7 +925,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function check_stop(check:nvim.type.uv.UvCheckT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		check = nvim.helper.Arg.pure(check);
 		return __check_stop(check);
@@ -955,7 +949,6 @@ package nvim.type;
 		 In-progress requests, like `uv_connect_t` or `uv_write_t`, are cancelled and
 		 have their callbacks called asynchronously with `ECANCELED`.
 	**/
-	@:luaDotMethod
 	inline public function close(handle:nvim.type.uv.UvHandleT, ?callback:haxe.Constraints.Function):Dynamic {
 		handle = nvim.helper.Arg.pure(handle);
 		return __close(handle, callback);
@@ -1074,7 +1067,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function cpu_info():nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.cpu_info.Cpu>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __cpu_info();
 	}
@@ -1180,7 +1172,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function cwd():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __cwd();
 	}
@@ -1317,7 +1308,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function exepath():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __exepath();
 	}
@@ -1432,7 +1422,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fileno(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __fileno(handle);
@@ -1552,7 +1541,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_access(path:String, mode:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_access(path, mode);
 	}
@@ -1669,7 +1657,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_chmod(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_chmod(path, mode);
 	}
@@ -1786,7 +1773,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_chown(path:String, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_chown(path, uid, gid);
 	}
@@ -1903,7 +1889,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_close(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_close(fd);
 	}
@@ -2020,7 +2005,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_closedir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		dir = nvim.helper.Arg.pure(dir);
 		return __fs_closedir(dir);
@@ -2150,7 +2134,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_copyfile(path:String, new_path:String, ?flags:nvim.type.uv.fs_copyfile.Flags):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		return __fs_copyfile(path, new_path, flags);
@@ -2257,7 +2240,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_event_getpath(fs_event:nvim.type.uv.UvFsEventT):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_event = nvim.helper.Arg.pure(fs_event);
 		return __fs_event_getpath(fs_event);
@@ -2368,7 +2350,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_event_start(fs_event:nvim.type.uv.UvFsEventT, path:String, flags:nvim.type.uv.fs_event_start.Flags, callback:nvim.type.uv.fs_event_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_event = nvim.helper.Arg.pure(fs_event);
 		flags = nvim.helper.Arg.pure(flags);
@@ -2480,7 +2461,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_event_stop(fs_event:nvim.type.uv.UvFsEventT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_event = nvim.helper.Arg.pure(fs_event);
 		return __fs_event_stop(fs_event);
@@ -2598,7 +2578,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_fchmod(fd:Float, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_fchmod(fd, mode);
 	}
@@ -2715,7 +2694,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_fchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_fchown(fd, uid, gid);
 	}
@@ -2832,7 +2810,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_fdatasync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_fdatasync(fd);
 	}
@@ -2953,7 +2930,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_fstat(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_fstat(fd);
 	}
@@ -3070,7 +3046,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_fsync(fd:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_fsync(fd);
 	}
@@ -3187,7 +3162,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_ftruncate(fd:Float, offset:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_ftruncate(fd, offset);
 	}
@@ -3304,7 +3278,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_futime(fd:Float, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_futime(fd, atime, mtime);
 	}
@@ -3421,7 +3394,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_lchown(fd:Float, uid:Float, gid:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_lchown(fd, uid, gid);
 	}
@@ -3542,7 +3514,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_link(path:String, new_path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_link(path, new_path);
 	}
@@ -3663,7 +3634,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_lstat(path:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_lstat(path);
 	}
@@ -3780,7 +3750,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_lutime(path:String, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_lutime(path, atime, mtime);
 	}
@@ -3897,7 +3866,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_mkdir(path:String, mode:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_mkdir(path, mode);
 	}
@@ -4014,7 +3982,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_mkdtemp(template:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_mkdtemp(template);
 	}
@@ -4131,7 +4098,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_mkstemp(template:String):nvim.helper.Multireturn.Return3<Null<Float>, String, Null<nvim.type.uv.error.Name>> {
 		return __fs_mkstemp(template);
 	}
@@ -4278,7 +4244,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_open(path:String, flags:nvim.type.uv.fs_open.Flags, mode:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		return __fs_open(path, flags, mode);
@@ -4402,7 +4367,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_opendir(path:String):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.LuvDirT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_opendir(path);
 	}
@@ -4508,7 +4472,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_poll_getpath(fs_poll:nvim.type.uv.UvFsPollT):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_poll = nvim.helper.Arg.pure(fs_poll);
 		return __fs_poll_getpath(fs_poll);
@@ -4621,7 +4584,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_poll_start(fs_poll:nvim.type.uv.UvFsPollT, path:String, interval:Float, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_poll = nvim.helper.Arg.pure(fs_poll);
 		callback = nvim.helper.Arg.pure(callback);
@@ -4732,7 +4694,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_poll_stop(fs_poll:nvim.type.uv.UvFsPollT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		fs_poll = nvim.helper.Arg.pure(fs_poll);
 		return __fs_poll_stop(fs_poll);
@@ -4854,7 +4815,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_read(fd:Float, size:Float, ?offset:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_read(fd, size, offset);
 	}
@@ -4974,7 +4934,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_readdir(dir:nvim.type.uv.LuvDirT):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		dir = nvim.helper.Arg.pure(dir);
 		return __fs_readdir(dir);
@@ -5092,7 +5051,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_readlink(path:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_readlink(path);
 	}
@@ -5209,7 +5167,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_realpath(path:String):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_realpath(path);
 	}
@@ -5326,7 +5283,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_rename(path:String, new_path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_rename(path, new_path);
 	}
@@ -5443,7 +5399,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_rmdir(path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_rmdir(path);
 	}
@@ -5554,7 +5509,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_scandir(path:String, ?callback:nvim.type.uv.fs_scandir.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvFsT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		callback = nvim.helper.Arg.pure(callback);
 		return __fs_scandir(path, callback);
@@ -5666,7 +5620,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_scandir_next(fs:nvim.type.uv.UvFsT):nvim.helper.Multireturn.Return3<Null<String>, String, Null<nvim.type.uv.error.Name>> {
 		fs = nvim.helper.Arg.pure(fs);
 		return __fs_scandir_next(fs);
@@ -5784,7 +5737,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_sendfile(out_fd:Float, in_fd:Float, in_offset:Float, size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_sendfile(out_fd, in_fd, in_offset, size);
 	}
@@ -5930,7 +5882,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_stat(path:String):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.fs_stat.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_stat(path);
 	}
@@ -6084,7 +6035,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_symlink(path:String, new_path:String, ?flags:haxe.extern.EitherType<nvim.type.uv.fs_symlink.Flags, Float>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_symlink(path, new_path, flags);
 	}
@@ -6201,7 +6151,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_unlink(path:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_unlink(path);
 	}
@@ -6318,7 +6267,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_utime(path:String, atime:Float, mtime:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fs_utime(path, atime, mtime);
 	}
@@ -6439,7 +6387,6 @@ package nvim.type;
 		  -> uv.uv_fs_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function fs_write(fd:Float, data:nvim.type.uv.Buffer, ?offset:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		data = nvim.helper.Arg.pure(data);
 		return __fs_write(fd, data, offset);
@@ -6573,7 +6520,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function get_process_title():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __get_process_title();
 	}
@@ -6723,7 +6669,6 @@ package nvim.type;
 		  -> uv.uv_getaddrinfo_t
 		```
 	**/
-	@:luaDotMethod
 	inline public function getaddrinfo(host:String, service:String, ?hints:nvim.type.uv.getaddrinfo.Hints):nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.getaddrinfo.Result>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		hints = nvim.helper.Arg.pure(hints);
 		return __getaddrinfo(host, service, hints);
@@ -6864,7 +6809,6 @@ package nvim.type;
 		  3. string|nil
 		```
 	**/
-	@:luaDotMethod
 	inline public function getnameinfo(address:nvim.type.uv.getnameinfo.Address):nvim.helper.Multireturn.Return3<Null<String>, String, Null<nvim.type.uv.error.Name>> {
 		address = nvim.helper.Arg.pure(address);
 		return __getnameinfo(address);
@@ -7004,7 +6948,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function getrusage():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.getrusage.Result>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __getrusage();
 	}
@@ -7111,7 +7054,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function gettimeofday():nvim.helper.Multireturn.Return3<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>> {
 		return __gettimeofday();
 	}
@@ -7158,7 +7100,6 @@ package nvim.type;
 		 Returns the name of the struct for a given handle (e.g. `"pipe"` for `uv_pipe_t`)
 		 and the libuv enum integer for the handle's type (`uv_handle_type`).
 	**/
-	@:luaDotMethod
 	inline public function handle_get_type(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return2<String, Float> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __handle_get_type(handle);
@@ -7267,7 +7208,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function has_ref(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __has_ref(handle);
@@ -7394,7 +7334,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function idle_start(idle:nvim.type.uv.UvIdleT, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		idle = nvim.helper.Arg.pure(idle);
 		return __idle_start(idle, callback);
@@ -7504,7 +7443,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function idle_stop(idle:nvim.type.uv.UvIdleT, check:Any):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		idle = nvim.helper.Arg.pure(idle);
 		return __idle_stop(idle, check);
@@ -7613,7 +7551,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function if_indextoiid(ifindex:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __if_indextoiid(ifindex);
 	}
@@ -7719,7 +7656,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function if_indextoname(ifindex:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __if_indextoname(ifindex);
 	}
@@ -7854,7 +7790,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function is_active(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __is_active(handle);
@@ -7964,7 +7899,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function is_closing(handle:nvim.type.uv.UvHandleT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __is_closing(handle);
@@ -7982,7 +7916,6 @@ package nvim.type;
 		
 		 Returns `true` if the stream is readable, `false` otherwise.
 	**/
-	@:luaDotMethod
 	inline public function is_readable(stream:nvim.type.uv.UvStreamT):Bool {
 		stream = nvim.helper.Arg.pure(stream);
 		return __is_readable(stream);
@@ -8000,7 +7933,6 @@ package nvim.type;
 		
 		 Returns `true` if the stream is writable, `false` otherwise.
 	**/
-	@:luaDotMethod
 	inline public function is_writable(stream:nvim.type.uv.UvStreamT):Bool {
 		stream = nvim.helper.Arg.pure(stream);
 		return __is_writable(stream);
@@ -8111,7 +8043,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function kill(pid:Float, signum:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __kill(pid, signum);
 	}
@@ -8224,7 +8155,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function listen(stream:nvim.type.uv.UvStreamT, backlog:Float, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		callback = nvim.helper.Arg.pure(callback);
@@ -8245,7 +8175,6 @@ package nvim.type;
 		
 		 Returns the load average as a triad. Not supported on Windows.
 	**/
-	@:luaDotMethod
 	inline public function loadavg():nvim.helper.Multireturn.Return3<Float, Float, Float> {
 		return __loadavg();
 	}
@@ -8352,7 +8281,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function loop_alive():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __loop_alive();
 	}
@@ -8465,7 +8393,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function loop_close():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __loop_close();
 	}
@@ -8612,7 +8539,6 @@ package nvim.type;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	@:luaDotMethod
 	inline public function loop_configure(option:String, value:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __loop_configure(option, value);
 	}
@@ -8764,7 +8690,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_async(?callback:nvim.type.uv.new_async.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvAsyncT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		callback = nvim.helper.Arg.pure(callback);
 		return __new_async(callback);
@@ -8872,7 +8797,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_check():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvCheckT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_check();
 	}
@@ -8979,7 +8903,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_fs_event():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvFsEventT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_fs_event();
 	}
@@ -9086,7 +9009,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_fs_poll():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvFsPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_fs_poll();
 	}
@@ -9193,7 +9115,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_idle():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvIdleT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_idle();
 	}
@@ -9304,7 +9225,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_pipe(?ipc:Bool):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPipeT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_pipe(ipc);
 	}
@@ -9412,7 +9332,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_poll(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_poll(fd);
 	}
@@ -9519,7 +9438,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_prepare():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPrepareT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_prepare();
 	}
@@ -9626,7 +9544,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_signal():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvSignalT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_signal();
 	}
@@ -9735,7 +9652,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_socket_poll(fd:Float):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvPollT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_socket_poll(fd);
 	}
@@ -9855,7 +9771,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_tcp(?flags:nvim.type.uv.socket.Family):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvTcpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		flags = nvim.helper.Arg.pure(flags);
 		return __new_tcp(flags);
@@ -9966,7 +9881,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_thread(?options:nvim.type.uv.new_thread.Options, entry:haxe.Constraints.Function, ___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.LuvThreadT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		options = nvim.helper.Arg.pure(options);
 		return __new_thread(options, entry, ...___);
@@ -10102,7 +10016,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_timer():nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvTimerT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_timer();
 	}
@@ -10222,7 +10135,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_tty(fd:Float, readable:Bool):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvTtyT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_tty(fd, readable);
 	}
@@ -10357,7 +10269,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function new_udp(?flags:haxe.extern.EitherType<nvim.type.uv.new_udp.Flags, haxe.extern.EitherType<nvim.type.uv.new_udp.flags.Family, Float>>):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __new_udp(flags);
 	}
@@ -10381,7 +10292,6 @@ package nvim.type;
 		 - `after_work_callback`: `function`
 		   - `...`: `threadargs` returned from `work_callback`
 	**/
-	@:luaDotMethod
 	inline public function new_work(work_callback:nvim.type.uv.new_work.WorkCallback, after_work_callback:nvim.type.uv.new_work.AfterWorkCallback):nvim.type.uv.LuvWorkCtxT {
 		work_callback = nvim.helper.Arg.pure(work_callback);
 		after_work_callback = nvim.helper.Arg.pure(after_work_callback);
@@ -10541,7 +10451,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_getenv(name:String, ?size:Float):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_getenv(name, size);
 	}
@@ -10683,7 +10592,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_getpriority(pid:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_getpriority(pid);
 	}
@@ -10789,7 +10697,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_homedir():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_homedir();
 	}
@@ -10897,7 +10804,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_setenv(name:String, value:String):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_setenv(name, value);
 	}
@@ -11004,7 +10910,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_setpriority(pid:Float, priority:Float):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_setpriority(pid, priority);
 	}
@@ -11110,7 +11015,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_tmpdir():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_tmpdir();
 	}
@@ -11228,7 +11132,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function os_unsetenv():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __os_unsetenv();
 	}
@@ -11360,7 +11263,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe(read_flags:nvim.type.uv.pipe.ReadFlags, write_flags:nvim.type.uv.pipe.WriteFlags):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.pipe.Fds>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		read_flags = nvim.helper.Arg.pure(read_flags);
 		write_flags = nvim.helper.Arg.pure(write_flags);
@@ -11474,7 +11376,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe_bind(pipe:nvim.type.uv.UvPipeT, name:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_bind(pipe, name);
@@ -11592,7 +11493,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe_chmod(pipe:nvim.type.uv.UvPipeT, flags:nvim.type.uv.pipe_chmod.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		flags = nvim.helper.Arg.pure(flags);
@@ -11703,7 +11603,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe_connect(pipe:nvim.type.uv.UvPipeT, name:String, ?callback:nvim.type.uv.pipe_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		callback = nvim.helper.Arg.pure(callback);
@@ -11812,7 +11711,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe_getpeername(pipe:nvim.type.uv.UvPipeT):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_getpeername(pipe);
@@ -11919,7 +11817,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe_getsockname(pipe:nvim.type.uv.UvPipeT):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_getsockname(pipe);
@@ -12031,7 +11928,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function pipe_open(pipe:nvim.type.uv.UvPipeT, fd:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_open(pipe, fd);
@@ -12049,7 +11945,6 @@ package nvim.type;
 		
 		 Returns the pending pipe count for the named pipe.
 	**/
-	@:luaDotMethod
 	inline public function pipe_pending_count(pipe:nvim.type.uv.UvPipeT):Float {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_pending_count(pipe);
@@ -12069,7 +11964,6 @@ package nvim.type;
 		
 		 **Note**: This setting applies to Windows only.
 	**/
-	@:luaDotMethod
 	inline public function pipe_pending_instances(pipe:nvim.type.uv.UvPipeT, count:Float):Dynamic {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_pending_instances(pipe, count);
@@ -12091,7 +11985,6 @@ package nvim.type;
 		 the given type, returned by `uv.pipe_pending_type()` and call
 		 `uv.accept(pipe, handle)`.
 	**/
-	@:luaDotMethod
 	inline public function pipe_pending_type(pipe:nvim.type.uv.UvPipeT):String {
 		pipe = nvim.helper.Arg.pure(pipe);
 		return __pipe_pending_type(pipe);
@@ -12237,7 +12130,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function poll_start(poll:nvim.type.uv.UvPollT, events:nvim.type.uv.poll.Eventspec, callback:nvim.type.uv.poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		poll = nvim.helper.Arg.pure(poll);
 		events = nvim.helper.Arg.pure(events);
@@ -12349,7 +12241,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function poll_stop(poll:nvim.type.uv.UvPollT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		poll = nvim.helper.Arg.pure(poll);
 		return __poll_stop(poll);
@@ -12459,7 +12350,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function prepare_start(prepare:nvim.type.uv.UvPrepareT, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		prepare = nvim.helper.Arg.pure(prepare);
 		return __prepare_start(prepare, callback);
@@ -12569,7 +12459,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function prepare_stop(prepare:nvim.type.uv.UvPrepareT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		prepare = nvim.helper.Arg.pure(prepare);
 		return __prepare_stop(prepare);
@@ -12621,7 +12510,6 @@ package nvim.type;
 		
 		 Returns the handle's pid.
 	**/
-	@:luaDotMethod
 	inline public function process_get_pid(process:nvim.type.uv.UvProcessT):Float {
 		process = nvim.helper.Arg.pure(process);
 		return __process_get_pid(process);
@@ -12732,7 +12620,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function process_kill(process:nvim.type.uv.UvProcessT, signum:haxe.extern.EitherType<Float, String>):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		process = nvim.helper.Arg.pure(process);
 		return __process_kill(process, signum);
@@ -12842,7 +12729,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function queue_work(work_ctx:nvim.type.uv.LuvWorkCtxT, ___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		work_ctx = nvim.helper.Arg.pure(work_ctx);
 		return __queue_work(work_ctx, ...___);
@@ -12979,7 +12865,6 @@ package nvim.type;
 		  3. string?
 		```
 	**/
-	@:luaDotMethod
 	inline public function random(len:Float, ?flags:Null<haxe.extern.EitherType<Float, lua.Table<Any, Any>>>):nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __random(len, flags);
 	}
@@ -13102,7 +12987,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function read_start(stream:nvim.type.uv.UvStreamT, callback:nvim.type.uv.read_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		callback = nvim.helper.Arg.pure(callback);
@@ -13215,7 +13099,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function read_stop(stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		return __read_stop(stream);
@@ -13332,7 +13215,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function recv_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __recv_buffer_size(handle, size);
@@ -13352,7 +13234,6 @@ package nvim.type;
 		
 		 See [Reference counting][].
 	**/
-	@:luaDotMethod
 	inline public function ref(handle:nvim.type.uv.UvHandleT):Dynamic {
 		handle = nvim.helper.Arg.pure(handle);
 		return __ref(handle);
@@ -13396,7 +13277,6 @@ package nvim.type;
 		    | "udp"
 		```
 	**/
-	@:luaDotMethod
 	inline public function req_get_type(req:nvim.type.uv.UvReqT):nvim.helper.Multireturn.Return2<nvim.type.uv.req_type.Name, nvim.type.uv.req_type.Enum> {
 		req = nvim.helper.Arg.pure(req);
 		return __req_get_type(req);
@@ -13503,7 +13383,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function resident_set_memory():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __resident_set_memory();
 	}
@@ -13565,7 +13444,6 @@ package nvim.type;
 		    | "nowait" -- Poll for I/O once but don't block if there are no pending callbacks.
 		```
 	**/
-	@:luaDotMethod
 	inline public function run(?mode:nvim.type.uv.run.Mode):Bool {
 		mode = nvim.helper.Arg.pure(mode);
 		return __run(mode);
@@ -13709,7 +13587,6 @@ package nvim.type;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	@:luaDotMethod
 	inline public function send_buffer_size(handle:nvim.type.uv.UvHandleT, ?size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		handle = nvim.helper.Arg.pure(handle);
 		return __send_buffer_size(handle, size);
@@ -13819,7 +13696,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function set_process_title(title:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __set_process_title(title);
 	}
@@ -13952,7 +13828,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function shutdown(stream:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.shutdown.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		callback = nvim.helper.Arg.pure(callback);
@@ -14063,7 +13938,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function signal_start(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.signal_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		signal = nvim.helper.Arg.pure(signal);
 		callback = nvim.helper.Arg.pure(callback);
@@ -14174,7 +14048,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function signal_start_oneshot(signal:nvim.type.uv.UvSignalT, signum:haxe.extern.EitherType<Float, String>, callback:nvim.type.uv.signal_start_oneshot.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		signal = nvim.helper.Arg.pure(signal);
 		callback = nvim.helper.Arg.pure(callback);
@@ -14284,7 +14157,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function signal_stop(signal:nvim.type.uv.UvSignalT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		signal = nvim.helper.Arg.pure(signal);
 		return __signal_stop(signal);
@@ -14450,7 +14322,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function socketpair(?socktype:nvim.type.uv.socketpair.Socktype, ?protocol:nvim.type.uv.socketpair.Protocol, ?flags1:nvim.type.uv.socketpair.Flags, ?flags2:nvim.type.uv.socketpair.Flags):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.socketpair.Fds>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		socktype = nvim.helper.Arg.pure(socktype);
 		protocol = nvim.helper.Arg.pure(protocol);
@@ -14562,7 +14433,6 @@ package nvim.type;
 		
 		 When the child process exits, `on_exit` is called with an exit code and signal.
 	**/
-	@:luaDotMethod
 	inline public function spawn(path:String, options:nvim.type.uv.spawn.Options, on_exit:nvim.type.uv.spawn.OnExit):nvim.helper.Multireturn.Return2<nvim.type.uv.UvProcessT, Float> {
 		options = nvim.helper.Arg.pure(options);
 		on_exit = nvim.helper.Arg.pure(on_exit);
@@ -14594,7 +14464,6 @@ package nvim.type;
 		
 		 Returns the stream's write queue size.
 	**/
-	@:luaDotMethod
 	inline public function stream_get_write_queue_size(stream:nvim.type.uv.UvStreamT):Float {
 		stream = nvim.helper.Arg.pure(stream);
 		return __stream_get_write_queue_size(stream);
@@ -14715,7 +14584,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function stream_set_blocking(stream:nvim.type.uv.UvStreamT, blocking:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		return __stream_set_blocking(stream, blocking);
@@ -14835,7 +14703,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_bind(tcp:nvim.type.uv.UvTcpT, host:String, port:Float, ?flags:nvim.type.uv.tcp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		flags = nvim.helper.Arg.pure(flags);
@@ -14949,7 +14816,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_close_reset(tcp:nvim.type.uv.UvTcpT, ?callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_close_reset(tcp, callback);
@@ -15063,7 +14929,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_connect(tcp:nvim.type.uv.UvTcpT, host:String, port:Float, callback:nvim.type.uv.tcp_connect.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvConnectT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		callback = nvim.helper.Arg.pure(callback);
@@ -15171,7 +15036,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_getpeername(tcp:nvim.type.uv.UvTcpT):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.Socketinfo>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_getpeername(tcp);
@@ -15278,7 +15142,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_getsockname(tcp:nvim.type.uv.UvTcpT):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.Socketinfo>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_getsockname(tcp);
@@ -15389,7 +15252,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_keepalive(tcp:nvim.type.uv.UvTcpT, enable:Bool, ?delay:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_keepalive(tcp, enable, delay);
@@ -15499,7 +15361,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_nodelay(tcp:nvim.type.uv.UvTcpT, enable:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_nodelay(tcp, enable);
@@ -15611,7 +15472,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_open(tcp:nvim.type.uv.UvTcpT, sock:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_open(tcp, sock);
@@ -15727,7 +15587,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tcp_simultaneous_accepts(tcp:nvim.type.uv.UvTcpT, enable:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_simultaneous_accepts(tcp, enable);
@@ -15744,7 +15603,6 @@ package nvim.type;
 		
 		 **Deprecated:** Please use `uv.stream_get_write_queue_size()` instead.
 	**/
-	@:luaDotMethod
 	inline public function tcp_write_queue_size(tcp:nvim.type.uv.UvTcpT):Dynamic {
 		tcp = nvim.helper.Arg.pure(tcp);
 		return __tcp_write_queue_size(tcp);
@@ -15763,7 +15621,6 @@ package nvim.type;
 		 Returns a boolean indicating whether two threads are the same. This function is
 		 equivalent to the `__eq` metamethod.
 	**/
-	@:luaDotMethod
 	inline public function thread_equal(thread:nvim.type.uv.LuvThreadT, other_thread:nvim.type.uv.LuvThreadT):Bool {
 		thread = nvim.helper.Arg.pure(thread);
 		other_thread = nvim.helper.Arg.pure(other_thread);
@@ -15871,7 +15728,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function thread_join(thread:nvim.type.uv.LuvThreadT):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		thread = nvim.helper.Arg.pure(thread);
 		return __thread_join(thread);
@@ -15994,7 +15850,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function timer_again(timer:nvim.type.uv.UvTimerT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		timer = nvim.helper.Arg.pure(timer);
 		return __timer_again(timer);
@@ -16014,7 +15869,6 @@ package nvim.type;
 		
 		 **Note**: New in libuv version 1.40.0.
 	**/
-	@:luaDotMethod
 	inline public function timer_get_due_in(timer:nvim.type.uv.UvTimerT):Float {
 		timer = nvim.helper.Arg.pure(timer);
 		return __timer_get_due_in(timer);
@@ -16032,7 +15886,6 @@ package nvim.type;
 		
 		 Get the timer repeat value.
 	**/
-	@:luaDotMethod
 	inline public function timer_get_repeat(timer:nvim.type.uv.UvTimerT):Float {
 		timer = nvim.helper.Arg.pure(timer);
 		return __timer_get_repeat(timer);
@@ -16056,7 +15909,6 @@ package nvim.type;
 		 following the first timer callback, then the callback will run as soon as
 		 possible.
 	**/
-	@:luaDotMethod
 	inline public function timer_set_repeat(timer:nvim.type.uv.UvTimerT, repeat_:Float):Dynamic {
 		timer = nvim.helper.Arg.pure(timer);
 		return __timer_set_repeat(timer, repeat_);
@@ -16170,7 +16022,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function timer_start(timer:nvim.type.uv.UvTimerT, timeout:Float, repeat_:Float, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		timer = nvim.helper.Arg.pure(timer);
 		return __timer_start(timer, timeout, repeat_, callback);
@@ -16280,7 +16131,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function timer_stop(timer:nvim.type.uv.UvTimerT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		timer = nvim.helper.Arg.pure(timer);
 		return __timer_stop(timer);
@@ -16386,7 +16236,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function translate_sys_error(errcode:Float):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __translate_sys_error(errcode);
 	}
@@ -16495,7 +16344,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function try_write(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		data = nvim.helper.Arg.pure(data);
@@ -16607,7 +16455,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function try_write2(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		data = nvim.helper.Arg.pure(data);
@@ -16723,7 +16570,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tty_get_vterm_state():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __tty_get_vterm_state();
 	}
@@ -16831,7 +16677,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tty_get_winsize(tty:nvim.type.uv.UvTtyT):nvim.helper.Multireturn.Return3<Null<Float>, haxe.extern.EitherType<Float, String>, Null<nvim.type.uv.error.Name>> {
 		tty = nvim.helper.Arg.pure(tty);
 		return __tty_get_winsize(tty);
@@ -16945,7 +16790,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tty_reset_mode():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __tty_reset_mode();
 	}
@@ -17068,7 +16912,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function tty_set_mode(tty:nvim.type.uv.UvTtyT, mode:nvim.type.uv.tty.Mode):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		tty = nvim.helper.Arg.pure(tty);
 		mode = nvim.helper.Arg.pure(mode);
@@ -17204,7 +17047,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_bind(udp:nvim.type.uv.UvUdpT, host:String, port:Float, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		flags = nvim.helper.Arg.pure(flags);
@@ -17319,7 +17161,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_connect(udp:nvim.type.uv.UvUdpT, host:String, port:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_connect(udp, host, port);
@@ -17337,7 +17178,6 @@ package nvim.type;
 		
 		 Returns the handle's send queue count.
 	**/
-	@:luaDotMethod
 	inline public function udp_get_send_queue_count(udp:nvim.type.uv.UvUdpT):Float {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_get_send_queue_count(udp);
@@ -17355,7 +17195,6 @@ package nvim.type;
 		
 		 Returns the handle's send queue size.
 	**/
-	@:luaDotMethod
 	inline public function udp_get_send_queue_size(udp:nvim.type.uv.UvUdpT):Float {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_get_send_queue_size(udp);
@@ -17462,7 +17301,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_getpeername(udp:nvim.type.uv.UvUdpT):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.udp.Sockname>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_getpeername(udp);
@@ -17569,7 +17407,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_getsockname(udp:nvim.type.uv.UvUdpT):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.udp.Sockname>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_getsockname(udp);
@@ -17689,7 +17526,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_open(udp:nvim.type.uv.UvUdpT, fd:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_open(udp, fd);
@@ -17801,7 +17637,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_recv_start(udp:nvim.type.uv.UvUdpT, callback:nvim.type.uv.udp_recv_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		callback = nvim.helper.Arg.pure(callback);
@@ -17912,7 +17747,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_recv_stop(udp:nvim.type.uv.UvUdpT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_recv_stop(udp);
@@ -18021,7 +17855,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Float, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		data = nvim.helper.Arg.pure(data);
@@ -18133,7 +17966,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_broadcast(udp:nvim.type.uv.UvUdpT, on:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_broadcast(udp, on);
@@ -18249,7 +18081,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_membership(udp:nvim.type.uv.UvUdpT, multicast_addr:String, interface_addr:String, membership:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_membership(udp, multicast_addr, interface_addr, membership);
@@ -18359,7 +18190,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_multicast_interface(udp:nvim.type.uv.UvUdpT, interface_addr:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_multicast_interface(udp, interface_addr);
@@ -18470,7 +18300,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_multicast_loop(udp:nvim.type.uv.UvUdpT, on:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_multicast_loop(udp, on);
@@ -18582,7 +18411,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_multicast_ttl(udp:nvim.type.uv.UvUdpT, ttl:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_multicast_ttl(udp, ttl);
@@ -18698,7 +18526,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_source_membership(udp:nvim.type.uv.UvUdpT, multicast_addr:String, interface_addr:Null<String>, source_addr:String, membership:String):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_source_membership(udp, multicast_addr, interface_addr, source_addr, membership);
@@ -18810,7 +18637,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_set_ttl(udp:nvim.type.uv.UvUdpT, ttl:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		return __udp_set_ttl(udp, ttl);
@@ -18918,7 +18744,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function udp_try_send(udp:nvim.type.uv.UvUdpT, data:nvim.type.uv.Buffer, host:String, port:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		udp = nvim.helper.Arg.pure(udp);
 		data = nvim.helper.Arg.pure(data);
@@ -18939,7 +18764,6 @@ package nvim.type;
 		
 		 See [Reference counting][].
 	**/
-	@:luaDotMethod
 	inline public function unref(handle:nvim.type.uv.UvHandleT):Dynamic {
 		handle = nvim.helper.Arg.pure(handle);
 		return __unref(handle);
@@ -19063,7 +18887,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function uptime():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __uptime();
 	}
@@ -19115,7 +18938,6 @@ package nvim.type;
 		 end)
 		 ```
 	**/
-	@:luaDotMethod
 	inline public function walk(callback:nvim.type.uv.walk.Callback):Dynamic {
 		callback = nvim.helper.Arg.pure(callback);
 		return __walk(callback);
@@ -19227,7 +19049,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function write(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, ?callback:nvim.type.uv.write.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		data = nvim.helper.Arg.pure(data);
@@ -19341,7 +19162,6 @@ package nvim.type;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	@:luaDotMethod
 	inline public function write2(stream:nvim.type.uv.UvStreamT, data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.write2.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		stream = nvim.helper.Arg.pure(stream);
 		data = nvim.helper.Arg.pure(data);

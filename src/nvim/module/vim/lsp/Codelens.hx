@@ -55,7 +55,6 @@ extern class Codelens {
 		
 		 |lsp-handler| for the method `textDocument/codeLens`
 	**/
-	@:luaDotMethod
 	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
 		return __on_codelens(err, result, ctx);
@@ -82,7 +81,6 @@ extern class Codelens {
 		
 		@*param* `opts` — Optional fields
 	**/
-	@:luaDotMethod
 	inline function refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __refresh(opts);

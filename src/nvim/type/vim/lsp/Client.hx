@@ -124,7 +124,6 @@ package nvim.type.vim.lsp;
 		
 		 @nodoc
 	**/
-	@:luaDotMethod
 	inline public function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
 		config = nvim.helper.Arg.pure(config);
 		return __create(config);

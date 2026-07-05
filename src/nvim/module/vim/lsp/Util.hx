@@ -34,7 +34,6 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocumentEdit
 	**/
-	@:luaDotMethod
 	inline function apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Float, ?position_encoding:String):Dynamic {
 		text_document_edit = nvim.helper.Arg.pure(text_document_edit);
 		return __apply_text_document_edit(text_document_edit, index, position_encoding);
@@ -84,7 +83,6 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#workspace_applyEdit
 	**/
-	@:luaDotMethod
 	inline function apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic {
 		workspace_edit = nvim.helper.Arg.pure(workspace_edit);
 		return __apply_workspace_edit(workspace_edit, position_encoding);
@@ -211,7 +209,6 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_signatureHelp
 	**/
-	@:luaDotMethod
 	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<lua.Table<Int, String>>):nvim.helper.Multireturn.Return2<Null<lua.Table<Int, String>>, Null<nvim.type.Range4>> {
 		signature_help = nvim.helper.Arg.pure(signature_help);
 		return __convert_signature_help_to_markdown_lines(signature_help, ft, triggers);
@@ -305,7 +302,6 @@ extern class Util {
 		
 		@*return* `The` — value of settings accessed via section. `vim.NIL` if not found.
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>> {
 		settings = nvim.helper.Arg.pure(settings);
@@ -329,7 +325,6 @@ extern class Util {
 		
 		@*param* `height` — window height (in character cells)
 	**/
-	@:luaDotMethod
 	inline function make_floating_popup_options(width:Float, height:Float, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig {
 		opts = nvim.helper.Arg.pure(opts);
 		return __make_floating_popup_options(width, height, opts);
@@ -482,7 +477,6 @@ extern class Util {
 		
 		@*return* `winid` — of newly created float window preview window
 	**/
-	@:luaDotMethod
 	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Float, Float> {
 		contents = nvim.helper.Arg.pure(contents);
 		opts = nvim.helper.Arg.pure(opts);
@@ -510,7 +504,6 @@ extern class Util {
 		
 		@*return* `window` — id of float window
 	**/
-	@:luaDotMethod
 	inline function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
 		opts = nvim.helper.Arg.pure(opts);
 		return __preview_location(location, opts);
@@ -535,7 +528,6 @@ extern class Util {
 		
 		@*param* `opts` — Options:
 	**/
-	@:luaDotMethod
 	inline function rename(old_fname:String, new_fname:String, ?opts:nvim.type.vim.lsp.util.rename.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		return __rename(old_fname, new_fname, opts);
@@ -587,7 +579,6 @@ extern class Util {
 		    | 'utf-32'
 		```
 	**/
-	@:luaDotMethod
 	inline function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool {
 		opts = nvim.helper.Arg.pure(opts);
 		return __show_document(location, position_encoding, opts);
@@ -625,7 +616,6 @@ extern class Util {
 		
 		@*return* `stripped` — content
 	**/
-	@:luaDotMethod
 	inline function stylize_markdown(bufnr:Float, contents:lua.Table<Int, String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
 		opts = nvim.helper.Arg.pure(opts);
 		return __stylize_markdown(bufnr, contents, opts);
@@ -674,7 +664,6 @@ extern class Util {
 		
 		@*return* `trimmed` — list of lines
 	**/
-	@:luaDotMethod
 	@:deprecated
 	inline function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable {
 		lines = nvim.helper.Arg.pure(lines);
