@@ -195,6 +195,7 @@ class MethodGenerator extends FieldGenerator {
 		final facadeMeta = field.meta.filter(m -> switch (m) {
 			case {name: ":native"}: false;
 			case {name: ":overload"}: false;
+			case {name: ":luaDotMethod"}: false;
 			case _: true;
 		});
 		field.meta = field.meta.filter(m -> switch (m) {
