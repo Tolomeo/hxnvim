@@ -1,13 +1,42 @@
 package nvim.helper;
 
 class Arg {
-		inline public static function pureTable<T>(obj:T):T {
-			untyped obj.__fields__ = null;
-			lua.Lua.setmetatable(cast obj, null);
-			return obj;
-		}
+	inline public static function pureTable(obj:lua.Table.AnyTable):lua.Table.AnyTable {
+		final tab = Table.create();
 
-    public static function pure<T>(obj:T):T {
-			return lua.Lua.type(obj) == 'table' ? pureTable(obj) : obj;
-    }
+		lua.PairTools.ipairsEach(obj, (i, t) -> {
+			lua.Table.insert(tab, Arg.pure(t));
+		});
+
+		lua.PairTools.pairsEach(obj, (k, t) -> {
+			if (["__fields__", "length"].contains(k)) {
+				return;
+			}
+
+			if(k == cast 0) {
+				lua.Table.insert(tab, 1, t);
+				return;
+			}
+
+			untyped tab[k] = Arg.pure(t);
+		});
+
+		return tab;
+	}
+
+	public static function pure<T>(obj:T):T {
+		return lua.Lua.type(obj) == 'table' ? cast pureTable(cast obj) : obj;
+	}
+}
+
+@:forward
+abstract LuaArray<T>(lua.Table<Int, T>) from lua.Table<Int, T> {
+	@:from
+	public static function fromArray<T>(arr:Array<T>):LuaArray<T> {
+		return lua.Table.fromArray(arr);
+	}
+
+	@:to function toTable():lua.Table<Int, T> {
+		return Arg.pure(this);
+	}
 }

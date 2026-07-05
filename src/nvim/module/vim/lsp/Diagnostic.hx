@@ -40,8 +40,8 @@ extern class Diagnostic {
 		              Structured: { [1] = {...}, [5] = {.... } }
 	**/
 	@:luaDotMethod
-	private function get_line_diagnostics(?bufnr:Null<Float>, ?line_nr:Null<Float>, ?opts:Null<{ @:optional
-	var severity : Null<nvim.type.lsp.DiagnosticSeverity>; }>, ?client_id:Null<Float>):lua.Table.AnyTable;
+	private function get_line_diagnostics(?bufnr:Null<Int>, ?line_nr:Null<Int>, ?opts:Null<{ @:optional
+	var severity : Null<nvim.type.lsp.DiagnosticSeverity>; }>, ?client_id:Null<Int>):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.get_namespace(client_id: integer, is_pull?: boolean)
@@ -57,7 +57,7 @@ extern class Diagnostic {
 		@*param* `is_pull` — Whether the namespace is for a pull or push client. Defaults to push
 	**/
 	@:luaDotMethod
-	function get_namespace(client_id:Float, ?is_pull:Null<Bool>):Dynamic;
+	function get_namespace(client_id:Int, ?is_pull:Null<Bool>):Dynamic;
 	@:native("on_diagnostic")
 	@:luaDotMethod
 	private function __on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic;
@@ -98,7 +98,7 @@ extern class Diagnostic {
 	}
 	@:native("reset")
 	@:luaDotMethod
-	private function __reset(client_id:Float, buffer_client_map:lua.Table<Float, lua.Table<Float, lua.Table.AnyTable>>):Dynamic;
+	private function __reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic;
 	/**
 		```lua
 		function M.reset(client_id: integer, buffer_client_map: table<integer, table<integer, table>>)
@@ -114,8 +114,7 @@ extern class Diagnostic {
 		
 		@*param* `buffer_client_map` — map of buffers to active clients
 	**/
-	inline private function reset(client_id:Float, buffer_client_map:lua.Table<Float, lua.Table<Float, lua.Table.AnyTable>>):Dynamic {
-		buffer_client_map = nvim.helper.Arg.pure(buffer_client_map);
+	inline private function reset(client_id:Int, buffer_client_map:nvim.helper.Arg.LuaArray<lua.Table<Int, lua.Table.AnyTable>>):Dynamic {
 		return __reset(client_id, buffer_client_map);
 	}
 }

@@ -15,7 +15,7 @@ extern class Codelens {
 		@*param* `bufnr` — filter by buffer. All buffers if nil, 0 for current buffer
 	**/
 	@:luaDotMethod
-	function clear(?client_id:Null<Float>, ?bufnr:Null<Float>):Dynamic;
+	function clear(?client_id:Null<Int>, ?bufnr:Null<Int>):Dynamic;
 	/**
 		```lua
 		function M.display(lenses?: lsp.CodeLens[], bufnr: integer, client_id: integer)
@@ -28,7 +28,7 @@ extern class Codelens {
 		@*param* `lenses` — lenses to display
 	**/
 	@:luaDotMethod
-	function display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Float, client_id:Float):Dynamic;
+	function display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
 	/**
 		```lua
 		function M.get(bufnr: integer)
@@ -42,7 +42,7 @@ extern class Codelens {
 		@*param* `bufnr` — Buffer number. 0 can be used for the current buffer.
 	**/
 	@:luaDotMethod
-	function get(bufnr:Float):lua.Table<Int, nvim.type.lsp.CodeLens>;
+	function get(bufnr:Int):lua.Table<Int, nvim.type.lsp.CodeLens>;
 	@:native("on_codelens")
 	@:luaDotMethod
 	private function __on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
@@ -55,7 +55,7 @@ extern class Codelens {
 		
 		 |lsp-handler| for the method `textDocument/codeLens`
 	**/
-	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:nvim.helper.Arg.LuaArray<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
 		ctx = nvim.helper.Arg.pure(ctx);
 		return __on_codelens(err, result, ctx);
 	}
@@ -108,5 +108,5 @@ extern class Codelens {
 		@*param* `lenses` — lenses to store
 	**/
 	@:luaDotMethod
-	function save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Float, client_id:Float):Dynamic;
+	function save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
 }

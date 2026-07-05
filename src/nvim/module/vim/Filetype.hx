@@ -132,7 +132,7 @@ extern class Filetype {
 		@*return* — : Option value
 	**/
 	@:luaDotMethod
-	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Float>>;
+	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
 	@:native("match")
 	@:luaDotMethod
 	private function __match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
