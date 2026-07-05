@@ -151,7 +151,19 @@ class MethodGenerator extends FieldGenerator {
 
 	function generateFacade(method:Field, name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
 		final params = signature.params.copy();
-		final args = signature.args.copy();
+		final args = signature.args.map(arg -> switch (arg.type) {
+			case LiteralType.Array(itemsType): {
+					name: arg.name,
+					type: LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')),
+					opt: arg.opt
+				};
+			case LiteralType.Table(LiteralType.Integer, itemsType): {
+					name: arg.name,
+					type: LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')),
+					opt: arg.opt
+				};
+			case _: arg;
+		});
 		final returnTypes = switch (signature.ret) {
 			case LiteralType.Multireturn(rs):
 				rs.map(r -> switch (r) {
