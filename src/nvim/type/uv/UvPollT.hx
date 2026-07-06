@@ -929,8 +929,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function start(events:nvim.type.uv.poll.Eventspec, callback:nvim.type.uv.poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		events = nvim.helper.Arg.pure(events);
-		callback = nvim.helper.Arg.pure(callback);
+		final events:nvim.helper.Native.LuaObject<nvim.type.uv.poll.Eventspec> = events;
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.poll_start.Callback> = callback;
 		return __start(events, callback);
 	}
 	@:native("stop")

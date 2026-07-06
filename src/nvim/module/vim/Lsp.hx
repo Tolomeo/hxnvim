@@ -167,7 +167,7 @@ extern class Lsp {
 		iterate all clients and call their `cancel_request()` methods.
 	**/
 	inline private function buf_request(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn.Return2<lua.Table<Int, Int>, haxe.Constraints.Function> {
-		handler = nvim.helper.Arg.pure(handler);
+		final handler:nvim.helper.Native.LuaObject<nvim.type.lsp.Handler> = handler;
 		return __buf_request(bufnr, method, params, handler, on_unsupported);
 	}
 	@:native("buf_request_all")
@@ -201,7 +201,7 @@ extern class Lsp {
 		@*return* `cancel` — Function that cancels all requests.
 	**/
 	inline function buf_request_all(bufnr:Int, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Int) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function {
-		handler = nvim.helper.Arg.pure(handler);
+		final handler:nvim.helper.Native.LuaObject<nvim.type.lsp.MultiHandler> = handler;
 		return __buf_request_all(bufnr, method, params, handler);
 	}
 	@:native("buf_request_sync")
@@ -413,7 +413,7 @@ extern class Lsp {
 		```
 	**/
 	inline function foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Int):Dynamic {
-		kind = nvim.helper.Arg.pure(kind);
+		final kind:nvim.helper.Native.LuaObject<nvim.type.lsp.FoldingRangeKind> = kind;
 		return __foldclose(kind, winid);
 	}
 	/**
@@ -506,7 +506,7 @@ extern class Lsp {
 		 via `vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'`.
 	**/
 	inline function formatexpr(?opts:nvim.type.vim.lsp.formatexpr.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.formatexpr.Opts> = opts;
 		return __formatexpr(opts);
 	}
 	/**
@@ -568,7 +568,7 @@ extern class Lsp {
 		@*return* — : List of |vim.lsp.Client| objects
 	**/
 	inline function get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):lua.Table<Int, nvim.type.vim.lsp.Client> {
-		filter = nvim.helper.Arg.pure(filter);
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.get_clients.Filter> = filter;
 		return __get_clients(filter);
 	}
 	/**
@@ -773,7 +773,7 @@ extern class Lsp {
 		@*param* `opts` — Optional keyword arguments.
 	**/
 	inline function start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Int> {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.ClientConfig> = config;
 		return __start(config, opts);
 	}
 	@:native("start_client")
@@ -801,7 +801,7 @@ extern class Lsp {
 	**/
 	@:deprecated
 	inline function start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn.Return2<Null<Int>, Null<String>> {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.ClientConfig> = config;
 		return __start_client(config);
 	}
 	/**
@@ -891,8 +891,8 @@ extern class Lsp {
 	**/
 	@:deprecated
 	inline function with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic {
-		handler = nvim.helper.Arg.pure(handler);
-		override_config = nvim.helper.Arg.pure(override_config);
+		final handler:nvim.helper.Native.LuaObject<nvim.type.lsp.Handler> = handler;
+		final override_config:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = override_config;
 		return __with(handler, override_config);
 	}
 }

@@ -94,7 +94,7 @@ extern class Diagnostic {
 		                (see |diagnostic-severity|) and integer counts as values.
 	**/
 	inline function count(?bufnr:Int, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table.AnyTable {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.GetOpts> = opts;
 		return __count(bufnr, opts);
 	}
 	/**
@@ -163,7 +163,7 @@ extern class Diagnostic {
 		                           are guaranteed to be present.
 	**/
 	inline function get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.GetOpts> = opts;
 		return __get(bufnr, opts);
 	}
 	/**
@@ -212,7 +212,7 @@ extern class Diagnostic {
 		@*return* — : Next diagnostic
 	**/
 	inline function get_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_next(opts);
 	}
 	@:native("get_next_pos")
@@ -239,7 +239,7 @@ extern class Diagnostic {
 	**/
 	@:deprecated
 	inline function get_next_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_next_pos(opts);
 	}
 	@:native("get_prev")
@@ -258,7 +258,7 @@ extern class Diagnostic {
 		@*return* — : Previous diagnostic
 	**/
 	inline function get_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_prev(opts);
 	}
 	@:native("get_prev_pos")
@@ -285,7 +285,7 @@ extern class Diagnostic {
 	**/
 	@:deprecated
 	inline function get_prev_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_prev_pos(opts);
 	}
 	@:native("goto_next")
@@ -302,7 +302,7 @@ extern class Diagnostic {
 	**/
 	@:deprecated
 	inline function goto_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __goto_next(opts);
 	}
 	@:native("goto_prev")
@@ -319,7 +319,7 @@ extern class Diagnostic {
 	**/
 	@:deprecated
 	inline function goto_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __goto_prev(opts);
 	}
 	/**
@@ -397,7 +397,7 @@ extern class Diagnostic {
 		@*return* — The diagnostic that was moved to.
 	**/
 	inline function jump(opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __jump(opts);
 	}
 	@:native("match")
@@ -447,8 +447,9 @@ extern class Diagnostic {
 		
 		@*return* — : |vim.Diagnostic| structure or `nil` if {pat} fails to match {str}.
 	**/
-	inline function match(str:String, pat:String, groups:nvim.helper.Arg.LuaArray<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
-		severity_map = nvim.helper.Arg.pure(severity_map);
+	inline function match(str:String, pat:String, groups:Array<String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic> {
+		final groups:nvim.helper.Native.LuaArray<String> = groups;
+		final severity_map:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = severity_map;
 		return __match(str, pat, groups, severity_map, defaults);
 	}
 	@:native("open_float")
@@ -510,8 +511,9 @@ extern class Diagnostic {
 		
 		@*param* `opts` — Display options to pass to |vim.diagnostic.show()|
 	**/
-	inline function set(namespace:Int, bufnr:Int, diagnostics:nvim.helper.Arg.LuaArray<nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function set(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
+		final diagnostics:nvim.helper.Native.LuaArray<nvim.type.vim.Diagnostic> = diagnostics;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.Opts> = opts;
 		return __set(namespace, bufnr, diagnostics, opts);
 	}
 	@:native("setloclist")
@@ -527,7 +529,7 @@ extern class Diagnostic {
 		 Add buffer diagnostics to the location list.
 	**/
 	inline function setloclist(?opts:nvim.type.vim.diagnostic.setloclist.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.setloclist.Opts> = opts;
 		return __setloclist(opts);
 	}
 	@:native("setqflist")
@@ -543,7 +545,7 @@ extern class Diagnostic {
 		 Add all diagnostics to the quickfix list.
 	**/
 	inline function setqflist(?opts:nvim.type.vim.diagnostic.setqflist.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.setqflist.Opts> = opts;
 		return __setqflist(opts);
 	}
 	/**
@@ -583,7 +585,7 @@ extern class Diagnostic {
 		@*param* `opts` — Display options.
 	**/
 	inline function show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.Opts> = opts;
 		return __show(namespace, bufnr, diagnostics, opts);
 	}
 	/**

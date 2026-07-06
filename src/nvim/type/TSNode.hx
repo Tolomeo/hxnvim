@@ -74,7 +74,7 @@ package nvim.type;
 		 ```
 	**/
 	inline public function child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode> {
-		descendant = nvim.helper.Arg.pure(descendant);
+		final descendant:nvim.helper.Native.LuaObject<nvim.type.TSNode> = descendant;
 		return __child_with_descendant(descendant);
 	}
 	/**
@@ -116,7 +116,7 @@ package nvim.type;
 		 Check if {node} refers to the same node within the same tree.
 	**/
 	inline public function equal(node:nvim.type.TSNode):Bool {
-		node = nvim.helper.Arg.pure(node);
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
 		return __equal(node);
 	}
 	/**

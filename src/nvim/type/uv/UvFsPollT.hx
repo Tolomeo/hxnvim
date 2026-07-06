@@ -982,7 +982,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function start(path:String, interval:Int, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.fs_poll_start.Callback> = callback;
 		return __start(path, interval, callback);
 	}
 	@:native("stop")

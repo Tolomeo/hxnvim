@@ -125,7 +125,7 @@ package nvim.type.vim.lsp;
 		 @nodoc
 	**/
 	inline public function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.ClientConfig> = config;
 		return __create(config);
 	}
 	/**
@@ -451,9 +451,9 @@ package nvim.type.vim.lsp;
 	**/
 	inline public function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
 	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic {
-		command = nvim.helper.Arg.pure(command);
-		context = nvim.helper.Arg.pure(context);
-		handler = nvim.helper.Arg.pure(handler);
+		final command:nvim.helper.Native.LuaObject<nvim.type.lsp.Command> = command;
+		final context:nvim.helper.Native.LuaObject<{ ?bufnr:Null<Int> }> = context;
+		final handler:nvim.helper.Native.LuaObject<nvim.type.lsp.Handler> = handler;
 		return __exec_cmd(command, context, handler);
 	}
 	/**
@@ -548,8 +548,8 @@ package nvim.type.vim.lsp;
 		 @see |vim.lsp.buf_request_all()|
 	**/
 	inline public function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Int):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
-		params = nvim.helper.Arg.pure(params);
-		handler = nvim.helper.Arg.pure(handler);
+		final params:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = params;
+		final handler:nvim.helper.Native.LuaObject<nvim.type.lsp.Handler> = handler;
 		return __request(method, params, handler, bufnr);
 	}
 	@:native("request_sync")
@@ -589,7 +589,7 @@ package nvim.type.vim.lsp;
 	**/
 	inline public function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Int>, ?bufnr:Int):nvim.helper.Multireturn.Return2<Null<{ @:optional
 	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>> {
-		params = nvim.helper.Arg.pure(params);
+		final params:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = params;
 		return __request_sync(method, params, timeout_ms, bufnr);
 	}
 	/**

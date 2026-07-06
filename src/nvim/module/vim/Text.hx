@@ -90,7 +90,7 @@ extern class Text {
 	**/
 	inline function indent(size:Int, text:String, ?opts:{ @:optional
 	var expandtab : Null<Float>; }):nvim.helper.Multireturn.Return2<String, Int> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<{ ?expandtab:Null<Float> }> = opts;
 		return __indent(size, text, opts);
 	}
 }

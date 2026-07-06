@@ -55,8 +55,9 @@ extern class Codelens {
 		
 		 |lsp-handler| for the method `textDocument/codeLens`
 	**/
-	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:nvim.helper.Arg.LuaArray<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		ctx = nvim.helper.Arg.pure(ctx);
+	inline function on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:Array<nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
+		final result:nvim.helper.Native.LuaArray<nvim.type.lsp.CodeLens> = result;
+		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_codelens(err, result, ctx);
 	}
 	@:native("refresh")
@@ -82,7 +83,7 @@ extern class Codelens {
 		@*param* `opts` — Optional fields
 	**/
 	inline function refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.codelens.refresh.Opts> = opts;
 		return __refresh(opts);
 	}
 	/**

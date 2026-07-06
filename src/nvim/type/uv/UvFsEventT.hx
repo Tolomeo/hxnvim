@@ -980,8 +980,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function start(path:String, flags:nvim.type.uv.fs_event_start.Flags, callback:nvim.type.uv.fs_event_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		flags = nvim.helper.Arg.pure(flags);
-		callback = nvim.helper.Arg.pure(callback);
+		final flags:nvim.helper.Native.LuaObject<nvim.type.uv.fs_event_start.Flags> = flags;
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.fs_event_start.Callback> = callback;
 		return __start(path, flags, callback);
 	}
 	@:native("stop")

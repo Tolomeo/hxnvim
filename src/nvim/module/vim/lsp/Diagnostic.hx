@@ -73,8 +73,8 @@ extern class Diagnostic {
 		 See |vim.diagnostic.config()| for configuration options.
 	**/
 	inline function on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		result = nvim.helper.Arg.pure(result);
-		ctx = nvim.helper.Arg.pure(ctx);
+		final result:nvim.helper.Native.LuaObject<nvim.type.lsp.DocumentDiagnosticReport> = result;
+		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_diagnostic(error, result, ctx);
 	}
 	@:native("on_publish_diagnostics")
@@ -92,8 +92,8 @@ extern class Diagnostic {
 		 See |vim.diagnostic.config()| for configuration options.
 	**/
 	inline function on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		params = nvim.helper.Arg.pure(params);
-		ctx = nvim.helper.Arg.pure(ctx);
+		final params:nvim.helper.Native.LuaObject<nvim.type.lsp.PublishDiagnosticsParams> = params;
+		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_publish_diagnostics(_, params, ctx);
 	}
 	@:native("reset")
@@ -114,7 +114,8 @@ extern class Diagnostic {
 		
 		@*param* `buffer_client_map` — map of buffers to active clients
 	**/
-	inline private function reset(client_id:Int, buffer_client_map:nvim.helper.Arg.LuaArray<lua.Table<Int, lua.Table.AnyTable>>):Dynamic {
+	inline private function reset(client_id:Int, buffer_client_map:Array<lua.Table<Int, lua.Table.AnyTable>>):Dynamic {
+		final buffer_client_map:nvim.helper.Native.LuaArray<lua.Table<Int, lua.Table.AnyTable>> = buffer_client_map;
 		return __reset(client_id, buffer_client_map);
 	}
 }

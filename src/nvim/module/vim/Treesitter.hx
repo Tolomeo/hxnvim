@@ -129,7 +129,7 @@ extern class Treesitter {
 		            set to `metadata[capture_id]` when using |vim.treesitter.query.add_directive()|.
 	**/
 	inline function get_node_text(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?opts:Null<lua.Table.AnyTable>):String {
-		node = nvim.helper.Arg.pure(node);
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
 		return __get_node_text(node, source, opts);
 	}
 	@:native("get_parser")
@@ -183,7 +183,7 @@ extern class Treesitter {
 		@*param* `source` — Buffer or string from which the {node} is extracted
 	**/
 	inline function get_range(node:nvim.type.TSNode, ?source:Null<haxe.extern.EitherType<Int, String>>, ?metadata:Null<nvim.type.vim.treesitter.query.TSMetadata>):nvim.type.Range6 {
-		node = nvim.helper.Arg.pure(node);
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
 		return __get_range(node, source, metadata);
 	}
 	/**
@@ -266,8 +266,8 @@ extern class Treesitter {
 		@*return* `True` — if {dest} is an ancestor of {source}
 	**/
 	inline function is_ancestor(dest:nvim.type.TSNode, source:nvim.type.TSNode):Bool {
-		dest = nvim.helper.Arg.pure(dest);
-		source = nvim.helper.Arg.pure(source);
+		final dest:nvim.helper.Native.LuaObject<nvim.type.TSNode> = dest;
+		final source:nvim.helper.Native.LuaObject<nvim.type.TSNode> = source;
 		return __is_ancestor(dest, source);
 	}
 	@:native("is_in_node_range")
@@ -293,7 +293,7 @@ extern class Treesitter {
 		@*return* `True` — if the position is in node range
 	**/
 	inline function is_in_node_range(node:nvim.type.TSNode, line:Int, col:Int):Bool {
-		node = nvim.helper.Arg.pure(node);
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
 		return __is_in_node_range(node, line, col);
 	}
 	/**
@@ -345,8 +345,8 @@ extern class Treesitter {
 		@*return* `True` — if the {node} contains the {range}
 	**/
 	inline function node_contains(node:nvim.type.TSNode, range:lua.Table.AnyTable):Bool {
-		node = nvim.helper.Arg.pure(node);
-		range = nvim.helper.Arg.pure(range);
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
+		final range:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = range;
 		return __node_contains(node, range);
 	}
 	/**

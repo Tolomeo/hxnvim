@@ -77,8 +77,8 @@ extern class SemanticTokens {
 		@*param* `opts` — Optional parameters:
 	**/
 	inline function highlight_token(token:lua.Table.AnyTable, bufnr:Int, client_id:Int, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic {
-		token = nvim.helper.Arg.pure(token);
-		opts = nvim.helper.Arg.pure(opts);
+		final token:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = token;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts> = opts;
 		return __highlight_token(token, bufnr, client_id, hl_group, opts);
 	}
 	@:native("start")
@@ -114,7 +114,7 @@ extern class SemanticTokens {
 		        to the server by the given number in milliseconds
 	**/
 	inline function start(bufnr:Int, client_id:Int, ?opts:lua.Table.AnyTable):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __start(bufnr, client_id, opts);
 	}
 	/**

@@ -50,7 +50,7 @@ extern class Api {
 		 - bufnr: (number) buffer id in floating window
 	**/
 	inline function nvim__complete_set(index:Int, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CompleteSet> = opts;
 		return __nvim__complete_set(index, opts);
 	}
 	/**
@@ -82,8 +82,9 @@ extern class Api {
 		
 		@*return* — list of absolute paths to the found files
 	**/
-	inline function nvim__get_runtime(pat:nvim.helper.Arg.LuaArray<Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim__get_runtime(pat:Array<Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String> {
+		final pat:nvim.helper.Native.LuaArray<Any> = pat;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Runtime> = opts;
 		return __nvim__get_runtime(pat, all, opts);
 	}
 	/**
@@ -145,7 +146,7 @@ extern class Api {
 		@*return* — its argument.
 	**/
 	inline function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any> {
-		dct = nvim.helper.Arg.pure(dct);
+		final dct:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dct;
 		return __nvim__id_dict(dct);
 	}
 	/**
@@ -230,7 +231,7 @@ extern class Api {
 		 - wins: a list of windows to be scoped in
 	**/
 	inline function nvim__ns_set(ns_id:Int, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.NsOpts> = opts;
 		return __nvim__ns_set(ns_id, opts);
 	}
 	@:native("nvim__redraw")
@@ -272,7 +273,7 @@ extern class Api {
 		 - tabline: Redraw the 'tabline'.
 	**/
 	inline function nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Redraw> = opts;
 		return __nvim__redraw(opts);
 	}
 	/**
@@ -412,7 +413,7 @@ extern class Api {
 		See: ~vim.api.nvim_buf_detach~
 	**/
 	inline function nvim_buf_attach(buffer:Int, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.BufAttach> = opts;
 		return __nvim_buf_attach(buffer, send_buffer, opts);
 	}
 	/**
@@ -495,7 +496,7 @@ extern class Api {
 		See: [vim.api.nvim_create_user_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1026#9)
 	**/
 	inline function nvim_buf_create_user_command(buffer:Int, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.UserCommand> = opts;
 		return __nvim_buf_create_user_command(buffer, name, command, opts);
 	}
 	/**
@@ -613,7 +614,7 @@ extern class Api {
 		 - unload: Unloaded only, do not delete. See `:bunload`
 	**/
 	inline function nvim_buf_delete(buffer:Int, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.BufDelete> = opts;
 		return __nvim_buf_delete(buffer, opts);
 	}
 	/**
@@ -652,7 +653,7 @@ extern class Api {
 		@*return* — Map of maps describing commands.
 	**/
 	inline function nvim_buf_get_commands(buffer:Int, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetCommands> = opts;
 		return __nvim_buf_get_commands(buffer, opts);
 	}
 	@:native("nvim_buf_get_extmark_by_id")
@@ -684,7 +685,7 @@ extern class Api {
 		 absent
 	**/
 	inline function nvim_buf_get_extmark_by_id(buffer:Int, ns_id:Int, id:Int, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetExtmark> = opts;
 		return __nvim_buf_get_extmark_by_id(buffer, ns_id, id, opts);
 	}
 	@:native("nvim_buf_get_extmarks")
@@ -765,7 +766,7 @@ extern class Api {
 		@*return* — List of `[extmark_id, row, col]` tuples in "traversal order".
 	**/
 	inline function nvim_buf_get_extmarks(buffer:Int, ns_id:Int, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetExtmarks> = opts;
 		return __nvim_buf_get_extmarks(buffer, ns_id, start, end_, opts);
 	}
 	/**
@@ -940,7 +941,7 @@ extern class Api {
 		@*return* — Array of lines, or empty array for unloaded buffer.
 	**/
 	inline function nvim_buf_get_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_get_text(buffer, start_row, start_col, end_row, end_col, opts);
 	}
 	/**
@@ -1180,7 +1181,7 @@ extern class Api {
 		@*return* — Id of the created/updated extmark
 	**/
 	inline function nvim_buf_set_extmark(buffer:Int, ns_id:Int, line:Int, col:Int, opts:nvim.type.vim.api.keyset.SetExtmark):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.SetExtmark> = opts;
 		return __nvim_buf_set_extmark(buffer, ns_id, line, col, opts);
 	}
 	@:native("nvim_buf_set_keymap")
@@ -1201,7 +1202,7 @@ extern class Api {
 		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
 	**/
 	inline function nvim_buf_set_keymap(buffer:Int, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts);
 	}
 	/**
@@ -1275,7 +1276,7 @@ extern class Api {
 		  * [vim.api.nvim_buf_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#457#9)
 	**/
 	inline function nvim_buf_set_mark(buffer:Int, name:String, line:Int, col:Int, opts:nvim.type.vim.api.keyset.Empty):Bool {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_mark(buffer, name, line, col, opts);
 	}
 	/**
@@ -1367,8 +1368,9 @@ extern class Api {
 		```
 	**/
 	@:deprecated
-	inline function nvim_buf_set_virtual_text(buffer:Int, src_id:Int, line:Int, chunks:nvim.helper.Arg.LuaArray<Any>, opts:nvim.type.vim.api.keyset.Empty):Int {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_set_virtual_text(buffer:Int, src_id:Int, line:Int, chunks:Array<Any>, opts:nvim.type.vim.api.keyset.Empty):Int {
+		final chunks:nvim.helper.Native.LuaArray<Any> = chunks;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, opts);
 	}
 	/**
@@ -1469,7 +1471,7 @@ extern class Api {
 		     - NOTE: If not passed, will only delete autocmds *not* in any group.
 	**/
 	inline function nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ClearAutocmds> = opts;
 		return __nvim_clear_autocmds(opts);
 	}
 	@:native("nvim_cmd")
@@ -1513,8 +1515,8 @@ extern class Api {
 		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
 	**/
 	inline function nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String {
-		cmd = nvim.helper.Arg.pure(cmd);
-		opts = nvim.helper.Arg.pure(opts);
+		final cmd:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Cmd> = cmd;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CmdOpts> = opts;
 		return __nvim_cmd(cmd, opts);
 	}
 	/**
@@ -1581,7 +1583,7 @@ extern class Api {
 		@*return* — Integer id of the created group.
 	**/
 	inline function nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CreateAugroup> = opts;
 		return __nvim_create_augroup(name, opts);
 	}
 	@:native("nvim_create_autocmd")
@@ -1659,7 +1661,7 @@ extern class Api {
 		See: [vim.api.nvim_del_autocmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1050#9)
 	**/
 	inline function nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CreateAutocmd> = opts;
 		return __nvim_create_autocmd(event, opts);
 	}
 	/**
@@ -1764,7 +1766,7 @@ extern class Api {
 		   - preview: (function) Preview callback for 'inccommand' `:command-preview`
 	**/
 	inline function nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.UserCommand> = opts;
 		return __nvim_create_user_command(name, command, opts);
 	}
 	/**
@@ -1923,8 +1925,9 @@ extern class Api {
 		 - verbose: Message is controlled by the 'verbose' option. Nvim invoked with `-V3log`
 		   will write the message to the "log" file instead of standard output.
 	**/
-	inline function nvim_echo(chunks:nvim.helper.Arg.LuaArray<Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_echo(chunks:Array<Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
+		final chunks:nvim.helper.Native.LuaArray<Any> = chunks;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.EchoOpts> = opts;
 		return __nvim_echo(chunks, history, opts);
 	}
 	/**
@@ -1992,7 +1995,7 @@ extern class Api {
 		     - groups: (array) Names of stacked highlight groups (highest priority last).
 	**/
 	inline function nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.EvalStatusline> = opts;
 		return __nvim_eval_statusline(str, opts);
 	}
 	/**
@@ -2045,7 +2048,7 @@ extern class Api {
 		  * [vim.api.nvim_cmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#868#9)
 	**/
 	inline function nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ExecOpts> = opts;
 		return __nvim_exec2(src, opts);
 	}
 	@:native("nvim_exec_autocmds")
@@ -2078,7 +2081,7 @@ extern class Api {
 		 `nvim_create_autocmd()` for details.
 	**/
 	inline function nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ExecAutocmds> = opts;
 		return __nvim_exec_autocmds(event, opts);
 	}
 	/**
@@ -2198,7 +2201,7 @@ extern class Api {
 		   If the autocommand is buffer local |autocmd-buffer-local|:
 	**/
 	inline function nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetAutocmds> = opts;
 		return __nvim_get_autocmds(opts);
 	}
 	/**
@@ -2303,7 +2306,7 @@ extern class Api {
 		See: [vim.api.nvim_get_all_options_info](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1219#9)
 	**/
 	inline function nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetCommands> = opts;
 		return __nvim_get_commands(opts);
 	}
 	@:native("nvim_get_context")
@@ -2327,7 +2330,7 @@ extern class Api {
 		@*return* — map of global |context|.
 	**/
 	inline function nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Context> = opts;
 		return __nvim_get_context(opts);
 	}
 	/**
@@ -2420,7 +2423,7 @@ extern class Api {
 		 or only a single highlight definition map if requested by name or id.
 	**/
 	inline function nvim_get_hl(ns_id:Int, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetHighlight> = opts;
 		return __nvim_get_hl(ns_id, opts);
 	}
 	/**
@@ -2486,7 +2489,7 @@ extern class Api {
 		@*return* — Namespace id, or -1
 	**/
 	inline function nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetNs> = opts;
 		return __nvim_get_hl_ns(opts);
 	}
 	/**
@@ -2539,7 +2542,7 @@ extern class Api {
 		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
 	**/
 	inline function nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_get_mark(name, opts);
 	}
 	/**
@@ -2637,7 +2640,7 @@ extern class Api {
 		@*return* — Option Information
 	**/
 	inline function nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_get_option_info2(name, opts);
 	}
 	@:native("nvim_get_option_value")
@@ -2673,7 +2676,7 @@ extern class Api {
 		@*return* — Option value
 	**/
 	inline function nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_get_option_value(name, opts);
 	}
 	/**
@@ -2953,7 +2956,7 @@ extern class Api {
 		@*param* `dict` — `Context` map.
 	**/
 	inline function nvim_load_context(dict:lua.Table<String, Any>):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dict;
 		return __nvim_load_context(dict);
 	}
 	@:native("nvim_notify")
@@ -2967,7 +2970,7 @@ extern class Api {
 	**/
 	@:deprecated
 	inline function nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __nvim_notify(msg, log_level, opts);
 	}
 	@:native("nvim_open_term")
@@ -3020,7 +3023,7 @@ extern class Api {
 		@*return* — Channel id, or 0 on error
 	**/
 	inline function nvim_open_term(buffer:Int, opts:nvim.type.vim.api.keyset.OpenTerm):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.OpenTerm> = opts;
 		return __nvim_open_term(buffer, opts);
 	}
 	@:native("nvim_open_win")
@@ -3207,7 +3210,7 @@ extern class Api {
 		@*return* — |window-ID|, or 0 on error
 	**/
 	inline function nvim_open_win(buffer:Int, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Int {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_open_win(buffer, enter, config);
 	}
 	/**
@@ -3290,7 +3293,7 @@ extern class Api {
 		       - "botright": |:botright|.
 	**/
 	inline function nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_parse_cmd(str, opts);
 	}
 	/**
@@ -3514,7 +3517,7 @@ extern class Api {
 		@*param* `opts` — Optional parameters. Reserved for future use.
 	**/
 	inline function nvim_select_popupmenu_item(item:Int, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_select_popupmenu_item(item, insert, finish, opts);
 	}
 	/**
@@ -3648,7 +3651,7 @@ extern class Api {
 		   ```
 	**/
 	inline function nvim_set_decoration_provider(ns_id:Int, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.SetDecorationProvider> = opts;
 		return __nvim_set_decoration_provider(ns_id, opts);
 	}
 	@:native("nvim_set_hl")
@@ -3714,7 +3717,7 @@ extern class Api {
 		 - force: if true force update the highlight group when it exists.
 	**/
 	inline function nvim_set_hl(ns_id:Int, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic {
-		val = nvim.helper.Arg.pure(val);
+		final val:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Highlight> = val;
 		return __nvim_set_hl(ns_id, name, val);
 	}
 	/**
@@ -3797,7 +3800,7 @@ extern class Api {
 		   "callback" is equivalent to returning an empty string.
 	**/
 	inline function nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_set_keymap(mode, lhs, rhs, opts);
 	}
 	/**
@@ -3836,7 +3839,7 @@ extern class Api {
 		 - buf: Buffer number. Used for setting buffer local option.
 	**/
 	inline function nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_set_option_value(name, value, opts);
 	}
 	/**
@@ -4311,7 +4314,7 @@ extern class Api {
 		See: [vim.api.nvim_open_win](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1848#9)
 	**/
 	inline function nvim_win_set_config(window:Int, config:nvim.type.vim.api.keyset.WinConfig):Dynamic {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_win_set_config(window, config);
 	}
 	/**
@@ -4448,7 +4451,7 @@ extern class Api {
 		 - fill: The number of diff filler or virtual lines among them.
 	**/
 	inline function nvim_win_text_height(window:Int, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinTextHeight> = opts;
 		return __nvim_win_text_height(window, opts);
 	}
 }
@@ -6371,7 +6374,7 @@ extern class Fn {
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
 	inline function ctxset(context:lua.Table.AnyTable, ?index:Int):Int {
-		context = nvim.helper.Arg.pure(context);
+		final context:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = context;
 		return __ctxset(context, index);
 	}
 	/**
@@ -6583,7 +6586,7 @@ extern class Fn {
 		 validation and parsing logic.
 	**/
 	inline function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __dictwatcheradd(dict, pattern, callback);
 	}
 	/**
@@ -6761,7 +6764,8 @@ extern class Fn {
 		 <Except that the function returns after the first error,
 		 following digraphs will not be added.
 	**/
-	inline function digraph_setlist(digraphlist:nvim.helper.Arg.LuaArray<lua.Table<Int, String>>):Any {
+	inline function digraph_setlist(digraphlist:Array<lua.Table<Int, String>>):Any {
+		final digraphlist:nvim.helper.Native.LuaArray<lua.Table<Int, String>> = digraphlist;
 		return __digraph_setlist(digraphlist);
 	}
 	/**
@@ -7234,7 +7238,7 @@ extern class Fn {
 		 <
 	**/
 	inline function expandcmd(string:String, ?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __expandcmd(string, options);
 	}
 	@:native("extend")
@@ -7285,9 +7289,9 @@ extern class Fn {
 		 Returns {expr1}.  Returns 0 on error.
 	**/
 	inline function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
-		expr1 = nvim.helper.Arg.pure(expr1);
-		expr2 = nvim.helper.Arg.pure(expr2);
-		expr3 = nvim.helper.Arg.pure(expr3);
+		final expr1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr1;
+		final expr2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr2;
+		final expr3:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr3;
 		return __extend(expr1, expr2, expr3);
 	}
 	@:native("extendnew")
@@ -7306,9 +7310,9 @@ extern class Fn {
 		 unchanged.
 	**/
 	inline function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
-		expr1 = nvim.helper.Arg.pure(expr1);
-		expr2 = nvim.helper.Arg.pure(expr2);
-		expr3 = nvim.helper.Arg.pure(expr3);
+		final expr1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr1;
+		final expr2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr2;
+		final expr3:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr3;
 		return __extendnew(expr1, expr2, expr3);
 	}
 	/**
@@ -8446,7 +8450,7 @@ extern class Fn {
 		```
 	**/
 	inline function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getchar(expr, opts);
 	}
 	/**
@@ -8549,7 +8553,7 @@ extern class Fn {
 		```
 	**/
 	inline function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getcharstr(expr, opts);
 	}
 	/**
@@ -9147,7 +9151,7 @@ extern class Fn {
 		 <
 	**/
 	inline function getloclist(nr:Int, ?what:lua.Table.AnyTable):Any {
-		what = nvim.helper.Arg.pure(what);
+		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __getloclist(nr, what);
 	}
 	/**
@@ -9455,7 +9459,7 @@ extern class Fn {
 		 <
 	**/
 	inline function getqflist(?what:lua.Table.AnyTable):Any {
-		what = nvim.helper.Arg.pure(what);
+		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __getqflist(what);
 	}
 	/**
@@ -9609,9 +9613,9 @@ extern class Fn {
 		 <
 	**/
 	inline function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String> {
-		pos1 = nvim.helper.Arg.pure(pos1);
-		pos2 = nvim.helper.Arg.pure(pos2);
-		opts = nvim.helper.Arg.pure(opts);
+		final pos1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos1;
+		final pos2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos2;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getregion(pos1, pos2, opts);
 	}
 	@:native("getregionpos")
@@ -9657,9 +9661,9 @@ extern class Fn {
 		       (default: |FALSE|)
 	**/
 	inline function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Int>>> {
-		pos1 = nvim.helper.Arg.pure(pos1);
-		pos2 = nvim.helper.Arg.pure(pos2);
-		opts = nvim.helper.Arg.pure(opts);
+		final pos1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos1;
+		final pos2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos2;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getregionpos(pos1, pos2, opts);
 	}
 	/**
@@ -9730,7 +9734,7 @@ extern class Fn {
 		 <
 	**/
 	inline function getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getscriptinfo(opts);
 	}
 	/**
@@ -10230,7 +10234,7 @@ extern class Fn {
 		```
 	**/
 	inline function has_key(dict:lua.Table.AnyTable, key:String):Float {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __has_key(dict, key);
 	}
 	/**
@@ -10676,7 +10680,7 @@ extern class Fn {
 		 <
 	**/
 	inline function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __indexof(object, expr, opts);
 	}
 	/**
@@ -11115,7 +11119,7 @@ extern class Fn {
 		 the index.
 	**/
 	inline function items(dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __items(dict);
 	}
 	/**
@@ -11274,7 +11278,7 @@ extern class Fn {
 		 See also |job-control|, |channel|, |msgpack-rpc|.
 	**/
 	inline function jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __jobstart(cmd, opts);
 	}
 	/**
@@ -11406,7 +11410,7 @@ extern class Fn {
 		 arbitrary order.  Also see |items()| and |values()|.
 	**/
 	inline function keys(dict:lua.Table.AnyTable):lua.Table<Int, String> {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __keys(dict);
 	}
 	/**
@@ -12021,7 +12025,7 @@ extern class Fn {
 		 <
 	**/
 	inline function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dict;
 		return __mapset(mode, abbr, dict);
 	}
 	/**
@@ -12285,7 +12289,7 @@ extern class Fn {
 		 submatch.
 	**/
 	inline function matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchbufline(buf, pat, lnum, end_, dict);
 	}
 	/**
@@ -12406,8 +12410,9 @@ extern class Fn {
 		         \ {'matchseq': 1})
 		 <results in `['two one']`.
 	**/
-	inline function matchfuzzy(list:nvim.helper.Arg.LuaArray<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchfuzzy(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchfuzzy(list, str, dict);
 	}
 	@:native("matchfuzzypos")
@@ -12442,8 +12447,9 @@ extern class Fn {
 		     \ ->matchfuzzypos('ll', {'key' : 'text'})
 		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
 	**/
-	inline function matchfuzzypos(list:nvim.helper.Arg.LuaArray<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchfuzzypos(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchfuzzypos(list, str, dict);
 	}
 	/**
@@ -12532,8 +12538,9 @@ extern class Fn {
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	inline function matchstrlist(list:nvim.helper.Arg.LuaArray<String>, pat:String, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchstrlist(list:Array<String>, pat:String, ?dict:lua.Table.AnyTable):Any {
+		final list:nvim.helper.Native.LuaArray<String> = list;
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchstrlist(list, pat, dict);
 	}
 	/**
@@ -15635,7 +15642,7 @@ extern class Fn {
 		         (default: cursor's position)
 	**/
 	inline function searchcount(?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __searchcount(options);
 	}
 	/**
@@ -16200,7 +16207,7 @@ extern class Fn {
 		 for the list of supported keys in {what}.
 	**/
 	inline function setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
-		what = nvim.helper.Arg.pure(what);
+		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __setloclist(nr, list, action, what);
 	}
 	/**
@@ -16404,8 +16411,9 @@ extern class Fn {
 		 independent of the 'errorformat' setting.  Use a command like
 		 `:cc 1` to jump to the first position.
 	**/
-	inline function setqflist(list:nvim.helper.Arg.LuaArray<nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int {
-		what = nvim.helper.Arg.pure(what);
+	inline function setqflist(list:Array<nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int {
+		final list:nvim.helper.Native.LuaArray<nvim.type.vim.quickfix.Entry> = list;
+		final what:nvim.helper.Native.LuaObject<nvim.type.vim.fn.setqflist.What> = what;
 		return __setqflist(list, action, what);
 	}
 	/**
@@ -16730,7 +16738,7 @@ extern class Fn {
 		 <
 	**/
 	inline function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_define.Dict> = dict;
 		return __sign_define(name, dict);
 	}
 	/**
@@ -16851,7 +16859,7 @@ extern class Fn {
 		 <
 	**/
 	inline function sign_getplaced(?buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item> {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_getplaced.Dict> = dict;
 		return __sign_getplaced(buf, dict);
 	}
 	/**
@@ -16939,7 +16947,7 @@ extern class Fn {
 		 <
 	**/
 	inline function sign_place(id:Int, group:String, name:String, buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Int {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_place.Dict> = dict;
 		return __sign_place(id, group, name, buf, dict);
 	}
 	/**
@@ -17118,7 +17126,7 @@ extern class Fn {
 		```
 	**/
 	inline function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplace.Dict> = dict;
 		return __sign_unplace(group, dict);
 	}
 	@:native("sign_unplacelist")
@@ -17161,7 +17169,7 @@ extern class Fn {
 		 <
 	**/
 	inline function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float> {
-		list = nvim.helper.Arg.pure(list);
+		final list:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplacelist.list.Item> = list;
 		return __sign_unplacelist(list);
 	}
 	/**
@@ -17284,7 +17292,7 @@ extern class Fn {
 		   - 0 on invalid arguments or connection failure.
 	**/
 	inline function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __sockconnect(mode, address, opts);
 	}
 	/**
@@ -17600,7 +17608,7 @@ extern class Fn {
 		   - 0 on invalid arguments
 	**/
 	inline function stdioopen(opts:lua.Table.AnyTable):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __stdioopen(opts);
 	}
 	/**
@@ -18800,7 +18808,7 @@ extern class Fn {
 	**/
 	@:deprecated
 	inline function termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __termopen(cmd, opts);
 	}
 	/**
@@ -18902,7 +18910,7 @@ extern class Fn {
 		 <This invokes MyHandler() three times at 500 msec intervals.
 	**/
 	inline function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __timer_start(time, callback, options);
 	}
 	/**
@@ -19634,7 +19642,7 @@ extern class Fn {
 		     'splitright' are used.
 	**/
 	inline function win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __win_splitmove(nr, target, options);
 	}
 	/**
@@ -19855,7 +19863,7 @@ extern class Fn {
 		 If the window size changed the result won't be the same.
 	**/
 	inline function winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.winrestview.Dict> = dict;
 		return __winrestview(dict);
 	}
 	/**
@@ -27534,7 +27542,7 @@ extern class Json {
 		                                   to Lua `nil` instead of |vim.NIL|.
 	**/
 	inline function decode(str:String, ?opts:lua.Table<String, Any>):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __decode(str, opts);
 	}
 	@:native("encode")
@@ -27556,7 +27564,7 @@ extern class Json {
 		                                   characters "/" in string values.
 	**/
 	inline function encode(obj:Any, ?opts:lua.Table<String, Any>):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __encode(obj, opts);
 	}
 	/**
@@ -27934,7 +27942,7 @@ extern class Lpeg {
 		 ```
 	**/
 	inline function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale {
-		tab = nvim.helper.Arg.pure(tab);
+		final tab:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = tab;
 		return __locale(tab);
 	}
 	/**
@@ -44182,7 +44190,7 @@ extern class OptLocal {
 		     See {opts.result_type}. `nil` if {opts.on_hunk} is given.
 	**/
 	inline static function diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Int>>>> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diff.Opts> = opts;
 		return __diff(a, b, opts);
 	}
 	/**
@@ -44360,7 +44368,7 @@ extern class OptLocal {
 		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
 	**/
 	inline static function gsplit(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):() -> Null<String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.gsplit.Opts> = opts;
 		return __gsplit(s, sep, opts);
 	}
 	/**
@@ -44447,7 +44455,7 @@ extern class OptLocal {
 		```
 	**/
 	inline static function inspect(x:Any, opts:nvim.type.vim.inspect.Opts):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.inspect.Opts> = opts;
 		return __inspect(x, opts);
 	}
 	@:native("inspect_pos")
@@ -44483,7 +44491,7 @@ extern class OptLocal {
 		               - col: the col used to get the items
 	**/
 	inline static function inspect_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Int; var col : Int; var row : Int; } {
-		filter = nvim.helper.Arg.pure(filter);
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim._inspector.Filter> = filter;
 		return __inspect_pos(bufnr, row, col, filter);
 	}
 	/**
@@ -44530,7 +44538,7 @@ extern class OptLocal {
 		See: ~https~ ://github.com/openresty/luajit2#tableisarray
 	**/
 	inline static function isarray(?t:lua.Table.AnyTable):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __isarray(t);
 	}
 	@:native("islist")
@@ -44553,7 +44561,7 @@ extern class OptLocal {
 		@*return* — `true` if list-like table, else `false`.
 	**/
 	inline static function islist(?t:lua.Table.AnyTable):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __islist(t);
 	}
 	/**
@@ -44616,7 +44624,7 @@ extern class OptLocal {
 		@*return* — `true` if `t` contains `value`
 	**/
 	inline static function list_contains(t:lua.Table.AnyTable, value:Any):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __list_contains(t, value);
 	}
 	@:native("list_extend")
@@ -44643,7 +44651,7 @@ extern class OptLocal {
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
 	inline static function list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T {
-		src = nvim.helper.Arg.pure(src);
+		final src:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = src;
 		return __list_extend(dst, src, start, finish);
 	}
 	/**
@@ -45327,7 +45335,7 @@ extern class OptLocal {
 		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
 	**/
 	inline static function show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):Dynamic {
-		filter = nvim.helper.Arg.pure(filter);
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim._inspector.Filter> = filter;
 		return __show_pos(bufnr, row, col, filter);
 	}
 	/**
@@ -45399,7 +45407,7 @@ extern class OptLocal {
 		@*return* — : List of split components
 	**/
 	inline static function split(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.gsplit.Opts> = opts;
 		return __split(s, sep, opts);
 	}
 	/**
@@ -45662,7 +45670,7 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	inline static function tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable {
-		o = nvim.helper.Arg.pure(o);
+		final o:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = o;
 		return __tbl_add_reverse_lookup(o);
 	}
 	@:native("tbl_contains")
@@ -45697,8 +45705,8 @@ extern class OptLocal {
 		@*return* — `true` if `t` contains `value`
 	**/
 	inline static function tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool {
-		t = nvim.helper.Arg.pure(t);
-		opts = nvim.helper.Arg.pure(opts);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.tbl_contains.Opts> = opts;
 		return __tbl_contains(t, value, opts);
 	}
 	@:native("tbl_count")
@@ -45725,7 +45733,7 @@ extern class OptLocal {
 		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
 	**/
 	inline static function tbl_count(t:lua.Table.AnyTable):Int {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_count(t);
 	}
 	/**
@@ -45810,7 +45818,7 @@ extern class OptLocal {
 		@*return* — : Table of filtered values
 	**/
 	inline static function tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):lua.Table<Int, T> {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_filter(func, t);
 	}
 	@:native("tbl_flatten")
@@ -45835,7 +45843,7 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	inline static function tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_flatten(t);
 	}
 	@:native("tbl_get")
@@ -45865,7 +45873,7 @@ extern class OptLocal {
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
 	inline static function tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any {
-		o = nvim.helper.Arg.pure(o);
+		final o:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = o;
 		return __tbl_get(o, ...___);
 	}
 	@:native("tbl_isempty")
@@ -45888,7 +45896,7 @@ extern class OptLocal {
 		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	inline static function tbl_isempty(t:lua.Table.AnyTable):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_isempty(t);
 	}
 	/**
@@ -45920,7 +45928,7 @@ extern class OptLocal {
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	inline static function tbl_keys<T>(t:lua.Table<T, Any>):lua.Table<Int, T> {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<T, Any>> = t;
 		return __tbl_keys(t);
 	}
 	@:native("tbl_map")
@@ -45942,7 +45950,7 @@ extern class OptLocal {
 		@*return* — : Table of transformed values
 	**/
 	inline static function tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_map(func, t);
 	}
 	@:native("tbl_values")
@@ -45963,7 +45971,7 @@ extern class OptLocal {
 		@*return* — : List of values
 	**/
 	inline static function tbl_values<T>(t:lua.Table<Any, T>):lua.Table<Int, T> {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_values(t);
 	}
 	/**
@@ -46063,7 +46071,7 @@ extern class OptLocal {
 		 @since 0
 	**/
 	inline static function ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = options;
 		return __ui_attach(ns, options, callback);
 	}
 	/**
@@ -46462,7 +46470,7 @@ extern class OptLocal {
 		```
 	**/
 	overload inline static function validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic {
-		validator = nvim.helper.Arg.pure(validator);
+		final validator:nvim.helper.Native.LuaObject<nvim.type.vim.validate.Validator> = validator;
 		return __validate(name, value, validator, optional, message);
 	}
 	/**
@@ -46584,7 +46592,7 @@ extern class OptLocal {
 		```
 	**/
 	overload inline static function validate(name:String, val:Any, validator:nvim.type.vim.validate.Validator, message:String):Dynamic {
-		validator = nvim.helper.Arg.pure(validator);
+		final validator:nvim.helper.Native.LuaObject<nvim.type.vim.validate.Validator> = validator;
 		return __validate(name, val, validator, message);
 	}
 	/**

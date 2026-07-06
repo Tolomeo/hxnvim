@@ -91,7 +91,7 @@ extern class Ui {
 	**/
 	inline function open(path:String, ?opt:{ @:optional
 	var cmd : Null<lua.Table<Int, String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
-		opt = nvim.helper.Arg.pure(opt);
+		final opt:nvim.helper.Native.LuaObject<{ ?cmd:Null<lua.Table<Int, String>> }> = opt;
 		return __open(path, opt);
 	}
 	@:native("select")
@@ -141,8 +141,9 @@ extern class Ui {
 		               `idx` is the 1-based index of `item` within `items`.
 		               `nil` if the user aborted the dialog.
 	**/
-	inline function select<T>(items:nvim.helper.Arg.LuaArray<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic {
+		final items:nvim.helper.Native.LuaArray<T> = items;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __select(items, opts, on_choice);
 	}
 }

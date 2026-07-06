@@ -25,7 +25,7 @@ extern class Query {
 		     `(node (#set! conceal "-"))` would get the predicate `{ "#set!", "conceal", "-" }`
 	**/
 	inline function add_directive(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Dynamic, opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.query.add_predicate.Opts> = opts;
 		return __add_directive(name, handler, opts);
 	}
 	@:native("add_predicate")
@@ -45,7 +45,7 @@ extern class Query {
 		   - see |vim.treesitter.query.add_directive()| for argument meanings
 	**/
 	inline function add_predicate(name:String, handler:(match:lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, pattern:Int, source:haxe.extern.EitherType<Int, String>, predicate:lua.Table<Int, Any>, metadata:nvim.type.vim.treesitter.query.TSMetadata) -> Null<Bool>, ?opts:nvim.type.vim.treesitter.query.add_predicate.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.query.add_predicate.Opts> = opts;
 		return __add_predicate(name, handler, opts);
 	}
 	/**
@@ -129,7 +129,7 @@ extern class Query {
 		@*param* `buf` — Buffer handle
 	**/
 	inline function lint(buf:Int, ?opts:nvim.type.vim.treesitter.query.lint.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.query.lint.Opts> = opts;
 		return __lint(buf, opts);
 	}
 	/**

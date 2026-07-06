@@ -24,7 +24,7 @@ extern class Re {
 		```
 	**/
 	inline function compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern {
-		defs = nvim.helper.Arg.pure(defs);
+		final defs:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = defs;
 		return __compile(string, defs);
 	}
 	@:native("find")

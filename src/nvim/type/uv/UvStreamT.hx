@@ -132,7 +132,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function accept(client_stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		client_stream = nvim.helper.Arg.pure(client_stream);
+		final client_stream:nvim.helper.Native.LuaObject<nvim.type.uv.UvStreamT> = client_stream;
 		return __accept(client_stream);
 	}
 	/**
@@ -751,7 +751,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function listen(backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.listen.Callback> = callback;
 		return __listen(backlog, callback);
 	}
 	@:native("read_start")
@@ -875,7 +875,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function read_start(callback:nvim.type.uv.read_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.read_start.Callback> = callback;
 		return __read_start(callback);
 	}
 	@:native("read_stop")
@@ -1493,7 +1493,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function shutdown(?callback:nvim.type.uv.shutdown.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.shutdown.Callback> = callback;
 		return __shutdown(callback);
 	}
 	@:native("try_write")
@@ -1601,7 +1601,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function try_write(data:nvim.type.uv.Buffer):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		data = nvim.helper.Arg.pure(data);
+		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
 		return __try_write(data);
 	}
 	@:native("try_write2")
@@ -1708,8 +1708,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function try_write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		data = nvim.helper.Arg.pure(data);
-		send_handle = nvim.helper.Arg.pure(send_handle);
+		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
+		final send_handle:nvim.helper.Native.LuaObject<nvim.type.uv.UvStreamT> = send_handle;
 		return __try_write2(data, send_handle);
 	}
 	/**
@@ -1830,8 +1830,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function write(data:nvim.type.uv.Buffer, ?callback:nvim.type.uv.write.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		data = nvim.helper.Arg.pure(data);
-		callback = nvim.helper.Arg.pure(callback);
+		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.write.Callback> = callback;
 		return __write(data, callback);
 	}
 	@:native("write2")
@@ -1941,9 +1941,9 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.write2.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		data = nvim.helper.Arg.pure(data);
-		send_handle = nvim.helper.Arg.pure(send_handle);
-		callback = nvim.helper.Arg.pure(callback);
+		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
+		final send_handle:nvim.helper.Native.LuaObject<nvim.type.uv.UvStreamT> = send_handle;
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.write2.Callback> = callback;
 		return __write2(data, send_handle, callback);
 	}
 }

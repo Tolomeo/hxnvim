@@ -124,7 +124,7 @@ extern class Hl {
 		 nil is returned if timeout is not specified
 	**/
 	inline function range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Int>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.hl.range.Opts> = opts;
 		return __range(bufnr, ns, higroup, start, finish, opts);
 	}
 }

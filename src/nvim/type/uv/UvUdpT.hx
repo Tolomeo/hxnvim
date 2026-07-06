@@ -117,7 +117,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function bind(host:String, port:Int, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		flags = nvim.helper.Arg.pure(flags);
+		final flags:nvim.helper.Native.LuaObject<nvim.type.uv.udp_bind.Flags> = flags;
 		return __bind(host, port, flags);
 	}
 	/**
@@ -1295,7 +1295,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function recv_start(callback:nvim.type.uv.udp_recv_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.udp_recv_start.Callback> = callback;
 		return __recv_start(callback);
 	}
 	@:native("recv_stop")
@@ -1521,8 +1521,8 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function send(data:nvim.type.uv.Buffer, host:String, port:Int, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn.Return3<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		data = nvim.helper.Arg.pure(data);
-		callback = nvim.helper.Arg.pure(callback);
+		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.udp_send.Callback> = callback;
 		return __send(data, host, port, callback);
 	}
 	@:native("send_buffer_size")
@@ -2534,7 +2534,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function try_send(data:nvim.type.uv.Buffer, host:String, port:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		data = nvim.helper.Arg.pure(data);
+		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
 		return __try_send(data, host, port);
 	}
 	/**

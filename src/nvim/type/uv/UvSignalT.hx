@@ -909,7 +909,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function start(signum:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.signal_start.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.signal_start.Callback> = callback;
 		return __start(signum, callback);
 	}
 	@:native("start_oneshot")
@@ -1017,7 +1017,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function start_oneshot(signum:haxe.extern.EitherType<Int, String>, callback:nvim.type.uv.signal_start_oneshot.Callback):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		callback = nvim.helper.Arg.pure(callback);
+		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.signal_start_oneshot.Callback> = callback;
 		return __start_oneshot(signum, callback);
 	}
 	@:native("stop")
