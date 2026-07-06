@@ -187,22 +187,18 @@ class MethodGenerator extends FieldGenerator {
 				call: call,
 			};
 		}));
-		final returnTypes = switch (signature.ret) {
-			case LiteralType.Multireturn(rs):
-				rs.map(r -> switch (r) {
-					case LiteralType.Void: Target.toHelperReference("Nothing");
-					case LiteralType.Nil: Target.toHelperReference("Nothing");
-					case _: new LiteralTypeGenerator().generateType(r);
-				});
-			case type: [new LiteralTypeGenerator().generateType(type)];
-		};
 
-		final ret = switch (returnTypes) {
-			case [r]: r;
-			case types: Target.toHelperReference('Multireturn.Return${types.length}<${types.join(", ")}>');
+		final facadeReturn = switch (signature.ret) {
+			case LiteralType.Multireturn(multireturnTypes):
+				final returnTypes = multireturnTypes.map(r -> switch (r) {
+					case returnType if (returnType.isOneOf("Void", "Nil")): Target.toHelperReference("Nothing");
+					case returnType: new LiteralTypeGenerator().generateType(returnType);
+				});
+				Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
+			case returnType: new LiteralTypeGenerator().generateType(returnType);
 		}
 
-		final shadows = facadeArgs.fold((arg:{name:String, shadow:Option<String>}, _shadows:Array<String>) -> {
+		final argShadows = facadeArgs.fold((arg:{name:String, shadow:Option<String>}, _shadows:Array<String>) -> {
 			return switch (arg.shadow) {
 				case Some(shadow): _shadows.concat([shadow]);
 				case None: _shadows;
@@ -212,12 +208,10 @@ class MethodGenerator extends FieldGenerator {
 		final call = 'return ${method.name}(${facadeArgs.map(a -> a.call).join(", ")})';
 
 		final expr = macro $b{
-			shadows.map(arg -> macro $i{arg}).concat([macro $i{call}])
+			argShadows.map(arg -> macro $i{arg}).concat([macro $i{call}])
 		}
 
-		final facade = this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(facadeParams, facadeArgs, LiteralType.Override(ret), expr));
-
-		return facade;
+		return this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(facadeParams, facadeArgs, LiteralType.Override(facadeReturn), expr));
 	}
 
 	function generateFacades(field:Field) {
