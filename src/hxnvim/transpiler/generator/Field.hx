@@ -155,15 +155,23 @@ class MethodGenerator extends FieldGenerator {
 		final facadeArgs = signature.args.map((arg -> {
 			final name = arg.name;
 			final type = switch (arg.type) {
-				case LiteralType.Array(itemsType): LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>'));
-				case LiteralType.Table(LiteralType.Integer,
-					itemsType): LiteralType.Override(Target.toHelperReference('Arg.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>'));
+				case LiteralType.Array(itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator().generateType(itemsType)}>');
+				case LiteralType.Table(LiteralType.Integer, itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator().generateType(itemsType)}>');
 				case argType: argType;
 			}
-			final pure = if (type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")) {
-				Option.Some(Target.toHelperReference('Arg.pure(${name})'));
-			} else {
-				Option.None;
+			final shadow = switch (arg.type) {
+				case LiteralType.Table(LiteralType.Integer,
+					itemsType): Option.Some('final ${name}:'
+						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')
+						+ ' = ${name}');
+				case LiteralType.Array(itemsType): Option.Some('final ${name}:'
+						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')
+						+ ' = ${name}');
+				case argType if (argType.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")):
+					Option.Some('final ${name}:'
+						+ Target.toHelperReference('Native.LuaObject<${new LiteralTypeGenerator().generateType(argType)}>')
+						+ ' = ${name}');
+				case _: Option.None;
 			}
 			final call = switch (arg.type) {
 				case LiteralType.Rest(_): '...${name}';
@@ -175,11 +183,10 @@ class MethodGenerator extends FieldGenerator {
 				name: name,
 				type: type,
 				opt: opt,
-				pure: pure,
+				shadow: shadow,
 				call: call,
 			};
 		}));
-
 		final returnTypes = switch (signature.ret) {
 			case LiteralType.Multireturn(rs):
 				rs.map(r -> switch (r) {
@@ -195,17 +202,17 @@ class MethodGenerator extends FieldGenerator {
 			case types: Target.toHelperReference('Multireturn.Return${types.length}<${types.join(", ")}>');
 		}
 
-		final pureArgs = facadeArgs.fold((arg:{name:String, pure:Option<String>}, pures:Array<String>) -> {
-			return switch (arg.pure) {
-				case Some(argPure): pures.concat(['${arg.name} = ${argPure}']);
-				case None: pures;
+		final shadows = facadeArgs.fold((arg:{name:String, shadow:Option<String>}, _shadows:Array<String>) -> {
+			return switch (arg.shadow) {
+				case Some(shadow): _shadows.concat([shadow]);
+				case None: _shadows;
 			}
 		}, []);
 
 		final call = 'return ${method.name}(${facadeArgs.map(a -> a.call).join(", ")})';
 
 		final expr = macro $b{
-			pureArgs.map(arg -> macro $i{arg}).concat([macro $i{call}])
+			shadows.map(arg -> macro $i{arg}).concat([macro $i{call}])
 		}
 
 		final facade = this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(facadeParams, facadeArgs, LiteralType.Override(ret), expr));
