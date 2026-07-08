@@ -15,9 +15,11 @@ import hxnvim.transpiler.generator.Enumerator;
 typedef Module = Array<TypeDefinition>;
 
 abstract class Generator {
+	final origin:Symbol;
 	final printer:Printer;
 
-	public function new() {
+	public function new(origin: Symbol) {
+		this.origin = origin;
 		this.printer = new Printer();
 	}
 
@@ -48,8 +50,8 @@ abstract class Generator {
 		}
 	}
 
-	public function generate(symbol:Symbol) {
-		return this.printer.printTypeDefinition(this.generateType(symbol));
+	public function generate() {
+		return this.printer.printTypeDefinition(this.generateType(this.origin));
 	}
 }
 

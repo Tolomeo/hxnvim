@@ -46,9 +46,9 @@ class Transpiler {
 		}
 
 		return switch (currentTarget.type) {
-			case TargetType.Annotation: new AnnotationModuleGenerator().generate(parsed);
-			case TargetType.Module: new ModuleGenerator().generate(parsed);
-			case TargetType.Namespace: new NamespaceModuleGenerator().generate(parsed);
+			case TargetType.Annotation: new AnnotationModuleGenerator(parsed).generate();
+			case TargetType.Module: new ModuleGenerator(parsed).generate();
+			case TargetType.Namespace: new NamespaceModuleGenerator(parsed).generate();
 			case _: throw new Exception('Error generating ${currentTarget.file}: unexpected target type received <${currentTarget.output}>');
 		}
 	}
