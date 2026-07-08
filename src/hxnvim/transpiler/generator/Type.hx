@@ -12,10 +12,14 @@ import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 
 class LiteralTypeGenerator {
-	public function new() {}
+	private final origin:LiteralType;
+
+	public function new(origin:LiteralType) {
+		this.origin = origin;
+	}
 
 	function generateOptionalType(type:LiteralType) {
-		return 'Null<${this.generateType(type)}>';
+		return 'Null<${new LiteralTypeGenerator(type).generateAsString()}>';
 	}
 
 	function generateUnionType(union:Array<LiteralType>) {
@@ -30,7 +34,7 @@ class LiteralTypeGenerator {
 			}
 		}
 
-		final types = union.map(t -> this.generateType(t)).unique();
+		final types = union.map(t -> new LiteralTypeGenerator(t).generateAsString()).unique();
 		final nonNullableTypes = types.filter(type -> type != "Void");
 		final nonNullableUnion = switch (nonNullableTypes) {
 			case [t]: t;
@@ -41,25 +45,25 @@ class LiteralTypeGenerator {
 	}
 
 	function generateArrayType(itemsType:LiteralType) {
-		return 'lua.Table<Int, ${this.generateType(itemsType)}>';
+		return 'lua.Table<Int, ${new LiteralTypeGenerator(itemsType).generateAsString()}>';
 	}
 
 	function generateFunctionType(signature:Signature) {
 		final args = signature.args.map(argument -> switch (argument.name) {
-			case '...': '___:haxe.Rest<${this.generateType(argument.type)}>';
+			case '...': '___:haxe.Rest<${new LiteralTypeGenerator(argument.type).generateAsString()}>';
 			case argumentName: switch (argument.opt) {
-					case true: '?${argumentName}:${this.generateType(argument.type)}';
-					case false: '${argumentName}:${this.generateType(argument.type)}';
+					case true: '?${argumentName}:${new LiteralTypeGenerator(argument.type).generateAsString()}';
+					case false: '${argumentName}:${new LiteralTypeGenerator(argument.type).generateAsString()}';
 				}
 		});
 
-		final ret = this.generateType(signature.ret);
+		final ret = new LiteralTypeGenerator(signature.ret).generateAsString();
 
 		return '(${args.join(", ")}) -> ${ret}';
 	}
 
 	function generateRestType(type:LiteralType) {
-		return 'haxe.Rest<${this.generateType(type)}>';
+		return 'haxe.Rest<${new LiteralTypeGenerator(type).generateAsString()}>';
 	}
 
 	function generateMultireturnType(returnTypes:Array<LiteralType>) {
@@ -70,7 +74,7 @@ class LiteralTypeGenerator {
 		final types = returnTypes.map(r -> switch (r) {
 			case LiteralType.Void: Target.toHelperReference("Nothing");
 			case LiteralType.Nil: Target.toHelperReference("Nothing");
-			case r: this.generateType(r);
+			case r: new LiteralTypeGenerator(r).generateAsString();
 		}).padEnd(6, Target.toHelperReference("Nothing"));
 
 		return Target.toHelperReference('Multireturn<${types.join(", ")}>');
@@ -79,7 +83,7 @@ class LiteralTypeGenerator {
 	function generateTableStructure(fields:Array<{name:String, type:LiteralType}>) {
 		final entries = fields.map(field -> ({
 			name: field.name,
-			type: this.generateType(field.type),
+			type: new LiteralTypeGenerator(field.type).generateAsString(),
 			opt: field.type.isNullable()
 		})).map(entry -> (entry.opt ? '?${entry.name}' : entry.name) + ':${entry.type}');
 
@@ -87,11 +91,11 @@ class LiteralTypeGenerator {
 	}
 
 	function generateTableType(key:LiteralType, value:LiteralType) {
-		return 'lua.Table<${this.generateType(key)}, ${this.generateType(value)}>';
+		return 'lua.Table<${new LiteralTypeGenerator(key).generateAsString()}, ${new LiteralTypeGenerator(value).generateAsString()}>';
 	}
 
-	public function generateType(type:LiteralType) {
-		return switch (type) {
+	public function generateAsString() {
+		return switch (this.origin) {
 			case LiteralType.Unknown: "Dynamic";
 			case LiteralType.Any: "Any";
 			case LiteralType.Boolean: "Bool";
@@ -118,27 +122,27 @@ class LiteralTypeGenerator {
 			case LiteralType.TypeReference(typeName): Target.toTypeReference(typeName);
 			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);
 			case LiteralType.Override(stringType): stringType;
-			case _: throw new Exception('Error generating type string: unimplemented type ${type}');
+			case _: throw new Exception('Error generating type string: unimplemented type ${this.origin}');
 		}
 	}
 
-	public function generate(type:LiteralType) {
-		final typeString = this.generateType(type);
+	public function generate() {
+		final asString = this.generateAsString();
 
 		try {
-			return switch (Context.parse('(null:${typeString})', (macro null).pos).expr) {
+			return switch (Context.parse('(null:${asString})', (macro null).pos).expr) {
 				case EParenthesis({expr: ECheckType(_, ct)}):
 					ct;
 				case what:
 					trace(what);
-					throw 'Unable to parse: ${typeString}';
+					throw 'Unable to parse: ${asString}';
 			}
 		} catch (e) {
 			trace(e);
-			trace(type);
+			trace(this.origin);
 			// TODO;; enable this
 			// Context.warning('bad type string: `$type`', (macro null).pos);
-			throw 'Unable to parse: ${typeString}';
+			throw 'Unable to parse: ${asString}';
 		}
 	}
 }

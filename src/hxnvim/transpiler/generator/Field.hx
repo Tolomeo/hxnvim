@@ -77,7 +77,7 @@ class PropertyGenerator extends FieldGenerator {
 
 		final access = this.generateAccess(this.property.access);
 
-		final kind = FieldType.FVar(new LiteralTypeGenerator().generate(this.property.type));
+		final kind = FieldType.FVar(new LiteralTypeGenerator(this.property.type).generate());
 
 		return this.generateDefinition(name, doc, meta, access, kind);
 	}
@@ -116,7 +116,7 @@ class MethodGenerator extends FieldGenerator {
 		});
 
 		overloads.iter(o -> {
-			final overloadType = 'function ${new LiteralTypeGenerator().generateType(LiteralType.Function(o)).replace("->", ":")} {}';
+			final overloadType = 'function ${new LiteralTypeGenerator(LiteralType.Function(o)).generateAsString().replace("->", ":")} {}';
 			methodMetas.push(new MetaGenerator("overload", [macro $i{overloadType}]).generate());
 		});
 
@@ -126,14 +126,14 @@ class MethodGenerator extends FieldGenerator {
 	function generateFunctionKind(params:Array<Param>, args:Array<Arg>, ret:LiteralType, ?expr:Expr) {
 		final params = params.map(p -> ({
 			name: p.name,
-			constraints: p.constraints.map(c -> new LiteralTypeGenerator().generate(c)),
+			constraints: p.constraints.map(c -> new LiteralTypeGenerator(c).generate()),
 		} : TypeParamDecl));
 		final args = args.map(a -> ({
 			name: a.name,
-			type: new LiteralTypeGenerator().generate(a.type),
+			type: new LiteralTypeGenerator(a.type).generate(),
 			opt: a.opt,
 		} : FunctionArg));
-		final ret = new LiteralTypeGenerator().generate(ret);
+		final ret = new LiteralTypeGenerator(ret).generate();
 
 		return FieldType.FFun({
 			params: params,
@@ -155,21 +155,22 @@ class MethodGenerator extends FieldGenerator {
 		final facadeArgs = signature.args.map((arg -> {
 			final name = arg.name;
 			final type = switch (arg.type) {
-				case LiteralType.Array(itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator().generateType(itemsType)}>');
-				case LiteralType.Table(LiteralType.Integer, itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator().generateType(itemsType)}>');
+				case LiteralType.Array(itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator(itemsType).generateAsString()}>');
+				case LiteralType.Table(LiteralType.Integer,
+					itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator(itemsType).generateAsString()}>');
 				case argType: argType;
 			}
 			final shadow = switch (arg.type) {
 				case LiteralType.Table(LiteralType.Integer,
 					itemsType): Option.Some('final ${name}:'
-						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')
+						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator(itemsType).generateAsString()}>')
 						+ ' = ${name}');
 				case LiteralType.Array(itemsType): Option.Some('final ${name}:'
-						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator().generateType(itemsType)}>')
+						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator(itemsType).generateAsString()}>')
 						+ ' = ${name}');
 				case argType if (argType.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")):
 					Option.Some('final ${name}:'
-						+ Target.toHelperReference('Native.LuaObject<${new LiteralTypeGenerator().generateType(argType)}>')
+						+ Target.toHelperReference('Native.LuaObject<${new LiteralTypeGenerator(argType).generateAsString()}>')
 						+ ' = ${name}');
 				case _: Option.None;
 			}
@@ -192,10 +193,10 @@ class MethodGenerator extends FieldGenerator {
 			case LiteralType.Multireturn(multireturnTypes):
 				final returnTypes = multireturnTypes.map(r -> switch (r) {
 					case returnType if (returnType.isOneOf("Void", "Nil")): Target.toHelperReference("Nothing");
-					case returnType: new LiteralTypeGenerator().generateType(returnType);
+					case returnType: new LiteralTypeGenerator(returnType).generateAsString();
 				});
 				Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
-			case returnType: new LiteralTypeGenerator().generateType(returnType);
+			case returnType: new LiteralTypeGenerator(returnType).generateAsString();
 		}
 
 		final argShadows = facadeArgs.fold((arg:{name:String, shadow:Option<String>}, _shadows:Array<String>) -> {
