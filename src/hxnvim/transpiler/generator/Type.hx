@@ -119,7 +119,7 @@ class LiteralTypeGenerator {
 			case LiteralType.Table(key, value): this.generateTableType(key, value);
 			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
 			case LiteralType.GenericTypeReference(genericName): genericName;
-			case LiteralType.TypeReference(typeName): Target.toTypeReference(typeName);
+			case LiteralType.AnnotationReference(typeName): Target.toTypeReference(typeName);
 			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);
 			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${this.origin}');

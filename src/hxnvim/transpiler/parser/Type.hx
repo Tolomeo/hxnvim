@@ -8,7 +8,6 @@ using hxnvim.common.NullTools;
 using hxnvim.transpiler.symbol.SymbolTools;
 
 import hxnvim.common.Json;
-import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 
 class FunctionTypeParser {
@@ -161,7 +160,7 @@ class LiteralTypeParser {
 			case "typereference": switch (this.type.select('value').string()) {
 					case paramTypeReference if (this.params.exists(param -> param.name == paramTypeReference)):
 						LiteralType.GenericTypeReference(paramTypeReference);
-					case typereference: LiteralType.TypeReference(typereference);
+					case typereference: LiteralType.AnnotationReference(typereference);
 				}
 			case "modulereference": LiteralType.ModuleReference(this.type.select('value').string());
 			case kind: throw new Exception('Error parsing literal type: unimplemented "${kind}" kind');

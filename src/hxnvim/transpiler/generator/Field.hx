@@ -147,7 +147,7 @@ class MethodGenerator extends FieldGenerator {
 
 	function get_facaded() {
 		return this.method.type.ret.is("Multireturn")
-			|| this.method.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference"));
+			|| this.method.type.args.exists(arg -> arg.type.isOneOf("AnyTable", "Table", "TableStructure", "AnnotationReference"));
 	}
 
 	function generateFacade(method:Field, name:String, doc:String, meta:Array<MetadataEntry>, access:Array<Access>, signature:Signature) {
@@ -168,7 +168,7 @@ class MethodGenerator extends FieldGenerator {
 				case LiteralType.Array(itemsType): Option.Some('final ${name}:'
 						+ Target.toHelperReference('Native.LuaArray<${new LiteralTypeGenerator(itemsType).generateAsString()}>')
 						+ ' = ${name}');
-				case argType if (argType.isOneOf("AnyTable", "Table", "TableStructure", "TypeReference")):
+				case argType if (argType.isOneOf("AnyTable", "Table", "TableStructure", "AnnotationReference")):
 					Option.Some('final ${name}:'
 						+ Target.toHelperReference('Native.LuaObject<${new LiteralTypeGenerator(argType).generateAsString()}>')
 						+ ' = ${name}');
