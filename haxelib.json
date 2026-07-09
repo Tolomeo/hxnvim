@@ -3,9 +3,9 @@
   "url": "https://github.com/Tolomeo/hxnvim",
   "license": "MIT",
   "tags": ["nvim", "lua", "externs"],
-  "description": "Externs for the lua nvim runtime",
+  "description": "Externs for the nvim lua runtime",
   "version": "0.0.1",
-  "classPath": "src/",
+  "classPath": "dist/",
   "releasenote": "Initial release.",
   "contributors": ["Tolomeo"],
   "dependencies": {
