@@ -22,14 +22,14 @@ $(JSON_SOURCES_DIR)/%: $(JSON_EXTERNAL_SOURCES_DIR)/%
 	@mkdir -p $(dir $@)
 	cp $< $@
 
-.build: $(JSON_SOURCES) $(TXT_SOURCES) $(HX_SOURCES) 
+$(OUT_DIR)/.build: $(JSON_SOURCES) $(TXT_SOURCES) $(HX_SOURCES)
 	@echo ":: Building externs"
 	@$(MAKE) clean
 	@$(call HAXE, haxe build.hxml)
-	@touch .build
+	@touch $@
 
 .PHONY=build
-build: .build
+build: $(OUT_DIR)/.build
 
 .PHONY=install
 install:
@@ -42,4 +42,5 @@ install:
 
 .PHONY=clean
 clean:
+	@echo ":: Cleaning output files"
 	@rm -rf $(OUT_DIR)
