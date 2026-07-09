@@ -15,9 +15,9 @@ import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.target.Target;
 
-final sourcesPath = Context.resolvePath("hxnvim/source");
-final helperSourcesPath = Context.resolvePath("hxnvim/source/helper");
-final runtimeSourcesPath = Context.resolvePath("hxnvim/source/runtime");
+final sourcesPath = Context.resolvePath("source");
+final helperSourcesPath = Context.resolvePath("source/helper");
+final runtimeSourcesPath = Context.resolvePath("source/runtime");
 
 class HxNvim {
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {
