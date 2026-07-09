@@ -7,6 +7,9 @@ EXTERNAL_SOURCES=$(shell find $(EXTERNAL_SOURCES_DIR) -type f -name "*.json")
 SOURCES_DIR=$(SRC_DIR)/hxnvim/source/runtime
 SOURCES:=$(patsubst $(EXTERNAL_SOURCES_DIR)/%, $(SOURCES_DIR)/%, $(EXTERNAL_SOURCES))
 
+HX_SOURCES:=$(shell find $(SRC_DIR) -type f -name "*.hx")
+TXT_SOURCES:=$(shell find $(SRC_DIR) -type f -name "*.txt")
+
 define HAXE
 	docker run --rm \
 		--volume "$(shell pwd)":/src \
@@ -20,16 +23,13 @@ $(SOURCES_DIR)/%: $(EXTERNAL_SOURCES_DIR)/%
 	@mkdir -p $(dir $@)
 	cp $< $@
 
-.PHONY=sources
-sources: $(SOURCES)
+.build: $(SOURCES) $(HX_SOURCES) $(TXT_SOURCES)
+	@$(MAKE) clean
+	@$(call HAXE, haxe build.hxml)
+	@touch .build
 
 .PHONY=build
-build: sources
-	@$(call HAXE, haxe build.hxml)
-
-.PHONY=rebuild
-rebuild: clean
-	@$(MAKE) build
+build: .build
 
 .PHONY=install
 install:
