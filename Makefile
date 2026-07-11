@@ -45,3 +45,7 @@ install:
 clean:
 	@echo ":: Cleaning output files"
 	@rm -rf $(OUT_DIR)
+
+.PHONY=inspect
+inspect:
+	$(call HAXE, haxe --class-path src --main AstExplorer --interp)
