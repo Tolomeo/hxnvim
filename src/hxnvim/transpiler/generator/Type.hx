@@ -166,6 +166,12 @@ class LiteralTypeGenerator {
 				return ComplexType.TPath({name: "String", params: [], pack: []});
 			case LiteralType.BooleanLiteral(_):
 				return ComplexType.TPath({name: "Bool", params: [], pack: []});
+			case LiteralType.Optional(type):
+				return ComplexType.TPath({
+					name: "Null",
+					params: [TypeParam.TPType(new LiteralTypeGenerator(type).generate())],
+					pack: []
+				});
 			default:
 		}
 
