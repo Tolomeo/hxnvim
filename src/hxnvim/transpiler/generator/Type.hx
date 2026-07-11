@@ -1,9 +1,10 @@
 package hxnvim.transpiler.generator;
 
+import haxe.Exception;
 import haxe.macro.Expr;
 import haxe.macro.Context;
-import haxe.Exception;
 
+using haxe.macro.ComplexTypeTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 using hxnvim.transpiler.symbol.SymbolTools;
@@ -126,6 +127,62 @@ class LiteralTypeGenerator {
 		}
 	}
 
+	function generateNullable(type:LiteralType) {
+		return ComplexType.TPath({
+			name: "Null",
+			params: [TypeParam.TPType(new LiteralTypeGenerator(type).generate())],
+			pack: []
+		});
+	}
+
+	function generateUnion(types:Array<LiteralType>) {
+		function makeUnion(members:Array<ComplexType>) {
+			return switch (members.copy()) {
+				case [], [_]:
+					throw new Exception('Error generating union type out of ${types}');
+				case [left, right]:
+					ComplexType.TPath({
+						name: "EitherType",
+						pack: ["haxe", "extern"],
+						params: [TypeParam.TPType(left), TypeParam.TPType(right),]
+					});
+				case m:
+					ComplexType.TPath({
+						name: "EitherType",
+						pack: ["haxe", "extern"],
+						params: [TypeParam.TPType(m.shift()), TypeParam.TPType(makeUnion(m))]
+					});
+			}
+		}
+
+		final nonNullableTypes = types.filter((t) -> switch (t) {
+			case LiteralType.Nil: false;
+			case LiteralType.Void: false;
+			case _: true;
+		});
+		final nonNullableUnion = nonNullableTypes.map(t -> new LiteralTypeGenerator(t).generate());
+		final nonNullableUniqueUnion = nonNullableUnion.fold((t:ComplexType, ut:Array<ComplexType>) -> {
+			if (!ut.exists((u) -> u.toString() == t.toString())) {
+				ut.push(t);
+			}
+			return ut;
+		}, []);
+		final union = switch (nonNullableUniqueUnion) {
+			case [t]: t;
+			case t: makeUnion(t);
+		}
+
+		return if (types.length == nonNullableTypes.length) {
+			union;
+		} else {
+			ComplexType.TPath({
+				name: "Null",
+				params: [TypeParam.TPType(union)],
+				pack: []
+			});
+		}
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -167,11 +224,9 @@ class LiteralTypeGenerator {
 			case LiteralType.BooleanLiteral(_):
 				return ComplexType.TPath({name: "Bool", params: [], pack: []});
 			case LiteralType.Optional(type):
-				return ComplexType.TPath({
-					name: "Null",
-					params: [TypeParam.TPType(new LiteralTypeGenerator(type).generate())],
-					pack: []
-				});
+				return this.generateNullable(type);
+			case LiteralType.Union(types):
+				return this.generateUnion(types);
 			default:
 		}
 
