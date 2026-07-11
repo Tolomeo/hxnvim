@@ -258,6 +258,29 @@ class LiteralTypeGenerator {
 		});
 	}
 
+	function generateMultireturn(types:Array<LiteralType>) {
+		if (types.length > 6) {
+			throw new Exception('Error generating multireturn type: too many values in ${types}, the maximum allowed is currently 6');
+		}
+
+		final nothing = ComplexType.TPath({
+			name: "Nothing",
+			pack: Target.helperPack(),
+			params: []
+		});
+		final multireturnTypes = types.map(t -> switch (t) {
+			case LiteralType.Void: nothing;
+			case LiteralType.Nil: nothing;
+			case type: new LiteralTypeGenerator(type).generate();
+		}).padEnd(6, nothing);
+
+		return ComplexType.TPath({
+			name: "Multireturn",
+			pack: Target.helperPack(),
+			params: multireturnTypes.map(t -> TypeParam.TPType(t))
+		});
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -296,6 +319,8 @@ class LiteralTypeGenerator {
 				return this.generateFunction(signature);
 			case LiteralType.Rest(type):
 				return this.generateRest(type);
+			case LiteralType.Multireturn(types):
+				return this.generateMultireturn(types);
 			default:
 		}
 

@@ -55,6 +55,10 @@ enum abstract TargetType(String) {
 }
 
 class Target {
+	static public function helperPack() {
+		return Config.outputPack.split(".").concat(["helper"]);
+	}
+
 	static public function toHelperReference(reference:String) {
 		return '${Config.outputPack}.helper.${reference}';
 	}
