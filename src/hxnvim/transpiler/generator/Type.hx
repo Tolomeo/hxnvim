@@ -1,5 +1,6 @@
 package hxnvim.transpiler.generator;
 
+import hxnvim.transpiler.parser.Type.LiteralTypeParser;
 import haxe.Exception;
 import haxe.macro.Expr;
 import haxe.macro.Context;
@@ -235,11 +236,7 @@ class LiteralTypeGenerator {
 
 	function generateFunction(signature:Signature) {
 		final args = signature.args.map(argument -> switch (argument.name) {
-			case '...': ComplexType.TNamed("___", ComplexType.TPath({
-					name: "Rest",
-					pack: ["haxe"],
-					params: [TypeParam.TPType(new LiteralTypeGenerator(argument.type).generate())]
-				}));
+			case "...": ComplexType.TNamed("___", new LiteralTypeGenerator(LiteralType.Rest(argument.type)).generate());
 			case argumentName:
 				final type = ComplexType.TNamed(argument.name, new LiteralTypeGenerator(argument.type).generate());
 				if (argument.opt) {
@@ -251,6 +248,14 @@ class LiteralTypeGenerator {
 		final ret = new LiteralTypeGenerator(signature.ret).generate();
 
 		return ComplexType.TFunction(args, ret);
+	}
+
+	function generateRest(type:LiteralType) {
+		return ComplexType.TPath({
+			name: "Rest",
+			pack: ["haxe"],
+			params: [TypeParam.TPType(new LiteralTypeGenerator(type).generate())]
+		});
 	}
 
 	public function generate() {
@@ -289,6 +294,8 @@ class LiteralTypeGenerator {
 				return this.generateUnion(types);
 			case LiteralType.Function(signature):
 				return this.generateFunction(signature);
+			case LiteralType.Rest(type):
+				return this.generateRest(type);
 			default:
 		}
 
