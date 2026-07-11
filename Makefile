@@ -24,8 +24,8 @@ $(JSON_SOURCES_DIR)/%: $(JSON_EXTERNAL_SOURCES_DIR)/%
 	cp $< $@
 
 $(OUT_DIR)/.build: $(JSON_SOURCES) $(TXT_SOURCES) $(HX_SOURCES)
-	@echo ":: Building externs"
 	@$(MAKE) clean
+	@echo ":: Building externs"
 	@$(call HAXE, haxe build.hxml)
 	@touch $@
 
