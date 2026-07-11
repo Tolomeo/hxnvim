@@ -153,6 +153,19 @@ class LiteralTypeGenerator {
 				return ComplexType.TPath({name: "Float", params: [], pack: []});
 			case LiteralType.Str:
 				return ComplexType.TPath({name: "String", params: [], pack: []});
+			case LiteralType.AnyTable:
+				return ComplexType.TPath({
+					name: "Table",
+					params: [],
+					sub: "AnyTable",
+					pack: ["lua"]
+				});
+			case LiteralType.NumericLiteral(_):
+				return ComplexType.TPath({name: "Float", params: [], pack: []});
+			case LiteralType.StringLiteral(_):
+				return ComplexType.TPath({name: "String", params: [], pack: []});
+			case LiteralType.BooleanLiteral(_):
+				return ComplexType.TPath({name: "Bool", params: [], pack: []});
 			default:
 		}
 
