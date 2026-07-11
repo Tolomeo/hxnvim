@@ -8,8 +8,8 @@
 -D analyzer-optimize
 -w -WDeprecated
 
--cp src
--cp dist
+--class-path src
+--class-path dist
 
 --macro hxnvim.HxNvim.run({ outputPack: 'nvim', outputDir: 'dist'})
 
