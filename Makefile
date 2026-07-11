@@ -19,13 +19,13 @@ endef
 all: install
 
 $(JSON_SOURCES_DIR)/%: $(JSON_EXTERNAL_SOURCES_DIR)/%
-	@echo ":: Copying json file sources"
+	@echo "::> Copying json file sources"
 	@mkdir -p $(dir $@)
 	cp $< $@
 
 $(OUT_DIR)/.build: $(JSON_SOURCES) $(TXT_SOURCES) $(HX_SOURCES)
 	@$(MAKE) clean
-	@echo ":: Building externs"
+	@echo "::> Building externs"
 	@$(call HAXE, haxe build.hxml)
 	@touch $@
 
@@ -34,16 +34,14 @@ build: $(OUT_DIR)/.build
 
 .PHONY=install
 install:
-	@echo ":: Initialising submodules"
+	@echo "::> Initialising submodules"
 	@git submodule update --init --recursive
-	@echo ":: Installing json type sources"
-	@$(MAKE) src
-	@echo ":: Installing dependencies"
+	@echo "::> Installing dependencies"
 	@$(call HAXE, haxelib newrepo && haxelib install --always build.hxml)
 
 .PHONY=clean
 clean:
-	@echo ":: Cleaning output files"
+	@echo "::> Cleaning output files"
 	@rm -rf $(OUT_DIR)
 
 .PHONY=inspect
