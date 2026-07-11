@@ -127,6 +127,56 @@ class LiteralTypeGenerator {
 		}
 	}
 
+	function generateDynamic() {
+		return ComplexType.TPath({name: "Dynamic", params: [], pack: []});
+	}
+
+	function generateAny() {
+		return ComplexType.TPath({name: "Any", params: [], pack: []});
+	}
+
+	function generateBool() {
+		return ComplexType.TPath({name: "Bool", params: [], pack: []});
+	}
+
+	function generateFunctionConstraint() {
+		return ComplexType.TPath({
+			name: "Constraints",
+			params: [],
+			sub: "Function",
+			pack: ["haxe"]
+		});
+	}
+
+	function generateInt() {
+		return ComplexType.TPath({name: "Int", params: [], pack: []});
+	}
+
+	function generateUserData() {
+		return ComplexType.TPath({name: "UserData", params: [], pack: ["lua"]});
+	}
+
+	function generateVoid() {
+		return ComplexType.TPath({name: "Void", params: [], pack: []});
+	}
+
+	function generateFloat() {
+		return ComplexType.TPath({name: "Float", params: [], pack: []});
+	}
+
+	function generateString() {
+		return ComplexType.TPath({name: "String", params: [], pack: []});
+	}
+
+	function generateAnyTable() {
+		return ComplexType.TPath({
+			name: "Table",
+			params: [],
+			sub: "AnyTable",
+			pack: ["lua"]
+		});
+	}
+
 	function generateNullable(type:LiteralType) {
 		return ComplexType.TPath({
 			name: "Null",
@@ -167,17 +217,17 @@ class LiteralTypeGenerator {
 			}
 			return ut;
 		}, []);
-		final union = switch (nonNullableUniqueUnion) {
+		final type = switch (nonNullableUniqueUnion) {
 			case [t]: t;
 			case t: makeUnion(t);
 		}
 
 		return if (types.length == nonNullableTypes.length) {
-			union;
+			type;
 		} else {
 			ComplexType.TPath({
 				name: "Null",
-				params: [TypeParam.TPType(union)],
+				params: [TypeParam.TPType(type)],
 				pack: []
 			});
 		}
@@ -186,43 +236,33 @@ class LiteralTypeGenerator {
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
-				return ComplexType.TPath({name: "Dynamic", params: [], pack: []});
+				return this.generateDynamic();
 			case LiteralType.Any:
-				return ComplexType.TPath({name: "Any", params: [], pack: []});
+				return this.generateAny();
 			case LiteralType.Boolean:
-				return ComplexType.TPath({name: "Bool", params: [], pack: []});
+				return this.generateBool();
 			case LiteralType.AnyFunction:
-				return ComplexType.TPath({
-					name: "Constraints",
-					params: [],
-					sub: "Function",
-					pack: ["haxe"]
-				});
+				return this.generateFunctionConstraint();
 			case LiteralType.Integer:
-				return ComplexType.TPath({name: "Int", params: [], pack: []});
+				return this.generateInt();
 			case LiteralType.UserData:
-				return ComplexType.TPath({name: "UserData", params: [], pack: ["lua"]});
+				return this.generateUserData();
 			case LiteralType.Nil:
-				return ComplexType.TPath({name: "Void", params: [], pack: []});
+				return this.generateVoid();
 			case LiteralType.Void:
-				return ComplexType.TPath({name: "Void", params: [], pack: []});
+				return this.generateVoid();
 			case LiteralType.Number:
-				return ComplexType.TPath({name: "Float", params: [], pack: []});
+				return this.generateFloat();
 			case LiteralType.Str:
-				return ComplexType.TPath({name: "String", params: [], pack: []});
+				return this.generateString();
 			case LiteralType.AnyTable:
-				return ComplexType.TPath({
-					name: "Table",
-					params: [],
-					sub: "AnyTable",
-					pack: ["lua"]
-				});
+				return this.generateAnyTable();
 			case LiteralType.NumericLiteral(_):
-				return ComplexType.TPath({name: "Float", params: [], pack: []});
+				return this.generateFloat();
 			case LiteralType.StringLiteral(_):
-				return ComplexType.TPath({name: "String", params: [], pack: []});
+				return this.generateString();
 			case LiteralType.BooleanLiteral(_):
-				return ComplexType.TPath({name: "Bool", params: [], pack: []});
+				return this.generateBool();
 			case LiteralType.Optional(type):
 				return this.generateNullable(type);
 			case LiteralType.Union(types):
