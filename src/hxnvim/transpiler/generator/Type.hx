@@ -1,5 +1,6 @@
 package hxnvim.transpiler.generator;
 
+import hxnvim.transpiler.generator.Meta.MetaGenerator;
 import hxnvim.transpiler.parser.Type.LiteralTypeParser;
 import haxe.Exception;
 import haxe.macro.Expr;
@@ -292,6 +293,19 @@ class LiteralTypeGenerator {
 		});
 	}
 
+	function generateAnonymousStructure(fields:Array<{name:String, type:LiteralType}>) {
+		final structureFields = fields.map(field -> ({
+			name: field.name,
+			doc: "",
+			kind: FieldType.FVar(new LiteralTypeGenerator(field.type).generate(), null),
+			access: [],
+			meta: field.type.isNullable() ? [new MetaGenerator("optional").generate()] : [],
+			pos: null
+		}));
+
+		return ComplexType.TAnonymous(structureFields);
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -334,6 +348,8 @@ class LiteralTypeGenerator {
 				return this.generateMultireturn(types);
 			case LiteralType.Table(key, value):
 				return this.generateTable(key, value);
+			case LiteralType.TableStructure(fields):
+				return this.generateAnonymousStructure(fields);
 			default:
 		}
 
