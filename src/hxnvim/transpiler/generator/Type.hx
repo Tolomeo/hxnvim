@@ -233,6 +233,26 @@ class LiteralTypeGenerator {
 		}
 	}
 
+	function generateFunction(signature:Signature) {
+		final args = signature.args.map(argument -> switch (argument.name) {
+			case '...': ComplexType.TNamed("___", ComplexType.TPath({
+					name: "Rest",
+					pack: ["haxe"],
+					params: [TypeParam.TPType(new LiteralTypeGenerator(argument.type).generate())]
+				}));
+			case argumentName:
+				final type = ComplexType.TNamed(argument.name, new LiteralTypeGenerator(argument.type).generate());
+				if (argument.opt) {
+					ComplexType.TOptional(type);
+				} else {
+					type;
+				}
+		});
+		final ret = new LiteralTypeGenerator(signature.ret).generate();
+
+		return ComplexType.TFunction(args, ret);
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -267,6 +287,8 @@ class LiteralTypeGenerator {
 				return this.generateNullable(type);
 			case LiteralType.Union(types):
 				return this.generateUnion(types);
+			case LiteralType.Function(signature):
+				return this.generateFunction(signature);
 			default:
 		}
 
