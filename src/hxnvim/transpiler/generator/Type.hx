@@ -127,6 +127,35 @@ class LiteralTypeGenerator {
 	}
 
 	public function generate() {
+		switch (this.origin) {
+			case LiteralType.Unknown:
+				return ComplexType.TPath({name: "Dynamic", params: [], pack: []});
+			case LiteralType.Any:
+				return ComplexType.TPath({name: "Any", params: [], pack: []});
+			case LiteralType.Boolean:
+				return ComplexType.TPath({name: "Bool", params: [], pack: []});
+			case LiteralType.AnyFunction:
+				return ComplexType.TPath({
+					name: "Constraints",
+					params: [],
+					sub: "Function",
+					pack: ["haxe"]
+				});
+			case LiteralType.Integer:
+				return ComplexType.TPath({name: "Int", params: [], pack: []});
+			case LiteralType.UserData:
+				return ComplexType.TPath({name: "UserData", params: [], pack: ["lua"]});
+			case LiteralType.Nil:
+				return ComplexType.TPath({name: "Void", params: [], pack: []});
+			case LiteralType.Void:
+				return ComplexType.TPath({name: "Void", params: [], pack: []});
+			case LiteralType.Number:
+				return ComplexType.TPath({name: "Float", params: [], pack: []});
+			case LiteralType.Str:
+				return ComplexType.TPath({name: "String", params: [], pack: []});
+			default:
+		}
+
 		final asString = this.generateAsString();
 
 		try {
