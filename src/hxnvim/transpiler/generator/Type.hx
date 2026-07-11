@@ -281,6 +281,17 @@ class LiteralTypeGenerator {
 		});
 	}
 
+	function generateTable(key:LiteralType, value:LiteralType) {
+		return ComplexType.TPath({
+			name: "Table",
+			pack: ["lua"],
+			params: [
+				TypeParam.TPType(new LiteralTypeGenerator(key).generate()),
+				TypeParam.TPType(new LiteralTypeGenerator(value).generate()),
+			]
+		});
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -321,6 +332,8 @@ class LiteralTypeGenerator {
 				return this.generateRest(type);
 			case LiteralType.Multireturn(types):
 				return this.generateMultireturn(types);
+			case LiteralType.Table(key, value):
+				return this.generateTable(key, value);
 			default:
 		}
 
