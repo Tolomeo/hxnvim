@@ -2,7 +2,6 @@ package hxnvim.transpiler.generator;
 
 import haxe.Exception;
 import haxe.macro.Expr;
-import haxe.macro.Context;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.macro.Expr.Field;
 
@@ -71,7 +70,7 @@ private abstract class ClassGenerator {
 			kind: TDClass(),
 			meta: meta,
 			fields: fields,
-			pos: Context.currentPos(),
+			pos: null,
 			isExtern: true
 		};
 	}

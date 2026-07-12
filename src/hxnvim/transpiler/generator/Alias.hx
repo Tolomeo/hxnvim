@@ -1,13 +1,11 @@
 package hxnvim.transpiler.generator;
 
-import haxe.macro.Context;
-import haxe.macro.Expr.TypeDefinition;
+import haxe.macro.Expr;
 import haxe.Exception;
 
 using hxnvim.common.NullTools;
 
 import hxnvim.transpiler.symbol.Symbol;
-import hxnvim.transpiler.parser.Parser;
 import hxnvim.transpiler.generator.Type;
 import hxnvim.transpiler.generator.Meta;
 
@@ -34,7 +32,7 @@ class AliasGenerator {
 			kind: TDAlias(new LiteralTypeGenerator(alias.type).generate()),
 			meta: this.generateMeta(meta),
 			fields: [],
-			pos: Context.currentPos(),
+			pos: null,
 			isExtern: true
 		}
 	}

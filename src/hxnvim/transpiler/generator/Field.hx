@@ -3,7 +3,6 @@ package hxnvim.transpiler.generator;
 import haxe.ds.Option;
 import haxe.Exception;
 import haxe.macro.Expr;
-import haxe.macro.Context;
 import haxe.macro.Expr.Field;
 
 using hxnvim.common.NullTools;
@@ -26,7 +25,7 @@ abstract class FieldGenerator {
 			name: name,
 			doc: doc,
 			kind: kind,
-			pos: Context.currentPos()
+			pos: null
 		};
 	}
 }
