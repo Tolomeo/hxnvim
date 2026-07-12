@@ -190,11 +190,11 @@ class MethodGenerator extends FieldGenerator {
 		final facadeReturn = switch (signature.ret) {
 			case LiteralType.Multireturn(multireturnTypes):
 				final returnTypes = multireturnTypes.map(r -> switch (r) {
-					case returnType if (returnType.isOneOf("Void", "Nil")): Target.toHelperReference("Nothing");
-					case returnType: new LiteralTypeGenerator(returnType).generateAsString();
+					case returnType if (returnType.isOneOf("Void", "Nil")): LiteralType.HelperReference("Nothing");
+					case returnType: returnType;
 				});
-				Target.toHelperReference('Multireturn.Return${returnTypes.length}<${returnTypes.join(", ")}>');
-			case returnType: new LiteralTypeGenerator(returnType).generateAsString();
+				LiteralType.HelperReference("Multireturn", returnTypes, 'Return${returnTypes.length}');
+			case returnType: returnType;
 		}
 
 		final argShadows = facadeArgs.fold((arg:{name:String, shadow:Option<String>}, _shadows:Array<String>) -> {
@@ -210,7 +210,7 @@ class MethodGenerator extends FieldGenerator {
 			argShadows.map(arg -> macro $i{arg}).concat([macro $i{call}])
 		}
 
-		return this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(facadeParams, facadeArgs, LiteralType.Override(facadeReturn), expr));
+		return this.generateDefinition(name, doc, meta, access, this.generateFunctionKind(facadeParams, facadeArgs, facadeReturn, expr));
 	}
 
 	function generateFacades(field:Field) {

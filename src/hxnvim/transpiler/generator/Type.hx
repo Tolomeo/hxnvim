@@ -7,6 +7,7 @@ import haxe.macro.Expr;
 import haxe.macro.Context;
 
 using haxe.macro.ComplexTypeTools;
+using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 using hxnvim.transpiler.symbol.SymbolTools;
@@ -348,6 +349,15 @@ class LiteralTypeGenerator {
 		});
 	}
 
+	function generateHelperReference(name:String, ?params:Array<LiteralType>, ?sub:String) {
+		return ComplexType.TPath({
+			name: name,
+			pack: Target.helperPack(),
+			params: params.or([]).map(p ->  TypeParam.TPType(new LiteralTypeGenerator(p).generate())),
+			sub: sub
+		});
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -400,7 +410,9 @@ class LiteralTypeGenerator {
 				return this.generateAnnotationReference(name);
 			case LiteralType.ModuleReference(name):
 				return this.generateModuleReference(name);
-			default:
+			case LiteralType.HelperReference(name, params, sub):
+				return this.generateHelperReference(name, params, sub);
+				default:
 		}
 
 		final asString = this.generateAsString();
