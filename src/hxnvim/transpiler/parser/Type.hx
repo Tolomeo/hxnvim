@@ -145,7 +145,7 @@ class LiteralTypeParser {
 				};
 			case "optional": LiteralType.Optional(new LiteralTypeParser(this.type.select('type'), this.params).parse());
 			case "union": LiteralType.Union(this.type.select('types').array().map(t -> new LiteralTypeParser(t, this.params).parse()));
-			case "array": LiteralType.Array(new LiteralTypeParser(this.type.select('items'), this.params).parse());
+			case "array": LiteralType.Table(LiteralType.Integer, new LiteralTypeParser(this.type.select('items'), this.params).parse());
 			case "function":
 				final functionType = new FunctionTypeParser(this.type, this.params).parse();
 				LiteralType.Function({
