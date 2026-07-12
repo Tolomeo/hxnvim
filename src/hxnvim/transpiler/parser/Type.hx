@@ -58,7 +58,7 @@ class FunctionTypeParser {
 
 	function parseReturns(returns:Array<Json>) {
 		return switch (returns) {
-			case []: LiteralType.Override("Dynamic");
+			case []: LiteralType.Unknown;
 			case [r]: new LiteralTypeParser(r.select('type'), this.params).parse();
 			case rs:
 				LiteralType.Multireturn(rs.map(r -> new LiteralTypeParser(r.select("type"), this.params).parse()));
@@ -105,7 +105,7 @@ class TableTypeParser {
 
 		return switch ({
 			fields:fields, indexes:indexes}) {
-			case {fields: [], indexes: []}: LiteralType.Table(LiteralType.Override("Any"), LiteralType.Override("Any"));
+			case {fields: [], indexes: []}: LiteralType.Table(LiteralType.Any, LiteralType.Any);
 			case {fields: [], indexes: [index]}:
 				final table = this.parseTable(index.select('key'), index.select('value'));
 				LiteralType.Table(table.key, table.value);

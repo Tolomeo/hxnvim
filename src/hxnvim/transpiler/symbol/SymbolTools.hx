@@ -11,7 +11,6 @@ function isNullable(type:LiteralType) {
 		case LiteralType.Nil: true;
 		case LiteralType.Void: true;
 		case LiteralType.Union(unionTypes): unionTypes.exists(unionType -> isNullable(unionType));
-		case LiteralType.Override(aliasType): aliasType.startsWith('Null<');
 		case _: false;
 	}
 }

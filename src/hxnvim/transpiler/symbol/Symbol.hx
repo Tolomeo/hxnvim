@@ -28,7 +28,6 @@ enum LiteralType {
 	ModuleReference(name:String);
 	HelperReference(name:String, ?params: Array<LiteralType>, ?sub: String);
 	Rest(type:LiteralType);
-	Override(type:String);
 }
 
 // TODO: remove overload; add protected and package

@@ -156,7 +156,7 @@ class TableSymbolParser extends SymbolParser {
 					doc: doc,
 					meta: meta,
 					access: access,
-					type: LiteralType.Override(name.toTypeName())
+					type: LiteralType.GenericTypeReference(name.toTypeName())
 				}
 				final opt = false; // TODO: calculate
 

@@ -125,7 +125,6 @@ class LiteralTypeGenerator {
 			case LiteralType.GenericTypeReference(genericName): genericName;
 			case LiteralType.AnnotationReference(typeName): Target.toTypeReference(typeName);
 			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);
-			case LiteralType.Override(stringType): stringType;
 			case _: throw new Exception('Error generating type string: unimplemented type ${this.origin}');
 		}
 	}
