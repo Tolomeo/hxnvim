@@ -170,6 +170,14 @@ class LiteralTypeGenerator {
 		return ComplexType.TPath({name: "String", params: [], pack: []});
 	}
 
+	function generateArray(type:LiteralType) {
+		return ComplexType.TPath({
+			name: "Array",
+			params: [TypeParam.TPType(new LiteralTypeGenerator(type).generate())],
+			pack: []
+		});
+	}
+
 	function generateAnyTable() {
 		return ComplexType.TPath({
 			name: "Table",
@@ -362,6 +370,8 @@ class LiteralTypeGenerator {
 				return this.generateFloat();
 			case LiteralType.Str:
 				return this.generateString();
+			case LiteralType.Array(type):
+				return this.generateArray(type);
 			case LiteralType.AnyTable:
 				return this.generateAnyTable();
 			case LiteralType.NumericLiteral(_):

@@ -155,9 +155,7 @@ class MethodGenerator extends FieldGenerator {
 		final facadeArgs = signature.args.map((arg -> {
 			final name = arg.name;
 			final type = switch (arg.type) {
-				case LiteralType.Array(itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator(itemsType).generateAsString()}>');
-				case LiteralType.Table(LiteralType.Integer,
-					itemsType): LiteralType.Override('Array<${new LiteralTypeGenerator(itemsType).generateAsString()}>');
+				case LiteralType.Table(LiteralType.Integer, itemsType): LiteralType.Array(itemsType);
 				case argType: argType;
 			}
 			final shadow = switch (arg.type) {
