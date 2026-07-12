@@ -352,84 +352,66 @@ class LiteralTypeGenerator {
 		return ComplexType.TPath({
 			name: name,
 			pack: Target.helperPack(),
-			params: params.or([]).map(p ->  TypeParam.TPType(new LiteralTypeGenerator(p).generate())),
+			params: params.or([]).map(p -> TypeParam.TPType(new LiteralTypeGenerator(p).generate())),
 			sub: sub
 		});
 	}
 
 	public function generate() {
-		switch (this.origin) {
+		return switch (this.origin) {
 			case LiteralType.Unknown:
-				return this.generateDynamic();
+				this.generateDynamic();
 			case LiteralType.Any:
-				return this.generateAny();
+				this.generateAny();
 			case LiteralType.Boolean:
-				return this.generateBool();
+				this.generateBool();
 			case LiteralType.AnyFunction:
-				return this.generateFunctionConstraint();
+				this.generateFunctionConstraint();
 			case LiteralType.Integer:
-				return this.generateInt();
+				this.generateInt();
 			case LiteralType.UserData:
-				return this.generateUserData();
+				this.generateUserData();
 			case LiteralType.Nil:
-				return this.generateVoid();
+				this.generateVoid();
 			case LiteralType.Void:
-				return this.generateVoid();
+				this.generateVoid();
 			case LiteralType.Number:
-				return this.generateFloat();
+				this.generateFloat();
 			case LiteralType.Str:
-				return this.generateString();
+				this.generateString();
 			case LiteralType.Array(type):
-				return this.generateArray(type);
+				this.generateArray(type);
 			case LiteralType.AnyTable:
-				return this.generateAnyTable();
+				this.generateAnyTable();
 			case LiteralType.NumericLiteral(_):
-				return this.generateFloat();
+				this.generateFloat();
 			case LiteralType.StringLiteral(_):
-				return this.generateString();
+				this.generateString();
 			case LiteralType.BooleanLiteral(_):
-				return this.generateBool();
+				this.generateBool();
 			case LiteralType.Optional(type):
-				return this.generateNullable(type);
+				this.generateNullable(type);
 			case LiteralType.Union(types):
-				return this.generateUnion(types);
+				this.generateUnion(types);
 			case LiteralType.Function(signature):
-				return this.generateFunction(signature);
+				this.generateFunction(signature);
 			case LiteralType.Rest(type):
-				return this.generateRest(type);
+				this.generateRest(type);
 			case LiteralType.Multireturn(types):
-				return this.generateMultireturn(types);
+				this.generateMultireturn(types);
 			case LiteralType.Table(key, value):
-				return this.generateTable(key, value);
+				this.generateTable(key, value);
 			case LiteralType.TableStructure(fields):
-				return this.generateAnonymousStructure(fields);
+				this.generateAnonymousStructure(fields);
 			case LiteralType.GenericTypeReference(name):
-				return this.generateTypeReference(name);
+				this.generateTypeReference(name);
 			case LiteralType.AnnotationReference(name):
-				return this.generateAnnotationReference(name);
+				this.generateAnnotationReference(name);
 			case LiteralType.ModuleReference(name):
-				return this.generateModuleReference(name);
+				this.generateModuleReference(name);
 			case LiteralType.HelperReference(name, params, sub):
-				return this.generateHelperReference(name, params, sub);
-				default:
-		}
-
-		final asString = this.generateAsString();
-
-		try {
-			return switch (Context.parse('(null:${asString})', (macro null).pos).expr) {
-				case EParenthesis({expr: ECheckType(_, ct)}):
-					ct;
-				case what:
-					trace(what);
-					throw 'Unable to parse: ${asString}';
-			}
-		} catch (e) {
-			trace(e);
-			trace(this.origin);
-			// TODO;; enable this
-			// Context.warning('bad type string: `$type`', (macro null).pos);
-			throw 'Unable to parse: ${asString}';
+				this.generateHelperReference(name, params, sub);
+			case _: throw new Exception('Error generating type string: unimplemented type ${this.origin}');
 		}
 	}
 }
