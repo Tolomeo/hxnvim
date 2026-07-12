@@ -91,7 +91,8 @@ extern class Ui {
 	**/
 	inline function open(path:String, ?opt:{ @:optional
 	var cmd : Null<lua.Table<Int, String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
-		final opt:nvim.helper.Native.LuaObject<{ ?cmd:Null<lua.Table<Int, String>> }> = opt;
+		final opt:nvim.helper.Native.LuaObject<{ @:optional
+var cmd : Null<lua.Table<Int, String>>; }> = opt;
 		return __open(path, opt);
 	}
 	@:native("select")

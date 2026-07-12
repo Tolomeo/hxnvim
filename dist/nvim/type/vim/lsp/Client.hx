@@ -462,7 +462,8 @@ package nvim.type.vim.lsp;
 	inline public function exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
 	var bufnr : Null<Int>; }, ?handler:nvim.type.lsp.Handler):Dynamic {
 		final command:nvim.helper.Native.LuaObject<nvim.type.lsp.Command> = command;
-		final context:nvim.helper.Native.LuaObject<{ ?bufnr:Null<Int> }> = context;
+		final context:nvim.helper.Native.LuaObject<{ @:optional
+var bufnr : Null<Int>; }> = context;
 		final handler:nvim.helper.Native.LuaObject<nvim.type.lsp.Handler> = handler;
 		return __exec_cmd(command, context, handler);
 	}
