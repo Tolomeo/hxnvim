@@ -327,6 +327,19 @@ class LiteralTypeGenerator {
 		});
 	}
 
+	public function generateModuleReference(reference:String) {
+		final modulePack = Target.modulePack();
+		final referencePath = reference.split(".");
+		final pack = referencePath.initial().map(p -> p.toLowerCase().toIdentifierName());
+		final name = referencePath.last().toTypeName();
+
+		return ComplexType.TPath({
+			name: name,
+			params: [],
+			pack: modulePack.concat(pack)
+		});
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -375,6 +388,8 @@ class LiteralTypeGenerator {
 				return this.generateTypeReference(name);
 			case LiteralType.AnnotationReference(name):
 				return this.generateAnnotationReference(name);
+			case LiteralType.ModuleReference(name):
+				return this.generateModuleReference(name);
 			default:
 		}
 

@@ -63,6 +63,10 @@ class Target {
 		return Config.outputPack.split(".").concat(["type"]);
 	}
 
+	static public function modulePack() {
+		return Config.outputPack.split(".").concat(["module"]);
+	}
+
 	static public function toHelperReference(reference:String) {
 		return '${Config.outputPack}.helper.${reference}';
 	}
