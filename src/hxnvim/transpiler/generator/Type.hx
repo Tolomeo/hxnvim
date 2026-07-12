@@ -306,6 +306,27 @@ class LiteralTypeGenerator {
 		return ComplexType.TAnonymous(structureFields);
 	}
 
+	public function generateTypeReference(name:String) {
+		return ComplexType.TPath({
+			name: name,
+			params: [],
+			pack: []
+		});
+	}
+
+	public function generateAnnotationReference(reference:String) {
+		final annotationPack = Target.annotationPack();
+		final referencePath = reference.split(".");
+		final pack = referencePath.initial().map(p -> p.toLowerCase().toIdentifierName());
+		final name = referencePath.last().toTypeName();
+
+		return ComplexType.TPath({
+			name: name,
+			params: [],
+			pack: annotationPack.concat(pack)
+		});
+	}
+
 	public function generate() {
 		switch (this.origin) {
 			case LiteralType.Unknown:
@@ -350,6 +371,10 @@ class LiteralTypeGenerator {
 				return this.generateTable(key, value);
 			case LiteralType.TableStructure(fields):
 				return this.generateAnonymousStructure(fields);
+			case LiteralType.GenericTypeReference(name):
+				return this.generateTypeReference(name);
+			case LiteralType.AnnotationReference(name):
+				return this.generateAnnotationReference(name);
 			default:
 		}
 

@@ -59,6 +59,10 @@ class Target {
 		return Config.outputPack.split(".").concat(["helper"]);
 	}
 
+	static public function annotationPack() {
+		return Config.outputPack.split(".").concat(["type"]);
+	}
+
 	static public function toHelperReference(reference:String) {
 		return '${Config.outputPack}.helper.${reference}';
 	}
