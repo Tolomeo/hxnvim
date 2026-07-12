@@ -16,6 +16,9 @@ extern class Codelens {
 	**/
 	@:luaDotMethod
 	function clear(?client_id:Null<Int>, ?bufnr:Null<Int>):Dynamic;
+	@:native("display")
+	@:luaDotMethod
+	private function __display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
 	/**
 		```lua
 		function M.display(lenses?: lsp.CodeLens[], bufnr: integer, client_id: integer)
@@ -27,8 +30,10 @@ extern class Codelens {
 		
 		@*param* `lenses` — lenses to display
 	**/
-	@:luaDotMethod
-	function display(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
+	inline function display(?lenses:Array<nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic {
+		final lenses:nvim.helper.Native.LuaArray<nvim.type.lsp.CodeLens> = lenses;
+		return __display(lenses, bufnr, client_id);
+	}
 	/**
 		```lua
 		function M.get(bufnr: integer)
@@ -97,6 +102,9 @@ extern class Codelens {
 	**/
 	@:luaDotMethod
 	function run():Dynamic;
+	@:native("save")
+	@:luaDotMethod
+	private function __save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
 	/**
 		```lua
 		function M.save(lenses?: lsp.CodeLens[], bufnr: integer, client_id: integer)
@@ -108,6 +116,8 @@ extern class Codelens {
 		
 		@*param* `lenses` — lenses to store
 	**/
-	@:luaDotMethod
-	function save(?lenses:lua.Table<Int, nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic;
+	inline function save(?lenses:Array<nvim.type.lsp.CodeLens>, bufnr:Int, client_id:Int):Dynamic {
+		final lenses:nvim.helper.Native.LuaArray<nvim.type.lsp.CodeLens> = lenses;
+		return __save(lenses, bufnr, client_id);
+	}
 }

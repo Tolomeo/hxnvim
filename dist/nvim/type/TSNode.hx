@@ -6,6 +6,8 @@ package nvim.type;
 	```
 **/
 @:structInit class TSNode {
+	@:native("__has_ancestor")
+	private extern function ____has_ancestor(node_types:lua.Table<Int, String>):Bool;
 	/**
 		```lua
 		(method) TSNode:__has_ancestor(node_types: string[])
@@ -16,7 +18,10 @@ package nvim.type;
 		
 		 Check if the node has any of the given node types as its ancestor.
 	**/
-	extern public function __has_ancestor(node_types:lua.Table<Int, String>):Bool;
+	inline public function __has_ancestor(node_types:Array<String>):Bool {
+		final node_types:nvim.helper.Native.LuaArray<String> = node_types;
+		return ____has_ancestor(node_types);
+	}
 	/**
 		```lua
 		(method) TSNode:byte_length()

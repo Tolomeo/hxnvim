@@ -372,12 +372,17 @@ package nvim.type.vim.lsp;
 		 Get options for a method that is registered dynamically.
 	**/
 	extern public function _get_registration_options(method:String, ?bufnr:Int):Null<nvim.type.lsp.LSPAny>;
+	@:native("_register")
+	private extern function ___register(registrations:lua.Table<Int, nvim.type.lsp.Registration>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_register(registrations: lsp.Registration[])
 		```
 	**/
-	extern public function _register(registrations:lua.Table<Int, nvim.type.lsp.Registration>):Dynamic;
+	inline public function _register(registrations:Array<nvim.type.lsp.Registration>):Dynamic {
+		final registrations:nvim.helper.Native.LuaArray<nvim.type.lsp.Registration> = registrations;
+		return ___register(registrations);
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:_remove_workspace_folder(dir?: string)
@@ -411,12 +416,17 @@ package nvim.type.vim.lsp;
 		@*param* `bufnr` — Number of the buffer, or 0 for current
 	**/
 	extern public function _text_document_did_open_handler(bufnr:Int):Dynamic;
+	@:native("_unregister")
+	private extern function ___unregister(unregistrations:lua.Table<Int, nvim.type.lsp.Unregistration>):Dynamic;
 	/**
 		```lua
 		(method) vim.lsp.Client:_unregister(unregistrations: lsp.Unregistration[])
 		```
 	**/
-	extern public function _unregister(unregistrations:lua.Table<Int, nvim.type.lsp.Unregistration>):Dynamic;
+	inline public function _unregister(unregistrations:Array<nvim.type.lsp.Unregistration>):Dynamic {
+		final unregistrations:nvim.helper.Native.LuaArray<nvim.type.lsp.Unregistration> = unregistrations;
+		return ___unregister(unregistrations);
+	}
 	/**
 		```lua
 		(method) vim.lsp.Client:cancel_request(id: integer)

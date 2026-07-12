@@ -124,6 +124,9 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function enable(?enable:Null<Bool>, ?filter:Null<nvim.type.vim.diagnostic.Filter>):Dynamic;
+	@:native("fromqflist")
+	@:luaDotMethod
+	private function __fromqflist(list:lua.Table<Int, lua.Table.AnyTable>):lua.Table<Int, nvim.type.vim.Diagnostic>;
 	/**
 		```lua
 		function M.fromqflist(list: table[])
@@ -136,8 +139,10 @@ extern class Diagnostic {
 		
 		@*param* `list` — List of quickfix items from |getqflist()| or |getloclist()|.
 	**/
-	@:luaDotMethod
-	function fromqflist(list:lua.Table<Int, lua.Table.AnyTable>):lua.Table<Int, nvim.type.vim.Diagnostic>;
+	inline function fromqflist(list:Array<lua.Table.AnyTable>):lua.Table<Int, nvim.type.vim.Diagnostic> {
+		final list:nvim.helper.Native.LuaArray<lua.Table.AnyTable> = list;
+		return __fromqflist(list);
+	}
 	@:native("get")
 	@:luaDotMethod
 	private function __get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic>;
@@ -588,6 +593,9 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.Opts> = opts;
 		return __show(namespace, bufnr, diagnostics, opts);
 	}
+	@:native("toqflist")
+	@:luaDotMethod
+	private function __toqflist(diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>):lua.Table<Int, lua.Table.AnyTable>;
 	/**
 		```lua
 		function M.toqflist(diagnostics: vim.Diagnostic[])
@@ -601,6 +609,8 @@ extern class Diagnostic {
 		
 		@*return* — : Quickfix list items |setqflist-what|
 	**/
-	@:luaDotMethod
-	function toqflist(diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>):lua.Table<Int, lua.Table.AnyTable>;
+	inline function toqflist(diagnostics:Array<nvim.type.vim.Diagnostic>):lua.Table<Int, lua.Table.AnyTable> {
+		final diagnostics:nvim.helper.Native.LuaArray<nvim.type.vim.Diagnostic> = diagnostics;
+		return __toqflist(diagnostics);
+	}
 }

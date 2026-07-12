@@ -106,6 +106,9 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__id(obj:Any):Any;
+	@:native("nvim__id_array")
+	@:luaDotMethod
+	private function __nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim__id_array(arr: any[])
@@ -123,8 +126,10 @@ extern class Api {
 		
 		@*return* — its argument.
 	**/
-	@:luaDotMethod
-	function nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
+	inline function nvim__id_array(arr:Array<Any>):lua.Table<Int, Any> {
+		final arr:nvim.helper.Native.LuaArray<Any> = arr;
+		return __nvim__id_array(arr);
+	}
 	@:native("nvim__id_dict")
 	@:luaDotMethod
 	private function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
@@ -1205,6 +1210,9 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts);
 	}
+	@:native("nvim_buf_set_lines")
+	@:luaDotMethod
+	private function __nvim_buf_set_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_lines(buffer: integer, start: integer, end_: integer, strict_indexing: boolean, replacement: string[])
@@ -1237,8 +1245,10 @@ extern class Api {
 		
 		See: [vim.api.nvim_buf_set_text](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#773#9)
 	**/
-	@:luaDotMethod
-	function nvim_buf_set_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
+	inline function nvim_buf_set_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool, replacement:Array<String>):Dynamic {
+		final replacement:nvim.helper.Native.LuaArray<String> = replacement;
+		return __nvim_buf_set_lines(buffer, start, end_, strict_indexing, replacement);
+	}
 	@:native("nvim_buf_set_mark")
 	@:luaDotMethod
 	private function __nvim_buf_set_mark(buffer:Int, name:String, line:Int, col:Int, opts:nvim.type.vim.api.keyset.Empty):Bool;
@@ -1302,6 +1312,9 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_buf_set_option(buffer:Int, name:String, value:Any):Dynamic;
+	@:native("nvim_buf_set_text")
+	@:luaDotMethod
+	private function __nvim_buf_set_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, replacement:lua.Table<Int, String>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, replacement: string[])
@@ -1339,8 +1352,10 @@ extern class Api {
 		
 		@*param* `replacement` — Array of lines to use as replacement
 	**/
-	@:luaDotMethod
-	function nvim_buf_set_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, replacement:lua.Table<Int, String>):Dynamic;
+	inline function nvim_buf_set_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, replacement:Array<String>):Dynamic {
+		final replacement:nvim.helper.Native.LuaArray<String> = replacement;
+		return __nvim_buf_set_text(buffer, start_row, start_col, end_row, end_col, replacement);
+	}
 	/**
 		```lua
 		function vim.api.nvim_buf_set_var(buffer: integer, name: string, value: any)
@@ -1373,6 +1388,9 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, opts);
 	}
+	@:native("nvim_call_dict_function")
+	@:luaDotMethod
+	private function __nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_call_dict_function(dict: any, fn: string, args: any[])
@@ -1393,8 +1411,13 @@ extern class Api {
 		
 		@*return* — Result of the function call
 	**/
+	inline function nvim_call_dict_function(dict:Any, fn:String, args:Array<Any>):Any {
+		final args:nvim.helper.Native.LuaArray<Any> = args;
+		return __nvim_call_dict_function(dict, fn, args);
+	}
+	@:native("nvim_call_function")
 	@:luaDotMethod
-	function nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
+	private function __nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_call_function(fn: string, args: any[])
@@ -1413,8 +1436,10 @@ extern class Api {
 		
 		@*return* — Result of the function call
 	**/
-	@:luaDotMethod
-	function nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
+	inline function nvim_call_function(fn:String, args:Array<Any>):Any {
+		final args:nvim.helper.Native.LuaArray<Any> = args;
+		return __nvim_call_function(fn, args);
+	}
 	/**
 		```lua
 		function vim.api.nvim_chan_send(chan: integer, data: string)
@@ -3435,6 +3460,9 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_paste(data:String, crlf:Bool, phase:Int):Bool;
+	@:native("nvim_put")
+	@:luaDotMethod
+	private function __nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_put(lines: string[], type: string, after: boolean, follow: boolean)
@@ -3459,8 +3487,10 @@ extern class Api {
 		
 		@*param* `follow` — If true place cursor at end of inserted text.
 	**/
-	@:luaDotMethod
-	function nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
+	inline function nvim_put(lines:Array<String>, type:String, after:Bool, follow:Bool):Dynamic {
+		final lines:nvim.helper.Native.LuaArray<String> = lines;
+		return __nvim_put(lines, type, after, follow);
+	}
 	/**
 		```lua
 		function vim.api.nvim_replace_termcodes(str: string, from_part: boolean, do_lt: boolean, special: boolean)
@@ -4317,6 +4347,9 @@ extern class Api {
 		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_win_set_config(window, config);
 	}
+	@:native("nvim_win_set_cursor")
+	@:luaDotMethod
+	private function __nvim_win_set_cursor(window:Int, pos:lua.Table<Int, Int>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_cursor(window: integer, pos: integer[])
@@ -4331,8 +4364,10 @@ extern class Api {
 		
 		@*param* `pos` — (row, col) tuple representing the new position
 	**/
-	@:luaDotMethod
-	function nvim_win_set_cursor(window:Int, pos:lua.Table<Int, Int>):Dynamic;
+	inline function nvim_win_set_cursor(window:Int, pos:Array<Int>):Dynamic {
+		final pos:nvim.helper.Native.LuaArray<Int> = pos;
+		return __nvim_win_set_cursor(window, pos);
+	}
 	/**
 		```lua
 		function vim.api.nvim_win_set_height(window: integer, height: integer)
@@ -6009,6 +6044,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function col(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Int):Int;
+	@:native("complete")
+	@:luaDotMethod
+	private function __complete(startcol:Int, matches:lua.Table<Int, Any>):Dynamic;
 	/**
 		```lua
 		function table.complete(startcol: integer, matches: any[])
@@ -6045,8 +6083,10 @@ extern class Fn {
 		 <This isn't very useful, but it shows how it works.  Note that
 		 an empty string is returned to avoid a zero being inserted.
 	**/
-	@:luaDotMethod
-	function complete(startcol:Int, matches:lua.Table<Int, Any>):Dynamic;
+	inline function complete(startcol:Int, matches:Array<Any>):Dynamic {
+		final matches:nvim.helper.Native.LuaArray<Any> = matches;
+		return __complete(startcol, matches);
+	}
 	/**
 		```lua
 		function table.complete_add(expr: any)
@@ -6097,6 +6137,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function complete_check():Float;
+	@:native("complete_info")
+	@:luaDotMethod
+	private function __complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
 	/**
 		```lua
 		function table.complete_info(what?: any[])
@@ -6171,8 +6214,10 @@ extern class Fn {
 		   call complete_info(['mode', 'pum_visible'])
 		 <
 	**/
-	@:luaDotMethod
-	function complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
+	inline function complete_info(?what:Array<Any>):lua.Table.AnyTable {
+		final what:nvim.helper.Native.LuaArray<Any> = what;
+		return __complete_info(what);
+	}
 	/**
 		```lua
 		function table.confirm(msg: string, choices?: string, default?: integer, type?: string)
@@ -6341,6 +6386,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function ctxpop():Any;
+	@:native("ctxpush")
+	@:luaDotMethod
+	private function __ctxpush(?types:lua.Table<Int, String>):Any;
 	/**
 		```lua
 		function table.ctxpush(types?: string[])
@@ -6355,8 +6403,10 @@ extern class Fn {
 		 which |context-types| to include in the pushed context.
 		 Otherwise, all context types are included.
 	**/
-	@:luaDotMethod
-	function ctxpush(?types:lua.Table<Int, String>):Any;
+	inline function ctxpush(?types:Array<String>):Any {
+		final types:nvim.helper.Native.LuaArray<String> = types;
+		return __ctxpush(types);
+	}
 	@:native("ctxset")
 	@:luaDotMethod
 	private function __ctxset(context:lua.Table.AnyTable, ?index:Int):Int;
@@ -7569,6 +7619,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function findfile(name:String, ?path:String, ?count:Any):Any;
+	@:native("flatten")
+	@:luaDotMethod
+	private function __flatten(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.flatten(list: any[], maxdepth?: integer)
@@ -7601,8 +7654,13 @@ extern class Fn {
 		    | 0
 		```
 	**/
+	inline function flatten(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float> {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __flatten(list, maxdepth);
+	}
+	@:native("flattennew")
 	@:luaDotMethod
-	function flatten(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	private function __flattennew(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.flattennew(list: any[], maxdepth?: integer)
@@ -7619,8 +7677,10 @@ extern class Fn {
 		    | 0
 		```
 	**/
-	@:luaDotMethod
-	function flattennew(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	inline function flattennew(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float> {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __flattennew(list, maxdepth);
+	}
 	/**
 		```lua
 		function table.float2nr(expr: number)
@@ -8062,6 +8122,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function garbagecollect(?atexit:Bool):Any;
+	@:native("get")
+	@:luaDotMethod
+	private function __get(list:lua.Table<Int, Any>, idx:Int, ?default_:Any):Any;
 	/**
 		```lua
 		function table.get(list: any[], idx: integer, default?: any)
@@ -8133,8 +8196,10 @@ extern class Fn {
 		
 		 Returns zero on error.
 	**/
-	@:luaDotMethod
-	function get(list:lua.Table<Int, Any>, idx:Int, ?default_:Any):Any;
+	inline function get(list:Array<Any>, idx:Int, ?default_:Any):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __get(list, idx, default_);
+	}
 	/**
 		```lua
 		function table.getbufinfo(buf?: string|integer)
@@ -10823,6 +10888,9 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function inputdialog(___:haxe.Rest<Any>):Any;
+	@:native("inputlist")
+	@:luaDotMethod
+	private function __inputlist(textlist:lua.Table<Int, String>):Any;
 	/**
 		```lua
 		function table.inputlist(textlist: string[])
@@ -10847,8 +10915,10 @@ extern class Fn {
 		   let color = inputlist(['Select color:', '1. red',
 		     \ '2. green', '3. blue'])
 	**/
-	@:luaDotMethod
-	function inputlist(textlist:lua.Table<Int, String>):Any;
+	inline function inputlist(textlist:Array<String>):Any {
+		final textlist:nvim.helper.Native.LuaArray<String> = textlist;
+		return __inputlist(textlist);
+	}
 	/**
 		```lua
 		function table.inputrestore()
@@ -11300,6 +11370,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function jobstop(id:Int):Int;
+	@:native("jobwait")
+	@:luaDotMethod
+	private function __jobwait(jobs:lua.Table<Int, Int>, ?timeout:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.jobwait(jobs: integer[], timeout?: integer)
@@ -11328,8 +11401,13 @@ extern class Fn {
 		   -2 if the job was interrupted (by |CTRL-C|)
 		   -3 if the job-id is invalid
 	**/
+	inline function jobwait(jobs:Array<Int>, ?timeout:Int):lua.Table<Int, Int> {
+		final jobs:nvim.helper.Native.LuaArray<Int> = jobs;
+		return __jobwait(jobs, timeout);
+	}
+	@:native("join")
 	@:luaDotMethod
-	function jobwait(jobs:lua.Table<Int, Int>, ?timeout:Int):lua.Table<Int, Int>;
+	private function __join(list:lua.Table<Int, Any>, ?sep:String):String;
 	/**
 		```lua
 		function table.join(list: any[], sep?: string)
@@ -11348,8 +11426,10 @@ extern class Fn {
 		 converted into a string like with |string()|.
 		 The opposite function is |split()|.
 	**/
-	@:luaDotMethod
-	function join(list:lua.Table<Int, Any>, ?sep:String):String;
+	inline function join(list:Array<Any>, ?sep:String):String {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __join(list, sep);
+	}
 	/**
 		```lua
 		function table.json_decode(expr: any)
@@ -11442,6 +11522,9 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function last_buffer_nr():Any;
+	@:native("len")
+	@:luaDotMethod
+	private function __len(expr:lua.Table<Int, Any>):Int;
 	/**
 		```lua
 		function table.len(expr: any[])
@@ -11460,8 +11543,10 @@ extern class Fn {
 		 |Dictionary| is returned.
 		 Otherwise an error is given and returns zero.
 	**/
-	@:luaDotMethod
-	function len(expr:lua.Table<Int, Any>):Int;
+	inline function len(expr:Array<Any>):Int {
+		final expr:nvim.helper.Native.LuaArray<Any> = expr;
+		return __len(expr);
+	}
 	/**
 		```lua
 		function table.libcall(libname: string, funcname: string, argument: any)
@@ -11598,6 +11683,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function lispindent(lnum:haxe.extern.EitherType<Int, String>):Int;
+	@:native("list2blob")
+	@:luaDotMethod
+	private function __list2blob(list:lua.Table<Int, Any>):String;
 	/**
 		```lua
 		function table.list2blob(list: any[])
@@ -11615,8 +11703,13 @@ extern class Fn {
 		
 		 |blob2list()| does the opposite.
 	**/
+	inline function list2blob(list:Array<Any>):String {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __list2blob(list);
+	}
+	@:native("list2str")
 	@:luaDotMethod
-	function list2blob(list:lua.Table<Int, Any>):String;
+	private function __list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
 	/**
 		```lua
 		function table.list2str(list: any[], utf8?: boolean)
@@ -11640,8 +11733,10 @@ extern class Fn {
 		 <
 		 Returns an empty string on error.
 	**/
-	@:luaDotMethod
-	function list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
+	inline function list2str(list:Array<Any>, ?utf8:Bool):String {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __list2str(list, utf8);
+	}
 	/**
 		```lua
 		function table.localtime()
@@ -12167,6 +12262,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchadd(group:haxe.extern.EitherType<Int, String>, pattern:String, ?priority:Int, ?id:Int, ?dict:String):Any;
+	@:native("matchaddpos")
+	@:luaDotMethod
+	private function __matchaddpos(group:haxe.extern.EitherType<Int, String>, pos:lua.Table<Int, Any>, ?priority:Int, ?id:Int, ?dict:String):Any;
 	/**
 		```lua
 		function table.matchaddpos(group: string|integer, pos: any[], priority?: integer, id?: integer, dict?: string)
@@ -12211,8 +12309,10 @@ extern class Fn {
 		 <Matches added by |matchaddpos()| are returned by
 		 |getmatches()|.
 	**/
-	@:luaDotMethod
-	function matchaddpos(group:haxe.extern.EitherType<Int, String>, pos:lua.Table<Int, Any>, ?priority:Int, ?id:Int, ?dict:String):Any;
+	inline function matchaddpos(group:haxe.extern.EitherType<Int, String>, pos:Array<Any>, ?priority:Int, ?id:Int, ?dict:String):Any {
+		final pos:nvim.helper.Native.LuaArray<Any> = pos;
+		return __matchaddpos(group, pos, priority, id, dict);
+	}
 	/**
 		```lua
 		function table.matcharg(nr: integer)
@@ -15128,6 +15228,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function resolve(filename:String):String;
+	@:native("reverse")
+	@:luaDotMethod
+	private function __reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
 	/**
 		```lua
 		function table.reverse(object: <T>[])
@@ -15146,8 +15249,10 @@ extern class Fn {
 		   let revlist = reverse(copy(mylist))
 		 <
 	**/
-	@:luaDotMethod
-	function reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
+	inline function reverse<T>(object:Array<T>):lua.Table<Int, T> {
+		final object:nvim.helper.Native.LuaArray<T> = object;
+		return __reverse(object);
+	}
 	/**
 		```lua
 		function table.round(expr: number)
@@ -15942,6 +16047,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setbufvar(buf:haxe.extern.EitherType<Int, String>, varname:String, val:Any):Any;
+	@:native("setcellwidths")
+	@:luaDotMethod
+	private function __setcellwidths(list:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function table.setcellwidths(list: any[])
@@ -15983,8 +16091,13 @@ extern class Fn {
 		 match with what Vim knows about each emoji.  If it doesn't
 		 look right you need to adjust the {list} argument.
 	**/
+	inline function setcellwidths(list:Array<Any>):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __setcellwidths(list);
+	}
+	@:native("setcharpos")
 	@:luaDotMethod
-	function setcellwidths(list:lua.Table<Int, Any>):Any;
+	private function __setcharpos(expr:String, list:lua.Table<Int, Int>):Any;
 	/**
 		```lua
 		function table.setcharpos(expr: string, list: integer[])
@@ -16003,8 +16116,10 @@ extern class Fn {
 		   call setpos('.', [0, 8, 4, 0])
 		 <positions the cursor on the second character '보'.
 	**/
-	@:luaDotMethod
-	function setcharpos(expr:String, list:lua.Table<Int, Int>):Any;
+	inline function setcharpos(expr:String, list:Array<Int>):Any {
+		final list:nvim.helper.Native.LuaArray<Int> = list;
+		return __setcharpos(expr, list);
+	}
 	/**
 		```lua
 		function table.setcharsearch(dict: string)
@@ -16227,6 +16342,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setmatches(list:Any, ?win:Int):Any;
+	@:native("setpos")
+	@:luaDotMethod
+	private function __setpos(expr:String, list:lua.Table<Int, Int>):Any;
 	/**
 		```lua
 		function table.setpos(expr: string, list: integer[])
@@ -16283,8 +16401,10 @@ extern class Fn {
 		 also set the preferred column.  Also see the "curswant" key in
 		 |winrestview()|.
 	**/
-	@:luaDotMethod
-	function setpos(expr:String, list:lua.Table<Int, Int>):Any;
+	inline function setpos(expr:String, list:Array<Int>):Any {
+		final list:nvim.helper.Native.LuaArray<Int> = list;
+		return __setpos(expr, list);
+	}
 	@:native("setqflist")
 	@:luaDotMethod
 	private function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int;
@@ -16950,6 +17070,9 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_place.Dict> = dict;
 		return __sign_place(id, group, name, buf, dict);
 	}
+	@:native("sign_placelist")
+	@:luaDotMethod
+	private function __sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.sign_placelist(list: vim.fn.sign_placelist.list.item[])
@@ -17017,8 +17140,10 @@ extern class Fn {
 		     \ ])
 		 <
 	**/
-	@:luaDotMethod
-	function sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Int>;
+	inline function sign_placelist(list:Array<nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Int> {
+		final list:nvim.helper.Native.LuaArray<nvim.type.vim.fn.sign_placelist.list.Item> = list;
+		return __sign_placelist(list);
+	}
 	/**
 		```lua
 		function table.sign_undefine(name?: string)
@@ -17295,6 +17420,9 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __sockconnect(mode, address, opts);
 	}
+	@:native("sort")
+	@:luaDotMethod
+	private function __sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
 	/**
 		```lua
 		function table.sort(list: <T>[], how?: string|function, dict?: any)
@@ -17375,8 +17503,10 @@ extern class Fn {
 		   eval mylist->sort({i1, i2 -> i1 - i2})
 		 <
 	**/
-	@:luaDotMethod
-	function sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
+	inline function sort<T>(list:Array<T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T> {
+		final list:nvim.helper.Native.LuaArray<T> = list;
+		return __sort(list, how, dict);
+	}
 	/**
 		```lua
 		function table.soundfold(word: string)
@@ -44654,6 +44784,8 @@ extern class OptLocal {
 		final src:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = src;
 		return __list_extend(dst, src, start, finish);
 	}
+	@:native("list_slice")
+	private static function __list_slice<T>(list:lua.Table<Int, T>, ?start:Null<Int>, ?finish:Null<Int>):lua.Table<Int, T>;
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -44672,7 +44804,10 @@ extern class OptLocal {
 		
 		@*return* `Copy` — of table sliced from start to finish (inclusive)
 	**/
-	static function list_slice<T>(list:lua.Table<Int, T>, ?start:Null<Int>, ?finish:Null<Int>):lua.Table<Int, T>;
+	inline static function list_slice<T>(list:Array<T>, ?start:Null<Int>, ?finish:Null<Int>):lua.Table<Int, T> {
+		final list:nvim.helper.Native.LuaArray<T> = list;
+		return __list_slice(list, start, finish);
+	}
 	/**
 		```lua
 		(global) vim.loader: table
@@ -45066,6 +45201,8 @@ extern class OptLocal {
 		 @nodoc
 	**/
 	static var opt_local : OptLocal;
+	@:native("paste")
+	private static function __paste(lines:lua.Table<Int, String>, phase:Float):Bool;
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -45113,7 +45250,10 @@ extern class OptLocal {
 		    | 3
 		```
 	**/
-	static function paste(lines:lua.Table<Int, String>, phase:Float):Bool;
+	inline static function paste(lines:Array<String>, phase:Float):Bool {
+		final lines:nvim.helper.Native.LuaArray<String> = lines;
+		return __paste(lines, phase);
+	}
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -45564,6 +45704,8 @@ extern class OptLocal {
 		```
 	**/
 	static function stricmp(a:String, b:String):Float;
+	@:native("system")
+	private static function __system(cmd:lua.Table<Int, String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj;
 	/**
 		```lua
 		function vim.system(cmd: string[], opts?: vim.SystemOpts, on_exit?: fun(out: vim.SystemCompleted))
@@ -45643,7 +45785,10 @@ extern class OptLocal {
 		   - write (fun(data: string|nil)) Requires `stdin=true`. Pass `nil` to close the stream.
 		   - is_closing (fun(): boolean)
 	**/
-	static function system(cmd:lua.Table<Int, String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj;
+	inline static function system(cmd:Array<String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj {
+		final cmd:nvim.helper.Native.LuaArray<String> = cmd;
+		return __system(cmd, opts, on_exit);
+	}
 	/**
 		```lua
 		(global) vim.t: vim.var_accessor
