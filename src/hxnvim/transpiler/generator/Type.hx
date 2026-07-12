@@ -1,10 +1,8 @@
 package hxnvim.transpiler.generator;
 
 import hxnvim.transpiler.generator.Meta.MetaGenerator;
-import hxnvim.transpiler.parser.Type.LiteralTypeParser;
 import haxe.Exception;
 import haxe.macro.Expr;
-import haxe.macro.Context;
 
 using haxe.macro.ComplexTypeTools;
 using hxnvim.common.NullTools;
@@ -20,86 +18,6 @@ class LiteralTypeGenerator {
 
 	public function new(origin:LiteralType) {
 		this.origin = origin;
-	}
-
-	function generateOptionalType(type:LiteralType) {
-		return 'Null<${new LiteralTypeGenerator(type).generateAsString()}>';
-	}
-
-	function generateUnionType(union:Array<LiteralType>) {
-		function makeUnion(members:Array<String>):String {
-			return switch (members.copy()) {
-				case [], [_]:
-					throw new Exception('Error generating union type out of ${union}');
-				case [left, right]:
-					'haxe.extern.EitherType<${left}, ${right}>';
-				case m:
-					'haxe.extern.EitherType<${m.shift()}, ${makeUnion(m)}>';
-			}
-		}
-
-		final types = union.map(t -> new LiteralTypeGenerator(t).generateAsString()).unique();
-		final nonNullableTypes = types.filter(type -> type != "Void");
-		final nonNullableUnion = switch (nonNullableTypes) {
-			case [t]: t;
-			case t: makeUnion(t);
-		}
-
-		return (types.length != nonNullableTypes.length) ? 'Null<${nonNullableUnion}>' : nonNullableUnion;
-	}
-
-	function generateArrayType(itemsType:LiteralType) {
-		return 'lua.Table<Int, ${new LiteralTypeGenerator(itemsType).generateAsString()}>';
-	}
-
-	function generateFunctionType(signature:Signature) {
-		final args = signature.args.map(argument -> switch (argument.name) {
-			case '...': '___:haxe.Rest<${new LiteralTypeGenerator(argument.type).generateAsString()}>';
-			case argumentName: switch (argument.opt) {
-					case true: '?${argumentName}:${new LiteralTypeGenerator(argument.type).generateAsString()}';
-					case false: '${argumentName}:${new LiteralTypeGenerator(argument.type).generateAsString()}';
-				}
-		});
-
-		final ret = new LiteralTypeGenerator(signature.ret).generateAsString();
-
-		return '(${args.join(", ")}) -> ${ret}';
-	}
-
-	function generateRestType(type:LiteralType) {
-		return 'haxe.Rest<${new LiteralTypeGenerator(type).generateAsString()}>';
-	}
-
-	function generateMultireturnType(returnTypes:Array<LiteralType>) {
-		if (returnTypes.length > 6) {
-			throw new Exception('Error generating multireturn type: too many values in ${returnTypes}, the maximum allowed is currently 6');
-		}
-
-		final types = returnTypes.map(r -> switch (r) {
-			case LiteralType.Void: Target.toHelperReference("Nothing");
-			case LiteralType.Nil: Target.toHelperReference("Nothing");
-			case r: new LiteralTypeGenerator(r).generateAsString();
-		}).padEnd(6, Target.toHelperReference("Nothing"));
-
-		return Target.toHelperReference('Multireturn<${types.join(", ")}>');
-	}
-
-	function generateTableStructure(fields:Array<{name:String, type:LiteralType}>) {
-		final entries = fields.map(field -> ({
-			name: field.name,
-			type: new LiteralTypeGenerator(field.type).generateAsString(),
-			opt: field.type.isNullable()
-		})).map(entry -> (entry.opt ? '?${entry.name}' : entry.name) + ':${entry.type}');
-
-		return '{ ${entries.join(", ")} }';
-	}
-
-	function generateTableType(key:LiteralType, value:LiteralType) {
-		return 'lua.Table<${new LiteralTypeGenerator(key).generateAsString()}, ${new LiteralTypeGenerator(value).generateAsString()}>';
-	}
-
-	public function generateAsString() {
-		return this.generate().toString();
 	}
 
 	function generateDynamic() {
@@ -386,5 +304,9 @@ class LiteralTypeGenerator {
 				this.generateHelperReference(name, params, sub);
 			case _: throw new Exception('Error generating type string: unimplemented type ${this.origin}');
 		}
+	}
+
+	public function generateAsString() {
+		return this.generate().toString();
 	}
 }
