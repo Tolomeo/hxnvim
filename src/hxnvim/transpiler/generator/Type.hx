@@ -99,34 +99,7 @@ class LiteralTypeGenerator {
 	}
 
 	public function generateAsString() {
-		return switch (this.origin) {
-			case LiteralType.Unknown: "Dynamic";
-			case LiteralType.Any: "Any";
-			case LiteralType.Boolean: "Bool";
-			case LiteralType.AnyFunction: "haxe.Constraints.Function";
-			case LiteralType.Integer: "Int";
-			case LiteralType.UserData: "lua.UserData";
-			case LiteralType.Nil: "Void";
-			case LiteralType.Void: "Void";
-			case LiteralType.Number: "Float";
-			case LiteralType.Str: "String";
-			case LiteralType.AnyTable: "lua.Table.AnyTable";
-			case LiteralType.NumericLiteral(_): "Float";
-			case LiteralType.StringLiteral(_): "String";
-			case LiteralType.BooleanLiteral(_): "Bool";
-			case LiteralType.Optional(type): this.generateOptionalType(type);
-			case LiteralType.Union(types): this.generateUnionType(types);
-			case LiteralType.Array(itemsType): this.generateArrayType(itemsType);
-			case LiteralType.Function(signature): this.generateFunctionType(signature);
-			case LiteralType.Rest(type): this.generateRestType(type);
-			case LiteralType.Multireturn(returnTypes): this.generateMultireturnType(returnTypes);
-			case LiteralType.Table(key, value): this.generateTableType(key, value);
-			case LiteralType.TableStructure(fields): this.generateTableStructure(fields);
-			case LiteralType.GenericTypeReference(genericName): genericName;
-			case LiteralType.AnnotationReference(typeName): Target.toTypeReference(typeName);
-			case LiteralType.ModuleReference(moduleName): Target.toModuleReference(moduleName);
-			case _: throw new Exception('Error generating type string: unimplemented type ${this.origin}');
-		}
+		return this.generate().toString();
 	}
 
 	function generateDynamic() {
