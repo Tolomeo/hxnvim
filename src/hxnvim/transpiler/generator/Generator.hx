@@ -1,11 +1,11 @@
 package hxnvim.transpiler.generator;
 
-import haxe.macro.Printer;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 
 using hxnvim.common.NullTools;
 
+import hxnvim.common.Printer;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Alias;
