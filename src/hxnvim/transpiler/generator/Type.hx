@@ -10,6 +10,7 @@ using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 using hxnvim.transpiler.symbol.SymbolTools;
 
+import hxnvim.common.Printer;
 import hxnvim.target.Target;
 import hxnvim.transpiler.symbol.Symbol;
 
@@ -95,7 +96,7 @@ class LiteralTypeGenerator {
 					ComplexType.TPath({
 						name: "EitherType",
 						pack: ["haxe", "extern"],
-						params: [TypeParam.TPType(left), TypeParam.TPType(right),]
+						params: [TypeParam.TPType(left), TypeParam.TPType(right)]
 					});
 				case m:
 					ComplexType.TPath({
@@ -307,6 +308,6 @@ class LiteralTypeGenerator {
 	}
 
 	public function generateAsString() {
-		return this.generate().toString();
+		return new Printer().printComplexType(this.generate());
 	}
 }
