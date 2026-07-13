@@ -12,10 +12,12 @@ package nvim.type.uv.fs_readdir;
 		```
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) uv.fs_readdir.entry.type: string
 		```
 	**/
 	extern public var type : String;
+
 }

@@ -39,6 +39,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
+
 	/**
 		```lua
 		(field) lsp.SignatureHelp.activeSignature: integer?
@@ -59,6 +60,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var activeSignature : Null<nvim.type.Uinteger>;
+
 	/**
 		```lua
 		(field) lsp.SignatureHelp.signatures: lsp.SignatureInformation[]
@@ -70,4 +72,5 @@ package nvim.type.lsp;
 		One or more signatures.
 	**/
 	extern public var signatures : lua.Table<Int, nvim.type.lsp.SignatureInformation>;
+
 }

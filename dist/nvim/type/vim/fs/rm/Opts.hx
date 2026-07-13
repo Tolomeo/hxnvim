@@ -18,6 +18,7 @@ package nvim.type.vim.fs.rm;
 	**/
 	@:optional
 	extern public var force : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.fs.rm.Opts.recursive: boolean?
@@ -31,4 +32,5 @@ package nvim.type.vim.fs.rm;
 	**/
 	@:optional
 	extern public var recursive : Null<Bool>;
+
 }

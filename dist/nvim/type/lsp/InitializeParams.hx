@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		The capabilities provided by the client (editor or tool)
 	**/
 	extern public var capabilities : nvim.type.lsp.ClientCapabilities;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.clientInfo: (lsp.ClientInfo)?
@@ -39,6 +40,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var clientInfo : Null<nvim.type.lsp.ClientInfo>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.initializationOptions: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -67,6 +69,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var initializationOptions : Null<nvim.type.lsp.LSPAny>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.locale: string?
@@ -85,6 +88,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var locale : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.processId: integer|nil
@@ -100,6 +104,7 @@ package nvim.type.lsp;
 		If the parent process is not alive then the server should exit.
 	**/
 	extern public var processId : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.rootPath: (string|nil)?
@@ -114,6 +119,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var rootPath : Null<haxe.extern.EitherType<String, nvim.type.lsp.Null>>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.rootUri: string|nil
@@ -128,6 +134,7 @@ package nvim.type.lsp;
 		
 	**/
 	extern public var rootUri : haxe.extern.EitherType<nvim.type.lsp.DocumentUri, nvim.type.lsp.Null>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.trace: ("messages"|"off"|"verbose")?
@@ -149,6 +156,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var trace : Null<nvim.type.lsp.TraceValue>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.workDoneToken: (string|integer)?
@@ -161,6 +169,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+
 	/**
 		```lua
 		(field) lsp.InitializeParams.workspaceFolders: (lsp.WorkspaceFolder[]|nil)?
@@ -178,4 +187,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workspaceFolders : Null<haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.WorkspaceFolder>, nvim.type.lsp.Null>>;
+
 }

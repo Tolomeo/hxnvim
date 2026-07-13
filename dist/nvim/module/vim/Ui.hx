@@ -44,10 +44,12 @@ extern class Ui {
 	**/
 	@:luaDotMethod
 	function input(opts:Null<lua.Table.AnyTable>, on_confirm:Dynamic):Dynamic;
+
 	@:native("open")
 	@:luaDotMethod
 	private function __open(path:String, ?opt:{ @:optional
 	var cmd : Null<lua.Table<Int, String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.open(path: string, opt?: { cmd: string[] })
@@ -95,9 +97,11 @@ extern class Ui {
 var cmd : Null<lua.Table<Int, String>>; }> = opt;
 		return __open(path, opt);
 	}
+
 	@:native("select")
 	@:luaDotMethod
 	private function __select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))
@@ -147,4 +151,5 @@ var cmd : Null<lua.Table<Int, String>>; }> = opt;
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __select(items, opts, on_choice);
 	}
+
 }

@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var triggerCharacter : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.CompletionContext.triggerKind: 1|2|3
@@ -48,4 +49,5 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var triggerKind : nvim.type.lsp.CompletionTriggerKind;
+
 }

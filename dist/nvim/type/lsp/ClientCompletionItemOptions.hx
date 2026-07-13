@@ -18,6 +18,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var commitCharactersSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.deprecatedSupport: boolean?
@@ -30,6 +31,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var deprecatedSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.documentationFormat: "markdown"|"plaintext"[]?
@@ -43,6 +45,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var documentationFormat : Null<lua.Table<Int, nvim.type.lsp.MarkupKind>>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.insertReplaceSupport: boolean?
@@ -57,6 +60,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var insertReplaceSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.insertTextModeSupport: (lsp.ClientCompletionItemInsertTextModeOptions)?
@@ -72,6 +76,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var insertTextModeSupport : Null<nvim.type.lsp.ClientCompletionItemInsertTextModeOptions>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.labelDetailsSupport: boolean?
@@ -86,6 +91,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var labelDetailsSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.preselectSupport: boolean?
@@ -98,6 +104,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var preselectSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.resolveSupport: (lsp.ClientCompletionItemResolveOptions)?
@@ -113,6 +120,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveSupport : Null<nvim.type.lsp.ClientCompletionItemResolveOptions>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.snippetSupport: boolean?
@@ -130,6 +138,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var snippetSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.tagSupport: (lsp.CompletionItemTagOptions)?
@@ -146,4 +155,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tagSupport : Null<nvim.type.lsp.CompletionItemTagOptions>;
+
 }

@@ -19,6 +19,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var current_line : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualLines.format: fun(diagnostic: vim.Diagnostic):string??
@@ -40,6 +41,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualLines.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -61,4 +63,5 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 }

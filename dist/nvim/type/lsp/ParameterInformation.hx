@@ -49,6 +49,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+
 	/**
 		```lua
 		(field) lsp.ParameterInformation.label: string|[integer, integer]
@@ -71,4 +72,5 @@ package nvim.type.lsp;
 		Its intended use case is to highlight the parameter label part in the `SignatureInformation.label`.
 	**/
 	extern public var label : Dynamic;
+
 }

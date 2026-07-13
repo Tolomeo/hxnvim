@@ -20,4 +20,5 @@ package nvim.type.vim.lsp.semantic_tokens.highlight_token;
 	**/
 	@:optional
 	extern public var priority : Null<Int>;
+
 }

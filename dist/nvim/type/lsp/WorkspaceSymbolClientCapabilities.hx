@@ -22,6 +22,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.resolveSupport: (lsp.ClientSymbolResolveOptions)?
@@ -37,6 +38,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveSupport : Null<nvim.type.lsp.ClientSymbolResolveOptions>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.symbolKind: (lsp.ClientSymbolKindOptions)?
@@ -49,6 +51,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.tagSupport: (lsp.ClientSymbolTagOptions)?
@@ -63,4 +66,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
+
 }

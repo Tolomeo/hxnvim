@@ -13,6 +13,7 @@ package nvim.type.vim.fn.sign_getplaced;
 	**/
 	@:optional
 	extern public var group : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.id: integer?
@@ -20,6 +21,7 @@ package nvim.type.vim.fn.sign_getplaced;
 	**/
 	@:optional
 	extern public var id : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.lnum: (string|integer)?
@@ -27,4 +29,5 @@ package nvim.type.vim.fn.sign_getplaced;
 	**/
 	@:optional
 	extern public var lnum : Null<haxe.extern.EitherType<String, Int>>;
+
 }

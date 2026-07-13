@@ -25,4 +25,5 @@ package nvim.type.vim.lsp.completion.get;
 	**/
 	@:optional
 	extern public var ctx : Null<nvim.type.lsp.CompletionContext>;
+
 }

@@ -28,6 +28,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.didDelete: (lsp.FileOperationRegistrationOptions)?
@@ -45,6 +46,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.didRename: (lsp.FileOperationRegistrationOptions)?
@@ -62,6 +64,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.willCreate: (lsp.FileOperationRegistrationOptions)?
@@ -79,6 +82,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.willDelete: (lsp.FileOperationRegistrationOptions)?
@@ -96,6 +100,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.willRename: (lsp.FileOperationRegistrationOptions)?
@@ -113,4 +118,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+
 }

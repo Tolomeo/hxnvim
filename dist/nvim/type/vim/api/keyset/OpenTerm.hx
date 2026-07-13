@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var force_crlf : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.open_term.on_input: fun(_: "input", term: integer, bufnr: integer, data: any)?
@@ -26,4 +27,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var on_input : Null<(_:String, term:Int, bufnr:Int, data:Any) -> Dynamic>;
+
 }

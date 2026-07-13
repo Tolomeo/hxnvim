@@ -23,6 +23,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Filter.ns_id: integer?
@@ -36,4 +37,5 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var ns_id : Null<Int>;
+
 }

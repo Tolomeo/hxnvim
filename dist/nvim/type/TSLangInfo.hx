@@ -30,18 +30,21 @@ package nvim.type;
 		```
 	**/
 	extern public var _wasm : Bool;
+
 	/**
 		```lua
 		(field) TSLangInfo.abi_version: integer
 		```
 	**/
 	extern public var abi_version : Int;
+
 	/**
 		```lua
 		(field) TSLangInfo.fields: string[]
 		```
 	**/
 	extern public var fields : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) TSLangInfo.metadata: TSLangMetadata?
@@ -57,22 +60,26 @@ package nvim.type;
 	**/
 	@:optional
 	extern public var metadata : Null<nvim.type.TSLangMetadata>;
+
 	/**
 		```lua
 		(field) TSLangInfo.state_count: integer
 		```
 	**/
 	extern public var state_count : Int;
+
 	/**
 		```lua
 		(field) TSLangInfo.supertypes: table<string, string[]>
 		```
 	**/
 	extern public var supertypes : Supertypes;
+
 	/**
 		```lua
 		(field) TSLangInfo.symbols: table<string, boolean>
 		```
 	**/
 	extern public var symbols : Symbols;
+
 }

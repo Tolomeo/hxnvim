@@ -4,6 +4,7 @@ extern class Diagnostic {
 	@:native("from")
 	@:luaDotMethod
 	private function __from(diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>):lua.Table<Int, nvim.type.lsp.Diagnostic>;
+
 	/**
 		```lua
 		function M.from(diagnostics: vim.Diagnostic[])
@@ -18,6 +19,7 @@ extern class Diagnostic {
 		final diagnostics:nvim.helper.Native.LuaArray<nvim.type.vim.Diagnostic> = diagnostics;
 		return __from(diagnostics);
 	}
+
 	/**
 		```lua
 		function M.get_line_diagnostics(bufnr: integer|nil, line_nr: integer|nil, opts?: { severity: 1|2|3|4 }, client_id: integer|nil)
@@ -47,6 +49,7 @@ extern class Diagnostic {
 	@:luaDotMethod
 	private function get_line_diagnostics(?bufnr:Null<Int>, ?line_nr:Null<Int>, ?opts:Null<{ @:optional
 	var severity : Null<nvim.type.lsp.DiagnosticSeverity>; }>, ?client_id:Null<Int>):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function M.get_namespace(client_id: integer, is_pull?: boolean)
@@ -63,9 +66,11 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function get_namespace(client_id:Int, ?is_pull:Null<Bool>):Dynamic;
+
 	@:native("on_diagnostic")
 	@:luaDotMethod
 	private function __on_diagnostic(error:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.DocumentDiagnosticReport, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+
 	/**
 		```lua
 		function M.on_diagnostic(error?: lsp.ResponseError, result: lsp.RelatedFullDocumentDiagnosticReport|lsp.RelatedUnchangedDocumentDiagnosticReport, ctx: lsp.HandlerContext)
@@ -82,9 +87,11 @@ extern class Diagnostic {
 		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_diagnostic(error, result, ctx);
 	}
+
 	@:native("on_publish_diagnostics")
 	@:luaDotMethod
 	private function __on_publish_diagnostics(_:Null<nvim.type.lsp.ResponseError>, params:nvim.type.lsp.PublishDiagnosticsParams, ctx:nvim.type.lsp.HandlerContext):Dynamic;
+
 	/**
 		```lua
 		function M.on_publish_diagnostics(_?: lsp.ResponseError, params: lsp.PublishDiagnosticsParams, ctx: lsp.HandlerContext)
@@ -101,9 +108,11 @@ extern class Diagnostic {
 		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_publish_diagnostics(_, params, ctx);
 	}
+
 	@:native("reset")
 	@:luaDotMethod
 	private function __reset(client_id:Int, buffer_client_map:lua.Table<Int, lua.Table<Int, lua.Table.AnyTable>>):Dynamic;
+
 	/**
 		```lua
 		function M.reset(client_id: integer, buffer_client_map: table<integer, table<integer, table>>)
@@ -123,4 +132,5 @@ extern class Diagnostic {
 		final buffer_client_map:nvim.helper.Native.LuaArray<lua.Table<Int, lua.Table.AnyTable>> = buffer_client_map;
 		return __reset(client_id, buffer_client_map);
 	}
+
 }

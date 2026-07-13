@@ -12,10 +12,12 @@ package nvim.type.uv.fs_stat.result;
 		```
 	**/
 	extern public var nsec : Int;
+
 	/**
 		```lua
 		(field) uv.fs_stat.result.time.sec: integer
 		```
 	**/
 	extern public var sec : Int;
+
 }

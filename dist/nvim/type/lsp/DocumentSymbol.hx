@@ -25,6 +25,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var children : Null<lua.Table<Int, nvim.type.lsp.DocumentSymbol>>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.deprecated: boolean?
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var deprecated : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.detail: string?
@@ -50,6 +52,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var detail : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.kind: 1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|26|3|4|5|6|7|8|9
@@ -98,6 +101,7 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var kind : nvim.type.lsp.SymbolKind;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.name: string
@@ -110,6 +114,7 @@ package nvim.type.lsp;
 		an empty string or a string only consisting of white spaces.
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.range: lsp.Range
@@ -137,6 +142,7 @@ package nvim.type.lsp;
 		inside the symbol to reveal in the symbol in the UI.
 	**/
 	extern public var range : nvim.type.lsp.Range;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.selectionRange: lsp.Range
@@ -163,6 +169,7 @@ package nvim.type.lsp;
 		Must be contained by the `range`.
 	**/
 	extern public var selectionRange : nvim.type.lsp.Range;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.tags: 1[]?
@@ -176,4 +183,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tags : Null<lua.Table<Int, nvim.type.lsp.SymbolTag>>;
+
 }

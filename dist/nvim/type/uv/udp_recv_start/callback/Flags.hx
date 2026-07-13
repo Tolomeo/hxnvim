@@ -13,6 +13,7 @@ package nvim.type.uv.udp_recv_start.callback;
 	**/
 	@:optional
 	extern public var mmsg_chunk : Null<Bool>;
+
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.flags.partial: boolean|nil
@@ -20,4 +21,5 @@ package nvim.type.uv.udp_recv_start.callback;
 	**/
 	@:optional
 	extern public var partial : Null<Bool>;
+
 }

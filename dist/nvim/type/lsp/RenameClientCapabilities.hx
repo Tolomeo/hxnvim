@@ -18,6 +18,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.honorsChangeAnnotations: boolean?
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var honorsChangeAnnotations : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.prepareSupport: boolean?
@@ -49,6 +51,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var prepareSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.prepareSupportDefaultBehavior: 1?
@@ -72,4 +75,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var prepareSupportDefaultBehavior : Null<nvim.type.lsp.PrepareSupportDefaultBehavior>;
+
 }

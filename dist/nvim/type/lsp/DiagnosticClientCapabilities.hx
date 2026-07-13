@@ -24,6 +24,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var codeDescriptionSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.dataSupport: boolean?
@@ -39,6 +40,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dataSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.dynamicRegistration: boolean?
@@ -53,6 +55,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.relatedDocumentSupport: boolean?
@@ -65,6 +68,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var relatedDocumentSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.relatedInformation: boolean?
@@ -77,6 +81,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var relatedInformation : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.tagSupport: (lsp.ClientDiagnosticsTagOptions)?
@@ -91,4 +96,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
+
 }

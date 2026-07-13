@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var buf : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.option.filetype: string?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var filetype : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.option.scope: string?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var scope : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.option.win: integer?
@@ -34,4 +37,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var win : Null<Int>;
+
 }

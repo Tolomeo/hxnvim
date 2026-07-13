@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		An array of diagnostic information items.
 	**/
 	extern public var diagnostics : lua.Table<Int, nvim.type.lsp.Diagnostic>;
+
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.uri: string
@@ -32,6 +33,7 @@ package nvim.type.lsp;
 		The URI for which diagnostic information is reported.
 	**/
 	extern public var uri : nvim.type.lsp.DocumentUri;
+
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.version: integer?
@@ -45,4 +47,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var version : Null<Int>;
+
 }

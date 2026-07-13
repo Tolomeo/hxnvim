@@ -21,12 +21,14 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var capabilities : Capabilities;
+
 	/**
 		```lua
 		(field) lsp.DynamicCapabilities.client_id: integer
 		```
 	**/
 	extern public var client_id : Float;
+
 	/**
 		```lua
 		function get(_: any, method: any, opts: any)
@@ -35,6 +37,7 @@ package nvim.type.lsp;
 	**/
 	@:luaDotMethod
 	extern public function get(_:Dynamic, method:Dynamic, opts:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function register(_: any, registrations: any)
@@ -42,6 +45,7 @@ package nvim.type.lsp;
 	**/
 	@:luaDotMethod
 	extern public function register(_:Dynamic, registrations:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function supports(_: any, method: any, opts: any)
@@ -50,6 +54,7 @@ package nvim.type.lsp;
 	**/
 	@:luaDotMethod
 	extern public function supports(_:Dynamic, method:Dynamic, opts:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function supports_registration(_: any, method: any)
@@ -58,6 +63,7 @@ package nvim.type.lsp;
 	**/
 	@:luaDotMethod
 	extern public function supports_registration(_:Dynamic, method:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function unregister(_: any, unregistrations: any)
@@ -65,4 +71,5 @@ package nvim.type.lsp;
 	**/
 	@:luaDotMethod
 	extern public function unregister(_:Dynamic, unregistrations:Dynamic):Dynamic;
+
 }

@@ -8,6 +8,7 @@ package nvim.type.uv;
 @:structInit class UvShutdownT {
 	@:native("cancel")
 	private extern function __cancel():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()
@@ -115,8 +116,10 @@ package nvim.type.uv;
 	inline public function cancel():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __cancel();
 	}
+
 	@:native("get_type")
 	private extern function __get_type():nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_req_t:get_type()
@@ -132,4 +135,5 @@ package nvim.type.uv;
 	inline public function get_type():nvim.helper.Multireturn.Return2<String, Int> {
 		return __get_type();
 	}
+
 }

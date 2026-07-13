@@ -17,4 +17,5 @@ package nvim.type.lsp;
 		The properties that a client can resolve lazily.
 	**/
 	extern public var properties : lua.Table<Int, String>;
+
 }

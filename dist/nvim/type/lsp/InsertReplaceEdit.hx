@@ -36,6 +36,7 @@ package nvim.type.lsp;
 		The range if the insert is requested
 	**/
 	extern public var insert : nvim.type.lsp.Range;
+
 	/**
 		```lua
 		(field) lsp.InsertReplaceEdit.newText: string
@@ -47,6 +48,7 @@ package nvim.type.lsp;
 		The string to be inserted.
 	**/
 	extern public var newText : String;
+
 	/**
 		```lua
 		(field) lsp.InsertReplaceEdit.replace: lsp.Range
@@ -72,4 +74,5 @@ package nvim.type.lsp;
 		The range if the replace is requested.
 	**/
 	extern public var replace : nvim.type.lsp.Range;
+
 }

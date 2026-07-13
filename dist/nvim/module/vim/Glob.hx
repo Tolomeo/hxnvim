@@ -27,4 +27,5 @@ extern class Glob {
 	**/
 	@:luaDotMethod
 	function to_lpeg(pattern:String):nvim.type.vim.lpeg.Pattern;
+
 }

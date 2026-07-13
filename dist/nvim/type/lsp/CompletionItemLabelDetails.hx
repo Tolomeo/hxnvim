@@ -24,6 +24,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var description : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.CompletionItemLabelDetails.detail: string?
@@ -37,4 +38,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var detail : Null<String>;
+
 }

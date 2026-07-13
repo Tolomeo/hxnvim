@@ -29,6 +29,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var fileOperations : Null<nvim.type.lsp.FileOperationOptions>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.textDocumentContent: (lsp.TextDocumentContentOptions|lsp.TextDocumentContentRegistrationOptions)?
@@ -52,6 +53,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var textDocumentContent : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentContentOptions, nvim.type.lsp.TextDocumentContentRegistrationOptions>>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.workspaceFolders: (lsp.WorkspaceFoldersServerCapabilities)?
@@ -65,4 +67,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workspaceFolders : Null<nvim.type.lsp.WorkspaceFoldersServerCapabilities>;
+
 }

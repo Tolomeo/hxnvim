@@ -13,6 +13,7 @@ package nvim.type.uv;
 @:structInit class LuvThreadT {
 	@:native("equal")
 	private extern function __equal(other_thread:nvim.type.uv.LuvThreadT):Bool;
+
 	/**
 		```lua
 		(method) uv.luv_thread_t:equal(other_thread: uv.luv_thread_t)
@@ -28,8 +29,10 @@ package nvim.type.uv;
 		final other_thread:nvim.helper.Native.LuaObject<nvim.type.uv.LuvThreadT> = other_thread;
 		return __equal(other_thread);
 	}
+
 	@:native("join")
 	private extern function __join():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.luv_thread_t:join()
@@ -132,4 +135,5 @@ package nvim.type.uv;
 	inline public function join():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __join();
 	}
+
 }

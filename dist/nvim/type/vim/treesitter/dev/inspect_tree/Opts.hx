@@ -18,6 +18,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.command: string?
@@ -31,6 +32,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 	**/
 	@:optional
 	extern public var command : Null<String>;
+
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.lang: string?
@@ -45,6 +47,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 	**/
 	@:optional
 	extern public var lang : Null<String>;
+
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.title: string|fun(bufnr: integer):string|nil
@@ -64,6 +67,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		```
 	**/
 	extern public var title : haxe.extern.EitherType<String, (bufnr:Int) -> Null<String>>;
+
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.winid: integer?
@@ -77,4 +81,5 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 	**/
 	@:optional
 	extern public var winid : Null<Int>;
+
 }

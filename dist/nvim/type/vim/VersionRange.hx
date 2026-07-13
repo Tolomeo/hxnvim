@@ -12,6 +12,7 @@ package nvim.type.vim;
 		```
 	**/
 	extern public var from : nvim.type.vim.Version;
+
 	/**
 		```lua
 		(field) vim.VersionRange.to: (vim.Version)?
@@ -19,6 +20,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var to : Null<nvim.type.vim.Version>;
+
 	/**
 		```lua
 		(method) vim.VersionRange:has(version: string|vim.Version)
@@ -26,4 +28,5 @@ package nvim.type.vim;
 		```
 	**/
 	extern public function has(version:haxe.extern.EitherType<String, nvim.type.vim.Version>):Dynamic;
+
 }

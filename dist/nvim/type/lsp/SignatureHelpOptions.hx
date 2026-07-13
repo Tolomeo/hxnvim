@@ -26,6 +26,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var retriggerCharacters : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.triggerCharacters: string[]?
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var triggerCharacters : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.workDoneProgress: boolean?
@@ -45,4 +47,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

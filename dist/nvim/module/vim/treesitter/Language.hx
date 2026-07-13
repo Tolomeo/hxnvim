@@ -4,6 +4,7 @@ extern class Language {
 	@:native("add")
 	@:luaDotMethod
 	private function __add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn<Null<Bool>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.add(lang: string, opts?: vim.treesitter.language.add.Opts)
@@ -35,6 +36,7 @@ extern class Language {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.language.add.Opts> = opts;
 		return __add(lang, opts);
 	}
+
 	/**
 		```lua
 		function M.get_filetypes(lang: string)
@@ -52,6 +54,7 @@ extern class Language {
 	**/
 	@:luaDotMethod
 	function get_filetypes(lang:String):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function M.get_lang(filetype: string)
@@ -68,6 +71,7 @@ extern class Language {
 	**/
 	@:luaDotMethod
 	function get_lang(filetype:String):Null<String>;
+
 	/**
 		```lua
 		function M.inspect(lang: string)
@@ -93,6 +97,7 @@ extern class Language {
 	**/
 	@:luaDotMethod
 	function inspect(lang:String):nvim.type.TSLangInfo;
+
 	/**
 		```lua
 		function M.register(lang: string, filetype: string|string[])
@@ -111,6 +116,7 @@ extern class Language {
 	**/
 	@:luaDotMethod
 	function register(lang:String, filetype:haxe.extern.EitherType<String, lua.Table<Int, String>>):Dynamic;
+
 	/**
 		```lua
 		function M.require_language(lang: any, path: any, silent: any, symbol_name: any)
@@ -121,4 +127,5 @@ extern class Language {
 	@:luaDotMethod
 	@:deprecated
 	function require_language(lang:Dynamic, path:Dynamic, silent:Dynamic, symbol_name:Dynamic):Dynamic;
+
 }

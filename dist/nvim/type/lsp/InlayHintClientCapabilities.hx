@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.InlayHintClientCapabilities.resolveSupport: (lsp.ClientInlayHintResolveOptions)?
@@ -36,4 +37,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveSupport : Null<nvim.type.lsp.ClientInlayHintResolveOptions>;
+
 }

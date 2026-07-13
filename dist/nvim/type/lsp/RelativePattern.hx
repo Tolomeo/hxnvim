@@ -29,6 +29,7 @@ package nvim.type.lsp;
 		against relatively.
 	**/
 	extern public var baseUri : haxe.extern.EitherType<nvim.type.lsp.WorkspaceFolder, nvim.type.lsp.URI>;
+
 	/**
 		```lua
 		(field) lsp.RelativePattern.pattern: string
@@ -51,4 +52,5 @@ package nvim.type.lsp;
 		The actual glob pattern;
 	**/
 	extern public var pattern : nvim.type.lsp.Pattern;
+
 }

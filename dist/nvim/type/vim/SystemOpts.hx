@@ -13,6 +13,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var clear_env : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.cwd: string?
@@ -20,6 +21,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var cwd : Null<String>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.detach: boolean?
@@ -27,6 +29,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var detach : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.env: table<string, string|number>?
@@ -34,6 +37,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var env : Null<lua.Table<String, haxe.extern.EitherType<String, Float>>>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.stderr: (fun(err?: string, data?: string)|false)?
@@ -47,6 +51,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var stderr : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.stdin: (string|string[]|true)?
@@ -54,6 +59,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var stdin : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Bool>>>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.stdout: (fun(err?: string, data?: string)|false)?
@@ -67,6 +73,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var stdout : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.text: boolean?
@@ -74,6 +81,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var text : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.SystemOpts.timeout: integer?
@@ -85,4 +93,5 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var timeout : Null<Int>;
+
 }

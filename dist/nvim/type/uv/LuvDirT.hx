@@ -14,6 +14,7 @@ package nvim.type.uv;
 	@:native("closedir")
 	@:overload(function (callback:nvim.type.uv.fs_closedir.Callback) : nvim.type.uv.UvFsT {})
 	private extern function __closedir():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.luv_dir_t:closedir()
@@ -126,9 +127,11 @@ package nvim.type.uv;
 	inline public function closedir():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __closedir();
 	}
+
 	@:native("readdir")
 	@:overload(function (callback:nvim.type.uv.fs_readdir.Callback) : nvim.type.uv.UvFsT {})
 	private extern function __readdir():nvim.helper.Multireturn<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.luv_dir_t:readdir()
@@ -251,4 +254,5 @@ package nvim.type.uv;
 	inline public function readdir():nvim.helper.Multireturn.Return3<Null<lua.Table<Int, nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __readdir();
 	}
+
 }

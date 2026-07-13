@@ -22,6 +22,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.hierarchicalDocumentSymbolSupport: boolean?
@@ -34,6 +35,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var hierarchicalDocumentSymbolSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.labelSupport: boolean?
@@ -48,6 +50,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var labelSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.symbolKind: (lsp.ClientSymbolKindOptions)?
@@ -61,6 +64,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
+
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.tagSupport: (lsp.ClientSymbolTagOptions)?
@@ -76,4 +80,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
+
 }

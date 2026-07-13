@@ -19,6 +19,7 @@ package nvim.type.vim.fs.find;
 	**/
 	@:optional
 	extern public var follow : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.fs.find.Opts.limit: number?
@@ -33,6 +34,7 @@ package nvim.type.vim.fs.find;
 	**/
 	@:optional
 	extern public var limit : Null<Float>;
+
 	/**
 		```lua
 		(field) vim.fs.find.Opts.path: string?
@@ -47,6 +49,7 @@ package nvim.type.vim.fs.find;
 	**/
 	@:optional
 	extern public var path : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fs.find.Opts.stop: string?
@@ -60,6 +63,7 @@ package nvim.type.vim.fs.find;
 	**/
 	@:optional
 	extern public var stop : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fs.find.Opts.type: string?
@@ -73,6 +77,7 @@ package nvim.type.vim.fs.find;
 	**/
 	@:optional
 	extern public var type : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fs.find.Opts.upward: boolean?
@@ -87,4 +92,5 @@ package nvim.type.vim.fs.find;
 	**/
 	@:optional
 	extern public var upward : Null<Bool>;
+
 }

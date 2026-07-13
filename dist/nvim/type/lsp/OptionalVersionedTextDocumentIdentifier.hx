@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		The text document's uri.
 	**/
 	extern public var uri : nvim.type.lsp.DocumentUri;
+
 	/**
 		```lua
 		(field) lsp.OptionalVersionedTextDocumentIdentifier.version: integer|nil
@@ -36,4 +37,5 @@ package nvim.type.lsp;
 		truth (as specified with document content ownership).
 	**/
 	extern public var version : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
+
 }

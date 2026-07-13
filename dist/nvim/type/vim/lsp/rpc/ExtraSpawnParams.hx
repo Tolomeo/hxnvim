@@ -21,6 +21,7 @@ package nvim.type.vim.lsp.rpc;
 	**/
 	@:optional
 	extern public var cwd : Null<String>;
+
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.detached: boolean?
@@ -32,6 +33,7 @@ package nvim.type.vim.lsp.rpc;
 	**/
 	@:optional
 	extern public var detached : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.env: table<string, string>?
@@ -43,4 +45,5 @@ package nvim.type.vim.lsp.rpc;
 	**/
 	@:optional
 	extern public var env : Null<lua.Table<String, String>>;
+
 }

@@ -16,12 +16,14 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		 @inlinedoc
 	**/
 	extern public var bufnr : Int;
+
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.ret.client_id: integer
 		```
 	**/
 	extern public var client_id : Int;
+
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.ret.inlay_hint: lsp.InlayHint
@@ -33,4 +35,5 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		
 	**/
 	extern public var inlay_hint : nvim.type.lsp.InlayHint;
+
 }

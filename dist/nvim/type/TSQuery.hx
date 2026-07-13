@@ -32,6 +32,7 @@ package nvim.type;
 		 ```
 	**/
 	extern public function disable_capture(capture_name:String):Dynamic;
+
 	/**
 		```lua
 		(method) TSQuery:disable_pattern(pattern_index: integer)
@@ -52,6 +53,7 @@ package nvim.type;
 		 ```
 	**/
 	extern public function disable_pattern(pattern_index:Int):Dynamic;
+
 	/**
 		```lua
 		(method) TSQuery:inspect()
@@ -63,4 +65,5 @@ package nvim.type;
 		 Get information about the query's patterns and captures.
 	**/
 	extern public function inspect():nvim.type.TSQueryInfo;
+
 }

@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var buffer : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.buflocal: boolean?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var buflocal : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.callback: function?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var callback : Null<haxe.Constraints.Function>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.command: string?
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var command : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.desc: string?
@@ -41,6 +45,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var desc : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.event: string?
@@ -48,6 +53,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var event : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.group: integer?
@@ -55,6 +61,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var group : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.group_name: integer?
@@ -62,6 +69,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var group_name : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.id: integer?
@@ -69,6 +77,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var id : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.once: boolean?
@@ -76,6 +85,7 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var once : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.pattern: string?
@@ -83,4 +93,5 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	**/
 	@:optional
 	extern public var pattern : Null<String>;
+
 }

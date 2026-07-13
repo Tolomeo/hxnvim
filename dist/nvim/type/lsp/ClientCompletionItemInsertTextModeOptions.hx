@@ -12,4 +12,5 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var valueSet : lua.Table<Int, nvim.type.lsp.InsertTextMode>;
+
 }

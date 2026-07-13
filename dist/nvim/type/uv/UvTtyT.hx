@@ -29,6 +29,7 @@ package nvim.type.uv;
 @:structInit class UvTtyT {
 	@:native("accept")
 	private extern function __accept(client_stream:nvim.type.uv.UvStreamT):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:accept(client_stream: uv.uv_stream_t)
@@ -149,6 +150,7 @@ package nvim.type.uv;
 		final client_stream:nvim.helper.Native.LuaObject<nvim.type.uv.UvStreamT> = client_stream;
 		return __accept(client_stream);
 	}
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)
@@ -170,8 +172,10 @@ package nvim.type.uv;
 		 have their callbacks called asynchronously with `ECANCELED`.
 	**/
 	extern public function close(?callback:haxe.Constraints.Function):Dynamic;
+
 	@:native("fileno")
 	private extern function __fileno():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:fileno()
@@ -283,8 +287,10 @@ package nvim.type.uv;
 	inline public function fileno():nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fileno();
 	}
+
 	@:native("get_type")
 	private extern function __get_type():nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:get_type()
@@ -300,8 +306,10 @@ package nvim.type.uv;
 	inline public function get_type():nvim.helper.Multireturn.Return2<String, Int> {
 		return __get_type();
 	}
+
 	@:native("get_winsize")
 	private extern function __get_winsize():nvim.helper.Multireturn<Null<Int>, haxe.extern.EitherType<Int, nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_tty_t:get_winsize()
@@ -404,6 +412,7 @@ package nvim.type.uv;
 	inline public function get_winsize():nvim.helper.Multireturn.Return3<Null<Int>, haxe.extern.EitherType<Int, nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __get_winsize();
 	}
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:get_write_queue_size()
@@ -415,8 +424,10 @@ package nvim.type.uv;
 		 Returns the stream's write queue size.
 	**/
 	extern public function get_write_queue_size():Int;
+
 	@:native("has_ref")
 	private extern function __has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:has_ref()
@@ -519,8 +530,10 @@ package nvim.type.uv;
 	inline public function has_ref():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __has_ref();
 	}
+
 	@:native("is_active")
 	private extern function __is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_active()
@@ -631,8 +644,10 @@ package nvim.type.uv;
 	inline public function is_active():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __is_active();
 	}
+
 	@:native("is_closing")
 	private extern function __is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_closing()
@@ -738,6 +753,7 @@ package nvim.type.uv;
 	inline public function is_closing():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __is_closing();
 	}
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:is_readable()
@@ -749,6 +765,7 @@ package nvim.type.uv;
 		 Returns `true` if the stream is readable, `false` otherwise.
 	**/
 	extern public function is_readable():Bool;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:is_writable()
@@ -760,8 +777,10 @@ package nvim.type.uv;
 		 Returns `true` if the stream is writable, `false` otherwise.
 	**/
 	extern public function is_writable():Bool;
+
 	@:native("listen")
 	private extern function __listen(backlog:Int, callback:nvim.type.uv.listen.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:listen(backlog: integer, callback: fun(err: string|nil))
@@ -872,8 +891,10 @@ package nvim.type.uv;
 		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.listen.Callback> = callback;
 		return __listen(backlog, callback);
 	}
+
 	@:native("read_start")
 	private extern function __read_start(callback:nvim.type.uv.read_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:read_start(callback: fun(err: string|nil, data?: string))
@@ -996,8 +1017,10 @@ package nvim.type.uv;
 		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.read_start.Callback> = callback;
 		return __read_start(callback);
 	}
+
 	@:native("read_stop")
 	private extern function __read_stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:read_stop()
@@ -1107,8 +1130,10 @@ package nvim.type.uv;
 	inline public function read_stop():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __read_stop();
 	}
+
 	@:native("recv_buffer_size")
 	private extern function __recv_buffer_size(size:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:recv_buffer_size(size: integer)
@@ -1244,6 +1269,7 @@ package nvim.type.uv;
 	inline public function recv_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __recv_buffer_size(size);
 	}
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:ref()
@@ -1256,8 +1282,10 @@ package nvim.type.uv;
 		 References are idempotent, that is, if a handle is already referenced calling this function again will have no effect.
 	**/
 	extern public function ref():Dynamic;
+
 	@:native("send_buffer_size")
 	private extern function __send_buffer_size(size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:send_buffer_size(size: integer)
@@ -1390,8 +1418,10 @@ package nvim.type.uv;
 	inline public function send_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __send_buffer_size(size);
 	}
+
 	@:native("set_blocking")
 	private extern function __set_blocking(blocking:Bool):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:set_blocking(blocking: boolean)
@@ -1508,8 +1538,10 @@ package nvim.type.uv;
 	inline public function set_blocking(blocking:Bool):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __set_blocking(blocking);
 	}
+
 	@:native("set_mode")
 	private extern function __set_mode(mode:nvim.type.uv.tty.Mode):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_tty_t:set_mode(mode: 0|1|2)
@@ -1630,8 +1662,10 @@ package nvim.type.uv;
 		final mode:nvim.helper.Native.LuaObject<nvim.type.uv.tty.Mode> = mode;
 		return __set_mode(mode);
 	}
+
 	@:native("shutdown")
 	private extern function __shutdown(?callback:nvim.type.uv.shutdown.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvShutdownT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:shutdown(callback?: fun(err: string|nil))
@@ -1736,8 +1770,10 @@ package nvim.type.uv;
 		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.shutdown.Callback> = callback;
 		return __shutdown(callback);
 	}
+
 	@:native("try_write")
 	private extern function __try_write(data:nvim.type.uv.Buffer):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:try_write(data: string|string[])
@@ -1844,8 +1880,10 @@ package nvim.type.uv;
 		final data:nvim.helper.Native.LuaObject<nvim.type.uv.Buffer> = data;
 		return __try_write(data);
 	}
+
 	@:native("try_write2")
 	private extern function __try_write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:try_write2(data: string|string[], send_handle: uv.uv_stream_t)
@@ -1952,6 +1990,7 @@ package nvim.type.uv;
 		final send_handle:nvim.helper.Native.LuaObject<nvim.type.uv.UvStreamT> = send_handle;
 		return __try_write2(data, send_handle);
 	}
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:unref()
@@ -1963,8 +2002,10 @@ package nvim.type.uv;
 		 is not referenced calling this function again will have no effect.
 	**/
 	extern public function unref():Dynamic;
+
 	@:native("write")
 	private extern function __write(data:nvim.type.uv.Buffer, ?callback:nvim.type.uv.write.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:write(data: string|string[], callback?: fun(err: string|nil))
@@ -2074,8 +2115,10 @@ package nvim.type.uv;
 		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.write.Callback> = callback;
 		return __write(data, callback);
 	}
+
 	@:native("write2")
 	private extern function __write2(data:nvim.type.uv.Buffer, send_handle:nvim.type.uv.UvStreamT, ?callback:nvim.type.uv.write2.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvWriteT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_stream_t:write2(data: string|string[], send_handle: uv.uv_stream_t, callback?: fun(err: string|nil))
@@ -2186,4 +2229,5 @@ package nvim.type.uv;
 		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.write2.Callback> = callback;
 		return __write2(data, send_handle, callback);
 	}
+
 }

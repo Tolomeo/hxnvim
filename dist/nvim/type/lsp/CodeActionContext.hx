@@ -26,6 +26,7 @@ package nvim.type.lsp;
 		to compute code actions is the provided range.
 	**/
 	extern public var diagnostics : lua.Table<Int, nvim.type.lsp.Diagnostic>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionContext.only: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]?
@@ -41,6 +42,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var only : Null<lua.Table<Int, nvim.type.lsp.CodeActionKind>>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionContext.triggerKind: (1|2)?
@@ -69,4 +71,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var triggerKind : Null<nvim.type.lsp.CodeActionTriggerKind>;
+
 }

@@ -17,6 +17,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 The args passed to the command, if any <args>
 	**/
 	extern public var args : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.bang: boolean
@@ -28,6 +29,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 "true" if the command was executed with a ! modifier <bang>
 	**/
 	extern public var bang : Bool;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.count: integer
@@ -39,6 +41,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 Any count supplied <count>
 	**/
 	extern public var count : Int;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.fargs: string[]
@@ -51,6 +54,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 (when more than one argument is allowed), if any <f-args>
 	**/
 	extern public var fargs : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.line1: integer
@@ -62,6 +66,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 The starting line of the command range <line1>
 	**/
 	extern public var line1 : Int;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.line2: integer
@@ -73,6 +78,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 The final line of the command range <line2>
 	**/
 	extern public var line2 : Int;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.mods: string
@@ -83,6 +89,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 Command modifiers, if any <mods>
 	**/
 	extern public var mods : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.name: string
@@ -93,6 +100,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		Command name
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.nargs: string
@@ -104,6 +112,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 Number of arguments |:command-nargs|
 	**/
 	extern public var nargs : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.range: integer
@@ -115,6 +124,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 The number of items in the command range: 0, 1, or 2 <range>
 	**/
 	extern public var range : Int;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.reg: string
@@ -125,6 +135,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 The optional register, if specified <reg>
 	**/
 	extern public var reg : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.smods: table
@@ -137,4 +148,5 @@ package nvim.type.vim.api.keyset.create_user_command;
 		 "mods" key of |nvim_parse_cmd()|.
 	**/
 	extern public var smods : lua.Table.AnyTable;
+
 }

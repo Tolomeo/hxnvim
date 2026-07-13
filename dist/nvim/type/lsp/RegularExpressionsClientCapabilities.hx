@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		The engine's name.
 	**/
 	extern public var engine : nvim.type.lsp.RegularExpressionEngineKind;
+
 	/**
 		```lua
 		(field) lsp.RegularExpressionsClientCapabilities.version: string?
@@ -34,4 +35,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var version : Null<String>;
+
 }

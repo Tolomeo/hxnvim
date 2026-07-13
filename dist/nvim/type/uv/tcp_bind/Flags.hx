@@ -17,4 +17,5 @@ package nvim.type.uv.tcp_bind;
 		```
 	**/
 	extern public var ipv6only : Bool;
+
 }

@@ -19,6 +19,7 @@ package nvim.type.vim.lsp.buf.code_action;
 	**/
 	@:optional
 	extern public var apply : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.context: (lsp.CodeActionContext)?
@@ -43,6 +44,7 @@ package nvim.type.vim.lsp.buf.code_action;
 	**/
 	@:optional
 	extern public var context : Null<nvim.type.lsp.CodeActionContext>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.filter: (fun(x: lsp.CodeAction|lsp.Command):boolean)?
@@ -62,6 +64,7 @@ package nvim.type.vim.lsp.buf.code_action;
 	**/
 	@:optional
 	extern public var filter : Null<(x:haxe.extern.EitherType<nvim.type.lsp.CodeAction, nvim.type.lsp.Command>) -> Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.range: { start: integer[], end: integer[] }?
@@ -77,4 +80,5 @@ package nvim.type.vim.lsp.buf.code_action;
 	**/
 	@:optional
 	extern public var range : Null<{ var start : lua.Table<Int, Int>; var end : lua.Table<Int, Int>; }>;
+
 }

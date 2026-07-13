@@ -20,6 +20,7 @@ package nvim.type.vim.lsp.client;
 	**/
 	@:optional
 	extern public var allow_incremental_sync : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.debounce_text_changes: integer
@@ -33,6 +34,7 @@ package nvim.type.vim.lsp.client;
 		 (default: `150`)
 	**/
 	extern public var debounce_text_changes : Int;
+
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.exit_timeout: integer|false
@@ -47,4 +49,5 @@ package nvim.type.vim.lsp.client;
 		 (default: `false`)
 	**/
 	extern public var exit_timeout : haxe.extern.EitherType<Int, Bool>;
+
 }

@@ -19,6 +19,7 @@ package nvim.type.vim.lsp.start;
 	**/
 	@:optional
 	extern public var attach : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.bufnr: integer?
@@ -31,6 +32,7 @@ package nvim.type.vim.lsp.start;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.reuse_client: (fun(client: vim.lsp.Client, config: vim.lsp.ClientConfig):boolean)?
@@ -54,6 +56,7 @@ package nvim.type.vim.lsp.start;
 	**/
 	@:optional
 	extern public var reuse_client : Null<(client:nvim.type.vim.lsp.Client, config:nvim.type.vim.lsp.ClientConfig) -> Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.silent: boolean?
@@ -66,4 +69,5 @@ package nvim.type.vim.lsp.start;
 	**/
 	@:optional
 	extern public var silent : Null<Bool>;
+
 }

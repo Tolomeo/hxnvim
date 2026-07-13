@@ -9,9 +9,11 @@ extern class Perl {
 	**/
 	@:luaDotMethod
 	function call(method:Dynamic, args:Dynamic):Dynamic;
+
 	@:native("detect")
 	@:luaDotMethod
 	private function __detect():nvim.helper.Multireturn<Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.detect()
@@ -28,6 +30,7 @@ extern class Perl {
 	inline function detect():nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
 		return __detect();
 	}
+
 	/**
 		```lua
 		function M.require(host: any, prog: any)
@@ -35,6 +38,7 @@ extern class Perl {
 	**/
 	@:luaDotMethod
 	function require(host:Dynamic, prog:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.start()
@@ -42,4 +46,5 @@ extern class Perl {
 	**/
 	@:luaDotMethod
 	function start():Dynamic;
+
 }

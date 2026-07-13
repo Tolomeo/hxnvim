@@ -25,6 +25,7 @@ extern class F {
 	**/
 	@:luaDotMethod
 	function if_nil<T>(___:haxe.Rest<T>):T;
+
 	/**
 		```lua
 		function F.nil_wrap(fn: any)
@@ -37,6 +38,7 @@ extern class F {
 	**/
 	@:luaDotMethod
 	function nil_wrap(fn:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function F.npcall(fn: any, ...any)
@@ -49,6 +51,7 @@ extern class F {
 	**/
 	@:luaDotMethod
 	function npcall(fn:Dynamic, ___:haxe.Rest<Dynamic>):Dynamic;
+
 	/**
 		```lua
 		function F.ok_or_nil(status: any, ...any)
@@ -61,6 +64,7 @@ extern class F {
 	**/
 	@:luaDotMethod
 	function ok_or_nil(status:Dynamic, ___:haxe.Rest<Dynamic>):Dynamic;
+
 	/**
 		```lua
 		function F.pack_len(...any)
@@ -73,6 +77,7 @@ extern class F {
 	**/
 	@:luaDotMethod
 	function pack_len(___:haxe.Rest<Dynamic>):Dynamic;
+
 	/**
 		```lua
 		function F.unpack_len(t: any)
@@ -94,4 +99,5 @@ extern class F {
 	**/
 	@:luaDotMethod
 	function unpack_len(t:Dynamic):Dynamic;
+
 }

@@ -23,4 +23,5 @@ package nvim.type.lsp;
 		request.
 	**/
 	extern public var support : Bool;
+
 }

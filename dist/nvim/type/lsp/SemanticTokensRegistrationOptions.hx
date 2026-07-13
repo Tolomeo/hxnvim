@@ -26,6 +26,7 @@ package nvim.type.lsp;
 		the document selector provided on the client side will be used.
 	**/
 	extern public var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.full: (boolean|lsp.SemanticTokensFullDelta)?
@@ -43,6 +44,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.id: string?
@@ -56,6 +58,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var id : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.legend: lsp.SemanticTokensLegend
@@ -67,6 +70,7 @@ package nvim.type.lsp;
 		The legend used by the server
 	**/
 	extern public var legend : nvim.type.lsp.SemanticTokensLegend;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.range: (boolean|lsp._anonym1.range)?
@@ -80,6 +84,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.workDoneProgress: boolean?
@@ -87,4 +92,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

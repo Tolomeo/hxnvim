@@ -28,6 +28,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var allCommitCharacters : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) lsp.CompletionOptions.completionItem: (lsp.ServerCompletionItemOptions)?
@@ -42,6 +43,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var completionItem : Null<nvim.type.lsp.ServerCompletionItemOptions>;
+
 	/**
 		```lua
 		(field) lsp.CompletionOptions.resolveProvider: boolean?
@@ -55,6 +57,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveProvider : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CompletionOptions.triggerCharacters: string[]?
@@ -74,6 +77,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var triggerCharacters : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) lsp.CompletionOptions.workDoneProgress: boolean?
@@ -81,4 +85,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

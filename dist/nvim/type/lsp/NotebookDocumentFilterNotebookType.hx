@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		The type of the enclosing notebook.
 	**/
 	extern public var notebookType : String;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterNotebookType.pattern: (string|lsp.RelativePattern)?
@@ -57,6 +58,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var pattern : Null<nvim.type.lsp.GlobPattern>;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterNotebookType.scheme: string?
@@ -69,4 +71,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var scheme : Null<String>;
+
 }

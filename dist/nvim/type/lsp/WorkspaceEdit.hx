@@ -37,6 +37,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var changeAnnotations : Null<lua.Table<nvim.type.lsp.ChangeAnnotationIdentifier, nvim.type.lsp.ChangeAnnotation>>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.changes: table<string, lsp.TextEdit[]>?
@@ -49,6 +50,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var changes : Null<lua.Table<nvim.type.lsp.DocumentUri, lua.Table<Int, nvim.type.lsp.TextEdit>>>;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.documentChanges: (lsp.CreateFile|lsp.DeleteFile|lsp.RenameFile|lsp.TextDocumentEdit)[]?
@@ -70,4 +72,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var documentChanges : Null<lua.Table<Int, haxe.extern.EitherType<nvim.type.lsp.TextDocumentEdit, haxe.extern.EitherType<nvim.type.lsp.CreateFile, haxe.extern.EitherType<nvim.type.lsp.RenameFile, nvim.type.lsp.DeleteFile>>>>>;
+
 }

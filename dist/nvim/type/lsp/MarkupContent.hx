@@ -63,6 +63,7 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var kind : nvim.type.lsp.MarkupKind;
+
 	/**
 		```lua
 		(field) lsp.MarkupContent.value: string
@@ -74,4 +75,5 @@ package nvim.type.lsp;
 		The content itself
 	**/
 	extern public var value : String;
+
 }

@@ -7,7 +7,9 @@ package nvim.type.vim.api.keyset;
 **/
 @:structInit class Magic {
 	extern public var bar : Bool;
+
 	extern public var file : Bool;
+
 }
 
 /**
@@ -22,24 +24,28 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	extern public var addr : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.args: string[]
 		```
 	**/
 	extern public var args : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.bang: boolean
 		```
 	**/
 	extern public var bang : Bool;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.cmd: string
 		```
 	**/
 	extern public var cmd : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.count: integer?
@@ -47,30 +53,35 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var count : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.magic: { bar: boolean, file: boolean }
 		```
 	**/
 	extern public var magic : Magic;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods: vim.api.keyset.parse_cmd.mods
 		```
 	**/
 	extern public var mods : nvim.type.vim.api.keyset.parse_cmd.Mods;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.nargs: '*'|'+'|'0'|'1'|'?'
 		```
 	**/
 	extern public var nargs : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.nextcmd: string
 		```
 	**/
 	extern public var nextcmd : String;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.range: integer[]?
@@ -78,6 +89,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var range : Null<lua.Table<Int, Int>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.reg: string?
@@ -85,4 +97,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var reg : Null<String>;
+
 }

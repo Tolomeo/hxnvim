@@ -20,6 +20,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.ImplementationClientCapabilities.linkSupport: boolean?
@@ -33,4 +34,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var linkSupport : Null<Bool>;
+
 }

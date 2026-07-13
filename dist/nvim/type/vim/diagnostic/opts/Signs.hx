@@ -19,6 +19,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var linehl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.numhl: table<vim.diagnostic.Severity, string>?
@@ -32,6 +33,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var numhl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.priority: integer?
@@ -47,6 +49,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var priority : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -68,6 +71,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.text: table<vim.diagnostic.Severity, string>?
@@ -87,4 +91,5 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var text : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+
 }

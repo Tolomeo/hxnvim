@@ -12,10 +12,12 @@ package nvim.type.uv.getrusage.result;
 		```
 	**/
 	extern public var sec : Int;
+
 	/**
 		```lua
 		(field) uv.getrusage.result.time_t.usec: integer
 		```
 	**/
 	extern public var usec : Int;
+
 }

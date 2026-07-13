@@ -19,4 +19,5 @@ package nvim.type.vim.tbl_contains;
 	**/
 	@:optional
 	extern public var predicate : Null<Bool>;
+
 }

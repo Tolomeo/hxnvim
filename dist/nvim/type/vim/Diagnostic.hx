@@ -20,6 +20,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var _tags : Null<{ var deprecated : Bool; var unnecessary : Bool; }>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.bufnr: integer?
@@ -32,6 +33,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.code: (string|integer)?
@@ -44,6 +46,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var code : Null<haxe.extern.EitherType<String, Int>>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.col: integer
@@ -55,6 +58,7 @@ package nvim.type.vim;
 		 The starting column of the diagnostic (0-indexed)
 	**/
 	extern public var col : Int;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.end_col: integer?
@@ -67,6 +71,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var end_col : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.end_lnum: integer?
@@ -79,6 +84,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var end_lnum : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.lnum: integer
@@ -90,6 +96,7 @@ package nvim.type.vim;
 		 The starting line of the diagnostic (0-indexed)
 	**/
 	extern public var lnum : Int;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.message: string
@@ -101,6 +108,7 @@ package nvim.type.vim;
 		 The diagnostic text
 	**/
 	extern public var message : String;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.namespace: integer?
@@ -108,6 +116,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var namespace : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.severity: (vim.diagnostic.Severity)?
@@ -124,6 +133,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.Severity>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.source: string?
@@ -136,6 +146,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var source : Null<String>;
+
 	/**
 		```lua
 		(field) vim.Diagnostic.user_data: any
@@ -147,4 +158,5 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var user_data : Null<Any>;
+
 }

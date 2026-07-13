@@ -23,4 +23,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var delta : Null<Bool>;
+
 }

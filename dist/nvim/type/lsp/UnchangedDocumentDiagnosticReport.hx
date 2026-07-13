@@ -26,6 +26,7 @@ package nvim.type.lsp;
 		provided.
 	**/
 	extern public var kind : String;
+
 	/**
 		```lua
 		(field) lsp.UnchangedDocumentDiagnosticReport.resultId: string
@@ -38,4 +39,5 @@ package nvim.type.lsp;
 		diagnostic request for the same document.
 	**/
 	extern public var resultId : String;
+
 }

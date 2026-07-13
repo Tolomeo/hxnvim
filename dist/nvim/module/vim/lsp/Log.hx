@@ -7,36 +7,42 @@ extern class Log {
 		```
 	**/
 	var DEBUG : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.log.ERROR: unknown
 		```
 	**/
 	var ERROR : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.log.INFO: unknown
 		```
 	**/
 	var INFO : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.log.OFF: unknown
 		```
 	**/
 	var OFF : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.log.TRACE: unknown
 		```
 	**/
 	var TRACE : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.log.WARN: unknown
 		```
 	**/
 	var WARN : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.log.debug: fun(...any):boolean?
@@ -55,6 +61,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function debug(___:haxe.Rest<Any>):Null<Bool>;
+
 	/**
 		```lua
 		(global) vim.lsp.log.error: fun(...any):boolean?
@@ -73,6 +80,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function error(___:haxe.Rest<Any>):Null<Bool>;
+
 	/**
 		```lua
 		function log.get_filename()
@@ -87,6 +95,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function get_filename():String;
+
 	/**
 		```lua
 		function log.get_level()
@@ -101,6 +110,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function get_level():Int;
+
 	/**
 		```lua
 		(global) vim.lsp.log.info: fun(...any):boolean?
@@ -119,6 +129,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function info(___:haxe.Rest<Any>):Null<Bool>;
+
 	/**
 		```lua
 		(global) vim.lsp.log.levels: table<integer, string>|table<string, integer>
@@ -134,6 +145,7 @@ extern class Log {
 		 @nodoc
 	**/
 	var levels : haxe.extern.EitherType<lua.Table<String, Int>, lua.Table<Int, String>>;
+
 	/**
 		```lua
 		function log.set_format_func(handle: function)
@@ -147,6 +159,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function set_format_func(handle:haxe.Constraints.Function):Dynamic;
+
 	/**
 		```lua
 		function log.set_level(level: string|integer)
@@ -160,6 +173,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function set_level(level:haxe.extern.EitherType<String, Int>):Dynamic;
+
 	/**
 		```lua
 		function log.should_log(level: integer)
@@ -176,6 +190,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function should_log(level:Int):Bool;
+
 	/**
 		```lua
 		(global) vim.lsp.log.trace: fun(...any):boolean?
@@ -194,6 +209,7 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function trace(___:haxe.Rest<Any>):Null<Bool>;
+
 	/**
 		```lua
 		(global) vim.lsp.log.warn: fun(...any):boolean?
@@ -212,4 +228,5 @@ extern class Log {
 	**/
 	@:luaDotMethod
 	function warn(___:haxe.Rest<Any>):Null<Bool>;
+
 }

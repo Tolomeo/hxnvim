@@ -17,4 +17,5 @@ package nvim.type.uv.pipe;
 		```
 	**/
 	extern public var nonblock : Bool;
+
 }

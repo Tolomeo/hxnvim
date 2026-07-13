@@ -26,6 +26,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var arguments : Null<lua.Table<Int, nvim.type.lsp.LSPAny>>;
+
 	/**
 		```lua
 		(field) lsp.Command.command: string
@@ -37,6 +38,7 @@ package nvim.type.lsp;
 		The identifier of the actual command handler.
 	**/
 	extern public var command : String;
+
 	/**
 		```lua
 		(field) lsp.Command.title: string
@@ -48,6 +50,7 @@ package nvim.type.lsp;
 		Title of the command, like `save`.
 	**/
 	extern public var title : String;
+
 	/**
 		```lua
 		(field) lsp.Command.tooltip: string?
@@ -61,4 +64,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tooltip : Null<String>;
+
 }

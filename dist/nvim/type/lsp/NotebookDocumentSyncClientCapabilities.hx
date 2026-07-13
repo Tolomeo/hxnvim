@@ -26,6 +26,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncClientCapabilities.executionSummarySupport: boolean?
@@ -38,4 +39,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var executionSummarySupport : Null<Bool>;
+
 }

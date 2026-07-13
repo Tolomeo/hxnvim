@@ -24,6 +24,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var id : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.notebookSelector: (lsp.NotebookDocumentFilterWithCells|lsp.NotebookDocumentFilterWithNotebook)[]
@@ -35,6 +36,7 @@ package nvim.type.lsp;
 		The notebooks to be synced
 	**/
 	extern public var notebookSelector : lua.Table<Int, haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.save: boolean?
@@ -48,4 +50,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var save : Null<Bool>;
+
 }

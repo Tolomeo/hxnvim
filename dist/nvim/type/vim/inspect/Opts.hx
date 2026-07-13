@@ -17,6 +17,7 @@ package nvim.type.vim.inspect;
 	**/
 	@:optional
 	extern public var depth : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.inspect.Opts.newline: string?
@@ -24,6 +25,7 @@ package nvim.type.vim.inspect;
 	**/
 	@:optional
 	extern public var newline : Null<String>;
+
 	/**
 		```lua
 		(field) vim.inspect.Opts.process: (fun(item: any, path: string[]):any)?
@@ -38,4 +40,5 @@ package nvim.type.vim.inspect;
 	**/
 	@:optional
 	extern public var process : Null<(item:Any, path:lua.Table<Int, String>) -> Any>;
+
 }

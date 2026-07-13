@@ -51,6 +51,7 @@ package nvim.type.lsp;
 		The position inside the text document.
 	**/
 	extern public var position : nvim.type.lsp.Position;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentPositionParams.textDocument: lsp.TextDocumentIdentifier
@@ -66,4 +67,5 @@ package nvim.type.lsp;
 		The text document.
 	**/
 	extern public var textDocument : nvim.type.lsp.TextDocumentIdentifier;
+
 }

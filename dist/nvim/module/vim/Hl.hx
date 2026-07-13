@@ -22,30 +22,35 @@ extern class Priorities {
 		```
 	**/
 	var diagnostics : Float;
+
 	/**
 		```lua
 		(global) vim.hl.priorities.semantic_tokens: integer = 125
 		```
 	**/
 	var semantic_tokens : Float;
+
 	/**
 		```lua
 		(global) vim.hl.priorities.syntax: integer = 50
 		```
 	**/
 	var syntax : Float;
+
 	/**
 		```lua
 		(global) vim.hl.priorities.treesitter: integer = 100
 		```
 	**/
 	var treesitter : Float;
+
 	/**
 		```lua
 		(global) vim.hl.priorities.user: integer = 200
 		```
 	**/
 	var user : Float;
+
 }
 
 extern class Hl {
@@ -75,6 +80,7 @@ extern class Hl {
 	**/
 	@:luaDotMethod
 	function on_yank(?opts:Null<lua.Table.AnyTable>):Dynamic;
+
 	/**
 		```lua
 		(global) vim.hl.priorities: table
@@ -91,9 +97,11 @@ extern class Hl {
 		   symbols or `on_yank` autocommands
 	**/
 	var priorities : Priorities;
+
 	@:native("range")
 	@:luaDotMethod
 	private function __range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Int>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.range(bufnr: integer, ns: integer, higroup: string, start: string|integer[], finish: string|integer[], opts?: vim.hl.range.Opts)
@@ -127,4 +135,5 @@ extern class Hl {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.hl.range.Opts> = opts;
 		return __range(bufnr, ns, higroup, start, finish, opts);
 	}
+
 }

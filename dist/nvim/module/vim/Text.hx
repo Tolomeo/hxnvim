@@ -4,6 +4,7 @@ extern class Text {
 	@:native("hexdecode")
 	@:luaDotMethod
 	private function __hexdecode(enc:String):nvim.helper.Multireturn<Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.hexdecode(enc: string)
@@ -24,6 +25,7 @@ extern class Text {
 	inline function hexdecode(enc:String):nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
 		return __hexdecode(enc);
 	}
+
 	/**
 		```lua
 		function M.hexencode(str: string)
@@ -40,10 +42,12 @@ extern class Text {
 	**/
 	@:luaDotMethod
 	function hexencode(str:String):String;
+
 	@:native("indent")
 	@:luaDotMethod
 	private function __indent(size:Int, text:String, ?opts:{ @:optional
 	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.indent(size: integer, text: string, opts?: { expandtab: number })
@@ -94,4 +98,5 @@ extern class Text {
 var expandtab : Null<Float>; }> = opts;
 		return __indent(size, text, opts);
 	}
+
 }

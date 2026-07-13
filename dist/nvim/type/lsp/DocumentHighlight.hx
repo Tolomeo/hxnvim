@@ -38,6 +38,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var kind : Null<nvim.type.lsp.DocumentHighlightKind>;
+
 	/**
 		```lua
 		(field) lsp.DocumentHighlight.range: lsp.Range
@@ -63,4 +64,5 @@ package nvim.type.lsp;
 		The range this highlight applies to.
 	**/
 	extern public var range : nvim.type.lsp.Range;
+
 }

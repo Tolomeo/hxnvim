@@ -4,6 +4,7 @@ extern class Handlers {
 	@:native("hover")
 	@:luaDotMethod
 	private function __hover(_:Null<nvim.type.lsp.ResponseError>, result:nvim.type.lsp.Hover, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.handlers.hover: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown
@@ -44,9 +45,11 @@ extern class Handlers {
 		final config:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = config;
 		return __hover(_, result, ctx, config);
 	}
+
 	@:native("signature_help")
 	@:luaDotMethod
 	private function __signature_help(_:Null<nvim.type.lsp.ResponseError>, result:Null<nvim.type.lsp.SignatureHelp>, ctx:nvim.type.lsp.HandlerContext, config:lua.Table.AnyTable):Dynamic;
+
 	/**
 		```lua
 		(global) vim.lsp.handlers.signature_help: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown
@@ -90,4 +93,5 @@ extern class Handlers {
 		final config:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = config;
 		return __signature_help(_, result, ctx, config);
 	}
+
 }

@@ -9,6 +9,7 @@ extern class Loader {
 	@:luaDotMethod
 	@:deprecated
 	function disable():Dynamic;
+
 	/**
 		```lua
 		function M.enable(enable?: boolean)
@@ -34,15 +35,18 @@ extern class Loader {
 	**/
 	@:luaDotMethod
 	function enable(?enable:Bool):Dynamic;
+
 	/**
 		```lua
 		(global) vim.loader.enabled: boolean? = true|false
 		```
 	**/
 	private var enabled : Bool;
+
 	@:native("find")
 	@:luaDotMethod
 	private function __find(modname:String, ?opts:nvim.type.vim.loader.find.Opts):lua.Table<Int, nvim.type.vim.loader.ModuleInfo>;
+
 	/**
 		```lua
 		function M.find(modname: string, opts?: vim.loader.find.Opts)
@@ -63,12 +67,14 @@ extern class Loader {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.loader.find.Opts> = opts;
 		return __find(modname, opts);
 	}
+
 	/**
 		```lua
 		(global) vim.loader.path: string
 		```
 	**/
 	var path : Dynamic;
+
 	/**
 		```lua
 		function M.reset(path?: string)
@@ -84,4 +90,5 @@ extern class Loader {
 	**/
 	@:luaDotMethod
 	function reset(?path:Null<String>):Dynamic;
+
 }

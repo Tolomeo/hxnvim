@@ -12,18 +12,21 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	extern public var addrconfig : Bool;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.all: boolean
 		```
 	**/
 	extern public var all : Bool;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.canonname: boolean
 		```
 	**/
 	extern public var canonname : Bool;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.family: string|integer|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"
@@ -46,24 +49,28 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	extern public var family : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Family>>;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.numerichost: boolean
 		```
 	**/
 	extern public var numerichost : Bool;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.numericserv: boolean
 		```
 	**/
 	extern public var numericserv : Bool;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.passive: boolean
 		```
 	**/
 	extern public var passive : Bool;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.protocol: string|integer|"icmp"|"ip"|"tcp"|"udp"
@@ -80,6 +87,7 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	extern public var protocol : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Protocol>>;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.socktype: string|integer|"dgram"|"raw"|"rdm"|"seqpacket"|"stream"
@@ -97,10 +105,12 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	extern public var socktype : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Type>>;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.v4mapped: boolean
 		```
 	**/
 	extern public var v4mapped : Bool;
+
 }

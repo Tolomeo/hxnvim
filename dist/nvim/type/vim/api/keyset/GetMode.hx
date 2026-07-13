@@ -12,10 +12,12 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	extern public var blocking : Bool;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_mode.mode: string
 		```
 	**/
 	extern public var mode : String;
+
 }

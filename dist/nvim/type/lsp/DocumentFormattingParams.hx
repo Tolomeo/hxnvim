@@ -25,6 +25,7 @@ package nvim.type.lsp;
 		The format options.
 	**/
 	extern public var options : nvim.type.lsp.FormattingOptions;
+
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.textDocument: lsp.TextDocumentIdentifier
@@ -40,6 +41,7 @@ package nvim.type.lsp;
 		The document to format.
 	**/
 	extern public var textDocument : nvim.type.lsp.TextDocumentIdentifier;
+
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.workDoneToken: (string|integer)?
@@ -52,4 +54,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+
 }

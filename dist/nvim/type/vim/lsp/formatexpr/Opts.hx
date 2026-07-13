@@ -19,4 +19,5 @@ package nvim.type.vim.lsp.formatexpr;
 		 (default: 500ms).
 	**/
 	extern public var timeout_ms : Int;
+
 }

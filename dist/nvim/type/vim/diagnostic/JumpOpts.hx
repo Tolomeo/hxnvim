@@ -25,6 +25,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var count : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.diagnostic: (vim.Diagnostic)?
@@ -45,6 +46,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var diagnostic : Null<nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.float: (boolean|vim.diagnostic.Opts.Float)?
@@ -61,6 +63,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.lnum: integer?
@@ -73,6 +76,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var lnum : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.namespace: (integer|integer[])?
@@ -85,6 +89,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var namespace : Null<haxe.extern.EitherType<lua.Table<Int, Int>, Int>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.pos: [integer, integer]?
@@ -98,6 +103,7 @@ package nvim.type.vim.diagnostic;
 		 is non-nil. Default is the current cursor position.
 	**/
 	extern public var pos : Dynamic;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -118,6 +124,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.winid: integer?
@@ -131,6 +138,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var winid : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.wrap: boolean?
@@ -144,4 +152,5 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var wrap : Null<Bool>;
+
 }

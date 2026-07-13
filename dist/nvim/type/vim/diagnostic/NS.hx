@@ -13,12 +13,14 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var disabled : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.NS.name: string
 		```
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) vim.diagnostic.NS.opts: vim.diagnostic.Opts
@@ -33,10 +35,12 @@ package nvim.type.vim.diagnostic;
 		 - `function`: Function with signature (namespace, bufnr) that returns any of the above.
 	**/
 	extern public var opts : nvim.type.vim.diagnostic.Opts;
+
 	/**
 		```lua
 		(field) vim.diagnostic.NS.user_data: table
 		```
 	**/
 	extern public var user_data : lua.Table.AnyTable;
+
 }

@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var buffer : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.data: any
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var data : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.group: (string|integer)?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var group : Null<haxe.extern.EitherType<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.modeline: boolean?
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var modeline : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.pattern: (string|string[])?
@@ -41,4 +45,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var pattern : Null<haxe.extern.EitherType<String, lua.Table<Int, String>>>;
+
 }

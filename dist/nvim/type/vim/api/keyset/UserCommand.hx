@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var addr : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.bang: boolean?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var bang : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.bar: boolean?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var bar : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.complete: any
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var complete : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.count: any
@@ -41,6 +45,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var count : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.desc: any
@@ -48,6 +53,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var desc : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.force: boolean?
@@ -55,6 +61,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var force : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.keepscript: boolean?
@@ -62,6 +69,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var keepscript : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.nargs: any
@@ -69,6 +77,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var nargs : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.preview: any
@@ -76,6 +85,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var preview : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.range: any
@@ -83,6 +93,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var range : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.user_command.register: boolean?
@@ -90,4 +101,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var register : Null<Bool>;
+
 }

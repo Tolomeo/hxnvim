@@ -18,6 +18,7 @@ package nvim.type.vim.treesitter.language.add;
 	**/
 	@:optional
 	extern public var path : Null<String>;
+
 	/**
 		```lua
 		(field) vim.treesitter.language.add.Opts.symbol_name: string?
@@ -30,4 +31,5 @@ package nvim.type.vim.treesitter.language.add;
 	**/
 	@:optional
 	extern public var symbol_name : Null<String>;
+
 }

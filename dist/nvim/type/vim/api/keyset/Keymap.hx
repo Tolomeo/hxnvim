@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var callback : Null<haxe.Constraints.Function>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.desc: string?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var desc : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.expr: boolean?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var expr : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.noremap: boolean?
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var noremap : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.nowait: boolean?
@@ -41,6 +45,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var nowait : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.replace_keycodes: boolean?
@@ -48,6 +53,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var replace_keycodes : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.script: boolean?
@@ -55,6 +61,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var script : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.silent: boolean?
@@ -62,6 +69,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var silent : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.keymap.unique: boolean?
@@ -69,4 +77,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var unique : Null<Bool>;
+
 }

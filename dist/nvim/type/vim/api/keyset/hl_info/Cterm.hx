@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var altfont : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.background: integer?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var background : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.bold: true?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var bold : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.ctermbg: integer?
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var ctermbg : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.ctermfg: integer?
@@ -41,6 +45,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var ctermfg : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.foreground: integer?
@@ -48,6 +53,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var foreground : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.italic: true?
@@ -55,6 +61,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var italic : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.nocombine: true?
@@ -62,6 +69,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var nocombine : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.reverse: true?
@@ -69,6 +77,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var reverse : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.standout: true?
@@ -76,6 +85,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var standout : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.strikethrough: true?
@@ -83,6 +93,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var strikethrough : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.undercurl: true?
@@ -90,6 +101,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var undercurl : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underdashed: true?
@@ -97,6 +109,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var underdashed : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underdotted: true?
@@ -104,6 +117,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var underdotted : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underdouble: true?
@@ -111,6 +125,7 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var underdouble : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underline: true?
@@ -118,4 +133,5 @@ package nvim.type.vim.api.keyset.hl_info;
 	**/
 	@:optional
 	extern public var underline : Null<Bool>;
+
 }

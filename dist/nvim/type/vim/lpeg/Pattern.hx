@@ -37,4 +37,5 @@ package nvim.type.vim.lpeg;
 		 ```
 	**/
 	extern public function match(subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
+
 }

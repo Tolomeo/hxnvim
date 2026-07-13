@@ -23,6 +23,7 @@ package nvim.type.vim.treesitter.get_node;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.ignore_injections: boolean?
@@ -35,6 +36,7 @@ package nvim.type.vim.treesitter.get_node;
 	**/
 	@:optional
 	extern public var ignore_injections : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.include_anonymous: boolean?
@@ -47,6 +49,7 @@ package nvim.type.vim.treesitter.get_node;
 	**/
 	@:optional
 	extern public var include_anonymous : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.lang: string?
@@ -59,6 +62,7 @@ package nvim.type.vim.treesitter.get_node;
 	**/
 	@:optional
 	extern public var lang : Null<String>;
+
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.pos: [integer, integer]?
@@ -71,4 +75,5 @@ package nvim.type.vim.treesitter.get_node;
 		 current window. Required if {bufnr} is not the current buffer
 	**/
 	extern public var pos : Dynamic;
+
 }

@@ -39,6 +39,7 @@ package nvim.type.vim.treesitter;
 		List of (unique) capture names defined in query.
 	**/
 	extern public var captures : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) vim.treesitter.QueryInfo.patterns: table<integer, (string|integer)[][]>
@@ -54,4 +55,5 @@ package nvim.type.vim.treesitter;
 		and |treesitter-directives| for more details.
 	**/
 	extern public var patterns : Patterns;
+
 }

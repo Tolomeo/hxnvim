@@ -18,4 +18,5 @@ package nvim.type.lsp;
 		set.
 	**/
 	extern public var codeActionKind : nvim.type.lsp.ClientCodeActionKindOptions;
+
 }

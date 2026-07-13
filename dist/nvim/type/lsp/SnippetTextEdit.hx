@@ -27,6 +27,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
+
 	/**
 		```lua
 		(field) lsp.SnippetTextEdit.range: lsp.Range
@@ -52,6 +53,7 @@ package nvim.type.lsp;
 		The range of the text document to be manipulated.
 	**/
 	extern public var range : nvim.type.lsp.Range;
+
 	/**
 		```lua
 		(field) lsp.SnippetTextEdit.snippet: lsp.StringValue
@@ -74,4 +76,5 @@ package nvim.type.lsp;
 		The snippet to be inserted.
 	**/
 	extern public var snippet : nvim.type.lsp.StringValue;
+
 }

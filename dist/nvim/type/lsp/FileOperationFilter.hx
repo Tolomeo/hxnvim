@@ -29,6 +29,7 @@ package nvim.type.lsp;
 		The actual file operation pattern.
 	**/
 	extern public var pattern : nvim.type.lsp.FileOperationPattern;
+
 	/**
 		```lua
 		(field) lsp.FileOperationFilter.scheme: string?
@@ -41,4 +42,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var scheme : Null<String>;
+
 }

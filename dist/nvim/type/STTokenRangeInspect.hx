@@ -29,6 +29,7 @@ package nvim.type;
 		```
 	**/
 	extern public var client_id : Int;
+
 	/**
 		```lua
 		(field) STTokenRangeInspect.end_col: integer
@@ -39,6 +40,7 @@ package nvim.type;
 		end column 0-based
 	**/
 	extern public var end_col : Int;
+
 	/**
 		```lua
 		(field) STTokenRangeInspect.line: integer
@@ -49,6 +51,7 @@ package nvim.type;
 		line number 0-based
 	**/
 	extern public var line : Int;
+
 	/**
 		```lua
 		(field) STTokenRangeInspect.marked: boolean
@@ -59,6 +62,7 @@ package nvim.type;
 		whether this token has had extmarks applied
 	**/
 	extern public var marked : Bool;
+
 	/**
 		```lua
 		(field) STTokenRangeInspect.modifiers: table<string, boolean>
@@ -69,6 +73,7 @@ package nvim.type;
 		token modifiers as a set. E.g., { static = true, readonly = true }
 	**/
 	extern public var modifiers : Modifiers;
+
 	/**
 		```lua
 		(field) STTokenRangeInspect.start_col: integer
@@ -79,6 +84,7 @@ package nvim.type;
 		start column 0-based
 	**/
 	extern public var start_col : Int;
+
 	/**
 		```lua
 		(field) STTokenRangeInspect.type: string
@@ -89,4 +95,5 @@ package nvim.type;
 		token type as string
 	**/
 	extern public var type : String;
+
 }

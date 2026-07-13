@@ -21,6 +21,7 @@ package nvim.type.vim.lsp;
 	**/
 	@:optional
 	extern public var loclist : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.on_list: fun(t: vim.lsp.LocationOpts.OnList)?
@@ -50,6 +51,7 @@ package nvim.type.vim.lsp;
 	**/
 	@:optional
 	extern public var on_list : Null<(t:nvim.type.vim.lsp.locationopts.OnList) -> Dynamic>;
+
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.reuse_win: boolean?
@@ -62,4 +64,5 @@ package nvim.type.vim.lsp;
 	**/
 	@:optional
 	extern public var reuse_win : Null<Bool>;
+
 }

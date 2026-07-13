@@ -13,6 +13,7 @@ package nvim.type.vim.fn.sign_define;
 	**/
 	@:optional
 	extern public var culhl : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.icon: string?
@@ -20,6 +21,7 @@ package nvim.type.vim.fn.sign_define;
 	**/
 	@:optional
 	extern public var icon : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.linehl: string?
@@ -27,6 +29,7 @@ package nvim.type.vim.fn.sign_define;
 	**/
 	@:optional
 	extern public var linehl : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.numhl: string?
@@ -34,12 +37,14 @@ package nvim.type.vim.fn.sign_define;
 	**/
 	@:optional
 	extern public var numhl : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.text: string
 		```
 	**/
 	extern public var text : String;
+
 	/**
 		```lua
 		(field) vim.fn.sign_define.dict.texthl: string?
@@ -47,4 +52,5 @@ package nvim.type.vim.fn.sign_define;
 	**/
 	@:optional
 	extern public var texthl : Null<String>;
+
 }

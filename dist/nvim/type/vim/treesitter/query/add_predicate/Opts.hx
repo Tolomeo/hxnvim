@@ -20,6 +20,7 @@ package nvim.type.vim.treesitter.query.add_predicate;
 	**/
 	@:optional
 	extern public var all : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.treesitter.query.add_predicate.Opts.force: boolean?
@@ -33,4 +34,5 @@ package nvim.type.vim.treesitter.query.add_predicate;
 	**/
 	@:optional
 	extern public var force : Null<Bool>;
+
 }

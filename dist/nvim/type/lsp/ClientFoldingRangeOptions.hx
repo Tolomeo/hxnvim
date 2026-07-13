@@ -20,4 +20,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var collapsedText : Null<Bool>;
+
 }

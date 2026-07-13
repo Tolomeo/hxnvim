@@ -12,4 +12,5 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var language : String;
+
 }

@@ -19,6 +19,7 @@ package nvim.type.vim.loader.find;
 	**/
 	@:optional
 	extern public var all : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.loader.find.Opts.paths: string[]?
@@ -32,6 +33,7 @@ package nvim.type.vim.loader.find;
 	**/
 	@:optional
 	extern public var paths : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.loader.find.Opts.patterns: string[]?
@@ -46,6 +48,7 @@ package nvim.type.vim.loader.find;
 	**/
 	@:optional
 	extern public var patterns : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.loader.find.Opts.rtp: boolean?
@@ -60,4 +63,5 @@ package nvim.type.vim.loader.find;
 	**/
 	@:optional
 	extern public var rtp : Null<Bool>;
+
 }

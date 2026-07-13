@@ -20,4 +20,5 @@ package nvim.type.vim.keymap.del;
 	**/
 	@:optional
 	extern public var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
+
 }

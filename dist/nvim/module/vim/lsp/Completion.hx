@@ -4,6 +4,7 @@ extern class Completion {
 	@:native("enable")
 	@:luaDotMethod
 	private function __enable(enable:Bool, client_id:Int, bufnr:Int, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic;
+
 	/**
 		```lua
 		function M.enable(enable: boolean, client_id: integer, bufnr: integer, opts?: vim.lsp.completion.BufferOpts)
@@ -37,9 +38,11 @@ extern class Completion {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.completion.BufferOpts> = opts;
 		return __enable(enable, client_id, bufnr, opts);
 	}
+
 	@:native("get")
 	@:luaDotMethod
 	private function __get(?opts:nvim.type.vim.lsp.completion.get.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.get(opts?: vim.lsp.completion.get.Opts)
@@ -67,4 +70,5 @@ extern class Completion {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.completion.get.Opts> = opts;
 		return __get(opts);
 	}
+
 }

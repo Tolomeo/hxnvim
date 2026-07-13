@@ -28,9 +28,11 @@ extern class Secure {
 	**/
 	@:luaDotMethod
 	function read(path:String):Null<haxe.extern.EitherType<Bool, String>>;
+
 	@:native("trust")
 	@:luaDotMethod
 	private function __trust(opts:nvim.type.vim.trust.Opts):nvim.helper.Multireturn<Bool, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.trust(opts: vim.trust.opts)
@@ -52,4 +54,5 @@ extern class Secure {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.trust.Opts> = opts;
 		return __trust(opts);
 	}
+
 }

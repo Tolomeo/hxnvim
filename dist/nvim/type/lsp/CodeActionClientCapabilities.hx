@@ -25,6 +25,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var codeActionLiteralSupport : Null<nvim.type.lsp.ClientCodeActionLiteralOptions>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.dataSupport: boolean?
@@ -40,6 +41,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dataSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.disabledSupport: boolean?
@@ -53,6 +55,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var disabledSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.documentationSupport: boolean?
@@ -67,6 +70,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var documentationSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.dynamicRegistration: boolean?
@@ -79,6 +83,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.honorsChangeAnnotations: boolean?
@@ -96,6 +101,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var honorsChangeAnnotations : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.isPreferredSupport: boolean?
@@ -109,6 +115,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var isPreferredSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.resolveSupport: (lsp.ClientCodeActionResolveOptions)?
@@ -123,6 +130,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveSupport : Null<nvim.type.lsp.ClientCodeActionResolveOptions>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.tagSupport: (lsp.CodeActionTagOptions)?
@@ -137,4 +145,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tagSupport : Null<nvim.type.lsp.CodeActionTagOptions>;
+
 }

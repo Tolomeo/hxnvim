@@ -21,6 +21,7 @@ package nvim.type.vim.lsp.completion;
 	**/
 	@:optional
 	extern public var autotrigger : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.completion.BufferOpts.convert: (fun(item: lsp.CompletionItem):table)?
@@ -39,4 +40,5 @@ package nvim.type.vim.lsp.completion;
 	**/
 	@:optional
 	extern public var convert : Null<(item:nvim.type.lsp.CompletionItem) -> lua.Table.AnyTable>;
+
 }

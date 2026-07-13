@@ -9,6 +9,7 @@ extern class Ruby {
 	**/
 	@:luaDotMethod
 	function call(method:Dynamic, args:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.detect()
@@ -18,6 +19,7 @@ extern class Ruby {
 	**/
 	@:luaDotMethod
 	function detect():Dynamic;
+
 	/**
 		```lua
 		function M.require(host: any)
@@ -25,6 +27,7 @@ extern class Ruby {
 	**/
 	@:luaDotMethod
 	function require(host:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.start(plugin_path: any)
@@ -32,4 +35,5 @@ extern class Ruby {
 	**/
 	@:luaDotMethod
 	function start(plugin_path:Dynamic):Dynamic;
+
 }

@@ -34,8 +34,10 @@ package nvim.type.uv;
 		 have their callbacks called asynchronously with `ECANCELED`.
 	**/
 	extern public function close(?callback:haxe.Constraints.Function):Dynamic;
+
 	@:native("fileno")
 	private extern function __fileno():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:fileno()
@@ -147,8 +149,10 @@ package nvim.type.uv;
 	inline public function fileno():nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __fileno();
 	}
+
 	@:native("get_type")
 	private extern function __get_type():nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:get_type()
@@ -164,8 +168,10 @@ package nvim.type.uv;
 	inline public function get_type():nvim.helper.Multireturn.Return2<String, Int> {
 		return __get_type();
 	}
+
 	@:native("getpath")
 	private extern function __getpath():nvim.helper.Multireturn<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_fs_poll_t:getpath()
@@ -268,8 +274,10 @@ package nvim.type.uv;
 	inline public function getpath():nvim.helper.Multireturn.Return3<Null<String>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __getpath();
 	}
+
 	@:native("has_ref")
 	private extern function __has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:has_ref()
@@ -372,8 +380,10 @@ package nvim.type.uv;
 	inline public function has_ref():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __has_ref();
 	}
+
 	@:native("is_active")
 	private extern function __is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_active()
@@ -484,8 +494,10 @@ package nvim.type.uv;
 	inline public function is_active():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __is_active();
 	}
+
 	@:native("is_closing")
 	private extern function __is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_closing()
@@ -591,8 +603,10 @@ package nvim.type.uv;
 	inline public function is_closing():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __is_closing();
 	}
+
 	@:native("recv_buffer_size")
 	private extern function __recv_buffer_size(size:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:recv_buffer_size(size: integer)
@@ -728,6 +742,7 @@ package nvim.type.uv;
 	inline public function recv_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __recv_buffer_size(size);
 	}
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:ref()
@@ -740,8 +755,10 @@ package nvim.type.uv;
 		 References are idempotent, that is, if a handle is already referenced calling this function again will have no effect.
 	**/
 	extern public function ref():Dynamic;
+
 	@:native("send_buffer_size")
 	private extern function __send_buffer_size(size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:send_buffer_size(size: integer)
@@ -874,8 +891,10 @@ package nvim.type.uv;
 	inline public function send_buffer_size(size:Int):nvim.helper.Multireturn.Return3<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __send_buffer_size(size);
 	}
+
 	@:native("start")
 	private extern function __start(path:String, interval:Int, callback:nvim.type.uv.fs_poll_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_fs_poll_t:start(path: string, interval: integer, callback: fun(err: string|nil, prev: uv.fs_stat.result|nil, curr: uv.fs_stat.result|nil))
@@ -985,8 +1004,10 @@ package nvim.type.uv;
 		final callback:nvim.helper.Native.LuaObject<nvim.type.uv.fs_poll_start.Callback> = callback;
 		return __start(path, interval, callback);
 	}
+
 	@:native("stop")
 	private extern function __stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.uv_fs_poll_t:stop()
@@ -1092,6 +1113,7 @@ package nvim.type.uv;
 	inline public function stop():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __stop();
 	}
+
 	/**
 		```lua
 		(method) uv.uv_handle_t:unref()
@@ -1103,4 +1125,5 @@ package nvim.type.uv;
 		 is not referenced calling this function again will have no effect.
 	**/
 	extern public function unref():Dynamic;
+
 }

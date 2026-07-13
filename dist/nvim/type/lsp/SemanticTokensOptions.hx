@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.legend: lsp.SemanticTokensLegend
@@ -34,6 +35,7 @@ package nvim.type.lsp;
 		The legend used by the server
 	**/
 	extern public var legend : nvim.type.lsp.SemanticTokensLegend;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.range: (boolean|lsp._anonym1.range)?
@@ -47,6 +49,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.workDoneProgress: boolean?
@@ -54,4 +57,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

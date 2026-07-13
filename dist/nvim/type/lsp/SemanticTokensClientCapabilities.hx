@@ -26,6 +26,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var augmentsSyntaxTokens : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.dynamicRegistration: boolean?
@@ -40,6 +41,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.formats: "relative"[]
@@ -51,6 +53,7 @@ package nvim.type.lsp;
 		The token formats the clients supports.
 	**/
 	extern public var formats : lua.Table<Int, nvim.type.lsp.TokenFormat>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.multilineTokenSupport: boolean?
@@ -63,6 +66,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var multilineTokenSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.overlappingTokenSupport: boolean?
@@ -75,6 +79,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var overlappingTokenSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.requests: lsp.ClientSemanticTokensRequestOptions
@@ -93,6 +98,7 @@ package nvim.type.lsp;
 		even decide to not show any semantic tokens at all.
 	**/
 	extern public var requests : nvim.type.lsp.ClientSemanticTokensRequestOptions;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.serverCancelSupport: boolean?
@@ -109,6 +115,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var serverCancelSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.tokenModifiers: string[]
@@ -120,6 +127,7 @@ package nvim.type.lsp;
 		The token modifiers that the client supports.
 	**/
 	extern public var tokenModifiers : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.tokenTypes: string[]
@@ -131,4 +139,5 @@ package nvim.type.lsp;
 		The token types that the client supports.
 	**/
 	extern public var tokenTypes : lua.Table<Int, String>;
+
 }

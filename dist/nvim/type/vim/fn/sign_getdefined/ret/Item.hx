@@ -13,6 +13,7 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 	**/
 	@:optional
 	extern public var culhl : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.icon: string?
@@ -20,6 +21,7 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 	**/
 	@:optional
 	extern public var icon : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.linehl: string?
@@ -27,12 +29,14 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 	**/
 	@:optional
 	extern public var linehl : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.name: string
 		```
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.numhl: string?
@@ -40,12 +44,14 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 	**/
 	@:optional
 	extern public var numhl : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.text: string
 		```
 	**/
 	extern public var text : String;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.texthl: string?
@@ -53,4 +59,5 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 	**/
 	@:optional
 	extern public var texthl : Null<String>;
+
 }

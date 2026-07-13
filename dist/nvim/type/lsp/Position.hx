@@ -49,6 +49,7 @@ package nvim.type.lsp;
 		`PositionEncodingKind`.
 	**/
 	extern public var character : nvim.type.Uinteger;
+
 	/**
 		```lua
 		(field) lsp.Position.line: integer
@@ -60,4 +61,5 @@ package nvim.type.lsp;
 		Line position in a document (zero-based).
 	**/
 	extern public var line : nvim.type.Uinteger;
+
 }

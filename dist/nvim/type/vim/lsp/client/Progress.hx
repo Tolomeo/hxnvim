@@ -25,6 +25,7 @@ package nvim.type.vim.lsp.client;
 		 Clear all items
 	**/
 	extern public function clear():Dynamic;
+
 	/**
 		```lua
 		function vim.Ringbuf.peek(self: vim.Ringbuf)
@@ -36,12 +37,14 @@ package nvim.type.vim.lsp.client;
 		 Returns the first unread item without removing it
 	**/
 	extern public function peek<T>():Null<T>;
+
 	/**
 		```lua
 		(field) vim.lsp.Client.Progress.pending: table<string|integer, boolean|string|number|lsp.LSPAny[]|table<string, lsp.LSPAny>|nil>
 		```
 	**/
 	extern public var pending : Pending;
+
 	/**
 		```lua
 		function vim.Ringbuf.pop(self: vim.Ringbuf)
@@ -53,6 +56,7 @@ package nvim.type.vim.lsp.client;
 		 Removes and returns the first unread item
 	**/
 	extern public function pop<T>():Null<T>;
+
 	/**
 		```lua
 		function vim.Ringbuf.push(self: vim.Ringbuf, item: <T>)
@@ -63,4 +67,5 @@ package nvim.type.vim.lsp.client;
 		 Adds an item, overriding the oldest item if the buffer is full.
 	**/
 	extern public function push<T>(item:T):Dynamic;
+
 }

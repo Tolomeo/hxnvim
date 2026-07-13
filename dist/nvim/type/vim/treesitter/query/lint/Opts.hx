@@ -21,6 +21,7 @@ package nvim.type.vim.treesitter.query.lint;
 		 Just clear current lint errors
 	**/
 	extern public var clear : Bool;
+
 	/**
 		```lua
 		(field) vim.treesitter.query.lint.Opts.langs: (string|string[])?
@@ -35,4 +36,5 @@ package nvim.type.vim.treesitter.query.lint;
 	**/
 	@:optional
 	extern public var langs : Null<haxe.extern.EitherType<String, lua.Table<Int, String>>>;
+
 }

@@ -20,8 +20,10 @@ package nvim.type;
 	**/
 	@:luaDotMethod
 	extern public function captures():lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>;
+
 	@:native("info")
 	private extern function __info():nvim.helper.Multireturn<Int, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) TSQueryMatch:info()
@@ -32,4 +34,5 @@ package nvim.type;
 	inline public function info():nvim.helper.Multireturn.Return2<Int, Int> {
 		return __info();
 	}
+
 }

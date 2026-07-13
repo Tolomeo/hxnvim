@@ -21,6 +21,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.foldingRange: (lsp.ClientFoldingRangeOptions)?
@@ -34,6 +35,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var foldingRange : Null<nvim.type.lsp.ClientFoldingRangeOptions>;
+
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.foldingRangeKind: (lsp.ClientFoldingRangeKindOptions)?
@@ -47,6 +49,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var foldingRangeKind : Null<nvim.type.lsp.ClientFoldingRangeKindOptions>;
+
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.lineFoldingOnly: boolean?
@@ -61,6 +64,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var lineFoldingOnly : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.rangeLimit: integer?
@@ -75,4 +79,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var rangeLimit : Null<nvim.type.Uinteger>;
+
 }

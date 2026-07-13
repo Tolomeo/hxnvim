@@ -12,16 +12,19 @@ package nvim.type.vim.fn.getmarklist.ret;
 		```
 	**/
 	extern public var file : String;
+
 	/**
 		```lua
 		(field) vim.fn.getmarklist.ret.item.mark: string
 		```
 	**/
 	extern public var mark : String;
+
 	/**
 		```lua
 		(field) vim.fn.getmarklist.ret.item.pos: [integer, integer, integer, integer]
 		```
 	**/
 	extern public var pos : Dynamic;
+
 }

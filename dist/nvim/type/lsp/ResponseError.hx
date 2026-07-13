@@ -12,6 +12,7 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var code : Int;
+
 	/**
 		```lua
 		(field) lsp.ResponseError.data: boolean|string|number|table|table[]|nil
@@ -19,10 +20,12 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var data : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table<Int, lua.Table.AnyTable>, lua.Table.AnyTable>>>>>;
+
 	/**
 		```lua
 		(field) lsp.ResponseError.message: string
 		```
 	**/
 	extern public var message : String;
+
 }

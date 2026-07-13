@@ -22,6 +22,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var ignoreIfNotExists : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DeleteFileOptions.recursive: boolean?
@@ -34,4 +35,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var recursive : Null<Bool>;
+
 }

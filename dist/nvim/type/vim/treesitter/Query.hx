@@ -21,6 +21,7 @@ package nvim.type.vim.treesitter;
 		list of (unique) capture names defined in query
 	**/
 	extern public var captures : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) vim.treesitter.Query.has_combined_injections: boolean
@@ -31,6 +32,7 @@ package nvim.type.vim.treesitter;
 		whether the query contains combined injections
 	**/
 	extern public var has_combined_injections : Bool;
+
 	/**
 		```lua
 		(field) vim.treesitter.Query.has_conceal_line: boolean
@@ -41,6 +43,7 @@ package nvim.type.vim.treesitter;
 		whether the query sets conceal_lines metadata
 	**/
 	extern public var has_conceal_line : Bool;
+
 	/**
 		```lua
 		(field) vim.treesitter.Query.info: vim.treesitter.QueryInfo
@@ -55,6 +58,7 @@ package nvim.type.vim.treesitter;
 		query context (e.g. captures, predicates, directives)
 	**/
 	extern public var info : nvim.type.vim.treesitter.QueryInfo;
+
 	/**
 		```lua
 		(field) vim.treesitter.Query.lang: string
@@ -65,6 +69,7 @@ package nvim.type.vim.treesitter;
 		parser language name
 	**/
 	extern public var lang : String;
+
 	/**
 		```lua
 		(field) vim.treesitter.Query.query: TSQuery
@@ -83,6 +88,7 @@ package nvim.type.vim.treesitter;
 		userdata query object
 	**/
 	extern public var query : nvim.type.TSQuery;
+
 	/**
 		```lua
 		(method) vim.treesitter.Query:_process_patterns()
@@ -93,8 +99,10 @@ package nvim.type.vim.treesitter;
 		 Splits the query patterns into predicates and directives.
 	**/
 	extern public function _process_patterns():Dynamic;
+
 	@:native("iter_captures")
 	private extern function __iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_captures(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -152,8 +160,10 @@ package nvim.type.vim.treesitter;
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __iter_captures(node, source, start, stop, opts);
 	}
+
 	@:native("iter_matches")
 	private extern function __iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_matches(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -210,4 +220,5 @@ package nvim.type.vim.treesitter;
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __iter_matches(node, source, start, stop, opts);
 	}
+
 }

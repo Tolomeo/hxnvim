@@ -26,6 +26,7 @@ package nvim.type.lsp;
 		The actual identifier of the change annotation
 	**/
 	extern public var annotationId : nvim.type.lsp.ChangeAnnotationIdentifier;
+
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.newText: string
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 		empty string.
 	**/
 	extern public var newText : String;
+
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.range: lsp.Range
@@ -64,4 +66,5 @@ package nvim.type.lsp;
 		text into a document create a range where start === end.
 	**/
 	extern public var range : nvim.type.lsp.Range;
+
 }

@@ -22,4 +22,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var messageActionItem : Null<nvim.type.lsp.ClientShowMessageActionItemOptions>;
+
 }

@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		provided during the register request.
 	**/
 	extern public var id : String;
+
 	/**
 		```lua
 		(field) lsp.Unregistration.method: string
@@ -33,4 +34,5 @@ package nvim.type.lsp;
 		The method to unregister for.
 	**/
 	extern public var method : String;
+
 }

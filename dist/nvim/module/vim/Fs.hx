@@ -20,6 +20,7 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	function abspath(path:String):String;
+
 	/**
 		```lua
 		function M.basename(file: <T:string|nil>)
@@ -36,9 +37,11 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	function basename<T:(Null<String>)>(file:T):T;
+
 	@:native("dir")
 	@:luaDotMethod
 	private function __dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_;
+
 	/**
 		```lua
 		function M.dir(path: string, opts?: vim.fs.dir.Opts)
@@ -65,6 +68,7 @@ extern class Fs {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.dir.Opts> = opts;
 		return __dir(path, opts);
 	}
+
 	/**
 		```lua
 		function M.dirname(file: <T:string|nil>)
@@ -81,9 +85,11 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	function dirname<T:(Null<String>)>(file:T):T;
+
 	@:native("find")
 	@:luaDotMethod
 	private function __find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function M.find(names: string|fun(name: string, path: string):boolean|string[], opts?: vim.fs.find.Opts)
@@ -136,6 +142,7 @@ extern class Fs {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.find.Opts> = opts;
 		return __find(names, opts);
 	}
+
 	/**
 		```lua
 		function M.joinpath(...string)
@@ -154,9 +161,11 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	function joinpath(___:haxe.Rest<String>):String;
+
 	@:native("normalize")
 	@:luaDotMethod
 	private function __normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String;
+
 	/**
 		```lua
 		function M.normalize(path: string, opts?: vim.fs.normalize.Opts)
@@ -202,9 +211,11 @@ extern class Fs {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.normalize.Opts> = opts;
 		return __normalize(path, opts);
 	}
+
 	@:native("parents")
 	@:luaDotMethod
 	private function __parents(start:String):nvim.helper.Multireturn<() -> Null<String>, nvim.helper.Nothing, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.parents(start: string)
@@ -244,6 +255,7 @@ extern class Fs {
 	inline function parents(start:String):nvim.helper.Multireturn.Return3<() -> Null<String>, nvim.helper.Nothing, Null<String>> {
 		return __parents(start);
 	}
+
 	/**
 		```lua
 		function M.relpath(base: string, target: string, opts?: table)
@@ -265,9 +277,11 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	function relpath(base:String, target:String, ?opts:Null<lua.Table.AnyTable>):Null<String>;
+
 	@:native("rm")
 	@:luaDotMethod
 	private function __rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.rm(path: string, opts?: vim.fs.rm.Opts)
@@ -284,6 +298,7 @@ extern class Fs {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.rm.Opts> = opts;
 		return __rm(path, opts);
 	}
+
 	/**
 		```lua
 		function M.root(source: string|integer, marker: string|(string|fun(name: string, path: string):boolean|string[])[]|fun(name: string, path: string):boolean)
@@ -334,4 +349,5 @@ extern class Fs {
 	**/
 	@:luaDotMethod
 	function root(source:haxe.extern.EitherType<Int, String>, marker:haxe.extern.EitherType<lua.Table<Int, haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
+
 }

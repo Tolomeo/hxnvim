@@ -60,6 +60,7 @@ package nvim.type.lsp;
 		Note that markdown strings will be sanitized - that means html will be escaped.
 	**/
 	extern public var contents : haxe.extern.EitherType<nvim.type.lsp.MarkupContent, haxe.extern.EitherType<nvim.type.lsp.MarkedString, lua.Table<Int, nvim.type.lsp.MarkedString>>>;
+
 	/**
 		```lua
 		(field) lsp.Hover.range: (lsp.Range)?
@@ -87,4 +88,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var range : Null<nvim.type.lsp.Range>;
+
 }

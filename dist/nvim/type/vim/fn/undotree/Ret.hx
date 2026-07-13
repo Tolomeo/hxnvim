@@ -18,6 +18,7 @@ package nvim.type.vim.fn.undotree;
 		 undo blocks.
 	**/
 	extern public var entries : lua.Table<Int, nvim.type.vim.fn.undotree.Entry>;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.save_cur: integer
@@ -30,6 +31,7 @@ package nvim.type.vim.fn.undotree;
 		 tree.
 	**/
 	extern public var save_cur : Int;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.save_last: integer
@@ -42,6 +44,7 @@ package nvim.type.vim.fn.undotree;
 		 write yet.
 	**/
 	extern public var save_last : Int;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.seq_cur: integer
@@ -55,6 +58,7 @@ package nvim.type.vim.fn.undotree;
 		 when some changes were undone.
 	**/
 	extern public var seq_cur : Int;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.seq_last: integer
@@ -66,6 +70,7 @@ package nvim.type.vim.fn.undotree;
 		 The highest undo sequence number used.
 	**/
 	extern public var seq_last : Int;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.synced: integer
@@ -79,6 +84,7 @@ package nvim.type.vim.fn.undotree;
 		 user.  See |undo-blocks|.
 	**/
 	extern public var synced : Int;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.time_cur: integer
@@ -92,4 +98,5 @@ package nvim.type.vim.fn.undotree;
 		 something readable.
 	**/
 	extern public var time_cur : Int;
+
 }

@@ -40,6 +40,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var originSelectionRange : Null<nvim.type.lsp.Range>;
+
 	/**
 		```lua
 		(field) lsp.LocationLink.targetRange: lsp.Range
@@ -67,6 +68,7 @@ package nvim.type.lsp;
 		like comments. This information is typically used to highlight the range in the editor.
 	**/
 	extern public var targetRange : nvim.type.lsp.Range;
+
 	/**
 		```lua
 		(field) lsp.LocationLink.targetSelectionRange: lsp.Range
@@ -93,6 +95,7 @@ package nvim.type.lsp;
 		Must be contained by the `targetRange`. See also `DocumentSymbol#range`
 	**/
 	extern public var targetSelectionRange : nvim.type.lsp.Range;
+
 	/**
 		```lua
 		(field) lsp.LocationLink.targetUri: string
@@ -104,4 +107,5 @@ package nvim.type.lsp;
 		The target resource identifier of this link.
 	**/
 	extern public var targetUri : nvim.type.lsp.DocumentUri;
+
 }

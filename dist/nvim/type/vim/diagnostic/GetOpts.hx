@@ -22,6 +22,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var lnum : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.namespace: (integer|integer[])?
@@ -34,6 +35,7 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var namespace : Null<haxe.extern.EitherType<lua.Table<Int, Int>, Int>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -54,4 +56,5 @@ package nvim.type.vim.diagnostic;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 }

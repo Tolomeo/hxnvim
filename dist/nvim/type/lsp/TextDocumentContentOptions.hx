@@ -22,4 +22,5 @@ package nvim.type.lsp;
 		The schemes for which the server provides content.
 	**/
 	extern public var schemes : lua.Table<Int, String>;
+
 }

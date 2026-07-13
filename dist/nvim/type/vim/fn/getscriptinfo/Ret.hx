@@ -12,6 +12,7 @@ package nvim.type.vim.fn.getscriptinfo;
 		```
 	**/
 	extern public var autoload : Bool;
+
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.functions: string[]?
@@ -19,18 +20,21 @@ package nvim.type.vim.fn.getscriptinfo;
 	**/
 	@:optional
 	extern public var functions : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.name: string
 		```
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.sid: string
 		```
 	**/
 	extern public var sid : String;
+
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.variables: table<string, any>?
@@ -38,10 +42,12 @@ package nvim.type.vim.fn.getscriptinfo;
 	**/
 	@:optional
 	extern public var variables : Null<lua.Table<String, Any>>;
+
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.version: 1
 		```
 	**/
 	extern public var version : Float;
+
 }

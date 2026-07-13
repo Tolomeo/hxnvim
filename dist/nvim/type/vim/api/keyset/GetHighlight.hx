@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var create : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.id: integer?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var id : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.link: boolean?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var link : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.name: string?
@@ -34,4 +37,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var name : Null<String>;
+
 }

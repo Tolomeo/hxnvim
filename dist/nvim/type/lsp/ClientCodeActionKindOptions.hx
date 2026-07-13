@@ -20,4 +20,5 @@ package nvim.type.lsp;
 		to a default value when unknown.
 	**/
 	extern public var valueSet : lua.Table<Int, nvim.type.lsp.CodeActionKind>;
+
 }

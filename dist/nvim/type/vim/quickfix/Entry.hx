@@ -17,6 +17,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.col: integer?
@@ -29,6 +30,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var col : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.end_col: integer?
@@ -41,6 +43,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var end_col : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.end_lnum: integer?
@@ -53,6 +56,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var end_lnum : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.filename: string?
@@ -66,6 +70,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var filename : Null<String>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.lnum: integer?
@@ -78,6 +83,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var lnum : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.module: string?
@@ -91,6 +97,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var module : Null<String>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.nr: integer?
@@ -103,6 +110,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var nr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.pattern: string?
@@ -115,6 +123,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var pattern : Null<String>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.text: string?
@@ -127,6 +136,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var text : Null<String>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.type: string?
@@ -139,6 +149,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var type : Null<String>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.user_data: any
@@ -152,6 +163,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var user_data : Null<Any>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.valid: boolean?
@@ -164,6 +176,7 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var valid : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.quickfix.entry.vcol: integer?
@@ -177,4 +190,5 @@ package nvim.type.vim.quickfix;
 	**/
 	@:optional
 	extern public var vcol : Null<Int>;
+
 }

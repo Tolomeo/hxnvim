@@ -17,6 +17,7 @@ package nvim.type;
 		 Returns a copy of the `TSTree`.
 	**/
 	extern public function copy():nvim.type.TSTree;
+
 	/**
 		```lua
 		(method) TSTree:edit(start_byte: integer, end_byte_old: integer, end_byte_new: integer, start_row: integer, start_col: integer, end_row_old: integer, end_col_old: integer, end_row_new: integer, end_col_new: integer)
@@ -28,6 +29,7 @@ package nvim.type;
 		 stylua: ignore
 	**/
 	extern public function edit(start_byte:Int, end_byte_old:Int, end_byte_new:Int, start_row:Int, start_col:Int, end_row_old:Int, end_col_old:Int, end_row_new:Int, end_col_new:Int):nvim.type.TSTree;
+
 	/**
 		```lua
 		(method) TSTree:included_ranges(include_bytes: true)
@@ -56,6 +58,7 @@ package nvim.type;
 		```
 	**/
 	extern public function included_ranges(include_bytes:Bool):lua.Table<Int, nvim.type.Range6>;
+
 	/**
 		```lua
 		(method) TSTree:root()
@@ -67,4 +70,5 @@ package nvim.type;
 		 Return the root node of this tree.
 	**/
 	extern public function root():nvim.type.TSNode;
+
 }

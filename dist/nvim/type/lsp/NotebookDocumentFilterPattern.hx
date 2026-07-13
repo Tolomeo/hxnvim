@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var notebookType : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterPattern.pattern: string|lsp.RelativePattern
@@ -57,6 +58,7 @@ package nvim.type.lsp;
 		
 	**/
 	extern public var pattern : nvim.type.lsp.GlobPattern;
+
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterPattern.scheme: string?
@@ -69,4 +71,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var scheme : Null<String>;
+
 }

@@ -21,6 +21,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var async : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.bufnr: integer?
@@ -34,6 +35,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.filter: fun(client: vim.lsp.Client):boolean??
@@ -60,6 +62,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.formatting_options: table?
@@ -75,6 +78,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var formatting_options : Null<lua.Table.AnyTable>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.id: integer?
@@ -87,6 +91,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var id : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.name: string?
@@ -99,6 +104,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var name : Null<String>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.range: ({ start: [integer, integer], end: [integer, integer] }|{ start: [integer, integer], end: [integer, integer] }[])?
@@ -117,6 +123,7 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var range : Null<Dynamic>;
+
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.timeout_ms: integer?
@@ -130,4 +137,5 @@ package nvim.type.vim.lsp.buf.format;
 	**/
 	@:optional
 	extern public var timeout_ms : Null<Int>;
+
 }

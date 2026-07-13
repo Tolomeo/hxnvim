@@ -28,6 +28,7 @@ package nvim.type.lsp;
 		The kind of string value.
 	**/
 	extern public var kind : String;
+
 	/**
 		```lua
 		(field) lsp.StringValue.value: string
@@ -39,4 +40,5 @@ package nvim.type.lsp;
 		The snippet string.
 	**/
 	extern public var value : String;
+
 }

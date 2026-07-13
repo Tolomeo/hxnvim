@@ -22,6 +22,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveProvider : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeLensOptions.workDoneProgress: boolean?
@@ -29,4 +30,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

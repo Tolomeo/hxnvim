@@ -12,10 +12,12 @@ package nvim.type.uv.pipe;
 		```
 	**/
 	extern public var read : Int;
+
 	/**
 		```lua
 		(field) uv.pipe.fds.write: integer
 		```
 	**/
 	extern public var write : Int;
+
 }

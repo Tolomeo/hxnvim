@@ -29,4 +29,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var refreshSupport : Null<Bool>;
+
 }

@@ -34,6 +34,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var command : Null<nvim.type.lsp.Command>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -64,6 +65,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var data : Null<nvim.type.lsp.LSPAny>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.diagnostics: lsp.Diagnostic[]?
@@ -76,6 +78,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var diagnostics : Null<lua.Table<Int, nvim.type.lsp.Diagnostic>>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.disabled: (lsp.CodeActionDisabled)?
@@ -106,6 +109,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var disabled : Null<nvim.type.lsp.CodeActionDisabled>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.edit: (lsp.WorkspaceEdit)?
@@ -133,6 +137,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var edit : Null<nvim.type.lsp.WorkspaceEdit>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.isPreferred: boolean?
@@ -150,6 +155,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var isPreferred : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.kind: (""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports")?
@@ -186,6 +192,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var kind : Null<nvim.type.lsp.CodeActionKind>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.tags: 1[]?
@@ -199,6 +206,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tags : Null<lua.Table<Int, nvim.type.lsp.CodeActionTag>>;
+
 	/**
 		```lua
 		(field) lsp.CodeAction.title: string
@@ -210,4 +218,5 @@ package nvim.type.lsp;
 		A short, human-readable, title for this code action.
 	**/
 	extern public var title : String;
+
 }

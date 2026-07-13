@@ -12,10 +12,12 @@ package nvim.type.lsp;
 		```
 	**/
 	extern public var language : String;
+
 	/**
 		```lua
 		(field) lsp.MarkedStringWithLanguage.value: string
 		```
 	**/
 	extern public var value : String;
+
 }

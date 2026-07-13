@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var buf : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.cursor: boolean?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var cursor : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.flush: boolean?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var flush : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.range: any[]?
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var range : Null<lua.Table<Int, Any>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statuscolumn: boolean?
@@ -41,6 +45,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var statuscolumn : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statusline: boolean?
@@ -48,6 +53,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var statusline : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.tabline: boolean?
@@ -55,6 +61,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var tabline : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.valid: boolean?
@@ -62,6 +69,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var valid : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.win: integer?
@@ -69,6 +77,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var win : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.winbar: boolean?
@@ -76,4 +85,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var winbar : Null<Bool>;
+
 }

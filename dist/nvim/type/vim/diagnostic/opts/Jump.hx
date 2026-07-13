@@ -19,6 +19,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -39,6 +40,7 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.wrap: boolean?
@@ -52,4 +54,5 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var wrap : Null<Bool>;
+
 }

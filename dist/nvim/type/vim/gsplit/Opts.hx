@@ -19,6 +19,7 @@ package nvim.type.vim.gsplit;
 	**/
 	@:optional
 	extern public var plain : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.gsplit.Opts.trimempty: boolean?
@@ -31,4 +32,5 @@ package nvim.type.vim.gsplit;
 	**/
 	@:optional
 	extern public var trimempty : Null<Bool>;
+
 }

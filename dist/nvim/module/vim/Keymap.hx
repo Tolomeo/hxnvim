@@ -4,6 +4,7 @@ extern class Keymap {
 	@:native("del")
 	@:luaDotMethod
 	private function __del(modes:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, ?opts:nvim.type.vim.keymap.del.Opts):Dynamic;
+
 	/**
 		```lua
 		function keymap.del(modes: string|string[], lhs: string, opts?: vim.keymap.del.Opts)
@@ -24,9 +25,11 @@ extern class Keymap {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.keymap.del.Opts> = opts;
 		return __del(modes, lhs, opts);
 	}
+
 	@:native("set")
 	@:luaDotMethod
 	private function __set(mode:haxe.extern.EitherType<String, lua.Table<Int, String>>, lhs:String, rhs:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?opts:nvim.type.vim.keymap.set.Opts):Dynamic;
+
 	/**
 		```lua
 		function keymap.set(mode: string|string[], lhs: string, rhs: string|function, opts?: vim.keymap.set.Opts)
@@ -61,4 +64,5 @@ extern class Keymap {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.keymap.set.Opts> = opts;
 		return __set(mode, lhs, rhs, opts);
 	}
+
 }

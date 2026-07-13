@@ -22,6 +22,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var ignoreIfExists : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.RenameFileOptions.overwrite: boolean?
@@ -34,4 +35,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var overwrite : Null<Bool>;
+
 }

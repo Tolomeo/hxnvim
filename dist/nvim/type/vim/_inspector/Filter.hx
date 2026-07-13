@@ -18,6 +18,7 @@ package nvim.type.vim._inspector;
 		 (default: true)
 	**/
 	extern public var extmarks : haxe.extern.EitherType<Bool, String>;
+
 	/**
 		```lua
 		(field) vim._inspector.Filter.semantic_tokens: boolean
@@ -30,6 +31,7 @@ package nvim.type.vim._inspector;
 		 (default: true)
 	**/
 	extern public var semantic_tokens : Bool;
+
 	/**
 		```lua
 		(field) vim._inspector.Filter.syntax: boolean
@@ -43,6 +45,7 @@ package nvim.type.vim._inspector;
 		 (default: `true`)
 	**/
 	extern public var syntax : Bool;
+
 	/**
 		```lua
 		(field) vim._inspector.Filter.treesitter: boolean
@@ -55,4 +58,5 @@ package nvim.type.vim._inspector;
 		 (default: `true`)
 	**/
 	extern public var treesitter : Bool;
+
 }

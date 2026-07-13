@@ -18,6 +18,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didSave : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.dynamicRegistration: boolean?
@@ -30,6 +31,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.willSave: boolean?
@@ -42,6 +44,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willSave : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.willSaveWaitUntil: boolean?
@@ -56,4 +59,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willSaveWaitUntil : Null<Bool>;
+
 }

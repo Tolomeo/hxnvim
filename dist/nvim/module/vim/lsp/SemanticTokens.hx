@@ -19,6 +19,7 @@ extern class SemanticTokens {
 	**/
 	@:luaDotMethod
 	function force_refresh(?bufnr:Null<Int>):Dynamic;
+
 	/**
 		```lua
 		function M.get_at_pos(bufnr: integer|nil, row: integer|nil, col: integer|nil)
@@ -49,9 +50,11 @@ extern class SemanticTokens {
 	**/
 	@:luaDotMethod
 	function get_at_pos(?bufnr:Null<Int>, ?row:Null<Int>, ?col:Null<Int>):Null<lua.Table<Int, nvim.type.STTokenRangeInspect>>;
+
 	@:native("highlight_token")
 	@:luaDotMethod
 	private function __highlight_token(token:lua.Table.AnyTable, bufnr:Int, client_id:Int, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.highlight_token(token: table, bufnr: integer, client_id: integer, hl_group: string, opts?: vim.lsp.semantic_tokens.highlight_token.Opts)
@@ -81,9 +84,11 @@ extern class SemanticTokens {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts> = opts;
 		return __highlight_token(token, bufnr, client_id, hl_group, opts);
 	}
+
 	@:native("start")
 	@:luaDotMethod
 	private function __start(bufnr:Int, client_id:Int, ?opts:lua.Table.AnyTable):Dynamic;
+
 	/**
 		```lua
 		function M.start(bufnr: integer, client_id: integer, opts?: table)
@@ -117,6 +122,7 @@ extern class SemanticTokens {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __start(bufnr, client_id, opts);
 	}
+
 	/**
 		```lua
 		function M.stop(bufnr: integer, client_id: integer)
@@ -137,4 +143,5 @@ extern class SemanticTokens {
 	**/
 	@:luaDotMethod
 	function stop(bufnr:Int, client_id:Int):Dynamic;
+
 }

@@ -28,16 +28,19 @@ package nvim.type.uv.udp_recv_start.callback;
 		```
 	**/
 	extern public var family : haxe.extern.EitherType<nvim.type.uv.socket.Family, String>;
+
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.ip: string
 		```
 	**/
 	extern public var ip : String;
+
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.port: integer
 		```
 	**/
 	extern public var port : Int;
+
 }

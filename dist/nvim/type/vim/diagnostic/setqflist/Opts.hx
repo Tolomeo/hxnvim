@@ -23,6 +23,7 @@ package nvim.type.vim.diagnostic.setqflist;
 	**/
 	@:optional
 	extern public var namespace : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.open: boolean?
@@ -36,6 +37,7 @@ package nvim.type.vim.diagnostic.setqflist;
 	**/
 	@:optional
 	extern public var open : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -56,6 +58,7 @@ package nvim.type.vim.diagnostic.setqflist;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.title: string?
@@ -69,4 +72,5 @@ package nvim.type.vim.diagnostic.setqflist;
 	**/
 	@:optional
 	extern public var title : Null<String>;
+
 }

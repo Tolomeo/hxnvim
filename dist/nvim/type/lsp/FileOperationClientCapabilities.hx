@@ -26,6 +26,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didCreate : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didDelete: boolean?
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didDelete : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didRename: boolean?
@@ -50,6 +52,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var didRename : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.dynamicRegistration: boolean?
@@ -62,6 +65,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willCreate: boolean?
@@ -74,6 +78,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willCreate : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willDelete: boolean?
@@ -86,6 +91,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willDelete : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willRename: boolean?
@@ -98,4 +104,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var willRename : Null<Bool>;
+
 }

@@ -27,6 +27,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var language : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.NotebookCellTextDocumentFilter.notebook: string|lsp.NotebookDocumentFilterNotebookType|lsp.NotebookDocumentFilterPattern|lsp.NotebookDocumentFilterScheme
@@ -63,4 +64,5 @@ package nvim.type.lsp;
 		
 	**/
 	extern public var notebook : haxe.extern.EitherType<String, nvim.type.lsp.NotebookDocumentFilter>;
+
 }

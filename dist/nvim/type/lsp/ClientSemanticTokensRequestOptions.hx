@@ -19,6 +19,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.ClientSemanticTokensRequestFullDelta>>;
+
 	/**
 		```lua
 		(field) lsp.ClientSemanticTokensRequestOptions.range: (boolean|lsp._anonym2.range)?
@@ -32,4 +33,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym2.Range>>;
+
 }

@@ -17,4 +17,5 @@ package nvim.type.vim.lsp.codelens.refresh;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 }

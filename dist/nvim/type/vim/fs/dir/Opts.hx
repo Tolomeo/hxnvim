@@ -20,6 +20,7 @@ package nvim.type.vim.fs.dir;
 	**/
 	@:optional
 	extern public var depth : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.follow: boolean?
@@ -33,6 +34,7 @@ package nvim.type.vim.fs.dir;
 	**/
 	@:optional
 	extern public var follow : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.skip: (fun(dir_name: string):boolean)?
@@ -55,4 +57,5 @@ package nvim.type.vim.fs.dir;
 	**/
 	@:optional
 	extern public var skip : Null<(dir_name:String) -> Bool>;
+
 }

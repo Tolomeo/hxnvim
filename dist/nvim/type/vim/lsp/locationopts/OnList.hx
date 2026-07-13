@@ -17,6 +17,7 @@ package nvim.type.vim.lsp.locationopts;
 	**/
 	@:optional
 	extern public var context : Null<{ var bufnr : Int; var method : String; }>;
+
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.items: table[]
@@ -27,6 +28,7 @@ package nvim.type.vim.lsp.locationopts;
 		Structured like |setqflist-what|
 	**/
 	extern public var items : lua.Table<Int, lua.Table.AnyTable>;
+
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.title: string?
@@ -38,4 +40,5 @@ package nvim.type.vim.lsp.locationopts;
 	**/
 	@:optional
 	extern public var title : Null<String>;
+
 }

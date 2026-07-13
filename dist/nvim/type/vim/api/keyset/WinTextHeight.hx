@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var end_row : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.end_vcol: integer?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var end_vcol : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.start_row: integer?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var start_row : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.start_vcol: integer?
@@ -34,4 +37,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var start_vcol : Null<Int>;
+
 }

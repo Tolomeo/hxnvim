@@ -12,12 +12,14 @@ package nvim.type.vim;
 		```
 	**/
 	extern public var code : Int;
+
 	/**
 		```lua
 		(field) vim.SystemCompleted.signal: integer
 		```
 	**/
 	extern public var signal : Int;
+
 	/**
 		```lua
 		(field) vim.SystemCompleted.stderr: string?
@@ -25,6 +27,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var stderr : Null<String>;
+
 	/**
 		```lua
 		(field) vim.SystemCompleted.stdout: string?
@@ -32,4 +35,5 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var stdout : Null<String>;
+
 }

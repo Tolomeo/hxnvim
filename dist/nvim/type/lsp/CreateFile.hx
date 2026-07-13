@@ -27,6 +27,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
+
 	/**
 		```lua
 		(field) lsp.CreateFile.kind: "create"
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 		A create
 	**/
 	extern public var kind : String;
+
 	/**
 		```lua
 		(field) lsp.CreateFile.options: (lsp.CreateFileOptions)?
@@ -54,6 +56,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var options : Null<nvim.type.lsp.CreateFileOptions>;
+
 	/**
 		```lua
 		(field) lsp.CreateFile.uri: string
@@ -65,4 +68,5 @@ package nvim.type.lsp;
 		The resource to create.
 	**/
 	extern public var uri : nvim.type.lsp.DocumentUri;
+
 }

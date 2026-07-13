@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var completionItem : Null<nvim.type.lsp.ClientCompletionItemOptions>;
+
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItemKind: (lsp.ClientCompletionItemOptionsKind)?
@@ -30,6 +31,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var completionItemKind : Null<nvim.type.lsp.ClientCompletionItemOptionsKind>;
+
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionList: (lsp.CompletionListCapabilities)?
@@ -50,6 +52,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var completionList : Null<nvim.type.lsp.CompletionListCapabilities>;
+
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.contextSupport: boolean?
@@ -63,6 +66,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var contextSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.dynamicRegistration: boolean?
@@ -75,6 +79,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.insertTextMode: (1|2)?
@@ -107,4 +112,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
+
 }

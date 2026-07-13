@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var err : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.echo_opts.verbose: boolean?
@@ -20,4 +21,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var verbose : Null<Bool>;
+
 }

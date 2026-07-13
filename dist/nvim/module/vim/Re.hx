@@ -4,6 +4,7 @@ extern class Re {
 	@:native("compile")
 	@:luaDotMethod
 	private function __compile(string:String, ?defs:lua.Table.AnyTable):nvim.type.vim.lpeg.Pattern;
+
 	/**
 		```lua
 		function vim.re.compile(string: string, defs?: table)
@@ -27,9 +28,11 @@ extern class Re {
 		final defs:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = defs;
 		return __compile(string, defs);
 	}
+
 	@:native("find")
 	@:luaDotMethod
 	private function __find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function vim.re.find(subject: string, pattern: string|vim.lpeg.Pattern, init?: integer)
@@ -60,6 +63,7 @@ extern class Re {
 	inline function find(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
 		return __find(subject, pattern, init);
 	}
+
 	/**
 		```lua
 		function vim.re.gsub(subject: string, pattern: string|vim.lpeg.Pattern, replacement: string)
@@ -79,6 +83,7 @@ extern class Re {
 	**/
 	@:luaDotMethod
 	function gsub(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, replacement:String):String;
+
 	/**
 		```lua
 		function vim.re.match(subject: string, pattern: string|vim.lpeg.Pattern, init?: integer)
@@ -98,6 +103,7 @@ extern class Re {
 	**/
 	@:luaDotMethod
 	function match(subject:String, pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, String>, ?init:Int):Null<haxe.extern.EitherType<Int, nvim.type.vim.lpeg.Capture>>;
+
 	/**
 		```lua
 		function vim.re.updatelocale()
@@ -115,4 +121,5 @@ extern class Re {
 	**/
 	@:luaDotMethod
 	function updatelocale():Dynamic;
+
 }

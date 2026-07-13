@@ -27,4 +27,5 @@ package nvim.type.vim.diagnostic.opts;
 	**/
 	@:optional
 	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+
 }

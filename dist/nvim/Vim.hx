@@ -14,6 +14,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__buf_debug_extmarks(buffer:Int, keys:Bool, dot:Bool):String;
+
 	/**
 		```lua
 		function vim.api.nvim__buf_stats(buffer: integer)
@@ -22,9 +23,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__buf_stats(buffer:Int):lua.Table<String, Any>;
+
 	@:native("nvim__complete_set")
 	@:luaDotMethod
 	private function __nvim__complete_set(index:Int, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim__complete_set(index: integer, opts: vim.api.keyset.complete_set)
@@ -53,6 +56,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CompleteSet> = opts;
 		return __nvim__complete_set(index, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim__get_lib_dir()
@@ -61,9 +65,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__get_lib_dir():String;
+
 	@:native("nvim__get_runtime")
 	@:luaDotMethod
 	private function __nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function vim.api.nvim__get_runtime(pat: any[], all: boolean, opts: vim.api.keyset.runtime)
@@ -87,6 +93,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Runtime> = opts;
 		return __nvim__get_runtime(pat, all, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim__id(obj: any)
@@ -106,9 +113,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__id(obj:Any):Any;
+
 	@:native("nvim__id_array")
 	@:luaDotMethod
 	private function __nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim__id_array(arr: any[])
@@ -130,9 +139,11 @@ extern class Api {
 		final arr:nvim.helper.Native.LuaArray<Any> = arr;
 		return __nvim__id_array(arr);
 	}
+
 	@:native("nvim__id_dict")
 	@:luaDotMethod
 	private function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim__id_dict(dct: table<string, any>)
@@ -154,6 +165,7 @@ extern class Api {
 		final dct:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dct;
 		return __nvim__id_dict(dct);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim__id_float(flt: number)
@@ -173,6 +185,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__id_float(flt:Float):Float;
+
 	/**
 		```lua
 		function vim.api.nvim__inspect_cell(grid: integer, row: integer, col: integer)
@@ -185,6 +198,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__inspect_cell(grid:Int, row:Int, col:Int):lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim__invalidate_glyph_cache()
@@ -197,6 +211,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__invalidate_glyph_cache():Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim__ns_get(ns_id: integer)
@@ -215,9 +230,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__ns_get(ns_id:Int):nvim.type.vim.api.keyset.NsOpts;
+
 	@:native("nvim__ns_set")
 	@:luaDotMethod
 	private function __nvim__ns_set(ns_id:Int, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim__ns_set(ns_id: integer, opts: vim.api.keyset.ns_opts)
@@ -239,9 +256,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.NsOpts> = opts;
 		return __nvim__ns_set(ns_id, opts);
 	}
+
 	@:native("nvim__redraw")
 	@:luaDotMethod
 	private function __nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim__redraw(opts: vim.api.keyset.redraw)
@@ -281,6 +300,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Redraw> = opts;
 		return __nvim__redraw(opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim__runtime_inspect()
@@ -289,6 +309,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__runtime_inspect():lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim__screenshot(path: string)
@@ -296,6 +317,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__screenshot(path:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim__stats()
@@ -310,6 +332,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__stats():lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim__unpack(str: string)
@@ -318,6 +341,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__unpack(str:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_add_highlight(buffer: integer, ns_id: integer, hl_group: string, line: integer, col_start: integer, col_end: integer)
@@ -327,9 +351,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_buf_add_highlight(buffer:Int, ns_id:Int, hl_group:String, line:Int, col_start:Int, col_end:Int):Int;
+
 	@:native("nvim_buf_attach")
 	@:luaDotMethod
 	private function __nvim_buf_attach(buffer:Int, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_attach(buffer: integer, send_buffer: boolean, opts: vim.api.keyset.buf_attach)
@@ -421,6 +447,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.BufAttach> = opts;
 		return __nvim_buf_attach(buffer, send_buffer, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_call(buffer: integer, fun: function)
@@ -451,6 +478,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_call(buffer:Int, fun:haxe.Constraints.Function):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_clear_highlight(buffer: integer, ns_id: integer, line_start: integer, line_end: integer)
@@ -459,6 +487,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_buf_clear_highlight(buffer:Int, ns_id:Int, line_start:Int, line_end:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_clear_namespace(buffer: integer, ns_id: integer, line_start: integer, line_end: integer)
@@ -484,9 +513,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_clear_namespace(buffer:Int, ns_id:Int, line_start:Int, line_end:Int):Dynamic;
+
 	@:native("nvim_buf_create_user_command")
 	@:luaDotMethod
 	private function __nvim_buf_create_user_command(buffer:Int, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_create_user_command(buffer: integer, name: string, command: any, opts: vim.api.keyset.user_command)
@@ -504,6 +535,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.UserCommand> = opts;
 		return __nvim_buf_create_user_command(buffer, name, command, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_del_extmark(buffer: integer, ns_id: integer, id: integer)
@@ -524,6 +556,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_del_extmark(buffer:Int, ns_id:Int, id:Int):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_del_keymap(buffer: integer, mode: string, lhs: string)
@@ -540,6 +573,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_del_keymap(buffer:Int, mode:String, lhs:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_del_mark(buffer: integer, name: string)
@@ -566,6 +600,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_del_mark(buffer:Int, name:String):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_del_user_command(buffer: integer, name: string)
@@ -584,6 +619,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_del_user_command(buffer:Int, name:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_del_var(buffer: integer, name: string)
@@ -599,9 +635,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_del_var(buffer:Int, name:String):Dynamic;
+
 	@:native("nvim_buf_delete")
 	@:luaDotMethod
 	private function __nvim_buf_delete(buffer:Int, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_delete(buffer: integer, opts: vim.api.keyset.buf_delete)
@@ -622,6 +660,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.BufDelete> = opts;
 		return __nvim_buf_delete(buffer, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_changedtick(buffer: integer)
@@ -638,9 +677,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_changedtick(buffer:Int):Int;
+
 	@:native("nvim_buf_get_commands")
 	@:luaDotMethod
 	private function __nvim_buf_get_commands(buffer:Int, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_commands(buffer: integer, opts: vim.api.keyset.get_commands)
@@ -661,9 +702,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetCommands> = opts;
 		return __nvim_buf_get_commands(buffer, opts);
 	}
+
 	@:native("nvim_buf_get_extmark_by_id")
 	@:luaDotMethod
 	private function __nvim_buf_get_extmark_by_id(buffer:Int, ns_id:Int, id:Int, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_extmark_by_id(buffer: integer, ns_id: integer, id: integer, opts: vim.api.keyset.get_extmark)
@@ -693,9 +736,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetExtmark> = opts;
 		return __nvim_buf_get_extmark_by_id(buffer, ns_id, id, opts);
 	}
+
 	@:native("nvim_buf_get_extmarks")
 	@:luaDotMethod
 	private function __nvim_buf_get_extmarks(buffer:Int, ns_id:Int, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem>;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_extmarks(buffer: integer, ns_id: integer, start: any, end_: any, opts: vim.api.keyset.get_extmarks)
@@ -774,6 +819,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetExtmarks> = opts;
 		return __nvim_buf_get_extmarks(buffer, ns_id, start, end_, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_keymap(buffer: integer, mode: string)
@@ -794,6 +840,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_keymap(buffer:Int, mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_lines(buffer: integer, start: integer, end_: integer, strict_indexing: boolean)
@@ -826,6 +873,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_mark(buffer: integer, name: string)
@@ -853,6 +901,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_mark(buffer:Int, name:String):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_name(buffer: integer)
@@ -869,6 +918,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_name(buffer:Int):String;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_number(buffer: integer)
@@ -878,6 +928,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_buf_get_number(buffer:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_offset(buffer: integer, index: integer)
@@ -904,6 +955,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_offset(buffer:Int, index:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_option(buffer: integer, name: string)
@@ -913,9 +965,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_buf_get_option(buffer:Int, name:String):Any;
+
 	@:native("nvim_buf_get_text")
 	@:luaDotMethod
 	private function __nvim_buf_get_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, opts: vim.api.keyset.empty)
@@ -949,6 +1003,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_get_text(buffer, start_row, start_col, end_row, end_col, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_get_var(buffer: integer, name: string)
@@ -967,6 +1022,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_get_var(buffer:Int, name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_is_loaded(buffer: integer)
@@ -984,6 +1040,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_is_loaded(buffer:Int):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_is_valid(buffer: integer)
@@ -1005,6 +1062,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_is_valid(buffer:Int):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_line_count(buffer: integer)
@@ -1021,9 +1079,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_line_count(buffer:Int):Int;
+
 	@:native("nvim_buf_set_extmark")
 	@:luaDotMethod
 	private function __nvim_buf_set_extmark(buffer:Int, ns_id:Int, line:Int, col:Int, opts:nvim.type.vim.api.keyset.SetExtmark):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_extmark(buffer: integer, ns_id: integer, line: integer, col: integer, opts: vim.api.keyset.set_extmark)
@@ -1189,9 +1249,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.SetExtmark> = opts;
 		return __nvim_buf_set_extmark(buffer, ns_id, line, col, opts);
 	}
+
 	@:native("nvim_buf_set_keymap")
 	@:luaDotMethod
 	private function __nvim_buf_set_keymap(buffer:Int, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_keymap(buffer: integer, mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
@@ -1210,9 +1272,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts);
 	}
+
 	@:native("nvim_buf_set_lines")
 	@:luaDotMethod
 	private function __nvim_buf_set_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_lines(buffer: integer, start: integer, end_: integer, strict_indexing: boolean, replacement: string[])
@@ -1249,9 +1313,11 @@ extern class Api {
 		final replacement:nvim.helper.Native.LuaArray<String> = replacement;
 		return __nvim_buf_set_lines(buffer, start, end_, strict_indexing, replacement);
 	}
+
 	@:native("nvim_buf_set_mark")
 	@:luaDotMethod
 	private function __nvim_buf_set_mark(buffer:Int, name:String, line:Int, col:Int, opts:nvim.type.vim.api.keyset.Empty):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_mark(buffer: integer, name: string, line: integer, col: integer, opts: vim.api.keyset.empty)
@@ -1289,6 +1355,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_mark(buffer, name, line, col, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_name(buffer: integer, name: string)
@@ -1304,6 +1371,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_set_name(buffer:Int, name:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_option(buffer: integer, name: string, value: any)
@@ -1312,9 +1380,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_buf_set_option(buffer:Int, name:String, value:Any):Dynamic;
+
 	@:native("nvim_buf_set_text")
 	@:luaDotMethod
 	private function __nvim_buf_set_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, replacement:lua.Table<Int, String>):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, replacement: string[])
@@ -1356,6 +1426,7 @@ extern class Api {
 		final replacement:nvim.helper.Native.LuaArray<String> = replacement;
 		return __nvim_buf_set_text(buffer, start_row, start_col, end_row, end_col, replacement);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_var(buffer: integer, name: string, value: any)
@@ -1373,9 +1444,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_buf_set_var(buffer:Int, name:String, value:Any):Dynamic;
+
 	@:native("nvim_buf_set_virtual_text")
 	@:luaDotMethod
 	private function __nvim_buf_set_virtual_text(buffer:Int, src_id:Int, line:Int, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_buf_set_virtual_text(buffer: integer, src_id: integer, line: integer, chunks: any[], opts: vim.api.keyset.empty)
@@ -1388,9 +1461,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, opts);
 	}
+
 	@:native("nvim_call_dict_function")
 	@:luaDotMethod
 	private function __nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_call_dict_function(dict: any, fn: string, args: any[])
@@ -1415,9 +1490,11 @@ extern class Api {
 		final args:nvim.helper.Native.LuaArray<Any> = args;
 		return __nvim_call_dict_function(dict, fn, args);
 	}
+
 	@:native("nvim_call_function")
 	@:luaDotMethod
 	private function __nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_call_function(fn: string, args: any[])
@@ -1440,6 +1517,7 @@ extern class Api {
 		final args:nvim.helper.Native.LuaArray<Any> = args;
 		return __nvim_call_function(fn, args);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_chan_send(chan: integer, data: string)
@@ -1463,9 +1541,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_chan_send(chan:Int, data:String):Dynamic;
+
 	@:native("nvim_clear_autocmds")
 	@:luaDotMethod
 	private function __nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_clear_autocmds(opts: vim.api.keyset.clear_autocmds)
@@ -1499,9 +1579,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ClearAutocmds> = opts;
 		return __nvim_clear_autocmds(opts);
 	}
+
 	@:native("nvim_cmd")
 	@:luaDotMethod
 	private function __nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String;
+
 	/**
 		```lua
 		function vim.api.nvim_cmd(cmd: vim.api.keyset.cmd, opts: vim.api.keyset.cmd_opts)
@@ -1544,6 +1626,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CmdOpts> = opts;
 		return __nvim_cmd(cmd, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_command(command: string)
@@ -1562,6 +1645,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_command(command:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_command_output(command: string)
@@ -1575,9 +1659,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_command_output(command:String):String;
+
 	@:native("nvim_create_augroup")
 	@:luaDotMethod
 	private function __nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_create_augroup(name: string, opts: vim.api.keyset.create_augroup)
@@ -1611,9 +1697,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CreateAugroup> = opts;
 		return __nvim_create_augroup(name, opts);
 	}
+
 	@:native("nvim_create_autocmd")
 	@:luaDotMethod
 	private function __nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_create_autocmd(event: any, opts: vim.api.keyset.create_autocmd)
@@ -1689,6 +1777,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CreateAutocmd> = opts;
 		return __nvim_create_autocmd(event, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_create_buf(listed: boolean, scratch: boolean)
@@ -1712,6 +1801,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_create_buf(listed:Bool, scratch:Bool):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_create_namespace(name: string)
@@ -1735,9 +1825,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_create_namespace(name:String):Int;
+
 	@:native("nvim_create_user_command")
 	@:luaDotMethod
 	private function __nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_create_user_command(name: string, command: string|fun(args: vim.api.keyset.create_user_command.command_args), opts: vim.api.keyset.user_command)
@@ -1794,6 +1886,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.UserCommand> = opts;
 		return __nvim_create_user_command(name, command, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_del_augroup_by_id(id: integer)
@@ -1816,6 +1909,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_augroup_by_id(id:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_del_augroup_by_name(name: string)
@@ -1833,6 +1927,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_augroup_by_name(name:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_del_autocmd(id: integer)
@@ -1846,6 +1941,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_autocmd(id:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_del_current_line()
@@ -1857,6 +1953,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_current_line():Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_del_keymap(mode: string, lhs: string)
@@ -1872,6 +1969,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_keymap(mode:String, lhs:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_del_mark(name: string)
@@ -1895,6 +1993,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_mark(name:String):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_del_user_command(name: string)
@@ -1908,6 +2007,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_user_command(name:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_del_var(name: string)
@@ -1921,9 +2021,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_del_var(name:String):Dynamic;
+
 	@:native("nvim_echo")
 	@:luaDotMethod
 	private function __nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_echo(chunks: any[], history: boolean, opts: vim.api.keyset.echo_opts)
@@ -1955,6 +2057,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.EchoOpts> = opts;
 		return __nvim_echo(chunks, history, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_err_write(str: string)
@@ -1963,6 +2066,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_err_write(str:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_err_writeln(str: string)
@@ -1971,6 +2075,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_err_writeln(str:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_eval(expr: string)
@@ -1989,9 +2094,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_eval(expr:String):Any;
+
 	@:native("nvim_eval_statusline")
 	@:luaDotMethod
 	private function __nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_eval_statusline(str: string, opts: vim.api.keyset.eval_statusline)
@@ -2023,6 +2130,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.EvalStatusline> = opts;
 		return __nvim_eval_statusline(str, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_exec(src: string, output: boolean)
@@ -2036,9 +2144,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_exec(src:String, output:Bool):String;
+
 	@:native("nvim_exec2")
 	@:luaDotMethod
 	private function __nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_exec2(src: string, opts: vim.api.keyset.exec_opts)
@@ -2076,9 +2186,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ExecOpts> = opts;
 		return __nvim_exec2(src, opts);
 	}
+
 	@:native("nvim_exec_autocmds")
 	@:luaDotMethod
 	private function __nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_exec_autocmds(event: any, opts: vim.api.keyset.exec_autocmds)
@@ -2109,6 +2221,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ExecAutocmds> = opts;
 		return __nvim_exec_autocmds(event, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_feedkeys(keys: string, mode: string, escape_ks: boolean)
@@ -2146,6 +2259,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_feedkeys(keys:String, mode:String, escape_ks:Bool):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_get_all_options_info()
@@ -2166,9 +2280,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_all_options_info():lua.Table<String, Any>;
+
 	@:native("nvim_get_autocmds")
 	@:luaDotMethod
 	private function __nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_autocmds(opts: vim.api.keyset.get_autocmds)
@@ -2229,6 +2345,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetAutocmds> = opts;
 		return __nvim_get_autocmds(opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_get_chan_info(chan: integer)
@@ -2265,6 +2382,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_chan_info(chan:Int):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_color_by_name(name: string)
@@ -2289,6 +2407,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_color_by_name(name:String):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_get_color_map()
@@ -2306,9 +2425,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_color_map():lua.Table<String, Int>;
+
 	@:native("nvim_get_commands")
 	@:luaDotMethod
 	private function __nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_commands(opts: vim.api.keyset.get_commands)
@@ -2334,9 +2455,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetCommands> = opts;
 		return __nvim_get_commands(opts);
 	}
+
 	@:native("nvim_get_context")
 	@:luaDotMethod
 	private function __nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_context(opts: vim.api.keyset.context)
@@ -2358,6 +2481,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Context> = opts;
 		return __nvim_get_context(opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_get_current_buf()
@@ -2372,6 +2496,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_current_buf():Int;
+
 	/**
 		```lua
 		function vim.api.nvim_get_current_line()
@@ -2386,6 +2511,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_current_line():String;
+
 	/**
 		```lua
 		function vim.api.nvim_get_current_tabpage()
@@ -2400,6 +2526,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_current_tabpage():Int;
+
 	/**
 		```lua
 		function vim.api.nvim_get_current_win()
@@ -2414,9 +2541,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_current_win():Int;
+
 	@:native("nvim_get_hl")
 	@:luaDotMethod
 	private function __nvim_get_hl(ns_id:Int, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo;
+
 	/**
 		```lua
 		function vim.api.nvim_get_hl(ns_id: integer, opts: vim.api.keyset.get_highlight)
@@ -2451,6 +2580,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetHighlight> = opts;
 		return __nvim_get_hl(ns_id, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_get_hl_by_id(hl_id: integer, rgb: boolean)
@@ -2464,6 +2594,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_get_hl_by_id(hl_id:Int, rgb:Bool):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_hl_by_name(name: string, rgb: boolean)
@@ -2477,6 +2608,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_get_hl_by_name(name:String, rgb:Bool):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_hl_id_by_name(name: string)
@@ -2491,9 +2623,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_hl_id_by_name(name:String):Int;
+
 	@:native("nvim_get_hl_ns")
 	@:luaDotMethod
 	private function __nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_get_hl_ns(opts: vim.api.keyset.get_ns)
@@ -2517,6 +2651,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetNs> = opts;
 		return __nvim_get_hl_ns(opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_get_keymap(mode: string)
@@ -2535,9 +2670,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_keymap(mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
+
 	@:native("nvim_get_mark")
 	@:luaDotMethod
 	private function __nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark;
+
 	/**
 		```lua
 		function vim.api.nvim_get_mark(name: string, opts: vim.api.keyset.empty)
@@ -2570,6 +2707,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_get_mark(name, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_get_mode()
@@ -2585,6 +2723,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_mode():nvim.type.vim.api.keyset.GetMode;
+
 	/**
 		```lua
 		function vim.api.nvim_get_namespaces()
@@ -2599,6 +2738,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_namespaces():lua.Table<String, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_option(name: string)
@@ -2608,6 +2748,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_get_option(name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_get_option_info(name: string)
@@ -2617,9 +2758,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_get_option_info(name:String):nvim.type.vim.api.keyset.GetOptionInfo;
+
 	@:native("nvim_get_option_info2")
 	@:luaDotMethod
 	private function __nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo;
+
 	/**
 		```lua
 		function vim.api.nvim_get_option_info2(name: string, opts: vim.api.keyset.option)
@@ -2668,9 +2811,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_get_option_info2(name, opts);
 	}
+
 	@:native("nvim_get_option_value")
 	@:luaDotMethod
 	private function __nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_get_option_value(name: string, opts: vim.api.keyset.option)
@@ -2704,6 +2849,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_get_option_value(name, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_get_proc(pid: integer)
@@ -2718,6 +2864,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_proc(pid:Int):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_get_proc_children(pid: integer)
@@ -2732,6 +2879,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_proc_children(pid:Int):lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_runtime_file(name: string, all: boolean)
@@ -2757,6 +2905,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_runtime_file(name:String, all:Bool):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function vim.api.nvim_get_var(name: string)
@@ -2773,6 +2922,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_var(name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_get_vvar(name: string)
@@ -2789,6 +2939,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_get_vvar(name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_input(keys: string)
@@ -2820,6 +2971,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_input(keys:String):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_input_mouse(button: string, action: string, modifier: string, grid: integer, row: integer, col: integer)
@@ -2862,6 +3014,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_input_mouse(button:String, action:String, modifier:String, grid:Int, row:Int, col:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_list_bufs()
@@ -2879,6 +3032,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_list_bufs():lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_list_chans()
@@ -2895,6 +3049,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_list_chans():lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_list_runtime_paths()
@@ -2909,6 +3064,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_list_runtime_paths():lua.Table<Int, String>;
+
 	/**
 		```lua
 		function vim.api.nvim_list_tabpages()
@@ -2923,6 +3079,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_list_tabpages():lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_list_uis()
@@ -2951,6 +3108,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_list_uis():lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_list_wins()
@@ -2965,9 +3123,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_list_wins():lua.Table<Int, Int>;
+
 	@:native("nvim_load_context")
 	@:luaDotMethod
 	private function __nvim_load_context(dict:lua.Table<String, Any>):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_load_context(dict: table<string, any>)
@@ -2984,9 +3144,11 @@ extern class Api {
 		final dict:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dict;
 		return __nvim_load_context(dict);
 	}
+
 	@:native("nvim_notify")
 	@:luaDotMethod
 	private function __nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_notify(msg: string, log_level: integer, opts: table<string, any>)
@@ -2998,9 +3160,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __nvim_notify(msg, log_level, opts);
 	}
+
 	@:native("nvim_open_term")
 	@:luaDotMethod
 	private function __nvim_open_term(buffer:Int, opts:nvim.type.vim.api.keyset.OpenTerm):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_open_term(buffer: integer, opts: vim.api.keyset.open_term)
@@ -3051,9 +3215,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.OpenTerm> = opts;
 		return __nvim_open_term(buffer, opts);
 	}
+
 	@:native("nvim_open_win")
 	@:luaDotMethod
 	private function __nvim_open_win(buffer:Int, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_open_win(buffer: integer, enter: boolean, config: vim.api.keyset.win_config)
@@ -3238,6 +3404,7 @@ extern class Api {
 		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_open_win(buffer, enter, config);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_out_write(str: string)
@@ -3246,9 +3413,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_out_write(str:String):Dynamic;
+
 	@:native("nvim_parse_cmd")
 	@:luaDotMethod
 	private function __nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd;
+
 	/**
 		```lua
 		function vim.api.nvim_parse_cmd(str: string, opts: vim.api.keyset.empty)
@@ -3321,6 +3490,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_parse_cmd(str, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_parse_expression(expr: string, flags: string, highlight: boolean)
@@ -3410,6 +3580,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_parse_expression(expr:String, flags:String, highlight:Bool):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_paste(data: string, crlf: boolean, phase: integer)
@@ -3460,9 +3631,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_paste(data:String, crlf:Bool, phase:Int):Bool;
+
 	@:native("nvim_put")
 	@:luaDotMethod
 	private function __nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_put(lines: string[], type: string, after: boolean, follow: boolean)
@@ -3491,6 +3664,7 @@ extern class Api {
 		final lines:nvim.helper.Native.LuaArray<String> = lines;
 		return __nvim_put(lines, type, after, follow);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_replace_termcodes(str: string, from_part: boolean, do_lt: boolean, special: boolean)
@@ -3516,9 +3690,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_replace_termcodes(str:String, from_part:Bool, do_lt:Bool, special:Bool):String;
+
 	@:native("nvim_select_popupmenu_item")
 	@:luaDotMethod
 	private function __nvim_select_popupmenu_item(item:Int, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_select_popupmenu_item(item: integer, insert: boolean, finish: boolean, opts: vim.api.keyset.empty)
@@ -3550,6 +3726,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_select_popupmenu_item(item, insert, finish, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_set_current_buf(buffer: integer)
@@ -3563,6 +3740,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_current_buf(buffer:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_current_dir(dir: string)
@@ -3576,6 +3754,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_current_dir(dir:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_current_line(line: string)
@@ -3589,6 +3768,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_current_line(line:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_current_tabpage(tabpage: integer)
@@ -3602,6 +3782,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_current_tabpage(tabpage:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_current_win(window: integer)
@@ -3615,9 +3796,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_current_win(window:Int):Dynamic;
+
 	@:native("nvim_set_decoration_provider")
 	@:luaDotMethod
 	private function __nvim_set_decoration_provider(ns_id:Int, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_decoration_provider(ns_id: integer, opts: vim.api.keyset.set_decoration_provider)
@@ -3684,9 +3867,11 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.SetDecorationProvider> = opts;
 		return __nvim_set_decoration_provider(ns_id, opts);
 	}
+
 	@:native("nvim_set_hl")
 	@:luaDotMethod
 	private function __nvim_set_hl(ns_id:Int, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_hl(ns_id: integer, name: string, val: vim.api.keyset.highlight)
@@ -3750,6 +3935,7 @@ extern class Api {
 		final val:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Highlight> = val;
 		return __nvim_set_hl(ns_id, name, val);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_set_hl_ns(ns_id: integer)
@@ -3764,6 +3950,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_hl_ns(ns_id:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_hl_ns_fast(ns_id: integer)
@@ -3781,9 +3968,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_hl_ns_fast(ns_id:Int):Dynamic;
+
 	@:native("nvim_set_keymap")
 	@:luaDotMethod
 	private function __nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_keymap(mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
@@ -3833,6 +4022,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_set_keymap(mode, lhs, rhs, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_set_option(name: string, value: any)
@@ -3841,9 +4031,11 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_set_option(name:String, value:Any):Dynamic;
+
 	@:native("nvim_set_option_value")
 	@:luaDotMethod
 	private function __nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_option_value(name: string, value: any, opts: vim.api.keyset.option)
@@ -3872,6 +4064,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_set_option_value(name, value, opts);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_set_var(name: string, value: any)
@@ -3887,6 +4080,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_var(name:String, value:Any):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_set_vvar(name: string, value: any)
@@ -3902,6 +4096,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_set_vvar(name:String, value:Any):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_strwidth(text: string)
@@ -3919,6 +4114,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_strwidth(text:String):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_del_var(tabpage: integer, name: string)
@@ -3934,6 +4130,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_del_var(tabpage:Int, name:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_number(tabpage: integer)
@@ -3950,6 +4147,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_get_number(tabpage:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_var(tabpage: integer, name: string)
@@ -3968,6 +4166,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_get_var(tabpage:Int, name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_win(tabpage: integer)
@@ -3984,6 +4183,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_get_win(tabpage:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_is_valid(tabpage: integer)
@@ -4000,6 +4200,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_is_valid(tabpage:Int):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_list_wins(tabpage: integer)
@@ -4016,6 +4217,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_list_wins(tabpage:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_set_var(tabpage: integer, name: string, value: any)
@@ -4033,6 +4235,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_set_var(tabpage:Int, name:String, value:Any):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_tabpage_set_win(tabpage: integer, win: integer)
@@ -4048,6 +4251,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_tabpage_set_win(tabpage:Int, win:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_call(window: integer, fun: function)
@@ -4073,6 +4277,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_call(window:Int, fun:haxe.Constraints.Function):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_win_close(window: integer, force: boolean)
@@ -4091,6 +4296,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_close(window:Int, force:Bool):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_del_var(window: integer, name: string)
@@ -4106,6 +4312,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_del_var(window:Int, name:String):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_buf(window: integer)
@@ -4122,6 +4329,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_buf(window:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_config(window: integer)
@@ -4142,6 +4350,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_config(window:Int):nvim.type.vim.api.keyset.WinConfig;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_cursor(window: integer)
@@ -4163,6 +4372,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_cursor(window:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_height(window: integer)
@@ -4179,6 +4389,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_height(window:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_number(window: integer)
@@ -4195,6 +4406,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_number(window:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_option(window: integer, name: string)
@@ -4204,6 +4416,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_win_get_option(window:Int, name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_position(window: integer)
@@ -4220,6 +4433,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_position(window:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_tabpage(window: integer)
@@ -4236,6 +4450,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_tabpage(window:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_var(window: integer, name: string)
@@ -4254,6 +4469,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_var(window:Int, name:String):Any;
+
 	/**
 		```lua
 		function vim.api.nvim_win_get_width(window: integer)
@@ -4270,6 +4486,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_get_width(window:Int):Int;
+
 	/**
 		```lua
 		function vim.api.nvim_win_hide(window: integer)
@@ -4288,6 +4505,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_hide(window:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_is_valid(window: integer)
@@ -4304,6 +4522,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_is_valid(window:Int):Bool;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_buf(window: integer, buffer: integer)
@@ -4319,9 +4538,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_set_buf(window:Int, buffer:Int):Dynamic;
+
 	@:native("nvim_win_set_config")
 	@:luaDotMethod
 	private function __nvim_win_set_config(window:Int, config:nvim.type.vim.api.keyset.WinConfig):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_config(window: integer, config: vim.api.keyset.win_config)
@@ -4347,9 +4568,11 @@ extern class Api {
 		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_win_set_config(window, config);
 	}
+
 	@:native("nvim_win_set_cursor")
 	@:luaDotMethod
 	private function __nvim_win_set_cursor(window:Int, pos:lua.Table<Int, Int>):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_cursor(window: integer, pos: integer[])
@@ -4368,6 +4591,7 @@ extern class Api {
 		final pos:nvim.helper.Native.LuaArray<Int> = pos;
 		return __nvim_win_set_cursor(window, pos);
 	}
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_height(window: integer, height: integer)
@@ -4383,6 +4607,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_set_height(window:Int, height:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_hl_ns(window: integer, ns_id: integer)
@@ -4400,6 +4625,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_set_hl_ns(window:Int, ns_id:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_option(window: integer, name: string, value: any)
@@ -4408,6 +4634,7 @@ extern class Api {
 	@:luaDotMethod
 	@:deprecated
 	function nvim_win_set_option(window:Int, name:String, value:Any):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_var(window: integer, name: string, value: any)
@@ -4425,6 +4652,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_set_var(window:Int, name:String, value:Any):Dynamic;
+
 	/**
 		```lua
 		function vim.api.nvim_win_set_width(window: integer, width: integer)
@@ -4441,9 +4669,11 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim_win_set_width(window:Int, width:Int):Dynamic;
+
 	@:native("nvim_win_text_height")
 	@:luaDotMethod
 	private function __nvim_win_text_height(window:Int, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any>;
+
 	/**
 		```lua
 		function vim.api.nvim_win_text_height(window: integer, opts: vim.api.keyset.win_text_height)
@@ -4489,6 +4719,7 @@ extern class Api {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinTextHeight> = opts;
 		return __nvim_win_text_height(window, opts);
 	}
+
 }
 
 /**
@@ -4513,6 +4744,7 @@ extern class Base64 {
 	**/
 	@:luaDotMethod
 	function decode(str:String):String;
+
 	/**
 		```lua
 		function vim.base64.encode(str: string)
@@ -4529,6 +4761,7 @@ extern class Base64 {
 	**/
 	@:luaDotMethod
 	function encode(str:String):String;
+
 }
 
 /**
@@ -4569,36 +4802,42 @@ extern class Fn {
 		```
 	**/
 	var GetLuaIndent : Dynamic;
+
 	/**
 		```lua
 		(global) table.GetLuaIndentIntern: unknown
 		```
 	**/
 	var GetLuaIndentIntern : Dynamic;
+
 	/**
 		```lua
 		(global) table.MatchDisable: unknown
 		```
 	**/
 	var MatchDisable : Dynamic;
+
 	/**
 		```lua
 		(global) table.MatchEnable: unknown
 		```
 	**/
 	var MatchEnable : Dynamic;
+
 	/**
 		```lua
 		(global) table.NetUserPass: unknown
 		```
 	**/
 	var NetUserPass : Dynamic;
+
 	/**
 		```lua
 		(global) table.NetrwStatusLine: unknown
 		```
 	**/
 	var NetrwStatusLine : Dynamic;
+
 	/**
 		```lua
 		function table.abs(expr: number)
@@ -4621,6 +4860,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function abs(expr:Float):Float;
+
 	/**
 		```lua
 		function table.acos(expr: number)
@@ -4643,6 +4883,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function acos(expr:Float):Float;
+
 	/**
 		```lua
 		function table.add(object: any, expr: any)
@@ -4665,6 +4906,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function add(object:Any, expr:Any):Any;
+
 	/**
 		```lua
 		function (expr: number, expr1: number)
@@ -4683,6 +4925,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function and(expr:Float, expr1:Float):Int;
+
 	/**
 		```lua
 		function table.api_info()
@@ -4699,6 +4942,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function api_info():lua.Table.AnyTable;
+
 	/**
 		```lua
 		function table.append(lnum: string|integer, text: string|string[])
@@ -4730,6 +4974,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function append(lnum:haxe.extern.EitherType<Int, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+
 	/**
 		```lua
 		function table.appendbufline(buf: string|integer, lnum: integer, text: string)
@@ -4767,6 +5012,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function appendbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:String):Float;
+
 	/**
 		```lua
 		function table.argc(winid?: integer)
@@ -4786,6 +5032,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function argc(?winid:Int):Int;
+
 	/**
 		```lua
 		function table.argidx()
@@ -4799,6 +5046,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function argidx():Int;
+
 	/**
 		```lua
 		function table.arglistid(winnr?: integer, tabnr?: integer)
@@ -4820,6 +5068,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function arglistid(?winnr:Int, ?tabnr:Int):Int;
+
 	/**
 		```lua
 		function table.argv(nr?: integer, winid?: integer)
@@ -4848,6 +5097,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function argv(?nr:Int, ?winid:Int):haxe.extern.EitherType<String, lua.Table<Int, String>>;
+
 	/**
 		```lua
 		function table.asin(expr: any)
@@ -4870,6 +5120,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function asin(expr:Any):Float;
+
 	/**
 		```lua
 		function table.assert_beeps(cmd: string)
@@ -4892,6 +5143,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_beeps(cmd:String):Float;
+
 	/**
 		```lua
 		function table.assert_equal(expected: any, actual: any, msg?: any)
@@ -4925,6 +5177,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_equal(expected:Any, actual:Any, ?msg:Any):Float;
+
 	/**
 		```lua
 		function table.assert_equalfile(fname_one: string, fname_two: string)
@@ -4948,6 +5201,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_equalfile(fname_one:String, fname_two:String):Float;
+
 	/**
 		```lua
 		function table.assert_exception(error: any, msg?: any)
@@ -4978,6 +5232,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_exception(error:Any, ?msg:Any):Float;
+
 	/**
 		```lua
 		function table.assert_fails(cmd: string, error?: any, msg?: any, lnum?: integer, context?: any)
@@ -5028,6 +5283,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Int, ?context:Any):Float;
+
 	/**
 		```lua
 		function table.assert_false(actual: any, msg?: any)
@@ -5055,6 +5311,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_false(actual:Any, ?msg:Any):Float;
+
 	/**
 		```lua
 		function table.assert_inrange(lower: number, upper: number, actual: number, msg?: string)
@@ -5079,6 +5336,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):Float;
+
 	/**
 		```lua
 		function table.assert_match(pattern: string, actual: string, msg?: string)
@@ -5115,6 +5373,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_match(pattern:String, actual:String, ?msg:String):Float;
+
 	/**
 		```lua
 		function table.assert_nobeep(cmd: string)
@@ -5136,6 +5395,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_nobeep(cmd:String):Float;
+
 	/**
 		```lua
 		function table.assert_notequal(expected: any, actual: any, msg?: any)
@@ -5157,6 +5417,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_notequal(expected:Any, actual:Any, ?msg:Any):Float;
+
 	/**
 		```lua
 		function table.assert_notmatch(pattern: string, actual: string, msg?: string)
@@ -5178,6 +5439,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_notmatch(pattern:String, actual:String, ?msg:String):Float;
+
 	/**
 		```lua
 		function table.assert_report(msg: string)
@@ -5198,6 +5460,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_report(msg:String):Float;
+
 	/**
 		```lua
 		function table.assert_true(actual: any, msg?: string)
@@ -5223,6 +5486,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function assert_true(actual:Any, ?msg:String):Float;
+
 	/**
 		```lua
 		function table.atan(expr: number)
@@ -5243,6 +5507,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function atan(expr:Float):Float;
+
 	/**
 		```lua
 		function table.atan2(expr1: number, expr2: number)
@@ -5264,6 +5529,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function atan2(expr1:Float, expr2:Float):Float;
+
 	/**
 		```lua
 		function table.blob2list(blob: any)
@@ -5281,6 +5547,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function blob2list(blob:Any):lua.Table<Int, Any>;
+
 	/**
 		```lua
 		function table.browse(save: any, title: string, initdir: string, default: string)
@@ -5308,6 +5575,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function browse(save:Any, title:String, initdir:String, default_:String):Float;
+
 	/**
 		```lua
 		function table.browsedir(title: string, initdir: string)
@@ -5336,6 +5604,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function browsedir(title:String, initdir:String):Float;
+
 	/**
 		```lua
 		function table.bufadd(name: string)
@@ -5359,6 +5628,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufadd(name:String):Int;
+
 	/**
 		```lua
 		function table.bufexists(buf: any)
@@ -5397,6 +5667,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufexists(buf:Any):Float;
+
 	/**
 		```lua
 		function table.buffer_exists(...any)
@@ -5417,6 +5688,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function buffer_exists(___:haxe.Rest<Any>):Float;
+
 	/**
 		```lua
 		function table.buffer_name(...any)
@@ -5430,6 +5702,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function buffer_name(___:haxe.Rest<Any>):String;
+
 	/**
 		```lua
 		function table.buffer_number(...any)
@@ -5443,6 +5716,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function buffer_number(___:haxe.Rest<Any>):Int;
+
 	/**
 		```lua
 		function table.buflisted(buf: any)
@@ -5464,6 +5738,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function buflisted(buf:Any):Float;
+
 	/**
 		```lua
 		function table.bufload(buf: any)
@@ -5482,6 +5757,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufload(buf:Any):Dynamic;
+
 	/**
 		```lua
 		function table.bufloaded(buf: any)
@@ -5503,6 +5779,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufloaded(buf:Any):Float;
+
 	/**
 		```lua
 		function table.bufname(buf?: string|integer)
@@ -5543,6 +5820,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufname(?buf:haxe.extern.EitherType<Int, String>):String;
+
 	/**
 		```lua
 		function table.bufnr(buf?: string|integer, create?: any)
@@ -5566,6 +5844,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufnr(?buf:haxe.extern.EitherType<Int, String>, ?create:Any):Int;
+
 	/**
 		```lua
 		function table.bufwinid(buf: any)
@@ -5586,6 +5865,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufwinid(buf:Any):Int;
+
 	/**
 		```lua
 		function table.bufwinnr(buf: any)
@@ -5606,6 +5886,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function bufwinnr(buf:Any):Int;
+
 	/**
 		```lua
 		function table.byte2line(byte: any)
@@ -5625,6 +5906,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function byte2line(byte:Any):Int;
+
 	/**
 		```lua
 		function table.byteidx(expr: any, nr: integer, utf16?: any)
@@ -5670,6 +5952,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function byteidx(expr:Any, nr:Int, ?utf16:Any):Int;
+
 	/**
 		```lua
 		function table.byteidxcomp(expr: any, nr: integer, utf16?: any)
@@ -5690,6 +5973,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function byteidxcomp(expr:Any, nr:Int, ?utf16:Any):Int;
+
 	/**
 		```lua
 		function table.call(func: any, arglist: any, dict?: any)
@@ -5708,6 +5992,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function call(func:Any, arglist:Any, ?dict:Any):Any;
+
 	/**
 		```lua
 		function table.ceil(expr: number)
@@ -5731,6 +6016,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function ceil(expr:Float):Float;
+
 	/**
 		```lua
 		function table.chanclose(id: integer, stream?: string)
@@ -5757,6 +6043,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function chanclose(id:Int, ?stream:String):Float;
+
 	/**
 		```lua
 		function table.changenr()
@@ -5775,6 +6062,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function changenr():Int;
+
 	/**
 		```lua
 		function table.chansend(id: number, data: string|string[])
@@ -5809,6 +6097,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function chansend(id:Float, data:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+
 	/**
 		```lua
 		function table.char2nr(string: string, utf8?: any)
@@ -5840,6 +6129,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function char2nr(string:String, ?utf8:Any):Float;
+
 	/**
 		```lua
 		function table.charclass(string: string)
@@ -5870,6 +6160,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function charclass(string:String):haxe.extern.EitherType<Float, String>;
+
 	/**
 		```lua
 		function table.charcol(expr: string|any[], winid?: integer)
@@ -5889,6 +6180,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function charcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Int):Int;
+
 	/**
 		```lua
 		function table.charidx(string: string, idx: integer, countcc?: boolean, utf16?: boolean)
@@ -5932,6 +6224,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function charidx(string:String, idx:Int, ?countcc:Bool, ?utf16:Bool):Int;
+
 	/**
 		```lua
 		function table.chdir(dir: string)
@@ -5964,6 +6257,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function chdir(dir:String):String;
+
 	/**
 		```lua
 		function table.cindent(lnum: string|integer)
@@ -5982,6 +6276,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function cindent(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.clearmatches(win?: integer)
@@ -5996,6 +6291,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function clearmatches(?win:Int):Dynamic;
+
 	/**
 		```lua
 		function table.col(expr: string|any[], winid?: integer)
@@ -6044,9 +6340,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function col(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Int):Int;
+
 	@:native("complete")
 	@:luaDotMethod
 	private function __complete(startcol:Int, matches:lua.Table<Int, Any>):Dynamic;
+
 	/**
 		```lua
 		function table.complete(startcol: integer, matches: any[])
@@ -6087,6 +6385,7 @@ extern class Fn {
 		final matches:nvim.helper.Native.LuaArray<Any> = matches;
 		return __complete(startcol, matches);
 	}
+
 	/**
 		```lua
 		function table.complete_add(expr: any)
@@ -6113,6 +6412,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function complete_add(expr:Any):Float;
+
 	/**
 		```lua
 		function table.complete_check()
@@ -6137,9 +6437,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function complete_check():Float;
+
 	@:native("complete_info")
 	@:luaDotMethod
 	private function __complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function table.complete_info(what?: any[])
@@ -6218,6 +6520,7 @@ extern class Fn {
 		final what:nvim.helper.Native.LuaArray<Any> = what;
 		return __complete_info(what);
 	}
+
 	/**
 		```lua
 		function table.confirm(msg: string, choices?: string, default?: integer, type?: string)
@@ -6279,6 +6582,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function confirm(msg:String, ?choices:String, ?default_:Int, ?type:String):Int;
+
 	/**
 		```lua
 		function table.copy(expr: <T>)
@@ -6298,6 +6602,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function copy<T>(expr:T):T;
+
 	/**
 		```lua
 		function table.cos(expr: number)
@@ -6317,6 +6622,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function cos(expr:Float):Float;
+
 	/**
 		```lua
 		function table.cosh(expr: number)
@@ -6337,6 +6643,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function cosh(expr:Float):Float;
+
 	/**
 		```lua
 		function table.count(comp: string|table|any[], expr: any, ic?: boolean, start?: integer)
@@ -6359,6 +6666,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function count(comp:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr:Any, ?ic:Bool, ?start:Int):Int;
+
 	/**
 		```lua
 		function table.ctxget(index?: integer)
@@ -6373,6 +6681,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function ctxget(?index:Int):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function table.ctxpop()
@@ -6386,9 +6695,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function ctxpop():Any;
+
 	@:native("ctxpush")
 	@:luaDotMethod
 	private function __ctxpush(?types:lua.Table<Int, String>):Any;
+
 	/**
 		```lua
 		function table.ctxpush(types?: string[])
@@ -6407,9 +6718,11 @@ extern class Fn {
 		final types:nvim.helper.Native.LuaArray<String> = types;
 		return __ctxpush(types);
 	}
+
 	@:native("ctxset")
 	@:luaDotMethod
 	private function __ctxset(context:lua.Table.AnyTable, ?index:Int):Int;
+
 	/**
 		```lua
 		function table.ctxset(context: table, index?: integer)
@@ -6427,6 +6740,7 @@ extern class Fn {
 		final context:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = context;
 		return __ctxset(context, index);
 	}
+
 	/**
 		```lua
 		function table.ctxsize()
@@ -6439,6 +6753,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function ctxsize():Any;
+
 	/**
 		```lua
 		function table.cursor(lnum: string|integer, col?: integer, off?: integer)
@@ -6487,6 +6802,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function cursor(lnum:haxe.extern.EitherType<Int, String>, ?col:Int, ?off:Int):Any;
+
 	/**
 		```lua
 		function table.debugbreak(pid: integer)
@@ -6505,6 +6821,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function debugbreak(pid:Int):Any;
+
 	/**
 		```lua
 		function table.deepcopy(expr: <T>, noref?: boolean)
@@ -6534,6 +6851,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function deepcopy<T>(expr:T, ?noref:Bool):T;
+
 	/**
 		```lua
 		function table.delete(fname: string, flags?: string)
@@ -6562,6 +6880,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function delete(fname:String, ?flags:String):Int;
+
 	/**
 		```lua
 		function table.deletebufline(buf: string|integer, first: string|integer, last?: string|integer)
@@ -6585,9 +6904,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function deletebufline(buf:haxe.extern.EitherType<Int, String>, first:haxe.extern.EitherType<Int, String>, ?last:haxe.extern.EitherType<Int, String>):Any;
+
 	@:native("dictwatcheradd")
 	@:luaDotMethod
 	private function __dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
+
 	/**
 		```lua
 		function table.dictwatcheradd(dict: table, pattern: string, callback: function)
@@ -6639,6 +6960,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __dictwatcheradd(dict, pattern, callback);
 	}
+
 	/**
 		```lua
 		function table.dictwatcherdel(dict: any, pattern: string, callback: function)
@@ -6653,6 +6975,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function dictwatcherdel(dict:Any, pattern:String, callback:haxe.Constraints.Function):Any;
+
 	/**
 		```lua
 		function table.did_filetype()
@@ -6674,6 +6997,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function did_filetype():Int;
+
 	/**
 		```lua
 		function table.diff_filler(lnum: string|integer)
@@ -6692,6 +7016,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function diff_filler(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.diff_hlID(lnum: string|integer, col: integer)
@@ -6712,6 +7037,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function diff_hlID(lnum:haxe.extern.EitherType<Int, String>, col:Int):Any;
+
 	/**
 		```lua
 		function table.digraph_get(chars: string)
@@ -6738,6 +7064,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function digraph_get(chars:String):String;
+
 	/**
 		```lua
 		function table.digraph_getlist(listall?: boolean)
@@ -6762,6 +7089,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function digraph_getlist(?listall:Bool):lua.Table<Int, lua.Table<Int, String>>;
+
 	/**
 		```lua
 		function table.digraph_set(chars: string, digraph: string)
@@ -6789,9 +7117,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function digraph_set(chars:String, digraph:String):Any;
+
 	@:native("digraph_setlist")
 	@:luaDotMethod
 	private function __digraph_setlist(digraphlist:lua.Table<Int, lua.Table<Int, String>>):Any;
+
 	/**
 		```lua
 		function table.digraph_setlist(digraphlist: table<integer, string[]>)
@@ -6818,6 +7148,7 @@ extern class Fn {
 		final digraphlist:nvim.helper.Native.LuaArray<lua.Table<Int, String>> = digraphlist;
 		return __digraph_setlist(digraphlist);
 	}
+
 	/**
 		```lua
 		function table.empty(expr: any)
@@ -6836,6 +7167,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function empty(expr:Any):Int;
+
 	/**
 		```lua
 		function table.environ()
@@ -6854,6 +7186,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function environ():Any;
+
 	/**
 		```lua
 		function table.escape(string: string, chars: string)
@@ -6871,6 +7204,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function escape(string:String, chars:String):String;
+
 	/**
 		```lua
 		function table.eval(string: string)
@@ -6887,6 +7221,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function eval(string:String):Any;
+
 	/**
 		```lua
 		function table.eventhandler()
@@ -6902,6 +7237,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function eventhandler():Any;
+
 	/**
 		```lua
 		function table.executable(expr: string)
@@ -6947,6 +7283,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function executable(expr:String):Float;
+
 	/**
 		```lua
 		function table.execute(command: string|string[], silent?: ''|'silent!'|'silent')
@@ -6992,6 +7329,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function execute(command:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?silent:String):String;
+
 	/**
 		```lua
 		function table.exepath(expr: string)
@@ -7007,6 +7345,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function exepath(expr:String):String;
+
 	/**
 		```lua
 		function table.exists(expr: string)
@@ -7112,6 +7451,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function exists(expr:String):Float;
+
 	/**
 		```lua
 		function table.exp(expr: number)
@@ -7132,6 +7472,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function exp(expr:Float):Any;
+
 	/**
 		```lua
 		function table.expand(string: string, nosuf?: boolean, list?: false)
@@ -7253,9 +7594,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function expand(string:String, ?nosuf:Bool, ?list:Null<Bool>):String;
+
 	@:native("expandcmd")
 	@:luaDotMethod
 	private function __expandcmd(string:String, ?options:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.expandcmd(string: string, options?: table)
@@ -7291,9 +7634,11 @@ extern class Fn {
 		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __expandcmd(string, options);
 	}
+
 	@:native("extend")
 	@:luaDotMethod
 	private function __extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.extend(expr1: table, expr2: table, expr3?: table)
@@ -7344,9 +7689,11 @@ extern class Fn {
 		final expr3:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr3;
 		return __extend(expr1, expr2, expr3);
 	}
+
 	@:native("extendnew")
 	@:luaDotMethod
 	private function __extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.extendnew(expr1: table, expr2: table, expr3?: table)
@@ -7365,6 +7712,7 @@ extern class Fn {
 		final expr3:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr3;
 		return __extendnew(expr1, expr2, expr3);
 	}
+
 	/**
 		```lua
 		function table.feedkeys(string: string, mode?: string)
@@ -7420,6 +7768,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function feedkeys(string:String, ?mode:String):Any;
+
 	/**
 		```lua
 		function table.file_readable(file: string)
@@ -7433,6 +7782,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function file_readable(file:String):Any;
+
 	/**
 		```lua
 		function table.filecopy(from: string, to: string)
@@ -7458,6 +7808,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function filecopy(from:String, to:String):Float;
+
 	/**
 		```lua
 		function table.filereadable(file: string)
@@ -7491,6 +7842,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function filereadable(file:String):Float;
+
 	/**
 		```lua
 		function table.filewritable(file: string)
@@ -7513,6 +7865,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function filewritable(file:String):Float;
+
 	/**
 		```lua
 		function table.filter(expr1: string|table, expr2: string|function)
@@ -7575,6 +7928,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function filter(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+
 	/**
 		```lua
 		function table.finddir(name: string, path?: string, count?: integer)
@@ -7602,6 +7956,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function finddir(name:String, ?path:String, ?count:Int):Any;
+
 	/**
 		```lua
 		function table.findfile(name: string, path?: string, count?: any)
@@ -7619,9 +7974,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function findfile(name:String, ?path:String, ?count:Any):Any;
+
 	@:native("flatten")
 	@:luaDotMethod
 	private function __flatten(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+
 	/**
 		```lua
 		function table.flatten(list: any[], maxdepth?: integer)
@@ -7658,9 +8015,11 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __flatten(list, maxdepth);
 	}
+
 	@:native("flattennew")
 	@:luaDotMethod
 	private function __flattennew(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+
 	/**
 		```lua
 		function table.flattennew(list: any[], maxdepth?: integer)
@@ -7681,6 +8040,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __flattennew(list, maxdepth);
 	}
+
 	/**
 		```lua
 		function table.float2nr(expr: number)
@@ -7712,6 +8072,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function float2nr(expr:Float):Any;
+
 	/**
 		```lua
 		function table.floor(expr: number)
@@ -7734,6 +8095,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function floor(expr:Float):Any;
+
 	/**
 		```lua
 		function table.fmod(expr1: number, expr2: number)
@@ -7759,6 +8121,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function fmod(expr1:Float, expr2:Float):Any;
+
 	/**
 		```lua
 		function table.fnameescape(string: string)
@@ -7785,6 +8148,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function fnameescape(string:String):String;
+
 	/**
 		```lua
 		function table.fnamemodify(fname: string, mods: string)
@@ -7811,6 +8175,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function fnamemodify(fname:String, mods:String):String;
+
 	/**
 		```lua
 		function table.foldclosed(lnum: string|integer)
@@ -7827,6 +8192,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function foldclosed(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.foldclosedend(lnum: string|integer)
@@ -7843,6 +8209,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function foldclosedend(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.foldlevel(lnum: string|integer)
@@ -7864,6 +8231,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function foldlevel(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.foldtext()
@@ -7890,6 +8258,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function foldtext():String;
+
 	/**
 		```lua
 		function table.foldtextresult(lnum: string|integer)
@@ -7908,6 +8277,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function foldtextresult(lnum:haxe.extern.EitherType<Int, String>):String;
+
 	/**
 		```lua
 		function table.foreach(expr1: string|table, expr2: string|function)
@@ -7952,12 +8322,14 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function foreach(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):haxe.extern.EitherType<String, lua.Table.AnyTable>;
+
 	/**
 		```lua
 		(global) table.foreground: unknown
 		```
 	**/
 	var foreground : Dynamic;
+
 	/**
 		```lua
 		function table.fullcommand(name: string)
@@ -7979,6 +8351,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function fullcommand(name:String):String;
+
 	/**
 		```lua
 		function table.funcref(name: string, arglist?: any, dict?: any)
@@ -8000,6 +8373,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function funcref(name:String, ?arglist:Any, ?dict:Any):Any;
+
 	/**
 		```lua
 		function (name: string, arglist?: any, dict?: any)
@@ -8093,6 +8467,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:native("function")
 	function function_(name:String, ?arglist:Any, ?dict:Any):Any;
+
 	/**
 		```lua
 		function table.garbagecollect(atexit?: boolean)
@@ -8122,9 +8497,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function garbagecollect(?atexit:Bool):Any;
+
 	@:native("get")
 	@:luaDotMethod
 	private function __get(list:lua.Table<Int, Any>, idx:Int, ?default_:Any):Any;
+
 	/**
 		```lua
 		function table.get(list: any[], idx: integer, default?: any)
@@ -8200,6 +8577,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __get(list, idx, default_);
 	}
+
 	/**
 		```lua
 		function table.getbufinfo(buf?: string|integer)
@@ -8284,6 +8662,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getbufinfo(?buf:haxe.extern.EitherType<Int, String>):lua.Table<Int, nvim.type.vim.fn.getbufinfo.ret.Item>;
+
 	/**
 		```lua
 		function table.getbufline(buf: string|integer, lnum: integer, end_?: integer)
@@ -8319,6 +8698,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, ?end_:Int):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.getbufoneline(buf: string|integer, lnum: integer)
@@ -8332,6 +8712,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getbufoneline(buf:haxe.extern.EitherType<Int, String>, lnum:Int):String;
+
 	/**
 		```lua
 		function table.getbufvar(buf: string|integer, varname: string, def?: any)
@@ -8362,6 +8743,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getbufvar(buf:haxe.extern.EitherType<Int, String>, varname:String, ?def:Any):Any;
+
 	/**
 		```lua
 		function table.getcellwidths()
@@ -8377,6 +8759,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcellwidths():Any;
+
 	/**
 		```lua
 		function table.getchangelist(buf?: string|integer)
@@ -8402,9 +8785,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getchangelist(?buf:haxe.extern.EitherType<Int, String>):lua.Table<Int, lua.Table.AnyTable>;
+
 	@:native("getchar")
 	@:luaDotMethod
 	private function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
+
 	/**
 		```lua
 		function table.getchar(expr?: -1|0|1, opts?: table)
@@ -8518,6 +8903,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getchar(expr, opts);
 	}
+
 	/**
 		```lua
 		function table.getcharmod()
@@ -8543,6 +8929,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcharmod():Int;
+
 	/**
 		```lua
 		function table.getcharpos(expr: string)
@@ -8566,6 +8953,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcharpos(expr:String):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.getcharsearch()
@@ -8595,9 +8983,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcharsearch():lua.Table.AnyTable;
+
 	@:native("getcharstr")
 	@:luaDotMethod
 	private function __getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
+
 	/**
 		```lua
 		function table.getcharstr(expr?: -1|0|1, opts?: table)
@@ -8621,6 +9011,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getcharstr(expr, opts);
 	}
+
 	/**
 		```lua
 		function table.getcmdcomplpat()
@@ -8638,6 +9029,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdcomplpat():String;
+
 	/**
 		```lua
 		function table.getcmdcompltype()
@@ -8656,6 +9048,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdcompltype():String;
+
 	/**
 		```lua
 		function table.getcmdline()
@@ -8676,6 +9069,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdline():String;
+
 	/**
 		```lua
 		function table.getcmdpos()
@@ -8694,6 +9088,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdpos():Int;
+
 	/**
 		```lua
 		function table.getcmdprompt()
@@ -8711,6 +9106,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdprompt():String;
+
 	/**
 		```lua
 		function table.getcmdscreenpos()
@@ -8730,6 +9126,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdscreenpos():Int;
+
 	/**
 		```lua
 		function table.getcmdtype()
@@ -8766,6 +9163,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdtype():String;
+
 	/**
 		```lua
 		function table.getcmdwintype()
@@ -8792,6 +9190,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcmdwintype():String;
+
 	/**
 		```lua
 		function table.getcompletion(pat: string, type: string, filtered?: boolean)
@@ -8872,6 +9271,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcompletion(pat:String, type:String, ?filtered:Bool):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.getcurpos(winid?: integer)
@@ -8906,6 +9306,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcurpos(?winid:Int):Any;
+
 	/**
 		```lua
 		function table.getcursorcharpos(winid?: integer)
@@ -8925,6 +9326,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcursorcharpos(?winid:Int):Any;
+
 	/**
 		```lua
 		function table.getcwd(winnr?: integer, tabnr?: integer)
@@ -8950,6 +9352,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getcwd(?winnr:Int, ?tabnr:Int):String;
+
 	/**
 		```lua
 		function table.getenv(name: string)
@@ -8968,6 +9371,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getenv(name:String):String;
+
 	/**
 		```lua
 		function table.getfontname(name?: string)
@@ -8989,6 +9393,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getfontname(?name:String):String;
+
 	/**
 		```lua
 		function table.getfperm(fname: string)
@@ -9015,6 +9420,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getfperm(fname:String):String;
+
 	/**
 		```lua
 		function table.getfsize(fname: string)
@@ -9032,6 +9438,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getfsize(fname:String):Int;
+
 	/**
 		```lua
 		function table.getftime(fname: string)
@@ -9048,6 +9455,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getftime(fname:String):Int;
+
 	/**
 		```lua
 		function table.getftype(fname: string)
@@ -9090,6 +9498,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getftype(fname:String):String;
+
 	/**
 		```lua
 		function table.getjumplist(winnr?: integer, tabnr?: integer)
@@ -9119,6 +9528,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getjumplist(?winnr:Int, ?tabnr:Int):nvim.type.vim.fn.getjumplist.Ret;
+
 	/**
 		```lua
 		function table.getline(lnum: string|integer, end_?: false)
@@ -9173,9 +9583,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getline(lnum:haxe.extern.EitherType<Int, String>, ?end_:Null<Bool>):String;
+
 	@:native("getloclist")
 	@:luaDotMethod
 	private function __getloclist(nr:Int, ?what:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.getloclist(nr: integer, what?: table)
@@ -9219,6 +9631,7 @@ extern class Fn {
 		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __getloclist(nr, what);
 	}
+
 	/**
 		```lua
 		function table.getmarklist(buf?: integer)
@@ -9247,6 +9660,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getmarklist(?buf:Null<Int>):lua.Table<Int, nvim.type.vim.fn.getmarklist.ret.Item>;
+
 	/**
 		```lua
 		function table.getmatches(win?: integer)
@@ -9288,6 +9702,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getmatches(?win:Int):Any;
+
 	/**
 		```lua
 		function table.getmousepos()
@@ -9328,6 +9743,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getmousepos():nvim.type.vim.fn.getmousepos.Ret;
+
 	/**
 		```lua
 		function table.getpid()
@@ -9341,6 +9757,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getpid():Int;
+
 	/**
 		```lua
 		function table.getpos(expr: string)
@@ -9409,9 +9826,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getpos(expr:String):lua.Table<Int, Int>;
+
 	@:native("getqflist")
 	@:luaDotMethod
 	private function __getqflist(?what:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.getqflist(what?: table)
@@ -9527,6 +9946,7 @@ extern class Fn {
 		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __getqflist(what);
 	}
+
 	/**
 		```lua
 		function table.getreg(regname?: string, list?: false)
@@ -9579,6 +9999,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getreg(?regname:String, ?list:Null<Bool>):String;
+
 	/**
 		```lua
 		function table.getreginfo(regname?: string)
@@ -9612,9 +10033,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getreginfo(?regname:String):lua.Table.AnyTable;
+
 	@:native("getregion")
 	@:luaDotMethod
 	private function __getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.getregion(pos1: table, pos2: table, opts?: table)
@@ -9683,9 +10106,11 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getregion(pos1, pos2, opts);
 	}
+
 	@:native("getregionpos")
 	@:luaDotMethod
 	private function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Int>>>;
+
 	/**
 		```lua
 		function table.getregionpos(pos1: table, pos2: table, opts?: table)
@@ -9731,6 +10156,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getregionpos(pos1, pos2, opts);
 	}
+
 	/**
 		```lua
 		function table.getregtype(regname?: string)
@@ -9751,9 +10177,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getregtype(?regname:String):String;
+
 	@:native("getscriptinfo")
 	@:luaDotMethod
 	private function __getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret>;
+
 	/**
 		```lua
 		function table.getscriptinfo(opts?: table)
@@ -9802,6 +10230,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getscriptinfo(opts);
 	}
+
 	/**
 		```lua
 		function table.getstacktrace()
@@ -9823,6 +10252,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getstacktrace():lua.Table<Int, lua.Table.AnyTable>;
+
 	/**
 		```lua
 		function table.gettabinfo(tabnr?: integer)
@@ -9845,6 +10275,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function gettabinfo(?tabnr:Int):Any;
+
 	/**
 		```lua
 		function table.gettabvar(tabnr: integer, varname: string, def?: any)
@@ -9864,6 +10295,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function gettabvar(tabnr:Int, varname:String, ?def:Any):Any;
+
 	/**
 		```lua
 		function table.gettabwinvar(tabnr: integer, winnr: integer, varname: string, def?: any)
@@ -9900,6 +10332,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function gettabwinvar(tabnr:Int, winnr:Int, varname:String, ?def:Any):Any;
+
 	/**
 		```lua
 		function table.gettagstack(winnr?: integer)
@@ -9937,6 +10370,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function gettagstack(?winnr:Int):Any;
+
 	/**
 		```lua
 		function table.gettext(text: string)
@@ -9957,6 +10391,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function gettext(text:String):String;
+
 	/**
 		```lua
 		function table.getwininfo(winid?: integer)
@@ -10002,6 +10437,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getwininfo(?winid:Int):lua.Table<Int, nvim.type.vim.fn.getwininfo.ret.Item>;
+
 	/**
 		```lua
 		function table.getwinpos(timeout?: integer)
@@ -10032,6 +10468,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getwinpos(?timeout:Int):Any;
+
 	/**
 		```lua
 		function table.getwinposx()
@@ -10047,6 +10484,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getwinposx():Int;
+
 	/**
 		```lua
 		function table.getwinposy()
@@ -10062,6 +10500,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getwinposy():Int;
+
 	/**
 		```lua
 		function table.getwinvar(winnr: integer, varname: string, def?: any)
@@ -10077,6 +10516,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function getwinvar(winnr:Int, varname:String, ?def:Any):Any;
+
 	/**
 		```lua
 		function table.glob(expr: string, nosuf?: boolean, list?: boolean, alllinks?: boolean)
@@ -10122,6 +10562,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function glob(expr:String, ?nosuf:Bool, ?list:Bool, ?alllinks:Bool):Any;
+
 	/**
 		```lua
 		function table.glob2regpat(string: string)
@@ -10147,6 +10588,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function glob2regpat(string:String):String;
+
 	/**
 		```lua
 		function table.globpath(path: string, expr: string, nosuf?: boolean, list?: boolean, allinks?: boolean)
@@ -10191,6 +10633,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function globpath(path:String, expr:String, ?nosuf:Bool, ?list:Bool, ?allinks:Bool):Any;
+
 	/**
 		```lua
 		function table.has(feature: string)
@@ -10276,9 +10719,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function has(feature:String):Float;
+
 	@:native("has_key")
 	@:luaDotMethod
 	private function __has_key(dict:lua.Table.AnyTable, key:String):Float;
+
 	/**
 		```lua
 		function table.has_key(dict: table, key: string)
@@ -10302,6 +10747,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __has_key(dict, key);
 	}
+
 	/**
 		```lua
 		function table.haslocaldir(winnr?: integer, tabnr?: integer)
@@ -10335,6 +10781,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function haslocaldir(?winnr:Int, ?tabnr:Int):Float;
+
 	/**
 		```lua
 		function table.hasmapto(what: any, mode?: string, abbr?: boolean)
@@ -10382,6 +10829,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function hasmapto(what:Any, ?mode:String, ?abbr:Bool):Float;
+
 	/**
 		```lua
 		function table.highlightID(name: string)
@@ -10395,6 +10843,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function highlightID(name:String):Any;
+
 	/**
 		```lua
 		function table.highlight_exists(name: string)
@@ -10408,6 +10857,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function highlight_exists(name:String):Any;
+
 	/**
 		```lua
 		function table.histadd(history: string, item: any)
@@ -10445,6 +10895,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function histadd(history:String, item:Any):Float;
+
 	/**
 		```lua
 		function table.histdel(history: string, item?: any)
@@ -10494,6 +10945,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function histdel(history:String, ?item:Any):Float;
+
 	/**
 		```lua
 		function table.histget(history: string, index?: string|integer)
@@ -10519,6 +10971,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function histget(history:String, ?index:haxe.extern.EitherType<Int, String>):String;
+
 	/**
 		```lua
 		function table.histnr(history: string)
@@ -10537,6 +10990,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function histnr(history:String):Int;
+
 	/**
 		```lua
 		function table.hlID(name: string)
@@ -10556,6 +11010,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function hlID(name:String):Int;
+
 	/**
 		```lua
 		function table.hlexists(name: string)
@@ -10579,6 +11034,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function hlexists(name:String):Float;
+
 	/**
 		```lua
 		function table.hostname()
@@ -10593,6 +11049,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function hostname():String;
+
 	/**
 		```lua
 		function table.iconv(string: string, from: string, to: string)
@@ -10614,6 +11071,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function iconv(string:String, from:String, to:String):String;
+
 	/**
 		```lua
 		function table.id(expr: any)
@@ -10640,6 +11098,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function id(expr:Any):String;
+
 	/**
 		```lua
 		function table.indent(lnum: string|integer)
@@ -10658,6 +11117,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function indent(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.index(object: any, expr: any, start?: integer, ic?: boolean)
@@ -10695,9 +11155,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function index(object:Any, expr:Any, ?start:Int, ?ic:Bool):Int;
+
 	@:native("indexof")
 	@:luaDotMethod
 	private function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int;
+
 	/**
 		```lua
 		function table.indexof(object: any, expr: any, opts?: table)
@@ -10748,6 +11210,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __indexof(object, expr, opts);
 	}
+
 	/**
 		```lua
 		function table.input(prompt: string, text?: string, completion?: string)
@@ -10875,6 +11338,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function input(prompt:String, ?text:String, ?completion:String):String;
+
 	/**
 		```lua
 		function table.inputdialog(...any)
@@ -10888,9 +11352,11 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function inputdialog(___:haxe.Rest<Any>):Any;
+
 	@:native("inputlist")
 	@:luaDotMethod
 	private function __inputlist(textlist:lua.Table<Int, String>):Any;
+
 	/**
 		```lua
 		function table.inputlist(textlist: string[])
@@ -10919,6 +11385,7 @@ extern class Fn {
 		final textlist:nvim.helper.Native.LuaArray<String> = textlist;
 		return __inputlist(textlist);
 	}
+
 	/**
 		```lua
 		function table.inputrestore()
@@ -10934,6 +11401,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function inputrestore():Int;
+
 	/**
 		```lua
 		function table.inputsave()
@@ -10951,6 +11419,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function inputsave():Int;
+
 	/**
 		```lua
 		function table.inputsecret(prompt: string, text?: string)
@@ -10971,6 +11440,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function inputsecret(prompt:String, ?text:String):String;
+
 	/**
 		```lua
 		function table.insert(object: any, item: any, idx?: integer)
@@ -10997,6 +11467,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function insert(object:Any, item:Any, ?idx:Int):Any;
+
 	/**
 		```lua
 		function table.interrupt()
@@ -11020,6 +11491,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function interrupt():Any;
+
 	/**
 		```lua
 		function table.invert(expr: integer)
@@ -11035,6 +11507,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function invert(expr:Int):Int;
+
 	/**
 		```lua
 		function table.isabsolutepath(path: string)
@@ -11066,6 +11539,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function isabsolutepath(path:String):Float;
+
 	/**
 		```lua
 		function table.isdirectory(directory: string)
@@ -11088,6 +11562,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function isdirectory(directory:String):Float;
+
 	/**
 		```lua
 		function table.isinf(expr: number)
@@ -11113,6 +11588,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function isinf(expr:Float):Float;
+
 	/**
 		```lua
 		function table.islocked(expr: any)
@@ -11143,6 +11619,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function islocked(expr:Any):Float;
+
 	/**
 		```lua
 		function table.isnan(expr: number)
@@ -11164,9 +11641,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function isnan(expr:Float):Float;
+
 	@:native("items")
 	@:luaDotMethod
 	private function __items(dict:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.items(dict: table)
@@ -11192,6 +11671,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __items(dict);
 	}
+
 	/**
 		```lua
 		function table.jobclose(...any)
@@ -11205,6 +11685,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function jobclose(___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		function table.jobpid(job: integer)
@@ -11217,6 +11698,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function jobpid(job:Int):Int;
+
 	/**
 		```lua
 		function table.jobresize(job: integer, width: integer, height: integer)
@@ -11231,6 +11713,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function jobresize(job:Int, width:Int, height:Int):Any;
+
 	/**
 		```lua
 		function table.jobsend(...any)
@@ -11244,9 +11727,11 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function jobsend(___:haxe.Rest<Any>):Any;
+
 	@:native("jobstart")
 	@:luaDotMethod
 	private function __jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int;
+
 	/**
 		```lua
 		function table.jobstart(cmd: string|string[], opts?: table)
@@ -11351,6 +11836,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __jobstart(cmd, opts);
 	}
+
 	/**
 		```lua
 		function table.jobstop(id: integer)
@@ -11370,9 +11856,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function jobstop(id:Int):Int;
+
 	@:native("jobwait")
 	@:luaDotMethod
 	private function __jobwait(jobs:lua.Table<Int, Int>, ?timeout:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.jobwait(jobs: integer[], timeout?: integer)
@@ -11405,9 +11893,11 @@ extern class Fn {
 		final jobs:nvim.helper.Native.LuaArray<Int> = jobs;
 		return __jobwait(jobs, timeout);
 	}
+
 	@:native("join")
 	@:luaDotMethod
 	private function __join(list:lua.Table<Int, Any>, ?sep:String):String;
+
 	/**
 		```lua
 		function table.join(list: any[], sep?: string)
@@ -11430,6 +11920,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __join(list, sep);
 	}
+
 	/**
 		```lua
 		function table.json_decode(expr: any)
@@ -11454,6 +11945,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function json_decode(expr:Any):Any;
+
 	/**
 		```lua
 		function table.json_encode(expr: any)
@@ -11475,9 +11967,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function json_encode(expr:Any):String;
+
 	@:native("keys")
 	@:luaDotMethod
 	private function __keys(dict:lua.Table.AnyTable):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.keys(dict: table)
@@ -11493,6 +11987,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __keys(dict);
 	}
+
 	/**
 		```lua
 		function table.keytrans(string: string)
@@ -11509,6 +12004,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function keytrans(string:String):String;
+
 	/**
 		```lua
 		function table.last_buffer_nr()
@@ -11522,9 +12018,11 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function last_buffer_nr():Any;
+
 	@:native("len")
 	@:luaDotMethod
 	private function __len(expr:lua.Table<Int, Any>):Int;
+
 	/**
 		```lua
 		function table.len(expr: any[])
@@ -11547,6 +12045,7 @@ extern class Fn {
 		final expr:nvim.helper.Native.LuaArray<Any> = expr;
 		return __len(expr);
 	}
+
 	/**
 		```lua
 		function table.libcall(libname: string, funcname: string, argument: any)
@@ -11598,6 +12097,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function libcall(libname:String, funcname:String, argument:Any):Any;
+
 	/**
 		```lua
 		function table.libcallnr(libname: string, funcname: string, argument: any)
@@ -11616,6 +12116,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function libcallnr(libname:String, funcname:String, argument:Any):Any;
+
 	/**
 		```lua
 		function table.line(expr: string|integer[], winid?: integer)
@@ -11645,6 +12146,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function line(expr:haxe.extern.EitherType<String, lua.Table<Int, Int>>, ?winid:Int):Int;
+
 	/**
 		```lua
 		function table.line2byte(lnum: string|integer)
@@ -11667,6 +12169,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function line2byte(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.lispindent(lnum: string|integer)
@@ -11683,9 +12186,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function lispindent(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	@:native("list2blob")
 	@:luaDotMethod
 	private function __list2blob(list:lua.Table<Int, Any>):String;
+
 	/**
 		```lua
 		function table.list2blob(list: any[])
@@ -11707,9 +12212,11 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __list2blob(list);
 	}
+
 	@:native("list2str")
 	@:luaDotMethod
 	private function __list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
+
 	/**
 		```lua
 		function table.list2str(list: any[], utf8?: boolean)
@@ -11737,6 +12244,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __list2str(list, utf8);
 	}
+
 	/**
 		```lua
 		function table.localtime()
@@ -11750,6 +12258,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function localtime():Int;
+
 	/**
 		```lua
 		function table.log(expr: number)
@@ -11770,6 +12279,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function log(expr:Float):Float;
+
 	/**
 		```lua
 		function table.log10(expr: number)
@@ -11789,12 +12299,14 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function log10(expr:Float):Float;
+
 	/**
 		```lua
 		(global) table.luaeval: unknown
 		```
 	**/
 	var luaeval : Dynamic;
+
 	/**
 		```lua
 		function table.map(expr1: string|table|any[], expr2: string|function)
@@ -11858,6 +12370,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function map(expr1:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+
 	/**
 		```lua
 		function table.maparg(name: string, mode?: string, abbr?: boolean, dict?: false)
@@ -11960,6 +12473,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function maparg(name:String, ?mode:String, ?abbr:Bool, ?dict:Bool):String;
+
 	/**
 		```lua
 		function table.mapcheck(name: string, mode?: string, abbr?: boolean)
@@ -12002,6 +12516,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function mapcheck(name:String, ?mode:String, ?abbr:Bool):Any;
+
 	/**
 		```lua
 		function table.maplist(abbr?: 0|1)
@@ -12050,6 +12565,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function maplist(?abbr:Float):lua.Table<Int, lua.Table.AnyTable>;
+
 	/**
 		```lua
 		function table.mapnew(expr1: any, expr2: any)
@@ -12065,9 +12581,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function mapnew(expr1:Any, expr2:Any):Any;
+
 	@:native("mapset")
 	@:luaDotMethod
 	private function __mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any;
+
 	/**
 		```lua
 		function table.mapset(mode: string, abbr?: boolean, dict?: table<string, any>)
@@ -12123,6 +12641,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dict;
 		return __mapset(mode, abbr, dict);
 	}
+
 	/**
 		```lua
 		function table.match(expr: string|any[], pat: string, start?: integer, count?: integer)
@@ -12195,6 +12714,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function match(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, pat:String, ?start:Int, ?count:Int):Any;
+
 	/**
 		```lua
 		function table.matchadd(group: string|integer, pattern: string, priority?: integer, id?: integer, dict?: string)
@@ -12262,9 +12782,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchadd(group:haxe.extern.EitherType<Int, String>, pattern:String, ?priority:Int, ?id:Int, ?dict:String):Any;
+
 	@:native("matchaddpos")
 	@:luaDotMethod
 	private function __matchaddpos(group:haxe.extern.EitherType<Int, String>, pos:lua.Table<Int, Any>, ?priority:Int, ?id:Int, ?dict:String):Any;
+
 	/**
 		```lua
 		function table.matchaddpos(group: string|integer, pos: any[], priority?: integer, id?: integer, dict?: string)
@@ -12313,6 +12835,7 @@ extern class Fn {
 		final pos:nvim.helper.Native.LuaArray<Any> = pos;
 		return __matchaddpos(group, pos, priority, id, dict);
 	}
+
 	/**
 		```lua
 		function table.matcharg(nr: integer)
@@ -12334,9 +12857,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matcharg(nr:Int):Any;
+
 	@:native("matchbufline")
 	@:luaDotMethod
 	private function __matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.matchbufline(buf: string|integer, pat: string, lnum: string|integer, end_: string|integer, dict?: table)
@@ -12392,6 +12917,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchbufline(buf, pat, lnum, end_, dict);
 	}
+
 	/**
 		```lua
 		function table.matchdelete(id: integer, win?: integer)
@@ -12409,6 +12935,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchdelete(id:Int, ?win:Int):Any;
+
 	/**
 		```lua
 		function table.matchend(expr: any, pat: string, start?: integer, count?: integer)
@@ -12437,9 +12964,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchend(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
+
 	@:native("matchfuzzy")
 	@:luaDotMethod
 	private function __matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.matchfuzzy(list: any[], str: string, dict?: table)
@@ -12515,9 +13044,11 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchfuzzy(list, str, dict);
 	}
+
 	@:native("matchfuzzypos")
 	@:luaDotMethod
 	private function __matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.matchfuzzypos(list: any[], str: string, dict?: table)
@@ -12552,6 +13083,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchfuzzypos(list, str, dict);
 	}
+
 	/**
 		```lua
 		function table.matchlist(expr: any, pat: string, start?: integer, count?: integer)
@@ -12573,6 +13105,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchlist(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
+
 	/**
 		```lua
 		function table.matchstr(expr: any, pat: string, start?: integer, count?: integer)
@@ -12595,9 +13128,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchstr(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
+
 	@:native("matchstrlist")
 	@:luaDotMethod
 	private function __matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.matchstrlist(list: string[], pat: string, dict?: table)
@@ -12643,6 +13178,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchstrlist(list, pat, dict);
 	}
+
 	/**
 		```lua
 		function table.matchstrpos(expr: any, pat: string, start?: integer, count?: integer)
@@ -12670,6 +13206,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function matchstrpos(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
+
 	/**
 		```lua
 		function table.max(expr: any)
@@ -12689,6 +13226,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function max(expr:Any):Float;
+
 	/**
 		```lua
 		function table.menu_get(path: string, modes?: string)
@@ -12744,6 +13282,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function menu_get(path:String, ?modes:String):Any;
+
 	/**
 		```lua
 		function table.menu_info(name: string, mode?: string)
@@ -12824,6 +13363,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function menu_info(name:String, ?mode:String):Any;
+
 	/**
 		```lua
 		function table.min(expr: any)
@@ -12843,6 +13383,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function min(expr:Any):Float;
+
 	/**
 		```lua
 		function table.mkdir(name: string, flags?: string, prot?: string)
@@ -12891,6 +13432,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function mkdir(name:String, ?flags:String, ?prot:String):Int;
+
 	/**
 		```lua
 		function table.mode(expr?: any)
@@ -12954,6 +13496,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function mode(?expr:Any):Any;
+
 	/**
 		```lua
 		function table.msgpackdump(list: any, type?: any)
@@ -12982,6 +13525,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function msgpackdump(list:Any, ?type:Any):Any;
+
 	/**
 		```lua
 		function table.msgpackparse(data: any)
@@ -13059,6 +13603,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function msgpackparse(data:Any):Any;
+
 	/**
 		```lua
 		function table.nextnonblank(lnum: string|integer)
@@ -13077,6 +13622,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function nextnonblank(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.nr2char(expr: integer, utf8?: boolean)
@@ -13101,1056 +13647,1232 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function nr2char(expr:Int, ?utf8:Bool):String;
+
 	/**
 		```lua
 		(global) table.nvim__buf_debug_extmarks: unknown
 		```
 	**/
 	var nvim__buf_debug_extmarks : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__buf_stats: unknown
 		```
 	**/
 	var nvim__buf_stats : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__complete_set: unknown
 		```
 	**/
 	var nvim__complete_set : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__get_lib_dir: unknown
 		```
 	**/
 	var nvim__get_lib_dir : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__get_runtime: unknown
 		```
 	**/
 	var nvim__get_runtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__id: unknown
 		```
 	**/
 	var nvim__id : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__id_array: unknown
 		```
 	**/
 	var nvim__id_array : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__id_dict: unknown
 		```
 	**/
 	var nvim__id_dict : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__id_float: unknown
 		```
 	**/
 	var nvim__id_float : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__inspect_cell: unknown
 		```
 	**/
 	var nvim__inspect_cell : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__invalidate_glyph_cache: unknown
 		```
 	**/
 	var nvim__invalidate_glyph_cache : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__ns_get: unknown
 		```
 	**/
 	var nvim__ns_get : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__ns_set: unknown
 		```
 	**/
 	var nvim__ns_set : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__redraw: unknown
 		```
 	**/
 	var nvim__redraw : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__runtime_inspect: unknown
 		```
 	**/
 	var nvim__runtime_inspect : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__screenshot: unknown
 		```
 	**/
 	var nvim__screenshot : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__stats: unknown
 		```
 	**/
 	var nvim__stats : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim__unpack: unknown
 		```
 	**/
 	var nvim__unpack : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_add_highlight: unknown
 		```
 	**/
 	var nvim_buf_add_highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_attach: unknown
 		```
 	**/
 	var nvim_buf_attach : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_clear_highlight: unknown
 		```
 	**/
 	var nvim_buf_clear_highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_clear_namespace: unknown
 		```
 	**/
 	var nvim_buf_clear_namespace : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_create_user_command: unknown
 		```
 	**/
 	var nvim_buf_create_user_command : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_del_extmark: unknown
 		```
 	**/
 	var nvim_buf_del_extmark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_del_keymap: unknown
 		```
 	**/
 	var nvim_buf_del_keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_del_mark: unknown
 		```
 	**/
 	var nvim_buf_del_mark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_del_user_command: unknown
 		```
 	**/
 	var nvim_buf_del_user_command : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_del_var: unknown
 		```
 	**/
 	var nvim_buf_del_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_delete: unknown
 		```
 	**/
 	var nvim_buf_delete : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_changedtick: unknown
 		```
 	**/
 	var nvim_buf_get_changedtick : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_commands: unknown
 		```
 	**/
 	var nvim_buf_get_commands : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_extmark_by_id: unknown
 		```
 	**/
 	var nvim_buf_get_extmark_by_id : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_extmarks: unknown
 		```
 	**/
 	var nvim_buf_get_extmarks : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_keymap: unknown
 		```
 	**/
 	var nvim_buf_get_keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_lines: unknown
 		```
 	**/
 	var nvim_buf_get_lines : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_mark: unknown
 		```
 	**/
 	var nvim_buf_get_mark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_name: unknown
 		```
 	**/
 	var nvim_buf_get_name : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_number: unknown
 		```
 	**/
 	var nvim_buf_get_number : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_offset: unknown
 		```
 	**/
 	var nvim_buf_get_offset : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_option: unknown
 		```
 	**/
 	var nvim_buf_get_option : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_text: unknown
 		```
 	**/
 	var nvim_buf_get_text : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_get_var: unknown
 		```
 	**/
 	var nvim_buf_get_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_is_loaded: unknown
 		```
 	**/
 	var nvim_buf_is_loaded : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_is_valid: unknown
 		```
 	**/
 	var nvim_buf_is_valid : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_line_count: unknown
 		```
 	**/
 	var nvim_buf_line_count : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_extmark: unknown
 		```
 	**/
 	var nvim_buf_set_extmark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_keymap: unknown
 		```
 	**/
 	var nvim_buf_set_keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_lines: unknown
 		```
 	**/
 	var nvim_buf_set_lines : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_mark: unknown
 		```
 	**/
 	var nvim_buf_set_mark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_name: unknown
 		```
 	**/
 	var nvim_buf_set_name : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_option: unknown
 		```
 	**/
 	var nvim_buf_set_option : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_text: unknown
 		```
 	**/
 	var nvim_buf_set_text : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_var: unknown
 		```
 	**/
 	var nvim_buf_set_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_buf_set_virtual_text: unknown
 		```
 	**/
 	var nvim_buf_set_virtual_text : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_call_dict_function: unknown
 		```
 	**/
 	var nvim_call_dict_function : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_call_function: unknown
 		```
 	**/
 	var nvim_call_function : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_clear_autocmds: unknown
 		```
 	**/
 	var nvim_clear_autocmds : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_cmd: unknown
 		```
 	**/
 	var nvim_cmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_command: unknown
 		```
 	**/
 	var nvim_command : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_command_output: unknown
 		```
 	**/
 	var nvim_command_output : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_create_augroup: unknown
 		```
 	**/
 	var nvim_create_augroup : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_create_autocmd: unknown
 		```
 	**/
 	var nvim_create_autocmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_create_buf: unknown
 		```
 	**/
 	var nvim_create_buf : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_create_namespace: unknown
 		```
 	**/
 	var nvim_create_namespace : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_create_user_command: unknown
 		```
 	**/
 	var nvim_create_user_command : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_augroup_by_id: unknown
 		```
 	**/
 	var nvim_del_augroup_by_id : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_augroup_by_name: unknown
 		```
 	**/
 	var nvim_del_augroup_by_name : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_autocmd: unknown
 		```
 	**/
 	var nvim_del_autocmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_current_line: unknown
 		```
 	**/
 	var nvim_del_current_line : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_keymap: unknown
 		```
 	**/
 	var nvim_del_keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_mark: unknown
 		```
 	**/
 	var nvim_del_mark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_user_command: unknown
 		```
 	**/
 	var nvim_del_user_command : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_del_var: unknown
 		```
 	**/
 	var nvim_del_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_echo: unknown
 		```
 	**/
 	var nvim_echo : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_err_write: unknown
 		```
 	**/
 	var nvim_err_write : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_err_writeln: unknown
 		```
 	**/
 	var nvim_err_writeln : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_eval: unknown
 		```
 	**/
 	var nvim_eval : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_eval_statusline: unknown
 		```
 	**/
 	var nvim_eval_statusline : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_exec: unknown
 		```
 	**/
 	var nvim_exec : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_exec2: unknown
 		```
 	**/
 	var nvim_exec2 : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_exec_autocmds: unknown
 		```
 	**/
 	var nvim_exec_autocmds : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_feedkeys: unknown
 		```
 	**/
 	var nvim_feedkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_all_options_info: unknown
 		```
 	**/
 	var nvim_get_all_options_info : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_autocmds: unknown
 		```
 	**/
 	var nvim_get_autocmds : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_chan_info: unknown
 		```
 	**/
 	var nvim_get_chan_info : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_color_by_name: unknown
 		```
 	**/
 	var nvim_get_color_by_name : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_color_map: unknown
 		```
 	**/
 	var nvim_get_color_map : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_commands: unknown
 		```
 	**/
 	var nvim_get_commands : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_context: unknown
 		```
 	**/
 	var nvim_get_context : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_current_buf: unknown
 		```
 	**/
 	var nvim_get_current_buf : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_current_line: unknown
 		```
 	**/
 	var nvim_get_current_line : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_current_tabpage: unknown
 		```
 	**/
 	var nvim_get_current_tabpage : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_current_win: unknown
 		```
 	**/
 	var nvim_get_current_win : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_hl: unknown
 		```
 	**/
 	var nvim_get_hl : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_hl_by_id: unknown
 		```
 	**/
 	var nvim_get_hl_by_id : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_hl_by_name: unknown
 		```
 	**/
 	var nvim_get_hl_by_name : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_hl_id_by_name: unknown
 		```
 	**/
 	var nvim_get_hl_id_by_name : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_hl_ns: unknown
 		```
 	**/
 	var nvim_get_hl_ns : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_keymap: unknown
 		```
 	**/
 	var nvim_get_keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_mark: unknown
 		```
 	**/
 	var nvim_get_mark : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_mode: unknown
 		```
 	**/
 	var nvim_get_mode : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_namespaces: unknown
 		```
 	**/
 	var nvim_get_namespaces : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_option: unknown
 		```
 	**/
 	var nvim_get_option : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_option_info: unknown
 		```
 	**/
 	var nvim_get_option_info : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_option_info2: unknown
 		```
 	**/
 	var nvim_get_option_info2 : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_option_value: unknown
 		```
 	**/
 	var nvim_get_option_value : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_proc: unknown
 		```
 	**/
 	var nvim_get_proc : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_proc_children: unknown
 		```
 	**/
 	var nvim_get_proc_children : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_runtime_file: unknown
 		```
 	**/
 	var nvim_get_runtime_file : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_var: unknown
 		```
 	**/
 	var nvim_get_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_get_vvar: unknown
 		```
 	**/
 	var nvim_get_vvar : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_input: unknown
 		```
 	**/
 	var nvim_input : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_input_mouse: unknown
 		```
 	**/
 	var nvim_input_mouse : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_list_bufs: unknown
 		```
 	**/
 	var nvim_list_bufs : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_list_chans: unknown
 		```
 	**/
 	var nvim_list_chans : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_list_runtime_paths: unknown
 		```
 	**/
 	var nvim_list_runtime_paths : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_list_tabpages: unknown
 		```
 	**/
 	var nvim_list_tabpages : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_list_uis: unknown
 		```
 	**/
 	var nvim_list_uis : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_list_wins: unknown
 		```
 	**/
 	var nvim_list_wins : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_load_context: unknown
 		```
 	**/
 	var nvim_load_context : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_notify: unknown
 		```
 	**/
 	var nvim_notify : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_open_term: unknown
 		```
 	**/
 	var nvim_open_term : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_open_win: unknown
 		```
 	**/
 	var nvim_open_win : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_out_write: unknown
 		```
 	**/
 	var nvim_out_write : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_parse_cmd: unknown
 		```
 	**/
 	var nvim_parse_cmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_parse_expression: unknown
 		```
 	**/
 	var nvim_parse_expression : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_paste: unknown
 		```
 	**/
 	var nvim_paste : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_put: unknown
 		```
 	**/
 	var nvim_put : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_replace_termcodes: unknown
 		```
 	**/
 	var nvim_replace_termcodes : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_select_popupmenu_item: unknown
 		```
 	**/
 	var nvim_select_popupmenu_item : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_current_buf: unknown
 		```
 	**/
 	var nvim_set_current_buf : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_current_dir: unknown
 		```
 	**/
 	var nvim_set_current_dir : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_current_line: unknown
 		```
 	**/
 	var nvim_set_current_line : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_current_tabpage: unknown
 		```
 	**/
 	var nvim_set_current_tabpage : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_current_win: unknown
 		```
 	**/
 	var nvim_set_current_win : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_hl: unknown
 		```
 	**/
 	var nvim_set_hl : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_hl_ns: unknown
 		```
 	**/
 	var nvim_set_hl_ns : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_hl_ns_fast: unknown
 		```
 	**/
 	var nvim_set_hl_ns_fast : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_keymap: unknown
 		```
 	**/
 	var nvim_set_keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_option: unknown
 		```
 	**/
 	var nvim_set_option : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_option_value: unknown
 		```
 	**/
 	var nvim_set_option_value : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_var: unknown
 		```
 	**/
 	var nvim_set_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_set_vvar: unknown
 		```
 	**/
 	var nvim_set_vvar : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_strwidth: unknown
 		```
 	**/
 	var nvim_strwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_del_var: unknown
 		```
 	**/
 	var nvim_tabpage_del_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_get_number: unknown
 		```
 	**/
 	var nvim_tabpage_get_number : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_get_var: unknown
 		```
 	**/
 	var nvim_tabpage_get_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_get_win: unknown
 		```
 	**/
 	var nvim_tabpage_get_win : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_is_valid: unknown
 		```
 	**/
 	var nvim_tabpage_is_valid : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_list_wins: unknown
 		```
 	**/
 	var nvim_tabpage_list_wins : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_set_var: unknown
 		```
 	**/
 	var nvim_tabpage_set_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_tabpage_set_win: unknown
 		```
 	**/
 	var nvim_tabpage_set_win : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_close: unknown
 		```
 	**/
 	var nvim_win_close : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_del_var: unknown
 		```
 	**/
 	var nvim_win_del_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_buf: unknown
 		```
 	**/
 	var nvim_win_get_buf : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_config: unknown
 		```
 	**/
 	var nvim_win_get_config : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_cursor: unknown
 		```
 	**/
 	var nvim_win_get_cursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_height: unknown
 		```
 	**/
 	var nvim_win_get_height : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_number: unknown
 		```
 	**/
 	var nvim_win_get_number : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_option: unknown
 		```
 	**/
 	var nvim_win_get_option : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_position: unknown
 		```
 	**/
 	var nvim_win_get_position : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_tabpage: unknown
 		```
 	**/
 	var nvim_win_get_tabpage : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_var: unknown
 		```
 	**/
 	var nvim_win_get_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_get_width: unknown
 		```
 	**/
 	var nvim_win_get_width : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_hide: unknown
 		```
 	**/
 	var nvim_win_hide : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_is_valid: unknown
 		```
 	**/
 	var nvim_win_is_valid : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_buf: unknown
 		```
 	**/
 	var nvim_win_set_buf : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_config: unknown
 		```
 	**/
 	var nvim_win_set_config : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_cursor: unknown
 		```
 	**/
 	var nvim_win_set_cursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_height: unknown
 		```
 	**/
 	var nvim_win_set_height : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_hl_ns: unknown
 		```
 	**/
 	var nvim_win_set_hl_ns : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_option: unknown
 		```
 	**/
 	var nvim_win_set_option : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_var: unknown
 		```
 	**/
 	var nvim_win_set_var : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_set_width: unknown
 		```
 	**/
 	var nvim_win_set_width : Dynamic;
+
 	/**
 		```lua
 		(global) table.nvim_win_text_height: unknown
 		```
 	**/
 	var nvim_win_text_height : Dynamic;
+
 	/**
 		```lua
 		function (expr: number, expr1: number)
@@ -14173,6 +14895,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function or(expr:Float, expr1:Float):Any;
+
 	/**
 		```lua
 		function table.pathshorten(path: string, len?: integer)
@@ -14196,6 +14919,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function pathshorten(path:String, ?len:Int):String;
+
 	/**
 		```lua
 		function table.perleval(expr: any)
@@ -14220,6 +14944,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function perleval(expr:Any):Any;
+
 	/**
 		```lua
 		function table.pow(x: number, y: number)
@@ -14241,6 +14966,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function pow(x:Float, y:Float):Float;
+
 	/**
 		```lua
 		function table.prevnonblank(lnum: string|integer)
@@ -14259,6 +14985,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function prevnonblank(lnum:haxe.extern.EitherType<Int, String>):Int;
+
 	/**
 		```lua
 		function table.printf(fmt: string, expr1?: any)
@@ -14592,6 +15319,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function printf(fmt:String, ?expr1:Any):String;
+
 	/**
 		```lua
 		function table.prompt_getprompt(buf: string|integer)
@@ -14608,6 +15336,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function prompt_getprompt(buf:haxe.extern.EitherType<Int, String>):Any;
+
 	/**
 		```lua
 		function table.prompt_setcallback(buf: string|integer, expr: string|function)
@@ -14650,6 +15379,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function prompt_setcallback(buf:haxe.extern.EitherType<Int, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+
 	/**
 		```lua
 		function table.prompt_setinterrupt(buf: string|integer, expr: string|function)
@@ -14668,6 +15398,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function prompt_setinterrupt(buf:haxe.extern.EitherType<Int, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+
 	/**
 		```lua
 		function table.prompt_setprompt(buf: string|integer, text: string)
@@ -14685,6 +15416,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function prompt_setprompt(buf:haxe.extern.EitherType<Int, String>, text:String):Any;
+
 	/**
 		```lua
 		function table.pum_getpos()
@@ -14707,6 +15439,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function pum_getpos():Any;
+
 	/**
 		```lua
 		function table.pumvisible()
@@ -14722,6 +15455,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function pumvisible():Any;
+
 	/**
 		```lua
 		function table.py3eval(expr: any)
@@ -14741,6 +15475,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function py3eval(expr:Any):Any;
+
 	/**
 		```lua
 		function table.pyeval(expr: any)
@@ -14759,6 +15494,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function pyeval(expr:Any):Any;
+
 	/**
 		```lua
 		function table.pyxeval(expr: any)
@@ -14774,6 +15510,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function pyxeval(expr:Any):Any;
+
 	/**
 		```lua
 		function table.rand(expr?: number)
@@ -14799,6 +15536,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function rand(?expr:Float):Any;
+
 	/**
 		```lua
 		function table.range(expr: any, max?: integer, stride?: integer)
@@ -14827,6 +15565,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function range(expr:Any, ?max:Int, ?stride:Int):Any;
+
 	/**
 		```lua
 		function table.readblob(fname: string, offset?: integer, size?: integer)
@@ -14860,6 +15599,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function readblob(fname:String, ?offset:Int, ?size:Int):Any;
+
 	/**
 		```lua
 		function table.readdir(directory: string, expr?: integer)
@@ -14899,6 +15639,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function readdir(directory:String, ?expr:Int):Any;
+
 	/**
 		```lua
 		function table.readfile(fname: string, type?: string, max?: integer)
@@ -14941,6 +15682,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function readfile(fname:String, ?type:String, ?max:Int):Any;
+
 	/**
 		```lua
 		function table.reduce(object: any, func: fun(accumulator: <T>, current: any):any, initial?: any)
@@ -14968,6 +15710,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reduce<T>(object:Any, func:(accumulator:T, current:Any) -> Any, ?initial:Any):T;
+
 	/**
 		```lua
 		function table.reg_executing()
@@ -14982,6 +15725,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reg_executing():Any;
+
 	/**
 		```lua
 		function table.reg_recorded()
@@ -14996,6 +15740,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reg_recorded():Any;
+
 	/**
 		```lua
 		function table.reg_recording()
@@ -15009,6 +15754,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reg_recording():Any;
+
 	/**
 		```lua
 		function table.reltime()
@@ -15052,6 +15798,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reltime():Any;
+
 	/**
 		```lua
 		function table.reltimefloat(time: any)
@@ -15072,6 +15819,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reltimefloat(time:Any):Any;
+
 	/**
 		```lua
 		function table.reltimestr(time: any)
@@ -15095,6 +15843,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function reltimestr(time:Any):Any;
+
 	/**
 		```lua
 		function table.remove(list: any, idx: integer)
@@ -15169,6 +15918,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function remove(list:Any, idx:Int):Any;
+
 	/**
 		```lua
 		function table.rename(from: string, to: string)
@@ -15186,6 +15936,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function rename(from:String, to:String):Int;
+
 	/**
 		```lua
 		function (expr: any, count: integer)
@@ -15206,6 +15957,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function repeat(expr:Any, count:Int):Any;
+
 	/**
 		```lua
 		function table.resolve(filename: string)
@@ -15228,9 +15980,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function resolve(filename:String):String;
+
 	@:native("reverse")
 	@:luaDotMethod
 	private function __reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
+
 	/**
 		```lua
 		function table.reverse(object: <T>[])
@@ -15253,6 +16007,7 @@ extern class Fn {
 		final object:nvim.helper.Native.LuaArray<T> = object;
 		return __reverse(object);
 	}
+
 	/**
 		```lua
 		function table.round(expr: number)
@@ -15276,6 +16031,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function round(expr:Float):Float;
+
 	/**
 		```lua
 		function table.rpcnotify(channel: integer, event: string, ...any)
@@ -15292,6 +16048,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function rpcnotify(channel:Int, event:String, ___:haxe.Rest<Any>):Int;
+
 	/**
 		```lua
 		function table.rpcrequest(channel: integer, method: string, ...any)
@@ -15308,6 +16065,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function rpcrequest(channel:Int, method:String, ___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		function table.rpcstart(prog: string, argv?: any)
@@ -15325,6 +16083,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function rpcstart(prog:String, ?argv:Any):Any;
+
 	/**
 		```lua
 		function table.rpcstop(...any)
@@ -15341,6 +16100,7 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function rpcstop(___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		function table.rubyeval(expr: any)
@@ -15360,6 +16120,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function rubyeval(expr:Any):Any;
+
 	/**
 		```lua
 		function table.screenattr(row: integer, col: integer)
@@ -15375,6 +16136,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screenattr(row:Int, col:Int):Int;
+
 	/**
 		```lua
 		function table.screenchar(row: integer, col: integer)
@@ -15394,6 +16156,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screenchar(row:Int, col:Int):Int;
+
 	/**
 		```lua
 		function table.screenchars(row: integer, col: integer)
@@ -15410,6 +16173,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screenchars(row:Int, col:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.screencol()
@@ -15434,6 +16198,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screencol():lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.screenpos(winid: integer, lnum: integer, col: integer)
@@ -15467,6 +16232,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screenpos(winid:Int, lnum:Int, col:Int):Any;
+
 	/**
 		```lua
 		function table.screenrow()
@@ -15484,6 +16250,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screenrow():Int;
+
 	/**
 		```lua
 		function table.screenstring(row: integer, col: integer)
@@ -15501,6 +16268,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function screenstring(row:Int, col:Int):String;
+
 	/**
 		```lua
 		function table.search(pattern: string, flags?: string, stopline?: integer, timeout?: integer, skip?: string|function)
@@ -15615,9 +16383,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function search(pattern:String, ?flags:String, ?stopline:Int, ?timeout:Int, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Int;
+
 	@:native("searchcount")
 	@:luaDotMethod
 	private function __searchcount(?options:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.searchcount(options?: table)
@@ -15750,6 +16520,7 @@ extern class Fn {
 		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __searchcount(options);
 	}
+
 	/**
 		```lua
 		function table.searchdecl(name: string, global?: boolean, thisblock?: boolean)
@@ -15778,6 +16549,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function searchdecl(name:String, ?global:Bool, ?thisblock:Bool):Any;
+
 	/**
 		```lua
 		function table.searchpair(start: string, middle: string, end_: string, flags?: string, skip?: string|function, stopline?: integer, timeout?: integer)
@@ -15872,6 +16644,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function searchpair(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Int, ?timeout:Int):Int;
+
 	/**
 		```lua
 		function table.searchpairpos(start: string, middle: string, end_: string, flags?: string, skip?: string|function, stopline?: integer, timeout?: integer)
@@ -15892,6 +16665,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function searchpairpos(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Int, ?timeout:Int):Dynamic;
+
 	/**
 		```lua
 		function table.searchpos(pattern: string, flags?: string, stopline?: integer, timeout?: integer, skip?: string|function)
@@ -15916,6 +16690,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function searchpos(pattern:String, ?flags:String, ?stopline:Int, ?timeout:Int, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+
 	/**
 		```lua
 		function table.serverlist()
@@ -15932,6 +16707,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function serverlist():lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.serverstart(address?: string)
@@ -15975,6 +16751,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function serverstart(?address:String):String;
+
 	/**
 		```lua
 		function table.serverstop(address: string)
@@ -15990,6 +16767,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function serverstop(address:String):Int;
+
 	/**
 		```lua
 		function table.setbufline(buf: string|integer, lnum: integer, text: string|string[])
@@ -16024,6 +16802,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Int;
+
 	/**
 		```lua
 		function table.setbufvar(buf: string|integer, varname: string, val: any)
@@ -16047,9 +16826,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setbufvar(buf:haxe.extern.EitherType<Int, String>, varname:String, val:Any):Any;
+
 	@:native("setcellwidths")
 	@:luaDotMethod
 	private function __setcellwidths(list:lua.Table<Int, Any>):Any;
+
 	/**
 		```lua
 		function table.setcellwidths(list: any[])
@@ -16095,9 +16876,11 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __setcellwidths(list);
 	}
+
 	@:native("setcharpos")
 	@:luaDotMethod
 	private function __setcharpos(expr:String, list:lua.Table<Int, Int>):Any;
+
 	/**
 		```lua
 		function table.setcharpos(expr: string, list: integer[])
@@ -16120,6 +16903,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Int> = list;
 		return __setcharpos(expr, list);
 	}
+
 	/**
 		```lua
 		function table.setcharsearch(dict: string)
@@ -16149,6 +16933,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setcharsearch(dict:String):Any;
+
 	/**
 		```lua
 		function table.setcmdline(str: string, pos?: integer)
@@ -16165,6 +16950,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setcmdline(str:String, ?pos:Int):Int;
+
 	/**
 		```lua
 		function table.setcmdpos(pos: integer)
@@ -16189,6 +16975,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setcmdpos(pos:Int):Any;
+
 	/**
 		```lua
 		function table.setcursorcharpos(lnum: string|integer, col?: integer, off?: integer)
@@ -16216,6 +17003,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setcursorcharpos(lnum:haxe.extern.EitherType<Int, String>, ?col:Int, ?off:Int):Any;
+
 	/**
 		```lua
 		function table.setenv(name: string, val: string)
@@ -16232,6 +17020,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setenv(name:String, val:String):Any;
+
 	/**
 		```lua
 		function table.setfperm(fname: string, mode: string)
@@ -16258,6 +17047,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setfperm(fname:String, mode:String):Any;
+
 	/**
 		```lua
 		function table.setline(lnum: string|integer, text: any)
@@ -16295,9 +17085,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setline(lnum:haxe.extern.EitherType<Int, String>, text:Any):Any;
+
 	@:native("setloclist")
 	@:luaDotMethod
 	private function __setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.setloclist(nr: integer, list: any, action?: string, what?: table)
@@ -16325,6 +17117,7 @@ extern class Fn {
 		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __setloclist(nr, list, action, what);
 	}
+
 	/**
 		```lua
 		function table.setmatches(list: any, win?: integer)
@@ -16342,9 +17135,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setmatches(list:Any, ?win:Int):Any;
+
 	@:native("setpos")
 	@:luaDotMethod
 	private function __setpos(expr:String, list:lua.Table<Int, Int>):Any;
+
 	/**
 		```lua
 		function table.setpos(expr: string, list: integer[])
@@ -16405,9 +17200,11 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<Int> = list;
 		return __setpos(expr, list);
 	}
+
 	@:native("setqflist")
 	@:luaDotMethod
 	private function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int;
+
 	/**
 		```lua
 		function table.setqflist(list: vim.quickfix.entry[], action?: string, what?: vim.fn.setqflist.what)
@@ -16536,6 +17333,7 @@ extern class Fn {
 		final what:nvim.helper.Native.LuaObject<nvim.type.vim.fn.setqflist.What> = what;
 		return __setqflist(list, action, what);
 	}
+
 	/**
 		```lua
 		function table.setreg(regname: string, value: any, options?: string)
@@ -16601,6 +17399,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setreg(regname:String, value:Any, ?options:String):Any;
+
 	/**
 		```lua
 		function table.settabvar(tabnr: integer, varname: string, val: any)
@@ -16618,6 +17417,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function settabvar(tabnr:Int, varname:String, val:Any):Any;
+
 	/**
 		```lua
 		function table.settabwinvar(tabnr: integer, winnr: integer, varname: string, val: any)
@@ -16643,6 +17443,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function settabwinvar(tabnr:Int, winnr:Int, varname:String, val:Any):Any;
+
 	/**
 		```lua
 		function table.settagstack(nr: integer, dict: any, action?: string)
@@ -16686,6 +17487,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function settagstack(nr:Int, dict:Any, ?action:String):Any;
+
 	/**
 		```lua
 		function table.setwinvar(nr: integer, varname: string, val: any)
@@ -16701,6 +17503,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function setwinvar(nr:Int, varname:String, val:Any):Any;
+
 	/**
 		```lua
 		function table.sha256(string: string)
@@ -16714,6 +17517,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sha256(string:String):String;
+
 	/**
 		```lua
 		function table.shellescape(string: string, special?: boolean)
@@ -16755,6 +17559,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function shellescape(string:String, ?special:Bool):String;
+
 	/**
 		```lua
 		function table.shiftwidth(col?: integer)
@@ -16785,9 +17590,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function shiftwidth(?col:Int):Int;
+
 	@:native("sign_define")
 	@:luaDotMethod
 	private function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float;
+
 	/**
 		```lua
 		function table.sign_define(name: string, dict?: vim.fn.sign_define.dict)
@@ -16861,6 +17668,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_define.Dict> = dict;
 		return __sign_define(name, dict);
 	}
+
 	/**
 		```lua
 		function table.sign_getdefined(name?: string)
@@ -16907,9 +17715,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sign_getdefined(?name:String):lua.Table<Int, nvim.type.vim.fn.sign_getdefined.ret.Item>;
+
 	@:native("sign_getplaced")
 	@:luaDotMethod
 	private function __sign_getplaced(?buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item>;
+
 	/**
 		```lua
 		function table.sign_getplaced(buf?: string|integer, dict?: vim.fn.sign_getplaced.dict)
@@ -16982,6 +17792,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_getplaced.Dict> = dict;
 		return __sign_getplaced(buf, dict);
 	}
+
 	/**
 		```lua
 		function table.sign_jump(id: integer, group: string, buf: string|integer)
@@ -17007,9 +17818,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sign_jump(id:Int, group:String, buf:haxe.extern.EitherType<Int, String>):Int;
+
 	@:native("sign_place")
 	@:luaDotMethod
 	private function __sign_place(id:Int, group:String, name:String, buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Int;
+
 	/**
 		```lua
 		function table.sign_place(id: integer, group: string, name: string, buf: string|integer, dict?: vim.fn.sign_place.dict)
@@ -17070,9 +17883,11 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_place.Dict> = dict;
 		return __sign_place(id, group, name, buf, dict);
 	}
+
 	@:native("sign_placelist")
 	@:luaDotMethod
 	private function __sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.sign_placelist(list: vim.fn.sign_placelist.list.item[])
@@ -17144,6 +17959,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<nvim.type.vim.fn.sign_placelist.list.Item> = list;
 		return __sign_placelist(list);
 	}
+
 	/**
 		```lua
 		function table.sign_undefine(name?: string)
@@ -17191,9 +18007,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sign_undefine(?name:String):Float;
+
 	@:native("sign_unplace")
 	@:luaDotMethod
 	private function __sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float;
+
 	/**
 		```lua
 		function table.sign_unplace(group: string, dict?: vim.fn.sign_unplace.dict)
@@ -17254,9 +18072,11 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplace.Dict> = dict;
 		return __sign_unplace(group, dict);
 	}
+
 	@:native("sign_unplacelist")
 	@:luaDotMethod
 	private function __sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float>;
+
 	/**
 		```lua
 		function table.sign_unplacelist(list: vim.fn.sign_unplacelist.list.item)
@@ -17297,6 +18117,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplacelist.list.Item> = list;
 		return __sign_unplacelist(list);
 	}
+
 	/**
 		```lua
 		function table.simplify(filename: string)
@@ -17323,6 +18144,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function simplify(filename:String):String;
+
 	/**
 		```lua
 		function table.sin(expr: number)
@@ -17342,6 +18164,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sin(expr:Float):Float;
+
 	/**
 		```lua
 		function table.sinh(expr: number)
@@ -17362,6 +18185,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sinh(expr:Float):Any;
+
 	/**
 		```lua
 		function table.slice(expr: any, start: integer, end_?: integer)
@@ -17381,9 +18205,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function slice(expr:Any, start:Int, ?end_:Int):Any;
+
 	@:native("sockconnect")
 	@:luaDotMethod
 	private function __sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.sockconnect(mode: string, address: string, opts?: table)
@@ -17420,9 +18246,11 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __sockconnect(mode, address, opts);
 	}
+
 	@:native("sort")
 	@:luaDotMethod
 	private function __sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
+
 	/**
 		```lua
 		function table.sort(list: <T>[], how?: string|function, dict?: any)
@@ -17507,6 +18335,7 @@ extern class Fn {
 		final list:nvim.helper.Native.LuaArray<T> = list;
 		return __sort(list, how, dict);
 	}
+
 	/**
 		```lua
 		function table.soundfold(word: string)
@@ -17524,6 +18353,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function soundfold(word:String):String;
+
 	/**
 		```lua
 		function table.spellbadword(sentence?: string)
@@ -17557,6 +18387,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function spellbadword(?sentence:String):Any;
+
 	/**
 		```lua
 		function table.spellsuggest(word: string, max?: integer, capital?: boolean)
@@ -17587,6 +18418,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function spellsuggest(word:String, ?max:Int, ?capital:Bool):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.split(string: string, pattern?: string, keepempty?: boolean)
@@ -17621,6 +18453,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function split(string:String, ?pattern:String, ?keepempty:Bool):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.sqrt(expr: number)
@@ -17643,6 +18476,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function sqrt(expr:Float):Any;
+
 	/**
 		```lua
 		function table.srand(expr?: number)
@@ -17667,6 +18501,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function srand(?expr:Float):Any;
+
 	/**
 		```lua
 		function table.state(what?: string)
@@ -17706,9 +18541,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function state(?what:String):Any;
+
 	@:native("stdioopen")
 	@:luaDotMethod
 	private function __stdioopen(opts:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.stdioopen(opts: table)
@@ -17741,6 +18578,7 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __stdioopen(opts);
 	}
+
 	/**
 		```lua
 		function table.stdpath(what: 'cache'|'config'|'config_dirs'|'data'|'data_dirs'|'log'|'run'|'state')
@@ -17821,6 +18659,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function stdpath(what:String):haxe.extern.EitherType<String, lua.Table<Int, String>>;
+
 	/**
 		```lua
 		function table.str2float(string: string, quoted?: boolean)
@@ -17849,6 +18688,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function str2float(string:String, ?quoted:Bool):Any;
+
 	/**
 		```lua
 		function table.str2list(string: string, utf8?: boolean)
@@ -17871,6 +18711,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function str2list(string:String, ?utf8:Bool):Any;
+
 	/**
 		```lua
 		function table.str2nr(string: string, base?: integer)
@@ -17899,6 +18740,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function str2nr(string:String, ?base:Int):Any;
+
 	/**
 		```lua
 		function table.strcharlen(string: string)
@@ -17918,6 +18760,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strcharlen(string:String):Any;
+
 	/**
 		```lua
 		function table.strcharpart(src: string, start: integer, len?: integer, skipcc?: boolean)
@@ -17942,6 +18785,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strcharpart(src:String, start:Int, ?len:Int, ?skipcc:Bool):Any;
+
 	/**
 		```lua
 		function table.strchars(string: string, skipcc?: boolean)
@@ -17980,6 +18824,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strchars(string:String, ?skipcc:Bool):Int;
+
 	/**
 		```lua
 		function table.strdisplaywidth(string: string, col?: integer)
@@ -18003,6 +18848,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strdisplaywidth(string:String, ?col:Int):Int;
+
 	/**
 		```lua
 		function table.strftime(format: string, time?: number)
@@ -18029,6 +18875,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strftime(format:String, ?time:Float):String;
+
 	/**
 		```lua
 		function table.strgetchar(str: string, index: integer)
@@ -18047,6 +18894,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strgetchar(str:String, index:Int):Int;
+
 	/**
 		```lua
 		function table.stridx(haystack: string, needle: string, start?: integer)
@@ -18075,6 +18923,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function stridx(haystack:String, needle:String, ?start:Int):Int;
+
 	/**
 		```lua
 		function table.string(expr: any)
@@ -18108,6 +18957,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function string(expr:Any):String;
+
 	/**
 		```lua
 		function table.strlen(string: string)
@@ -18126,6 +18976,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strlen(string:String):Int;
+
 	/**
 		```lua
 		function table.strpart(src: string, start: integer, len?: integer, chars?: 0|1)
@@ -18167,6 +19018,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strpart(src:String, start:Int, ?len:Int, ?chars:Float):String;
+
 	/**
 		```lua
 		function table.strptime(format: string, timestring: string)
@@ -18200,6 +19052,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strptime(format:String, timestring:String):Int;
+
 	/**
 		```lua
 		function table.strridx(haystack: string, needle: string, start?: integer)
@@ -18227,6 +19080,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strridx(haystack:String, needle:String, ?start:Int):Int;
+
 	/**
 		```lua
 		function table.strtrans(string: string)
@@ -18246,6 +19100,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strtrans(string:String):String;
+
 	/**
 		```lua
 		function table.strutf16len(string: string, countcc?: 0|1)
@@ -18282,6 +19137,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strutf16len(string:String, ?countcc:Float):Int;
+
 	/**
 		```lua
 		function table.strwidth(string: string)
@@ -18300,6 +19156,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function strwidth(string:String):Int;
+
 	/**
 		```lua
 		function table.submatch(nr: integer, list?: any)
@@ -18344,6 +19201,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function submatch(nr:Int, ?list:Void):String;
+
 	/**
 		```lua
 		function table.substitute(string: string, pat: string, sub: string, flags: string)
@@ -18396,6 +19254,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function substitute(string:String, pat:String, sub:String, flags:String):String;
+
 	/**
 		```lua
 		function table.swapfilelist()
@@ -18416,6 +19275,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function swapfilelist():lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.swapinfo(fname: string)
@@ -18443,6 +19303,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function swapinfo(fname:String):Any;
+
 	/**
 		```lua
 		function table.swapname(buf: string|integer)
@@ -18459,6 +19320,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function swapname(buf:haxe.extern.EitherType<Int, String>):String;
+
 	/**
 		```lua
 		function table.synID(lnum: string|integer, col: integer, trans: 0|1)
@@ -18501,6 +19363,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function synID(lnum:haxe.extern.EitherType<Int, String>, col:Int, trans:Float):Int;
+
 	/**
 		```lua
 		function table.synIDattr(synID: integer, what: string, mode?: string)
@@ -18556,6 +19419,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function synIDattr(synID:Int, what:String, ?mode:String):String;
+
 	/**
 		```lua
 		function table.synIDtrans(synID: integer)
@@ -18573,6 +19437,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function synIDtrans(synID:Int):Int;
+
 	/**
 		```lua
 		function table.synconcealed(lnum: string|integer, col: integer)
@@ -18611,6 +19476,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function synconcealed(lnum:haxe.extern.EitherType<Int, String>, col:Int):Dynamic;
+
 	/**
 		```lua
 		function table.synstack(lnum: string|integer, col: integer)
@@ -18639,6 +19505,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function synstack(lnum:haxe.extern.EitherType<Int, String>, col:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.system(cmd: string|string[], input?: string|integer|string[])
@@ -18697,6 +19564,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function system(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Int>>):String;
+
 	/**
 		```lua
 		function table.systemlist(cmd: string|string[], input?: string|integer|string[], keepempty?: integer)
@@ -18720,6 +19588,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function systemlist(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Int>>, ?keepempty:Int):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.tabpagebuflist(arg?: integer)
@@ -18742,6 +19611,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tabpagebuflist(?arg:Int):Any;
+
 	/**
 		```lua
 		function table.tabpagenr(arg?: '#'|'$')
@@ -18772,6 +19642,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tabpagenr(?arg:String):Int;
+
 	/**
 		```lua
 		function table.tabpagewinnr(tabarg: integer, arg?: '#'|'$')
@@ -18801,6 +19672,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tabpagewinnr(tabarg:Int, ?arg:String):Int;
+
 	/**
 		```lua
 		function table.tagfiles()
@@ -18814,6 +19686,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tagfiles():lua.Table<Int, String>;
+
 	/**
 		```lua
 		function table.taglist(expr: any, filename?: string)
@@ -18866,6 +19739,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function taglist(expr:Any, ?filename:String):Any;
+
 	/**
 		```lua
 		function table.tan(expr: number)
@@ -18886,6 +19760,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tan(expr:Float):Float;
+
 	/**
 		```lua
 		function table.tanh(expr: number)
@@ -18906,6 +19781,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tanh(expr:Float):Float;
+
 	/**
 		```lua
 		function table.tempname()
@@ -18923,9 +19799,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tempname():String;
+
 	@:native("termopen")
 	@:luaDotMethod
 	private function __termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int;
+
 	/**
 		```lua
 		function table.termopen(cmd: string|string[], opts?: table)
@@ -18941,18 +19819,21 @@ extern class Fn {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __termopen(cmd, opts);
 	}
+
 	/**
 		```lua
 		(global) table.test_garbagecollect_now: unknown
 		```
 	**/
 	var test_garbagecollect_now : Dynamic;
+
 	/**
 		```lua
 		(global) table.test_write_list_log: unknown
 		```
 	**/
 	var test_write_list_log : Dynamic;
+
 	/**
 		```lua
 		function table.timer_info(id?: integer)
@@ -18977,6 +19858,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function timer_info(?id:Int):Any;
+
 	/**
 		```lua
 		function table.timer_pause(timer: integer, paused: boolean)
@@ -18999,9 +19881,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function timer_pause(timer:Int, paused:Bool):Any;
+
 	@:native("timer_start")
 	@:luaDotMethod
 	private function __timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.timer_start(time: number, callback: string|function, options?: table)
@@ -19043,6 +19927,7 @@ extern class Fn {
 		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __timer_start(time, callback, options);
 	}
+
 	/**
 		```lua
 		function table.timer_stop(timer: integer)
@@ -19057,6 +19942,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function timer_stop(timer:Int):Any;
+
 	/**
 		```lua
 		function table.timer_stopall()
@@ -19071,6 +19957,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function timer_stopall():Any;
+
 	/**
 		```lua
 		function table.tolower(expr: string)
@@ -19085,6 +19972,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tolower(expr:String):String;
+
 	/**
 		```lua
 		function table.toupper(expr: string)
@@ -19099,6 +19987,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function toupper(expr:String):String;
+
 	/**
 		```lua
 		function table.tr(src: string, fromstr: string, tostr: string)
@@ -19124,6 +20013,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function tr(src:String, fromstr:String, tostr:String):String;
+
 	/**
 		```lua
 		function table.trim(text: string, mask?: string, dir?: 0|1|2)
@@ -19169,6 +20059,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function trim(text:String, ?mask:String, ?dir:Float):String;
+
 	/**
 		```lua
 		function table.trunc(expr: number)
@@ -19191,6 +20082,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function trunc(expr:Float):Int;
+
 	/**
 		```lua
 		function table.type(expr: any)
@@ -19228,6 +20120,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function type(expr:Any):Int;
+
 	/**
 		```lua
 		function table.undofile(name: string)
@@ -19248,6 +20141,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function undofile(name:String):String;
+
 	/**
 		```lua
 		function table.undotree(buf?: string|integer)
@@ -19301,6 +20195,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function undotree(?buf:haxe.extern.EitherType<Int, String>):nvim.type.vim.fn.undotree.Ret;
+
 	/**
 		```lua
 		function table.uniq(list: any, func?: any, dict?: any)
@@ -19326,6 +20221,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function uniq(list:Any, ?func:Any, ?dict:Any):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+
 	/**
 		```lua
 		function table.utf16idx(string: string, idx: integer, countcc?: boolean, charidx?: boolean)
@@ -19363,6 +20259,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function utf16idx(string:String, idx:Int, ?countcc:Bool, ?charidx:Bool):Int;
+
 	/**
 		```lua
 		function table.values(dict: any)
@@ -19377,6 +20274,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function values(dict:Any):Any;
+
 	/**
 		```lua
 		function table.virtcol(expr: string|any[], list?: boolean, winid?: integer)
@@ -19434,6 +20332,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function virtcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?list:Bool, ?winid:Int):Any;
+
 	/**
 		```lua
 		function table.virtcol2col(winid: integer, lnum: integer, col: integer)
@@ -19465,6 +20364,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function virtcol2col(winid:Int, lnum:Int, col:Int):Int;
+
 	/**
 		```lua
 		function table.visualmode(expr?: boolean)
@@ -19492,6 +20392,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function visualmode(?expr:Bool):String;
+
 	/**
 		```lua
 		function table.wait(timeout: integer, condition: any, interval?: number)
@@ -19517,6 +20418,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function wait(timeout:Int, condition:Any, ?interval:Float):Any;
+
 	/**
 		```lua
 		function table.wildmenumode()
@@ -19537,6 +20439,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function wildmenumode():Any;
+
 	/**
 		```lua
 		function table.win_execute(id: integer, command: string, silent?: boolean)
@@ -19560,6 +20463,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_execute(id:Int, command:String, ?silent:Bool):Any;
+
 	/**
 		```lua
 		function table.win_findbuf(bufnr: integer)
@@ -19573,6 +20477,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_findbuf(bufnr:Int):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function table.win_getid(win?: integer, tab?: integer)
@@ -19591,6 +20496,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_getid(?win:Int, ?tab:Int):Int;
+
 	/**
 		```lua
 		function table.win_gettype(nr?: integer)
@@ -19631,6 +20537,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_gettype(?nr:Int):String;
+
 	/**
 		```lua
 		function table.win_gotoid(expr: integer)
@@ -19652,6 +20559,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_gotoid(expr:Int):Float;
+
 	/**
 		```lua
 		function table.win_id2tabwin(expr: integer)
@@ -19666,6 +20574,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_id2tabwin(expr:Int):Any;
+
 	/**
 		```lua
 		function table.win_id2win(expr: integer)
@@ -19679,6 +20588,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_id2win(expr:Int):Int;
+
 	/**
 		```lua
 		function table.win_move_separator(nr: integer, offset: integer)
@@ -19703,6 +20613,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_move_separator(nr:Int, offset:Int):Any;
+
 	/**
 		```lua
 		function table.win_move_statusline(nr: integer, offset: integer)
@@ -19724,6 +20635,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_move_statusline(nr:Int, offset:Int):Any;
+
 	/**
 		```lua
 		function table.win_screenpos(nr: integer)
@@ -19741,9 +20653,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function win_screenpos(nr:Int):Any;
+
 	@:native("win_splitmove")
 	@:luaDotMethod
 	private function __win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any;
+
 	/**
 		```lua
 		function table.win_splitmove(nr: integer, target: integer, options?: table)
@@ -19775,6 +20689,7 @@ extern class Fn {
 		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __win_splitmove(nr, target, options);
 	}
+
 	/**
 		```lua
 		function table.winbufnr(nr: integer)
@@ -19795,6 +20710,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winbufnr(nr:Int):Int;
+
 	/**
 		```lua
 		function table.wincol()
@@ -19809,6 +20725,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function wincol():Int;
+
 	/**
 		```lua
 		function table.windowsversion()
@@ -19824,6 +20741,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function windowsversion():String;
+
 	/**
 		```lua
 		function table.winheight(nr: integer)
@@ -19843,6 +20761,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winheight(nr:Int):Int;
+
 	/**
 		```lua
 		function table.winlayout(tabnr?: integer)
@@ -19889,6 +20808,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winlayout(?tabnr:Int):nvim.type.vim.fn.winlayout.Ret;
+
 	/**
 		```lua
 		function table.winline()
@@ -19905,6 +20825,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winline():Int;
+
 	/**
 		```lua
 		function table.winnr(arg?: string|integer)
@@ -19946,6 +20867,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winnr(?arg:haxe.extern.EitherType<String, Int>):Int;
+
 	/**
 		```lua
 		function table.winrestcmd()
@@ -19966,9 +20888,11 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winrestcmd():String;
+
 	@:native("winrestview")
 	@:luaDotMethod
 	private function __winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any;
+
 	/**
 		```lua
 		function table.winrestview(dict: vim.fn.winrestview.dict)
@@ -19996,6 +20920,7 @@ extern class Fn {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.winrestview.Dict> = dict;
 		return __winrestview(dict);
 	}
+
 	/**
 		```lua
 		function table.winsaveview()
@@ -20032,6 +20957,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winsaveview():nvim.type.vim.fn.winsaveview.Ret;
+
 	/**
 		```lua
 		function table.winwidth(nr: integer)
@@ -20058,6 +20984,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function winwidth(nr:Int):Int;
+
 	/**
 		```lua
 		function table.wordcount()
@@ -20088,6 +21015,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function wordcount():Any;
+
 	/**
 		```lua
 		function table.writefile(object: any, fname: string, flags?: string)
@@ -20144,6 +21072,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function writefile(object:Any, fname:String, ?flags:String):Any;
+
 	/**
 		```lua
 		function table.xor(expr: integer, expr1: integer)
@@ -20161,6 +21090,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function xor(expr:Int, expr1:Int):Int;
+
 }
 
 /**
@@ -20192,6 +21122,7 @@ extern class Go {
 		```
 	**/
 	var aleph : Dynamic;
+
 	/**
 		```lua
 		(global) table.allowrevins: boolean
@@ -20205,6 +21136,7 @@ extern class Go {
 		
 	**/
 	var allowrevins : Bool;
+
 	/**
 		```lua
 		(global) table.ambiwidth: 'double'|'single'
@@ -20245,12 +21177,14 @@ extern class Go {
 		
 	**/
 	var ambiwidth : String;
+
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
 	var arabic : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabicshape: boolean
@@ -20273,6 +21207,7 @@ extern class Go {
 		
 	**/
 	var arabicshape : Bool;
+
 	/**
 		```lua
 		(global) table.autochdir: boolean
@@ -20289,12 +21224,14 @@ extern class Go {
 		
 	**/
 	var autochdir : Bool;
+
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
 	var autoindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoread: boolean
@@ -20317,6 +21254,7 @@ extern class Go {
 		
 	**/
 	var autoread : Bool;
+
 	/**
 		```lua
 		(global) table.autowrite: boolean
@@ -20341,6 +21279,7 @@ extern class Go {
 		
 	**/
 	var autowrite : Bool;
+
 	/**
 		```lua
 		(global) table.autowriteall: boolean
@@ -20355,6 +21294,7 @@ extern class Go {
 		
 	**/
 	var autowriteall : Bool;
+
 	/**
 		```lua
 		(global) table.background: 'dark'|'light'
@@ -20390,6 +21330,7 @@ extern class Go {
 		
 	**/
 	var background : String;
+
 	/**
 		```lua
 		(global) table.backspace: string
@@ -20413,6 +21354,7 @@ extern class Go {
 		
 	**/
 	var backspace : String;
+
 	/**
 		```lua
 		(global) table.backup: boolean
@@ -20433,6 +21375,7 @@ extern class Go {
 		
 	**/
 	var backup : Bool;
+
 	/**
 		```lua
 		(global) table.backupcopy: string
@@ -20505,6 +21448,7 @@ extern class Go {
 		
 	**/
 	var backupcopy : String;
+
 	/**
 		```lua
 		(global) table.backupdir: string
@@ -20561,6 +21505,7 @@ extern class Go {
 		
 	**/
 	var backupdir : String;
+
 	/**
 		```lua
 		(global) table.backupext: string
@@ -20586,6 +21531,7 @@ extern class Go {
 		
 	**/
 	var backupext : String;
+
 	/**
 		```lua
 		(global) table.backupskip: string
@@ -20618,6 +21564,7 @@ extern class Go {
 		
 	**/
 	var backupskip : String;
+
 	/**
 		```lua
 		(global) table.belloff: string
@@ -20664,18 +21611,21 @@ extern class Go {
 		
 	**/
 	var belloff : String;
+
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
 	var binary : Dynamic;
+
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
 	var bomb : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakat: string
@@ -20688,42 +21638,49 @@ extern class Go {
 		
 	**/
 	var breakat : String;
+
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
 	var breakindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
 	var breakindentopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
 	var browsedir : Dynamic;
+
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
 	var bufhidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
 	var buflisted : Dynamic;
+
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
 	var buftype : Dynamic;
+
 	/**
 		```lua
 		(global) table.casemap: string
@@ -20743,6 +21700,7 @@ extern class Go {
 		
 	**/
 	var casemap : String;
+
 	/**
 		```lua
 		(global) table.cdhome: boolean
@@ -20759,6 +21717,7 @@ extern class Go {
 		
 	**/
 	var cdhome : Bool;
+
 	/**
 		```lua
 		(global) table.cdpath: string
@@ -20787,6 +21746,7 @@ extern class Go {
 		
 	**/
 	var cdpath : String;
+
 	/**
 		```lua
 		(global) table.cedit: string
@@ -20809,12 +21769,14 @@ extern class Go {
 		
 	**/
 	var cedit : String;
+
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
 	var channel : Dynamic;
+
 	/**
 		```lua
 		(global) table.charconvert: string
@@ -20874,36 +21836,42 @@ extern class Go {
 		
 	**/
 	var charconvert : String;
+
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
 	var cindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
 	var cinkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
 	var cinoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
 	var cinscopedecls : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
 	var cinwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.clipboard: string = 'unnamedplus'
@@ -20936,6 +21904,7 @@ extern class Go {
 		
 	**/
 	var clipboard : String;
+
 	/**
 		```lua
 		(global) table.cmdheight: integer
@@ -20959,6 +21928,7 @@ extern class Go {
 		
 	**/
 	var cmdheight : Int;
+
 	/**
 		```lua
 		(global) table.cmdwinheight: integer
@@ -20970,12 +21940,14 @@ extern class Go {
 		
 	**/
 	var cmdwinheight : Int;
+
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
 	var colorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.columns: integer
@@ -21001,36 +21973,42 @@ extern class Go {
 		
 	**/
 	var columns : Int;
+
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
 	var comments : Dynamic;
+
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
 	var commentstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
 	var compatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
 	var complete : Dynamic;
+
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
 	var completefunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeitemalign: string
@@ -21047,6 +22025,7 @@ extern class Go {
 		
 	**/
 	var completeitemalign : String;
+
 	/**
 		```lua
 		(global) table.completeopt: string
@@ -21107,24 +22086,28 @@ extern class Go {
 		
 	**/
 	var completeopt : String;
+
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
 	var completeslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
 	var concealcursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
 	var conceallevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.confirm: boolean = true
@@ -21148,12 +22131,14 @@ extern class Go {
 		 instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
 	**/
 	var confirm : Bool;
+
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
 	var copyindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cpoptions: string
@@ -21391,30 +22376,35 @@ extern class Go {
 		
 	**/
 	var cpoptions : String;
+
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
 	var cursorbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
 	var cursorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
 	var cursorline : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
 	var cursorlineopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.debug: string
@@ -21435,6 +22425,7 @@ extern class Go {
 		
 	**/
 	var debug : String;
+
 	/**
 		```lua
 		(global) table.define: string
@@ -21475,6 +22466,7 @@ extern class Go {
 		
 	**/
 	var define : String;
+
 	/**
 		```lua
 		(global) table.delcombine: boolean
@@ -21494,6 +22486,7 @@ extern class Go {
 		
 	**/
 	var delcombine : Bool;
+
 	/**
 		```lua
 		(global) table.dictionary: string
@@ -21526,12 +22519,14 @@ extern class Go {
 		
 	**/
 	var dictionary : String;
+
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
 	var diff : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffexpr: string
@@ -21546,6 +22541,7 @@ extern class Go {
 		
 	**/
 	var diffexpr : String;
+
 	/**
 		```lua
 		(global) table.diffopt: string
@@ -21665,6 +22661,7 @@ extern class Go {
 		
 	**/
 	var diffopt : String;
+
 	/**
 		```lua
 		(global) table.digraph: boolean
@@ -21677,6 +22674,7 @@ extern class Go {
 		
 	**/
 	var digraph : Bool;
+
 	/**
 		```lua
 		(global) table.directory: string
@@ -21732,6 +22730,7 @@ extern class Go {
 		
 	**/
 	var directory : String;
+
 	/**
 		```lua
 		(global) table.display: string
@@ -21759,6 +22758,7 @@ extern class Go {
 		
 	**/
 	var display : String;
+
 	/**
 		```lua
 		(global) table.eadirection: 'both'|'hor'|'ver'
@@ -21773,12 +22773,14 @@ extern class Go {
 		
 	**/
 	var eadirection : String;
+
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
 	var edcompatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -21797,6 +22799,7 @@ extern class Go {
 		
 	**/
 	var emoji : Bool;
+
 	/**
 		```lua
 		(global) table.encoding: string
@@ -21811,18 +22814,21 @@ extern class Go {
 		
 	**/
 	var encoding : String;
+
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
 	var endoffile : Dynamic;
+
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
 	var endofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalalways: boolean
@@ -21847,6 +22853,7 @@ extern class Go {
 		
 	**/
 	var equalalways : Bool;
+
 	/**
 		```lua
 		(global) table.equalprg: string
@@ -21864,6 +22871,7 @@ extern class Go {
 		
 	**/
 	var equalprg : String;
+
 	/**
 		```lua
 		(global) table.errorbells: boolean
@@ -21879,6 +22887,7 @@ extern class Go {
 		
 	**/
 	var errorbells : Bool;
+
 	/**
 		```lua
 		(global) table.errorfile: string
@@ -21897,6 +22906,7 @@ extern class Go {
 		
 	**/
 	var errorfile : String;
+
 	/**
 		```lua
 		(global) table.errorformat: string
@@ -21909,6 +22919,7 @@ extern class Go {
 		
 	**/
 	var errorformat : String;
+
 	/**
 		```lua
 		(global) table.eventignore: string
@@ -21928,18 +22939,21 @@ extern class Go {
 		
 	**/
 	var eventignore : String;
+
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
 	var eventignorewin : Dynamic;
+
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
 	var expandtab : Dynamic;
+
 	/**
 		```lua
 		(global) table.exrc: boolean
@@ -21972,12 +22986,14 @@ extern class Go {
 		
 	**/
 	var exrc : Bool;
+
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
 	var fileencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencodings: string
@@ -22040,12 +23056,14 @@ extern class Go {
 		
 	**/
 	var fileencodings : String;
+
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
 	var fileformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformats: string
@@ -22101,6 +23119,7 @@ extern class Go {
 		
 	**/
 	var fileformats : String;
+
 	/**
 		```lua
 		(global) table.fileignorecase: boolean
@@ -22113,12 +23132,14 @@ extern class Go {
 		
 	**/
 	var fileignorecase : Bool;
+
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
 	var filetype : Dynamic;
+
 	/**
 		```lua
 		(global) table.fillchars: string
@@ -22191,6 +23212,7 @@ extern class Go {
 		
 	**/
 	var fillchars : String;
+
 	/**
 		```lua
 		(global) table.findfunc: string
@@ -22248,12 +23270,14 @@ extern class Go {
 		
 	**/
 	var findfunc : String;
+
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
 	var fixendofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldclose: string
@@ -22267,36 +23291,42 @@ extern class Go {
 		
 	**/
 	var foldclose : String;
+
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
 	var foldcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
 	var foldenable : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
 	var foldexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
 	var foldignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
 	var foldlevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevelstart: integer
@@ -22316,30 +23346,35 @@ extern class Go {
 		
 	**/
 	var foldlevelstart : Int;
+
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
 	var foldmarker : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
 	var foldmethod : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
 	var foldminlines : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
 	var foldnestmax : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldopen: string
@@ -22380,30 +23415,35 @@ extern class Go {
 		
 	**/
 	var foldopen : String;
+
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
 	var foldtext : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
 	var formatexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
 	var formatlistpat : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
 	var formatoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatprg: string
@@ -22425,6 +23465,7 @@ extern class Go {
 		
 	**/
 	var formatprg : String;
+
 	/**
 		```lua
 		(global) table.fsync: boolean
@@ -22449,6 +23490,7 @@ extern class Go {
 		
 	**/
 	var fsync : Bool;
+
 	/**
 		```lua
 		(global) table.gdefault: boolean
@@ -22472,6 +23514,7 @@ extern class Go {
 		
 	**/
 	var gdefault : Bool;
+
 	/**
 		```lua
 		(global) table.grepformat: string = '%f:%l:%c:%m'
@@ -22487,6 +23530,7 @@ extern class Go {
 		
 	**/
 	var grepformat : String;
+
 	/**
 		```lua
 		(global) table.grepprg: string = 'rg --vimgrep -uu '
@@ -22523,6 +23567,7 @@ extern class Go {
 		
 	**/
 	var grepprg : String;
+
 	/**
 		```lua
 		(global) table.guicursor: string
@@ -22628,6 +23673,7 @@ extern class Go {
 		
 	**/
 	var guicursor : String;
+
 	/**
 		```lua
 		(global) table.guifont: string
@@ -22707,6 +23753,7 @@ extern class Go {
 		
 	**/
 	var guifont : String;
+
 	/**
 		```lua
 		(global) table.guifontwide: string
@@ -22724,24 +23771,28 @@ extern class Go {
 		
 	**/
 	var guifontwide : String;
+
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
 	var guioptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
 	var guitablabel : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
 	var guitabtooltip : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpfile: string
@@ -22761,6 +23812,7 @@ extern class Go {
 		
 	**/
 	var helpfile : String;
+
 	/**
 		```lua
 		(global) table.helpheight: integer
@@ -22776,6 +23828,7 @@ extern class Go {
 		
 	**/
 	var helpheight : Int;
+
 	/**
 		```lua
 		(global) table.helplang: string
@@ -22801,6 +23854,7 @@ extern class Go {
 		
 	**/
 	var helplang : String;
+
 	/**
 		```lua
 		(global) table.hidden: boolean
@@ -22825,12 +23879,14 @@ extern class Go {
 		
 	**/
 	var hidden : Bool;
+
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
 	var highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.history: integer
@@ -22846,18 +23902,21 @@ extern class Go {
 		
 	**/
 	var history : Int;
+
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
 	var hkmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
 	var hkmapp : Dynamic;
+
 	/**
 		```lua
 		(global) table.hlsearch: boolean
@@ -22887,6 +23946,7 @@ extern class Go {
 		
 	**/
 	var hlsearch : Bool;
+
 	/**
 		```lua
 		(global) table.icon: boolean
@@ -22902,6 +23962,7 @@ extern class Go {
 		
 	**/
 	var icon : Bool;
+
 	/**
 		```lua
 		(global) table.iconstring: string
@@ -22919,6 +23980,7 @@ extern class Go {
 		
 	**/
 	var iconstring : String;
+
 	/**
 		```lua
 		(global) table.ignorecase: boolean = true
@@ -22938,30 +24000,35 @@ extern class Go {
 		 Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 	**/
 	var ignorecase : Bool;
+
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
 	var imcmdline : Dynamic;
+
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
 	var imdisable : Dynamic;
+
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
 	var iminsert : Dynamic;
+
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
 	var imsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.inccommand: ''|'nosplit'|'split'
@@ -22985,6 +24052,7 @@ extern class Go {
 		
 	**/
 	var inccommand : String;
+
 	/**
 		```lua
 		(global) table.include: string
@@ -23005,12 +24073,14 @@ extern class Go {
 		
 	**/
 	var include : String;
+
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
 	var includeexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.incsearch: boolean
@@ -23055,30 +24125,35 @@ extern class Go {
 		
 	**/
 	var incsearch : Bool;
+
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
 	var indentexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
 	var indentkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
 	var infercase : Dynamic;
+
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
 	var insertmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.isfname: string
@@ -23134,6 +24209,7 @@ extern class Go {
 		
 	**/
 	var isfname : String;
+
 	/**
 		```lua
 		(global) table.isident: string
@@ -23153,12 +24229,14 @@ extern class Go {
 		
 	**/
 	var isident : String;
+
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
 	var iskeyword : Dynamic;
+
 	/**
 		```lua
 		(global) table.isprint: string
@@ -23195,6 +24273,7 @@ extern class Go {
 		
 	**/
 	var isprint : String;
+
 	/**
 		```lua
 		(global) table.joinspaces: boolean
@@ -23207,6 +24286,7 @@ extern class Go {
 		
 	**/
 	var joinspaces : Bool;
+
 	/**
 		```lua
 		(global) table.jumpoptions: string
@@ -23230,12 +24310,14 @@ extern class Go {
 		
 	**/
 	var jumpoptions : String;
+
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
 	var keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymodel: string
@@ -23254,6 +24336,7 @@ extern class Go {
 		
 	**/
 	var keymodel : String;
+
 	/**
 		```lua
 		(global) table.keywordprg: string
@@ -23281,6 +24364,7 @@ extern class Go {
 		
 	**/
 	var keywordprg : String;
+
 	/**
 		```lua
 		(global) table.langmap: string
@@ -23336,6 +24420,7 @@ extern class Go {
 		
 	**/
 	var langmap : String;
+
 	/**
 		```lua
 		(global) table.langmenu: string
@@ -23376,12 +24461,14 @@ extern class Go {
 		
 	**/
 	var langmenu : String;
+
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
 	var langnoremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langremap: boolean
@@ -23395,6 +24482,7 @@ extern class Go {
 		
 	**/
 	var langremap : Bool;
+
 	/**
 		```lua
 		(global) table.laststatus: integer
@@ -23413,6 +24501,7 @@ extern class Go {
 		
 	**/
 	var laststatus : Int;
+
 	/**
 		```lua
 		(global) table.lazyredraw: boolean
@@ -23430,12 +24519,14 @@ extern class Go {
 		
 	**/
 	var lazyredraw : Bool;
+
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
 	var linebreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.lines: integer
@@ -23459,6 +24550,7 @@ extern class Go {
 		
 	**/
 	var lines : Int;
+
 	/**
 		```lua
 		(global) table.linespace: integer
@@ -23477,18 +24569,21 @@ extern class Go {
 		
 	**/
 	var linespace : Int;
+
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
 	var lisp : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
 	var lispoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispwords: string
@@ -23501,12 +24596,14 @@ extern class Go {
 		
 	**/
 	var lispwords : String;
+
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
 	var list : Dynamic;
+
 	/**
 		```lua
 		(global) table.listchars: string
@@ -23632,6 +24729,7 @@ extern class Go {
 		
 	**/
 	var listchars : String;
+
 	/**
 		```lua
 		(global) table.loadplugins: boolean
@@ -23647,6 +24745,7 @@ extern class Go {
 		
 	**/
 	var loadplugins : Bool;
+
 	/**
 		```lua
 		(global) table.magic: boolean
@@ -23664,6 +24763,7 @@ extern class Go {
 		
 	**/
 	var magic : Bool;
+
 	/**
 		```lua
 		(global) table.makeef: string
@@ -23685,6 +24785,7 @@ extern class Go {
 		
 	**/
 	var makeef : String;
+
 	/**
 		```lua
 		(global) table.makeencoding: string
@@ -23709,6 +24810,7 @@ extern class Go {
 		
 	**/
 	var makeencoding : String;
+
 	/**
 		```lua
 		(global) table.makeprg: string
@@ -23740,12 +24842,14 @@ extern class Go {
 		
 	**/
 	var makeprg : String;
+
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
 	var matchpairs : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchtime: integer
@@ -23759,12 +24863,14 @@ extern class Go {
 		
 	**/
 	var matchtime : Int;
+
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
 	var maxcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxfuncdepth: integer
@@ -23783,6 +24889,7 @@ extern class Go {
 		
 	**/
 	var maxfuncdepth : Int;
+
 	/**
 		```lua
 		(global) table.maxmapdepth: integer
@@ -23798,6 +24905,7 @@ extern class Go {
 		
 	**/
 	var maxmapdepth : Int;
+
 	/**
 		```lua
 		(global) table.maxmempattern: integer
@@ -23820,6 +24928,7 @@ extern class Go {
 		
 	**/
 	var maxmempattern : Int;
+
 	/**
 		```lua
 		(global) table.menuitems: integer
@@ -23833,6 +24942,7 @@ extern class Go {
 		
 	**/
 	var menuitems : Int;
+
 	/**
 		```lua
 		(global) table.messagesopt: string
@@ -23861,6 +24971,7 @@ extern class Go {
 		
 	**/
 	var messagesopt : String;
+
 	/**
 		```lua
 		(global) table.mkspellmem: string
@@ -23911,12 +25022,14 @@ extern class Go {
 		
 	**/
 	var mkspellmem : String;
+
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
 	var modeline : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelineexpr: boolean
@@ -23932,6 +25045,7 @@ extern class Go {
 		
 	**/
 	var modelineexpr : Bool;
+
 	/**
 		```lua
 		(global) table.modelines: integer
@@ -23946,18 +25060,21 @@ extern class Go {
 		
 	**/
 	var modelines : Int;
+
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
 	var modifiable : Dynamic;
+
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
 	var modified : Dynamic;
+
 	/**
 		```lua
 		(global) table.more: boolean
@@ -23971,6 +25088,7 @@ extern class Go {
 		
 	**/
 	var more : Bool;
+
 	/**
 		```lua
 		(global) table.mouse: string
@@ -24020,6 +25138,7 @@ extern class Go {
 		
 	**/
 	var mouse : String;
+
 	/**
 		```lua
 		(global) table.mousefocus: boolean
@@ -24035,6 +25154,7 @@ extern class Go {
 		
 	**/
 	var mousefocus : Bool;
+
 	/**
 		```lua
 		(global) table.mousehide: boolean
@@ -24048,6 +25168,7 @@ extern class Go {
 		
 	**/
 	var mousehide : Bool;
+
 	/**
 		```lua
 		(global) table.mousemodel: 'extend'|'popup'|'popup_setpos'
@@ -24108,6 +25229,7 @@ extern class Go {
 		
 	**/
 	var mousemodel : String;
+
 	/**
 		```lua
 		(global) table.mousemoveevent: boolean
@@ -24123,6 +25245,7 @@ extern class Go {
 		
 	**/
 	var mousemoveevent : Bool;
+
 	/**
 		```lua
 		(global) table.mousescroll: string
@@ -24153,12 +25276,14 @@ extern class Go {
 		
 	**/
 	var mousescroll : String;
+
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
 	var mouseshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousetime: integer
@@ -24171,36 +25296,42 @@ extern class Go {
 		
 	**/
 	var mousetime : Int;
+
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
 	var nrformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
 	var number : Dynamic;
+
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
 	var numberwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
 	var omnifunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
 	var opendevice : Dynamic;
+
 	/**
 		```lua
 		(global) table.operatorfunc: string = "v:lua.require'vim._buf'.space_above"|"v:lua.require'vim._buf'.space_below"|"v:lua.require'vim._comment'.operator"
@@ -24222,6 +25353,7 @@ extern class Go {
 		
 	**/
 	var operatorfunc : String;
+
 	/**
 		```lua
 		(global) table.packpath: string
@@ -24236,6 +25368,7 @@ extern class Go {
 		
 	**/
 	var packpath : String;
+
 	/**
 		```lua
 		(global) table.paragraphs: string
@@ -24248,18 +25381,21 @@ extern class Go {
 		
 	**/
 	var paragraphs : String;
+
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
 	var paste : Dynamic;
+
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
 	var pastetoggle : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchexpr: string
@@ -24274,6 +25410,7 @@ extern class Go {
 		
 	**/
 	var patchexpr : String;
+
 	/**
 		```lua
 		(global) table.patchmode: string
@@ -24300,6 +25437,7 @@ extern class Go {
 		
 	**/
 	var patchmode : String;
+
 	/**
 		```lua
 		(global) table.path: string
@@ -24387,12 +25525,14 @@ extern class Go {
 		
 	**/
 	var path : String;
+
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
 	var preserveindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewheight: integer
@@ -24405,18 +25545,21 @@ extern class Go {
 		
 	**/
 	var previewheight : Int;
+
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
 	var previewwindow : Dynamic;
+
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
 	var prompt : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumblend: integer
@@ -24442,6 +25585,7 @@ extern class Go {
 		
 	**/
 	var pumblend : Int;
+
 	/**
 		```lua
 		(global) table.pumheight: integer
@@ -24454,6 +25598,7 @@ extern class Go {
 		
 	**/
 	var pumheight : Int;
+
 	/**
 		```lua
 		(global) table.pumwidth: integer
@@ -24467,6 +25612,7 @@ extern class Go {
 		
 	**/
 	var pumwidth : Int;
+
 	/**
 		```lua
 		(global) table.pyxversion: integer
@@ -24483,6 +25629,7 @@ extern class Go {
 		
 	**/
 	var pyxversion : Int;
+
 	/**
 		```lua
 		(global) table.quickfixtextfunc: string
@@ -24504,18 +25651,21 @@ extern class Go {
 		
 	**/
 	var quickfixtextfunc : String;
+
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
 	var quoteescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
 	var readonly : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawdebug: string
@@ -24556,6 +25706,7 @@ extern class Go {
 		
 	**/
 	var redrawdebug : String;
+
 	/**
 		```lua
 		(global) table.redrawtime: integer
@@ -24575,6 +25726,7 @@ extern class Go {
 		
 	**/
 	var redrawtime : Int;
+
 	/**
 		```lua
 		(global) table.regexpengine: integer
@@ -24597,18 +25749,21 @@ extern class Go {
 		
 	**/
 	var regexpengine : Int;
+
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
 	var relativenumber : Dynamic;
+
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
 	var remap : Dynamic;
+
 	/**
 		```lua
 		(global) table.report: integer
@@ -24624,6 +25779,7 @@ extern class Go {
 		
 	**/
 	var report : Int;
+
 	/**
 		```lua
 		(global) table.revins: boolean
@@ -24637,18 +25793,21 @@ extern class Go {
 		
 	**/
 	var revins : Bool;
+
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
 	var rightleft : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
 	var rightleftcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.ruler: boolean
@@ -24681,6 +25840,7 @@ extern class Go {
 		
 	**/
 	var ruler : Bool;
+
 	/**
 		```lua
 		(global) table.rulerformat: string
@@ -24704,6 +25864,7 @@ extern class Go {
 		
 	**/
 	var rulerformat : String;
+
 	/**
 		```lua
 		(global) table.runtimepath: string
@@ -24784,24 +25945,28 @@ extern class Go {
 		
 	**/
 	var runtimepath : String;
+
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
 	var scroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
 	var scrollback : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
 	var scrollbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolljump: integer
@@ -24818,6 +25983,7 @@ extern class Go {
 		
 	**/
 	var scrolljump : Int;
+
 	/**
 		```lua
 		(global) table.scrolloff: integer = 10
@@ -24845,6 +26011,7 @@ extern class Go {
 		 Minimal number of screen lines to keep above and below the cursor.
 	**/
 	var scrolloff : Float;
+
 	/**
 		```lua
 		(global) table.scrollopt: string
@@ -24882,6 +26049,7 @@ extern class Go {
 		
 	**/
 	var scrollopt : String;
+
 	/**
 		```lua
 		(global) table.sections: string
@@ -24895,12 +26063,14 @@ extern class Go {
 		
 	**/
 	var sections : String;
+
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
 	var secure : Dynamic;
+
 	/**
 		```lua
 		(global) table.selection: 'exclusive'|'inclusive'|'old'
@@ -24935,6 +26105,7 @@ extern class Go {
 		
 	**/
 	var selection : String;
+
 	/**
 		```lua
 		(global) table.selectmode: string
@@ -24952,6 +26123,7 @@ extern class Go {
 		
 	**/
 	var selectmode : String;
+
 	/**
 		```lua
 		(global) table.sessionoptions: string
@@ -24999,6 +26171,7 @@ extern class Go {
 		
 	**/
 	var sessionoptions : String;
+
 	/**
 		```lua
 		(global) table.shada: string
@@ -25122,6 +26295,7 @@ extern class Go {
 		
 	**/
 	var shada : String;
+
 	/**
 		```lua
 		(global) table.shadafile: string
@@ -25138,6 +26312,7 @@ extern class Go {
 		
 	**/
 	var shadafile : String;
+
 	/**
 		```lua
 		(global) table.shell: string
@@ -25201,6 +26376,7 @@ extern class Go {
 		
 	**/
 	var shell : String;
+
 	/**
 		```lua
 		(global) table.shellcmdflag: string
@@ -25222,6 +26398,7 @@ extern class Go {
 		
 	**/
 	var shellcmdflag : String;
+
 	/**
 		```lua
 		(global) table.shellpipe: string
@@ -25260,6 +26437,7 @@ extern class Go {
 		
 	**/
 	var shellpipe : String;
+
 	/**
 		```lua
 		(global) table.shellquote: string
@@ -25281,6 +26459,7 @@ extern class Go {
 		
 	**/
 	var shellquote : String;
+
 	/**
 		```lua
 		(global) table.shellredir: string
@@ -25312,6 +26491,7 @@ extern class Go {
 		
 	**/
 	var shellredir : String;
+
 	/**
 		```lua
 		(global) table.shellslash: boolean
@@ -25337,6 +26517,7 @@ extern class Go {
 		
 	**/
 	var shellslash : Bool;
+
 	/**
 		```lua
 		(global) table.shelltemp: boolean
@@ -25357,6 +26538,7 @@ extern class Go {
 		
 	**/
 	var shelltemp : Bool;
+
 	/**
 		```lua
 		(global) table.shellxescape: string
@@ -25372,6 +26554,7 @@ extern class Go {
 		
 	**/
 	var shellxescape : String;
+
 	/**
 		```lua
 		(global) table.shellxquote: string
@@ -25391,6 +26574,7 @@ extern class Go {
 		
 	**/
 	var shellxquote : String;
+
 	/**
 		```lua
 		(global) table.shiftround: boolean
@@ -25404,12 +26588,14 @@ extern class Go {
 		
 	**/
 	var shiftround : Bool;
+
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
 	var shiftwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.shortmess: string
@@ -25475,6 +26661,7 @@ extern class Go {
 		
 	**/
 	var shortmess : String;
+
 	/**
 		```lua
 		(global) table.showbreak: string
@@ -25506,6 +26693,7 @@ extern class Go {
 		
 	**/
 	var showbreak : String;
+
 	/**
 		```lua
 		(global) table.showcmd: boolean
@@ -25527,6 +26715,7 @@ extern class Go {
 		
 	**/
 	var showcmd : Bool;
+
 	/**
 		```lua
 		(global) table.showcmdloc: 'last'|'statusline'|'tabline'
@@ -25548,6 +26737,7 @@ extern class Go {
 		
 	**/
 	var showcmdloc : String;
+
 	/**
 		```lua
 		(global) table.showfulltag: boolean
@@ -25566,6 +26756,7 @@ extern class Go {
 		
 	**/
 	var showfulltag : Bool;
+
 	/**
 		```lua
 		(global) table.showmatch: boolean
@@ -25591,6 +26782,7 @@ extern class Go {
 		
 	**/
 	var showmatch : Bool;
+
 	/**
 		```lua
 		(global) table.showmode: boolean
@@ -25604,6 +26796,7 @@ extern class Go {
 		
 	**/
 	var showmode : Bool;
+
 	/**
 		```lua
 		(global) table.showtabline: integer
@@ -25622,6 +26815,7 @@ extern class Go {
 		
 	**/
 	var showtabline : Int;
+
 	/**
 		```lua
 		(global) table.sidescroll: integer
@@ -25637,6 +26831,7 @@ extern class Go {
 		
 	**/
 	var sidescroll : Int;
+
 	/**
 		```lua
 		(global) table.sidescrolloff: integer
@@ -25673,12 +26868,14 @@ extern class Go {
 		
 	**/
 	var sidescrolloff : Int;
+
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
 	var signcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartcase: boolean = true
@@ -25695,12 +26892,14 @@ extern class Go {
 		
 	**/
 	var smartcase : Bool;
+
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
 	var smartindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.smarttab: boolean
@@ -25721,48 +26920,56 @@ extern class Go {
 		
 	**/
 	var smarttab : Bool;
+
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
 	var smoothscroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
 	var softtabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
 	var spell : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
 	var spellcapcheck : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
 	var spellfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
 	var spelllang : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
 	var spelloptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellsuggest: string
@@ -25841,6 +27048,7 @@ extern class Go {
 		
 	**/
 	var spellsuggest : String;
+
 	/**
 		```lua
 		(global) table.splitbelow: boolean
@@ -25853,6 +27061,7 @@ extern class Go {
 		
 	**/
 	var splitbelow : Bool;
+
 	/**
 		```lua
 		(global) table.splitkeep: 'cursor'|'screen'|'topline'
@@ -25875,6 +27084,7 @@ extern class Go {
 		
 	**/
 	var splitkeep : String;
+
 	/**
 		```lua
 		(global) table.splitright: boolean
@@ -25887,6 +27097,7 @@ extern class Go {
 		
 	**/
 	var splitright : Bool;
+
 	/**
 		```lua
 		(global) table.startofline: boolean
@@ -25908,12 +27119,14 @@ extern class Go {
 		
 	**/
 	var startofline : Bool;
+
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
 	var statuscolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.statusline: string
@@ -26164,6 +27377,7 @@ extern class Go {
 		
 	**/
 	var statusline : String;
+
 	/**
 		```lua
 		(global) table.suffixes: string
@@ -26184,18 +27398,21 @@ extern class Go {
 		
 	**/
 	var suffixes : String;
+
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
 	var suffixesadd : Dynamic;
+
 	/**
 		```lua
 		(global) table.swapfile: unknown
 		```
 	**/
 	var swapfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.switchbuf: string
@@ -26233,18 +27450,21 @@ extern class Go {
 		
 	**/
 	var switchbuf : String;
+
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
 	var synmaxcol : Dynamic;
+
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
 	var syntax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabclose: string
@@ -26264,6 +27484,7 @@ extern class Go {
 		
 	**/
 	var tabclose : String;
+
 	/**
 		```lua
 		(global) table.tabline: string
@@ -26294,6 +27515,7 @@ extern class Go {
 		
 	**/
 	var tabline : String;
+
 	/**
 		```lua
 		(global) table.tabpagemax: integer
@@ -26306,12 +27528,14 @@ extern class Go {
 		
 	**/
 	var tabpagemax : Int;
+
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
 	var tabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagbsearch: boolean
@@ -26372,6 +27596,7 @@ extern class Go {
 		
 	**/
 	var tagbsearch : Bool;
+
 	/**
 		```lua
 		(global) table.tagcase: 'followic'|'followscs'|'ignore'|'match'|'smart'
@@ -26389,12 +27614,14 @@ extern class Go {
 		
 	**/
 	var tagcase : String;
+
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
 	var tagfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.taglength: integer
@@ -26406,6 +27633,7 @@ extern class Go {
 		
 	**/
 	var taglength : Int;
+
 	/**
 		```lua
 		(global) table.tagrelative: boolean
@@ -26418,6 +27646,7 @@ extern class Go {
 		
 	**/
 	var tagrelative : Bool;
+
 	/**
 		```lua
 		(global) table.tags: string
@@ -26445,6 +27674,7 @@ extern class Go {
 		
 	**/
 	var tags : String;
+
 	/**
 		```lua
 		(global) table.tagstack: boolean
@@ -26462,6 +27692,7 @@ extern class Go {
 		
 	**/
 	var tagstack : Bool;
+
 	/**
 		```lua
 		(global) table.termbidi: boolean
@@ -26480,12 +27711,14 @@ extern class Go {
 		
 	**/
 	var termbidi : Bool;
+
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
 	var termencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.termguicolors: boolean
@@ -26503,6 +27736,7 @@ extern class Go {
 		
 	**/
 	var termguicolors : Bool;
+
 	/**
 		```lua
 		(global) table.termpastefilter: string
@@ -26531,6 +27765,7 @@ extern class Go {
 		
 	**/
 	var termpastefilter : String;
+
 	/**
 		```lua
 		(global) table.termsync: boolean
@@ -26545,18 +27780,21 @@ extern class Go {
 		
 	**/
 	var termsync : Bool;
+
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
 	var terse : Dynamic;
+
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
 	var textwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurus: string
@@ -26581,6 +27819,7 @@ extern class Go {
 		
 	**/
 	var thesaurus : String;
+
 	/**
 		```lua
 		(global) table.thesaurusfunc: string
@@ -26598,6 +27837,7 @@ extern class Go {
 		
 	**/
 	var thesaurusfunc : String;
+
 	/**
 		```lua
 		(global) table.tildeop: boolean
@@ -26609,6 +27849,7 @@ extern class Go {
 		
 	**/
 	var tildeop : Bool;
+
 	/**
 		```lua
 		(global) table.timeout: boolean
@@ -26623,6 +27864,7 @@ extern class Go {
 		
 	**/
 	var timeout : Bool;
+
 	/**
 		```lua
 		(global) table.timeoutlen: integer
@@ -26634,6 +27876,7 @@ extern class Go {
 		
 	**/
 	var timeoutlen : Int;
+
 	/**
 		```lua
 		(global) table.title: boolean
@@ -26655,6 +27898,7 @@ extern class Go {
 		
 	**/
 	var title : Bool;
+
 	/**
 		```lua
 		(global) table.titlelen: integer
@@ -26674,6 +27918,7 @@ extern class Go {
 		
 	**/
 	var titlelen : Int;
+
 	/**
 		```lua
 		(global) table.titleold: string
@@ -26688,6 +27933,7 @@ extern class Go {
 		
 	**/
 	var titleold : String;
+
 	/**
 		```lua
 		(global) table.titlestring: string
@@ -26732,6 +27978,7 @@ extern class Go {
 		
 	**/
 	var titlestring : String;
+
 	/**
 		```lua
 		(global) table.ttimeout: boolean
@@ -26753,6 +28000,7 @@ extern class Go {
 		
 	**/
 	var ttimeout : Bool;
+
 	/**
 		```lua
 		(global) table.ttimeoutlen: integer
@@ -26766,12 +28014,14 @@ extern class Go {
 		
 	**/
 	var ttimeoutlen : Int;
+
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
 	var ttyfast : Dynamic;
+
 	/**
 		```lua
 		(global) table.undodir: string
@@ -26802,12 +28052,14 @@ extern class Go {
 		
 	**/
 	var undodir : String;
+
 	/**
 		```lua
 		(global) table.undofile: unknown
 		```
 	**/
 	var undofile : Dynamic;
+
 	/**
 		```lua
 		(global) table.undolevels: integer
@@ -26841,6 +28093,7 @@ extern class Go {
 		
 	**/
 	var undolevels : Int;
+
 	/**
 		```lua
 		(global) table.undoreload: integer
@@ -26862,6 +28115,7 @@ extern class Go {
 		
 	**/
 	var undoreload : Int;
+
 	/**
 		```lua
 		(global) table.updatecount: integer
@@ -26883,6 +28137,7 @@ extern class Go {
 		
 	**/
 	var updatecount : Int;
+
 	/**
 		```lua
 		(global) table.updatetime: integer
@@ -26896,18 +28151,21 @@ extern class Go {
 		
 	**/
 	var updatetime : Int;
+
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
 	var varsofttabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
 	var vartabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbose: integer
@@ -26944,6 +28202,7 @@ extern class Go {
 		
 	**/
 	var verbose : Int;
+
 	/**
 		```lua
 		(global) table.verbosefile: string
@@ -26963,6 +28222,7 @@ extern class Go {
 		
 	**/
 	var verbosefile : String;
+
 	/**
 		```lua
 		(global) table.viewdir: string
@@ -26976,6 +28236,7 @@ extern class Go {
 		
 	**/
 	var viewdir : String;
+
 	/**
 		```lua
 		(global) table.viewoptions: string
@@ -26998,6 +28259,7 @@ extern class Go {
 		
 	**/
 	var viewoptions : String;
+
 	/**
 		```lua
 		(global) table.virtualedit: string
@@ -27034,6 +28296,7 @@ extern class Go {
 		
 	**/
 	var virtualedit : String;
+
 	/**
 		```lua
 		(global) table.visualbell: boolean
@@ -27045,6 +28308,7 @@ extern class Go {
 		
 	**/
 	var visualbell : Bool;
+
 	/**
 		```lua
 		(global) table.warn: boolean
@@ -27057,6 +28321,7 @@ extern class Go {
 		
 	**/
 	var warn : Bool;
+
 	/**
 		```lua
 		(global) table.whichwrap: string
@@ -27096,6 +28361,7 @@ extern class Go {
 		
 	**/
 	var whichwrap : String;
+
 	/**
 		```lua
 		(global) table.wildchar: integer
@@ -27125,6 +28391,7 @@ extern class Go {
 		
 	**/
 	var wildchar : Int;
+
 	/**
 		```lua
 		(global) table.wildcharm: integer
@@ -27146,6 +28413,7 @@ extern class Go {
 		
 	**/
 	var wildcharm : Int;
+
 	/**
 		```lua
 		(global) table.wildignore: string
@@ -27170,6 +28438,7 @@ extern class Go {
 		
 	**/
 	var wildignore : String;
+
 	/**
 		```lua
 		(global) table.wildignorecase: boolean
@@ -27184,6 +28453,7 @@ extern class Go {
 		
 	**/
 	var wildignorecase : Bool;
+
 	/**
 		```lua
 		(global) table.wildmenu: boolean
@@ -27234,6 +28504,7 @@ extern class Go {
 		
 	**/
 	var wildmenu : Bool;
+
 	/**
 		```lua
 		(global) table.wildmode: string
@@ -27315,6 +28586,7 @@ extern class Go {
 		
 	**/
 	var wildmode : String;
+
 	/**
 		```lua
 		(global) table.wildoptions: string
@@ -27342,6 +28614,7 @@ extern class Go {
 		
 	**/
 	var wildoptions : String;
+
 	/**
 		```lua
 		(global) table.winaltkeys: 'menu'|'no'|'yes'
@@ -27367,6 +28640,7 @@ extern class Go {
 		
 	**/
 	var winaltkeys : String;
+
 	/**
 		```lua
 		(global) table.winbar: string
@@ -27390,12 +28664,14 @@ extern class Go {
 		
 	**/
 	var winbar : String;
+
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
 	var winblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.winborder: ''|'bold'|'double'|'none'|'rounded'|'shadow'|'single'|'solid'
@@ -27415,6 +28691,7 @@ extern class Go {
 		
 	**/
 	var winborder : String;
+
 	/**
 		```lua
 		(global) table.window: integer
@@ -27434,24 +28711,28 @@ extern class Go {
 		
 	**/
 	var window : Int;
+
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
 	var winfixbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
 	var winfixheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
 	var winfixwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winheight: integer
@@ -27481,12 +28762,14 @@ extern class Go {
 		
 	**/
 	var winheight : Int;
+
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
 	var winhighlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminheight: integer
@@ -27506,6 +28789,7 @@ extern class Go {
 		
 	**/
 	var winminheight : Int;
+
 	/**
 		```lua
 		(global) table.winminwidth: integer
@@ -27526,6 +28810,7 @@ extern class Go {
 		
 	**/
 	var winminwidth : Int;
+
 	/**
 		```lua
 		(global) table.winwidth: integer
@@ -27545,18 +28830,21 @@ extern class Go {
 		
 	**/
 	var winwidth : Int;
+
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
 	var wrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
 	var wrapmargin : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapscan: boolean
@@ -27569,6 +28857,7 @@ extern class Go {
 		
 	**/
 	var wrapscan : Bool;
+
 	/**
 		```lua
 		(global) table.write: boolean
@@ -27584,6 +28873,7 @@ extern class Go {
 		
 	**/
 	var write : Bool;
+
 	/**
 		```lua
 		(global) table.writeany: boolean
@@ -27595,6 +28885,7 @@ extern class Go {
 		
 	**/
 	var writeany : Bool;
+
 	/**
 		```lua
 		(global) table.writebackup: boolean
@@ -27617,6 +28908,7 @@ extern class Go {
 		
 	**/
 	var writebackup : Bool;
+
 	/**
 		```lua
 		(global) table.writedelay: integer
@@ -27629,6 +28921,7 @@ extern class Go {
 		
 	**/
 	var writedelay : Int;
+
 }
 
 /**
@@ -27640,6 +28933,7 @@ extern class Json {
 	@:native("decode")
 	@:luaDotMethod
 	private function __decode(str:String, ?opts:lua.Table<String, Any>):Any;
+
 	/**
 		```lua
 		function vim.json.decode(str: string, opts?: table<string, any>)
@@ -27675,9 +28969,11 @@ extern class Json {
 		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __decode(str, opts);
 	}
+
 	@:native("encode")
 	@:luaDotMethod
 	private function __encode(obj:Any, ?opts:lua.Table<String, Any>):String;
+
 	/**
 		```lua
 		function vim.json.encode(obj: any, opts?: table<string, any>)
@@ -27697,6 +28993,7 @@ extern class Json {
 		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __encode(obj, opts);
 	}
+
 	/**
 		```lua
 		(global) vim.json.new: unknown
@@ -27704,6 +29001,7 @@ extern class Json {
 	**/
 	@:native("new")
 	var new_ : Dynamic;
+
 }
 
 /**
@@ -27713,11 +29011,17 @@ extern class Json {
 **/
 extern class Levels {
 	var DEBUG : nvim.type.vim.log.Levels;
+
 	var ERROR : nvim.type.vim.log.Levels;
+
 	var INFO : nvim.type.vim.log.Levels;
+
 	var OFF : nvim.type.vim.log.Levels;
+
 	var TRACE : nvim.type.vim.log.Levels;
+
 	var WARN : nvim.type.vim.log.Levels;
+
 }
 
 /**
@@ -27736,6 +29040,7 @@ extern class Log {
 		```
 	**/
 	var levels : Levels;
+
 }
 
 /**
@@ -27758,6 +29063,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function B(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, lua.Table.AnyTable>>>>):nvim.type.vim.lpeg.Pattern;
+
 	/**
 		```lua
 		function vim.lpeg.C(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27786,6 +29092,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function C(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Carg(n: integer)
@@ -27799,6 +29106,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Carg(n:Int):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cb(name: any)
@@ -27816,6 +29124,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cb(name:Any):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cc(...any)
@@ -27828,6 +29137,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cc(___:haxe.Rest<Any>):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cf(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, func: fun(acc: any, newvalue: any))
@@ -27857,6 +29167,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cf(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, func:() -> Dynamic):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cg(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, name?: string)
@@ -27871,6 +29182,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cg(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, ?name:String):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cmt(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, fn: fun(s: string, i: integer, ...any):(position: boolean|integer, ...any))
@@ -27891,6 +29203,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cmt(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, fn:Dynamic):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cp()
@@ -27914,6 +29227,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cp():nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Cs(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27941,6 +29255,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Cs(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.Ct(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27956,6 +29271,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function Ct(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+
 	/**
 		```lua
 		function vim.lpeg.P(value: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27978,6 +29294,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function P(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Pattern;
+
 	/**
 		```lua
 		function vim.lpeg.R(...string)
@@ -28000,6 +29317,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function R(___:haxe.Rest<String>):nvim.type.vim.lpeg.Pattern;
+
 	/**
 		```lua
 		function vim.lpeg.S(string: string)
@@ -28015,6 +29333,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function S(string:String):nvim.type.vim.lpeg.Pattern;
+
 	/**
 		```lua
 		function vim.lpeg.V(v: boolean|string|number|function|table|lightuserdata|thread|userdata)
@@ -28036,9 +29355,11 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, lua.UserData>>>>>):nvim.type.vim.lpeg.Pattern;
+
 	@:native("locale")
 	@:luaDotMethod
 	private function __locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale;
+
 	/**
 		```lua
 		function vim.lpeg.locale(tab?: table)
@@ -28075,6 +29396,7 @@ extern class Lpeg {
 		final tab:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = tab;
 		return __locale(tab);
 	}
+
 	/**
 		```lua
 		function vim.lpeg.match(pattern: boolean|string|integer|function|table|vim.lpeg.Pattern, subject: string, init?: integer, ...any)
@@ -28103,18 +29425,21 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function match(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		(global) vim.lpeg.pcode: unknown
 		```
 	**/
 	var pcode : Dynamic;
+
 	/**
 		```lua
 		(global) vim.lpeg.ptree: unknown
 		```
 	**/
 	var ptree : Dynamic;
+
 	/**
 		```lua
 		function vim.lpeg.setmaxstack(max: integer)
@@ -28130,6 +29455,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function setmaxstack(max:Int):Dynamic;
+
 	/**
 		```lua
 		function vim.lpeg.type(value: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -28148,12 +29474,14 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function type(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):Null<String>;
+
 	/**
 		```lua
 		(global) vim.lpeg.utfR: unknown
 		```
 	**/
 	var utfR : Dynamic;
+
 	/**
 		```lua
 		function vim.lpeg.version()
@@ -28166,6 +29494,7 @@ extern class Lpeg {
 	**/
 	@:luaDotMethod
 	function version():String;
+
 }
 
 /**
@@ -28193,6 +29522,7 @@ extern class O {
 		```
 	**/
 	var aleph : Dynamic;
+
 	/**
 		```lua
 		(global) table.allowrevins: boolean
@@ -28206,6 +29536,7 @@ extern class O {
 		
 	**/
 	var allowrevins : Bool;
+
 	/**
 		```lua
 		(global) table.ambiwidth: 'double'|'single'
@@ -28246,6 +29577,7 @@ extern class O {
 		
 	**/
 	var ambiwidth : String;
+
 	/**
 		```lua
 		(global) table.arabic: boolean
@@ -28270,6 +29602,7 @@ extern class O {
 		
 	**/
 	var arabic : Bool;
+
 	/**
 		```lua
 		(global) table.arabicshape: boolean
@@ -28292,6 +29625,7 @@ extern class O {
 		
 	**/
 	var arabicshape : Bool;
+
 	/**
 		```lua
 		(global) table.autochdir: boolean
@@ -28308,6 +29642,7 @@ extern class O {
 		
 	**/
 	var autochdir : Bool;
+
 	/**
 		```lua
 		(global) table.autoindent: boolean
@@ -28329,6 +29664,7 @@ extern class O {
 		
 	**/
 	var autoindent : Bool;
+
 	/**
 		```lua
 		(global) table.autoread: boolean
@@ -28351,6 +29687,7 @@ extern class O {
 		
 	**/
 	var autoread : Bool;
+
 	/**
 		```lua
 		(global) table.autowrite: boolean
@@ -28375,6 +29712,7 @@ extern class O {
 		
 	**/
 	var autowrite : Bool;
+
 	/**
 		```lua
 		(global) table.autowriteall: boolean
@@ -28389,6 +29727,7 @@ extern class O {
 		
 	**/
 	var autowriteall : Bool;
+
 	/**
 		```lua
 		(global) table.background: 'dark'|'light'
@@ -28424,6 +29763,7 @@ extern class O {
 		
 	**/
 	var background : String;
+
 	/**
 		```lua
 		(global) table.backspace: string
@@ -28447,6 +29787,7 @@ extern class O {
 		
 	**/
 	var backspace : String;
+
 	/**
 		```lua
 		(global) table.backup: boolean
@@ -28467,6 +29808,7 @@ extern class O {
 		
 	**/
 	var backup : Bool;
+
 	/**
 		```lua
 		(global) table.backupcopy: string
@@ -28539,6 +29881,7 @@ extern class O {
 		
 	**/
 	var backupcopy : String;
+
 	/**
 		```lua
 		(global) table.backupdir: string
@@ -28595,6 +29938,7 @@ extern class O {
 		
 	**/
 	var backupdir : String;
+
 	/**
 		```lua
 		(global) table.backupext: string
@@ -28620,6 +29964,7 @@ extern class O {
 		
 	**/
 	var backupext : String;
+
 	/**
 		```lua
 		(global) table.backupskip: string
@@ -28652,6 +29997,7 @@ extern class O {
 		
 	**/
 	var backupskip : String;
+
 	/**
 		```lua
 		(global) table.belloff: string
@@ -28698,6 +30044,7 @@ extern class O {
 		
 	**/
 	var belloff : String;
+
 	/**
 		```lua
 		(global) table.binary: boolean
@@ -28734,6 +30081,7 @@ extern class O {
 		
 	**/
 	var binary : Bool;
+
 	/**
 		```lua
 		(global) table.bomb: boolean
@@ -28759,6 +30107,7 @@ extern class O {
 		
 	**/
 	var bomb : Bool;
+
 	/**
 		```lua
 		(global) table.breakat: string
@@ -28771,6 +30120,7 @@ extern class O {
 		
 	**/
 	var breakat : String;
+
 	/**
 		```lua
 		(global) table.breakindent: boolean
@@ -28784,6 +30134,7 @@ extern class O {
 		
 	**/
 	var breakindent : Bool;
+
 	/**
 		```lua
 		(global) table.breakindentopt: string
@@ -28821,12 +30172,14 @@ extern class O {
 		
 	**/
 	var breakindentopt : String;
+
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
 	var browsedir : Dynamic;
+
 	/**
 		```lua
 		(global) table.bufhidden: ''|'delete'|'hide'|'unload'|'wipe'
@@ -28856,6 +30209,7 @@ extern class O {
 		
 	**/
 	var bufhidden : String;
+
 	/**
 		```lua
 		(global) table.buflisted: boolean
@@ -28871,6 +30225,7 @@ extern class O {
 		
 	**/
 	var buflisted : Bool;
+
 	/**
 		```lua
 		(global) table.buftype: ''|'acwrite'|'help'|'nofile'|'nowrite'|'prompt'|'quickfix'|'terminal'
@@ -28925,6 +30280,7 @@ extern class O {
 		
 	**/
 	var buftype : String;
+
 	/**
 		```lua
 		(global) table.casemap: string
@@ -28944,6 +30300,7 @@ extern class O {
 		
 	**/
 	var casemap : String;
+
 	/**
 		```lua
 		(global) table.cdhome: boolean
@@ -28960,6 +30317,7 @@ extern class O {
 		
 	**/
 	var cdhome : Bool;
+
 	/**
 		```lua
 		(global) table.cdpath: string
@@ -28988,6 +30346,7 @@ extern class O {
 		
 	**/
 	var cdpath : String;
+
 	/**
 		```lua
 		(global) table.cedit: string
@@ -29010,6 +30369,7 @@ extern class O {
 		
 	**/
 	var cedit : String;
+
 	/**
 		```lua
 		(global) table.channel: integer
@@ -29023,6 +30383,7 @@ extern class O {
 		
 	**/
 	var channel : Int;
+
 	/**
 		```lua
 		(global) table.charconvert: string
@@ -29082,6 +30443,7 @@ extern class O {
 		
 	**/
 	var charconvert : String;
+
 	/**
 		```lua
 		(global) table.cindent: boolean
@@ -29102,6 +30464,7 @@ extern class O {
 		
 	**/
 	var cindent : Bool;
+
 	/**
 		```lua
 		(global) table.cinkeys: string
@@ -29117,6 +30480,7 @@ extern class O {
 		
 	**/
 	var cinkeys : String;
+
 	/**
 		```lua
 		(global) table.cinoptions: string
@@ -29130,6 +30494,7 @@ extern class O {
 		
 	**/
 	var cinoptions : String;
+
 	/**
 		```lua
 		(global) table.cinscopedecls: string
@@ -29148,6 +30513,7 @@ extern class O {
 		
 	**/
 	var cinscopedecls : String;
+
 	/**
 		```lua
 		(global) table.cinwords: string
@@ -29164,6 +30530,7 @@ extern class O {
 		
 	**/
 	var cinwords : String;
+
 	/**
 		```lua
 		(global) table.clipboard: string = 'unnamedplus'
@@ -29196,6 +30563,7 @@ extern class O {
 		
 	**/
 	var clipboard : String;
+
 	/**
 		```lua
 		(global) table.cmdheight: integer
@@ -29219,6 +30587,7 @@ extern class O {
 		
 	**/
 	var cmdheight : Int;
+
 	/**
 		```lua
 		(global) table.cmdwinheight: integer
@@ -29230,6 +30599,7 @@ extern class O {
 		
 	**/
 	var cmdwinheight : Int;
+
 	/**
 		```lua
 		(global) table.colorcolumn: string
@@ -29255,6 +30625,7 @@ extern class O {
 		
 	**/
 	var colorcolumn : String;
+
 	/**
 		```lua
 		(global) table.columns: integer
@@ -29280,6 +30651,7 @@ extern class O {
 		
 	**/
 	var columns : Int;
+
 	/**
 		```lua
 		(global) table.comments: string
@@ -29293,6 +30665,7 @@ extern class O {
 		
 	**/
 	var comments : String;
+
 	/**
 		```lua
 		(global) table.commentstring: string
@@ -29306,12 +30679,14 @@ extern class O {
 		
 	**/
 	var commentstring : String;
+
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
 	var compatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.complete: string
@@ -29357,6 +30732,7 @@ extern class O {
 		
 	**/
 	var complete : String;
+
 	/**
 		```lua
 		(global) table.completefunc: string
@@ -29375,6 +30751,7 @@ extern class O {
 		
 	**/
 	var completefunc : String;
+
 	/**
 		```lua
 		(global) table.completeitemalign: string
@@ -29391,6 +30768,7 @@ extern class O {
 		
 	**/
 	var completeitemalign : String;
+
 	/**
 		```lua
 		(global) table.completeopt: string
@@ -29451,6 +30829,7 @@ extern class O {
 		
 	**/
 	var completeopt : String;
+
 	/**
 		```lua
 		(global) table.completeslash: ''|'backslash'|'slash'
@@ -29472,6 +30851,7 @@ extern class O {
 		
 	**/
 	var completeslash : String;
+
 	/**
 		```lua
 		(global) table.concealcursor: string
@@ -29497,6 +30877,7 @@ extern class O {
 		
 	**/
 	var concealcursor : String;
+
 	/**
 		```lua
 		(global) table.conceallevel: integer
@@ -29525,6 +30906,7 @@ extern class O {
 		
 	**/
 	var conceallevel : Int;
+
 	/**
 		```lua
 		(global) table.confirm: boolean = true
@@ -29548,6 +30930,7 @@ extern class O {
 		 instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
 	**/
 	var confirm : Bool;
+
 	/**
 		```lua
 		(global) table.copyindent: boolean
@@ -29567,6 +30950,7 @@ extern class O {
 		
 	**/
 	var copyindent : Bool;
+
 	/**
 		```lua
 		(global) table.cpoptions: string
@@ -29804,6 +31188,7 @@ extern class O {
 		
 	**/
 	var cpoptions : String;
+
 	/**
 		```lua
 		(global) table.cursorbind: boolean
@@ -29821,6 +31206,7 @@ extern class O {
 		
 	**/
 	var cursorbind : Bool;
+
 	/**
 		```lua
 		(global) table.cursorcolumn: boolean
@@ -29842,6 +31228,7 @@ extern class O {
 		
 	**/
 	var cursorcolumn : Bool;
+
 	/**
 		```lua
 		(global) table.cursorline: boolean = true
@@ -29860,6 +31247,7 @@ extern class O {
 		
 	**/
 	var cursorline : Bool;
+
 	/**
 		```lua
 		(global) table.cursorlineopt: string
@@ -29883,6 +31271,7 @@ extern class O {
 		
 	**/
 	var cursorlineopt : String;
+
 	/**
 		```lua
 		(global) table.debug: string
@@ -29903,6 +31292,7 @@ extern class O {
 		
 	**/
 	var debug : String;
+
 	/**
 		```lua
 		(global) table.define: string
@@ -29943,6 +31333,7 @@ extern class O {
 		
 	**/
 	var define : String;
+
 	/**
 		```lua
 		(global) table.delcombine: boolean
@@ -29962,6 +31353,7 @@ extern class O {
 		
 	**/
 	var delcombine : Bool;
+
 	/**
 		```lua
 		(global) table.dictionary: string
@@ -29994,6 +31386,7 @@ extern class O {
 		
 	**/
 	var dictionary : String;
+
 	/**
 		```lua
 		(global) table.diff: boolean
@@ -30006,6 +31399,7 @@ extern class O {
 		
 	**/
 	var diff : Bool;
+
 	/**
 		```lua
 		(global) table.diffexpr: string
@@ -30020,6 +31414,7 @@ extern class O {
 		
 	**/
 	var diffexpr : String;
+
 	/**
 		```lua
 		(global) table.diffopt: string
@@ -30139,6 +31534,7 @@ extern class O {
 		
 	**/
 	var diffopt : String;
+
 	/**
 		```lua
 		(global) table.digraph: boolean
@@ -30151,6 +31547,7 @@ extern class O {
 		
 	**/
 	var digraph : Bool;
+
 	/**
 		```lua
 		(global) table.directory: string
@@ -30206,6 +31603,7 @@ extern class O {
 		
 	**/
 	var directory : String;
+
 	/**
 		```lua
 		(global) table.display: string
@@ -30233,6 +31631,7 @@ extern class O {
 		
 	**/
 	var display : String;
+
 	/**
 		```lua
 		(global) table.eadirection: 'both'|'hor'|'ver'
@@ -30247,12 +31646,14 @@ extern class O {
 		
 	**/
 	var eadirection : String;
+
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
 	var edcompatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -30271,6 +31672,7 @@ extern class O {
 		
 	**/
 	var emoji : Bool;
+
 	/**
 		```lua
 		(global) table.encoding: string
@@ -30285,6 +31687,7 @@ extern class O {
 		
 	**/
 	var encoding : String;
+
 	/**
 		```lua
 		(global) table.endoffile: boolean
@@ -30301,6 +31704,7 @@ extern class O {
 		
 	**/
 	var endoffile : Bool;
+
 	/**
 		```lua
 		(global) table.endofline: boolean
@@ -30323,6 +31727,7 @@ extern class O {
 		
 	**/
 	var endofline : Bool;
+
 	/**
 		```lua
 		(global) table.equalalways: boolean
@@ -30347,6 +31752,7 @@ extern class O {
 		
 	**/
 	var equalalways : Bool;
+
 	/**
 		```lua
 		(global) table.equalprg: string
@@ -30364,6 +31770,7 @@ extern class O {
 		
 	**/
 	var equalprg : String;
+
 	/**
 		```lua
 		(global) table.errorbells: boolean
@@ -30379,6 +31786,7 @@ extern class O {
 		
 	**/
 	var errorbells : Bool;
+
 	/**
 		```lua
 		(global) table.errorfile: string
@@ -30397,6 +31805,7 @@ extern class O {
 		
 	**/
 	var errorfile : String;
+
 	/**
 		```lua
 		(global) table.errorformat: string
@@ -30409,6 +31818,7 @@ extern class O {
 		
 	**/
 	var errorformat : String;
+
 	/**
 		```lua
 		(global) table.eventignore: string
@@ -30428,6 +31838,7 @@ extern class O {
 		
 	**/
 	var eventignore : String;
+
 	/**
 		```lua
 		(global) table.eventignorewin: string
@@ -30441,6 +31852,7 @@ extern class O {
 		
 	**/
 	var eventignorewin : String;
+
 	/**
 		```lua
 		(global) table.expandtab: boolean
@@ -30455,6 +31867,7 @@ extern class O {
 		
 	**/
 	var expandtab : Bool;
+
 	/**
 		```lua
 		(global) table.exrc: boolean
@@ -30487,6 +31900,7 @@ extern class O {
 		
 	**/
 	var exrc : Bool;
+
 	/**
 		```lua
 		(global) table.fileencoding: string
@@ -30534,6 +31948,7 @@ extern class O {
 		
 	**/
 	var fileencoding : String;
+
 	/**
 		```lua
 		(global) table.fileencodings: string
@@ -30596,6 +32011,7 @@ extern class O {
 		
 	**/
 	var fileencodings : String;
+
 	/**
 		```lua
 		(global) table.fileformat: 'dos'|'mac'|'unix'
@@ -30621,6 +32037,7 @@ extern class O {
 		
 	**/
 	var fileformat : String;
+
 	/**
 		```lua
 		(global) table.fileformats: string
@@ -30676,6 +32093,7 @@ extern class O {
 		
 	**/
 	var fileformats : String;
+
 	/**
 		```lua
 		(global) table.fileignorecase: boolean
@@ -30688,6 +32106,7 @@ extern class O {
 		
 	**/
 	var fileignorecase : Bool;
+
 	/**
 		```lua
 		(global) table.filetype: string
@@ -30721,6 +32140,7 @@ extern class O {
 		
 	**/
 	var filetype : String;
+
 	/**
 		```lua
 		(global) table.fillchars: string
@@ -30793,6 +32213,7 @@ extern class O {
 		
 	**/
 	var fillchars : String;
+
 	/**
 		```lua
 		(global) table.findfunc: string
@@ -30850,6 +32271,7 @@ extern class O {
 		
 	**/
 	var findfunc : String;
+
 	/**
 		```lua
 		(global) table.fixendofline: boolean
@@ -30867,6 +32289,7 @@ extern class O {
 		
 	**/
 	var fixendofline : Bool;
+
 	/**
 		```lua
 		(global) table.foldclose: string
@@ -30880,6 +32303,7 @@ extern class O {
 		
 	**/
 	var foldclose : String;
+
 	/**
 		```lua
 		(global) table.foldcolumn: '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'
@@ -30897,6 +32321,7 @@ extern class O {
 		
 	**/
 	var foldcolumn : String;
+
 	/**
 		```lua
 		(global) table.foldenable: boolean
@@ -30914,6 +32339,7 @@ extern class O {
 		
 	**/
 	var foldenable : Bool;
+
 	/**
 		```lua
 		(global) table.foldexpr: string
@@ -30936,6 +32362,7 @@ extern class O {
 		
 	**/
 	var foldexpr : String;
+
 	/**
 		```lua
 		(global) table.foldignore: string
@@ -30950,6 +32377,7 @@ extern class O {
 		
 	**/
 	var foldignore : String;
+
 	/**
 		```lua
 		(global) table.foldlevel: integer
@@ -30965,6 +32393,7 @@ extern class O {
 		
 	**/
 	var foldlevel : Int;
+
 	/**
 		```lua
 		(global) table.foldlevelstart: integer
@@ -30984,6 +32413,7 @@ extern class O {
 		
 	**/
 	var foldlevelstart : Int;
+
 	/**
 		```lua
 		(global) table.foldmarker: string
@@ -30998,6 +32428,7 @@ extern class O {
 		
 	**/
 	var foldmarker : String;
+
 	/**
 		```lua
 		(global) table.foldmethod: 'diff'|'expr'|'indent'|'manual'|'marker'|'syntax'
@@ -31015,6 +32446,7 @@ extern class O {
 		
 	**/
 	var foldmethod : String;
+
 	/**
 		```lua
 		(global) table.foldminlines: integer
@@ -31032,6 +32464,7 @@ extern class O {
 		
 	**/
 	var foldminlines : Int;
+
 	/**
 		```lua
 		(global) table.foldnestmax: integer
@@ -31045,6 +32478,7 @@ extern class O {
 		
 	**/
 	var foldnestmax : Int;
+
 	/**
 		```lua
 		(global) table.foldopen: string
@@ -31085,6 +32519,7 @@ extern class O {
 		
 	**/
 	var foldopen : String;
+
 	/**
 		```lua
 		(global) table.foldtext: string
@@ -31109,6 +32544,7 @@ extern class O {
 		
 	**/
 	var foldtext : String;
+
 	/**
 		```lua
 		(global) table.formatexpr: string
@@ -31165,6 +32601,7 @@ extern class O {
 		
 	**/
 	var formatexpr : String;
+
 	/**
 		```lua
 		(global) table.formatlistpat: string
@@ -31184,6 +32621,7 @@ extern class O {
 		
 	**/
 	var formatlistpat : String;
+
 	/**
 		```lua
 		(global) table.formatoptions: string
@@ -31200,6 +32638,7 @@ extern class O {
 		
 	**/
 	var formatoptions : String;
+
 	/**
 		```lua
 		(global) table.formatprg: string
@@ -31221,6 +32660,7 @@ extern class O {
 		
 	**/
 	var formatprg : String;
+
 	/**
 		```lua
 		(global) table.fsync: boolean
@@ -31245,6 +32685,7 @@ extern class O {
 		
 	**/
 	var fsync : Bool;
+
 	/**
 		```lua
 		(global) table.gdefault: boolean
@@ -31268,6 +32709,7 @@ extern class O {
 		
 	**/
 	var gdefault : Bool;
+
 	/**
 		```lua
 		(global) table.grepformat: string = '%f:%l:%c:%m'
@@ -31283,6 +32725,7 @@ extern class O {
 		
 	**/
 	var grepformat : String;
+
 	/**
 		```lua
 		(global) table.grepprg: string = 'rg --vimgrep -uu '
@@ -31319,6 +32762,7 @@ extern class O {
 		
 	**/
 	var grepprg : String;
+
 	/**
 		```lua
 		(global) table.guicursor: string
@@ -31424,6 +32868,7 @@ extern class O {
 		
 	**/
 	var guicursor : String;
+
 	/**
 		```lua
 		(global) table.guifont: string
@@ -31503,6 +32948,7 @@ extern class O {
 		
 	**/
 	var guifont : String;
+
 	/**
 		```lua
 		(global) table.guifontwide: string
@@ -31520,24 +32966,28 @@ extern class O {
 		
 	**/
 	var guifontwide : String;
+
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
 	var guioptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
 	var guitablabel : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
 	var guitabtooltip : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpfile: string
@@ -31557,6 +33007,7 @@ extern class O {
 		
 	**/
 	var helpfile : String;
+
 	/**
 		```lua
 		(global) table.helpheight: integer
@@ -31572,6 +33023,7 @@ extern class O {
 		
 	**/
 	var helpheight : Int;
+
 	/**
 		```lua
 		(global) table.helplang: string
@@ -31597,6 +33049,7 @@ extern class O {
 		
 	**/
 	var helplang : String;
+
 	/**
 		```lua
 		(global) table.hidden: boolean
@@ -31621,12 +33074,14 @@ extern class O {
 		
 	**/
 	var hidden : Bool;
+
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
 	var highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.history: integer
@@ -31642,18 +33097,21 @@ extern class O {
 		
 	**/
 	var history : Int;
+
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
 	var hkmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
 	var hkmapp : Dynamic;
+
 	/**
 		```lua
 		(global) table.hlsearch: boolean
@@ -31683,6 +33141,7 @@ extern class O {
 		
 	**/
 	var hlsearch : Bool;
+
 	/**
 		```lua
 		(global) table.icon: boolean
@@ -31698,6 +33157,7 @@ extern class O {
 		
 	**/
 	var icon : Bool;
+
 	/**
 		```lua
 		(global) table.iconstring: string
@@ -31715,6 +33175,7 @@ extern class O {
 		
 	**/
 	var iconstring : String;
+
 	/**
 		```lua
 		(global) table.ignorecase: boolean = true
@@ -31734,18 +33195,21 @@ extern class O {
 		 Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 	**/
 	var ignorecase : Bool;
+
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
 	var imcmdline : Dynamic;
+
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
 	var imdisable : Dynamic;
+
 	/**
 		```lua
 		(global) table.iminsert: integer
@@ -31773,6 +33237,7 @@ extern class O {
 		
 	**/
 	var iminsert : Int;
+
 	/**
 		```lua
 		(global) table.imsearch: integer
@@ -31794,6 +33259,7 @@ extern class O {
 		
 	**/
 	var imsearch : Int;
+
 	/**
 		```lua
 		(global) table.inccommand: ''|'nosplit'|'split'
@@ -31817,6 +33283,7 @@ extern class O {
 		
 	**/
 	var inccommand : String;
+
 	/**
 		```lua
 		(global) table.include: string
@@ -31837,6 +33304,7 @@ extern class O {
 		
 	**/
 	var include : String;
+
 	/**
 		```lua
 		(global) table.includeexpr: string
@@ -31885,6 +33353,7 @@ extern class O {
 		
 	**/
 	var includeexpr : String;
+
 	/**
 		```lua
 		(global) table.incsearch: boolean
@@ -31929,6 +33398,7 @@ extern class O {
 		
 	**/
 	var incsearch : Bool;
+
 	/**
 		```lua
 		(global) table.indentexpr: string
@@ -31985,6 +33455,7 @@ extern class O {
 		
 	**/
 	var indentexpr : String;
+
 	/**
 		```lua
 		(global) table.indentkeys: string
@@ -31999,6 +33470,7 @@ extern class O {
 		
 	**/
 	var indentkeys : String;
+
 	/**
 		```lua
 		(global) table.infercase: boolean
@@ -32017,12 +33489,14 @@ extern class O {
 		
 	**/
 	var infercase : Bool;
+
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
 	var insertmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.isfname: string
@@ -32078,6 +33552,7 @@ extern class O {
 		
 	**/
 	var isfname : String;
+
 	/**
 		```lua
 		(global) table.isident: string
@@ -32097,6 +33572,7 @@ extern class O {
 		
 	**/
 	var isident : String;
+
 	/**
 		```lua
 		(global) table.iskeyword: string
@@ -32119,6 +33595,7 @@ extern class O {
 		
 	**/
 	var iskeyword : String;
+
 	/**
 		```lua
 		(global) table.isprint: string
@@ -32155,6 +33632,7 @@ extern class O {
 		
 	**/
 	var isprint : String;
+
 	/**
 		```lua
 		(global) table.joinspaces: boolean
@@ -32167,6 +33645,7 @@ extern class O {
 		
 	**/
 	var joinspaces : Bool;
+
 	/**
 		```lua
 		(global) table.jumpoptions: string
@@ -32190,6 +33669,7 @@ extern class O {
 		
 	**/
 	var jumpoptions : String;
+
 	/**
 		```lua
 		(global) table.keymap: string
@@ -32205,6 +33685,7 @@ extern class O {
 		
 	**/
 	var keymap : String;
+
 	/**
 		```lua
 		(global) table.keymodel: string
@@ -32223,6 +33704,7 @@ extern class O {
 		
 	**/
 	var keymodel : String;
+
 	/**
 		```lua
 		(global) table.keywordprg: string
@@ -32250,6 +33732,7 @@ extern class O {
 		
 	**/
 	var keywordprg : String;
+
 	/**
 		```lua
 		(global) table.langmap: string
@@ -32305,6 +33788,7 @@ extern class O {
 		
 	**/
 	var langmap : String;
+
 	/**
 		```lua
 		(global) table.langmenu: string
@@ -32345,12 +33829,14 @@ extern class O {
 		
 	**/
 	var langmenu : String;
+
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
 	var langnoremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langremap: boolean
@@ -32364,6 +33850,7 @@ extern class O {
 		
 	**/
 	var langremap : Bool;
+
 	/**
 		```lua
 		(global) table.laststatus: integer
@@ -32382,6 +33869,7 @@ extern class O {
 		
 	**/
 	var laststatus : Int;
+
 	/**
 		```lua
 		(global) table.lazyredraw: boolean
@@ -32399,6 +33887,7 @@ extern class O {
 		
 	**/
 	var lazyredraw : Bool;
+
 	/**
 		```lua
 		(global) table.linebreak: boolean
@@ -32418,6 +33907,7 @@ extern class O {
 		
 	**/
 	var linebreak : Bool;
+
 	/**
 		```lua
 		(global) table.lines: integer
@@ -32441,6 +33931,7 @@ extern class O {
 		
 	**/
 	var lines : Int;
+
 	/**
 		```lua
 		(global) table.linespace: integer
@@ -32459,6 +33950,7 @@ extern class O {
 		
 	**/
 	var linespace : Int;
+
 	/**
 		```lua
 		(global) table.lisp: boolean
@@ -32477,6 +33969,7 @@ extern class O {
 		
 	**/
 	var lisp : Bool;
+
 	/**
 		```lua
 		(global) table.lispoptions: string
@@ -32494,6 +33987,7 @@ extern class O {
 		
 	**/
 	var lispoptions : String;
+
 	/**
 		```lua
 		(global) table.lispwords: string
@@ -32506,6 +34000,7 @@ extern class O {
 		
 	**/
 	var lispwords : String;
+
 	/**
 		```lua
 		(global) table.list: boolean = true
@@ -32539,6 +34034,7 @@ extern class O {
 		
 	**/
 	var list : Bool;
+
 	/**
 		```lua
 		(global) table.listchars: string
@@ -32664,6 +34160,7 @@ extern class O {
 		
 	**/
 	var listchars : String;
+
 	/**
 		```lua
 		(global) table.loadplugins: boolean
@@ -32679,6 +34176,7 @@ extern class O {
 		
 	**/
 	var loadplugins : Bool;
+
 	/**
 		```lua
 		(global) table.magic: boolean
@@ -32696,6 +34194,7 @@ extern class O {
 		
 	**/
 	var magic : Bool;
+
 	/**
 		```lua
 		(global) table.makeef: string
@@ -32717,6 +34216,7 @@ extern class O {
 		
 	**/
 	var makeef : String;
+
 	/**
 		```lua
 		(global) table.makeencoding: string
@@ -32741,6 +34241,7 @@ extern class O {
 		
 	**/
 	var makeencoding : String;
+
 	/**
 		```lua
 		(global) table.makeprg: string
@@ -32772,6 +34273,7 @@ extern class O {
 		
 	**/
 	var makeprg : String;
+
 	/**
 		```lua
 		(global) table.matchpairs: string
@@ -32801,6 +34303,7 @@ extern class O {
 		
 	**/
 	var matchpairs : String;
+
 	/**
 		```lua
 		(global) table.matchtime: integer
@@ -32814,12 +34317,14 @@ extern class O {
 		
 	**/
 	var matchtime : Int;
+
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
 	var maxcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxfuncdepth: integer
@@ -32838,6 +34343,7 @@ extern class O {
 		
 	**/
 	var maxfuncdepth : Int;
+
 	/**
 		```lua
 		(global) table.maxmapdepth: integer
@@ -32853,6 +34359,7 @@ extern class O {
 		
 	**/
 	var maxmapdepth : Int;
+
 	/**
 		```lua
 		(global) table.maxmempattern: integer
@@ -32875,6 +34382,7 @@ extern class O {
 		
 	**/
 	var maxmempattern : Int;
+
 	/**
 		```lua
 		(global) table.menuitems: integer
@@ -32888,6 +34396,7 @@ extern class O {
 		
 	**/
 	var menuitems : Int;
+
 	/**
 		```lua
 		(global) table.messagesopt: string
@@ -32916,6 +34425,7 @@ extern class O {
 		
 	**/
 	var messagesopt : String;
+
 	/**
 		```lua
 		(global) table.mkspellmem: string
@@ -32966,6 +34476,7 @@ extern class O {
 		
 	**/
 	var mkspellmem : String;
+
 	/**
 		```lua
 		(global) table.modeline: boolean
@@ -32979,6 +34490,7 @@ extern class O {
 		
 	**/
 	var modeline : Bool;
+
 	/**
 		```lua
 		(global) table.modelineexpr: boolean
@@ -32994,6 +34506,7 @@ extern class O {
 		
 	**/
 	var modelineexpr : Bool;
+
 	/**
 		```lua
 		(global) table.modelines: integer
@@ -33008,6 +34521,7 @@ extern class O {
 		
 	**/
 	var modelines : Int;
+
 	/**
 		```lua
 		(global) table.modifiable: boolean
@@ -33021,6 +34535,7 @@ extern class O {
 		
 	**/
 	var modifiable : Bool;
+
 	/**
 		```lua
 		(global) table.modified: boolean
@@ -33052,6 +34567,7 @@ extern class O {
 		
 	**/
 	var modified : Bool;
+
 	/**
 		```lua
 		(global) table.more: boolean
@@ -33065,6 +34581,7 @@ extern class O {
 		
 	**/
 	var more : Bool;
+
 	/**
 		```lua
 		(global) table.mouse: string
@@ -33114,6 +34631,7 @@ extern class O {
 		
 	**/
 	var mouse : String;
+
 	/**
 		```lua
 		(global) table.mousefocus: boolean
@@ -33129,6 +34647,7 @@ extern class O {
 		
 	**/
 	var mousefocus : Bool;
+
 	/**
 		```lua
 		(global) table.mousehide: boolean
@@ -33142,6 +34661,7 @@ extern class O {
 		
 	**/
 	var mousehide : Bool;
+
 	/**
 		```lua
 		(global) table.mousemodel: 'extend'|'popup'|'popup_setpos'
@@ -33202,6 +34722,7 @@ extern class O {
 		
 	**/
 	var mousemodel : String;
+
 	/**
 		```lua
 		(global) table.mousemoveevent: boolean
@@ -33217,6 +34738,7 @@ extern class O {
 		
 	**/
 	var mousemoveevent : Bool;
+
 	/**
 		```lua
 		(global) table.mousescroll: string
@@ -33247,12 +34769,14 @@ extern class O {
 		
 	**/
 	var mousescroll : String;
+
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
 	var mouseshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousetime: integer
@@ -33265,6 +34789,7 @@ extern class O {
 		
 	**/
 	var mousetime : Int;
+
 	/**
 		```lua
 		(global) table.nrformats: string
@@ -33315,6 +34840,7 @@ extern class O {
 		
 	**/
 	var nrformats : String;
+
 	/**
 		```lua
 		(global) table.number: boolean = true
@@ -33351,6 +34877,7 @@ extern class O {
 		
 	**/
 	var number : Bool;
+
 	/**
 		```lua
 		(global) table.numberwidth: integer
@@ -33371,6 +34898,7 @@ extern class O {
 		
 	**/
 	var numberwidth : Int;
+
 	/**
 		```lua
 		(global) table.omnifunc: string
@@ -33391,12 +34919,14 @@ extern class O {
 		
 	**/
 	var omnifunc : String;
+
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
 	var opendevice : Dynamic;
+
 	/**
 		```lua
 		(global) table.operatorfunc: string = "v:lua.require'vim._comment'.operator"
@@ -33414,6 +34944,7 @@ extern class O {
 		
 	**/
 	var operatorfunc : String;
+
 	/**
 		```lua
 		(global) table.packpath: string
@@ -33428,6 +34959,7 @@ extern class O {
 		
 	**/
 	var packpath : String;
+
 	/**
 		```lua
 		(global) table.paragraphs: string
@@ -33440,18 +34972,21 @@ extern class O {
 		
 	**/
 	var paragraphs : String;
+
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
 	var paste : Dynamic;
+
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
 	var pastetoggle : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchexpr: string
@@ -33466,6 +35001,7 @@ extern class O {
 		
 	**/
 	var patchexpr : String;
+
 	/**
 		```lua
 		(global) table.patchmode: string
@@ -33492,6 +35028,7 @@ extern class O {
 		
 	**/
 	var patchmode : String;
+
 	/**
 		```lua
 		(global) table.path: string
@@ -33579,6 +35116,7 @@ extern class O {
 		
 	**/
 	var path : String;
+
 	/**
 		```lua
 		(global) table.preserveindent: boolean
@@ -33601,6 +35139,7 @@ extern class O {
 		
 	**/
 	var preserveindent : Bool;
+
 	/**
 		```lua
 		(global) table.previewheight: integer
@@ -33613,6 +35152,7 @@ extern class O {
 		
 	**/
 	var previewheight : Int;
+
 	/**
 		```lua
 		(global) table.previewwindow: boolean
@@ -33626,12 +35166,14 @@ extern class O {
 		
 	**/
 	var previewwindow : Bool;
+
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
 	var prompt : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumblend: integer
@@ -33657,6 +35199,7 @@ extern class O {
 		
 	**/
 	var pumblend : Int;
+
 	/**
 		```lua
 		(global) table.pumheight: integer
@@ -33669,6 +35212,7 @@ extern class O {
 		
 	**/
 	var pumheight : Int;
+
 	/**
 		```lua
 		(global) table.pumwidth: integer
@@ -33682,6 +35226,7 @@ extern class O {
 		
 	**/
 	var pumwidth : Int;
+
 	/**
 		```lua
 		(global) table.pyxversion: integer
@@ -33698,6 +35243,7 @@ extern class O {
 		
 	**/
 	var pyxversion : Int;
+
 	/**
 		```lua
 		(global) table.quickfixtextfunc: string
@@ -33719,6 +35265,7 @@ extern class O {
 		
 	**/
 	var quickfixtextfunc : String;
+
 	/**
 		```lua
 		(global) table.quoteescape: string
@@ -33734,6 +35281,7 @@ extern class O {
 		
 	**/
 	var quoteescape : String;
+
 	/**
 		```lua
 		(global) table.readonly: boolean
@@ -33752,6 +35300,7 @@ extern class O {
 		
 	**/
 	var readonly : Bool;
+
 	/**
 		```lua
 		(global) table.redrawdebug: string
@@ -33792,6 +35341,7 @@ extern class O {
 		
 	**/
 	var redrawdebug : String;
+
 	/**
 		```lua
 		(global) table.redrawtime: integer
@@ -33811,6 +35361,7 @@ extern class O {
 		
 	**/
 	var redrawtime : Int;
+
 	/**
 		```lua
 		(global) table.regexpengine: integer
@@ -33833,6 +35384,7 @@ extern class O {
 		
 	**/
 	var regexpengine : Int;
+
 	/**
 		```lua
 		(global) table.relativenumber: boolean = true
@@ -33865,12 +35417,14 @@ extern class O {
 		
 	**/
 	var relativenumber : Bool;
+
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
 	var remap : Dynamic;
+
 	/**
 		```lua
 		(global) table.report: integer
@@ -33886,6 +35440,7 @@ extern class O {
 		
 	**/
 	var report : Int;
+
 	/**
 		```lua
 		(global) table.revins: boolean
@@ -33899,6 +35454,7 @@ extern class O {
 		
 	**/
 	var revins : Bool;
+
 	/**
 		```lua
 		(global) table.rightleft: boolean
@@ -33918,6 +35474,7 @@ extern class O {
 		
 	**/
 	var rightleft : Bool;
+
 	/**
 		```lua
 		(global) table.rightleftcmd: string
@@ -33935,6 +35492,7 @@ extern class O {
 		
 	**/
 	var rightleftcmd : String;
+
 	/**
 		```lua
 		(global) table.ruler: boolean
@@ -33967,6 +35525,7 @@ extern class O {
 		
 	**/
 	var ruler : Bool;
+
 	/**
 		```lua
 		(global) table.rulerformat: string
@@ -33990,6 +35549,7 @@ extern class O {
 		
 	**/
 	var rulerformat : String;
+
 	/**
 		```lua
 		(global) table.runtimepath: string
@@ -34070,6 +35630,7 @@ extern class O {
 		
 	**/
 	var runtimepath : String;
+
 	/**
 		```lua
 		(global) table.scroll: integer
@@ -34087,6 +35648,7 @@ extern class O {
 		
 	**/
 	var scroll : Int;
+
 	/**
 		```lua
 		(global) table.scrollback: integer
@@ -34104,6 +35666,7 @@ extern class O {
 		
 	**/
 	var scrollback : Int;
+
 	/**
 		```lua
 		(global) table.scrollbind: boolean
@@ -34123,6 +35686,7 @@ extern class O {
 		
 	**/
 	var scrollbind : Bool;
+
 	/**
 		```lua
 		(global) table.scrolljump: integer
@@ -34139,6 +35703,7 @@ extern class O {
 		
 	**/
 	var scrolljump : Int;
+
 	/**
 		```lua
 		(global) table.scrolloff: integer = 10
@@ -34166,6 +35731,7 @@ extern class O {
 		 Minimal number of screen lines to keep above and below the cursor.
 	**/
 	var scrolloff : Float;
+
 	/**
 		```lua
 		(global) table.scrollopt: string
@@ -34203,6 +35769,7 @@ extern class O {
 		
 	**/
 	var scrollopt : String;
+
 	/**
 		```lua
 		(global) table.sections: string
@@ -34216,12 +35783,14 @@ extern class O {
 		
 	**/
 	var sections : String;
+
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
 	var secure : Dynamic;
+
 	/**
 		```lua
 		(global) table.selection: 'exclusive'|'inclusive'|'old'
@@ -34256,6 +35825,7 @@ extern class O {
 		
 	**/
 	var selection : String;
+
 	/**
 		```lua
 		(global) table.selectmode: string
@@ -34273,6 +35843,7 @@ extern class O {
 		
 	**/
 	var selectmode : String;
+
 	/**
 		```lua
 		(global) table.sessionoptions: string
@@ -34320,6 +35891,7 @@ extern class O {
 		
 	**/
 	var sessionoptions : String;
+
 	/**
 		```lua
 		(global) table.shada: string
@@ -34443,6 +36015,7 @@ extern class O {
 		
 	**/
 	var shada : String;
+
 	/**
 		```lua
 		(global) table.shadafile: string
@@ -34459,6 +36032,7 @@ extern class O {
 		
 	**/
 	var shadafile : String;
+
 	/**
 		```lua
 		(global) table.shell: string
@@ -34522,6 +36096,7 @@ extern class O {
 		
 	**/
 	var shell : String;
+
 	/**
 		```lua
 		(global) table.shellcmdflag: string
@@ -34543,6 +36118,7 @@ extern class O {
 		
 	**/
 	var shellcmdflag : String;
+
 	/**
 		```lua
 		(global) table.shellpipe: string
@@ -34581,6 +36157,7 @@ extern class O {
 		
 	**/
 	var shellpipe : String;
+
 	/**
 		```lua
 		(global) table.shellquote: string
@@ -34602,6 +36179,7 @@ extern class O {
 		
 	**/
 	var shellquote : String;
+
 	/**
 		```lua
 		(global) table.shellredir: string
@@ -34633,6 +36211,7 @@ extern class O {
 		
 	**/
 	var shellredir : String;
+
 	/**
 		```lua
 		(global) table.shellslash: boolean
@@ -34658,6 +36237,7 @@ extern class O {
 		
 	**/
 	var shellslash : Bool;
+
 	/**
 		```lua
 		(global) table.shelltemp: boolean
@@ -34678,6 +36258,7 @@ extern class O {
 		
 	**/
 	var shelltemp : Bool;
+
 	/**
 		```lua
 		(global) table.shellxescape: string
@@ -34693,6 +36274,7 @@ extern class O {
 		
 	**/
 	var shellxescape : String;
+
 	/**
 		```lua
 		(global) table.shellxquote: string
@@ -34712,6 +36294,7 @@ extern class O {
 		
 	**/
 	var shellxquote : String;
+
 	/**
 		```lua
 		(global) table.shiftround: boolean
@@ -34725,6 +36308,7 @@ extern class O {
 		
 	**/
 	var shiftround : Bool;
+
 	/**
 		```lua
 		(global) table.shiftwidth: integer
@@ -34739,6 +36323,7 @@ extern class O {
 		
 	**/
 	var shiftwidth : Int;
+
 	/**
 		```lua
 		(global) table.shortmess: string
@@ -34804,6 +36389,7 @@ extern class O {
 		
 	**/
 	var shortmess : String;
+
 	/**
 		```lua
 		(global) table.showbreak: string
@@ -34835,6 +36421,7 @@ extern class O {
 		
 	**/
 	var showbreak : String;
+
 	/**
 		```lua
 		(global) table.showcmd: boolean
@@ -34856,6 +36443,7 @@ extern class O {
 		
 	**/
 	var showcmd : Bool;
+
 	/**
 		```lua
 		(global) table.showcmdloc: 'last'|'statusline'|'tabline'
@@ -34877,6 +36465,7 @@ extern class O {
 		
 	**/
 	var showcmdloc : String;
+
 	/**
 		```lua
 		(global) table.showfulltag: boolean
@@ -34895,6 +36484,7 @@ extern class O {
 		
 	**/
 	var showfulltag : Bool;
+
 	/**
 		```lua
 		(global) table.showmatch: boolean
@@ -34920,6 +36510,7 @@ extern class O {
 		
 	**/
 	var showmatch : Bool;
+
 	/**
 		```lua
 		(global) table.showmode: boolean
@@ -34933,6 +36524,7 @@ extern class O {
 		
 	**/
 	var showmode : Bool;
+
 	/**
 		```lua
 		(global) table.showtabline: integer
@@ -34951,6 +36543,7 @@ extern class O {
 		
 	**/
 	var showtabline : Int;
+
 	/**
 		```lua
 		(global) table.sidescroll: integer
@@ -34966,6 +36559,7 @@ extern class O {
 		
 	**/
 	var sidescroll : Int;
+
 	/**
 		```lua
 		(global) table.sidescrolloff: integer
@@ -35002,6 +36596,7 @@ extern class O {
 		
 	**/
 	var sidescrolloff : Int;
+
 	/**
 		```lua
 		(global) table.signcolumn: 'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'|'no'|'number'|'yes'|'yes:1'|'yes:2'|'yes:3'|'yes:4'|'yes:5'|'yes:6'|'yes:7'|'yes:8'|'yes:9'
@@ -35028,6 +36623,7 @@ extern class O {
 		
 	**/
 	var signcolumn : String;
+
 	/**
 		```lua
 		(global) table.smartcase: boolean = true
@@ -35044,6 +36640,7 @@ extern class O {
 		
 	**/
 	var smartcase : Bool;
+
 	/**
 		```lua
 		(global) table.smartindent: boolean
@@ -35073,6 +36670,7 @@ extern class O {
 		
 	**/
 	var smartindent : Bool;
+
 	/**
 		```lua
 		(global) table.smarttab: boolean
@@ -35093,6 +36691,7 @@ extern class O {
 		
 	**/
 	var smarttab : Bool;
+
 	/**
 		```lua
 		(global) table.smoothscroll: boolean
@@ -35110,6 +36709,7 @@ extern class O {
 		
 	**/
 	var smoothscroll : Bool;
+
 	/**
 		```lua
 		(global) table.softtabstop: integer
@@ -35135,6 +36735,7 @@ extern class O {
 		
 	**/
 	var softtabstop : Int;
+
 	/**
 		```lua
 		(global) table.spell: boolean
@@ -35147,6 +36748,7 @@ extern class O {
 		
 	**/
 	var spell : Bool;
+
 	/**
 		```lua
 		(global) table.spellcapcheck: string
@@ -35166,6 +36768,7 @@ extern class O {
 		
 	**/
 	var spellcapcheck : String;
+
 	/**
 		```lua
 		(global) table.spellfile: string
@@ -35197,6 +36800,7 @@ extern class O {
 		
 	**/
 	var spellfile : String;
+
 	/**
 		```lua
 		(global) table.spelllang: string
@@ -35246,6 +36850,7 @@ extern class O {
 		
 	**/
 	var spelllang : String;
+
 	/**
 		```lua
 		(global) table.spelloptions: string
@@ -35265,6 +36870,7 @@ extern class O {
 		
 	**/
 	var spelloptions : String;
+
 	/**
 		```lua
 		(global) table.spellsuggest: string
@@ -35343,6 +36949,7 @@ extern class O {
 		
 	**/
 	var spellsuggest : String;
+
 	/**
 		```lua
 		(global) table.splitbelow: boolean
@@ -35355,6 +36962,7 @@ extern class O {
 		
 	**/
 	var splitbelow : Bool;
+
 	/**
 		```lua
 		(global) table.splitkeep: 'cursor'|'screen'|'topline'
@@ -35377,6 +36985,7 @@ extern class O {
 		
 	**/
 	var splitkeep : String;
+
 	/**
 		```lua
 		(global) table.splitright: boolean
@@ -35389,6 +36998,7 @@ extern class O {
 		
 	**/
 	var splitright : Bool;
+
 	/**
 		```lua
 		(global) table.startofline: boolean
@@ -35410,6 +37020,7 @@ extern class O {
 		
 	**/
 	var startofline : Bool;
+
 	/**
 		```lua
 		(global) table.statuscolumn: string
@@ -35474,6 +37085,7 @@ extern class O {
 		
 	**/
 	var statuscolumn : String;
+
 	/**
 		```lua
 		(global) table.statusline: string
@@ -35724,6 +37336,7 @@ extern class O {
 		
 	**/
 	var statusline : String;
+
 	/**
 		```lua
 		(global) table.suffixes: string
@@ -35744,6 +37357,7 @@ extern class O {
 		
 	**/
 	var suffixes : String;
+
 	/**
 		```lua
 		(global) table.suffixesadd: string
@@ -35761,6 +37375,7 @@ extern class O {
 		
 	**/
 	var suffixesadd : String;
+
 	/**
 		```lua
 		(global) table.swapfile: boolean
@@ -35789,6 +37404,7 @@ extern class O {
 		
 	**/
 	var swapfile : Bool;
+
 	/**
 		```lua
 		(global) table.switchbuf: string
@@ -35826,6 +37442,7 @@ extern class O {
 		
 	**/
 	var switchbuf : String;
+
 	/**
 		```lua
 		(global) table.synmaxcol: integer
@@ -35842,6 +37459,7 @@ extern class O {
 		
 	**/
 	var synmaxcol : Int;
+
 	/**
 		```lua
 		(global) table.syntax: string
@@ -35883,6 +37501,7 @@ extern class O {
 		
 	**/
 	var syntax : String;
+
 	/**
 		```lua
 		(global) table.tabclose: string
@@ -35902,6 +37521,7 @@ extern class O {
 		
 	**/
 	var tabclose : String;
+
 	/**
 		```lua
 		(global) table.tabline: string
@@ -35932,6 +37552,7 @@ extern class O {
 		
 	**/
 	var tabline : String;
+
 	/**
 		```lua
 		(global) table.tabpagemax: integer
@@ -35944,6 +37565,7 @@ extern class O {
 		
 	**/
 	var tabpagemax : Int;
+
 	/**
 		```lua
 		(global) table.tabstop: integer
@@ -35993,6 +37615,7 @@ extern class O {
 		
 	**/
 	var tabstop : Int;
+
 	/**
 		```lua
 		(global) table.tagbsearch: boolean
@@ -36053,6 +37676,7 @@ extern class O {
 		
 	**/
 	var tagbsearch : Bool;
+
 	/**
 		```lua
 		(global) table.tagcase: 'followic'|'followscs'|'ignore'|'match'|'smart'
@@ -36070,6 +37694,7 @@ extern class O {
 		
 	**/
 	var tagcase : String;
+
 	/**
 		```lua
 		(global) table.tagfunc: string
@@ -36088,6 +37713,7 @@ extern class O {
 		
 	**/
 	var tagfunc : String;
+
 	/**
 		```lua
 		(global) table.taglength: integer
@@ -36099,6 +37725,7 @@ extern class O {
 		
 	**/
 	var taglength : Int;
+
 	/**
 		```lua
 		(global) table.tagrelative: boolean
@@ -36111,6 +37738,7 @@ extern class O {
 		
 	**/
 	var tagrelative : Bool;
+
 	/**
 		```lua
 		(global) table.tags: string
@@ -36138,6 +37766,7 @@ extern class O {
 		
 	**/
 	var tags : String;
+
 	/**
 		```lua
 		(global) table.tagstack: boolean
@@ -36155,6 +37784,7 @@ extern class O {
 		
 	**/
 	var tagstack : Bool;
+
 	/**
 		```lua
 		(global) table.termbidi: boolean
@@ -36173,12 +37803,14 @@ extern class O {
 		
 	**/
 	var termbidi : Bool;
+
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
 	var termencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.termguicolors: boolean
@@ -36196,6 +37828,7 @@ extern class O {
 		
 	**/
 	var termguicolors : Bool;
+
 	/**
 		```lua
 		(global) table.termpastefilter: string
@@ -36224,6 +37857,7 @@ extern class O {
 		
 	**/
 	var termpastefilter : String;
+
 	/**
 		```lua
 		(global) table.termsync: boolean
@@ -36238,12 +37872,14 @@ extern class O {
 		
 	**/
 	var termsync : Bool;
+
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
 	var terse : Dynamic;
+
 	/**
 		```lua
 		(global) table.textwidth: integer
@@ -36260,6 +37896,7 @@ extern class O {
 		
 	**/
 	var textwidth : Int;
+
 	/**
 		```lua
 		(global) table.thesaurus: string
@@ -36284,6 +37921,7 @@ extern class O {
 		
 	**/
 	var thesaurus : String;
+
 	/**
 		```lua
 		(global) table.thesaurusfunc: string
@@ -36301,6 +37939,7 @@ extern class O {
 		
 	**/
 	var thesaurusfunc : String;
+
 	/**
 		```lua
 		(global) table.tildeop: boolean
@@ -36312,6 +37951,7 @@ extern class O {
 		
 	**/
 	var tildeop : Bool;
+
 	/**
 		```lua
 		(global) table.timeout: boolean
@@ -36326,6 +37966,7 @@ extern class O {
 		
 	**/
 	var timeout : Bool;
+
 	/**
 		```lua
 		(global) table.timeoutlen: integer
@@ -36337,6 +37978,7 @@ extern class O {
 		
 	**/
 	var timeoutlen : Int;
+
 	/**
 		```lua
 		(global) table.title: boolean
@@ -36358,6 +38000,7 @@ extern class O {
 		
 	**/
 	var title : Bool;
+
 	/**
 		```lua
 		(global) table.titlelen: integer
@@ -36377,6 +38020,7 @@ extern class O {
 		
 	**/
 	var titlelen : Int;
+
 	/**
 		```lua
 		(global) table.titleold: string
@@ -36391,6 +38035,7 @@ extern class O {
 		
 	**/
 	var titleold : String;
+
 	/**
 		```lua
 		(global) table.titlestring: string
@@ -36435,6 +38080,7 @@ extern class O {
 		
 	**/
 	var titlestring : String;
+
 	/**
 		```lua
 		(global) table.ttimeout: boolean
@@ -36456,6 +38102,7 @@ extern class O {
 		
 	**/
 	var ttimeout : Bool;
+
 	/**
 		```lua
 		(global) table.ttimeoutlen: integer
@@ -36469,12 +38116,14 @@ extern class O {
 		
 	**/
 	var ttimeoutlen : Int;
+
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
 	var ttyfast : Dynamic;
+
 	/**
 		```lua
 		(global) table.undodir: string
@@ -36505,6 +38154,7 @@ extern class O {
 		
 	**/
 	var undodir : String;
+
 	/**
 		```lua
 		(global) table.undofile: boolean
@@ -36523,6 +38173,7 @@ extern class O {
 		
 	**/
 	var undofile : Bool;
+
 	/**
 		```lua
 		(global) table.undolevels: integer
@@ -36556,6 +38207,7 @@ extern class O {
 		
 	**/
 	var undolevels : Int;
+
 	/**
 		```lua
 		(global) table.undoreload: integer
@@ -36577,6 +38229,7 @@ extern class O {
 		
 	**/
 	var undoreload : Int;
+
 	/**
 		```lua
 		(global) table.updatecount: integer
@@ -36598,6 +38251,7 @@ extern class O {
 		
 	**/
 	var updatecount : Int;
+
 	/**
 		```lua
 		(global) table.updatetime: integer
@@ -36611,6 +38265,7 @@ extern class O {
 		
 	**/
 	var updatetime : Int;
+
 	/**
 		```lua
 		(global) table.varsofttabstop: string
@@ -36639,6 +38294,7 @@ extern class O {
 		
 	**/
 	var varsofttabstop : String;
+
 	/**
 		```lua
 		(global) table.vartabstop: string
@@ -36661,6 +38317,7 @@ extern class O {
 		
 	**/
 	var vartabstop : String;
+
 	/**
 		```lua
 		(global) table.verbose: integer
@@ -36697,6 +38354,7 @@ extern class O {
 		
 	**/
 	var verbose : Int;
+
 	/**
 		```lua
 		(global) table.verbosefile: string
@@ -36716,6 +38374,7 @@ extern class O {
 		
 	**/
 	var verbosefile : String;
+
 	/**
 		```lua
 		(global) table.viewdir: string
@@ -36729,6 +38388,7 @@ extern class O {
 		
 	**/
 	var viewdir : String;
+
 	/**
 		```lua
 		(global) table.viewoptions: string
@@ -36751,6 +38411,7 @@ extern class O {
 		
 	**/
 	var viewoptions : String;
+
 	/**
 		```lua
 		(global) table.virtualedit: string
@@ -36787,6 +38448,7 @@ extern class O {
 		
 	**/
 	var virtualedit : String;
+
 	/**
 		```lua
 		(global) table.visualbell: boolean
@@ -36798,6 +38460,7 @@ extern class O {
 		
 	**/
 	var visualbell : Bool;
+
 	/**
 		```lua
 		(global) table.warn: boolean
@@ -36810,6 +38473,7 @@ extern class O {
 		
 	**/
 	var warn : Bool;
+
 	/**
 		```lua
 		(global) table.whichwrap: string
@@ -36849,6 +38513,7 @@ extern class O {
 		
 	**/
 	var whichwrap : String;
+
 	/**
 		```lua
 		(global) table.wildchar: integer
@@ -36878,6 +38543,7 @@ extern class O {
 		
 	**/
 	var wildchar : Int;
+
 	/**
 		```lua
 		(global) table.wildcharm: integer
@@ -36899,6 +38565,7 @@ extern class O {
 		
 	**/
 	var wildcharm : Int;
+
 	/**
 		```lua
 		(global) table.wildignore: string
@@ -36923,6 +38590,7 @@ extern class O {
 		
 	**/
 	var wildignore : String;
+
 	/**
 		```lua
 		(global) table.wildignorecase: boolean
@@ -36937,6 +38605,7 @@ extern class O {
 		
 	**/
 	var wildignorecase : Bool;
+
 	/**
 		```lua
 		(global) table.wildmenu: boolean
@@ -36987,6 +38656,7 @@ extern class O {
 		
 	**/
 	var wildmenu : Bool;
+
 	/**
 		```lua
 		(global) table.wildmode: string
@@ -37068,6 +38738,7 @@ extern class O {
 		
 	**/
 	var wildmode : String;
+
 	/**
 		```lua
 		(global) table.wildoptions: string
@@ -37095,6 +38766,7 @@ extern class O {
 		
 	**/
 	var wildoptions : String;
+
 	/**
 		```lua
 		(global) table.winaltkeys: 'menu'|'no'|'yes'
@@ -37120,6 +38792,7 @@ extern class O {
 		
 	**/
 	var winaltkeys : String;
+
 	/**
 		```lua
 		(global) table.winbar: string
@@ -37143,6 +38816,7 @@ extern class O {
 		
 	**/
 	var winbar : String;
+
 	/**
 		```lua
 		(global) table.winblend: integer
@@ -37158,6 +38832,7 @@ extern class O {
 		
 	**/
 	var winblend : Int;
+
 	/**
 		```lua
 		(global) table.winborder: ''|'bold'|'double'|'none'|'rounded'|'shadow'|'single'|'solid'
@@ -37177,6 +38852,7 @@ extern class O {
 		
 	**/
 	var winborder : String;
+
 	/**
 		```lua
 		(global) table.window: integer
@@ -37196,6 +38872,7 @@ extern class O {
 		
 	**/
 	var window : Int;
+
 	/**
 		```lua
 		(global) table.winfixbuf: boolean
@@ -37211,6 +38888,7 @@ extern class O {
 		
 	**/
 	var winfixbuf : Bool;
+
 	/**
 		```lua
 		(global) table.winfixheight: boolean
@@ -37225,6 +38903,7 @@ extern class O {
 		
 	**/
 	var winfixheight : Bool;
+
 	/**
 		```lua
 		(global) table.winfixwidth: boolean
@@ -37238,6 +38917,7 @@ extern class O {
 		
 	**/
 	var winfixwidth : Bool;
+
 	/**
 		```lua
 		(global) table.winheight: integer
@@ -37267,6 +38947,7 @@ extern class O {
 		
 	**/
 	var winheight : Int;
+
 	/**
 		```lua
 		(global) table.winhighlight: string
@@ -37297,6 +38978,7 @@ extern class O {
 		
 	**/
 	var winhighlight : String;
+
 	/**
 		```lua
 		(global) table.winminheight: integer
@@ -37316,6 +38998,7 @@ extern class O {
 		
 	**/
 	var winminheight : Int;
+
 	/**
 		```lua
 		(global) table.winminwidth: integer
@@ -37336,6 +39019,7 @@ extern class O {
 		
 	**/
 	var winminwidth : Int;
+
 	/**
 		```lua
 		(global) table.winwidth: integer
@@ -37355,6 +39039,7 @@ extern class O {
 		
 	**/
 	var winwidth : Int;
+
 	/**
 		```lua
 		(global) table.wrap: boolean
@@ -37383,6 +39068,7 @@ extern class O {
 		
 	**/
 	var wrap : Bool;
+
 	/**
 		```lua
 		(global) table.wrapmargin: integer
@@ -37400,6 +39086,7 @@ extern class O {
 		
 	**/
 	var wrapmargin : Int;
+
 	/**
 		```lua
 		(global) table.wrapscan: boolean
@@ -37412,6 +39099,7 @@ extern class O {
 		
 	**/
 	var wrapscan : Bool;
+
 	/**
 		```lua
 		(global) table.write: boolean
@@ -37427,6 +39115,7 @@ extern class O {
 		
 	**/
 	var write : Bool;
+
 	/**
 		```lua
 		(global) table.writeany: boolean
@@ -37438,6 +39127,7 @@ extern class O {
 		
 	**/
 	var writeany : Bool;
+
 	/**
 		```lua
 		(global) table.writebackup: boolean
@@ -37460,6 +39150,7 @@ extern class O {
 		
 	**/
 	var writebackup : Bool;
+
 	/**
 		```lua
 		(global) table.writedelay: integer
@@ -37472,6 +39163,7 @@ extern class O {
 		
 	**/
 	var writedelay : Int;
+
 }
 
 /**
@@ -37490,2178 +39182,2541 @@ extern class Opt {
 		```
 	**/
 	var aleph : Dynamic;
+
 	/**
 		```lua
 		(global) table.allowrevins: unknown
 		```
 	**/
 	var allowrevins : Dynamic;
+
 	/**
 		```lua
 		(global) table.ambiwidth: unknown
 		```
 	**/
 	var ambiwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
 	var arabic : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabicshape: unknown
 		```
 	**/
 	var arabicshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.autochdir: unknown
 		```
 	**/
 	var autochdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
 	var autoindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoread: unknown
 		```
 	**/
 	var autoread : Dynamic;
+
 	/**
 		```lua
 		(global) table.autowrite: unknown
 		```
 	**/
 	var autowrite : Dynamic;
+
 	/**
 		```lua
 		(global) table.autowriteall: unknown
 		```
 	**/
 	var autowriteall : Dynamic;
+
 	/**
 		```lua
 		(global) table.background: unknown
 		```
 	**/
 	var background : Dynamic;
+
 	/**
 		```lua
 		(global) table.backspace: unknown
 		```
 	**/
 	var backspace : Dynamic;
+
 	/**
 		```lua
 		(global) table.backup: boolean = false
 		```
 	**/
 	var backup : Bool;
+
 	/**
 		```lua
 		(global) table.backupcopy: unknown
 		```
 	**/
 	var backupcopy : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupdir: unknown
 		```
 	**/
 	var backupdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupext: unknown
 		```
 	**/
 	var backupext : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupskip: unknown
 		```
 	**/
 	var backupskip : Dynamic;
+
 	/**
 		```lua
 		(global) table.belloff: unknown
 		```
 	**/
 	var belloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
 	var binary : Dynamic;
+
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
 	var bomb : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakat: unknown
 		```
 	**/
 	var breakat : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
 	var breakindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
 	var breakindentopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
 	var browsedir : Dynamic;
+
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
 	var bufhidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
 	var buflisted : Dynamic;
+
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
 	var buftype : Dynamic;
+
 	/**
 		```lua
 		(global) table.casemap: unknown
 		```
 	**/
 	var casemap : Dynamic;
+
 	/**
 		```lua
 		(global) table.cdhome: unknown
 		```
 	**/
 	var cdhome : Dynamic;
+
 	/**
 		```lua
 		(global) table.cdpath: unknown
 		```
 	**/
 	var cdpath : Dynamic;
+
 	/**
 		```lua
 		(global) table.cedit: unknown
 		```
 	**/
 	var cedit : Dynamic;
+
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
 	var channel : Dynamic;
+
 	/**
 		```lua
 		(global) table.charconvert: unknown
 		```
 	**/
 	var charconvert : Dynamic;
+
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
 	var cindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
 	var cinkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
 	var cinoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
 	var cinscopedecls : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
 	var cinwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.clipboard: unknown
 		```
 	**/
 	var clipboard : Dynamic;
+
 	/**
 		```lua
 		(global) table.cmdheight: unknown
 		```
 	**/
 	var cmdheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.cmdwinheight: unknown
 		```
 	**/
 	var cmdwinheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
 	var colorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.columns: unknown
 		```
 	**/
 	var columns : Dynamic;
+
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
 	var comments : Dynamic;
+
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
 	var commentstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
 	var compatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
 	var complete : Dynamic;
+
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
 	var completefunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeitemalign: unknown
 		```
 	**/
 	var completeitemalign : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeopt: unknown
 		```
 	**/
 	var completeopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
 	var completeslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
 	var concealcursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
 	var conceallevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.confirm: unknown
 		```
 	**/
 	var confirm : Dynamic;
+
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
 	var copyindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cpoptions: unknown
 		```
 	**/
 	var cpoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
 	var cursorbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
 	var cursorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
 	var cursorline : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
 	var cursorlineopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.debug: unknown
 		```
 	**/
 	var debug : Dynamic;
+
 	/**
 		```lua
 		(global) table.define: unknown
 		```
 	**/
 	var define : Dynamic;
+
 	/**
 		```lua
 		(global) table.delcombine: unknown
 		```
 	**/
 	var delcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.dictionary: unknown
 		```
 	**/
 	var dictionary : Dynamic;
+
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
 	var diff : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffexpr: unknown
 		```
 	**/
 	var diffexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffopt: unknown
 		```
 	**/
 	var diffopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.digraph: unknown
 		```
 	**/
 	var digraph : Dynamic;
+
 	/**
 		```lua
 		(global) table.directory: unknown
 		```
 	**/
 	var directory : Dynamic;
+
 	/**
 		```lua
 		(global) table.display: unknown
 		```
 	**/
 	var display : Dynamic;
+
 	/**
 		```lua
 		(global) table.eadirection: unknown
 		```
 	**/
 	var eadirection : Dynamic;
+
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
 	var edcompatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.emoji: unknown
 		```
 	**/
 	var emoji : Dynamic;
+
 	/**
 		```lua
 		(global) table.encoding: unknown
 		```
 	**/
 	var encoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
 	var endoffile : Dynamic;
+
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
 	var endofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalalways: unknown
 		```
 	**/
 	var equalalways : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalprg: unknown
 		```
 	**/
 	var equalprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorbells: unknown
 		```
 	**/
 	var errorbells : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorfile: unknown
 		```
 	**/
 	var errorfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorformat: unknown
 		```
 	**/
 	var errorformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.eventignore: unknown
 		```
 	**/
 	var eventignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
 	var eventignorewin : Dynamic;
+
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
 	var expandtab : Dynamic;
+
 	/**
 		```lua
 		(global) table.exrc: unknown
 		```
 	**/
 	var exrc : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
 	var fileencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencodings: unknown
 		```
 	**/
 	var fileencodings : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
 	var fileformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformats: unknown
 		```
 	**/
 	var fileformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileignorecase: unknown
 		```
 	**/
 	var fileignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
 	var filetype : Dynamic;
+
 	/**
 		```lua
 		(global) table.fillchars: unknown
 		```
 	**/
 	var fillchars : Dynamic;
+
 	/**
 		```lua
 		(global) table.findfunc: unknown
 		```
 	**/
 	var findfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
 	var fixendofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldclose: unknown
 		```
 	**/
 	var foldclose : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
 	var foldcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
 	var foldenable : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
 	var foldexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
 	var foldignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
 	var foldlevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevelstart: unknown
 		```
 	**/
 	var foldlevelstart : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
 	var foldmarker : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
 	var foldmethod : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
 	var foldminlines : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
 	var foldnestmax : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldopen: unknown
 		```
 	**/
 	var foldopen : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
 	var foldtext : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
 	var formatexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
 	var formatlistpat : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
 	var formatoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatprg: unknown
 		```
 	**/
 	var formatprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.fsync: unknown
 		```
 	**/
 	var fsync : Dynamic;
+
 	/**
 		```lua
 		(global) table.gdefault: unknown
 		```
 	**/
 	var gdefault : Dynamic;
+
 	/**
 		```lua
 		(global) table.grepformat: unknown
 		```
 	**/
 	var grepformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.grepprg: unknown
 		```
 	**/
 	var grepprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.guicursor: unknown
 		```
 	**/
 	var guicursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.guifont: unknown
 		```
 	**/
 	var guifont : Dynamic;
+
 	/**
 		```lua
 		(global) table.guifontwide: unknown
 		```
 	**/
 	var guifontwide : Dynamic;
+
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
 	var guioptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
 	var guitablabel : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
 	var guitabtooltip : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpfile: unknown
 		```
 	**/
 	var helpfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpheight: unknown
 		```
 	**/
 	var helpheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.helplang: unknown
 		```
 	**/
 	var helplang : Dynamic;
+
 	/**
 		```lua
 		(global) table.hidden: unknown
 		```
 	**/
 	var hidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
 	var highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.history: unknown
 		```
 	**/
 	var history : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
 	var hkmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
 	var hkmapp : Dynamic;
+
 	/**
 		```lua
 		(global) table.hlsearch: unknown
 		```
 	**/
 	var hlsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.icon: unknown
 		```
 	**/
 	var icon : Dynamic;
+
 	/**
 		```lua
 		(global) table.iconstring: unknown
 		```
 	**/
 	var iconstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.ignorecase: unknown
 		```
 	**/
 	var ignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
 	var imcmdline : Dynamic;
+
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
 	var imdisable : Dynamic;
+
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
 	var iminsert : Dynamic;
+
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
 	var imsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.inccommand: unknown
 		```
 	**/
 	var inccommand : Dynamic;
+
 	/**
 		```lua
 		(global) table.include: unknown
 		```
 	**/
 	var include : Dynamic;
+
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
 	var includeexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.incsearch: unknown
 		```
 	**/
 	var incsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
 	var indentexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
 	var indentkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
 	var infercase : Dynamic;
+
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
 	var insertmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.isfname: unknown
 		```
 	**/
 	var isfname : Dynamic;
+
 	/**
 		```lua
 		(global) table.isident: unknown
 		```
 	**/
 	var isident : Dynamic;
+
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
 	var iskeyword : Dynamic;
+
 	/**
 		```lua
 		(global) table.isprint: unknown
 		```
 	**/
 	var isprint : Dynamic;
+
 	/**
 		```lua
 		(global) table.joinspaces: unknown
 		```
 	**/
 	var joinspaces : Dynamic;
+
 	/**
 		```lua
 		(global) table.jumpoptions: unknown
 		```
 	**/
 	var jumpoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
 	var keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymodel: unknown
 		```
 	**/
 	var keymodel : Dynamic;
+
 	/**
 		```lua
 		(global) table.keywordprg: unknown
 		```
 	**/
 	var keywordprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.langmap: unknown
 		```
 	**/
 	var langmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langmenu: unknown
 		```
 	**/
 	var langmenu : Dynamic;
+
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
 	var langnoremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langremap: unknown
 		```
 	**/
 	var langremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.laststatus: unknown
 		```
 	**/
 	var laststatus : Dynamic;
+
 	/**
 		```lua
 		(global) table.lazyredraw: unknown
 		```
 	**/
 	var lazyredraw : Dynamic;
+
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
 	var linebreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.lines: unknown
 		```
 	**/
 	var lines : Dynamic;
+
 	/**
 		```lua
 		(global) table.linespace: unknown
 		```
 	**/
 	var linespace : Dynamic;
+
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
 	var lisp : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
 	var lispoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispwords: unknown
 		```
 	**/
 	var lispwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
 	var list : Dynamic;
+
 	/**
 		```lua
 		(global) table.listchars: unknown
 		```
 	**/
 	var listchars : Dynamic;
+
 	/**
 		```lua
 		(global) table.loadplugins: unknown
 		```
 	**/
 	var loadplugins : Dynamic;
+
 	/**
 		```lua
 		(global) table.magic: unknown
 		```
 	**/
 	var magic : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeef: unknown
 		```
 	**/
 	var makeef : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeencoding: unknown
 		```
 	**/
 	var makeencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeprg: unknown
 		```
 	**/
 	var makeprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
 	var matchpairs : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchtime: unknown
 		```
 	**/
 	var matchtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
 	var maxcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxfuncdepth: unknown
 		```
 	**/
 	var maxfuncdepth : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxmapdepth: unknown
 		```
 	**/
 	var maxmapdepth : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxmempattern: unknown
 		```
 	**/
 	var maxmempattern : Dynamic;
+
 	/**
 		```lua
 		(global) table.menuitems: unknown
 		```
 	**/
 	var menuitems : Dynamic;
+
 	/**
 		```lua
 		(global) table.messagesopt: unknown
 		```
 	**/
 	var messagesopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.mkspellmem: unknown
 		```
 	**/
 	var mkspellmem : Dynamic;
+
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
 	var modeline : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelineexpr: unknown
 		```
 	**/
 	var modelineexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelines: unknown
 		```
 	**/
 	var modelines : Dynamic;
+
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
 	var modifiable : Dynamic;
+
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
 	var modified : Dynamic;
+
 	/**
 		```lua
 		(global) table.more: unknown
 		```
 	**/
 	var more : Dynamic;
+
 	/**
 		```lua
 		(global) table.mouse: unknown
 		```
 	**/
 	var mouse : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousefocus: unknown
 		```
 	**/
 	var mousefocus : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousehide: unknown
 		```
 	**/
 	var mousehide : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousemodel: unknown
 		```
 	**/
 	var mousemodel : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousemoveevent: unknown
 		```
 	**/
 	var mousemoveevent : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousescroll: unknown
 		```
 	**/
 	var mousescroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
 	var mouseshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousetime: unknown
 		```
 	**/
 	var mousetime : Dynamic;
+
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
 	var nrformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
 	var number : Dynamic;
+
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
 	var numberwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
 	var omnifunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
 	var opendevice : Dynamic;
+
 	/**
 		```lua
 		(global) table.operatorfunc: unknown
 		```
 	**/
 	var operatorfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.packpath: unknown
 		```
 	**/
 	var packpath : Dynamic;
+
 	/**
 		```lua
 		(global) table.paragraphs: unknown
 		```
 	**/
 	var paragraphs : Dynamic;
+
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
 	var paste : Dynamic;
+
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
 	var pastetoggle : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchexpr: unknown
 		```
 	**/
 	var patchexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchmode: unknown
 		```
 	**/
 	var patchmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.path: unknown
 		```
 	**/
 	var path : Dynamic;
+
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
 	var preserveindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewheight: unknown
 		```
 	**/
 	var previewheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
 	var previewwindow : Dynamic;
+
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
 	var prompt : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumblend: unknown
 		```
 	**/
 	var pumblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumheight: unknown
 		```
 	**/
 	var pumheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumwidth: unknown
 		```
 	**/
 	var pumwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.pyxversion: unknown
 		```
 	**/
 	var pyxversion : Dynamic;
+
 	/**
 		```lua
 		(global) table.quickfixtextfunc: unknown
 		```
 	**/
 	var quickfixtextfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
 	var quoteescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
 	var readonly : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawdebug: unknown
 		```
 	**/
 	var redrawdebug : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawtime: unknown
 		```
 	**/
 	var redrawtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.regexpengine: unknown
 		```
 	**/
 	var regexpengine : Dynamic;
+
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
 	var relativenumber : Dynamic;
+
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
 	var remap : Dynamic;
+
 	/**
 		```lua
 		(global) table.report: unknown
 		```
 	**/
 	var report : Dynamic;
+
 	/**
 		```lua
 		(global) table.revins: unknown
 		```
 	**/
 	var revins : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
 	var rightleft : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
 	var rightleftcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.ruler: unknown
 		```
 	**/
 	var ruler : Dynamic;
+
 	/**
 		```lua
 		(global) table.rulerformat: unknown
 		```
 	**/
 	var rulerformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.runtimepath: unknown
 		```
 	**/
 	var runtimepath : Dynamic;
+
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
 	var scroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
 	var scrollback : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
 	var scrollbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolljump: unknown
 		```
 	**/
 	var scrolljump : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolloff: unknown
 		```
 	**/
 	var scrolloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollopt: unknown
 		```
 	**/
 	var scrollopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.sections: unknown
 		```
 	**/
 	var sections : Dynamic;
+
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
 	var secure : Dynamic;
+
 	/**
 		```lua
 		(global) table.selection: unknown
 		```
 	**/
 	var selection : Dynamic;
+
 	/**
 		```lua
 		(global) table.selectmode: unknown
 		```
 	**/
 	var selectmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.sessionoptions: unknown
 		```
 	**/
 	var sessionoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.shada: unknown
 		```
 	**/
 	var shada : Dynamic;
+
 	/**
 		```lua
 		(global) table.shadafile: unknown
 		```
 	**/
 	var shadafile : Dynamic;
+
 	/**
 		```lua
 		(global) table.shell: unknown
 		```
 	**/
 	var shell : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellcmdflag: unknown
 		```
 	**/
 	var shellcmdflag : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellpipe: unknown
 		```
 	**/
 	var shellpipe : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellquote: unknown
 		```
 	**/
 	var shellquote : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellredir: unknown
 		```
 	**/
 	var shellredir : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellslash: unknown
 		```
 	**/
 	var shellslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.shelltemp: unknown
 		```
 	**/
 	var shelltemp : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellxescape: unknown
 		```
 	**/
 	var shellxescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellxquote: unknown
 		```
 	**/
 	var shellxquote : Dynamic;
+
 	/**
 		```lua
 		(global) table.shiftround: unknown
 		```
 	**/
 	var shiftround : Dynamic;
+
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
 	var shiftwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.shortmess: unknown
 		```
 	**/
 	var shortmess : Dynamic;
+
 	/**
 		```lua
 		(global) table.showbreak: unknown
 		```
 	**/
 	var showbreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.showcmd: unknown
 		```
 	**/
 	var showcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.showcmdloc: unknown
 		```
 	**/
 	var showcmdloc : Dynamic;
+
 	/**
 		```lua
 		(global) table.showfulltag: unknown
 		```
 	**/
 	var showfulltag : Dynamic;
+
 	/**
 		```lua
 		(global) table.showmatch: unknown
 		```
 	**/
 	var showmatch : Dynamic;
+
 	/**
 		```lua
 		(global) table.showmode: unknown
 		```
 	**/
 	var showmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.showtabline: unknown
 		```
 	**/
 	var showtabline : Dynamic;
+
 	/**
 		```lua
 		(global) table.sidescroll: unknown
 		```
 	**/
 	var sidescroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.sidescrolloff: unknown
 		```
 	**/
 	var sidescrolloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
 	var signcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartcase: unknown
 		```
 	**/
 	var smartcase : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
 	var smartindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.smarttab: unknown
 		```
 	**/
 	var smarttab : Dynamic;
+
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
 	var smoothscroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
 	var softtabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
 	var spell : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
 	var spellcapcheck : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
 	var spellfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
 	var spelllang : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
 	var spelloptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellsuggest: unknown
 		```
 	**/
 	var spellsuggest : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitbelow: unknown
 		```
 	**/
 	var splitbelow : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitkeep: unknown
 		```
 	**/
 	var splitkeep : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitright: unknown
 		```
 	**/
 	var splitright : Dynamic;
+
 	/**
 		```lua
 		(global) table.startofline: unknown
 		```
 	**/
 	var startofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
 	var statuscolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.statusline: unknown
 		```
 	**/
 	var statusline : Dynamic;
+
 	/**
 		```lua
 		(global) table.suffixes: unknown
 		```
 	**/
 	var suffixes : Dynamic;
+
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
 	var suffixesadd : Dynamic;
+
 	/**
 		```lua
 		(global) table.swapfile: boolean = false
 		```
 	**/
 	var swapfile : Bool;
+
 	/**
 		```lua
 		(global) table.switchbuf: unknown
 		```
 	**/
 	var switchbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
 	var synmaxcol : Dynamic;
+
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
 	var syntax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabclose: unknown
 		```
 	**/
 	var tabclose : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabline: unknown
 		```
 	**/
 	var tabline : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabpagemax: unknown
 		```
 	**/
 	var tabpagemax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
 	var tabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagbsearch: unknown
 		```
 	**/
 	var tagbsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagcase: unknown
 		```
 	**/
 	var tagcase : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
 	var tagfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.taglength: unknown
 		```
 	**/
 	var taglength : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagrelative: unknown
 		```
 	**/
 	var tagrelative : Dynamic;
+
 	/**
 		```lua
 		(global) table.tags: unknown
 		```
 	**/
 	var tags : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagstack: unknown
 		```
 	**/
 	var tagstack : Dynamic;
+
 	/**
 		```lua
 		(global) table.termbidi: unknown
 		```
 	**/
 	var termbidi : Dynamic;
+
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
 	var termencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.termguicolors: unknown
 		```
 	**/
 	var termguicolors : Dynamic;
+
 	/**
 		```lua
 		(global) table.termpastefilter: unknown
 		```
 	**/
 	var termpastefilter : Dynamic;
+
 	/**
 		```lua
 		(global) table.termsync: unknown
 		```
 	**/
 	var termsync : Dynamic;
+
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
 	var terse : Dynamic;
+
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
 	var textwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurus: unknown
 		```
 	**/
 	var thesaurus : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurusfunc: unknown
 		```
 	**/
 	var thesaurusfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.tildeop: unknown
 		```
 	**/
 	var tildeop : Dynamic;
+
 	/**
 		```lua
 		(global) table.timeout: unknown
 		```
 	**/
 	var timeout : Dynamic;
+
 	/**
 		```lua
 		(global) table.timeoutlen: unknown
 		```
 	**/
 	var timeoutlen : Dynamic;
+
 	/**
 		```lua
 		(global) table.title: unknown
 		```
 	**/
 	var title : Dynamic;
+
 	/**
 		```lua
 		(global) table.titlelen: unknown
 		```
 	**/
 	var titlelen : Dynamic;
+
 	/**
 		```lua
 		(global) table.titleold: unknown
 		```
 	**/
 	var titleold : Dynamic;
+
 	/**
 		```lua
 		(global) table.titlestring: unknown
 		```
 	**/
 	var titlestring : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttimeout: unknown
 		```
 	**/
 	var ttimeout : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttimeoutlen: unknown
 		```
 	**/
 	var ttimeoutlen : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
 	var ttyfast : Dynamic;
+
 	/**
 		```lua
 		(global) table.undodir: unknown
 		```
 	**/
 	var undodir : Dynamic;
+
 	/**
 		```lua
 		(global) table.undofile: boolean = false
 		```
 	**/
 	var undofile : Bool;
+
 	/**
 		```lua
 		(global) table.undolevels: unknown
 		```
 	**/
 	var undolevels : Dynamic;
+
 	/**
 		```lua
 		(global) table.undoreload: unknown
 		```
 	**/
 	var undoreload : Dynamic;
+
 	/**
 		```lua
 		(global) table.updatecount: unknown
 		```
 	**/
 	var updatecount : Dynamic;
+
 	/**
 		```lua
 		(global) table.updatetime: unknown
 		```
 	**/
 	var updatetime : Dynamic;
+
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
 	var varsofttabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
 	var vartabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbose: unknown
 		```
 	**/
 	var verbose : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbosefile: unknown
 		```
 	**/
 	var verbosefile : Dynamic;
+
 	/**
 		```lua
 		(global) table.viewdir: unknown
 		```
 	**/
 	var viewdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.viewoptions: unknown
 		```
 	**/
 	var viewoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.virtualedit: unknown
 		```
 	**/
 	var virtualedit : Dynamic;
+
 	/**
 		```lua
 		(global) table.visualbell: unknown
 		```
 	**/
 	var visualbell : Dynamic;
+
 	/**
 		```lua
 		(global) table.warn: unknown
 		```
 	**/
 	var warn : Dynamic;
+
 	/**
 		```lua
 		(global) table.whichwrap: unknown
 		```
 	**/
 	var whichwrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildchar: unknown
 		```
 	**/
 	var wildchar : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildcharm: unknown
 		```
 	**/
 	var wildcharm : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildignore: unknown
 		```
 	**/
 	var wildignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildignorecase: unknown
 		```
 	**/
 	var wildignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildmenu: unknown
 		```
 	**/
 	var wildmenu : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildmode: unknown
 		```
 	**/
 	var wildmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildoptions: unknown
 		```
 	**/
 	var wildoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.winaltkeys: unknown
 		```
 	**/
 	var winaltkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.winbar: unknown
 		```
 	**/
 	var winbar : Dynamic;
+
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
 	var winblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.winborder: unknown
 		```
 	**/
 	var winborder : Dynamic;
+
 	/**
 		```lua
 		(global) table.window: unknown
 		```
 	**/
 	var window : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
 	var winfixbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
 	var winfixheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
 	var winfixwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winheight: unknown
 		```
 	**/
 	var winheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
 	var winhighlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminheight: unknown
 		```
 	**/
 	var winminheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminwidth: unknown
 		```
 	**/
 	var winminwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winwidth: unknown
 		```
 	**/
 	var winwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
 	var wrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
 	var wrapmargin : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapscan: unknown
 		```
 	**/
 	var wrapscan : Dynamic;
+
 	/**
 		```lua
 		(global) table.write: unknown
 		```
 	**/
 	var write : Dynamic;
+
 	/**
 		```lua
 		(global) table.writeany: unknown
 		```
 	**/
 	var writeany : Dynamic;
+
 	/**
 		```lua
 		(global) table.writebackup: boolean = false
 		```
 	**/
 	var writebackup : Bool;
+
 	/**
 		```lua
 		(global) table.writedelay: unknown
 		```
 	**/
 	var writedelay : Dynamic;
+
 }
 
 /**
@@ -39680,2178 +41735,2541 @@ extern class OptGlobal {
 		```
 	**/
 	var aleph : Dynamic;
+
 	/**
 		```lua
 		(global) table.allowrevins: unknown
 		```
 	**/
 	var allowrevins : Dynamic;
+
 	/**
 		```lua
 		(global) table.ambiwidth: unknown
 		```
 	**/
 	var ambiwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
 	var arabic : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabicshape: unknown
 		```
 	**/
 	var arabicshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.autochdir: unknown
 		```
 	**/
 	var autochdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
 	var autoindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoread: unknown
 		```
 	**/
 	var autoread : Dynamic;
+
 	/**
 		```lua
 		(global) table.autowrite: unknown
 		```
 	**/
 	var autowrite : Dynamic;
+
 	/**
 		```lua
 		(global) table.autowriteall: unknown
 		```
 	**/
 	var autowriteall : Dynamic;
+
 	/**
 		```lua
 		(global) table.background: unknown
 		```
 	**/
 	var background : Dynamic;
+
 	/**
 		```lua
 		(global) table.backspace: unknown
 		```
 	**/
 	var backspace : Dynamic;
+
 	/**
 		```lua
 		(global) table.backup: unknown
 		```
 	**/
 	var backup : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupcopy: unknown
 		```
 	**/
 	var backupcopy : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupdir: unknown
 		```
 	**/
 	var backupdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupext: unknown
 		```
 	**/
 	var backupext : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupskip: unknown
 		```
 	**/
 	var backupskip : Dynamic;
+
 	/**
 		```lua
 		(global) table.belloff: unknown
 		```
 	**/
 	var belloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
 	var binary : Dynamic;
+
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
 	var bomb : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakat: unknown
 		```
 	**/
 	var breakat : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
 	var breakindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
 	var breakindentopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
 	var browsedir : Dynamic;
+
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
 	var bufhidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
 	var buflisted : Dynamic;
+
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
 	var buftype : Dynamic;
+
 	/**
 		```lua
 		(global) table.casemap: unknown
 		```
 	**/
 	var casemap : Dynamic;
+
 	/**
 		```lua
 		(global) table.cdhome: unknown
 		```
 	**/
 	var cdhome : Dynamic;
+
 	/**
 		```lua
 		(global) table.cdpath: unknown
 		```
 	**/
 	var cdpath : Dynamic;
+
 	/**
 		```lua
 		(global) table.cedit: unknown
 		```
 	**/
 	var cedit : Dynamic;
+
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
 	var channel : Dynamic;
+
 	/**
 		```lua
 		(global) table.charconvert: unknown
 		```
 	**/
 	var charconvert : Dynamic;
+
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
 	var cindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
 	var cinkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
 	var cinoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
 	var cinscopedecls : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
 	var cinwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.clipboard: unknown
 		```
 	**/
 	var clipboard : Dynamic;
+
 	/**
 		```lua
 		(global) table.cmdheight: unknown
 		```
 	**/
 	var cmdheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.cmdwinheight: unknown
 		```
 	**/
 	var cmdwinheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
 	var colorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.columns: unknown
 		```
 	**/
 	var columns : Dynamic;
+
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
 	var comments : Dynamic;
+
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
 	var commentstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
 	var compatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
 	var complete : Dynamic;
+
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
 	var completefunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeitemalign: unknown
 		```
 	**/
 	var completeitemalign : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeopt: unknown
 		```
 	**/
 	var completeopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
 	var completeslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
 	var concealcursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
 	var conceallevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.confirm: unknown
 		```
 	**/
 	var confirm : Dynamic;
+
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
 	var copyindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cpoptions: unknown
 		```
 	**/
 	var cpoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
 	var cursorbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
 	var cursorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
 	var cursorline : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
 	var cursorlineopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.debug: unknown
 		```
 	**/
 	var debug : Dynamic;
+
 	/**
 		```lua
 		(global) table.define: unknown
 		```
 	**/
 	var define : Dynamic;
+
 	/**
 		```lua
 		(global) table.delcombine: unknown
 		```
 	**/
 	var delcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.dictionary: unknown
 		```
 	**/
 	var dictionary : Dynamic;
+
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
 	var diff : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffexpr: unknown
 		```
 	**/
 	var diffexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffopt: unknown
 		```
 	**/
 	var diffopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.digraph: unknown
 		```
 	**/
 	var digraph : Dynamic;
+
 	/**
 		```lua
 		(global) table.directory: unknown
 		```
 	**/
 	var directory : Dynamic;
+
 	/**
 		```lua
 		(global) table.display: unknown
 		```
 	**/
 	var display : Dynamic;
+
 	/**
 		```lua
 		(global) table.eadirection: unknown
 		```
 	**/
 	var eadirection : Dynamic;
+
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
 	var edcompatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.emoji: unknown
 		```
 	**/
 	var emoji : Dynamic;
+
 	/**
 		```lua
 		(global) table.encoding: unknown
 		```
 	**/
 	var encoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
 	var endoffile : Dynamic;
+
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
 	var endofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalalways: unknown
 		```
 	**/
 	var equalalways : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalprg: unknown
 		```
 	**/
 	var equalprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorbells: unknown
 		```
 	**/
 	var errorbells : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorfile: unknown
 		```
 	**/
 	var errorfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorformat: unknown
 		```
 	**/
 	var errorformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.eventignore: unknown
 		```
 	**/
 	var eventignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
 	var eventignorewin : Dynamic;
+
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
 	var expandtab : Dynamic;
+
 	/**
 		```lua
 		(global) table.exrc: unknown
 		```
 	**/
 	var exrc : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
 	var fileencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencodings: unknown
 		```
 	**/
 	var fileencodings : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
 	var fileformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformats: unknown
 		```
 	**/
 	var fileformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileignorecase: unknown
 		```
 	**/
 	var fileignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
 	var filetype : Dynamic;
+
 	/**
 		```lua
 		(global) table.fillchars: unknown
 		```
 	**/
 	var fillchars : Dynamic;
+
 	/**
 		```lua
 		(global) table.findfunc: unknown
 		```
 	**/
 	var findfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
 	var fixendofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldclose: unknown
 		```
 	**/
 	var foldclose : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
 	var foldcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
 	var foldenable : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
 	var foldexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
 	var foldignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
 	var foldlevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevelstart: unknown
 		```
 	**/
 	var foldlevelstart : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
 	var foldmarker : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
 	var foldmethod : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
 	var foldminlines : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
 	var foldnestmax : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldopen: unknown
 		```
 	**/
 	var foldopen : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
 	var foldtext : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
 	var formatexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
 	var formatlistpat : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
 	var formatoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatprg: unknown
 		```
 	**/
 	var formatprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.fsync: unknown
 		```
 	**/
 	var fsync : Dynamic;
+
 	/**
 		```lua
 		(global) table.gdefault: unknown
 		```
 	**/
 	var gdefault : Dynamic;
+
 	/**
 		```lua
 		(global) table.grepformat: unknown
 		```
 	**/
 	var grepformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.grepprg: unknown
 		```
 	**/
 	var grepprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.guicursor: unknown
 		```
 	**/
 	var guicursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.guifont: unknown
 		```
 	**/
 	var guifont : Dynamic;
+
 	/**
 		```lua
 		(global) table.guifontwide: unknown
 		```
 	**/
 	var guifontwide : Dynamic;
+
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
 	var guioptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
 	var guitablabel : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
 	var guitabtooltip : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpfile: unknown
 		```
 	**/
 	var helpfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpheight: unknown
 		```
 	**/
 	var helpheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.helplang: unknown
 		```
 	**/
 	var helplang : Dynamic;
+
 	/**
 		```lua
 		(global) table.hidden: unknown
 		```
 	**/
 	var hidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
 	var highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.history: unknown
 		```
 	**/
 	var history : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
 	var hkmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
 	var hkmapp : Dynamic;
+
 	/**
 		```lua
 		(global) table.hlsearch: unknown
 		```
 	**/
 	var hlsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.icon: unknown
 		```
 	**/
 	var icon : Dynamic;
+
 	/**
 		```lua
 		(global) table.iconstring: unknown
 		```
 	**/
 	var iconstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.ignorecase: unknown
 		```
 	**/
 	var ignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
 	var imcmdline : Dynamic;
+
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
 	var imdisable : Dynamic;
+
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
 	var iminsert : Dynamic;
+
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
 	var imsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.inccommand: unknown
 		```
 	**/
 	var inccommand : Dynamic;
+
 	/**
 		```lua
 		(global) table.include: unknown
 		```
 	**/
 	var include : Dynamic;
+
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
 	var includeexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.incsearch: unknown
 		```
 	**/
 	var incsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
 	var indentexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
 	var indentkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
 	var infercase : Dynamic;
+
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
 	var insertmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.isfname: unknown
 		```
 	**/
 	var isfname : Dynamic;
+
 	/**
 		```lua
 		(global) table.isident: unknown
 		```
 	**/
 	var isident : Dynamic;
+
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
 	var iskeyword : Dynamic;
+
 	/**
 		```lua
 		(global) table.isprint: unknown
 		```
 	**/
 	var isprint : Dynamic;
+
 	/**
 		```lua
 		(global) table.joinspaces: unknown
 		```
 	**/
 	var joinspaces : Dynamic;
+
 	/**
 		```lua
 		(global) table.jumpoptions: unknown
 		```
 	**/
 	var jumpoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
 	var keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymodel: unknown
 		```
 	**/
 	var keymodel : Dynamic;
+
 	/**
 		```lua
 		(global) table.keywordprg: unknown
 		```
 	**/
 	var keywordprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.langmap: unknown
 		```
 	**/
 	var langmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langmenu: unknown
 		```
 	**/
 	var langmenu : Dynamic;
+
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
 	var langnoremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langremap: unknown
 		```
 	**/
 	var langremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.laststatus: unknown
 		```
 	**/
 	var laststatus : Dynamic;
+
 	/**
 		```lua
 		(global) table.lazyredraw: unknown
 		```
 	**/
 	var lazyredraw : Dynamic;
+
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
 	var linebreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.lines: unknown
 		```
 	**/
 	var lines : Dynamic;
+
 	/**
 		```lua
 		(global) table.linespace: unknown
 		```
 	**/
 	var linespace : Dynamic;
+
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
 	var lisp : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
 	var lispoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispwords: unknown
 		```
 	**/
 	var lispwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
 	var list : Dynamic;
+
 	/**
 		```lua
 		(global) table.listchars: unknown
 		```
 	**/
 	var listchars : Dynamic;
+
 	/**
 		```lua
 		(global) table.loadplugins: unknown
 		```
 	**/
 	var loadplugins : Dynamic;
+
 	/**
 		```lua
 		(global) table.magic: unknown
 		```
 	**/
 	var magic : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeef: unknown
 		```
 	**/
 	var makeef : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeencoding: unknown
 		```
 	**/
 	var makeencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeprg: unknown
 		```
 	**/
 	var makeprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
 	var matchpairs : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchtime: unknown
 		```
 	**/
 	var matchtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
 	var maxcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxfuncdepth: unknown
 		```
 	**/
 	var maxfuncdepth : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxmapdepth: unknown
 		```
 	**/
 	var maxmapdepth : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxmempattern: unknown
 		```
 	**/
 	var maxmempattern : Dynamic;
+
 	/**
 		```lua
 		(global) table.menuitems: unknown
 		```
 	**/
 	var menuitems : Dynamic;
+
 	/**
 		```lua
 		(global) table.messagesopt: unknown
 		```
 	**/
 	var messagesopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.mkspellmem: unknown
 		```
 	**/
 	var mkspellmem : Dynamic;
+
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
 	var modeline : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelineexpr: unknown
 		```
 	**/
 	var modelineexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelines: unknown
 		```
 	**/
 	var modelines : Dynamic;
+
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
 	var modifiable : Dynamic;
+
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
 	var modified : Dynamic;
+
 	/**
 		```lua
 		(global) table.more: unknown
 		```
 	**/
 	var more : Dynamic;
+
 	/**
 		```lua
 		(global) table.mouse: unknown
 		```
 	**/
 	var mouse : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousefocus: unknown
 		```
 	**/
 	var mousefocus : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousehide: unknown
 		```
 	**/
 	var mousehide : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousemodel: unknown
 		```
 	**/
 	var mousemodel : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousemoveevent: unknown
 		```
 	**/
 	var mousemoveevent : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousescroll: unknown
 		```
 	**/
 	var mousescroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
 	var mouseshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousetime: unknown
 		```
 	**/
 	var mousetime : Dynamic;
+
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
 	var nrformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
 	var number : Dynamic;
+
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
 	var numberwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
 	var omnifunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
 	var opendevice : Dynamic;
+
 	/**
 		```lua
 		(global) table.operatorfunc: unknown
 		```
 	**/
 	var operatorfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.packpath: unknown
 		```
 	**/
 	var packpath : Dynamic;
+
 	/**
 		```lua
 		(global) table.paragraphs: unknown
 		```
 	**/
 	var paragraphs : Dynamic;
+
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
 	var paste : Dynamic;
+
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
 	var pastetoggle : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchexpr: unknown
 		```
 	**/
 	var patchexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchmode: unknown
 		```
 	**/
 	var patchmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.path: unknown
 		```
 	**/
 	var path : Dynamic;
+
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
 	var preserveindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewheight: unknown
 		```
 	**/
 	var previewheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
 	var previewwindow : Dynamic;
+
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
 	var prompt : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumblend: unknown
 		```
 	**/
 	var pumblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumheight: unknown
 		```
 	**/
 	var pumheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumwidth: unknown
 		```
 	**/
 	var pumwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.pyxversion: unknown
 		```
 	**/
 	var pyxversion : Dynamic;
+
 	/**
 		```lua
 		(global) table.quickfixtextfunc: unknown
 		```
 	**/
 	var quickfixtextfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
 	var quoteescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
 	var readonly : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawdebug: unknown
 		```
 	**/
 	var redrawdebug : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawtime: unknown
 		```
 	**/
 	var redrawtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.regexpengine: unknown
 		```
 	**/
 	var regexpengine : Dynamic;
+
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
 	var relativenumber : Dynamic;
+
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
 	var remap : Dynamic;
+
 	/**
 		```lua
 		(global) table.report: unknown
 		```
 	**/
 	var report : Dynamic;
+
 	/**
 		```lua
 		(global) table.revins: unknown
 		```
 	**/
 	var revins : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
 	var rightleft : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
 	var rightleftcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.ruler: unknown
 		```
 	**/
 	var ruler : Dynamic;
+
 	/**
 		```lua
 		(global) table.rulerformat: unknown
 		```
 	**/
 	var rulerformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.runtimepath: unknown
 		```
 	**/
 	var runtimepath : Dynamic;
+
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
 	var scroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
 	var scrollback : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
 	var scrollbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolljump: unknown
 		```
 	**/
 	var scrolljump : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolloff: unknown
 		```
 	**/
 	var scrolloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollopt: unknown
 		```
 	**/
 	var scrollopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.sections: unknown
 		```
 	**/
 	var sections : Dynamic;
+
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
 	var secure : Dynamic;
+
 	/**
 		```lua
 		(global) table.selection: unknown
 		```
 	**/
 	var selection : Dynamic;
+
 	/**
 		```lua
 		(global) table.selectmode: unknown
 		```
 	**/
 	var selectmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.sessionoptions: unknown
 		```
 	**/
 	var sessionoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.shada: unknown
 		```
 	**/
 	var shada : Dynamic;
+
 	/**
 		```lua
 		(global) table.shadafile: unknown
 		```
 	**/
 	var shadafile : Dynamic;
+
 	/**
 		```lua
 		(global) table.shell: unknown
 		```
 	**/
 	var shell : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellcmdflag: unknown
 		```
 	**/
 	var shellcmdflag : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellpipe: unknown
 		```
 	**/
 	var shellpipe : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellquote: unknown
 		```
 	**/
 	var shellquote : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellredir: unknown
 		```
 	**/
 	var shellredir : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellslash: unknown
 		```
 	**/
 	var shellslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.shelltemp: unknown
 		```
 	**/
 	var shelltemp : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellxescape: unknown
 		```
 	**/
 	var shellxescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellxquote: unknown
 		```
 	**/
 	var shellxquote : Dynamic;
+
 	/**
 		```lua
 		(global) table.shiftround: unknown
 		```
 	**/
 	var shiftround : Dynamic;
+
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
 	var shiftwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.shortmess: unknown
 		```
 	**/
 	var shortmess : Dynamic;
+
 	/**
 		```lua
 		(global) table.showbreak: unknown
 		```
 	**/
 	var showbreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.showcmd: unknown
 		```
 	**/
 	var showcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.showcmdloc: unknown
 		```
 	**/
 	var showcmdloc : Dynamic;
+
 	/**
 		```lua
 		(global) table.showfulltag: unknown
 		```
 	**/
 	var showfulltag : Dynamic;
+
 	/**
 		```lua
 		(global) table.showmatch: unknown
 		```
 	**/
 	var showmatch : Dynamic;
+
 	/**
 		```lua
 		(global) table.showmode: unknown
 		```
 	**/
 	var showmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.showtabline: unknown
 		```
 	**/
 	var showtabline : Dynamic;
+
 	/**
 		```lua
 		(global) table.sidescroll: unknown
 		```
 	**/
 	var sidescroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.sidescrolloff: unknown
 		```
 	**/
 	var sidescrolloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
 	var signcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartcase: unknown
 		```
 	**/
 	var smartcase : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
 	var smartindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.smarttab: unknown
 		```
 	**/
 	var smarttab : Dynamic;
+
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
 	var smoothscroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
 	var softtabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
 	var spell : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
 	var spellcapcheck : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
 	var spellfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
 	var spelllang : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
 	var spelloptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellsuggest: unknown
 		```
 	**/
 	var spellsuggest : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitbelow: unknown
 		```
 	**/
 	var splitbelow : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitkeep: unknown
 		```
 	**/
 	var splitkeep : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitright: unknown
 		```
 	**/
 	var splitright : Dynamic;
+
 	/**
 		```lua
 		(global) table.startofline: unknown
 		```
 	**/
 	var startofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
 	var statuscolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.statusline: unknown
 		```
 	**/
 	var statusline : Dynamic;
+
 	/**
 		```lua
 		(global) table.suffixes: unknown
 		```
 	**/
 	var suffixes : Dynamic;
+
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
 	var suffixesadd : Dynamic;
+
 	/**
 		```lua
 		(global) table.swapfile: unknown
 		```
 	**/
 	var swapfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.switchbuf: unknown
 		```
 	**/
 	var switchbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
 	var synmaxcol : Dynamic;
+
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
 	var syntax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabclose: unknown
 		```
 	**/
 	var tabclose : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabline: unknown
 		```
 	**/
 	var tabline : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabpagemax: unknown
 		```
 	**/
 	var tabpagemax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
 	var tabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagbsearch: unknown
 		```
 	**/
 	var tagbsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagcase: unknown
 		```
 	**/
 	var tagcase : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
 	var tagfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.taglength: unknown
 		```
 	**/
 	var taglength : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagrelative: unknown
 		```
 	**/
 	var tagrelative : Dynamic;
+
 	/**
 		```lua
 		(global) table.tags: unknown
 		```
 	**/
 	var tags : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagstack: unknown
 		```
 	**/
 	var tagstack : Dynamic;
+
 	/**
 		```lua
 		(global) table.termbidi: unknown
 		```
 	**/
 	var termbidi : Dynamic;
+
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
 	var termencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.termguicolors: unknown
 		```
 	**/
 	var termguicolors : Dynamic;
+
 	/**
 		```lua
 		(global) table.termpastefilter: unknown
 		```
 	**/
 	var termpastefilter : Dynamic;
+
 	/**
 		```lua
 		(global) table.termsync: unknown
 		```
 	**/
 	var termsync : Dynamic;
+
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
 	var terse : Dynamic;
+
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
 	var textwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurus: unknown
 		```
 	**/
 	var thesaurus : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurusfunc: unknown
 		```
 	**/
 	var thesaurusfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.tildeop: unknown
 		```
 	**/
 	var tildeop : Dynamic;
+
 	/**
 		```lua
 		(global) table.timeout: unknown
 		```
 	**/
 	var timeout : Dynamic;
+
 	/**
 		```lua
 		(global) table.timeoutlen: unknown
 		```
 	**/
 	var timeoutlen : Dynamic;
+
 	/**
 		```lua
 		(global) table.title: unknown
 		```
 	**/
 	var title : Dynamic;
+
 	/**
 		```lua
 		(global) table.titlelen: unknown
 		```
 	**/
 	var titlelen : Dynamic;
+
 	/**
 		```lua
 		(global) table.titleold: unknown
 		```
 	**/
 	var titleold : Dynamic;
+
 	/**
 		```lua
 		(global) table.titlestring: unknown
 		```
 	**/
 	var titlestring : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttimeout: unknown
 		```
 	**/
 	var ttimeout : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttimeoutlen: unknown
 		```
 	**/
 	var ttimeoutlen : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
 	var ttyfast : Dynamic;
+
 	/**
 		```lua
 		(global) table.undodir: unknown
 		```
 	**/
 	var undodir : Dynamic;
+
 	/**
 		```lua
 		(global) table.undofile: unknown
 		```
 	**/
 	var undofile : Dynamic;
+
 	/**
 		```lua
 		(global) table.undolevels: unknown
 		```
 	**/
 	var undolevels : Dynamic;
+
 	/**
 		```lua
 		(global) table.undoreload: unknown
 		```
 	**/
 	var undoreload : Dynamic;
+
 	/**
 		```lua
 		(global) table.updatecount: unknown
 		```
 	**/
 	var updatecount : Dynamic;
+
 	/**
 		```lua
 		(global) table.updatetime: unknown
 		```
 	**/
 	var updatetime : Dynamic;
+
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
 	var varsofttabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
 	var vartabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbose: unknown
 		```
 	**/
 	var verbose : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbosefile: unknown
 		```
 	**/
 	var verbosefile : Dynamic;
+
 	/**
 		```lua
 		(global) table.viewdir: unknown
 		```
 	**/
 	var viewdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.viewoptions: unknown
 		```
 	**/
 	var viewoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.virtualedit: unknown
 		```
 	**/
 	var virtualedit : Dynamic;
+
 	/**
 		```lua
 		(global) table.visualbell: unknown
 		```
 	**/
 	var visualbell : Dynamic;
+
 	/**
 		```lua
 		(global) table.warn: unknown
 		```
 	**/
 	var warn : Dynamic;
+
 	/**
 		```lua
 		(global) table.whichwrap: unknown
 		```
 	**/
 	var whichwrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildchar: unknown
 		```
 	**/
 	var wildchar : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildcharm: unknown
 		```
 	**/
 	var wildcharm : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildignore: unknown
 		```
 	**/
 	var wildignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildignorecase: unknown
 		```
 	**/
 	var wildignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildmenu: unknown
 		```
 	**/
 	var wildmenu : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildmode: unknown
 		```
 	**/
 	var wildmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildoptions: unknown
 		```
 	**/
 	var wildoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.winaltkeys: unknown
 		```
 	**/
 	var winaltkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.winbar: unknown
 		```
 	**/
 	var winbar : Dynamic;
+
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
 	var winblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.winborder: unknown
 		```
 	**/
 	var winborder : Dynamic;
+
 	/**
 		```lua
 		(global) table.window: unknown
 		```
 	**/
 	var window : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
 	var winfixbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
 	var winfixheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
 	var winfixwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winheight: unknown
 		```
 	**/
 	var winheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
 	var winhighlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminheight: unknown
 		```
 	**/
 	var winminheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminwidth: unknown
 		```
 	**/
 	var winminwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winwidth: unknown
 		```
 	**/
 	var winwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
 	var wrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
 	var wrapmargin : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapscan: unknown
 		```
 	**/
 	var wrapscan : Dynamic;
+
 	/**
 		```lua
 		(global) table.write: unknown
 		```
 	**/
 	var write : Dynamic;
+
 	/**
 		```lua
 		(global) table.writeany: unknown
 		```
 	**/
 	var writeany : Dynamic;
+
 	/**
 		```lua
 		(global) table.writebackup: unknown
 		```
 	**/
 	var writebackup : Dynamic;
+
 	/**
 		```lua
 		(global) table.writedelay: unknown
 		```
 	**/
 	var writedelay : Dynamic;
+
 }
 
 /**
@@ -41870,2178 +44288,2541 @@ extern class OptLocal {
 		```
 	**/
 	var aleph : Dynamic;
+
 	/**
 		```lua
 		(global) table.allowrevins: unknown
 		```
 	**/
 	var allowrevins : Dynamic;
+
 	/**
 		```lua
 		(global) table.ambiwidth: unknown
 		```
 	**/
 	var ambiwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
 	var arabic : Dynamic;
+
 	/**
 		```lua
 		(global) table.arabicshape: unknown
 		```
 	**/
 	var arabicshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.autochdir: unknown
 		```
 	**/
 	var autochdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
 	var autoindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.autoread: unknown
 		```
 	**/
 	var autoread : Dynamic;
+
 	/**
 		```lua
 		(global) table.autowrite: unknown
 		```
 	**/
 	var autowrite : Dynamic;
+
 	/**
 		```lua
 		(global) table.autowriteall: unknown
 		```
 	**/
 	var autowriteall : Dynamic;
+
 	/**
 		```lua
 		(global) table.background: unknown
 		```
 	**/
 	var background : Dynamic;
+
 	/**
 		```lua
 		(global) table.backspace: unknown
 		```
 	**/
 	var backspace : Dynamic;
+
 	/**
 		```lua
 		(global) table.backup: unknown
 		```
 	**/
 	var backup : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupcopy: unknown
 		```
 	**/
 	var backupcopy : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupdir: unknown
 		```
 	**/
 	var backupdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupext: unknown
 		```
 	**/
 	var backupext : Dynamic;
+
 	/**
 		```lua
 		(global) table.backupskip: unknown
 		```
 	**/
 	var backupskip : Dynamic;
+
 	/**
 		```lua
 		(global) table.belloff: unknown
 		```
 	**/
 	var belloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
 	var binary : Dynamic;
+
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
 	var bomb : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakat: unknown
 		```
 	**/
 	var breakat : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
 	var breakindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
 	var breakindentopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
 	var browsedir : Dynamic;
+
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
 	var bufhidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
 	var buflisted : Dynamic;
+
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
 	var buftype : Dynamic;
+
 	/**
 		```lua
 		(global) table.casemap: unknown
 		```
 	**/
 	var casemap : Dynamic;
+
 	/**
 		```lua
 		(global) table.cdhome: unknown
 		```
 	**/
 	var cdhome : Dynamic;
+
 	/**
 		```lua
 		(global) table.cdpath: unknown
 		```
 	**/
 	var cdpath : Dynamic;
+
 	/**
 		```lua
 		(global) table.cedit: unknown
 		```
 	**/
 	var cedit : Dynamic;
+
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
 	var channel : Dynamic;
+
 	/**
 		```lua
 		(global) table.charconvert: unknown
 		```
 	**/
 	var charconvert : Dynamic;
+
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
 	var cindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
 	var cinkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
 	var cinoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
 	var cinscopedecls : Dynamic;
+
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
 	var cinwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.clipboard: unknown
 		```
 	**/
 	var clipboard : Dynamic;
+
 	/**
 		```lua
 		(global) table.cmdheight: unknown
 		```
 	**/
 	var cmdheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.cmdwinheight: unknown
 		```
 	**/
 	var cmdwinheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
 	var colorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.columns: unknown
 		```
 	**/
 	var columns : Dynamic;
+
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
 	var comments : Dynamic;
+
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
 	var commentstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
 	var compatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
 	var complete : Dynamic;
+
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
 	var completefunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeitemalign: unknown
 		```
 	**/
 	var completeitemalign : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeopt: unknown
 		```
 	**/
 	var completeopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
 	var completeslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
 	var concealcursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
 	var conceallevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.confirm: unknown
 		```
 	**/
 	var confirm : Dynamic;
+
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
 	var copyindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.cpoptions: unknown
 		```
 	**/
 	var cpoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
 	var cursorbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
 	var cursorcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
 	var cursorline : Dynamic;
+
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
 	var cursorlineopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.debug: unknown
 		```
 	**/
 	var debug : Dynamic;
+
 	/**
 		```lua
 		(global) table.define: unknown
 		```
 	**/
 	var define : Dynamic;
+
 	/**
 		```lua
 		(global) table.delcombine: unknown
 		```
 	**/
 	var delcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.dictionary: unknown
 		```
 	**/
 	var dictionary : Dynamic;
+
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
 	var diff : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffexpr: unknown
 		```
 	**/
 	var diffexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.diffopt: unknown
 		```
 	**/
 	var diffopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.digraph: unknown
 		```
 	**/
 	var digraph : Dynamic;
+
 	/**
 		```lua
 		(global) table.directory: unknown
 		```
 	**/
 	var directory : Dynamic;
+
 	/**
 		```lua
 		(global) table.display: unknown
 		```
 	**/
 	var display : Dynamic;
+
 	/**
 		```lua
 		(global) table.eadirection: unknown
 		```
 	**/
 	var eadirection : Dynamic;
+
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
 	var edcompatible : Dynamic;
+
 	/**
 		```lua
 		(global) table.emoji: unknown
 		```
 	**/
 	var emoji : Dynamic;
+
 	/**
 		```lua
 		(global) table.encoding: unknown
 		```
 	**/
 	var encoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
 	var endoffile : Dynamic;
+
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
 	var endofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalalways: unknown
 		```
 	**/
 	var equalalways : Dynamic;
+
 	/**
 		```lua
 		(global) table.equalprg: unknown
 		```
 	**/
 	var equalprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorbells: unknown
 		```
 	**/
 	var errorbells : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorfile: unknown
 		```
 	**/
 	var errorfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.errorformat: unknown
 		```
 	**/
 	var errorformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.eventignore: unknown
 		```
 	**/
 	var eventignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
 	var eventignorewin : Dynamic;
+
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
 	var expandtab : Dynamic;
+
 	/**
 		```lua
 		(global) table.exrc: unknown
 		```
 	**/
 	var exrc : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
 	var fileencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileencodings: unknown
 		```
 	**/
 	var fileencodings : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
 	var fileformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileformats: unknown
 		```
 	**/
 	var fileformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.fileignorecase: unknown
 		```
 	**/
 	var fileignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
 	var filetype : Dynamic;
+
 	/**
 		```lua
 		(global) table.fillchars: unknown
 		```
 	**/
 	var fillchars : Dynamic;
+
 	/**
 		```lua
 		(global) table.findfunc: unknown
 		```
 	**/
 	var findfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
 	var fixendofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldclose: unknown
 		```
 	**/
 	var foldclose : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
 	var foldcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
 	var foldenable : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
 	var foldexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
 	var foldignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
 	var foldlevel : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldlevelstart: unknown
 		```
 	**/
 	var foldlevelstart : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
 	var foldmarker : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
 	var foldmethod : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
 	var foldminlines : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
 	var foldnestmax : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldopen: unknown
 		```
 	**/
 	var foldopen : Dynamic;
+
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
 	var foldtext : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
 	var formatexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
 	var formatlistpat : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
 	var formatoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.formatprg: unknown
 		```
 	**/
 	var formatprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.fsync: unknown
 		```
 	**/
 	var fsync : Dynamic;
+
 	/**
 		```lua
 		(global) table.gdefault: unknown
 		```
 	**/
 	var gdefault : Dynamic;
+
 	/**
 		```lua
 		(global) table.grepformat: unknown
 		```
 	**/
 	var grepformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.grepprg: unknown
 		```
 	**/
 	var grepprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.guicursor: unknown
 		```
 	**/
 	var guicursor : Dynamic;
+
 	/**
 		```lua
 		(global) table.guifont: unknown
 		```
 	**/
 	var guifont : Dynamic;
+
 	/**
 		```lua
 		(global) table.guifontwide: unknown
 		```
 	**/
 	var guifontwide : Dynamic;
+
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
 	var guioptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
 	var guitablabel : Dynamic;
+
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
 	var guitabtooltip : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpfile: unknown
 		```
 	**/
 	var helpfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.helpheight: unknown
 		```
 	**/
 	var helpheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.helplang: unknown
 		```
 	**/
 	var helplang : Dynamic;
+
 	/**
 		```lua
 		(global) table.hidden: unknown
 		```
 	**/
 	var hidden : Dynamic;
+
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
 	var highlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.history: unknown
 		```
 	**/
 	var history : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
 	var hkmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
 	var hkmapp : Dynamic;
+
 	/**
 		```lua
 		(global) table.hlsearch: unknown
 		```
 	**/
 	var hlsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.icon: unknown
 		```
 	**/
 	var icon : Dynamic;
+
 	/**
 		```lua
 		(global) table.iconstring: unknown
 		```
 	**/
 	var iconstring : Dynamic;
+
 	/**
 		```lua
 		(global) table.ignorecase: unknown
 		```
 	**/
 	var ignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
 	var imcmdline : Dynamic;
+
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
 	var imdisable : Dynamic;
+
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
 	var iminsert : Dynamic;
+
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
 	var imsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.inccommand: unknown
 		```
 	**/
 	var inccommand : Dynamic;
+
 	/**
 		```lua
 		(global) table.include: unknown
 		```
 	**/
 	var include : Dynamic;
+
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
 	var includeexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.incsearch: unknown
 		```
 	**/
 	var incsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
 	var indentexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
 	var indentkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
 	var infercase : Dynamic;
+
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
 	var insertmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.isfname: unknown
 		```
 	**/
 	var isfname : Dynamic;
+
 	/**
 		```lua
 		(global) table.isident: unknown
 		```
 	**/
 	var isident : Dynamic;
+
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
 	var iskeyword : Dynamic;
+
 	/**
 		```lua
 		(global) table.isprint: unknown
 		```
 	**/
 	var isprint : Dynamic;
+
 	/**
 		```lua
 		(global) table.joinspaces: unknown
 		```
 	**/
 	var joinspaces : Dynamic;
+
 	/**
 		```lua
 		(global) table.jumpoptions: unknown
 		```
 	**/
 	var jumpoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
 	var keymap : Dynamic;
+
 	/**
 		```lua
 		(global) table.keymodel: unknown
 		```
 	**/
 	var keymodel : Dynamic;
+
 	/**
 		```lua
 		(global) table.keywordprg: unknown
 		```
 	**/
 	var keywordprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.langmap: unknown
 		```
 	**/
 	var langmap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langmenu: unknown
 		```
 	**/
 	var langmenu : Dynamic;
+
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
 	var langnoremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.langremap: unknown
 		```
 	**/
 	var langremap : Dynamic;
+
 	/**
 		```lua
 		(global) table.laststatus: unknown
 		```
 	**/
 	var laststatus : Dynamic;
+
 	/**
 		```lua
 		(global) table.lazyredraw: unknown
 		```
 	**/
 	var lazyredraw : Dynamic;
+
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
 	var linebreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.lines: unknown
 		```
 	**/
 	var lines : Dynamic;
+
 	/**
 		```lua
 		(global) table.linespace: unknown
 		```
 	**/
 	var linespace : Dynamic;
+
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
 	var lisp : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
 	var lispoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.lispwords: unknown
 		```
 	**/
 	var lispwords : Dynamic;
+
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
 	var list : Dynamic;
+
 	/**
 		```lua
 		(global) table.listchars: unknown
 		```
 	**/
 	var listchars : Dynamic;
+
 	/**
 		```lua
 		(global) table.loadplugins: unknown
 		```
 	**/
 	var loadplugins : Dynamic;
+
 	/**
 		```lua
 		(global) table.magic: unknown
 		```
 	**/
 	var magic : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeef: unknown
 		```
 	**/
 	var makeef : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeencoding: unknown
 		```
 	**/
 	var makeencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.makeprg: unknown
 		```
 	**/
 	var makeprg : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
 	var matchpairs : Dynamic;
+
 	/**
 		```lua
 		(global) table.matchtime: unknown
 		```
 	**/
 	var matchtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
 	var maxcombine : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxfuncdepth: unknown
 		```
 	**/
 	var maxfuncdepth : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxmapdepth: unknown
 		```
 	**/
 	var maxmapdepth : Dynamic;
+
 	/**
 		```lua
 		(global) table.maxmempattern: unknown
 		```
 	**/
 	var maxmempattern : Dynamic;
+
 	/**
 		```lua
 		(global) table.menuitems: unknown
 		```
 	**/
 	var menuitems : Dynamic;
+
 	/**
 		```lua
 		(global) table.messagesopt: unknown
 		```
 	**/
 	var messagesopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.mkspellmem: unknown
 		```
 	**/
 	var mkspellmem : Dynamic;
+
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
 	var modeline : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelineexpr: unknown
 		```
 	**/
 	var modelineexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.modelines: unknown
 		```
 	**/
 	var modelines : Dynamic;
+
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
 	var modifiable : Dynamic;
+
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
 	var modified : Dynamic;
+
 	/**
 		```lua
 		(global) table.more: unknown
 		```
 	**/
 	var more : Dynamic;
+
 	/**
 		```lua
 		(global) table.mouse: unknown
 		```
 	**/
 	var mouse : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousefocus: unknown
 		```
 	**/
 	var mousefocus : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousehide: unknown
 		```
 	**/
 	var mousehide : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousemodel: unknown
 		```
 	**/
 	var mousemodel : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousemoveevent: unknown
 		```
 	**/
 	var mousemoveevent : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousescroll: unknown
 		```
 	**/
 	var mousescroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
 	var mouseshape : Dynamic;
+
 	/**
 		```lua
 		(global) table.mousetime: unknown
 		```
 	**/
 	var mousetime : Dynamic;
+
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
 	var nrformats : Dynamic;
+
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
 	var number : Dynamic;
+
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
 	var numberwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
 	var omnifunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
 	var opendevice : Dynamic;
+
 	/**
 		```lua
 		(global) table.operatorfunc: unknown
 		```
 	**/
 	var operatorfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.packpath: unknown
 		```
 	**/
 	var packpath : Dynamic;
+
 	/**
 		```lua
 		(global) table.paragraphs: unknown
 		```
 	**/
 	var paragraphs : Dynamic;
+
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
 	var paste : Dynamic;
+
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
 	var pastetoggle : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchexpr: unknown
 		```
 	**/
 	var patchexpr : Dynamic;
+
 	/**
 		```lua
 		(global) table.patchmode: unknown
 		```
 	**/
 	var patchmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.path: unknown
 		```
 	**/
 	var path : Dynamic;
+
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
 	var preserveindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewheight: unknown
 		```
 	**/
 	var previewheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
 	var previewwindow : Dynamic;
+
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
 	var prompt : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumblend: unknown
 		```
 	**/
 	var pumblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumheight: unknown
 		```
 	**/
 	var pumheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.pumwidth: unknown
 		```
 	**/
 	var pumwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.pyxversion: unknown
 		```
 	**/
 	var pyxversion : Dynamic;
+
 	/**
 		```lua
 		(global) table.quickfixtextfunc: unknown
 		```
 	**/
 	var quickfixtextfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
 	var quoteescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
 	var readonly : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawdebug: unknown
 		```
 	**/
 	var redrawdebug : Dynamic;
+
 	/**
 		```lua
 		(global) table.redrawtime: unknown
 		```
 	**/
 	var redrawtime : Dynamic;
+
 	/**
 		```lua
 		(global) table.regexpengine: unknown
 		```
 	**/
 	var regexpengine : Dynamic;
+
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
 	var relativenumber : Dynamic;
+
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
 	var remap : Dynamic;
+
 	/**
 		```lua
 		(global) table.report: unknown
 		```
 	**/
 	var report : Dynamic;
+
 	/**
 		```lua
 		(global) table.revins: unknown
 		```
 	**/
 	var revins : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
 	var rightleft : Dynamic;
+
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
 	var rightleftcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.ruler: unknown
 		```
 	**/
 	var ruler : Dynamic;
+
 	/**
 		```lua
 		(global) table.rulerformat: unknown
 		```
 	**/
 	var rulerformat : Dynamic;
+
 	/**
 		```lua
 		(global) table.runtimepath: unknown
 		```
 	**/
 	var runtimepath : Dynamic;
+
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
 	var scroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
 	var scrollback : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
 	var scrollbind : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolljump: unknown
 		```
 	**/
 	var scrolljump : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrolloff: unknown
 		```
 	**/
 	var scrolloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.scrollopt: unknown
 		```
 	**/
 	var scrollopt : Dynamic;
+
 	/**
 		```lua
 		(global) table.sections: unknown
 		```
 	**/
 	var sections : Dynamic;
+
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
 	var secure : Dynamic;
+
 	/**
 		```lua
 		(global) table.selection: unknown
 		```
 	**/
 	var selection : Dynamic;
+
 	/**
 		```lua
 		(global) table.selectmode: unknown
 		```
 	**/
 	var selectmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.sessionoptions: unknown
 		```
 	**/
 	var sessionoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.shada: unknown
 		```
 	**/
 	var shada : Dynamic;
+
 	/**
 		```lua
 		(global) table.shadafile: unknown
 		```
 	**/
 	var shadafile : Dynamic;
+
 	/**
 		```lua
 		(global) table.shell: unknown
 		```
 	**/
 	var shell : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellcmdflag: unknown
 		```
 	**/
 	var shellcmdflag : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellpipe: unknown
 		```
 	**/
 	var shellpipe : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellquote: unknown
 		```
 	**/
 	var shellquote : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellredir: unknown
 		```
 	**/
 	var shellredir : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellslash: unknown
 		```
 	**/
 	var shellslash : Dynamic;
+
 	/**
 		```lua
 		(global) table.shelltemp: unknown
 		```
 	**/
 	var shelltemp : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellxescape: unknown
 		```
 	**/
 	var shellxescape : Dynamic;
+
 	/**
 		```lua
 		(global) table.shellxquote: unknown
 		```
 	**/
 	var shellxquote : Dynamic;
+
 	/**
 		```lua
 		(global) table.shiftround: unknown
 		```
 	**/
 	var shiftround : Dynamic;
+
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
 	var shiftwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.shortmess: unknown
 		```
 	**/
 	var shortmess : Dynamic;
+
 	/**
 		```lua
 		(global) table.showbreak: unknown
 		```
 	**/
 	var showbreak : Dynamic;
+
 	/**
 		```lua
 		(global) table.showcmd: unknown
 		```
 	**/
 	var showcmd : Dynamic;
+
 	/**
 		```lua
 		(global) table.showcmdloc: unknown
 		```
 	**/
 	var showcmdloc : Dynamic;
+
 	/**
 		```lua
 		(global) table.showfulltag: unknown
 		```
 	**/
 	var showfulltag : Dynamic;
+
 	/**
 		```lua
 		(global) table.showmatch: unknown
 		```
 	**/
 	var showmatch : Dynamic;
+
 	/**
 		```lua
 		(global) table.showmode: unknown
 		```
 	**/
 	var showmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.showtabline: unknown
 		```
 	**/
 	var showtabline : Dynamic;
+
 	/**
 		```lua
 		(global) table.sidescroll: unknown
 		```
 	**/
 	var sidescroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.sidescrolloff: unknown
 		```
 	**/
 	var sidescrolloff : Dynamic;
+
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
 	var signcolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartcase: unknown
 		```
 	**/
 	var smartcase : Dynamic;
+
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
 	var smartindent : Dynamic;
+
 	/**
 		```lua
 		(global) table.smarttab: unknown
 		```
 	**/
 	var smarttab : Dynamic;
+
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
 	var smoothscroll : Dynamic;
+
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
 	var softtabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
 	var spell : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
 	var spellcapcheck : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
 	var spellfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
 	var spelllang : Dynamic;
+
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
 	var spelloptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.spellsuggest: unknown
 		```
 	**/
 	var spellsuggest : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitbelow: unknown
 		```
 	**/
 	var splitbelow : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitkeep: unknown
 		```
 	**/
 	var splitkeep : Dynamic;
+
 	/**
 		```lua
 		(global) table.splitright: unknown
 		```
 	**/
 	var splitright : Dynamic;
+
 	/**
 		```lua
 		(global) table.startofline: unknown
 		```
 	**/
 	var startofline : Dynamic;
+
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
 	var statuscolumn : Dynamic;
+
 	/**
 		```lua
 		(global) table.statusline: unknown
 		```
 	**/
 	var statusline : Dynamic;
+
 	/**
 		```lua
 		(global) table.suffixes: unknown
 		```
 	**/
 	var suffixes : Dynamic;
+
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
 	var suffixesadd : Dynamic;
+
 	/**
 		```lua
 		(global) table.swapfile: unknown
 		```
 	**/
 	var swapfile : Dynamic;
+
 	/**
 		```lua
 		(global) table.switchbuf: unknown
 		```
 	**/
 	var switchbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
 	var synmaxcol : Dynamic;
+
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
 	var syntax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabclose: unknown
 		```
 	**/
 	var tabclose : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabline: unknown
 		```
 	**/
 	var tabline : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabpagemax: unknown
 		```
 	**/
 	var tabpagemax : Dynamic;
+
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
 	var tabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagbsearch: unknown
 		```
 	**/
 	var tagbsearch : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagcase: unknown
 		```
 	**/
 	var tagcase : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
 	var tagfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.taglength: unknown
 		```
 	**/
 	var taglength : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagrelative: unknown
 		```
 	**/
 	var tagrelative : Dynamic;
+
 	/**
 		```lua
 		(global) table.tags: unknown
 		```
 	**/
 	var tags : Dynamic;
+
 	/**
 		```lua
 		(global) table.tagstack: unknown
 		```
 	**/
 	var tagstack : Dynamic;
+
 	/**
 		```lua
 		(global) table.termbidi: unknown
 		```
 	**/
 	var termbidi : Dynamic;
+
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
 	var termencoding : Dynamic;
+
 	/**
 		```lua
 		(global) table.termguicolors: unknown
 		```
 	**/
 	var termguicolors : Dynamic;
+
 	/**
 		```lua
 		(global) table.termpastefilter: unknown
 		```
 	**/
 	var termpastefilter : Dynamic;
+
 	/**
 		```lua
 		(global) table.termsync: unknown
 		```
 	**/
 	var termsync : Dynamic;
+
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
 	var terse : Dynamic;
+
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
 	var textwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurus: unknown
 		```
 	**/
 	var thesaurus : Dynamic;
+
 	/**
 		```lua
 		(global) table.thesaurusfunc: unknown
 		```
 	**/
 	var thesaurusfunc : Dynamic;
+
 	/**
 		```lua
 		(global) table.tildeop: unknown
 		```
 	**/
 	var tildeop : Dynamic;
+
 	/**
 		```lua
 		(global) table.timeout: unknown
 		```
 	**/
 	var timeout : Dynamic;
+
 	/**
 		```lua
 		(global) table.timeoutlen: unknown
 		```
 	**/
 	var timeoutlen : Dynamic;
+
 	/**
 		```lua
 		(global) table.title: unknown
 		```
 	**/
 	var title : Dynamic;
+
 	/**
 		```lua
 		(global) table.titlelen: unknown
 		```
 	**/
 	var titlelen : Dynamic;
+
 	/**
 		```lua
 		(global) table.titleold: unknown
 		```
 	**/
 	var titleold : Dynamic;
+
 	/**
 		```lua
 		(global) table.titlestring: unknown
 		```
 	**/
 	var titlestring : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttimeout: unknown
 		```
 	**/
 	var ttimeout : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttimeoutlen: unknown
 		```
 	**/
 	var ttimeoutlen : Dynamic;
+
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
 	var ttyfast : Dynamic;
+
 	/**
 		```lua
 		(global) table.undodir: unknown
 		```
 	**/
 	var undodir : Dynamic;
+
 	/**
 		```lua
 		(global) table.undofile: unknown
 		```
 	**/
 	var undofile : Dynamic;
+
 	/**
 		```lua
 		(global) table.undolevels: unknown
 		```
 	**/
 	var undolevels : Dynamic;
+
 	/**
 		```lua
 		(global) table.undoreload: unknown
 		```
 	**/
 	var undoreload : Dynamic;
+
 	/**
 		```lua
 		(global) table.updatecount: unknown
 		```
 	**/
 	var updatecount : Dynamic;
+
 	/**
 		```lua
 		(global) table.updatetime: unknown
 		```
 	**/
 	var updatetime : Dynamic;
+
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
 	var varsofttabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
 	var vartabstop : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbose: unknown
 		```
 	**/
 	var verbose : Dynamic;
+
 	/**
 		```lua
 		(global) table.verbosefile: unknown
 		```
 	**/
 	var verbosefile : Dynamic;
+
 	/**
 		```lua
 		(global) table.viewdir: unknown
 		```
 	**/
 	var viewdir : Dynamic;
+
 	/**
 		```lua
 		(global) table.viewoptions: unknown
 		```
 	**/
 	var viewoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.virtualedit: unknown
 		```
 	**/
 	var virtualedit : Dynamic;
+
 	/**
 		```lua
 		(global) table.visualbell: unknown
 		```
 	**/
 	var visualbell : Dynamic;
+
 	/**
 		```lua
 		(global) table.warn: unknown
 		```
 	**/
 	var warn : Dynamic;
+
 	/**
 		```lua
 		(global) table.whichwrap: unknown
 		```
 	**/
 	var whichwrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildchar: unknown
 		```
 	**/
 	var wildchar : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildcharm: unknown
 		```
 	**/
 	var wildcharm : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildignore: unknown
 		```
 	**/
 	var wildignore : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildignorecase: unknown
 		```
 	**/
 	var wildignorecase : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildmenu: unknown
 		```
 	**/
 	var wildmenu : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildmode: unknown
 		```
 	**/
 	var wildmode : Dynamic;
+
 	/**
 		```lua
 		(global) table.wildoptions: unknown
 		```
 	**/
 	var wildoptions : Dynamic;
+
 	/**
 		```lua
 		(global) table.winaltkeys: unknown
 		```
 	**/
 	var winaltkeys : Dynamic;
+
 	/**
 		```lua
 		(global) table.winbar: unknown
 		```
 	**/
 	var winbar : Dynamic;
+
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
 	var winblend : Dynamic;
+
 	/**
 		```lua
 		(global) table.winborder: unknown
 		```
 	**/
 	var winborder : Dynamic;
+
 	/**
 		```lua
 		(global) table.window: unknown
 		```
 	**/
 	var window : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
 	var winfixbuf : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
 	var winfixheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
 	var winfixwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winheight: unknown
 		```
 	**/
 	var winheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
 	var winhighlight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminheight: unknown
 		```
 	**/
 	var winminheight : Dynamic;
+
 	/**
 		```lua
 		(global) table.winminwidth: unknown
 		```
 	**/
 	var winminwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.winwidth: unknown
 		```
 	**/
 	var winwidth : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
 	var wrap : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
 	var wrapmargin : Dynamic;
+
 	/**
 		```lua
 		(global) table.wrapscan: unknown
 		```
 	**/
 	var wrapscan : Dynamic;
+
 	/**
 		```lua
 		(global) table.write: unknown
 		```
 	**/
 	var write : Dynamic;
+
 	/**
 		```lua
 		(global) table.writeany: unknown
 		```
 	**/
 	var writeany : Dynamic;
+
 	/**
 		```lua
 		(global) table.writebackup: unknown
 		```
 	**/
 	var writebackup : Dynamic;
+
 	/**
 		```lua
 		(global) table.writedelay: unknown
 		```
 	**/
 	var writedelay : Dynamic;
+
 }
 
 @:native("vim") extern class Vim {
@@ -44051,30 +46832,35 @@ extern class OptLocal {
 		```
 	**/
 	static var F : nvim.module.vim.F;
+
 	/**
 		```lua
 		(global) vim.NIL: vim.NIL
 		```
 	**/
 	static var NIL : nvim.type.vim.NIL;
+
 	/**
 		```lua
 		(global) vim.api: table
 		```
 	**/
 	static var api : Api;
+
 	/**
 		```lua
 		(global) vim.b: vim.var_accessor
 		```
 	**/
 	static var b : nvim.type.vim.VarAccessor;
+
 	/**
 		```lua
 		(global) vim.base64: unknown
 		```
 	**/
 	static var base64 : Base64;
+
 	/**
 		```lua
 		(global) vim.bo: table|vim.bo
@@ -44096,6 +46882,7 @@ extern class OptLocal {
 		 ```
 	**/
 	static var bo : nvim.type.vim.Bo;
+
 	/**
 		```lua
 		function vim.call(func: string, ...any)
@@ -44113,6 +46900,7 @@ extern class OptLocal {
 		 ```
 	**/
 	static function call(func:String, ___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		(global) vim.cmd: table
@@ -44159,6 +46947,7 @@ extern class OptLocal {
 		       - The table form executes a single command (alias to |nvim_cmd()|).
 	**/
 	static var cmd : haxe.extern.EitherType<(command:haxe.extern.EitherType<String, lua.Table.AnyTable>) -> Dynamic, lua.Table<String, (___:haxe.Rest<Any>) -> Dynamic>>;
+
 	/**
 		```lua
 		function vim.deep_equal(a: any, b: any)
@@ -44179,6 +46968,7 @@ extern class OptLocal {
 		@*return* — `true` if values are equals, else `false`
 	**/
 	static function deep_equal(a:Any, b:Any):Bool;
+
 	/**
 		```lua
 		function vim.deepcopy(orig: <T:table>, noref?: boolean)
@@ -44207,6 +46997,7 @@ extern class OptLocal {
 		@*return* `Table` — of copied keys and (nested) values.
 	**/
 	static function deepcopy<T:(lua.Table.AnyTable)>(orig:T, ?noref:Bool):T;
+
 	/**
 		```lua
 		function vim.defaulttable(createfn?: fun(key: any):any)
@@ -44230,6 +47021,7 @@ extern class OptLocal {
 		@*return* — Empty table with `__index` metamethod.
 	**/
 	static function defaulttable(?createfn:(key:Any) -> Any):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function vim.defer_fn(fn: function, timeout: integer)
@@ -44251,6 +47043,7 @@ extern class OptLocal {
 		@*return* `timer` — luv timer object
 	**/
 	static function defer_fn(fn:haxe.Constraints.Function, timeout:Int):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function vim.deprecate(name: string, alternative: string|nil, version: string, plugin: string|nil, backtrace: boolean|nil)
@@ -44277,14 +47070,17 @@ extern class OptLocal {
 		@*return* — Deprecated message, or nil if no message was shown.
 	**/
 	static function deprecate(name:String, alternative:Null<String>, version:String, ?plugin:Null<String>, ?backtrace:Null<Bool>):Null<String>;
+
 	/**
 		```lua
 		(global) vim.diagnostic: table
 		```
 	**/
 	static var diagnostic : nvim.module.vim.Diagnostic;
+
 	@:native("diff")
 	private static function __diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Int>>>>;
+
 	/**
 		```lua
 		function vim.diff(a: string, b: string, opts?: vim.diff.Opts)
@@ -44323,6 +47119,7 @@ extern class OptLocal {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diff.Opts> = opts;
 		return __diff(a, b, opts);
 	}
+
 	/**
 		```lua
 		function vim.empty_dict()
@@ -44345,6 +47142,7 @@ extern class OptLocal {
 		 marker and converts the dict to a list/array anyway.
 	**/
 	static private function empty_dict():Dynamic;
+
 	/**
 		```lua
 		function vim.endswith(s: string, suffix: string)
@@ -44362,6 +47160,7 @@ extern class OptLocal {
 		@*return* — `true` if `suffix` is a suffix of `s`
 	**/
 	static function endswith(s:String, suffix:String):Bool;
+
 	/**
 		```lua
 		(global) vim.env: table
@@ -44381,12 +47180,14 @@ extern class OptLocal {
 		 ```
 	**/
 	static var env : Env;
+
 	/**
 		```lua
 		(global) vim.filetype: table
 		```
 	**/
 	static var filetype : nvim.module.vim.Filetype;
+
 	/**
 		```lua
 		(global) vim.fn: table
@@ -44397,18 +47198,21 @@ extern class OptLocal {
 		 vim.fn.{func}(...)
 	**/
 	static var fn : Fn;
+
 	/**
 		```lua
 		(global) vim.fs: table
 		```
 	**/
 	static var fs : nvim.module.vim.Fs;
+
 	/**
 		```lua
 		(global) vim.func: table
 		```
 	**/
 	static var func : nvim.module.vim.Func;
+
 	/**
 		```lua
 		function vim.funcref(viml_func_name: any)
@@ -44416,18 +47220,21 @@ extern class OptLocal {
 		```
 	**/
 	static private function funcref(viml_func_name:Dynamic):Dynamic;
+
 	/**
 		```lua
 		(global) vim.g: vim.var_accessor
 		```
 	**/
 	static var g : nvim.type.vim.VarAccessor;
+
 	/**
 		```lua
 		(global) vim.glob: table
 		```
 	**/
 	static var glob : nvim.module.vim.Glob;
+
 	/**
 		```lua
 		(global) vim.go: table
@@ -44451,8 +47258,10 @@ extern class OptLocal {
 		 ```
 	**/
 	static var go : Go;
+
 	@:native("gsplit")
 	private static function __gsplit(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):() -> Null<String>;
+
 	/**
 		```lua
 		function vim.gsplit(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -44501,12 +47310,14 @@ extern class OptLocal {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.gsplit.Opts> = opts;
 		return __gsplit(s, sep, opts);
 	}
+
 	/**
 		```lua
 		(global) vim.health: table
 		```
 	**/
 	static var health : nvim.module.vim.Health;
+
 	/**
 		```lua
 		(global) vim.highlight: table
@@ -44518,12 +47329,14 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	static var highlight : nvim.module.vim.Hl;
+
 	/**
 		```lua
 		(global) vim.hl: table
 		```
 	**/
 	static var hl : nvim.module.vim.Hl;
+
 	/**
 		```lua
 		function vim.iconv(str: string, from: string, to: string, opts: any)
@@ -44548,6 +47361,7 @@ extern class OptLocal {
 		@*return* — : Converted string if conversion succeeds, `nil` otherwise.
 	**/
 	static function iconv(str:String, from:String, to:String, opts:Dynamic):Null<String>;
+
 	/**
 		```lua
 		function vim.in_fast_event()
@@ -44562,8 +47376,10 @@ extern class OptLocal {
 		 to other restrictions such as |textlock|).
 	**/
 	static function in_fast_event():Dynamic;
+
 	@:native("inspect")
 	private static function __inspect(x:Any, opts:nvim.type.vim.inspect.Opts):String;
+
 	/**
 		```lua
 		(global) vim.inspect: fun(x: any, opts?: vim.inspect.Opts):string
@@ -44588,8 +47404,10 @@ extern class OptLocal {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.inspect.Opts> = opts;
 		return __inspect(x, opts);
 	}
+
 	@:native("inspect_pos")
 	private static function __inspect_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Int; var col : Int; var row : Int; };
+
 	/**
 		```lua
 		function vim.inspect_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
@@ -44624,6 +47442,7 @@ extern class OptLocal {
 		final filter:nvim.helper.Native.LuaObject<nvim.type.vim._inspector.Filter> = filter;
 		return __inspect_pos(bufnr, row, col, filter);
 	}
+
 	/**
 		```lua
 		function vim.is_callable(f: any)
@@ -44639,14 +47458,17 @@ extern class OptLocal {
 		@*return* — `true` if `f` is callable, else `false`
 	**/
 	static function is_callable(f:Any):Bool;
+
 	/**
 		```lua
 		(global) vim.is_thread: unknown
 		```
 	**/
 	static var is_thread : Dynamic;
+
 	@:native("isarray")
 	private static function __isarray(?t:lua.Table.AnyTable):Bool;
+
 	/**
 		```lua
 		function vim.isarray(t?: table)
@@ -44671,8 +47493,10 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __isarray(t);
 	}
+
 	@:native("islist")
 	private static function __islist(?t:lua.Table.AnyTable):Bool;
+
 	/**
 		```lua
 		function vim.islist(t?: table)
@@ -44694,18 +47518,21 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __islist(t);
 	}
+
 	/**
 		```lua
 		(global) vim.iter: IterMod
 		```
 	**/
 	static var iter : nvim.type.IterMod;
+
 	/**
 		```lua
 		(global) vim.json: table
 		```
 	**/
 	static var json : Json;
+
 	/**
 		```lua
 		function vim.keycode(str: string)
@@ -44728,14 +47555,17 @@ extern class OptLocal {
 		 @see |nvim_replace_termcodes()|
 	**/
 	static function keycode(str:String):String;
+
 	/**
 		```lua
 		(global) vim.keymap: table
 		```
 	**/
 	static var keymap : nvim.module.vim.Keymap;
+
 	@:native("list_contains")
 	private static function __list_contains(t:lua.Table.AnyTable, value:Any):Bool;
+
 	/**
 		```lua
 		function vim.list_contains(t: table, value: any)
@@ -44757,8 +47587,10 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __list_contains(t, value);
 	}
+
 	@:native("list_extend")
 	private static function __list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T;
+
 	/**
 		```lua
 		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
@@ -44784,8 +47616,10 @@ extern class OptLocal {
 		final src:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = src;
 		return __list_extend(dst, src, start, finish);
 	}
+
 	@:native("list_slice")
 	private static function __list_slice<T>(list:lua.Table<Int, T>, ?start:Null<Int>, ?finish:Null<Int>):lua.Table<Int, T>;
+
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -44808,12 +47642,14 @@ extern class OptLocal {
 		final list:nvim.helper.Native.LuaArray<T> = list;
 		return __list_slice(list, start, finish);
 	}
+
 	/**
 		```lua
 		(global) vim.loader: table
 		```
 	**/
 	static var loader : nvim.module.vim.Loader;
+
 	/**
 		```lua
 		(global) vim.log: table
@@ -44824,6 +47660,7 @@ extern class OptLocal {
 		 @nodoc
 	**/
 	static var log : Log;
+
 	/**
 		```lua
 		(global) vim.loop: uv
@@ -45031,18 +47868,21 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	static var loop : nvim.type.Uv;
+
 	/**
 		```lua
 		(global) vim.lpeg: table
 		```
 	**/
 	static var lpeg : Lpeg;
+
 	/**
 		```lua
 		(global) vim.lsp: table
 		```
 	**/
 	static var lsp : nvim.module.vim.Lsp;
+
 	/**
 		```lua
 		function vim.lua_omnifunc(find_start: 0|1, _: any)
@@ -45063,12 +47903,14 @@ extern class OptLocal {
 		```
 	**/
 	static function lua_omnifunc(find_start:Float, _:Dynamic):Dynamic;
+
 	/**
 		```lua
 		(global) vim.mpack: unknown
 		```
 	**/
 	static var mpack : Dynamic;
+
 	/**
 		```lua
 		function vim.notify(msg: string, level: integer|nil, opts: table|nil)
@@ -45091,6 +47933,7 @@ extern class OptLocal {
 		 luacheck: no unused args
 	**/
 	static function notify(msg:String, ?level:Null<Int>, ?opts:Null<lua.Table.AnyTable>):Dynamic;
+
 	/**
 		```lua
 		function vim.notify_once(msg: string, level: integer|nil, opts: table|nil)
@@ -45113,6 +47956,7 @@ extern class OptLocal {
 		@*return* `true` — if message was displayed, else false
 	**/
 	static function notify_once(msg:String, ?level:Null<Int>, ?opts:Null<lua.Table.AnyTable>):Bool;
+
 	/**
 		```lua
 		(global) vim.o: table
@@ -45132,6 +47976,7 @@ extern class OptLocal {
 		 ```
 	**/
 	static var o : O;
+
 	/**
 		```lua
 		function vim.on_key(fn: fun(key: string, typed: string):string?|nil, ns_id?: integer, opts?: table)
@@ -45171,6 +48016,7 @@ extern class OptLocal {
 		if on_key() is called without arguments.
 	**/
 	static function on_key(?fn:Null<(key:String, typed:String) -> Null<String>>, ?ns_id:Null<Int>, ?opts:Null<lua.Table.AnyTable>):Int;
+
 	/**
 		```lua
 		(global) vim.opt: table
@@ -45181,6 +48027,7 @@ extern class OptLocal {
 		 @nodoc
 	**/
 	static var opt : Opt;
+
 	/**
 		```lua
 		(global) vim.opt_global: table
@@ -45191,6 +48038,7 @@ extern class OptLocal {
 		 @nodoc
 	**/
 	static var opt_global : OptGlobal;
+
 	/**
 		```lua
 		(global) vim.opt_local: table
@@ -45201,8 +48049,10 @@ extern class OptLocal {
 		 @nodoc
 	**/
 	static var opt_local : OptLocal;
+
 	@:native("paste")
 	private static function __paste(lines:lua.Table<Int, String>, phase:Float):Bool;
+
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -45254,6 +48104,7 @@ extern class OptLocal {
 		final lines:nvim.helper.Native.LuaArray<String> = lines;
 		return __paste(lines, phase);
 	}
+
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -45271,6 +48122,7 @@ extern class OptLocal {
 		See: ~https~ ://github.com/rxi/lume
 	**/
 	static function pesc(s:String):String;
+
 	/**
 		```lua
 		function vim.print(...any)
@@ -45293,18 +48145,21 @@ extern class OptLocal {
 		@*return* — given arguments.
 	**/
 	static function print(___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		(global) vim.provider: table
 		```
 	**/
 	static var provider : nvim.module.vim.Provider;
+
 	/**
 		```lua
 		(global) vim.re: table
 		```
 	**/
 	static var re : nvim.module.vim.Re;
+
 	/**
 		```lua
 		function vim.regex(re: string)
@@ -45318,6 +48173,7 @@ extern class OptLocal {
 		 and |/ignorecase|.
 	**/
 	static function regex(re:String):nvim.type.vim.Regex;
+
 	/**
 		```lua
 		function vim.region(bufnr: integer, pos1: string|integer[], pos2: string|integer[], regtype: string, inclusive: boolean)
@@ -45347,6 +48203,7 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	static function region(bufnr:Int, pos1:haxe.extern.EitherType<lua.Table<Int, Int>, String>, pos2:haxe.extern.EitherType<lua.Table<Int, Int>, String>, regtype:Dynamic, inclusive:Bool):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function vim.ringbuf(size: integer)
@@ -45382,6 +48239,7 @@ extern class OptLocal {
 		 - |Ringbuf:clear()|
 	**/
 	static function ringbuf(size:Int):nvim.type.vim.Ringbuf;
+
 	/**
 		```lua
 		function vim.rpcnotify(channel: integer, method: string, ...any)
@@ -45395,6 +48253,7 @@ extern class OptLocal {
 		 This function also works in a fast callback |lua-loop-callbacks|.
 	**/
 	static function rpcnotify(channel:Int, method:String, ___:haxe.Rest<Any>):Dynamic;
+
 	/**
 		```lua
 		function vim.rpcrequest(channel: integer, method: string, ...any)
@@ -45409,6 +48268,7 @@ extern class OptLocal {
 		 special value
 	**/
 	static function rpcrequest(channel:Int, method:String, ___:haxe.Rest<Any>):Dynamic;
+
 	/**
 		```lua
 		function vim.schedule(fn: fun())
@@ -45420,6 +48280,7 @@ extern class OptLocal {
 		 to avoid |textlock| or other temporary restrictions.
 	**/
 	static function schedule(fn:() -> Dynamic):Dynamic;
+
 	/**
 		```lua
 		function vim.schedule_wrap(fn: function)
@@ -45442,14 +48303,17 @@ extern class OptLocal {
 		 ```
 	**/
 	static function schedule_wrap(fn:haxe.Constraints.Function):haxe.Constraints.Function;
+
 	/**
 		```lua
 		(global) vim.secure: table
 		```
 	**/
 	static var secure : nvim.module.vim.Secure;
+
 	@:native("show_pos")
 	private static function __show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):Dynamic;
+
 	/**
 		```lua
 		function vim.show_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
@@ -45478,14 +48342,17 @@ extern class OptLocal {
 		final filter:nvim.helper.Native.LuaObject<nvim.type.vim._inspector.Filter> = filter;
 		return __show_pos(bufnr, row, col, filter);
 	}
+
 	/**
 		```lua
 		(global) vim.snippet: table
 		```
 	**/
 	static var snippet : nvim.module.vim.Snippet;
+
 	@:native("spairs")
 	private static function __spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function vim.spairs(t: <T:table>)
@@ -45509,14 +48376,17 @@ extern class OptLocal {
 	inline static function spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn.Return2<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T> {
 		return __spairs(t);
 	}
+
 	/**
 		```lua
 		(global) vim.spell: unknown
 		```
 	**/
 	static var spell : Dynamic;
+
 	@:native("split")
 	private static function __split(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):lua.Table<Int, String>;
+
 	/**
 		```lua
 		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
@@ -45550,6 +48420,7 @@ extern class OptLocal {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.gsplit.Opts> = opts;
 		return __split(s, sep, opts);
 	}
+
 	/**
 		```lua
 		function vim.startswith(s: string, prefix: string)
@@ -45567,6 +48438,7 @@ extern class OptLocal {
 		@*return* — `true` if `prefix` is a prefix of `s`
 	**/
 	static function startswith(s:String, prefix:String):Bool;
+
 	/**
 		```lua
 		function vim.str_byteindex(s: string, encoding: "utf-16"|"utf-32"|"utf-8", index: integer, strict_indexing?: boolean)
@@ -45594,6 +48466,7 @@ extern class OptLocal {
 		```
 	**/
 	static function str_byteindex(s:String, encoding:String, index:Int, ?strict_indexing:Bool):Int;
+
 	/**
 		```lua
 		function vim.str_utf_end(str: string, index: integer)
@@ -45618,6 +48491,7 @@ extern class OptLocal {
 		 ```
 	**/
 	static function str_utf_end(str:String, index:Int):Int;
+
 	/**
 		```lua
 		function vim.str_utf_pos(str: string)
@@ -45631,6 +48505,7 @@ extern class OptLocal {
 		 Embedded NUL bytes are treated as terminating the string.
 	**/
 	static function str_utf_pos(str:String):lua.Table<Int, Int>;
+
 	/**
 		```lua
 		function vim.str_utf_start(str: string, index: integer)
@@ -45657,6 +48532,7 @@ extern class OptLocal {
 		 ```
 	**/
 	static function str_utf_start(str:String, index:Int):Int;
+
 	/**
 		```lua
 		function vim.str_utfindex(s: string, encoding: "utf-16"|"utf-32"|"utf-8", index?: integer, strict_indexing?: boolean)
@@ -45684,6 +48560,7 @@ extern class OptLocal {
 		```
 	**/
 	static function str_utfindex(s:String, encoding:String, ?index:Int, ?strict_indexing:Bool):Int;
+
 	/**
 		```lua
 		function vim.stricmp(a: string, b: string)
@@ -45704,8 +48581,10 @@ extern class OptLocal {
 		```
 	**/
 	static function stricmp(a:String, b:String):Float;
+
 	@:native("system")
 	private static function __system(cmd:lua.Table<Int, String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj;
+
 	/**
 		```lua
 		function vim.system(cmd: string[], opts?: vim.SystemOpts, on_exit?: fun(out: vim.SystemCompleted))
@@ -45789,14 +48668,17 @@ extern class OptLocal {
 		final cmd:nvim.helper.Native.LuaArray<String> = cmd;
 		return __system(cmd, opts, on_exit);
 	}
+
 	/**
 		```lua
 		(global) vim.t: vim.var_accessor
 		```
 	**/
 	static var t : nvim.type.vim.VarAccessor;
+
 	@:native("tbl_add_reverse_lookup")
 	private static function __tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function vim.tbl_add_reverse_lookup(o: table)
@@ -45818,8 +48700,10 @@ extern class OptLocal {
 		final o:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = o;
 		return __tbl_add_reverse_lookup(o);
 	}
+
 	@:native("tbl_contains")
 	private static function __tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool;
+
 	/**
 		```lua
 		function vim.tbl_contains(t: table, value: any, opts?: vim.tbl_contains.Opts)
@@ -45854,8 +48738,10 @@ extern class OptLocal {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.tbl_contains.Opts> = opts;
 		return __tbl_contains(t, value, opts);
 	}
+
 	@:native("tbl_count")
 	private static function __tbl_count(t:lua.Table.AnyTable):Int;
+
 	/**
 		```lua
 		function vim.tbl_count(t: table)
@@ -45881,6 +48767,7 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_count(t);
 	}
+
 	/**
 		```lua
 		function vim.tbl_deep_extend(behavior: 'error'|'force'|'keep', ...<T2:table>)
@@ -45915,6 +48802,7 @@ extern class OptLocal {
 		```
 	**/
 	static function tbl_deep_extend<T1:(lua.Table.AnyTable), T2:(lua.Table.AnyTable)>(behavior:String, ___:haxe.Rest<T2>):haxe.extern.EitherType<T1, T2>;
+
 	/**
 		```lua
 		function vim.tbl_extend(behavior: 'error'|'force'|'keep', ...table)
@@ -45944,8 +48832,10 @@ extern class OptLocal {
 		```
 	**/
 	static function tbl_extend(behavior:String, ___:haxe.Rest<lua.Table.AnyTable>):lua.Table.AnyTable;
+
 	@:native("tbl_filter")
 	private static function __tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):lua.Table<Int, T>;
+
 	/**
 		```lua
 		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
@@ -45966,8 +48856,10 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_filter(func, t);
 	}
+
 	@:native("tbl_flatten")
 	private static function __tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function vim.tbl_flatten(t: table)
@@ -45991,8 +48883,10 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_flatten(t);
 	}
+
 	@:native("tbl_get")
 	private static function __tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any;
+
 	/**
 		```lua
 		function vim.tbl_get(o: table, ...any)
@@ -46021,8 +48915,10 @@ extern class OptLocal {
 		final o:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = o;
 		return __tbl_get(o, ...___);
 	}
+
 	@:native("tbl_isempty")
 	private static function __tbl_isempty(t:lua.Table.AnyTable):Bool;
+
 	/**
 		```lua
 		function vim.tbl_isempty(t: table)
@@ -46044,6 +48940,7 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_isempty(t);
 	}
+
 	/**
 		```lua
 		function vim.tbl_islist(t: any)
@@ -46052,8 +48949,10 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	static function tbl_islist(t:Dynamic):Dynamic;
+
 	@:native("tbl_keys")
 	private static function __tbl_keys<T>(t:lua.Table<T, Any>):lua.Table<Int, T>;
+
 	/**
 		```lua
 		function vim.tbl_keys(t: table<<T>, any>)
@@ -46076,8 +48975,10 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table<T, Any>> = t;
 		return __tbl_keys(t);
 	}
+
 	@:native("tbl_map")
 	private static function __tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function vim.tbl_map(func: fun(value: <T>):any, t: table<any, <T>>)
@@ -46098,8 +48999,10 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_map(func, t);
 	}
+
 	@:native("tbl_values")
 	private static function __tbl_values<T>(t:lua.Table<Any, T>):lua.Table<Int, T>;
+
 	/**
 		```lua
 		function vim.tbl_values(t: table<any, <T>>)
@@ -46119,18 +49022,21 @@ extern class OptLocal {
 		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_values(t);
 	}
+
 	/**
 		```lua
 		(global) vim.text: table
 		```
 	**/
 	static var text : nvim.module.vim.Text;
+
 	/**
 		```lua
 		(global) vim.treesitter: table
 		```
 	**/
 	static var treesitter : nvim.module.vim.Treesitter;
+
 	/**
 		```lua
 		function vim.trim(s: string)
@@ -46148,26 +49054,31 @@ extern class OptLocal {
 		See: ~https~ ://www.lua.org/pil/20.2.html
 	**/
 	static function trim(s:String):String;
+
 	/**
 		```lua
 		(global) vim.type_idx: unknown
 		```
 	**/
 	static var type_idx : Dynamic;
+
 	/**
 		```lua
 		(global) vim.types: unknown
 		```
 	**/
 	static var types : Dynamic;
+
 	/**
 		```lua
 		(global) vim.ui: table
 		```
 	**/
 	static var ui : nvim.module.vim.Ui;
+
 	@:native("ui_attach")
 	private static function __ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
+
 	/**
 		```lua
 		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
@@ -46219,6 +49130,7 @@ extern class OptLocal {
 		final options:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = options;
 		return __ui_attach(ns, options, callback);
 	}
+
 	/**
 		```lua
 		function vim.ui_detach(ns: integer)
@@ -46230,6 +49142,7 @@ extern class OptLocal {
 		 given namespace {ns}.
 	**/
 	static function ui_detach(ns:Int):Dynamic;
+
 	/**
 		```lua
 		function M.uri_from_bufnr(bufnr: integer)
@@ -46241,6 +49154,7 @@ extern class OptLocal {
 		Gets a URI from a bufnr.
 	**/
 	static function uri_from_bufnr(bufnr:Int):String;
+
 	/**
 		```lua
 		function M.uri_from_fname(path: string)
@@ -46254,6 +49168,7 @@ extern class OptLocal {
 		@*param* `path` — Path to file
 	**/
 	static function uri_from_fname(path:String):String;
+
 	/**
 		```lua
 		function M.uri_to_bufnr(uri: string)
@@ -46266,6 +49181,7 @@ extern class OptLocal {
 		Creates a new unloaded buffer if no buffer for the uri already exists.
 	**/
 	static function uri_to_bufnr(uri:String):Int;
+
 	/**
 		```lua
 		function M.uri_to_fname(uri: string)
@@ -46279,6 +49195,7 @@ extern class OptLocal {
 		@*return* `filename` — or unchanged URI for non-file URIs
 	**/
 	static function uri_to_fname(uri:String):String;
+
 	/**
 		```lua
 		(global) vim.uv: uv
@@ -46481,21 +49398,25 @@ extern class OptLocal {
 		
 	**/
 	static var uv : nvim.type.Uv;
+
 	/**
 		```lua
 		(global) vim.v: vim.v
 		```
 	**/
 	static var v : nvim.type.vim.VarAccessor;
+
 	/**
 		```lua
 		(global) vim.val_idx: unknown
 		```
 	**/
 	static var val_idx : Dynamic;
+
 	@:native("validate")
 	@:overload(function (name:String, val:Any, validator:nvim.type.vim.validate.Validator, message:String) : Dynamic {})
 	private static function __validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic;
+
 	/**
 		```lua
 		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
@@ -46618,6 +49539,7 @@ extern class OptLocal {
 		final validator:nvim.helper.Native.LuaObject<nvim.type.vim.validate.Validator> = validator;
 		return __validate(name, value, validator, optional, message);
 	}
+
 	/**
 		```lua
 		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
@@ -46740,18 +49662,21 @@ extern class OptLocal {
 		final validator:nvim.helper.Native.LuaObject<nvim.type.vim.validate.Validator> = validator;
 		return __validate(name, val, validator, message);
 	}
+
 	/**
 		```lua
 		(global) vim.version: table
 		```
 	**/
 	static var version : nvim.module.vim.Version;
+
 	/**
 		```lua
 		(global) vim.w: vim.var_accessor
 		```
 	**/
 	static var w : nvim.type.vim.VarAccessor;
+
 	/**
 		```lua
 		function vim.wait(time: integer, callback?: fun():boolean, interval?: integer, fast_only?: boolean)
@@ -46814,6 +49739,7 @@ extern class OptLocal {
 		```
 	**/
 	static function wait(time:Int, ?callback:() -> Bool, ?interval:Int, ?fast_only:Bool):Bool;
+
 	/**
 		```lua
 		(global) vim.wo: table|vim.wo
@@ -46840,4 +49766,5 @@ extern class OptLocal {
 		 ```
 	**/
 	static var wo : nvim.type.vim.Wo;
+
 }

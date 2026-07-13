@@ -4,6 +4,7 @@ extern class Snippet {
 	@:native("active")
 	@:luaDotMethod
 	private function __active(?filter:nvim.type.vim.snippet.ActiveFilter):Bool;
+
 	/**
 		```lua
 		function M.active(filter?: vim.snippet.ActiveFilter)
@@ -24,6 +25,7 @@ extern class Snippet {
 		final filter:nvim.helper.Native.LuaObject<nvim.type.vim.snippet.ActiveFilter> = filter;
 		return __active(filter);
 	}
+
 	/**
 		```lua
 		function M.expand(input: string)
@@ -39,9 +41,11 @@ extern class Snippet {
 	**/
 	@:luaDotMethod
 	function expand(input:String):Dynamic;
+
 	@:native("jump")
 	@:luaDotMethod
 	private function __jump(direction:nvim.type.vim.snippet.Direction):Dynamic;
+
 	/**
 		```lua
 		function M.jump(direction: -1|1)
@@ -75,6 +79,7 @@ extern class Snippet {
 		final direction:nvim.helper.Native.LuaObject<nvim.type.vim.snippet.Direction> = direction;
 		return __jump(direction);
 	}
+
 	/**
 		```lua
 		function M.stop()
@@ -86,4 +91,5 @@ extern class Snippet {
 	**/
 	@:luaDotMethod
 	function stop():Dynamic;
+
 }

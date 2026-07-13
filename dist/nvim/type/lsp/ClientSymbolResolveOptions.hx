@@ -18,4 +18,5 @@ package nvim.type.lsp;
 		`location.range`
 	**/
 	extern public var properties : lua.Table<Int, String>;
+
 }

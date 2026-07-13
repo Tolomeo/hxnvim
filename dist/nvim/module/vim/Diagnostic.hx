@@ -20,13 +20,21 @@ extern class Handlers {
 **/
 extern class Severity {
 	var E : nvim.type.vim.diagnostic.Severity;
+
 	var ERROR : nvim.type.vim.diagnostic.Severity;
+
 	var HINT : nvim.type.vim.diagnostic.Severity;
+
 	var I : nvim.type.vim.diagnostic.Severity;
+
 	var INFO : nvim.type.vim.diagnostic.Severity;
+
 	var N : nvim.type.vim.diagnostic.Severity;
+
 	var W : nvim.type.vim.diagnostic.Severity;
+
 	var WARN : nvim.type.vim.diagnostic.Severity;
+
 }
 
 extern class Diagnostic {
@@ -72,9 +80,11 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function config(?opts:Null<nvim.type.vim.diagnostic.Opts>, ?namespace:Null<Int>):Null<nvim.type.vim.diagnostic.Opts>;
+
 	@:native("count")
 	@:luaDotMethod
 	private function __count(?bufnr:Int, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table.AnyTable;
+
 	/**
 		```lua
 		function M.count(bufnr?: integer, opts?: vim.diagnostic.GetOpts)
@@ -97,6 +107,7 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.GetOpts> = opts;
 		return __count(bufnr, opts);
 	}
+
 	/**
 		```lua
 		function M.disable(bufnr: any, namespace: any)
@@ -105,6 +116,7 @@ extern class Diagnostic {
 	@:luaDotMethod
 	@:deprecated
 	function disable(bufnr:Dynamic, namespace:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.enable(enable: boolean|nil, filter?: vim.diagnostic.Filter)
@@ -124,9 +136,11 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function enable(?enable:Null<Bool>, ?filter:Null<nvim.type.vim.diagnostic.Filter>):Dynamic;
+
 	@:native("fromqflist")
 	@:luaDotMethod
 	private function __fromqflist(list:lua.Table<Int, lua.Table.AnyTable>):lua.Table<Int, nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		function M.fromqflist(list: table[])
@@ -143,9 +157,11 @@ extern class Diagnostic {
 		final list:nvim.helper.Native.LuaArray<lua.Table.AnyTable> = list;
 		return __fromqflist(list);
 	}
+
 	@:native("get")
 	@:luaDotMethod
 	private function __get(?bufnr:Null<Int>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		function M.get(bufnr?: integer, opts?: vim.diagnostic.GetOpts)
@@ -171,6 +187,7 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.GetOpts> = opts;
 		return __get(bufnr, opts);
 	}
+
 	/**
 		```lua
 		function M.get_namespace(namespace: integer)
@@ -187,6 +204,7 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function get_namespace(namespace:Int):nvim.type.vim.diagnostic.NS;
+
 	/**
 		```lua
 		function M.get_namespaces()
@@ -201,9 +219,11 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function get_namespaces():lua.Table<Int, nvim.type.vim.diagnostic.NS>;
+
 	@:native("get_next")
 	@:luaDotMethod
 	private function __get_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		function M.get_next(opts?: vim.diagnostic.JumpOpts)
@@ -220,9 +240,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_next(opts);
 	}
+
 	@:native("get_next_pos")
 	@:luaDotMethod
 	private function __get_next_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool>;
+
 	/**
 		```lua
 		function M.get_next_pos(opts?: vim.diagnostic.JumpOpts)
@@ -247,9 +269,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_next_pos(opts);
 	}
+
 	@:native("get_prev")
 	@:luaDotMethod
 	private function __get_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		function M.get_prev(opts?: vim.diagnostic.JumpOpts)
@@ -266,9 +290,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_prev(opts);
 	}
+
 	@:native("get_prev_pos")
 	@:luaDotMethod
 	private function __get_prev_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool>;
+
 	/**
 		```lua
 		function M.get_prev_pos(opts?: vim.diagnostic.JumpOpts)
@@ -293,9 +319,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __get_prev_pos(opts);
 	}
+
 	@:native("goto_next")
 	@:luaDotMethod
 	private function __goto_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic;
+
 	/**
 		```lua
 		function M.goto_next(opts?: vim.diagnostic.JumpOpts)
@@ -310,9 +338,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __goto_next(opts);
 	}
+
 	@:native("goto_prev")
 	@:luaDotMethod
 	private function __goto_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic;
+
 	/**
 		```lua
 		function M.goto_prev(opts?: vim.diagnostic.JumpOpts)
@@ -327,6 +357,7 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __goto_prev(opts);
 	}
+
 	/**
 		```lua
 		(global) vim.diagnostic.handlers: table<string, vim.diagnostic.Handler>
@@ -337,6 +368,7 @@ extern class Diagnostic {
 		 @nodoc
 	**/
 	var handlers : Handlers;
+
 	/**
 		```lua
 		function M.hide(namespace?: integer, bufnr?: integer)
@@ -363,6 +395,7 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function hide(?namespace:Null<Int>, ?bufnr:Null<Int>):Dynamic;
+
 	/**
 		```lua
 		function M.is_disabled(bufnr: any, namespace: any)
@@ -372,6 +405,7 @@ extern class Diagnostic {
 	@:luaDotMethod
 	@:deprecated
 	function is_disabled(bufnr:Dynamic, namespace:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.is_enabled(filter?: vim.diagnostic.Filter)
@@ -386,9 +420,11 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function is_enabled(?filter:Null<nvim.type.vim.diagnostic.Filter>):Bool;
+
 	@:native("jump")
 	@:luaDotMethod
 	private function __jump(opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		function M.jump(opts: vim.diagnostic.JumpOpts)
@@ -405,9 +441,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.JumpOpts> = opts;
 		return __jump(opts);
 	}
+
 	@:native("match")
 	@:luaDotMethod
 	private function __match(str:String, pat:String, groups:lua.Table<Int, String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic>;
+
 	/**
 		```lua
 		function M.match(str: string, pat: string, groups: string[], severity_map: table, defaults?: table)
@@ -457,9 +495,11 @@ extern class Diagnostic {
 		final severity_map:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = severity_map;
 		return __match(str, pat, groups, severity_map, defaults);
 	}
+
 	@:native("open_float")
 	@:luaDotMethod
 	private function __open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.open_float(opts?: vim.diagnostic.Opts.Float, ...any)
@@ -474,6 +514,7 @@ extern class Diagnostic {
 	inline function open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
 		return __open_float(opts, ...___);
 	}
+
 	/**
 		```lua
 		function M.reset(namespace?: integer, bufnr?: integer)
@@ -498,9 +539,11 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function reset(?namespace:Null<Int>, ?bufnr:Null<Int>):Dynamic;
+
 	@:native("set")
 	@:luaDotMethod
 	private function __set(namespace:Int, bufnr:Int, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.set(namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.Opts)
@@ -521,9 +564,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.Opts> = opts;
 		return __set(namespace, bufnr, diagnostics, opts);
 	}
+
 	@:native("setloclist")
 	@:luaDotMethod
 	private function __setloclist(?opts:nvim.type.vim.diagnostic.setloclist.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.setloclist(opts?: vim.diagnostic.setloclist.Opts)
@@ -537,9 +582,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.setloclist.Opts> = opts;
 		return __setloclist(opts);
 	}
+
 	@:native("setqflist")
 	@:luaDotMethod
 	private function __setqflist(?opts:nvim.type.vim.diagnostic.setqflist.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.setqflist(opts?: vim.diagnostic.setqflist.Opts)
@@ -553,15 +600,18 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.setqflist.Opts> = opts;
 		return __setqflist(opts);
 	}
+
 	/**
 		```lua
 		(global) vim.diagnostic.severity: enum vim.diagnostic.Severity
 		```
 	**/
 	var severity : Severity;
+
 	@:native("show")
 	@:luaDotMethod
 	private function __show(?namespace:Null<Int>, ?bufnr:Null<Int>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
+
 	/**
 		```lua
 		function M.show(namespace?: integer, bufnr?: integer, diagnostics?: vim.Diagnostic[], opts?: vim.diagnostic.Opts)
@@ -593,9 +643,11 @@ extern class Diagnostic {
 		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diagnostic.Opts> = opts;
 		return __show(namespace, bufnr, diagnostics, opts);
 	}
+
 	@:native("toqflist")
 	@:luaDotMethod
 	private function __toqflist(diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>):lua.Table<Int, lua.Table.AnyTable>;
+
 	/**
 		```lua
 		function M.toqflist(diagnostics: vim.Diagnostic[])
@@ -613,4 +665,5 @@ extern class Diagnostic {
 		final diagnostics:nvim.helper.Native.LuaArray<nvim.type.vim.Diagnostic> = diagnostics;
 		return __toqflist(diagnostics);
 	}
+
 }

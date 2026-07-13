@@ -22,4 +22,5 @@ package nvim.type.lsp;
 		The actual filters.
 	**/
 	extern public var filters : lua.Table<Int, nvim.type.lsp.FileOperationFilter>;
+
 }

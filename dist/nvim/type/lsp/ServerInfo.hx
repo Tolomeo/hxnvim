@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		The name of the server as defined by the server.
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) lsp.ServerInfo.version: string?
@@ -34,4 +35,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var version : Null<String>;
+
 }

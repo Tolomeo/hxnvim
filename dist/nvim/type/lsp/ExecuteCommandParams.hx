@@ -22,6 +22,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var arguments : Null<lua.Table<Int, nvim.type.lsp.LSPAny>>;
+
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.command: string
@@ -33,6 +34,7 @@ package nvim.type.lsp;
 		The identifier of the actual command handler.
 	**/
 	extern public var command : String;
+
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.workDoneToken: (string|integer)?
@@ -45,4 +47,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+
 }

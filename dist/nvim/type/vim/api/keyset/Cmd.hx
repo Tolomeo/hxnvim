@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var addr : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.args: string[]?
@@ -20,6 +21,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var args : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.bang: boolean?
@@ -27,6 +29,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var bang : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.cmd: string?
@@ -34,6 +37,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var cmd : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.count: integer?
@@ -41,6 +45,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var count : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.magic: table<string, any>?
@@ -48,6 +53,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var magic : Null<lua.Table<String, Any>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.mods: table<string, any>?
@@ -55,6 +61,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var mods : Null<lua.Table<String, Any>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.nargs: (string|integer)?
@@ -62,6 +69,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var nargs : Null<haxe.extern.EitherType<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.nextcmd: string?
@@ -69,6 +77,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var nextcmd : Null<String>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.range: any[]?
@@ -76,6 +85,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var range : Null<lua.Table<Int, Any>>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.reg: string?
@@ -83,4 +93,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var reg : Null<String>;
+
 }

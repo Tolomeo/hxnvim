@@ -31,6 +31,7 @@ package nvim.type.lsp;
 		the document selector provided on the client side will be used.
 	**/
 	extern public var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.id: string?
@@ -44,6 +45,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var id : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.identifier: string?
@@ -57,6 +59,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var identifier : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.interFileDependencies: boolean
@@ -71,6 +74,7 @@ package nvim.type.lsp;
 		most programming languages and typically uncommon for linters.
 	**/
 	extern public var interFileDependencies : Bool;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.workDoneProgress: boolean?
@@ -78,6 +82,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.workspaceDiagnostics: boolean
@@ -89,4 +94,5 @@ package nvim.type.lsp;
 		The server provides support for workspace diagnostics as well.
 	**/
 	extern public var workspaceDiagnostics : Bool;
+
 }

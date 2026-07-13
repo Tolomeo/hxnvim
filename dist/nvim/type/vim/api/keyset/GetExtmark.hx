@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var details : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmark.hl_name: boolean?
@@ -20,4 +21,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var hl_name : Null<Bool>;
+
 }

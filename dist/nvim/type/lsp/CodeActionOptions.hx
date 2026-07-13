@@ -25,6 +25,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var codeActionKinds : Null<lua.Table<Int, nvim.type.lsp.CodeActionKind>>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.documentation: lsp.CodeActionKindDocumentation[]?
@@ -49,6 +50,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var documentation : Null<lua.Table<Int, nvim.type.lsp.CodeActionKindDocumentation>>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.resolveProvider: boolean?
@@ -63,6 +65,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var resolveProvider : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.workDoneProgress: boolean?
@@ -70,4 +73,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

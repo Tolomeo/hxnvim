@@ -19,6 +19,7 @@ package nvim.type.vim.lsp.util.show_document;
 	**/
 	@:optional
 	extern public var focus : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.lsp.util.show_document.Opts.reuse_win: boolean?
@@ -32,4 +33,5 @@ package nvim.type.vim.lsp.util.show_document;
 	**/
 	@:optional
 	extern public var reuse_win : Null<Bool>;
+
 }

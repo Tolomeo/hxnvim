@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		the request again.
 	**/
 	extern public var id : String;
+
 	/**
 		```lua
 		(field) lsp.Registration.method: string
@@ -33,6 +34,7 @@ package nvim.type.lsp;
 		The method / capability to register for.
 	**/
 	extern public var method : String;
+
 	/**
 		```lua
 		(field) lsp.Registration.registerOptions: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -61,4 +63,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var registerOptions : Null<nvim.type.lsp.LSPAny>;
+
 }

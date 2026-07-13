@@ -22,6 +22,7 @@ package nvim.type.lsp;
 		workspace folder in the user interface.
 	**/
 	extern public var name : String;
+
 	/**
 		```lua
 		(field) lsp.WorkspaceFolder.uri: string
@@ -33,4 +34,5 @@ package nvim.type.lsp;
 		The associated URI for this workspace folder.
 	**/
 	extern public var uri : nvim.type.lsp.URI;
+
 }

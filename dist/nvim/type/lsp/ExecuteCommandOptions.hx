@@ -21,6 +21,7 @@ package nvim.type.lsp;
 		The commands to be executed on the server
 	**/
 	extern public var commands : lua.Table<Int, String>;
+
 	/**
 		```lua
 		(field) lsp.ExecuteCommandOptions.workDoneProgress: boolean?
@@ -28,4 +29,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

@@ -13,6 +13,7 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var do_source : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.api.keyset.runtime.is_lua: boolean?
@@ -20,4 +21,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var is_lua : Null<Bool>;
+
 }

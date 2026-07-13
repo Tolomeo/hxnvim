@@ -12,6 +12,7 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	extern public var addr : String;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.canonname: string|nil
@@ -19,6 +20,7 @@ package nvim.type.uv.getaddrinfo;
 	**/
 	@:optional
 	extern public var canonname : Null<String>;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"
@@ -41,6 +43,7 @@ package nvim.type.uv.getaddrinfo;
 		```
 	**/
 	extern public var family : haxe.extern.EitherType<nvim.type.uv.socket.Family, String>;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.port: integer|nil
@@ -48,16 +51,19 @@ package nvim.type.uv.getaddrinfo;
 	**/
 	@:optional
 	extern public var port : Null<Int>;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.protocol: string
 		```
 	**/
 	extern public var protocol : String;
+
 	/**
 		```lua
 		(field) uv.getaddrinfo.result.socktype: string
 		```
 	**/
 	extern public var socktype : String;
+
 }

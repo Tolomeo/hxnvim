@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var language : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterScheme.pattern: (string|lsp.RelativePattern)?
@@ -61,6 +62,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var pattern : Null<nvim.type.lsp.GlobPattern>;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterScheme.scheme: string
@@ -72,4 +74,5 @@ package nvim.type.lsp;
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
 	extern public var scheme : String;
+
 }

@@ -20,6 +20,7 @@ package nvim.type.vim.fn.undotree;
 	**/
 	@:optional
 	extern public var alt : Null<lua.Table<Int, nvim.type.vim.fn.undotree.Entry>>;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.curhead: integer?
@@ -37,6 +38,7 @@ package nvim.type.vim.fn.undotree;
 	**/
 	@:optional
 	extern public var curhead : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.newhead: integer?
@@ -51,6 +53,7 @@ package nvim.type.vim.fn.undotree;
 	**/
 	@:optional
 	extern public var newhead : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.save: integer?
@@ -66,6 +69,7 @@ package nvim.type.vim.fn.undotree;
 	**/
 	@:optional
 	extern public var save : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.seq: integer
@@ -78,6 +82,7 @@ package nvim.type.vim.fn.undotree;
 		 \|:undolist|.
 	**/
 	extern public var seq : Int;
+
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.time: integer
@@ -90,4 +95,5 @@ package nvim.type.vim.fn.undotree;
 		 \|strftime()| to convert to something readable.
 	**/
 	extern public var time : Int;
+
 }

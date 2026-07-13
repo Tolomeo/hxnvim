@@ -9,9 +9,11 @@ extern class Python {
 	**/
 	@:luaDotMethod
 	function call(method:Dynamic, args:Dynamic):Dynamic;
+
 	@:native("detect_by_module")
 	@:luaDotMethod
 	private function __detect_by_module(module:String):nvim.helper.Multireturn<Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.detect_by_module(module: string)
@@ -28,6 +30,7 @@ extern class Python {
 	inline function detect_by_module(module:String):nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
 		return __detect_by_module(module);
 	}
+
 	/**
 		```lua
 		function M.require(host: any)
@@ -35,6 +38,7 @@ extern class Python {
 	**/
 	@:luaDotMethod
 	function require(host:Dynamic):Dynamic;
+
 	/**
 		```lua
 		function M.start()
@@ -42,4 +46,5 @@ extern class Python {
 	**/
 	@:luaDotMethod
 	function start():Dynamic;
+
 }

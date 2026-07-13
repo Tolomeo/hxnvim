@@ -26,6 +26,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var contextSupport : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.dynamicRegistration: boolean?
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.signatureInformation: (lsp.ClientSignatureInformationOptions)?
@@ -51,4 +53,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var signatureInformation : Null<nvim.type.lsp.ClientSignatureInformationOptions>;
+
 }

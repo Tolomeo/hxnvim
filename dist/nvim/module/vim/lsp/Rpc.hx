@@ -11,6 +11,7 @@ extern class Rpc {
 		 @nodoc
 	**/
 	var client_errors : haxe.extern.EitherType<lua.Table<String, Int>, lua.Table<Int, String>>;
+
 	/**
 		```lua
 		function M.connect(host_or_path: string, port?: integer)
@@ -34,6 +35,7 @@ extern class Rpc {
 	**/
 	@:luaDotMethod
 	function connect(host_or_path:String, ?port:Null<Int>):(dispatchers:nvim.type.vim.lsp.rpc.Dispatchers) -> nvim.type.vim.lsp.rpc.PublicClient;
+
 	/**
 		```lua
 		function M.create_read_loop(handle_body: fun(body: string), on_exit?: fun(), on_error: fun(err: any))
@@ -42,9 +44,11 @@ extern class Rpc {
 	**/
 	@:luaDotMethod
 	private function create_read_loop(handle_body:(body:String) -> Dynamic, ?on_exit:() -> Dynamic, on_error:(err:Any) -> Dynamic):Dynamic;
+
 	@:native("format_rpc_error")
 	@:luaDotMethod
 	private function __format_rpc_error(err:lua.Table.AnyTable):String;
+
 	/**
 		```lua
 		function M.format_rpc_error(err: table)
@@ -63,6 +67,7 @@ extern class Rpc {
 		final err:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = err;
 		return __format_rpc_error(err);
 	}
+
 	/**
 		```lua
 		function M.rpc_response_error(code: integer, message?: string, data?: any)
@@ -84,9 +89,11 @@ extern class Rpc {
 	**/
 	@:luaDotMethod
 	function rpc_response_error(code:Int, ?message:String, ?data:Any):nvim.type.lsp.ResponseError;
+
 	@:native("start")
 	@:luaDotMethod
 	private function __start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient;
+
 	/**
 		```lua
 		function M.start(cmd: string[], dispatchers?: vim.lsp.rpc.Dispatchers, extra_spawn_params?: vim.lsp.rpc.ExtraSpawnParams)
@@ -107,4 +114,5 @@ extern class Rpc {
 		final extra_spawn_params:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.rpc.ExtraSpawnParams> = extra_spawn_params;
 		return __start(cmd, dispatchers, extra_spawn_params);
 	}
+
 }

@@ -31,6 +31,7 @@ package nvim.type.lsp;
 		the document selector provided on the client side will be used.
 	**/
 	extern public var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+
 	/**
 		```lua
 		(field) lsp.CallHierarchyRegistrationOptions.id: string?
@@ -44,6 +45,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var id : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.CallHierarchyRegistrationOptions.workDoneProgress: boolean?
@@ -51,4 +53,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

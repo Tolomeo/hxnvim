@@ -24,6 +24,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var id : Null<String>;
+
 	/**
 		```lua
 		(field) lsp.TextDocumentContentRegistrationOptions.schemes: string[]
@@ -35,4 +36,5 @@ package nvim.type.lsp;
 		The schemes for which the server provides content.
 	**/
 	extern public var schemes : lua.Table<Int, String>;
+
 }

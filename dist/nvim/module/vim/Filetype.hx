@@ -4,6 +4,7 @@ extern class Filetype {
 	@:native("add")
 	@:luaDotMethod
 	private function __add(filetypes:nvim.type.vim.filetype.add.Filetypes):Dynamic;
+
 	/**
 		```lua
 		function M.add(filetypes: vim.filetype.add.filetypes)
@@ -101,6 +102,7 @@ extern class Filetype {
 		final filetypes:nvim.helper.Native.LuaObject<nvim.type.vim.filetype.add.Filetypes> = filetypes;
 		return __add(filetypes);
 	}
+
 	/**
 		```lua
 		function M.get_option(filetype: string, option: string)
@@ -133,9 +135,11 @@ extern class Filetype {
 	**/
 	@:luaDotMethod
 	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
+
 	@:native("match")
 	@:luaDotMethod
 	private function __match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		function M.match(args: vim.filetype.match.args)
@@ -189,4 +193,5 @@ extern class Filetype {
 		final args:nvim.helper.Native.LuaObject<nvim.type.vim.filetype.match.Args> = args;
 		return __match(args);
 	}
+
 }

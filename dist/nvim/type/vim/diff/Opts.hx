@@ -27,6 +27,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var algorithm : Null<String>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.ctxlen: integer?
@@ -38,6 +39,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var ctxlen : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_blank_lines: boolean?
@@ -49,6 +51,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var ignore_blank_lines : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_cr_at_eol: boolean?
@@ -60,6 +63,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var ignore_cr_at_eol : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_whitespace: boolean?
@@ -71,6 +75,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var ignore_whitespace : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_whitespace_change: boolean?
@@ -82,6 +87,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var ignore_whitespace_change : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_whitespace_change_at_eol: boolean?
@@ -93,6 +99,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var ignore_whitespace_change_at_eol : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.indent_heuristic: boolean?
@@ -104,6 +111,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var indent_heuristic : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.interhunkctxlen: integer?
@@ -115,6 +123,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var interhunkctxlen : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.linematch: (boolean|integer)?
@@ -129,6 +138,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var linematch : Null<haxe.extern.EitherType<Bool, Int>>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.on_hunk: fun(start_a: integer, count_a: integer, start_b: integer, count_b: integer):integer??
@@ -155,6 +165,7 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var on_hunk : Null<(start_a:Int, count_a:Int, start_b:Int, count_b:Int) -> Null<Int>>;
+
 	/**
 		```lua
 		(field) vim.diff.Opts.result_type: ('indices'|'unified')?
@@ -171,4 +182,5 @@ package nvim.type.vim.diff;
 	**/
 	@:optional
 	extern public var result_type : Null<String>;
+
 }

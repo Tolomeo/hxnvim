@@ -13,6 +13,7 @@ package nvim.type.uv;
 @:structInit class LuvWorkCtxT {
 	@:native("queue")
 	private extern function __queue(___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+
 	/**
 		```lua
 		(method) uv.luv_work_ctx_t:queue(...any)
@@ -118,4 +119,5 @@ package nvim.type.uv;
 	inline public function queue(___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
 		return __queue(...___);
 	}
+
 }

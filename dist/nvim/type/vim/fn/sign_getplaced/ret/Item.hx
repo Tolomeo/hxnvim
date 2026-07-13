@@ -12,10 +12,12 @@ package nvim.type.vim.fn.sign_getplaced.ret;
 		```
 	**/
 	extern public var bufnr : Int;
+
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.ret.item.signs: vim.fn.sign[]
 		```
 	**/
 	extern public var signs : lua.Table<Int, nvim.type.vim.fn.Sign>;
+
 }

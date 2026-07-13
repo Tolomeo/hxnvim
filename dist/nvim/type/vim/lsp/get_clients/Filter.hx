@@ -22,6 +22,7 @@ package nvim.type.vim.lsp.get_clients;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.id: integer?
@@ -35,6 +36,7 @@ package nvim.type.vim.lsp.get_clients;
 	**/
 	@:optional
 	extern public var id : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.method: string?
@@ -47,6 +49,7 @@ package nvim.type.vim.lsp.get_clients;
 	**/
 	@:optional
 	extern public var method : Null<String>;
+
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.name: string?
@@ -59,4 +62,5 @@ package nvim.type.vim.lsp.get_clients;
 	**/
 	@:optional
 	extern public var name : Null<String>;
+
 }

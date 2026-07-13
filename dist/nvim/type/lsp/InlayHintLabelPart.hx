@@ -34,6 +34,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var command : Null<nvim.type.lsp.Command>;
+
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.location: (lsp.Location)?
@@ -61,6 +62,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var location : Null<nvim.type.lsp.Location>;
+
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.tooltip: (string|lsp.MarkupContent)?
@@ -100,6 +102,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.value: string
@@ -111,4 +114,5 @@ package nvim.type.lsp;
 		The value of this label part.
 	**/
 	extern public var value : String;
+
 }

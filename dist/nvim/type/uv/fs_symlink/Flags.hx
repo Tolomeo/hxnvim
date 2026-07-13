@@ -12,10 +12,12 @@ package nvim.type.uv.fs_symlink;
 		```
 	**/
 	extern public var dir : Bool;
+
 	/**
 		```lua
 		(field) uv.fs_symlink.flags.junction: boolean
 		```
 	**/
 	extern public var junction : Bool;
+
 }

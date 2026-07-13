@@ -23,6 +23,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var prepareProvider : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.RenameOptions.workDoneProgress: boolean?
@@ -30,4 +31,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var workDoneProgress : Null<Bool>;
+
 }

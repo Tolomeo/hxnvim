@@ -19,6 +19,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var contentFormat : Null<lua.Table<Int, nvim.type.lsp.MarkupKind>>;
+
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.dynamicRegistration: boolean?
@@ -31,4 +32,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var dynamicRegistration : Null<Bool>;
+
 }

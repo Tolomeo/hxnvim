@@ -28,4 +28,5 @@ package nvim.type.lsp;
 		
 	**/
 	extern public var synchronization : nvim.type.lsp.NotebookDocumentSyncClientCapabilities;
+
 }

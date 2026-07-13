@@ -13,4 +13,5 @@ package nvim.type.vim.api.keyset;
 	**/
 	@:optional
 	extern public var wins : Null<lua.Table<Int, Any>>;
+
 }

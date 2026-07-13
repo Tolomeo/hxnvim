@@ -17,6 +17,7 @@ package nvim.type.vim.loader;
 		 Name of the module
 	**/
 	extern public var modname : String;
+
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.modpath: string
@@ -29,6 +30,7 @@ package nvim.type.vim.loader;
 		 Path of the module
 	**/
 	extern public var modpath : String;
+
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.stat: (uv.fs_stat.result)?
@@ -41,4 +43,5 @@ package nvim.type.vim.loader;
 	**/
 	@:optional
 	extern public var stat : Null<nvim.type.uv.fs_stat.Result>;
+
 }

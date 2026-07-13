@@ -43,6 +43,7 @@ package nvim.type.vim.treesitter;
 		```
 	**/
 	extern public var _conceal_checked : ConcealChecked;
+
 	/**
 		```lua
 		(field) vim.treesitter.highlighter._conceal_line: boolean?
@@ -50,21 +51,25 @@ package nvim.type.vim.treesitter;
 	**/
 	@:optional
 	extern public var _conceal_line : Null<Bool>;
+
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.active: table<integer, vim.treesitter.highlighter>
 		```
 	**/
 	extern public var active : Active;
+
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.bufnr: integer
 		```
 	**/
 	extern public var bufnr : Int;
+
 	@:luaDotMethod
 	@:native("new")
 	private extern function __new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter;
+
 	/**
 		```lua
 		function vim.treesitter.highlighter.new(tree: vim.treesitter.LanguageTree, opts: table|nil)
@@ -88,6 +93,7 @@ package nvim.type.vim.treesitter;
 		final tree:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.LanguageTree> = tree;
 		return __new_(tree, opts);
 	}
+
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.parsing: table<integer, boolean>
@@ -98,12 +104,14 @@ package nvim.type.vim.treesitter;
 		 A map from window ID to whether we are currently parsing that window asynchronously
 	**/
 	extern public var parsing : Parsing;
+
 	/**
 		```lua
 		(field) vim.treesitter.highlighter.tree: vim.treesitter.LanguageTree
 		```
 	**/
 	extern public var tree : nvim.type.vim.treesitter.LanguageTree;
+
 	/**
 		```lua
 		(method) vim.treesitter.highlighter:destroy()
@@ -115,6 +123,7 @@ package nvim.type.vim.treesitter;
 		 Removes all internal references to the highlighter
 	**/
 	extern public function destroy():Dynamic;
+
 	/**
 		```lua
 		(method) vim.treesitter.highlighter:get_query(lang: string)
@@ -128,4 +137,5 @@ package nvim.type.vim.treesitter;
 		@*param* `lang` — Language used by the highlighter.
 	**/
 	extern public function get_query(lang:String):nvim.type.vim.treesitter.highlighter.Query;
+
 }

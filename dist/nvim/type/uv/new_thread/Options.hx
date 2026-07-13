@@ -17,4 +17,5 @@ package nvim.type.uv.new_thread;
 		```
 	**/
 	extern public var stack_size : Int;
+
 }

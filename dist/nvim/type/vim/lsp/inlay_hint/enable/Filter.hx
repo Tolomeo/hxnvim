@@ -22,4 +22,5 @@ package nvim.type.vim.lsp.inlay_hint.enable;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 }

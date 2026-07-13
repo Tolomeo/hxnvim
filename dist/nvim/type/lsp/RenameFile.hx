@@ -27,6 +27,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
+
 	/**
 		```lua
 		(field) lsp.RenameFile.kind: "rename"
@@ -38,6 +39,7 @@ package nvim.type.lsp;
 		A rename
 	**/
 	extern public var kind : String;
+
 	/**
 		```lua
 		(field) lsp.RenameFile.newUri: string
@@ -49,6 +51,7 @@ package nvim.type.lsp;
 		The new location.
 	**/
 	extern public var newUri : nvim.type.lsp.DocumentUri;
+
 	/**
 		```lua
 		(field) lsp.RenameFile.oldUri: string
@@ -60,6 +63,7 @@ package nvim.type.lsp;
 		The old (existing) location.
 	**/
 	extern public var oldUri : nvim.type.lsp.DocumentUri;
+
 	/**
 		```lua
 		(field) lsp.RenameFile.options: (lsp.RenameFileOptions)?
@@ -76,4 +80,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var options : Null<nvim.type.lsp.RenameFileOptions>;
+
 }

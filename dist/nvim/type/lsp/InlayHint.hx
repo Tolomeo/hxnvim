@@ -40,6 +40,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var data : Null<nvim.type.lsp.LSPAny>;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.kind: (1|2)?
@@ -68,6 +69,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var kind : Null<nvim.type.lsp.InlayHintKind>;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.label: string|lsp.InlayHintLabelPart[]
@@ -82,6 +84,7 @@ package nvim.type.lsp;
 		*Note* that neither the string nor the label part can be empty.
 	**/
 	extern public var label : haxe.extern.EitherType<String, lua.Table<Int, nvim.type.lsp.InlayHintLabelPart>>;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingLeft: boolean?
@@ -98,6 +101,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var paddingLeft : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingRight: boolean?
@@ -114,6 +118,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var paddingRight : Null<Bool>;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.position: lsp.Position
@@ -157,6 +162,7 @@ package nvim.type.lsp;
 		they appear in the response.
 	**/
 	extern public var position : nvim.type.lsp.Position;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.textEdits: lsp.TextEdit[]?
@@ -173,6 +179,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var textEdits : Null<lua.Table<Int, nvim.type.lsp.TextEdit>>;
+
 	/**
 		```lua
 		(field) lsp.InlayHint.tooltip: (string|lsp.MarkupContent)?
@@ -210,4 +217,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+
 }

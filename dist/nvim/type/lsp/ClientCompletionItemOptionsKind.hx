@@ -25,4 +25,5 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var valueSet : Null<lua.Table<Int, nvim.type.lsp.CompletionItemKind>>;
+
 }

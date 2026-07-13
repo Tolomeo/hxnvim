@@ -18,6 +18,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var context : Null<lua.Table.AnyTable>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.efm: string?
@@ -33,6 +34,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var efm : Null<String>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.id: integer?
@@ -45,6 +47,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var id : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.idx: integer?
@@ -59,6 +62,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var idx : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.items: vim.quickfix.entry[]?
@@ -72,6 +76,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var items : Null<lua.Table<Int, nvim.type.vim.quickfix.Entry>>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.lines: string[]?
@@ -87,6 +92,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var lines : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.nr: integer?
@@ -101,6 +107,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var nr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.quickfixtextfunc: function?
@@ -117,6 +124,7 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var quickfixtextfunc : Null<haxe.Constraints.Function>;
+
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.title: string?
@@ -129,4 +137,5 @@ package nvim.type.vim.fn.setqflist;
 	**/
 	@:optional
 	extern public var title : Null<String>;
+
 }

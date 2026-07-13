@@ -20,6 +20,7 @@ package nvim.type.vim.trust;
 		 - `'remove'` to remove file from the trust database
 	**/
 	extern public var action : String;
+
 	/**
 		```lua
 		(field) vim.trust.opts.bufnr: integer?
@@ -31,6 +32,7 @@ package nvim.type.vim.trust;
 	**/
 	@:optional
 	extern public var bufnr : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.trust.opts.path: string?
@@ -44,4 +46,5 @@ package nvim.type.vim.trust;
 	**/
 	@:optional
 	extern public var path : Null<String>;
+
 }

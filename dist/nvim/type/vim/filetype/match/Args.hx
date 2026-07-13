@@ -19,6 +19,7 @@ package nvim.type.vim.filetype.match;
 	**/
 	@:optional
 	extern public var buf : Null<Int>;
+
 	/**
 		```lua
 		(field) vim.filetype.match.args.contents: string[]?
@@ -33,6 +34,7 @@ package nvim.type.vim.filetype.match;
 	**/
 	@:optional
 	extern public var contents : Null<lua.Table<Int, String>>;
+
 	/**
 		```lua
 		(field) vim.filetype.match.args.filename: string?
@@ -51,4 +53,5 @@ package nvim.type.vim.filetype.match;
 	**/
 	@:optional
 	extern public var filename : Null<String>;
+
 }

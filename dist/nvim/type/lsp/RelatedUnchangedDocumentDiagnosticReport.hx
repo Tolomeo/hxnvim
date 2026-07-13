@@ -25,6 +25,7 @@ package nvim.type.lsp;
 		provided.
 	**/
 	extern public var kind : String;
+
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.relatedDocuments: table<string, lsp.FullDocumentDiagnosticReport|lsp.UnchangedDocumentDiagnosticReport>?
@@ -42,6 +43,7 @@ package nvim.type.lsp;
 	**/
 	@:optional
 	extern public var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
+
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.resultId: string
@@ -54,4 +56,5 @@ package nvim.type.lsp;
 		diagnostic request for the same document.
 	**/
 	extern public var resultId : String;
+
 }

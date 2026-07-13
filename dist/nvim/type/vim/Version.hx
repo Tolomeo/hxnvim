@@ -13,24 +13,28 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var build : Null<String>;
+
 	/**
 		```lua
 		(field) vim.Version.major: number
 		```
 	**/
 	extern public var major : Float;
+
 	/**
 		```lua
 		(field) vim.Version.minor: number
 		```
 	**/
 	extern public var minor : Float;
+
 	/**
 		```lua
 		(field) vim.Version.patch: number
 		```
 	**/
 	extern public var patch : Float;
+
 	/**
 		```lua
 		(field) vim.Version.prerelease: string?
@@ -38,6 +42,7 @@ package nvim.type.vim;
 	**/
 	@:optional
 	extern public var prerelease : Null<String>;
+
 	/**
 		```lua
 		(method) vim.Version:__tostring()
@@ -45,4 +50,5 @@ package nvim.type.vim;
 		```
 	**/
 	extern public function __tostring():Dynamic;
+
 }
