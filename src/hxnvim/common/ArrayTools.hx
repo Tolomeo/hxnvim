@@ -4,7 +4,7 @@ using Lambda;
 using StringTools;
 
 class ArrayTools {
-	static public function padEnd<T>(arr: Array<T>, length: Int, padding: T) {
+	static public function padEnd<T>(arr:Array<T>, length:Int, padding:T) {
 		final paddedArr = arr.copy();
 
 		if (paddedArr.length >= length) {

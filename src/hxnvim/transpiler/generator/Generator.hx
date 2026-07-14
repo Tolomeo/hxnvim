@@ -18,7 +18,7 @@ abstract class Generator {
 	final origin:Symbol;
 	final printer:Printer;
 
-	public function new(origin: Symbol) {
+	public function new(origin:Symbol) {
 		this.origin = origin;
 		this.printer = new Printer();
 	}

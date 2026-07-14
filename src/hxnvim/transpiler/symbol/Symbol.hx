@@ -26,7 +26,7 @@ enum LiteralType {
 	GenericTypeReference(name:String);
 	AnnotationReference(name:String);
 	ModuleReference(name:String);
-	HelperReference(name:String, ?params: Array<LiteralType>, ?sub: String);
+	HelperReference(name:String, ?params:Array<LiteralType>, ?sub:String);
 	Rest(type:LiteralType);
 }
 
