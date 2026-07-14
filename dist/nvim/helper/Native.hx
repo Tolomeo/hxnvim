@@ -1,7 +1,7 @@
 package nvim.helper;
 
 function nativeTable(tableValue:lua.Table.AnyTable):lua.Table.AnyTable {
-	final tab = Table.create();
+	final tab = lua.Table.create();
 
 	lua.PairTools.ipairsEach(tableValue, (i, t) -> {
 		lua.Table.insert(tab, native(t));
