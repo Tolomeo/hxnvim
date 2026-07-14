@@ -1,6 +1,5 @@
 SRC_DIR=src
 DIST_DIR=dist
-OUT_DIR=$(DIST_DIR)/nvim
 
 JSON_EXTERNAL_SOURCES_DIR:=external/anydev.nvim/out
 JSON_EXTERNAL_SOURCES=$(shell find $(JSON_EXTERNAL_SOURCES_DIR) -type f -name "*.json")
@@ -10,6 +9,8 @@ JSON_SOURCES:=$(patsubst $(JSON_EXTERNAL_SOURCES_DIR)/%, $(JSON_SOURCES_DIR)/%, 
 TXT_SOURCES:=$(shell find $(SRC_DIR)/input/helper -type f -name "*.txt")
 
 HX_SOURCES:=$(shell find $(SRC_DIR)/hxnvim -type f -name "*.hx")
+
+BUILD:=$(DIST_DIR)/nvim/.build
 
 define HAXE
 	docker run --rm \
@@ -25,14 +26,14 @@ $(JSON_SOURCES_DIR)/%: $(JSON_EXTERNAL_SOURCES_DIR)/%
 	@mkdir -p $(dir $@)
 	cp $< $@
 
-$(OUT_DIR)/.build: $(JSON_SOURCES) $(TXT_SOURCES) $(HX_SOURCES)
+$(BUILD): $(JSON_SOURCES) $(TXT_SOURCES) $(HX_SOURCES)
 	@$(MAKE) clean
 	@echo "::> Building externs"
 	@$(call HAXE, haxe build.hxml)
 	@touch $@
 
 .PHONY=build
-build: $(OUT_DIR)/.build
+build: $(BUILD)
 
 .PHONY=install
 install:
@@ -44,8 +45,4 @@ install:
 .PHONY=clean
 clean:
 	@echo "::> Cleaning output files"
-	rm -rf $(OUT_DIR)
-
-.PHONY=inspect
-inspect:
-	$(call HAXE, haxe --class-path src --main AstExplorer --interp)
+	rm -rf $(shell dirname $(BUILD))
