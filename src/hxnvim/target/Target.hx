@@ -55,6 +55,18 @@ enum abstract TargetType(String) {
 }
 
 class Target {
+	static public function helperPack() {
+		return Config.outputPack.split(".").concat(["helper"]);
+	}
+
+	static public function annotationPack() {
+		return Config.outputPack.split(".").concat(["type"]);
+	}
+
+	static public function modulePack() {
+		return Config.outputPack.split(".").concat(["module"]);
+	}
+
 	static public function toHelperReference(reference:String) {
 		return '${Config.outputPack}.helper.${reference}';
 	}
@@ -83,15 +95,24 @@ class Target {
 		final inputPath = new Path(input.file);
 
 		final inputModule = inputPath.file;
+
 		final inputModuleHierarchy = inputModule.split(".");
 
 		final outputName = inputModuleHierarchy.last().toTypeName();
-		var outputParentHierarchy = inputModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
-		outputParentHierarchy = switch (inputPath.dir) {
-			case null: [Config.outputPack].concat(outputParentHierarchy);
-			case dir: [Config.outputPack].concat(dir.split("/").concat(outputParentHierarchy));
+
+		final outputParentHierarchy = inputModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
+		switch (inputPath.dir) {
+			case null:
+				outputParentHierarchy.unshift(Config.outputPack);
+			case inputDir:
+				for (dir in inputDir.split("/")) {
+					outputParentHierarchy.unshift(dir);
+				}
+				outputParentHierarchy.unshift(Config.outputPack);
 		}
+
 		final outputPackage = outputParentHierarchy.join(".");
+
 		final qualifiedName = '${outputPackage}.${outputName}';
 
 		final output = {
@@ -124,7 +145,7 @@ class Target {
 
 	public final file:TargetFile;
 
-	public function new(type:TargetType, input:TargetInput, output:TargetOutput, overrides:TargetOverride, file:TargetFile) {
+	function new(type:TargetType, input:TargetInput, output:TargetOutput, overrides:TargetOverride, file:TargetFile) {
 		this.type = type;
 		this.input = input;
 		this.output = output;
@@ -133,8 +154,6 @@ class Target {
 	}
 
 	public function createChild(childName:String, type:TargetType, file:String, spec:String) {
-		final type = this.type;
-
 		final input = Reflect.copy(this.input);
 		input.file = file;
 		input.spec = spec;

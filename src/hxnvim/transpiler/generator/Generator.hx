@@ -1,11 +1,11 @@
 package hxnvim.transpiler.generator;
 
-import haxe.macro.Printer;
 import haxe.macro.Expr.TypeDefinition;
 import haxe.Exception;
 
 using hxnvim.common.NullTools;
 
+import hxnvim.common.Printer;
 import hxnvim.transpiler.State;
 import hxnvim.transpiler.symbol.Symbol;
 import hxnvim.transpiler.generator.Alias;
@@ -14,15 +14,17 @@ import hxnvim.transpiler.generator.Enumerator;
 
 typedef Module = Array<TypeDefinition>;
 
-private class Generator {
+abstract class Generator {
+	final origin:Symbol;
 	final printer:Printer;
 
-	public function new() {
+	public function new(origin:Symbol) {
+		this.origin = origin;
 		this.printer = new Printer();
 	}
 
 	function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
-		return new InstanceClassGenerator(table).generate(meta);
+		return new ModuleClassGenerator(table).generate(meta);
 	}
 
 	function generateAliasType(alias:Alias, ?meta:Array<SymbolMeta>) {
@@ -48,14 +50,14 @@ private class Generator {
 		}
 	}
 
-	public function generate(symbol:Symbol) {
-		return this.printer.printTypeDefinition(this.generateType(symbol));
+	public function generate() {
+		return this.printer.printTypeDefinition(this.generateType(this.origin));
 	}
 }
 
 class NamespaceModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
-		return new SingletonClassGenerator(table).generate(meta);
+		return new NamespaceClassGenerator(table).generate(meta);
 	}
 
 	override function generateType(symbol:Symbol, ?meta:Array<SymbolMeta>) {
@@ -70,11 +72,11 @@ class NamespaceModuleGenerator extends Generator {
 	}
 }
 
-class TypeModuleGenerator extends Generator {
+class AnnotationModuleGenerator extends Generator {
 	override function generateTableType(table:Table, ?meta:Array<SymbolMeta>) {
 		meta = [SymbolMeta.StructInit].concat(meta.or([]));
 
-		return new DataClassGenerator(table).generate(meta);
+		return new AnnotationClassGenerator(table).generate(meta);
 	}
 }
 

@@ -1,6 +1,5 @@
 package hxnvim.transpiler.generator;
 
-import haxe.macro.Context;
 import haxe.macro.Expr;
 import haxe.Exception;
 
@@ -27,7 +26,7 @@ class EnumeratorGenerator {
 
 		final name = enumerator.name;
 
-		final underlyingType = new LiteralTypeGenerator().generate(enumerator.type);
+		final underlyingType = new LiteralTypeGenerator(enumerator.type).generate();
 		final kind = TDAbstract(underlyingType, [AbEnum], [underlyingType], [underlyingType]);
 
 		final fields = new Array<Field>();
@@ -36,7 +35,7 @@ class EnumeratorGenerator {
 			fields.push({
 				name: fieldName,
 				kind: FVar(null, macro $v{fieldValue}),
-				pos: Context.currentPos()
+				pos: null
 			});
 		}
 
@@ -46,7 +45,7 @@ class EnumeratorGenerator {
 			kind: kind,
 			meta: this.generateMeta(meta),
 			fields: fields,
-			pos: Context.currentPos(),
+			pos: null,
 			isExtern: true
 		}
 	}

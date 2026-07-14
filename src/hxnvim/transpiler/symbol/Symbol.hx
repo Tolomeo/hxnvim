@@ -1,6 +1,34 @@
 package hxnvim.transpiler.symbol;
 
-typedef LiteralType = String;
+enum LiteralType {
+	Unknown;
+	Any;
+	Boolean;
+	AnyFunction;
+	Integer;
+	UserData;
+	LightUserData;
+	Nil;
+	Void;
+	Number;
+	Str;
+	AnyTable;
+	Optional(type:LiteralType);
+	Union(types:Array<LiteralType>);
+	Array(itemsType:LiteralType);
+	Function(signature:Signature);
+	Multireturn(types:Array<LiteralType>);
+	Table(key:LiteralType, value:LiteralType);
+	TableStructure(fields:Array<{name:String, type:LiteralType}>);
+	NumericLiteral(value:String);
+	StringLiteral(value:String);
+	BooleanLiteral(value:String);
+	GenericTypeReference(name:String);
+	AnnotationReference(name:String);
+	ModuleReference(name:String);
+	HelperReference(name:String, ?params:Array<LiteralType>, ?sub:String);
+	Rest(type:LiteralType);
+}
 
 // TODO: remove overload; add protected and package
 enum SymbolAccess {
@@ -40,8 +68,7 @@ typedef Return = LiteralType;
 typedef Signature = {
 	params:Array<Param>,
 	args:Array<Arg>,
-	ret:Return,
-	overloads:Array<LiteralType>
+	ret:LiteralType,
 }
 
 typedef Function = {
@@ -49,7 +76,8 @@ typedef Function = {
 	doc:String,
 	meta:Array<SymbolMeta>,
 	access:Array<SymbolAccess>,
-	type:Signature
+	type:Signature,
+	overloads:Array<Signature>
 }
 
 enum TableField {

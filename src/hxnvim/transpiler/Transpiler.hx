@@ -3,6 +3,7 @@ package hxnvim.transpiler;
 import haxe.Exception;
 
 using hxnvim.common.StringTools;
+using hxnvim.common.NullTools;
 
 import hxnvim.Logger;
 import hxnvim.common.Json;
@@ -10,6 +11,8 @@ import hxnvim.transpiler.State;
 import hxnvim.target.Target;
 import hxnvim.transpiler.parser.Parser;
 import hxnvim.transpiler.generator.Generator;
+
+typedef TranspileChild = (name:String, child:Json, ?targetType:TargetType) -> Void
 
 class Transpiler {
 	final target:Target;
@@ -19,26 +22,34 @@ class Transpiler {
 		this.target = target;
 	}
 
-	function transpileChildSymbol(childName:String, child:Json) {
+	function transpileChildSymbol(childName:String, child:Json, ?childType:TargetType) {
 		final transpiledChild = State.fork(target -> {
+			childType = childType.or(target.type);
 			final childFile = '${target.input.file}:${child.pos.min},${child.pos.max}';
 			final childSpec = child.toString();
-			return target.createChild(childName, target.type, childFile, childSpec);
+			return target.createChild(childName, childType, childFile, childSpec);
 		}, () -> this.transpileSymbol(child));
 
 		this.result.push(transpiledChild);
 	}
 
 	function transpileSymbol(symbol:Json) {
-		Logger.verbose('Transpiling ${State.consume(target -> target)}');
+		final currentTarget = State.consume(t -> t);
 
-		final parsed = new Parser(symbol, this.transpileChildSymbol).parse();
+		Logger.verbose('Transpiling ${currentTarget}');
 
-		return switch (this.target.type) {
-			case TargetType.Annotation: new TypeModuleGenerator().generate(parsed);
-			case TargetType.Module: new ModuleGenerator().generate(parsed);
-			case TargetType.Namespace: new NamespaceModuleGenerator().generate(parsed);
-			case _: throw new Exception('Error transpiling ${this.target.file}: unexpected target type received <${this.target.output}>');
+		final parsed = switch (currentTarget.type) {
+			case TargetType.Annotation: new AnnotationModuleParser(symbol, this.transpileChildSymbol).parse();
+			case TargetType.Module: new ModuleParser(symbol, this.transpileChildSymbol).parse();
+			case TargetType.Namespace: new NamespaceModuleParser(symbol, this.transpileChildSymbol).parse();
+			case _: throw new Exception('Error parsing ${currentTarget.file}: unexpected target type received <${currentTarget.output}>');
+		}
+
+		return switch (currentTarget.type) {
+			case TargetType.Annotation: new AnnotationModuleGenerator(parsed).generate();
+			case TargetType.Module: new ModuleGenerator(parsed).generate();
+			case TargetType.Namespace: new NamespaceModuleGenerator(parsed).generate();
+			case _: throw new Exception('Error generating ${currentTarget.file}: unexpected target type received <${currentTarget.output}>');
 		}
 	}
 

@@ -1,3 +1,4 @@
 .haxelib/
 resources/types/
 dump/
+.build

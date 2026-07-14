@@ -4,7 +4,6 @@ import sys.io.File;
 import sys.FileSystem;
 import haxe.io.Path;
 import haxe.Exception;
-import haxe.macro.Context;
 
 using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
@@ -15,11 +14,15 @@ import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.target.Target;
 
-final sourcesPath = Context.resolvePath("hxnvim/source");
-final helperSourcesPath = Context.resolvePath("hxnvim/source/helper");
-final runtimeSourcesPath = Context.resolvePath("hxnvim/source/runtime");
+final sourcesPath = "src/input";
+final helperSourcesPath = "src/input/helper";
+final runtimeSourcesPath = "src/input/runtime";
 
 class HxNvim {
+	static public function main() {
+		return HxNvim.run({outputPack: 'nvim', outputDir: 'dist'});
+	}
+
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {
 		Logger.info('Sourcing ${directory} files');
 
