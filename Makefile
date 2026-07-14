@@ -44,7 +44,7 @@ install:
 .PHONY=clean
 clean:
 	@echo "::> Cleaning output files"
-	@rm -rf $(OUT_DIR)
+	rm -rf $(OUT_DIR)
 
 .PHONY=inspect
 inspect:
