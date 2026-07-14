@@ -14,11 +14,15 @@ import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.target.Target;
 
-final sourcesPath = "dist/source";
-final helperSourcesPath = "dist/source/helper";
-final runtimeSourcesPath = "dist/source/runtime";
+final sourcesPath = "src/input";
+final helperSourcesPath = "src/input/helper";
+final runtimeSourcesPath = "src/input/runtime";
 
 class HxNvim {
+	static public function main() {
+		return HxNvim.run({outputPack: 'nvim', outputDir: 'dist'});
+	}
+
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {
 		Logger.info('Sourcing ${directory} files');
 
@@ -51,8 +55,6 @@ class HxNvim {
 
 	static function run(?options:Dynamic<Dynamic>) {
 		Config.set(options.or({}));
-
-		trace(sourcesPath);
 
 		HxNvim.processHelpers();
 		HxNvim.processNamespaces();

@@ -4,10 +4,12 @@ OUT_DIR=$(DIST_DIR)/nvim
 
 JSON_EXTERNAL_SOURCES_DIR:=external/anydev.nvim/out
 JSON_EXTERNAL_SOURCES=$(shell find $(JSON_EXTERNAL_SOURCES_DIR) -type f -name "*.json")
-JSON_SOURCES_DIR=$(DIST_DIR)/source/runtime
+JSON_SOURCES_DIR=$(SRC_DIR)/input/runtime
 JSON_SOURCES:=$(patsubst $(JSON_EXTERNAL_SOURCES_DIR)/%, $(JSON_SOURCES_DIR)/%, $(JSON_EXTERNAL_SOURCES))
-TXT_SOURCES:=$(shell find $(DIST_DIR)/source/helper -type f -name "*.txt")
-HX_SOURCES:=$(shell find $(SRC_DIR) -type f -name "*.hx")
+
+TXT_SOURCES:=$(shell find $(SRC_DIR)/input/helper -type f -name "*.txt")
+
+HX_SOURCES:=$(shell find $(SRC_DIR)/hxnvim -type f -name "*.hx")
 
 define HAXE
 	docker run --rm \
