@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef TextDocumentSyncKind = Float;
+extern typedef TextDocumentSyncKind = Int;

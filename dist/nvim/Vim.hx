@@ -4973,7 +4973,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function append(lnum:haxe.extern.EitherType<Int, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	function append(lnum:haxe.extern.EitherType<Int, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Int;
 
 	/**
 		```lua
@@ -5011,7 +5011,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function appendbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:String):Float;
+	function appendbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:String):Int;
 
 	/**
 		```lua
@@ -5142,7 +5142,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_beeps(cmd:String):Float;
+	function assert_beeps(cmd:String):Int;
 
 	/**
 		```lua
@@ -5176,7 +5176,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_equal(expected:Any, actual:Any, ?msg:Any):Float;
+	function assert_equal(expected:Any, actual:Any, ?msg:Any):Int;
 
 	/**
 		```lua
@@ -5200,7 +5200,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_equalfile(fname_one:String, fname_two:String):Float;
+	function assert_equalfile(fname_one:String, fname_two:String):Int;
 
 	/**
 		```lua
@@ -5231,7 +5231,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_exception(error:Any, ?msg:Any):Float;
+	function assert_exception(error:Any, ?msg:Any):Int;
 
 	/**
 		```lua
@@ -5282,7 +5282,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Int, ?context:Any):Float;
+	function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Int, ?context:Any):Int;
 
 	/**
 		```lua
@@ -5310,7 +5310,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_false(actual:Any, ?msg:Any):Float;
+	function assert_false(actual:Any, ?msg:Any):Int;
 
 	/**
 		```lua
@@ -5335,7 +5335,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):Float;
+	function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):Int;
 
 	/**
 		```lua
@@ -5372,7 +5372,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_match(pattern:String, actual:String, ?msg:String):Float;
+	function assert_match(pattern:String, actual:String, ?msg:String):Int;
 
 	/**
 		```lua
@@ -5394,7 +5394,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_nobeep(cmd:String):Float;
+	function assert_nobeep(cmd:String):Int;
 
 	/**
 		```lua
@@ -5416,7 +5416,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_notequal(expected:Any, actual:Any, ?msg:Any):Float;
+	function assert_notequal(expected:Any, actual:Any, ?msg:Any):Int;
 
 	/**
 		```lua
@@ -5438,7 +5438,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_notmatch(pattern:String, actual:String, ?msg:String):Float;
+	function assert_notmatch(pattern:String, actual:String, ?msg:String):Int;
 
 	/**
 		```lua
@@ -5459,7 +5459,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_report(msg:String):Float;
+	function assert_report(msg:String):Int;
 
 	/**
 		```lua
@@ -5485,7 +5485,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_true(actual:Any, ?msg:String):Float;
+	function assert_true(actual:Any, ?msg:String):Int;
 
 	/**
 		```lua
@@ -5574,7 +5574,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function browse(save:Any, title:String, initdir:String, default_:String):Float;
+	function browse(save:Any, title:String, initdir:String, default_:String):Int;
 
 	/**
 		```lua
@@ -5603,7 +5603,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function browsedir(title:String, initdir:String):Float;
+	function browsedir(title:String, initdir:String):Int;
 
 	/**
 		```lua
@@ -5666,7 +5666,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function bufexists(buf:Any):Float;
+	function bufexists(buf:Any):Int;
 
 	/**
 		```lua
@@ -5687,7 +5687,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function buffer_exists(___:haxe.Rest<Any>):Float;
+	function buffer_exists(___:haxe.Rest<Any>):Int;
 
 	/**
 		```lua
@@ -5737,7 +5737,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function buflisted(buf:Any):Float;
+	function buflisted(buf:Any):Int;
 
 	/**
 		```lua
@@ -5778,7 +5778,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function bufloaded(buf:Any):Float;
+	function bufloaded(buf:Any):Int;
 
 	/**
 		```lua
@@ -6042,7 +6042,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function chanclose(id:Int, ?stream:String):Float;
+	function chanclose(id:Int, ?stream:String):Int;
 
 	/**
 		```lua
@@ -6096,7 +6096,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function chansend(id:Float, data:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	function chansend(id:Float, data:haxe.extern.EitherType<String, lua.Table<Int, String>>):Int;
 
 	/**
 		```lua
@@ -6128,7 +6128,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function char2nr(string:String, ?utf8:Any):Float;
+	function char2nr(string:String, ?utf8:Any):Int;
 
 	/**
 		```lua
@@ -6159,7 +6159,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function charclass(string:String):haxe.extern.EitherType<Float, String>;
+	function charclass(string:String):haxe.extern.EitherType<Int, String>;
 
 	/**
 		```lua
@@ -6411,7 +6411,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function complete_add(expr:Any):Float;
+	function complete_add(expr:Any):Int;
 
 	/**
 		```lua
@@ -6436,7 +6436,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function complete_check():Float;
+	function complete_check():Int;
 
 	@:native("complete_info")
 	@:luaDotMethod
@@ -7282,7 +7282,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function executable(expr:String):Float;
+	function executable(expr:String):Int;
 
 	/**
 		```lua
@@ -7450,7 +7450,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function exists(expr:String):Float;
+	function exists(expr:String):Int;
 
 	/**
 		```lua
@@ -7807,7 +7807,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function filecopy(from:String, to:String):Float;
+	function filecopy(from:String, to:String):Int;
 
 	/**
 		```lua
@@ -7841,7 +7841,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function filereadable(file:String):Float;
+	function filereadable(file:String):Int;
 
 	/**
 		```lua
@@ -7864,7 +7864,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function filewritable(file:String):Float;
+	function filewritable(file:String):Int;
 
 	/**
 		```lua
@@ -7977,7 +7977,7 @@ extern class Fn {
 
 	@:native("flatten")
 	@:luaDotMethod
-	private function __flatten(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	private function __flatten(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Int>;
 
 	/**
 		```lua
@@ -8011,14 +8011,14 @@ extern class Fn {
 		    | 0
 		```
 	**/
-	inline function flatten(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float> {
+	inline function flatten(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Int> {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __flatten(list, maxdepth);
 	}
 
 	@:native("flattennew")
 	@:luaDotMethod
-	private function __flattennew(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	private function __flattennew(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Int>;
 
 	/**
 		```lua
@@ -8036,7 +8036,7 @@ extern class Fn {
 		    | 0
 		```
 	**/
-	inline function flattennew(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float> {
+	inline function flattennew(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Int> {
 		final list:nvim.helper.Native.LuaArray<Any> = list;
 		return __flattennew(list, maxdepth);
 	}
@@ -8788,7 +8788,7 @@ extern class Fn {
 
 	@:native("getchar")
 	@:luaDotMethod
-	private function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
+	private function __getchar(?expr:Int, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
 
 	/**
 		```lua
@@ -8899,7 +8899,7 @@ extern class Fn {
 		    | 1
 		```
 	**/
-	inline function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String> {
+	inline function getchar(?expr:Int, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String> {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getchar(expr, opts);
 	}
@@ -8986,7 +8986,7 @@ extern class Fn {
 
 	@:native("getcharstr")
 	@:luaDotMethod
-	private function __getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
+	private function __getcharstr(?expr:Int, ?opts:lua.Table.AnyTable):String;
 
 	/**
 		```lua
@@ -9007,7 +9007,7 @@ extern class Fn {
 		    | 1
 		```
 	**/
-	inline function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
+	inline function getcharstr(?expr:Int, ?opts:lua.Table.AnyTable):String {
 		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getcharstr(expr, opts);
 	}
@@ -10718,11 +10718,11 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function has(feature:String):Float;
+	function has(feature:String):Int;
 
 	@:native("has_key")
 	@:luaDotMethod
-	private function __has_key(dict:lua.Table.AnyTable, key:String):Float;
+	private function __has_key(dict:lua.Table.AnyTable, key:String):Int;
 
 	/**
 		```lua
@@ -10743,7 +10743,7 @@ extern class Fn {
 		    | 1
 		```
 	**/
-	inline function has_key(dict:lua.Table.AnyTable, key:String):Float {
+	inline function has_key(dict:lua.Table.AnyTable, key:String):Int {
 		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __has_key(dict, key);
 	}
@@ -10780,7 +10780,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function haslocaldir(?winnr:Int, ?tabnr:Int):Float;
+	function haslocaldir(?winnr:Int, ?tabnr:Int):Int;
 
 	/**
 		```lua
@@ -10828,7 +10828,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function hasmapto(what:Any, ?mode:String, ?abbr:Bool):Float;
+	function hasmapto(what:Any, ?mode:String, ?abbr:Bool):Int;
 
 	/**
 		```lua
@@ -10894,7 +10894,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function histadd(history:String, item:Any):Float;
+	function histadd(history:String, item:Any):Int;
 
 	/**
 		```lua
@@ -10944,7 +10944,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function histdel(history:String, ?item:Any):Float;
+	function histdel(history:String, ?item:Any):Int;
 
 	/**
 		```lua
@@ -11033,7 +11033,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function hlexists(name:String):Float;
+	function hlexists(name:String):Int;
 
 	/**
 		```lua
@@ -11538,7 +11538,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function isabsolutepath(path:String):Float;
+	function isabsolutepath(path:String):Int;
 
 	/**
 		```lua
@@ -11561,7 +11561,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function isdirectory(directory:String):Float;
+	function isdirectory(directory:String):Int;
 
 	/**
 		```lua
@@ -11587,7 +11587,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function isinf(expr:Float):Float;
+	function isinf(expr:Float):Int;
 
 	/**
 		```lua
@@ -11618,7 +11618,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function islocked(expr:Any):Float;
+	function islocked(expr:Any):Int;
 
 	/**
 		```lua
@@ -11640,7 +11640,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function isnan(expr:Float):Float;
+	function isnan(expr:Float):Int;
 
 	@:native("items")
 	@:luaDotMethod
@@ -12564,7 +12564,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function maplist(?abbr:Float):lua.Table<Int, lua.Table.AnyTable>;
+	function maplist(?abbr:Int):lua.Table<Int, lua.Table.AnyTable>;
 
 	/**
 		```lua
@@ -17593,7 +17593,7 @@ extern class Fn {
 
 	@:native("sign_define")
 	@:luaDotMethod
-	private function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float;
+	private function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Int;
 
 	/**
 		```lua
@@ -17664,7 +17664,7 @@ extern class Fn {
 		     \ ])
 		 <
 	**/
-	inline function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float {
+	inline function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Int {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_define.Dict> = dict;
 		return __sign_define(name, dict);
 	}
@@ -18006,11 +18006,11 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function sign_undefine(?name:String):Float;
+	function sign_undefine(?name:String):Int;
 
 	@:native("sign_unplace")
 	@:luaDotMethod
-	private function __sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float;
+	private function __sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Int;
 
 	/**
 		```lua
@@ -18068,14 +18068,14 @@ extern class Fn {
 		    | -1
 		```
 	**/
-	inline function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float {
+	inline function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Int {
 		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplace.Dict> = dict;
 		return __sign_unplace(group, dict);
 	}
 
 	@:native("sign_unplacelist")
 	@:luaDotMethod
-	private function __sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float>;
+	private function __sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Int>;
 
 	/**
 		```lua
@@ -18113,7 +18113,7 @@ extern class Fn {
 		     \ ])
 		 <
 	**/
-	inline function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float> {
+	inline function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Int> {
 		final list:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplacelist.list.Item> = list;
 		return __sign_unplacelist(list);
 	}
@@ -19017,7 +19017,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function strpart(src:String, start:Int, ?len:Int, ?chars:Float):String;
+	function strpart(src:String, start:Int, ?len:Int, ?chars:Int):String;
 
 	/**
 		```lua
@@ -19136,7 +19136,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function strutf16len(string:String, ?countcc:Float):Int;
+	function strutf16len(string:String, ?countcc:Int):Int;
 
 	/**
 		```lua
@@ -19362,7 +19362,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function synID(lnum:haxe.extern.EitherType<Int, String>, col:Int, trans:Float):Int;
+	function synID(lnum:haxe.extern.EitherType<Int, String>, col:Int, trans:Int):Int;
 
 	/**
 		```lua
@@ -20058,7 +20058,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function trim(text:String, ?mask:String, ?dir:Float):String;
+	function trim(text:String, ?mask:String, ?dir:Int):String;
 
 	/**
 		```lua
@@ -20220,7 +20220,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function uniq(list:Any, ?func:Any, ?dict:Any):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	function uniq(list:Any, ?func:Any, ?dict:Any):haxe.extern.EitherType<lua.Table<Int, Any>, Int>;
 
 	/**
 		```lua
@@ -20558,7 +20558,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function win_gotoid(expr:Int):Float;
+	function win_gotoid(expr:Int):Int;
 
 	/**
 		```lua
@@ -47902,7 +47902,7 @@ extern class OptLocal {
 		    | 0
 		```
 	**/
-	static function lua_omnifunc(find_start:Float, _:Dynamic):Dynamic;
+	static function lua_omnifunc(find_start:Int, _:Dynamic):Dynamic;
 
 	/**
 		```lua
@@ -48051,7 +48051,7 @@ extern class OptLocal {
 	static var opt_local : OptLocal;
 
 	@:native("paste")
-	private static function __paste(lines:lua.Table<Int, String>, phase:Float):Bool;
+	private static function __paste(lines:lua.Table<Int, String>, phase:Int):Bool;
 
 	/**
 		```lua
@@ -48100,7 +48100,7 @@ extern class OptLocal {
 		    | 3
 		```
 	**/
-	inline static function paste(lines:Array<String>, phase:Float):Bool {
+	inline static function paste(lines:Array<String>, phase:Int):Bool {
 		final lines:nvim.helper.Native.LuaArray<String> = lines;
 		return __paste(lines, phase);
 	}
@@ -48580,7 +48580,7 @@ extern class OptLocal {
 		    | -1
 		```
 	**/
-	static function stricmp(a:String, b:String):Float;
+	static function stricmp(a:String, b:String):Int;
 
 	@:native("system")
 	private static function __system(cmd:lua.Table<Int, String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj;

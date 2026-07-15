@@ -1,6 +1,6 @@
 package nvim.type.vim.diagnostic;
 
-extern enum abstract Severity(Float) from Float to Float {
+extern enum abstract Severity(Int) from Int to Int {
 	var WARN = "2";
 
 	var W = "2";

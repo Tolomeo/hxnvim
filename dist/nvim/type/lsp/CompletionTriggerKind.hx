@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef CompletionTriggerKind = Float;
+extern typedef CompletionTriggerKind = Int;

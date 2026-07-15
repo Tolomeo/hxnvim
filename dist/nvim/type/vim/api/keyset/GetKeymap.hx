@@ -12,7 +12,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var abbr : Null<Float>;
+	extern public var abbr : Null<Int>;
 
 	/**
 		```lua
@@ -20,7 +20,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var buffer : Null<Float>;
+	extern public var buffer : Null<Int>;
 
 	/**
 		```lua
@@ -44,7 +44,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var expr : Null<Float>;
+	extern public var expr : Null<Int>;
 
 	/**
 		```lua
@@ -100,7 +100,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var noremap : Null<Float>;
+	extern public var noremap : Null<Int>;
 
 	/**
 		```lua
@@ -108,7 +108,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var nowait : Null<Float>;
+	extern public var nowait : Null<Int>;
 
 	/**
 		```lua
@@ -124,7 +124,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var script : Null<Float>;
+	extern public var script : Null<Int>;
 
 	/**
 		```lua
@@ -148,6 +148,6 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var silent : Null<Float>;
+	extern public var silent : Null<Int>;
 
 }

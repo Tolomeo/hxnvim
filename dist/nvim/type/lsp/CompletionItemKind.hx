@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef CompletionItemKind = Float;
+extern typedef CompletionItemKind = Int;

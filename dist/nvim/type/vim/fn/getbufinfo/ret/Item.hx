@@ -27,7 +27,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.changed: 0|1
 		```
 	**/
-	extern public var changed : Float;
+	extern public var changed : Int;
 
 	/**
 		```lua
@@ -41,7 +41,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.hidden: 0|1
 		```
 	**/
-	extern public var hidden : Float;
+	extern public var hidden : Int;
 
 	/**
 		```lua
@@ -62,7 +62,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.listed: 0|1
 		```
 	**/
-	extern public var listed : Float;
+	extern public var listed : Int;
 
 	/**
 		```lua
@@ -76,7 +76,7 @@ package nvim.type.vim.fn.getbufinfo.ret;
 		(field) vim.fn.getbufinfo.ret.item.loaded: 0|1
 		```
 	**/
-	extern public var loaded : Float;
+	extern public var loaded : Int;
 
 	/**
 		```lua

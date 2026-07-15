@@ -48,6 +48,6 @@ package nvim.type.vim.fn.getscriptinfo;
 		(field) vim.fn.getscriptinfo.ret.version: 1
 		```
 	**/
-	extern public var version : Float;
+	extern public var version : Int;
 
 }

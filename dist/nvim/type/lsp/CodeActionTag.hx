@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef CodeActionTag = Float;
+extern typedef CodeActionTag = Int;

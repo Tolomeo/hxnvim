@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef SymbolKind = Float;
+extern typedef SymbolKind = Int;
