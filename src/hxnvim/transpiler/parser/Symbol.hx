@@ -107,7 +107,7 @@ class EnumeratorSymbolParser extends SymbolParser {
 		final fields = fieldsJson.fold((field:Json, _fields:Map<String, String>) -> {
 			final fieldName = field.select('name').string().toTypeName();
 			final fieldValue = switch (field.select('value')) {
-				case v if (new LiteralTypeParser(v).parse().matches(type)): v.select('value').string().trimChars("'", "\"");
+				case v if (new LiteralTypeParser(v).parse().matches(type)): v.select('value').string();
 				case _: throw new Exception('Error parsing "${fieldName}" member of "${name}" enumerator in ${field.getValue()}: field type does not match enumerator type');
 			}
 
