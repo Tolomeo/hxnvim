@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef InsertTextFormat = Float;
+extern typedef InsertTextFormat = Int;

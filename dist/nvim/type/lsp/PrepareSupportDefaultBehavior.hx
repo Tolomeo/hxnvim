@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef PrepareSupportDefaultBehavior = Float;
+extern typedef PrepareSupportDefaultBehavior = Int;

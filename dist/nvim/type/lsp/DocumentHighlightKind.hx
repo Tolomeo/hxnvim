@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef DocumentHighlightKind = Float;
+extern typedef DocumentHighlightKind = Int;

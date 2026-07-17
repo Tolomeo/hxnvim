@@ -79,6 +79,28 @@ class LiteralTypeGenerator {
 		});
 	}
 
+	// No support for exadecimal ints
+	// TODO: support exadecimals?
+	// No support for scientific notation floats
+	// TODO: support scientific notation?
+	function generateNumericLiteral(value:String) {
+		value = value.trim();
+
+		final eInt = ~/^[+-]?\d+$/;
+
+		if (eInt.match(value)) {
+			return this.generateInt();
+		}
+
+		final eFloat = ~/^[+-]?\d*\.\d+$/;
+
+		if (eFloat.match(value)) {
+			return this.generateFloat();
+		}
+
+		throw new Exception("Error parsing numeric literal value: unrecognised format");
+	}
+
 	function generateNullable(type:LiteralType) {
 		return ComplexType.TPath({
 			name: "Null",
@@ -275,8 +297,8 @@ class LiteralTypeGenerator {
 				this.generateArray(type);
 			case LiteralType.AnyTable:
 				this.generateAnyTable();
-			case LiteralType.NumericLiteral(_):
-				this.generateFloat();
+			case LiteralType.NumericLiteral(value):
+				this.generateNumericLiteral(value);
 			case LiteralType.StringLiteral(_):
 				this.generateString();
 			case LiteralType.BooleanLiteral(_):

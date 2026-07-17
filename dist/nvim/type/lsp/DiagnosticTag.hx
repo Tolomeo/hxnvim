@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef DiagnosticTag = Float;
+extern typedef DiagnosticTag = Int;

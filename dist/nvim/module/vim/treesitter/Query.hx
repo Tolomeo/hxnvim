@@ -195,7 +195,7 @@ extern class Query {
 		```
 	**/
 	@:luaDotMethod
-	function omnifunc(findstart:Float, base:String):Dynamic;
+	function omnifunc(findstart:Int, base:String):Dynamic;
 
 	/**
 		```lua

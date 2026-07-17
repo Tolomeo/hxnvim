@@ -34,7 +34,7 @@ class EnumeratorGenerator {
 		for (fieldName => fieldValue in enumerator.fields.keyValueIterator()) {
 			fields.push({
 				name: fieldName,
-				kind: FVar(null, macro $v{fieldValue}),
+				kind: FVar(null, macro $i{fieldValue}),
 				pos: null
 			});
 		}

@@ -1,194 +1,194 @@
 package nvim.type.vim.lsp.protocol;
 
 extern enum abstract Methods(String) from String to String {
-	var WorkspaceWorkspaceFolders = "workspace/workspaceFolders";
+	var WorkspaceWorkspaceFolders = 'workspace/workspaceFolders';
 
-	var WorkspaceWillRenameFiles = "workspace/willRenameFiles";
+	var WorkspaceWillRenameFiles = 'workspace/willRenameFiles';
 
-	var WorkspaceWillDeleteFiles = "workspace/willDeleteFiles";
+	var WorkspaceWillDeleteFiles = 'workspace/willDeleteFiles';
 
-	var WorkspaceWillCreateFiles = "workspace/willCreateFiles";
+	var WorkspaceWillCreateFiles = 'workspace/willCreateFiles';
 
-	var WorkspaceTextDocumentContentRefresh = "workspace/textDocumentContent/refresh";
+	var WorkspaceTextDocumentContentRefresh = 'workspace/textDocumentContent/refresh';
 
-	var WorkspaceTextDocumentContent = "workspace/textDocumentContent";
+	var WorkspaceTextDocumentContent = 'workspace/textDocumentContent';
 
-	var WorkspaceSymbolResolve = "workspaceSymbol/resolve";
+	var WorkspaceSymbolResolve = 'workspaceSymbol/resolve';
 
-	var WorkspaceSymbol = "workspace/symbol";
+	var WorkspaceSymbol = 'workspace/symbol';
 
-	var WorkspaceSemanticTokensRefresh = "workspace/semanticTokens/refresh";
+	var WorkspaceSemanticTokensRefresh = 'workspace/semanticTokens/refresh';
 
-	var WorkspaceInlineValueRefresh = "workspace/inlineValue/refresh";
+	var WorkspaceInlineValueRefresh = 'workspace/inlineValue/refresh';
 
-	var WorkspaceInlayHintRefresh = "workspace/inlayHint/refresh";
+	var WorkspaceInlayHintRefresh = 'workspace/inlayHint/refresh';
 
-	var WorkspaceFoldingRangeRefresh = "workspace/foldingRange/refresh";
+	var WorkspaceFoldingRangeRefresh = 'workspace/foldingRange/refresh';
 
-	var WorkspaceExecuteCommand = "workspace/executeCommand";
+	var WorkspaceExecuteCommand = 'workspace/executeCommand';
 
-	var WorkspaceDidRenameFiles = "workspace/didRenameFiles";
+	var WorkspaceDidRenameFiles = 'workspace/didRenameFiles';
 
-	var WorkspaceDidDeleteFiles = "workspace/didDeleteFiles";
+	var WorkspaceDidDeleteFiles = 'workspace/didDeleteFiles';
 
-	var WorkspaceDidCreateFiles = "workspace/didCreateFiles";
+	var WorkspaceDidCreateFiles = 'workspace/didCreateFiles';
 
-	var WorkspaceDidChangeWorkspaceFolders = "workspace/didChangeWorkspaceFolders";
+	var WorkspaceDidChangeWorkspaceFolders = 'workspace/didChangeWorkspaceFolders';
 
-	var WorkspaceDidChangeWatchedFiles = "workspace/didChangeWatchedFiles";
+	var WorkspaceDidChangeWatchedFiles = 'workspace/didChangeWatchedFiles';
 
-	var WorkspaceDidChangeConfiguration = "workspace/didChangeConfiguration";
+	var WorkspaceDidChangeConfiguration = 'workspace/didChangeConfiguration';
 
-	var WorkspaceDiagnosticRefresh = "workspace/diagnostic/refresh";
+	var WorkspaceDiagnosticRefresh = 'workspace/diagnostic/refresh';
 
-	var WorkspaceDiagnostic = "workspace/diagnostic";
+	var WorkspaceDiagnostic = 'workspace/diagnostic';
 
-	var WorkspaceConfiguration = "workspace/configuration";
+	var WorkspaceConfiguration = 'workspace/configuration';
 
-	var WorkspaceCodeLensRefresh = "workspace/codeLens/refresh";
+	var WorkspaceCodeLensRefresh = 'workspace/codeLens/refresh';
 
-	var WorkspaceApplyEdit = "workspace/applyEdit";
+	var WorkspaceApplyEdit = 'workspace/applyEdit';
 
-	var WindowWorkDoneProgressCreate = "window/workDoneProgress/create";
+	var WindowWorkDoneProgressCreate = 'window/workDoneProgress/create';
 
-	var WindowWorkDoneProgressCancel = "window/workDoneProgress/cancel";
+	var WindowWorkDoneProgressCancel = 'window/workDoneProgress/cancel';
 
-	var WindowShowMessageRequest = "window/showMessageRequest";
+	var WindowShowMessageRequest = 'window/showMessageRequest';
 
-	var WindowShowMessage = "window/showMessage";
+	var WindowShowMessage = 'window/showMessage';
 
-	var WindowShowDocument = "window/showDocument";
+	var WindowShowDocument = 'window/showDocument';
 
-	var WindowLogMessage = "window/logMessage";
+	var WindowLogMessage = 'window/logMessage';
 
-	var TypeHierarchySupertypes = "typeHierarchy/supertypes";
+	var TypeHierarchySupertypes = 'typeHierarchy/supertypes';
 
-	var TypeHierarchySubtypes = "typeHierarchy/subtypes";
+	var TypeHierarchySubtypes = 'typeHierarchy/subtypes';
 
-	var TextDocumentWillSaveWaitUntil = "textDocument/willSaveWaitUntil";
+	var TextDocumentWillSaveWaitUntil = 'textDocument/willSaveWaitUntil';
 
-	var TextDocumentWillSave = "textDocument/willSave";
+	var TextDocumentWillSave = 'textDocument/willSave';
 
-	var TextDocumentTypeDefinition = "textDocument/typeDefinition";
+	var TextDocumentTypeDefinition = 'textDocument/typeDefinition';
 
-	var TextDocumentSignatureHelp = "textDocument/signatureHelp";
+	var TextDocumentSignatureHelp = 'textDocument/signatureHelp';
 
-	var TextDocumentSemanticTokensRange = "textDocument/semanticTokens/range";
+	var TextDocumentSemanticTokensRange = 'textDocument/semanticTokens/range';
 
-	var TextDocumentSemanticTokensFullDelta = "textDocument/semanticTokens/full/delta";
+	var TextDocumentSemanticTokensFullDelta = 'textDocument/semanticTokens/full/delta';
 
-	var TextDocumentSemanticTokensFull = "textDocument/semanticTokens/full";
+	var TextDocumentSemanticTokensFull = 'textDocument/semanticTokens/full';
 
-	var TextDocumentSelectionRange = "textDocument/selectionRange";
+	var TextDocumentSelectionRange = 'textDocument/selectionRange';
 
-	var TextDocumentRename = "textDocument/rename";
+	var TextDocumentRename = 'textDocument/rename';
 
-	var TextDocumentReferences = "textDocument/references";
+	var TextDocumentReferences = 'textDocument/references';
 
-	var TextDocumentRangesFormatting = "textDocument/rangesFormatting";
+	var TextDocumentRangesFormatting = 'textDocument/rangesFormatting';
 
-	var TextDocumentRangeFormatting = "textDocument/rangeFormatting";
+	var TextDocumentRangeFormatting = 'textDocument/rangeFormatting';
 
-	var TextDocumentPublishDiagnostics = "textDocument/publishDiagnostics";
+	var TextDocumentPublishDiagnostics = 'textDocument/publishDiagnostics';
 
-	var TextDocumentPrepareTypeHierarchy = "textDocument/prepareTypeHierarchy";
+	var TextDocumentPrepareTypeHierarchy = 'textDocument/prepareTypeHierarchy';
 
-	var TextDocumentPrepareRename = "textDocument/prepareRename";
+	var TextDocumentPrepareRename = 'textDocument/prepareRename';
 
-	var TextDocumentPrepareCallHierarchy = "textDocument/prepareCallHierarchy";
+	var TextDocumentPrepareCallHierarchy = 'textDocument/prepareCallHierarchy';
 
-	var TextDocumentOnTypeFormatting = "textDocument/onTypeFormatting";
+	var TextDocumentOnTypeFormatting = 'textDocument/onTypeFormatting';
 
-	var TextDocumentMoniker = "textDocument/moniker";
+	var TextDocumentMoniker = 'textDocument/moniker';
 
-	var TextDocumentLinkedEditingRange = "textDocument/linkedEditingRange";
+	var TextDocumentLinkedEditingRange = 'textDocument/linkedEditingRange';
 
-	var TextDocumentInlineValue = "textDocument/inlineValue";
+	var TextDocumentInlineValue = 'textDocument/inlineValue';
 
-	var TextDocumentInlineCompletion = "textDocument/inlineCompletion";
+	var TextDocumentInlineCompletion = 'textDocument/inlineCompletion';
 
-	var TextDocumentInlayHint = "textDocument/inlayHint";
+	var TextDocumentInlayHint = 'textDocument/inlayHint';
 
-	var TextDocumentImplementation = "textDocument/implementation";
+	var TextDocumentImplementation = 'textDocument/implementation';
 
-	var TextDocumentHover = "textDocument/hover";
+	var TextDocumentHover = 'textDocument/hover';
 
-	var TextDocumentFormatting = "textDocument/formatting";
+	var TextDocumentFormatting = 'textDocument/formatting';
 
-	var TextDocumentFoldingRange = "textDocument/foldingRange";
+	var TextDocumentFoldingRange = 'textDocument/foldingRange';
 
-	var TextDocumentDocumentSymbol = "textDocument/documentSymbol";
+	var TextDocumentDocumentSymbol = 'textDocument/documentSymbol';
 
-	var TextDocumentDocumentLink = "textDocument/documentLink";
+	var TextDocumentDocumentLink = 'textDocument/documentLink';
 
-	var TextDocumentDocumentHighlight = "textDocument/documentHighlight";
+	var TextDocumentDocumentHighlight = 'textDocument/documentHighlight';
 
-	var TextDocumentDocumentColor = "textDocument/documentColor";
+	var TextDocumentDocumentColor = 'textDocument/documentColor';
 
-	var TextDocumentDidSave = "textDocument/didSave";
+	var TextDocumentDidSave = 'textDocument/didSave';
 
-	var TextDocumentDidOpen = "textDocument/didOpen";
+	var TextDocumentDidOpen = 'textDocument/didOpen';
 
-	var TextDocumentDidClose = "textDocument/didClose";
+	var TextDocumentDidClose = 'textDocument/didClose';
 
-	var TextDocumentDidChange = "textDocument/didChange";
+	var TextDocumentDidChange = 'textDocument/didChange';
 
-	var TextDocumentDiagnostic = "textDocument/diagnostic";
+	var TextDocumentDiagnostic = 'textDocument/diagnostic';
 
-	var TextDocumentDefinition = "textDocument/definition";
+	var TextDocumentDefinition = 'textDocument/definition';
 
-	var TextDocumentDeclaration = "textDocument/declaration";
+	var TextDocumentDeclaration = 'textDocument/declaration';
 
-	var TextDocumentCompletion = "textDocument/completion";
+	var TextDocumentCompletion = 'textDocument/completion';
 
-	var TextDocumentColorPresentation = "textDocument/colorPresentation";
+	var TextDocumentColorPresentation = 'textDocument/colorPresentation';
 
-	var TextDocumentCodeLens = "textDocument/codeLens";
+	var TextDocumentCodeLens = 'textDocument/codeLens';
 
-	var TextDocumentCodeAction = "textDocument/codeAction";
+	var TextDocumentCodeAction = 'textDocument/codeAction';
 
-	var TelemetryEvent = "telemetry/event";
+	var TelemetryEvent = 'telemetry/event';
 
-	var Shutdown = "shutdown";
+	var Shutdown = 'shutdown';
 
-	var NotebookDocumentDidSave = "notebookDocument/didSave";
+	var NotebookDocumentDidSave = 'notebookDocument/didSave';
 
-	var NotebookDocumentDidOpen = "notebookDocument/didOpen";
+	var NotebookDocumentDidOpen = 'notebookDocument/didOpen';
 
-	var NotebookDocumentDidClose = "notebookDocument/didClose";
+	var NotebookDocumentDidClose = 'notebookDocument/didClose';
 
-	var NotebookDocumentDidChange = "notebookDocument/didChange";
+	var NotebookDocumentDidChange = 'notebookDocument/didChange';
 
-	var InlayHintResolve = "inlayHint/resolve";
+	var InlayHintResolve = 'inlayHint/resolve';
 
-	var Initialized = "initialized";
+	var Initialized = 'initialized';
 
-	var Initialize = "initialize";
+	var Initialize = 'initialize';
 
-	var Exit = "exit";
+	var Exit = 'exit';
 
-	var DollarSetTrace = "$/setTrace";
+	var DollarSetTrace = '$/setTrace';
 
-	var DollarProgress = "$/progress";
+	var DollarProgress = '$/progress';
 
-	var DollarLogTrace = "$/logTrace";
+	var DollarLogTrace = '$/logTrace';
 
-	var DollarCancelRequest = "$/cancelRequest";
+	var DollarCancelRequest = '$/cancelRequest';
 
-	var DocumentLinkResolve = "documentLink/resolve";
+	var DocumentLinkResolve = 'documentLink/resolve';
 
-	var CompletionItemResolve = "completionItem/resolve";
+	var CompletionItemResolve = 'completionItem/resolve';
 
-	var CodeLensResolve = "codeLens/resolve";
+	var CodeLensResolve = 'codeLens/resolve';
 
-	var CodeActionResolve = "codeAction/resolve";
+	var CodeActionResolve = 'codeAction/resolve';
 
-	var ClientUnregisterCapability = "client/unregisterCapability";
+	var ClientUnregisterCapability = 'client/unregisterCapability';
 
-	var ClientRegisterCapability = "client/registerCapability";
+	var ClientRegisterCapability = 'client/registerCapability';
 
-	var CallHierarchyOutgoingCalls = "callHierarchy/outgoingCalls";
+	var CallHierarchyOutgoingCalls = 'callHierarchy/outgoingCalls';
 
-	var CallHierarchyIncomingCalls = "callHierarchy/incomingCalls";
+	var CallHierarchyIncomingCalls = 'callHierarchy/incomingCalls';
 
 }

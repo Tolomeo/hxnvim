@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef InlayHintKind = Float;
+extern typedef InlayHintKind = Int;
