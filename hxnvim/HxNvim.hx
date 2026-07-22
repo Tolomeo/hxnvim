@@ -14,9 +14,9 @@ import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.target.Target;
 
-final sourcesPath = "src/input";
-final helperSourcesPath = "src/input/helper";
-final runtimeSourcesPath = "src/input/runtime";
+final sourcesPath = "input";
+final helperSourcesPath = "input/helper";
+final runtimeSourcesPath = "input/runtime";
 
 class HxNvim {
 	static public function main() {

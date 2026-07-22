@@ -1,14 +1,14 @@
-SRC_DIR=src
+SRC_DIR=input
 DIST_DIR=dist
 
 JSON_EXTERNAL_SOURCES_DIR:=external/anydev.nvim/out
 JSON_EXTERNAL_SOURCES=$(shell find $(JSON_EXTERNAL_SOURCES_DIR) -type f -name "*.json")
-JSON_SOURCES_DIR=$(SRC_DIR)/input/runtime
+JSON_SOURCES_DIR=$(SRC_DIR)/runtime
 JSON_SOURCES:=$(patsubst $(JSON_EXTERNAL_SOURCES_DIR)/%, $(JSON_SOURCES_DIR)/%, $(JSON_EXTERNAL_SOURCES))
 
-TXT_SOURCES:=$(shell find $(SRC_DIR)/input/helper -type f -name "*.txt")
+TXT_SOURCES:=$(shell find $(SRC_DIR)/helper -type f -name "*.txt")
 
-HX_SOURCES:=$(shell find $(SRC_DIR)/hxnvim -type f -name "*.hx")
+HX_SOURCES:=$(shell find hxnvim -type f -name "*.hx")
 
 BUILD:=$(DIST_DIR)/nvim/.build
 
