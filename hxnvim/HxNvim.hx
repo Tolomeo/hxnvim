@@ -20,7 +20,7 @@ final runtimeSourcesPath = "input/runtime";
 
 class HxNvim {
 	static public function main() {
-		return HxNvim.run({outputPack: 'nvim', outputDir: 'dist'});
+		return HxNvim.run();
 	}
 
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {
@@ -53,7 +53,7 @@ class HxNvim {
 		return files;
 	}
 
-	static function run(?options:Dynamic<Dynamic>) {
+	static public function run(?options:Dynamic<Dynamic>) {
 		Config.set(options.or({}));
 
 		HxNvim.processHelpers();

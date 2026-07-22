@@ -2,6 +2,6 @@ import hxnvim.HxNvim;
 
 class Run {
 	public static function main() {
-		HxNvim.main();
+		return HxNvim.run({outputPack: 'nvim', outputDir: 'dist'});
 	}
 }

@@ -3,14 +3,12 @@
 --library safety:1.1.2
 --library formatter
 
---macro nullSafety("hxnvim", Strict)
+# --macro nullSafety("hxnvim", Strict)
 
 -D analyzer-optimize
 -w -WDeprecated
 
 --class-path .
---class-path dist
-
---macro hxnvim.HxNvim.run({ outputPack: 'nvim', outputDir: 'dist'})
+--main hxnvim.HxNvim
 
 --interp
