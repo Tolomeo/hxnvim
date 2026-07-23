@@ -1,7 +1,35 @@
+import hxargs.Args;
 import hxnvim.HxNvim;
 
 class Run {
 	public static function main() {
-		return HxNvim.run({outputPack: 'nvim', outputDir: 'dist'});
+		final args = Sys.args();
+		final cwd = args.pop();
+		final config:Dynamic<Dynamic> = {};
+		final argsParser = Args.generate([
+			@doc("Parent directory of the generated externs")
+			["--dir"] => function(dir:String) {
+				config.outputDir = dir;
+			},
+			@doc("Parent package of the generated externs")
+			["--pack"] => function(pack:String) {
+				config.outputPack = pack;
+			}
+		]);
+
+		try {
+			argsParser.parse(args);
+		} catch (e:Any) {
+			Sys.stderr().writeString(e + "\n");
+			Sys.exit(1);
+		}
+
+		Sys.setCwd(cwd);
+
+		trace(cwd);
+		trace(config);
+		trace(argsParser.getDoc());
+
+		return HxNvim.run(config);
 	}
 }
