@@ -1,15 +1,19 @@
+import haxe.io.Path;
 import hxargs.Args;
 import hxnvim.HxNvim;
 
 class Run {
 	public static function main() {
 		final args = Sys.args();
+
 		final cwd = args.pop();
 		final config:Dynamic<Dynamic> = {};
+		config.outputDir = cwd;
+		
 		final argsParser = Args.generate([
 			@doc("Parent directory of the generated externs")
 			["--dir"] => function(dir:String) {
-				config.outputDir = dir;
+				config.outputDir = Path.join([cwd, dir]);
 			},
 			@doc("Parent package of the generated externs")
 			["--pack"] => function(pack:String) {
@@ -24,9 +28,6 @@ class Run {
 			Sys.exit(1);
 		}
 
-		Sys.setCwd(cwd);
-
-		trace(cwd);
 		trace(config);
 		trace(argsParser.getDoc());
 
