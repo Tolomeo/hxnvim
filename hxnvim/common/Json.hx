@@ -28,12 +28,11 @@ abstract Json(hxjsonast.Json) from hxjsonast.Json {
 
 	public function select(selector:Rest<String>):Json {
 		final keys = selector.toArray();
+		final key = keys.shift();
 
-		if (keys.length < 1) {
+		if (key == null) {
 			return this;
 		}
-
-		final key = keys.shift();
 
 		return switch (this.getField(key)) {
 			case null:

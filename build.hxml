@@ -3,10 +3,12 @@
 --library safety:1.1.2
 --library formatter
 
-# --macro nullSafety("hxnvim", Strict)
-
 -D analyzer-optimize
+-D message.reporting=pretty
+
 -w -WDeprecated
+
+# --macro nullSafety("hxnvim", Strict)
 
 --class-path .
 --main hxnvim.HxNvim
