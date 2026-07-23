@@ -9,6 +9,7 @@ using hxnvim.common.NullTools;
 using hxnvim.common.StringTools;
 using hxnvim.common.ArrayTools;
 
+import hxnvim.Config;
 import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.target.Target;
@@ -53,6 +54,8 @@ class HxNvim {
 	}
 
 	static public function run(options:Dynamic<Dynamic>) {
+		Config.set(options);
+
 		HxNvim.processHelpers();
 		HxNvim.processNamespaces();
 		HxNvim.processModules();
