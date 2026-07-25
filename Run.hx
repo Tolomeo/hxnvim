@@ -30,13 +30,13 @@ class Run {
 			argsParser.parse(args);
 		} catch (e:Any) {
 			Sys.stderr().writeString(e + "\n");
-			Sys.stderr().writeString(argsParser.getDoc());
+			Sys.stderr().writeString(argsParser.getDoc() + "\n");
 			Sys.exit(1);
 		}
 
 		if (help) {
-			Sys.stderr().writeString('Args: ${config}\n');
-			Sys.stderr().writeString(argsParser.getDoc());
+			Sys.stderr().writeString("Config: " + config + "\n");
+			Sys.stderr().writeString(argsParser.getDoc() + "\n");
 			Sys.exit(0);
 		}
 
