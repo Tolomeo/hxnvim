@@ -10,6 +10,7 @@ class Run {
 		final config:Dynamic<Dynamic> = {};
 		config.outputDir = cwd;
 
+		var help = true;
 		final argsParser = Args.generate([
 			@doc("Parent directory of the generated externs")
 			["--dir"] => function(dir:String) {
@@ -18,6 +19,10 @@ class Run {
 			@doc("Parent package of the generated externs")
 			["--pack"] => function(pack:String) {
 				config.outputPack = pack;
+			},
+			@doc("Prints all passed flags and usage documentation")
+			["--help"] => function() {
+				help = true;
 			}
 		]);
 
@@ -29,8 +34,11 @@ class Run {
 			Sys.exit(1);
 		}
 
-		trace(config);
-		trace(argsParser.getDoc());
+		if (help) {
+			Sys.stderr().writeString('Args: ${config}\n');
+			Sys.stderr().writeString(argsParser.getDoc());
+			Sys.exit(0);
+		}
 
 		return HxNvim.run(config);
 	}
