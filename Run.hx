@@ -9,7 +9,7 @@ class Run {
 		final cwd = args.pop();
 		final config:Dynamic<Dynamic> = {};
 		config.outputDir = cwd;
-		
+
 		final argsParser = Args.generate([
 			@doc("Parent directory of the generated externs")
 			["--dir"] => function(dir:String) {
@@ -25,6 +25,7 @@ class Run {
 			argsParser.parse(args);
 		} catch (e:Any) {
 			Sys.stderr().writeString(e + "\n");
+			Sys.stderr().writeString(argsParser.getDoc());
 			Sys.exit(1);
 		}
 
