@@ -120,7 +120,10 @@ class Target {
 				outputParentHierarchy;
 		}
 
-		final outputPackage = [Config.outputPack].concat(outputParentHierarchy).join(".");
+		final outputPackage = switch Config.outputPack {
+			case "": outputParentHierarchy.join(".");
+			case _: [Config.outputPack].concat(outputParentHierarchy).join(".");
+		}
 
 		final qualifiedName = '${outputPackage}.${outputName}';
 
