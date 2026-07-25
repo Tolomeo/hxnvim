@@ -1,2 +1,3 @@
 --library hxjsonast:1.1.0
 --library hscript:2.7.0
+--library hxargs:4.0.0

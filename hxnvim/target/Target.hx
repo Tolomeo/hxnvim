@@ -56,19 +56,28 @@ enum abstract TargetType(String) {
 
 class Target {
 	static public function helperPack() {
-		return Config.outputPack.split(".").concat(["helper"]);
+		return switch Config.outputPack {
+			case "": ["helper"];
+			default: Config.outputPack.split(".").concat(["helper"]);
+		}
 	}
 
 	static public function annotationPack() {
-		return Config.outputPack.split(".").concat(["type"]);
+		return switch Config.outputPack {
+			case "": ["type"];
+			default: Config.outputPack.split(".").concat(["type"]);
+		}
 	}
 
 	static public function modulePack() {
-		return Config.outputPack.split(".").concat(["module"]);
+		return switch Config.outputPack {
+			case "": ["module"];
+			default: Config.outputPack.split(".").concat(["module"]);
+		}
 	}
 
 	static public function toHelperReference(reference:String) {
-		return '${Config.outputPack}.helper.${reference}';
+		return Target.helperPack().concat([reference]).join(".");
 	}
 
 	static public function toTypeReference(native:String) {
@@ -77,7 +86,7 @@ class Target {
 		final typePath = nativeTypePath.initial().map(p -> p.toLowerCase().toIdentifierName());
 		final name = nativeTypePath.last().toTypeName();
 
-		return [Config.outputPack, 'type',].concat(typePath).concat([name]).join(".");
+		return Target.annotationPack().concat(typePath).concat([name]).join(".");
 	}
 
 	static public function toModuleReference(native:String) {
@@ -86,7 +95,7 @@ class Target {
 		final typePath = nativeTypePath.initial().map(p -> p.toLowerCase());
 		final name = nativeTypePath.last().toTypeName();
 
-		return [Config.outputPack, 'module',].concat(typePath).concat([name]).join(".");
+		return Target.modulePack().concat(typePath).concat([name]).join(".");
 	}
 
 	static public function create(type:TargetType, file:String, spec:String) {
@@ -103,15 +112,18 @@ class Target {
 		final outputParentHierarchy = inputModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
 		switch (inputPath.dir) {
 			case null:
-				outputParentHierarchy.unshift(Config.outputPack);
+				outputParentHierarchy;
 			case inputDir:
 				for (dir in inputDir.split("/")) {
 					outputParentHierarchy.unshift(dir);
 				}
-				outputParentHierarchy.unshift(Config.outputPack);
+				outputParentHierarchy;
 		}
 
-		final outputPackage = outputParentHierarchy.join(".");
+		final outputPackage = switch Config.outputPack {
+			case "": outputParentHierarchy.join(".");
+			case _: [Config.outputPack].concat(outputParentHierarchy).join(".");
+		}
 
 		final qualifiedName = '${outputPackage}.${outputName}';
 

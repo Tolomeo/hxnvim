@@ -10,6 +10,7 @@
   "contributors": ["Tolomeo"],
   "dependencies": {
     "hxjsonast": "1.1.0",
-    "hscript": "2.7.0"
+    "hscript": "2.7.0",
+    "hxargs": "4.0.0"
   }
 }

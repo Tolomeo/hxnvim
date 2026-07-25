@@ -1,16 +1,17 @@
+--library hxargs:4.0.0
 --library hxjsonast:1.1.0
 --library hscript:2.7.0
 --library safety:1.1.2
 --library formatter
 
---macro nullSafety("hxnvim", Strict)
-
 -D analyzer-optimize
+-D message.reporting=pretty
+
 -w -WDeprecated
 
---class-path src
---class-path dist
+# --macro nullSafety("hxnvim", Strict)
 
---macro hxnvim.HxNvim.run({ outputPack: 'nvim', outputDir: 'dist'})
+--class-path .
+--main hxnvim.HxNvim
 
 --interp

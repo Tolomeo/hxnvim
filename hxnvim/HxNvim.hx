@@ -14,13 +14,13 @@ import hxnvim.Logger;
 import hxnvim.transpiler.Transpiler;
 import hxnvim.target.Target;
 
-final sourcesPath = "src/input";
-final helperSourcesPath = "src/input/helper";
-final runtimeSourcesPath = "src/input/runtime";
+final sourcesPath = "input";
+final helperSourcesPath = "input/helper";
+final runtimeSourcesPath = "input/runtime";
 
 class HxNvim {
 	static public function main() {
-		return HxNvim.run({outputPack: 'nvim', outputDir: 'dist'});
+		return HxNvim.run({outputDir: "dist/nvim", outputPack: "nvim"});
 	}
 
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {
@@ -53,8 +53,8 @@ class HxNvim {
 		return files;
 	}
 
-	static function run(?options:Dynamic<Dynamic>) {
-		Config.set(options.or({}));
+	static public function run(options:Dynamic<Dynamic>) {
+		Config.set(options);
 
 		HxNvim.processHelpers();
 		HxNvim.processNamespaces();

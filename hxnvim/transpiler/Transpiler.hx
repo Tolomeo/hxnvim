@@ -54,7 +54,9 @@ class Transpiler {
 	}
 
 	public function transpile() {
-		this.result.push('package ${this.target.output.pack};');
+		if (this.target.output.pack != "") {
+			this.result.push('package ${this.target.output.pack};');
+		}
 
 		State.provide(this.target, () -> {
 			final symbol = Json.fromString(this.target.input.spec, this.target.input.file);
