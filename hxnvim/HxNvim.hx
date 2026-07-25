@@ -20,7 +20,7 @@ final runtimeSourcesPath = "input/runtime";
 
 class HxNvim {
 	static public function main() {
-		return HxNvim.run({});
+		return HxNvim.run({outputDir: "dist/nvim", outputPack: "nvim"});
 	}
 
 	static function source(directory:String, ?relativeTo:String):Map<String, String> {

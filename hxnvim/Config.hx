@@ -8,8 +8,8 @@ typedef Override = DynamicAccess<String>
 
 class Config {
 	public static var logLevel:Int = 3;
-	public static var outputDir:String = "dist";
-	public static var outputPack:String = "nvim";
+	public static var outputDir:String = "";
+	public static var outputPack:String = "";
 	public static var overrides:DynamicAccess<Override> = {
 		/* "vim.treesitter": {},
 				  "vim.opt": {
