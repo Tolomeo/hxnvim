@@ -77,7 +77,7 @@ class Target {
 		final typePath = nativeTypePath.initial().map(p -> p.toLowerCase().toIdentifierName());
 		final name = nativeTypePath.last().toTypeName();
 
-		return [Config.outputPack, 'type',].concat(typePath).concat([name]).join(".");
+		return [Config.outputPack, 'type'].concat(typePath).concat([name]).join(".");
 	}
 
 	static public function toModuleReference(native:String) {
@@ -86,7 +86,7 @@ class Target {
 		final typePath = nativeTypePath.initial().map(p -> p.toLowerCase());
 		final name = nativeTypePath.last().toTypeName();
 
-		return [Config.outputPack, 'module',].concat(typePath).concat([name]).join(".");
+		return [Config.outputPack, 'module'].concat(typePath).concat([name]).join(".");
 	}
 
 	static public function create(type:TargetType, file:String, spec:String) {
@@ -103,15 +103,15 @@ class Target {
 		final outputParentHierarchy = inputModuleHierarchy.initial().map(p -> p.toLowerCase().toIdentifierName());
 		switch (inputPath.dir) {
 			case null:
-				outputParentHierarchy.unshift(Config.outputPack);
+				outputParentHierarchy;
 			case inputDir:
 				for (dir in inputDir.split("/")) {
 					outputParentHierarchy.unshift(dir);
 				}
-				outputParentHierarchy.unshift(Config.outputPack);
+				outputParentHierarchy;
 		}
 
-		final outputPackage = outputParentHierarchy.join(".");
+		final outputPackage = [Config.outputPack].concat(outputParentHierarchy).join(".");
 
 		final qualifiedName = '${outputPackage}.${outputName}';
 
