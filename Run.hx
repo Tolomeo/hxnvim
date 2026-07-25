@@ -10,7 +10,7 @@ class Run {
 		final config:Dynamic<Dynamic> = {};
 		config.outputDir = cwd;
 
-		var help = true;
+		var help = false;
 		final argsParser = Args.generate([
 			@doc("Parent directory of the generated externs")
 			["--dir"] => function(dir:String) {
